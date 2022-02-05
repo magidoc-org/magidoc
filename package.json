@@ -1,0 +1,13 @@
+{
+  "name": "magidocql",
+  "version": "1.0.0",
+  "description": "MagiDocQL is a documentation website generator for GraphQL based on VueJS 3 and that allows for infinite customisation through plugins.",
+  "main": "index.js",
+  "repository": "git@github.com:pelletier197/magidocql.git",
+  "author": "Sunny Pelletier",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}

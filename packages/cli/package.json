@@ -1,0 +1,9 @@
+{
+  "name": "magidoc",
+  "version": "1.0.0",
+  "description": "CLI to build the application and plugins for MagiDocQL.",
+  "main": "index.js",
+  "author": "Sunny Pelletier",
+  "license": "MIT",
+  "private": false
+}
