@@ -7,16 +7,12 @@ import {
 import _ from "lodash";
 
 import { GraphQLQuery } from "../query/query";
-import {
-  Field,
-  FullType,
-  GraphQLIntrospectionResult,
-} from "../../../../../../core/models/introspection";
+import { Field, FullType } from "../../../../../../core/models/introspection";
+import { TypesByName } from "../../../../../../core/models/typesByName";
 import { GeneratorConfig, NullGenerationStrategy } from "./config";
 
-import { getRequiredType, isLeaf, unwrapFieldType } from "./extractor";
+import { isLeaf, unwrapFieldType } from "./extractor";
 import { generateArgsForField } from "./fakeGenerator";
-import { TypesByName } from "./types";
 
 const DEFAULT_CONFIG: GeneratorConfig = {
   maxDepth: 5,
@@ -31,17 +27,10 @@ export type GenerationContext = {
 
 export function generateGraphQLQuery(
   field: Field,
-  introspectionResult: GraphQLIntrospectionResult,
+  typesByName: TypesByName,
   config?: Partial<GeneratorConfig>
 ): GraphQLQuery | null {
   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config);
-
-  const schema = introspectionResult.__schema;
-
-  const typesByName: TypesByName = _.keyBy(
-    schema.types,
-    (type: FullType) => type.name
-  );
 
   const initialBuilder = queryBuilder();
 

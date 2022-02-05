@@ -1,100 +1,98 @@
-import faker from 'faker'
+import faker from "faker";
 
-import { GraphQLFactory } from '../config.js'
+import { GraphQLFactory } from "./config";
 
 export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
   String: (context) => {
     switch (context.targetName.toLowerCase()) {
-      case 'email':
-      case 'emails':
-      case 'mail':
-      case 'mails':
-        return faker.internet.email()
-      case 'fullname':
-      case 'fullnames':
-        return `${faker.name.firstName()} ${faker.name.lastName()}`
-      case 'firstname':
-      case 'firstnames':
-        return faker.name.firstName()
-      case 'lastname':
-      case 'lastnames':
-        return faker.name.lastName()
-      case 'job':
-      case 'jobs':
-      case 'jobtitle':
-      case 'jobtitles':
-        return faker.name.jobTitle()
-      case 'jobarea':
-        return faker.name.jobArea()
-      case 'phone':
-      case 'phones':
-        return faker.phone.phoneNumber()
-      case 'country':
-      case 'countries':
-        return faker.address.country()
-      case 'address':
-      case 'addresses':
-        return faker.address.streetAddress(true)
-      case 'state':
-      case 'states':
-        return faker.address.state()
-      case 'city':
-      case 'cities':
-        return faker.address.city()
-      case 'zipcode':
-      case 'zipcodes':
-        return faker.address.zipCode()
-      case 'latitude':
-        return faker.address.latitude()
-      case 'longitude':
-        return faker.address.longitude()
-      case 'company':
-      case 'companies':
-        return faker.company.companyName()
-      case 'department':
-      case 'departments':
-        return faker.commerce.department()
-      case 'date':
-      case 'dates':
-        return faker.date.future()
-      case 'price':
-      case 'prices':
-        return faker.commerce.price()
-      case 'color':
-      case 'colors':
-        return faker.commerce.color()
-      case 'product':
-      case 'products':
-        return faker.commerce.product()
-      case 'material':
-      case 'materials':
-        return faker.commerce.productMaterial()
-      case 'id':
-      case 'ids':
-        return faker.datatype.uuid()
-      case 'name':
-      case 'names':
-        return faker.lorem.words()
-      case 'description':
-      case 'descriptions':
-        return faker.lorem.sentence()
+      case "email":
+      case "emails":
+      case "mail":
+      case "mails":
+        return "test-email@yourcompany.com";
+      case "fullname":
+      case "fullnames":
+        return "John Doe";
+      case "firstname":
+      case "firstnames":
+        return "John";
+      case "lastname":
+      case "lastnames":
+        return "Doe";
+      case "job":
+      case "jobs":
+      case "jobtitle":
+      case "jobtitles":
+        return "Engineer";
+      case "jobarea":
+        return "Engineering";
+      case "phone":
+      case "phones":
+        return "1+ 418-323-4236";
+      case "country":
+      case "countries":
+        return "Canada";
+      case "address":
+      case "addresses":
+        return "2832 Sesame Street";
+      case "state":
+      case "states":
+        return "Quebec";
+      case "city":
+      case "cities":
+        return "QC";
+      case "zipcode":
+      case "zipcodes":
+        return "G1G43F";
+      case "company":
+      case "companies":
+        return "ACME";
+      case "department":
+      case "departments":
+        return "Engineering";
+      case "date":
+      case "dates":
+      case "datetime":
+      case "instant":
+        return "2021-01-05T00:00:00.000Z";
+      case "price":
+      case "prices":
+        return "500$";
+      case "color":
+      case "colors":
+        return "#ffffff";
+      case "product":
+      case "products":
+        return "Soup";
+      case "material":
+      case "materials":
+        return "Wood";
+      case "id":
+      case "ids":
+        return "08a16b83-9094-4e89-8c05-2ccadd5c1c7e";
+      case "name":
+      case "names":
+        return "Some name";
+      case "description":
+      case "descriptions":
+        return "Some description";
       default:
-        return faker.random.alphaNumeric()
+        return "abc";
     }
   },
   ID: () => faker.datatype.uuid(),
   Boolean: () => faker.datatype.boolean(),
   Int: (context) => {
     switch (context.targetName) {
-      case 'salary':
-      case 'salaries':
-        return faker.datatype.number(200_000)
-      case 'age':
-      case 'ages':
-        return faker.datatype.number(90)
+      case "salary":
+      case "salaries":
+        return faker.datatype.number(200_000);
+      case "age":
+      case "ages":
+        return faker.datatype.number(90);
       default:
-        return faker.datatype.number(100)
+        return faker.datatype.number(100);
     }
   },
   Float: () => faker.datatype.float(100),
-}
+};

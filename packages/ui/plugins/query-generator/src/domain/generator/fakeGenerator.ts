@@ -27,7 +27,7 @@ import {
   unwrapType,
 } from "./extractor.js";
 import { GenerationContext } from "./queryGenerator";
-import { TypesByName } from "./types";
+import { TypesByName } from "../../../../../../core/models/typesByName";
 
 export function generateArgsForField(
   field: Field,

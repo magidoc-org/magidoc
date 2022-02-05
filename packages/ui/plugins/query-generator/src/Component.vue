@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { GraphQLIntrospectionResult } from "../../../../core/models/introspection";
+import { GraphQLIntrospectionResult, Field } from "../../../../core/models/introspection";
 import { defineComponent, PropType } from "vue";
 import GraphQLCodeSection from "./components/GraphQLCodeSection.vue";
 import { GeneratorConfig } from "./domain/generator/config";
@@ -27,6 +27,10 @@ export default defineComponent({
   props: {
     schema: {
       type: Object as PropType<GraphQLIntrospectionResult>,
+      required: true,
+    },
+    field: {
+      type: Object as PropType<Field>,
       required: true,
     },
     generatorConfig: {
