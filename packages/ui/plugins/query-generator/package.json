@@ -1,12 +1,12 @@
 {
   "name": "@magidocql/plugin-query-generator",
   "version": "1.0.0",
-  "description": "A MagiDocQL plugin component that generates GraphQL queries up to a certain depth inside your documentation site.",
+  "description": "A MagiDocQL plugin component that adds dynamic query generation at runtime.",
   "author": "Sunny Pelletier",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -14,6 +14,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
-    "vite": "^2.7.2"
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue-tsc": "^0.29.8"
   }
 }
