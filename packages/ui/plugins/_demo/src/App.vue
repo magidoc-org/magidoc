@@ -3,18 +3,20 @@ import Separator from "./components/Separator.vue";
 </script>
 
 <template>
-  <docs-search />
   <separator />
-  <query-generator />
+  <query-generator :schema="schema" />
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<script lang="ts">
+import { defineComponent } from "vue";
+import schema from "./assets/_schema.json";
+
+export default defineComponent({
+  data() {
+    return {
+      schema,
+    };
+  },
+});
+</script>
+

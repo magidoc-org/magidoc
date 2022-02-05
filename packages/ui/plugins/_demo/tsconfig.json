@@ -1,5 +1,5 @@
 {
   "extends": "../../../tsconfig.base.json",
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "../query-generator/src/introspection.ts"],
   "exclude": ["node_modules"]
 }
