@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "codemirror": "^5.65.1",
+    "codemirror-graphql": "^1.2.11",
+    "graphql": "^16.3.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {
