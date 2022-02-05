@@ -1,43 +1,38 @@
 <template>
-  <div ref="root" :style="{ height: 100 }" />
+  <div>
+    <GraphQLCodeSection
+      :code="`
+      query {
+        test(parameter: 123) {
+          sublevel {
+            again
+          }
+        }
+      }
+      `"
+      :theme="theme"
+      :show-line-numbers="showLineNumbers"
+    />
+  </div>
 </template>
 
 <script lang="ts">
-
-import { defineComponent, ref } from "vue";
+import 'codemirror/theme/darcula.css'
+import { defineComponent } from "vue";
+import GraphQLCodeSection from "./components/GraphQLCodeSection.vue";
 
 export default defineComponent({
-  setup() {
-    return {
-      root: ref(null),
-    };
-  },
-  mounted() {
-    CodeMirror(
-      (elt) => {
-        this.root.innerHTML = "";
-        this.root.appendChild(elt);
-      },
-      {
-        lineNumbers: true,
-        value: `{
-  test(variables: {input: "test"}) {
-    query
+  components: { GraphQLCodeSection },
+  props: {
+    theme: {
+      type: String,
+      default: 'darcula',
+    },
+    showLineNumbers: {
+      type: Boolean,
+      default: true,
+    }
   }
-}`,
-        theme: "monokai-sublime",
-        mode: "graphql",
-        disabled: true,
-        readOnly: true,
-        indentUnit: 2,
-        cursorBlinkRate: 0,
-        cursorHeight: 0,
-        smartIndent: true,
-        dragDrop: false,
-        spellcheck: false,
-      }
-    );
-  },
 });
 </script>
 
