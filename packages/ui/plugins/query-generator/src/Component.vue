@@ -3,10 +3,7 @@
 </template>
 
 <script lang="ts">
-import "codemirror/lib/codemirror.css";
-import "./assets/monokai-sublime.css";
-import CodeMirror from "codemirror/lib/codemirror.js";
-import "codemirror-graphql/mode";
+
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
@@ -32,7 +29,6 @@ export default defineComponent({
         mode: "graphql",
         disabled: true,
         readOnly: true,
-        lineNumbers: true,
         indentUnit: 2,
         cursorBlinkRate: 0,
         cursorHeight: 0,
@@ -45,17 +41,3 @@ export default defineComponent({
 });
 </script>
 
-<style>
-@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
-
-code {
-  font-family: "Fira Code", monospace;
-}
-
-.CodeMirror {
-  height: auto;
-  font-family: "Fira Code";
-  font-size: 1.4em;
-  line-height: 1.5em;
-}
-</style>
