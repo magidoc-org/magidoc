@@ -5,7 +5,7 @@ import App from "./App.vue";
 
 const app = createApp(App);
 
-app.use(SearchPlugin);
 app.use(QueryGeneratorPlugin);
+app.use(SearchPlugin);
 
 app.mount("#app");
