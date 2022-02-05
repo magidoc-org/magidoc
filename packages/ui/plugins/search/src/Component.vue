@@ -5,7 +5,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <h1>This is a second minimal test</h1>
-  <img src="./assets/logo.png"/>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div>
+    <h1>This is a second minimal test</h1>
+    <img src="./assets/logo.png" />
+    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  </div>
 </template>
