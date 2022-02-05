@@ -1,17 +1,9 @@
-<template>
-  <QueryGenerator />
-  <Search />
-</template>
-
-<script lang="ts">
-import { Component as QueryGenerator } from "../../query-generator/src/index";
-import { Component as Search } from "../../search/src/index";
-
-export default {
-  name: "A",
-  components: {
-    QueryGenerator,
-    Search,
-  },
-};
+<script setup lang="ts">
+import Separator from "./components/Separator.vue";
 </script>
+
+<template>
+  <search />
+  <separator />
+  <query-generator />
+</template>

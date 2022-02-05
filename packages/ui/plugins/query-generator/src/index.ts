@@ -5,6 +5,6 @@ export { Component };
 
 export default {
   install(app: App) {
-    app.component("custom-component", Component);
+    app.component("query-generator", Component);
   },
 };

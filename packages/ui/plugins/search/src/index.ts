@@ -5,6 +5,6 @@ export { Component };
 
 export default {
   install(app: App) {
-    app.component("custom-component-2", Component);
+    app.component("search", Component);
   },
 };

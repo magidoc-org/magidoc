@@ -1,4 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import QueryGeneratorPlugin from "../../query-generator/src/index";
+import SearchPlugin from "../../search/src/index";
+import { createApp } from "vue";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+app.use(SearchPlugin);
+app.use(QueryGeneratorPlugin);
+
+app.mount("#app");
