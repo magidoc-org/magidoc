@@ -1,10 +1,10 @@
-import { App } from "vue";
-import Component from "./Component.vue";
+import { App } from 'vue'
+import Component from './Component.vue'
 
-export { Component };
+export { Component }
 
 export default {
-  install(app: App) {
-    app.component("docs-search", Component);
-  },
-};
+    install(app: App) {
+        app.component('docs-search', Component)
+    },
+}

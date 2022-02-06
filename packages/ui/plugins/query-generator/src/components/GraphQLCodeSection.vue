@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import CodeMirror from "./CodeMirror.vue";
+import { defineComponent, PropType } from 'vue'
+import CodeMirror from './CodeMirror.vue'
 
 export default defineComponent({
     components: { CodeMirror },
@@ -20,12 +20,11 @@ export default defineComponent({
             required: true,
         },
         height: {
-            type: Object as PropType<"auto" | number>,
-            default: "auto"
+            type: Object as PropType<'auto' | number>,
+            default: 'auto',
         },
         theme: String,
         showLineNumbers: Boolean,
     },
 })
 </script>
-

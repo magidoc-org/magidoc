@@ -1,10 +1,10 @@
-import { GraphQLIntrospectionResult, FullType } from "./introspection";
-import _ from "lodash";
+import { GraphQLIntrospectionResult, FullType } from './introspection'
+import _ from 'lodash'
 
-export type TypesByName = Record<string, FullType>;
+export type TypesByName = Record<string, FullType>
 
 export function introspectionResultToTypesByName(
-  result: GraphQLIntrospectionResult
+    result: GraphQLIntrospectionResult,
 ): TypesByName {
-  return _.keyBy(result.__schema.types, (type: FullType) => type.name);
+    return _.keyBy(result.__schema.types, (type: FullType) => type.name)
 }
