@@ -1,0 +1,14 @@
+{
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "project": ["**/*/tsconfig.json"],
+    "extraFileExtensions": [".vue"]
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:vue/vue3-recommended"
+  ]
+}

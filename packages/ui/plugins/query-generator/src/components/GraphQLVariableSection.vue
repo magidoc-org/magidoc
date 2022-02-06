@@ -2,7 +2,7 @@
   <code-mirror
     :code="code"
     :theme="theme"
-    :mode="'graphql'"
+    :mode="'javascript'"
     :show-line-numbers="showLineNumbers"
     :height="height"
   />
@@ -13,7 +13,6 @@ import { defineComponent, PropType } from 'vue'
 import CodeMirror from './CodeMirror.vue'
 
 export default defineComponent({
-  components: { CodeMirror },
   props: {
     code: {
       type: String,
@@ -26,5 +25,6 @@ export default defineComponent({
     theme: String,
     showLineNumbers: Boolean,
   },
+  components: { CodeMirror },
 })
 </script>

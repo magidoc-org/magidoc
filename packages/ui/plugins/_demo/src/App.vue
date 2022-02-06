@@ -3,19 +3,19 @@ import Separator from './components/Separator.vue'
 </script>
 
 <template>
-    <div>
-        <docs-search />
-        <separator />
-        <query-generator
-            :typesByName="typesByName"
-            :field="field"
-            :query-panel-height="300"
-            :variables-panel-height="'auto'"
-            :generatorConfig="{
-                maxDepth: 5,
-            }"
-        />
-    </div>
+  <div>
+    <docs-search />
+    <separator />
+    <query-generator
+      :typesByName="typesByName"
+      :field="field"
+      :query-panel-height="300"
+      :variables-panel-height="'auto'"
+      :generatorConfig="{
+        maxDepth: 5,
+      }"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -25,23 +25,23 @@ import { introspectionResultToTypesByName } from '@core/models/typesByName'
 import { GraphQLIntrospectionResult } from '@core/models/introspection'
 
 export default defineComponent({
-    data() {
-        return {
-            schema: schema as unknown as GraphQLIntrospectionResult,
-        }
+  data() {
+    return {
+      schema: schema as unknown as GraphQLIntrospectionResult,
+    }
+  },
+  computed: {
+    typesByName() {
+      return introspectionResultToTypesByName(this.schema)
     },
-    computed: {
-        typesByName() {
-            return introspectionResultToTypesByName(this.schema)
-        },
-        field() {
-            if (this.schema.__schema.queryType?.name) {
-                return (this.typesByName[this.schema.__schema.queryType?.name]
-                    .fields || [])[0]
-            }
-            return null
-        },
+    field() {
+      if (this.schema.__schema.queryType?.name) {
+        return (this.typesByName[this.schema.__schema.queryType?.name].fields ||
+          [])[0]
+      }
+      return null
     },
+  },
 })
 </script>
 
@@ -49,20 +49,20 @@ export default defineComponent({
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 code {
-    font-family: 'Fira Code', monospace;
+  font-family: 'Fira Code', monospace;
 }
 
 .CodeMirror {
-    font-family: 'Fira Code';
-    font-size: 1em;
-    line-height: 1.2em;
+  font-family: 'Fira Code';
+  font-size: 1em;
+  line-height: 1.2em;
 }
 
 .CodeMirror-gutter-wrapper {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 .qg-variables-separator {
-    font-family: 'Fira Code';
+  font-family: 'Fira Code';
 }
 </style>
