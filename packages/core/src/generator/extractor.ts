@@ -3,9 +3,9 @@ import type {
   FullType,
   InputValue,
   TypeRef,
-} from '@root/models/introspection'
+} from '@core/models/introspection'
 import { Kind } from '../models/introspection'
-import { TypesByName } from '@root/models/typesByName'
+import { TypesByName } from '@core/models/typesByName'
 import { GraphQLIntrospectionResultError } from './error'
 
 export function unwrapFieldType(

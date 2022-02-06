@@ -6,7 +6,7 @@ import type {
   FullType,
   InputValue,
   TypeRef,
-} from '@root/models/introspection'
+} from '@core/models/introspection'
 import { Kind } from '../models/introspection'
 import {
   GeneratorConfig,

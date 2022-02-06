@@ -1,8 +1,8 @@
 import _ from 'lodash'
 
-import { GraphQLQuery } from '@root/models/query'
-import { Field, FullType } from '@root/models/introspection'
-import { TypesByName } from '@root/models/typesByName'
+import { GraphQLQuery } from '@core/models/query'
+import { Field, FullType } from '@core/models/introspection'
+import { TypesByName } from '@core/models/typesByName'
 import { GeneratorConfig, NullGenerationStrategy } from './config'
 
 import { isLeaf, unwrapFieldType } from './extractor'
