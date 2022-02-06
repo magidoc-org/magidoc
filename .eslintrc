@@ -2,19 +2,9 @@
   "parser": "vue-eslint-parser",
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
-    "project": ["**/*/tsconfig.json"],
-    "extraFileExtensions": [".vue"]
+    "project": ["**/*/tsconfig.json"]
   },
-  "plugins": ["@typescript-eslint", "import"],
-  "rules": {
-    "import/no-unresolved": "error"
-  },
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts"],
-      "project": "packages/**/tsconfig.json"
-    }
-  },
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended",
