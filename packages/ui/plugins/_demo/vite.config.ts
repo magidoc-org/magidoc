@@ -15,10 +15,6 @@ export default defineConfig({
         find: "@core",
         replacement: path.resolve(__dirname, "../../../core/src"),
       },
-      {
-        find: "@root",
-        replacement: path.resolve(__dirname, "./src"),
-      },
     ],
   },
 });

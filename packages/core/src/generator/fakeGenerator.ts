@@ -7,7 +7,7 @@ import type {
   InputValue,
   TypeRef,
 } from "@root/models/introspection";
-import { Kind } from "@root/models/introspection";
+import { Kind } from "../models/introspection";
 import {
   GeneratorConfig,
   GraphQLFactory,

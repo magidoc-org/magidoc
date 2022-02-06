@@ -6,10 +6,12 @@
   "license": "MIT",
   "dependencies": {
     "glob-to-regexp": "^0.4.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "prettier": "^2.5.1"
   },
   "devDependencies": {
     "@types/glob-to-regexp": "^0.4.1",
-    "@types/lodash": "^4.14.178"
+    "@types/lodash": "^4.14.178",
+    "@types/prettier": "^2.4.3"
   }
 }

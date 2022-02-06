@@ -1,4 +1,5 @@
-import { GraphQLQuery } from "@root/models/query";
+import { prettify } from "@core/formatter/query";
+import { GraphQLQuery } from "@core/models/query";
 import _ from "lodash";
 
 
@@ -71,7 +72,7 @@ export class QueryBuilder {
     );
 
     return {
-      query: `${this.type} ${this.name}${variablePlaceholder}${subSelection.query}`,
+      query: prettify(`${this.type} ${this.name}${variablePlaceholder}${subSelection.query}`),
       variables: _.mapValues(
         _.keyBy(
           subSelection.variables,
@@ -137,7 +138,7 @@ export class QueryBuilder {
     return {
       query: `
         {
-          ${fieldsAsQueries.join("\n")}
+          ${fieldsAsQueries}
         }
       `,
       variables: allQueryVariablesRequiredNested,

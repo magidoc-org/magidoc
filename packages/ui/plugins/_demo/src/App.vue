@@ -5,7 +5,15 @@ import Separator from "./components/Separator.vue";
 <template>
   <div>
     <separator />
-    <query-generator :typesByName="typesByName" :field="field" />
+    <query-generator
+      :typesByName="typesByName"
+      :field="field"
+      :query-panel-height="300"
+      :variables-panel-height="'auto'"
+      :generatorConfig="{
+        maxDepth: 5
+      }"
+    />
   </div>
 </template>
 
@@ -35,3 +43,25 @@ export default defineComponent({
 });
 </script>
 
+
+<style>
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+code {
+  font-family: "Fira Code", monospace;
+}
+
+.CodeMirror {
+  font-family: "Fira Code";
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
+.CodeMirror-gutter-wrapper {
+  padding-left: 30px;
+}
+
+.qg-variables-separator {
+  font-family: "Fira Code";
+}
+</style>
