@@ -1,15 +1,7 @@
 <template>
   <div>
     <GraphQLCodeSection
-      :code="`
-      query {
-        test(parameter: 123) {
-          sublevel {
-            again
-          }
-        }
-      }
-      `"
+      :code="code"
       :theme="theme"
       :show-line-numbers="showLineNumbers"
     />
@@ -17,10 +9,12 @@
 </template>
 
 <script lang="ts">
-import { TypesByName, Field } from "@core";
+import { Field } from "@core/models/introspection";
+import { GeneratorConfig } from "@core/generator/config";
+import { generateGraphQLQuery } from "@core/generator/queryGenerator";
+import { TypesByName } from "@core/models/typesByName";
 import { defineComponent, PropType } from "vue";
 import GraphQLCodeSection from "./components/GraphQLCodeSection.vue";
-import { GeneratorConfig } from "./domain/generator/config";
 
 export default defineComponent({
   components: { GraphQLCodeSection },
@@ -49,7 +43,17 @@ export default defineComponent({
       type: Number,
       default: 3,
     }
-  }
+  },
+  data() {
+    console.log('AAA')
+    console.log(this.typesByName)
+    console.log(this.field)
+    console.log(this.generatorConfig)
+    console.log(generateGraphQLQuery)
+    return {
+      code: 'test'
+    }
+  },
 });
 </script>
 

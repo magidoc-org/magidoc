@@ -1,10 +1,5 @@
-import {
-  Field,
-  FullType,
-  InputValue,
-  Kind,
-  TypeRef,
-} from "@root/models/introspection";
+
+import type { Field, FullType, InputValue, Kind, TypeRef } from "@root/models/introspection";
 import { TypesByName } from "@root/models/typesByName";
 import { GraphQLIntrospectionResultError } from "./error";
 

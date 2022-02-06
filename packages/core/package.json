@@ -1,15 +1,15 @@
 {
-  "name": "@magidocql/plugin-query-generator",
+  "name": "@magidocql/core",
   "version": "1.0.0",
-  "description": "Core model and functions for GraphQL.",
+  "description": "Core model and functions for MagiDocQL.",
   "author": "Sunny Pelletier",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.21",
-    "micromatch": "^4.0.4"
+    "glob-to-regexp": "^0.4.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.178",
-    "@types/micromatch": "^4.0.2"
+    "@types/glob-to-regexp": "^0.4.1",
+    "@types/lodash": "^4.14.178"
   }
 }

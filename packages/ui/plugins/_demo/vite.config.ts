@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,4 +9,16 @@ export default defineConfig({
       isProduction: false,
     }),
   ],
+  resolve: {
+    alias: [
+      {
+        find: "@core",
+        replacement: path.resolve(__dirname, "../../../core/src"),
+      },
+      {
+        find: "@root",
+        replacement: path.resolve(__dirname, "./src"),
+      },
+    ],
+  },
 });

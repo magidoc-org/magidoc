@@ -1,13 +1,13 @@
 import _ from "lodash";
-import micromatch from "micromatch";
+import globToRegExp from "glob-to-regexp";
 
-import {
+import type {
   Field,
   FullType,
   InputValue,
-  Kind,
   TypeRef,
 } from "@root/models/introspection";
+import { Kind } from "@root/models/introspection";
 import {
   GeneratorConfig,
   GraphQLFactory,
@@ -216,7 +216,7 @@ function findWildCardFactory(
   config: GeneratorConfig
 ): GraphQLFactory | undefined {
   const matchingKey = Object.keys(config.factories).find((key) =>
-    micromatch.isMatch(name, key)
+    globToRegExp(key).test(name)
   );
 
   if (matchingKey) {
