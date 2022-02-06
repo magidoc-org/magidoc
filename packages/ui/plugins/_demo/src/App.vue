@@ -4,6 +4,7 @@ import Separator from "./components/Separator.vue";
 
 <template>
   <div>
+    <docs-search />
     <separator />
     <query-generator
       :typesByName="typesByName"

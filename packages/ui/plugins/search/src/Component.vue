@@ -1,13 +1,23 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
-<template>
+<template lang="">
   <div>
-    <h1>This is a second minimal test</h1>
-    <img src="./assets/logo.png" />
-    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+    
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
+import { GraphQLIntrospectionResult } from '@core/models/introspection'
+
+export default defineComponent({
+  props: {
+    schema: {
+      type: Object as PropType<GraphQLIntrospectionResult>,
+      required: true,
+    }
+  }
+})
+</script>
+
+<style lang="">
+  
+</style>

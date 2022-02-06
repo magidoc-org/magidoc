@@ -2,8 +2,7 @@
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "paths": {
-      "@core/*": ["../../../core/src/*"],
-      "@root/*": ["./src/*"]
+      "@core/*": ["../../../core/src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
