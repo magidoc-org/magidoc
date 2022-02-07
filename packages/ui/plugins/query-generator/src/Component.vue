@@ -43,6 +43,7 @@ export default defineComponent({
     generatorConfig: {
       type: Object as PropType<Partial<GeneratorConfig>>,
       required: false,
+      default: null,
     },
     theme: {
       type: String,
@@ -65,11 +66,11 @@ export default defineComponent({
       default: true,
     },
     queryPanelHeight: {
-      type: Object as PropType<'auto' | number>,
+      type: [String, Number] as PropType<'auto' | number>,
       default: 'auto',
     },
     variablesPanelHeight: {
-      type: Object as PropType<'auto' | number>,
+      type: [String, Number] as PropType<'auto' | number>,
       default: 'auto',
     },
   },

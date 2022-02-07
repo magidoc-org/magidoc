@@ -4,14 +4,14 @@ import Separator from './components/Separator.vue'
 
 <template>
   <div>
-    <docs-search />
+    <docs-search :schema="schema" />
     <separator />
     <query-generator
-      :typesByName="typesByName"
+      :types-by-name="typesByName"
       :field="field"
       :query-panel-height="300"
       :variables-panel-height="'auto'"
-      :generatorConfig="{
+      :generator-config="{
         maxDepth: 5,
       }"
     />
@@ -49,11 +49,11 @@ export default defineComponent({
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 code {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
 }
 
 .CodeMirror {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-size: 1em;
   line-height: 1.2em;
 }
@@ -63,6 +63,6 @@ code {
 }
 
 .qg-variables-separator {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
 }
 </style>

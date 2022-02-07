@@ -13,18 +13,21 @@ import { defineComponent, PropType } from 'vue'
 import CodeMirror from './CodeMirror.vue'
 
 export default defineComponent({
+  components: { CodeMirror },
   props: {
     code: {
       type: String,
       required: true,
     },
     height: {
-      type: Object as PropType<'auto' | number>,
+      type: [String, Number] as PropType<'auto' | number>,
       default: 'auto',
     },
-    theme: String,
+    theme: {
+      type: String,
+      default: 'default',
+    },
     showLineNumbers: Boolean,
   },
-  components: { CodeMirror },
 })
 </script>

@@ -4,7 +4,12 @@
 
 <script lang="ts">
 import 'codemirror/lib/codemirror.css'
+
 import CodeMirror, { Editor } from 'codemirror'
+import 'codemirror/addon/hint/show-hint'
+import 'codemirror/addon/lint/lint'
+import 'codemirror-graphql/lint'
+import 'codemirror-graphql/hint'
 import 'codemirror-graphql/mode'
 import 'codemirror/mode/javascript/javascript'
 import { defineComponent, PropType, ref } from 'vue'
@@ -20,10 +25,13 @@ export default defineComponent({
       required: true,
     },
     height: {
-      type: Object as PropType<'auto' | number>,
+      type: [String, Number] as PropType<'auto' | number>,
       default: 'auto',
     },
-    theme: String,
+    theme: {
+      type: String,
+      default: 'default',
+    },
     showLineNumbers: Boolean,
   },
   setup() {

@@ -20,10 +20,13 @@ export default defineComponent({
       required: true,
     },
     height: {
-      type: Object as PropType<'auto' | number>,
+      type: [String, Number] as PropType<'auto' | number>,
       default: 'auto',
     },
-    theme: String,
+    theme: {
+      type: String,
+      default: 'default',
+    },
     showLineNumbers: Boolean,
   },
 })
