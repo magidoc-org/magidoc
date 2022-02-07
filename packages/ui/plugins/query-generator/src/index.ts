@@ -5,6 +5,6 @@ export { Component }
 
 export default {
   install(app: App) {
-    app.component('query-generator', Component)
+    app.component('QueryGenerator', Component)
   },
 }

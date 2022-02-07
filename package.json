@@ -9,10 +9,11 @@
   "private": false,
   "scripts": {
     "test": "run-p test:*",
-    "test:lint": "eslint '**/*.{ts,vue}'",
-    "test:prettier": "yarn prettier --check '**/*.ts' '**/*.vue'",
+    "test:lint": "eslint '**/src/**/*.{ts,vue}'",
+    "test:prettier": "prettier --check '**/*.ts' '**/*.vue'",
     "fix": "run-p fix:*",
-    "fix:prettier": "yarn prettier --write '**/*.ts' '**/*.vue'"
+    "fix:prettier": "prettier --write '**/*.ts' '**/*.vue'",
+    "fix:eslint": "eslint '**/src/**/*.{ts,vue}' --fix"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.10.2",

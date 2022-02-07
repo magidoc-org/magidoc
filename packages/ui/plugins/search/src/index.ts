@@ -5,6 +5,6 @@ export { Component }
 
 export default {
   install(app: App) {
-    app.component('docs-search', Component)
+    app.component('DocsSearch', Component)
   },
 }

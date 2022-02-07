@@ -7,8 +7,7 @@
   },
   "plugins": ["@typescript-eslint"],
   "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended",
-    "plugin:vue/vue3-recommended"
+    "plugin:vue/vue3-recommended",
+    "plugin:prettier/recommended"
   ]
 }
