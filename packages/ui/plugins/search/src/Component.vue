@@ -1,7 +1,5 @@
 <template lang="">
-  <div>
-    HHI
-  </div>
+  <div>HHI</div>
 </template>
 
 <script lang="ts">
