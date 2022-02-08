@@ -1,15 +1,17 @@
 <template lang="">
-  <div />
+  <div>
+    HHI
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { GraphQLIntrospectionResult } from '@core/models/introspection'
+import { GraphQLSchema } from 'graphql'
 
 export default defineComponent({
   props: {
     schema: {
-      type: Object as PropType<GraphQLIntrospectionResult>,
+      type: Object as PropType<GraphQLSchema>,
       required: true,
     },
   },
