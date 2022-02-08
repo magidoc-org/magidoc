@@ -76,7 +76,6 @@ export default defineComponent({
   },
   data() {
     const result = generateGraphQLQuery(this.field, this.generatorConfig)
-
     return {
       query: result?.query || '',
       variables: JSON.stringify(result?.variables || {}, null, 2) + '\n',

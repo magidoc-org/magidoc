@@ -9,8 +9,6 @@ import CodeMirror, { Editor } from 'codemirror'
 import 'codemirror-graphql/mode'
 import 'codemirror-graphql/variables/mode'
 import 'codemirror/addon/edit/matchbrackets'
-import 'codemirror/addon/fold/foldgutter'
-import 'codemirror/addon/fold/brace-fold'
 
 import { defineComponent, PropType, ref } from 'vue'
 import { GraphQLSchema } from 'graphql'
@@ -66,7 +64,6 @@ export default defineComponent({
         readOnly: 'nocursor',
         indentUnit: 4,
         matchBrackets: true,
-        foldGutter: true,
         smartIndent: false,
         dragDrop: false,
         spellcheck: false,
