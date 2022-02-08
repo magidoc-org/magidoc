@@ -7,8 +7,6 @@ import PluginSeparator from './components/PluginSeparator.vue'
     <docs-search :schema="schema" />
     <plugin-separator />
     <query-generator
-      :schema="schema"
-      :types-by-name="typesByName"
       :field="field"
       :query-panel-height="300"
       :variables-panel-height="'auto'"
@@ -20,26 +18,24 @@ import PluginSeparator from './components/PluginSeparator.vue'
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import schema from './assets/_schema.json'
-import { introspectionResultToTypesByName } from '@core/models/typesByName'
-import { GraphQLIntrospectionResult } from '@core/models/introspection'
+import { IntrospectionQuery, buildClientSchema } from 'graphql'
 
 export default defineComponent({
   data() {
     return {
-      schema: schema as unknown as GraphQLIntrospectionResult,
+      schema: buildClientSchema(schema as unknown as IntrospectionQuery),
     }
   },
   computed: {
-    typesByName() {
-      return introspectionResultToTypesByName(this.schema)
-    },
     field() {
-      if (this.schema.__schema.queryType?.name) {
-        return (this.typesByName[this.schema.__schema.queryType?.name].fields ||
-          [])[0]
+      const queryType = this.schema.getQueryType()
+
+      if (queryType) {
+        const fields = queryType.getFields()
+        return fields[Object.keys(fields)[0]]
       }
+
       return null
     },
   },
@@ -50,11 +46,11 @@ export default defineComponent({
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 code {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
 }
 
 .CodeMirror {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-size: 1em;
   line-height: 1.2em;
 }
@@ -64,6 +60,6 @@ code {
 }
 
 .qg-variables-separator {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
 }
 </style>

@@ -21,23 +21,18 @@
 </template>
 
 <script lang="ts">
-import { Field } from '@core/models/introspection'
 import { GeneratorConfig } from '@core/generator/config'
 import { generateGraphQLQuery } from '@core/generator/queryGenerator'
-import { TypesByName } from '@core/models/typesByName'
 import { defineComponent, PropType } from 'vue'
+import { GraphQLField } from 'graphql'
 import GraphQLCodeSection from './components/GraphQLCodeSection.vue'
 import GraphQLVariableSection from './components/GraphQLVariableSection.vue'
 
 export default defineComponent({
   components: { GraphQLCodeSection, GraphQLVariableSection },
   props: {
-    typesByName: {
-      type: Object as PropType<TypesByName>,
-      required: true,
-    },
     field: {
-      type: Object as PropType<Field>,
+      type: Object as PropType<GraphQLField<any, any, any>>,
       required: true,
     },
     generatorConfig: {

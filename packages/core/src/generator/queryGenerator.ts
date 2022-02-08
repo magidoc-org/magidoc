@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import { GraphQLQuery } from '@core/models/query'
 import { GeneratorConfig, NullGenerationStrategy } from './config'
-import { GraphQLField, GraphQLSchema, GraphQLType } from 'graphql'
+import { GraphQLField, GraphQLSchema, GraphQLType, isLeafType } from 'graphql'
 import { unwrapFieldType } from './extractor'
 import { generateArgsForField } from './fakeGenerator'
 import {
@@ -61,18 +61,20 @@ function generateField(
     return null
   }
 
-  if (isLeaf(type)) {
+  if (isLeafType(type)) {
     // No more fields under
     return null
   }
 
   const builder = subSelectionBuilder()
 
-  const fields = type.fields || []
+  // @ts-ignore
+  // TODO - fix this
+  const fields = type.getFields() || {}
   const finalBuilderWithAllFields = _.reduce(
     fields,
-    (memo: QueryBuilder, field: Field) => {
-      return buildField(memo, field, typesByName, config, {
+    (memo: QueryBuilder, field: GraphQLField<any, any, any>) => {
+      return buildField(memo, field, schema, config, {
         depth: context.depth,
         path: `${context.path}.${field.name}`,
       })
@@ -104,7 +106,7 @@ function buildField(
   )
 
   const type = unwrapFieldType(field)
-  const isLeafField = isLeaf(type)
+  const isLeafField = isLeafType(type)
 
   if (isLeafField) {
     // No sub selection is allowed since this is a leaf
