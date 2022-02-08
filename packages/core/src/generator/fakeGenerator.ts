@@ -1,13 +1,6 @@
-import _ from 'lodash'
+import _, { Dictionary } from 'lodash'
 import globToRegExp from 'glob-to-regexp'
 
-import type {
-  Field,
-  FullType,
-  InputValue,
-  TypeRef,
-} from '@core/models/introspection'
-import { Kind } from '../models/introspection'
 import {
   GeneratorConfig,
   GraphQLFactory,
@@ -18,68 +11,83 @@ import { GraphQLGenerationError } from './error'
 import { DEFAULT_FACTORIES } from './defaultFactories'
 import {
   createIntrospectionError,
-  isList,
-  isNonNull,
   typeToString,
   unwrapList,
-  unwrapNonNull,
   unwrapType,
 } from './extractor.js'
+import {
+  GraphQLSchema,
+  GraphQLField,
+  GraphQLArgument,
+  GraphQLInputType,
+  GraphQLNamedType,
+  isNonNullType,
+  isInputObjectType,
+  isEnumType,
+  isScalarType,
+  isListType,
+} from 'graphql'
 import { GenerationContext } from './queryGenerator'
-import { TypesByName } from '@root/models/typesByName'
 import { Parameter } from './queryBuilder'
 
 export function generateArgsForField(
-  field: Field,
-  typesByName: TypesByName,
+  field: GraphQLField<any, any, any>,
+  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {
   return field.args.map((argument) =>
-    generateInputParameter(argument, typesByName, config, context),
+    generateInputParameter(argument, schema, config, context),
   )
 }
 
 function generateInputParameter(
-  input: InputValue,
-  typesByName: TypesByName,
+  input: GraphQLArgument,
+  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): Parameter {
   return {
     name: input.name,
     type: typeToString(input.type),
-    value: generateInput(input, typesByName, config, {
-      ...context,
-      path: `${context.path}$`,
-    }),
+    value: generateInput(
+      input.type,
+      schema,
+      config,
+      {
+        ...context,
+        path: `${context.path}$`,
+      },
+      input.defaultValue,
+    ),
   }
 }
 
 function generateInput(
-  input: InputValue,
-  typesByName: TypesByName,
+  input: GraphQLInputType,
+  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
+  defaultValue: unknown = undefined,
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
-  const unwrappedType = unwrapType(input.type, typesByName)
+  const unwrappedType = unwrapType(input)
   const defaultFactory = unwrappedType.name
     ? DEFAULT_FACTORIES[unwrappedType.name]
     : undefined
 
   const factoryContext = {
-    targetName: input.name,
-    defaultValue: input.defaultValue,
+    targetName: unwrappedType.name,
+    defaultValue: defaultValue,
     depth: context.depth,
     path: `${context.path}${context.path.endsWith('$') ? '' : '.'}${
-      input.name
+      unwrappedType.name
     }`,
   }
 
   return findMostSpecificFactory(
-    input.type,
-    typesByName,
+    input,
+    schema,
     config,
     context,
   )({
@@ -93,7 +101,7 @@ function generateInput(
       provide: () => {
         return randomFactory(
           unwrappedType,
-          typesByName,
+          schema,
           config,
           context,
         )(factoryContext)
@@ -103,8 +111,8 @@ function generateInput(
 }
 
 function findMostSpecificFactory(
-  argumentType: TypeRef,
-  typesByName: TypesByName,
+  argumentType: GraphQLInputType,
+  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
   nullable = true,
@@ -116,10 +124,10 @@ function findMostSpecificFactory(
   }
 
   // If not null, we must unwrap and go deeper
-  if (isNonNull(argumentType)) {
+  if (isNonNullType(argumentType)) {
     return findMostSpecificFactory(
-      unwrapNonNull(argumentType),
-      typesByName,
+      argumentType.ofType,
+      schema,
       config,
       context,
       false,
@@ -137,17 +145,17 @@ function findMostSpecificFactory(
   }
 
   // For a list, we find a factory for its elements
-  if (isList(argumentType)) {
+  if (isListType(argumentType)) {
     const listElementFactory = findMostSpecificFactory(
-      unwrapList(argumentType),
-      typesByName,
+      argumentType.ofType,
+      schema,
       config,
       context,
     )
     return (context) => [listElementFactory(context)]
   }
 
-  const unwrappedArgumentType = unwrapType(argumentType, typesByName)
+  const unwrappedArgumentType = unwrapType(argumentType)
 
   // Factory that matches by wildcard
   const wildCardFactory = findWildCardFactory(
@@ -160,27 +168,22 @@ function findMostSpecificFactory(
   }
 
   // Factory that matches by wildcard
-  return randomFactory(unwrappedArgumentType, typesByName, config, context)
+  return randomFactory(unwrappedArgumentType, schema, config, context)
 }
 
 function randomFactory(
-  argumentType: FullType,
-  typesByName: TypesByName,
+  argumentType: GraphQLNamedType,
+  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): GraphQLFactory {
-  if (argumentType.kind === Kind.ENUM) {
-    if (!argumentType.enumValues) {
-      throw createIntrospectionError(`
-        Argument of kind '${argumentType.kind}' has field 'enumValues' set to '${argumentType.enumValues}'
-      `)
-    }
-
-    return () => _.sample(argumentType.enumValues)?.name
+  if (isEnumType(argumentType)) {
+    return () => _.sample(argumentType.getValues())?.name
   }
 
-  if (argumentType.kind === Kind.SCALAR) {
+  if (isScalarType(argumentType)) {
     const defaultFactory = DEFAULT_FACTORIES[argumentType.name]
+
     if (defaultFactory === undefined) {
       throw new GraphQLGenerationError(`
         Cannot generate a random value for scalar '${argumentType.name}'. 
@@ -195,17 +198,14 @@ function randomFactory(
     return defaultFactory
   }
 
-  if (argumentType.kind === Kind.INPUT_OBJECT) {
-    const fields = argumentType.inputFields || []
+  if (isInputObjectType(argumentType)) {
+    const fields = argumentType.getFields() || {}
 
     // Generates a random object the required fields in the object
     return () => {
-      return _.mapValues(
-        _.keyBy(fields, (field: InputValue) => field.name),
-        (input: InputValue) => {
-          return generateInput(input, typesByName, config, context)
-        },
-      )
+      return _.mapValues(fields, (input: GraphQLInputType) => {
+        return generateInput(input, schema, config, context)
+      })
     }
   }
 

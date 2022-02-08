@@ -1,11 +1,9 @@
 import _ from 'lodash'
 
 import { GraphQLQuery } from '@core/models/query'
-import { Field, FullType } from '@core/models/introspection'
-import { TypesByName } from '@core/models/typesByName'
 import { GeneratorConfig, NullGenerationStrategy } from './config'
-
-import { isLeaf, unwrapFieldType } from './extractor'
+import { GraphQLField, GraphQLSchema, GraphQLType } from 'graphql'
+import { unwrapFieldType } from './extractor'
 import { generateArgsForField } from './fakeGenerator'
 import {
   Parameter,
@@ -26,8 +24,8 @@ export type GenerationContext = {
 }
 
 export function generateGraphQLQuery(
-  field: Field,
-  typesByName: TypesByName,
+  field: GraphQLField<any, any, any>,
+  schema: GraphQLSchema,
   config?: Partial<GeneratorConfig>,
 ): GraphQLQuery | null {
   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
@@ -37,7 +35,7 @@ export function generateGraphQLQuery(
   const resultBuilder = buildField(
     initialBuilder,
     field,
-    typesByName,
+    schema,
     mergedConfig,
     {
       depth: 1,
@@ -53,8 +51,8 @@ export function generateGraphQLQuery(
 }
 
 function generateField(
-  type: FullType,
-  typesByName: TypesByName,
+  type: GraphQLType,
+  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): QueryBuilder | null {
@@ -93,19 +91,19 @@ function generateField(
 
 function buildField(
   builder: QueryBuilder,
-  field: Field,
-  typesByName: TypesByName,
+  field: GraphQLField<any, any, any>,
+  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): QueryBuilder {
   const parameters: ReadonlyArray<Parameter> = generateArgsForField(
     field,
-    typesByName,
+    schema,
     config,
     context,
   )
 
-  const type = unwrapFieldType(field, typesByName)
+  const type = unwrapFieldType(field)
   const isLeafField = isLeaf(type)
 
   if (isLeafField) {
@@ -113,7 +111,7 @@ function buildField(
     return builder.withField(field.name, parameters)
   }
 
-  const generatedSubSelection = generateField(type, typesByName, config, {
+  const generatedSubSelection = generateField(type, schema, config, {
     ...context,
     depth: context.depth + 1,
   })

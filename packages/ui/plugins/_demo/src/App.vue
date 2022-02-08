@@ -7,6 +7,7 @@ import PluginSeparator from './components/PluginSeparator.vue'
     <docs-search :schema="schema" />
     <plugin-separator />
     <query-generator
+      :schema="schema"
       :types-by-name="typesByName"
       :field="field"
       :query-panel-height="300"

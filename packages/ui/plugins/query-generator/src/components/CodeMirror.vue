@@ -13,6 +13,7 @@ import 'codemirror-graphql/hint'
 import 'codemirror-graphql/mode'
 import 'codemirror/mode/javascript/javascript'
 import { defineComponent, PropType, ref } from 'vue'
+import { buildClientSchema } from 'graphql'
 
 export default defineComponent({
   props: {
@@ -64,6 +65,9 @@ export default defineComponent({
         smartIndent: true,
         dragDrop: false,
         spellcheck: false,
+        hintOptions: {
+          schema: buildClientSchema()
+        }
       },
     )
 
