@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Document } from 'flexsearch'
 import { defineComponent, PropType } from 'vue'
-import { GraphQLSchema } from 'graphql'
+import { GraphQLSchema, GraphQLObjectType, GraphQLDirective } from 'graphql'
 
 export default defineComponent({
   props: {
@@ -26,19 +26,33 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.index.add({
-      id: 'test',
-      label: 'potato',
-    })
-    this.index.add({
-      id: 'test-2',
-      munchkin: 'wtf pot',
-    })
-    this.index.add({
-      id: 'test-3',
-      munchkin: 'unrelated',
-    })
-    console.log(this.index.search('po'))
+    const query = this.schema.getQueryType()
+    const mutation = this.schema.getMutationType()
+    const subscription = this.schema.getSubscriptionType()
+
+    if (query) {
+      this.indexType(query)
+    }
+
+    if (mutation) {
+      this.indexType(mutation)
+    }
+
+    if (subscription) {
+      this.indexType(subscription)
+    }
+
+    this.schema
+      .getDirectives()
+      .forEach((directive) => this.indexDirective(directive))
+  },
+  methods: {
+    indexType(type: GraphQLObjectType<any>) {
+
+    },
+    indexDirective(directive: GraphQLDirective) {
+
+    }
   },
 })
 </script>
