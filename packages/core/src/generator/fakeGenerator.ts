@@ -1,4 +1,4 @@
-import _, { Dictionary } from 'lodash'
+import _ from 'lodash'
 import globToRegExp from 'glob-to-regexp'
 
 import {
@@ -9,14 +9,8 @@ import {
 import { GraphQLGenerationError } from './error'
 
 import { DEFAULT_FACTORIES } from './defaultFactories'
+import { typeToString, unwrapType } from './extractor.js'
 import {
-  createIntrospectionError,
-  typeToString,
-  unwrapList,
-  unwrapType,
-} from './extractor.js'
-import {
-  GraphQLSchema,
   GraphQLField,
   GraphQLArgument,
   GraphQLInputType,
@@ -32,18 +26,16 @@ import { Parameter } from './queryBuilder'
 
 export function generateArgsForField(
   field: GraphQLField<any, any, any>,
-  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {
   return field.args.map((argument) =>
-    generateInputParameter(argument, schema, config, context),
+    generateInputParameter(argument, config, context),
   )
 }
 
 function generateInputParameter(
   input: GraphQLArgument,
-  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): Parameter {
@@ -52,7 +44,6 @@ function generateInputParameter(
     type: typeToString(input.type),
     value: generateInput(
       input.type,
-      schema,
       config,
       {
         ...context,
@@ -65,7 +56,6 @@ function generateInputParameter(
 
 function generateInput(
   input: GraphQLInputType,
-  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
   defaultValue: unknown = undefined,
@@ -87,7 +77,6 @@ function generateInput(
 
   return findMostSpecificFactory(
     input,
-    schema,
     config,
     context,
   )({
@@ -99,12 +88,7 @@ function generateInput(
       : undefined,
     randomFactory: {
       provide: () => {
-        return randomFactory(
-          unwrappedType,
-          schema,
-          config,
-          context,
-        )(factoryContext)
+        return randomFactory(unwrappedType, config, context)(factoryContext)
       },
     },
   })
@@ -112,7 +96,6 @@ function generateInput(
 
 function findMostSpecificFactory(
   argumentType: GraphQLInputType,
-  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
   nullable = true,
@@ -125,13 +108,7 @@ function findMostSpecificFactory(
 
   // If not null, we must unwrap and go deeper
   if (isNonNullType(argumentType)) {
-    return findMostSpecificFactory(
-      argumentType.ofType,
-      schema,
-      config,
-      context,
-      false,
-    )
+    return findMostSpecificFactory(argumentType.ofType, config, context, false)
   }
 
   // The wrapped type allowed for nullable
@@ -148,7 +125,6 @@ function findMostSpecificFactory(
   if (isListType(argumentType)) {
     const listElementFactory = findMostSpecificFactory(
       argumentType.ofType,
-      schema,
       config,
       context,
     )
@@ -168,12 +144,11 @@ function findMostSpecificFactory(
   }
 
   // Factory that matches by wildcard
-  return randomFactory(unwrappedArgumentType, schema, config, context)
+  return randomFactory(unwrappedArgumentType, config, context)
 }
 
 function randomFactory(
   argumentType: GraphQLNamedType,
-  schema: GraphQLSchema,
   config: GeneratorConfig,
   context: GenerationContext,
 ): GraphQLFactory {
@@ -204,7 +179,7 @@ function randomFactory(
     // Generates a random object the required fields in the object
     return () => {
       return _.mapValues(fields, (input: GraphQLInputType) => {
-        return generateInput(input, schema, config, context)
+        return generateInput(input, config, context)
       })
     }
   }

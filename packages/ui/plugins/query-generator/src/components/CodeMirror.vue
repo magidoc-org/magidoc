@@ -6,23 +6,28 @@
 import 'codemirror/lib/codemirror.css'
 
 import CodeMirror, { Editor } from 'codemirror'
-import 'codemirror/addon/hint/show-hint'
-import 'codemirror/addon/lint/lint'
-import 'codemirror-graphql/lint'
-import 'codemirror-graphql/hint'
 import 'codemirror-graphql/mode'
-import 'codemirror/mode/javascript/javascript'
+import 'codemirror-graphql/variables/mode'
+import 'codemirror/addon/edit/matchbrackets'
+import 'codemirror/addon/fold/foldgutter'
+import 'codemirror/addon/fold/brace-fold'
+
 import { defineComponent, PropType, ref } from 'vue'
-import { buildClientSchema } from 'graphql'
+import { GraphQLSchema } from 'graphql'
 
 export default defineComponent({
   props: {
+    schema: {
+      type: [Object, null] as PropType<GraphQLSchema | undefined>,
+      required: false,
+      default: undefined,
+    },
     code: {
       type: String,
       required: true,
     },
     mode: {
-      type: String as PropType<'javascript' | 'graphql'>,
+      type: String as PropType<'graphql' | 'graphql-variables'>,
       required: true,
     },
     height: {
@@ -58,16 +63,13 @@ export default defineComponent({
         value: this.$props.code,
         theme: this.$props.theme,
         mode: this.$props.mode,
-        readOnly: true,
-        indentUnit: 2,
-        cursorBlinkRate: 0,
-        cursorHeight: 0,
-        smartIndent: true,
+        readOnly: 'nocursor',
+        indentUnit: 4,
+        matchBrackets: true,
+        foldGutter: true,
+        smartIndent: false,
         dragDrop: false,
         spellcheck: false,
-        hintOptions: {
-          schema: buildClientSchema()
-        }
       },
     )
 

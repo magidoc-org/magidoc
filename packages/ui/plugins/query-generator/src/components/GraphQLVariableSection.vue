@@ -2,7 +2,7 @@
   <code-mirror
     :code="code"
     :theme="theme"
-    :mode="'javascript'"
+    :mode="'graphql-variables'"
     :show-line-numbers="showLineNumbers"
     :height="height"
   />

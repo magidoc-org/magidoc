@@ -2,6 +2,7 @@
   <div>
     <GraphQLCodeSection
       :v-if="showQueryPanel"
+      :schema="schema"
       :code="query"
       :theme="theme"
       :show-line-numbers="showQueryPanelLineNumbers"
@@ -24,13 +25,17 @@
 import { GeneratorConfig } from '@core/generator/config'
 import { generateGraphQLQuery } from '@core/generator/queryGenerator'
 import { defineComponent, PropType } from 'vue'
-import { GraphQLField } from 'graphql'
+import { GraphQLSchema, GraphQLField } from 'graphql'
 import GraphQLCodeSection from './components/GraphQLCodeSection.vue'
 import GraphQLVariableSection from './components/GraphQLVariableSection.vue'
 
 export default defineComponent({
   components: { GraphQLCodeSection, GraphQLVariableSection },
   props: {
+    schema: {
+      type: Object as PropType<GraphQLSchema>,
+      required: true,
+    },
     field: {
       type: Object as PropType<GraphQLField<any, any, any>>,
       required: true,
@@ -70,11 +75,7 @@ export default defineComponent({
     },
   },
   data() {
-    const result = generateGraphQLQuery(
-      this.field,
-      this.typesByName,
-      this.generatorConfig,
-    )
+    const result = generateGraphQLQuery(this.field, this.generatorConfig)
 
     return {
       query: result?.query || '',

@@ -4,9 +4,10 @@ import PluginSeparator from './components/PluginSeparator.vue'
 
 <template>
   <div>
-    <docs-search :schema="schema" />
+    <docs-search :schema="schemaJson" />
     <plugin-separator />
     <query-generator
+      :schema="schema"
       :field="field"
       :query-panel-height="300"
       :variables-panel-height="'auto'"
@@ -18,13 +19,14 @@ import PluginSeparator from './components/PluginSeparator.vue'
 </template>
 
 <script lang="ts">
-import schema from './assets/_schema.json'
+import { defineComponent } from 'vue'
+import schemaJson from './assets/_schema.json'
 import { IntrospectionQuery, buildClientSchema } from 'graphql'
 
 export default defineComponent({
   data() {
     return {
-      schema: buildClientSchema(schema as unknown as IntrospectionQuery),
+      schema: buildClientSchema(schemaJson as unknown as IntrospectionQuery),
     }
   },
   computed: {
