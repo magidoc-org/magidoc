@@ -1,12 +1,21 @@
-<template lang="">
-  <div>HHI</div>
+<script lang="ts" setup>
+import { ElInput } from 'element-plus'
+</script>
+
+<template>
+  <el-input />
 </template>
 
 <script lang="ts">
 import _ from 'lodash'
 import { Document } from 'flexsearch'
 import { defineComponent, PropType } from 'vue'
-import { GraphQLSchema, GraphQLObjectType, GraphQLDirective, GraphQLNamedType } from 'graphql'
+import {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLDirective,
+  GraphQLNamedType,
+} from 'graphql'
 
 export default defineComponent({
   props: {
@@ -62,18 +71,18 @@ export default defineComponent({
       // })
     },
     indexType(type: GraphQLNamedType) {
-      this.index.add({
-        type: 'TYPE',
-        name: type.name,
-        description: type.description,
-      })
+      // this.index.add({
+      //   type: 'TYPE',
+      //   name: type.name,
+      //   description: type.description,
+      // })
     },
     indexDirective(directive: GraphQLDirective) {
-      this.index.add({
-        type: 'DIRECTIVE',
-        name: directive.name,
-        description: directive.description,
-      })
+      // this.index.add({
+      //   type: 'DIRECTIVE',
+      //   name: directive.name,
+      //   description: directive.description,
+      // })
     },
   },
 })
