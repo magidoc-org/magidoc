@@ -1,23 +1,28 @@
-<script lang="ts" setup>
-import { ElInput } from 'element-plus'
-</script>
-
 <template>
-  <el-input />
+  <div>
+    <el-autocomplete placeholder="Test" :model-value="value" />
+  </div>
 </template>
 
 <script lang="ts">
 import _ from 'lodash'
 import { Document } from 'flexsearch'
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
 import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLDirective,
   GraphQLNamedType,
 } from 'graphql'
+import { ElAutocomplete } from 'element-plus'
 
 export default defineComponent({
+  components: { ElAutocomplete },
+  setup() {
+    return {
+      value: ref(''),
+    }
+  },
   props: {
     schema: {
       type: Object as PropType<GraphQLSchema>,

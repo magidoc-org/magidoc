@@ -1,7 +1,6 @@
 <template>
   <div>
-    <el-input />
-    <el-button />
+    <docs-search :schema="schema" />
     <plugin-separator />
     <query-generator
       :schema="schema"
