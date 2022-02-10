@@ -1,10 +1,7 @@
-<script setup lang="ts">
-import PluginSeparator from './components/PluginSeparator.vue'
-</script>
-
 <template>
   <div>
     <el-input />
+    <el-button />
     <plugin-separator />
     <query-generator
       :schema="schema"
