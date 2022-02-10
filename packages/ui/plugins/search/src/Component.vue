@@ -3,9 +3,10 @@
 </template>
 
 <script lang="ts">
+import _ from 'lodash'
 import { Document } from 'flexsearch'
 import { defineComponent, PropType } from 'vue'
-import { GraphQLSchema, GraphQLObjectType, GraphQLDirective } from 'graphql'
+import { GraphQLSchema, GraphQLObjectType, GraphQLDirective, GraphQLNamedType } from 'graphql'
 
 export default defineComponent({
   props: {
@@ -20,7 +21,7 @@ export default defineComponent({
         tokenize: 'full',
         document: {
           id: 'main',
-          field: ['label', 'munchkin'],
+          field: ['name', 'munchkin'],
         },
       }),
     }
@@ -31,28 +32,49 @@ export default defineComponent({
     const subscription = this.schema.getSubscriptionType()
 
     if (query) {
-      this.indexType(query)
+      this.indexRootType(query)
     }
 
     if (mutation) {
-      this.indexType(mutation)
+      this.indexRootType(mutation)
     }
 
     if (subscription) {
-      this.indexType(subscription)
+      this.indexRootType(subscription)
     }
+
+    _.forEach(this.schema.getTypeMap(), (type: GraphQLNamedType) => {
+      this.indexType(type)
+    })
 
     this.schema
       .getDirectives()
       .forEach((directive) => this.indexDirective(directive))
   },
   methods: {
-    indexType(type: GraphQLObjectType<any>) {
-
+    indexRootType(type: GraphQLObjectType<any>) {
+      // _.forEach(type.getFields(), (field: GraphQLField<any, any>) => {
+      //   this.index.add({
+      //     name: field.name,
+      //     description: field.description,
+      //     source: field.
+      //   })
+      // })
+    },
+    indexType(type: GraphQLNamedType) {
+      this.index.add({
+        type: 'TYPE',
+        name: type.name,
+        description: type.description,
+      })
     },
     indexDirective(directive: GraphQLDirective) {
-
-    }
+      this.index.add({
+        type: 'DIRECTIVE',
+        name: directive.name,
+        description: directive.description,
+      })
+    },
   },
 })
 </script>
