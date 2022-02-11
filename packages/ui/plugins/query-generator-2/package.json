@@ -1,7 +1,7 @@
 {
-  "name": "@mogidocql/demo",
+  "name": "@magidocql/plugin-query-generator",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "scripts": {
@@ -13,17 +13,11 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@tsconfig/svelte": "^2.0.1",
-    "@types/graphql": "^14.5.0",
-    "carbon-components-svelte": "^0.58.0",
-    "carbon-icons-svelte": "^10.44.4",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.7",
     "svelte-preprocess": "^4.9.8",
     "tslib": "^2.3.1",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
-  },
-  "dependencies": {
-    "graphql": "^16.3.0"
   }
 }
