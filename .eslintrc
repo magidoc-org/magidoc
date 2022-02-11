@@ -1,13 +1,19 @@
 {
-  "parser": "vue-eslint-parser",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["svelte3", "@typescript-eslint"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "project": ["**/*/tsconfig.json"],
-    "extraFileExtensions": [".vue"]
+    "extraFileExtensions": [".svelte"]
   },
-  "plugins": ["@typescript-eslint"],
-  "extends": [
-    "plugin:vue/vue3-recommended",
-    "plugin:prettier/recommended"
-  ]
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "processor": "svelte3/svelte3"
+    }
+  ],
+  "settings": {
+    "svelte3/typescript": true
+  },
+  "extends": ["plugin:prettier/recommended"]
 }

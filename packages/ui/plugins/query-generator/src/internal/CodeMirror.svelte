@@ -1,8 +1,8 @@
 <script lang="ts">
-  import CodeMirror, {Editor} from 'codemirror'
-  import "codemirror/addon/edit/matchbrackets"
-  import "codemirror/lib/codemirror.css"
-  import "codemirror-graphql/src/mode"
+  import CodeMirror, { Editor } from 'codemirror'
+  import 'codemirror/addon/edit/matchbrackets'
+  import 'codemirror/lib/codemirror.css'
+  import 'codemirror-graphql/src/mode'
   import { afterUpdate, onMount } from 'svelte'
 
   export let code: string
