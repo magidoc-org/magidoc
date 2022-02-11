@@ -1,5 +1,8 @@
 <script lang="ts">
-  import CodeMirror from 'codemirror'
+  import CodeMirror, {Editor} from 'codemirror'
+  import "codemirror/addon/edit/matchbrackets"
+  import "codemirror/lib/codemirror.css"
+  import "codemirror-graphql/src/mode"
   import { afterUpdate, onMount } from 'svelte'
 
   export let code: string
@@ -9,13 +12,13 @@
   export let showLineNumbers: boolean = true
 
   let root: HTMLElement
-  let codeMirror: CodeMirror
+  let codeMirror: Editor
 
   onMount(() => {
-    this.codeMirror = CodeMirror(
+    codeMirror = CodeMirror(
       (elt) => {
-        this.root.innerHTML = ''
-        this.root.appendChild(elt)
+        root.innerHTML = ''
+        root.appendChild(elt)
       },
       {
         lineNumbers: showLineNumbers,
@@ -31,17 +34,17 @@
       },
     )
 
-    this.codeMirror.setSize('auto', height)
+    codeMirror.setSize('auto', height)
   })
 
   afterUpdate(() => {
-    if (this.codeMirror) {
-      this.codeMirror.setOption('theme', theme)
-      this.codeMirror.setOption('lineNumbers', showLineNumbers)
-      this.codeMirror.setOption('mode', mode)
-      this.codeMirror.setValue(code)
-      this.codeMirror.setSize('auto', height)
-      this.codeMirror.refresh()
+    if (codeMirror) {
+      codeMirror.setOption('theme', theme)
+      codeMirror.setOption('lineNumbers', showLineNumbers)
+      codeMirror.setOption('mode', mode)
+      codeMirror.setValue(code)
+      codeMirror.setSize('auto', height)
+      codeMirror.refresh()
     }
   })
 </script>
