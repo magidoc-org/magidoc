@@ -1,11 +1,10 @@
-import QueryGeneratorPlugin from '../../query-generator/src/index'
-import SearchPlugin from '../../search/src/index'
-import { createApp } from 'vue'
-import App from './App.vue'
+import App from './App.svelte';
 
-const app = createApp(App)
+const app = new App({
+	target: document.body,
+	props: {
+		name: 'world'
+	}
+});
 
-app.use(QueryGeneratorPlugin)
-app.use(SearchPlugin)
-
-app.mount('#app')
+export default app;

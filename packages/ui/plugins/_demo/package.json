@@ -1,26 +1,30 @@
 {
-  "name": "demo",
-  "version": "0.0.0",
+  "name": "svelte-app",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "element-plus": "^2.0.1",
-    "graphql": "^16.3.0",
-    "vue": "^3.2.25"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@types/graphql": "^14.5.0",
-    "@vicons/utils": "^0.1.4",
-    "@vitejs/plugin-vue": "^2.0.0",
-    "typescript": "^4.4.4",
-    "unplugin-auto-import": "^0.5.11",
-    "unplugin-vue-components": "^0.17.18",
-    "vfonts": "^0.0.3",
-    "vite": "^2.7.2",
-    "vue-tsc": "^0.29.8"
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.0.0",
+    "svelte-check": "^2.0.0",
+    "svelte-preprocess": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
+    "typescript": "^4.0.0",
+    "tslib": "^2.0.0",
+    "@tsconfig/svelte": "^2.0.0"
+  },
+  "dependencies": {
+    "sirv-cli": "^2.0.0"
   }
 }
