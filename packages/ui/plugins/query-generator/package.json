@@ -1,28 +1,30 @@
 {
   "name": "@magidocql/plugin-query-generator",
+  "private": false,
   "version": "1.0.0",
-  "description": "A MagiDocQL plugin component that adds dynamic query generation at runtime.",
-  "author": "Sunny Pelletier",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "codemirror": "^5.65.1",
-    "codemirror-graphql": "^1.2.11",
-    "graphql": "^16.3.0",
-    "lodash": "^4.17.21",
-    "vue": "^3.2.25"
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "@tsconfig/svelte": "^2.0.1",
     "@types/codemirror": "^5.60.5",
-    "@types/lodash": "^4.14.178",
-    "@vitejs/plugin-vue": "^2.1.0",
-    "rollup": "^2.67.0",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.13",
-    "vue-tsc": "^0.29.8"
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.2.7",
+    "svelte-preprocess": "^4.9.8",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0"
+  },
+  "dependencies": {
+    "@types/graphql": "^14.5.0",
+    "codemirror": "^5.65.1",
+    "codemirror-graphql": "^1.2.11",
+    "graphql": "^16.3.0"
   }
 }

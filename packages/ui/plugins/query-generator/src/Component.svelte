@@ -28,7 +28,6 @@
     mode="graphql"
   />
 {/if}
-/>
 
 {#if showVariablesPanel}
   <div class="CodeMirror-gutters qg-variables-separator">Variables</div>
@@ -43,6 +42,9 @@
 
 <style>
   .qg-variables-separator {
-    display: block;
+    font-family: inherit;
+  position: relative;
+  padding: 5px 0px;
+  font-family: inherit;
   }
 </style>

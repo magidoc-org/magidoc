@@ -17,6 +17,7 @@
 <main>
   <QueryGenerator
     {field}
+    queryPanelHeight={350}
     generatorConfig={{
       maxDepth: 5,
       nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
