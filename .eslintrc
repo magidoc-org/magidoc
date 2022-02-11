@@ -1,10 +1,11 @@
 {
+  "env": {
+    "browser": true
+  },
   "parser": "@typescript-eslint/parser",
   "plugins": ["svelte3", "@typescript-eslint"],
   "parserOptions": {
-    "parser": "@typescript-eslint/parser",
-    "project": ["**/*/tsconfig.json"],
-    "extraFileExtensions": [".svelte"]
+    "project": ["**/tsconfig.json"]
   },
   "overrides": [
     {
@@ -15,5 +16,9 @@
   "settings": {
     "svelte3/typescript": true
   },
-  "extends": ["plugin:prettier/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ]
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { GraphQLField } from 'graphql'
-  import QueryGenerator from '../../query-generator-2/src/Component.svelte'
+  import QueryGenerator from '../../query-generator/src/Component.svelte'
   import { schema } from './lib/Schema'
   import { NullGenerationStrategy } from '@core/generator/config'
 

@@ -43,8 +43,8 @@
 <style>
   .qg-variables-separator {
     font-family: inherit;
-  position: relative;
-  padding: 5px 0px;
-  font-family: inherit;
+    position: relative;
+    padding: 5px 0px;
+    font-family: inherit;
   }
 </style>
