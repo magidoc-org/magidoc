@@ -4,7 +4,9 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "resolveJsonModule": true,
+    "paths": {
+      "@core/*": ["../../../core/src/*"]
+    },
     "baseUrl": ".",
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
