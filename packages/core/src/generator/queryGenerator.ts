@@ -2,7 +2,12 @@ import _ from 'lodash'
 
 import { GraphQLQuery } from '@core/models/query'
 import { GeneratorConfig, NullGenerationStrategy } from './config'
-import { GraphQLField, GraphQLType, isLeafType } from 'graphql'
+import {
+  GraphQLField,
+  GraphQLType,
+  GraphQLObjectType,
+  isLeafType,
+} from 'graphql'
 import { unwrapFieldType } from './extractor'
 import { generateArgsForField } from './fakeGenerator'
 import {
@@ -24,7 +29,7 @@ export type GenerationContext = {
 }
 
 export function generateGraphQLQuery(
-  field: GraphQLField<any, any, any>,
+  field: GraphQLField<unknown, unknown, unknown>,
   config?: Partial<GeneratorConfig>,
 ): GraphQLQuery | null {
   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
@@ -60,12 +65,10 @@ function generateField(
 
   const builder = subSelectionBuilder()
 
-  // @ts-ignore
-  // TODO - fix this
-  const fields = type.getFields() || {}
+  const fields = (type as GraphQLObjectType).getFields()
   const finalBuilderWithAllFields = _.reduce(
     fields,
-    (memo: QueryBuilder, field: GraphQLField<any, any, any>) => {
+    (memo: QueryBuilder, field: GraphQLField<unknown, unknown, unknown>) => {
       return buildField(memo, field, config, {
         depth: context.depth,
         path: `${context.path}.${field.name}`,
@@ -85,7 +88,7 @@ function generateField(
 
 function buildField(
   builder: QueryBuilder,
-  field: GraphQLField<any, any, any>,
+  field: GraphQLField<unknown, unknown, unknown>,
   config: GeneratorConfig,
   context: GenerationContext,
 ): QueryBuilder {

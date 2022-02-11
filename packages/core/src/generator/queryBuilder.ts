@@ -139,7 +139,7 @@ export class QueryBuilder {
     return {
       query: `
         {
-          ${fieldsAsQueries}
+          ${fieldsAsQueries.join('')}
         }
       `,
       variables: allQueryVariablesRequiredNested,
@@ -161,7 +161,8 @@ export class QueryBuilder {
     allUsedVariableNames: Set<string>,
     count = 1,
   ): VariableParameter {
-    const current = count === 1 ? parameter.name : parameter.name + count
+    const current =
+      count === 1 ? parameter.name : parameter.name + count.toString()
 
     if (!allUsedVariableNames.has(current)) {
       allUsedVariableNames.add(current)

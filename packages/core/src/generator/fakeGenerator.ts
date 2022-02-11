@@ -25,7 +25,7 @@ import { GenerationContext } from './queryGenerator'
 import { Parameter } from './queryBuilder'
 
 export function generateArgsForField(
-  field: GraphQLField<any, any, any>,
+  field: GraphQLField<unknown, unknown, unknown>,
   config: GeneratorConfig,
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {

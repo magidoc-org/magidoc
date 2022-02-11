@@ -18,7 +18,7 @@ import {
 import { GraphQLIntrospectionResultError } from './error'
 
 export function unwrapFieldType(
-  field: GraphQLField<any, any, any>,
+  field: GraphQLField<unknown, unknown, unknown>,
 ): GraphQLType {
   return unwrapType(field.type)
 }
@@ -69,7 +69,7 @@ export function typeToString(type: GraphQLInputType): string {
     case GraphQLInterfaceType:
       return (type as unknown as GraphQLInterfaceType).name
     case GraphQLObjectType:
-      return (type as unknown as GraphQLObjectType<any, any>).name
+      return (type as unknown as GraphQLObjectType<unknown, unknown>).name
     case GraphQLScalarType:
       return (type as GraphQLScalarType).name
     case GraphQLEnumType:
