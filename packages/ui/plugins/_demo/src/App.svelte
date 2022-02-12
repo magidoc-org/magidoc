@@ -6,7 +6,7 @@
 
   const queryType = $schema.getQueryType()
 
-  let field: GraphQLField<any, any>
+  let field: GraphQLField<unknown, unknown>
 
   if (queryType) {
     const fields = queryType.getFields()

@@ -3,21 +3,24 @@
   import CodeMirror from './internal/CodeMirror.svelte'
   import { generateGraphQLQuery } from '@core/generator/queryGenerator'
   import type { GeneratorConfig } from '@core/generator/config'
+  import type { GraphQLQuery } from '@core/models/query'
 
-  export let field: GraphQLField<any, any, any>
+  export let field: GraphQLField<unknown, unknown, unknown>
   export let generatorConfig: Partial<GeneratorConfig>
-  export let theme: string = 'default'
+  export let theme = 'default'
 
-  export let showQueryPanelLineNumbers: boolean = true
-  export let showQueryPanel: boolean = true
+  export let showQueryPanelLineNumbers = true
+  export let showQueryPanel = true
   export let queryPanelHeight: number | 'auto' = 'auto'
 
-  export let showVariablesPanelLineNumbers: boolean = false
-  export let showVariablesPanel: boolean = true
+  export let showVariablesPanelLineNumbers = false
+  export let showVariablesPanel = true
   export let variablesPanelHeight: number | 'auto' = 'auto'
-  ;('sdfs')
 
-  const result = generateGraphQLQuery(field, generatorConfig)
+  const result: GraphQLQuery | null = generateGraphQLQuery(
+    field,
+    generatorConfig,
+  )
 </script>
 
 {#if showQueryPanel}
@@ -34,7 +37,7 @@
   <div class="CodeMirror-gutters qg-variables-separator">Variables</div>
   <CodeMirror
     {theme}
-    code={JSON.stringify(result.variables || {}, null, 2)}
+    code={JSON.stringify(result?.variables || {}, null, 2)}
     height={variablesPanelHeight}
     showLineNumbers={showVariablesPanelLineNumbers}
     mode="graphql-variables"

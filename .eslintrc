@@ -5,7 +5,8 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["svelte3", "@typescript-eslint"],
   "parserOptions": {
-    "project": ["packages/**/tsconfig.json"]
+    "project": ["packages/**/tsconfig.json"],
+    "extraFileExtensions": [".svelte"]
   },
   "overrides": [
     {

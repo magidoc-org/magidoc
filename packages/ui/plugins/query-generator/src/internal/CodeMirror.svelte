@@ -8,8 +8,8 @@
   export let code: string
   export let mode: 'graphql' | 'graphql-variables'
   export let height: number | 'auto'
-  export let theme: string = 'default'
-  export let showLineNumbers: boolean = true
+  export let theme = 'default'
+  export let showLineNumbers = true
 
   let root: HTMLElement
   let codeMirror: Editor
