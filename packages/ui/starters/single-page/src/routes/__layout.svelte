@@ -11,19 +11,19 @@
     SideNavLink,
     SideNavMenu,
     SideNavMenuItem,
-    SkipToContent,
+    Row,
   } from 'carbon-components-svelte'
-
   import 'carbon-components-svelte/css/g10.css'
 
   let isSideNavOpen = true
 </script>
 
 <main>
-  <Header company="Qohash" platformName="Qostodian" bind:isSideNavOpen>
-    <slot name="platform">
-		<
-	</slot>
+  <Header href="/" bind:isSideNavOpen>
+    <div slot="platform" class="header-logo-wrapper">
+      <img src="logo.png" alt="Magidoc" class="header-logo" />
+      <span>Magidoc</span>
+    </div>
   </Header>
 
   <SideNav isOpen={isSideNavOpen}>
@@ -45,3 +45,16 @@
     <slot />
   </Content>
 </main>
+
+<style>
+  .header-logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .header-logo {
+    height: 100%;
+    padding: 0.2rem 0.5rem 0.2rem 0.0rem;
+  }
+</style>
