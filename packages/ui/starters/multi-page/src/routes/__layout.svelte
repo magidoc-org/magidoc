@@ -1,10 +1,9 @@
 <script lang="ts">
+  import '../app.css'
+  
   import {
     Content,
     Header,
-    HeaderNav,
-    HeaderNavItem,
-    HeaderNavMenu,
     SideNav,
     SideNavDivider,
     SideNavItems,
@@ -12,6 +11,8 @@
     SideNavMenu,
     SideNavMenuItem,
     Row,
+    Grid,
+    Column,
   } from 'carbon-components-svelte'
   import 'carbon-components-svelte/css/g10.css'
 
@@ -21,7 +22,7 @@
 <main>
   <Header href="/" bind:isSideNavOpen>
     <div slot="platform" class="header-logo-wrapper">
-      <img src="logo.png" alt="Magidoc" class="header-logo" />
+      <img src="/logo.png" alt="Magidoc" class="header-logo" />
       <span>Magidoc</span>
     </div>
   </Header>
@@ -29,7 +30,7 @@
   <SideNav isOpen={isSideNavOpen}>
     <SideNavItems>
       <SideNavMenu text="Introduction" expanded>
-        <SideNavMenuItem href="/" text="Link 1" />
+        <SideNavMenuItem href="/introduction/welcome" text="Welcome" />
         <SideNavMenuItem href="/" text="Link 2" />
         <SideNavMenuItem href="/" text="Link 3" />
       </SideNavMenu>
@@ -47,7 +48,13 @@
   </SideNav>
 
   <Content>
-    <slot />
+    <Grid>
+      <Row>
+        <Column>
+          <slot />
+        </Column>
+      </Row>
+    </Grid>
   </Content>
 </main>
 
@@ -60,6 +67,6 @@
 
   .header-logo {
     height: 100%;
-    padding: 0.2rem 0.5rem 0.2rem 0.0rem;
+    padding: 0.2rem 0.5rem 0.2rem 0rem;
   }
 </style>
