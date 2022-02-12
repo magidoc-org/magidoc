@@ -16,13 +16,15 @@
   export let showVariablesPanel: boolean = true
   export let variablesPanelHeight: number | 'auto' = 'auto'
 
+  const a = 'sdfs'
+
   const result = generateGraphQLQuery(field, generatorConfig)
 </script>
 
 {#if showQueryPanel}
   <CodeMirror
     {theme}
-    code={result.query || ''}
+    code={result?.query || ''}
     height={queryPanelHeight}
     showLineNumbers={showQueryPanelLineNumbers}
     mode="graphql"
