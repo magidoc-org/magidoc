@@ -28,6 +28,11 @@
 
   <SideNav isOpen={isSideNavOpen}>
     <SideNavItems>
+      <SideNavMenu text="Introduction" expanded>
+        <SideNavMenuItem href="/" text="Link 1" />
+        <SideNavMenuItem href="/" text="Link 2" />
+        <SideNavMenuItem href="/" text="Link 3" />
+      </SideNavMenu>
       <SideNavLink text="Link 1" />
       <SideNavLink text="Link 2" />
       <SideNavLink text="Link 3" />
