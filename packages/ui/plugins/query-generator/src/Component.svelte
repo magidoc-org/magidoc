@@ -15,8 +15,7 @@
   export let showVariablesPanelLineNumbers: boolean = false
   export let showVariablesPanel: boolean = true
   export let variablesPanelHeight: number | 'auto' = 'auto'
-
-  const a = 'sdfs'
+  ;('sdfs')
 
   const result = generateGraphQLQuery(field, generatorConfig)
 </script>
