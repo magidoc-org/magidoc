@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { GraphQLField } from 'graphql'
-  import CodeMirror from './internal/CodeMirror.svelte'
+  import CodeMirror from './CodeMirror.svelte'
   import { generateGraphQLQuery } from '@core/generator/queryGenerator'
   import type { GeneratorConfig } from '@core/generator/config'
   import type { GraphQLQuery } from '@core/models/query'

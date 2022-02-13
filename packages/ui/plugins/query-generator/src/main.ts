@@ -1,3 +1,3 @@
-import Component from './Component.svelte'
+import Component from './lib/QueryGenerator.svelte'
 
 export default Component
