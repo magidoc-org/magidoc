@@ -1,25 +1,57 @@
 <script lang="ts">
   import { schema } from '$lib/schema'
   import { page } from '$app/stores'
-  import { argsToArgsConfig } from 'graphql/type/definition'
+  import type { GraphQLField } from 'graphql'
+  import { InlineNotification } from 'carbon-components-svelte'
+  import QueryGenerator from '../../../../../../plugins/query-generator/src/Component.svelte'
 
-  const field = $schema.getQueryType()?.getFields()[$page.params.query]
-  if (!field) {
-    throw new Error('what?')
+  let field: GraphQLField<unknown, unknown, unknown>
+
+  $: {
+    const target = $schema.getQueryType()?.getFields()[$page.params.query]
+    if (!target) {
+      throw new Error('what?')
+    }
+    field = target
   }
-  field.args
 </script>
 
 <section>
+  {#if field.deprecationReason}
+    <InlineNotification
+      hideCloseButton
+      kind="warning"
+      title="Deprecated Query:"
+      subtitle={field.deprecationReason}
+    />
+  {/if}
+
   <h1>{field.name}</h1>
 
   {#if field.description}
     <p>{field.description}</p>
   {/if}
 
+  <br />
+
   {#if field.args.length > 0}
+    <h4>Arguments</h4>
     {#each field.args as arg}
-      <p>{argsToArgsConfig.name}</p>
+      <p>
+        <strong>{arg.name}</strong>
+      </p>
     {/each}
   {/if}
+
+  <br />
+
+  {#if field.args.length > 0}
+    <h4>Response</h4>
+    {#each field.args as arg}
+      <p>{arg.name}</p>
+    {/each}
+  {/if}
+
+  <h4>Example</h4>
+  <QueryGenerator {field} generatorConfig={{}} />
 </section>
