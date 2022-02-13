@@ -14,6 +14,7 @@
     "@types/glob-to-regexp": "^0.4.1",
     "@types/graphql": "^14.5.0",
     "@types/lodash": "^4.14.178",
-    "@types/prettier": "^2.4.4"
+    "@types/prettier": "^2.4.4",
+    "typescript": "^4.5.5"
   }
 }

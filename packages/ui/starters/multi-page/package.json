@@ -1,5 +1,5 @@
 {
-  "name": "@magidoc/starter-single-page",
+  "name": "@magidoc/starter-multi-page",
   "version": "0.0.1",
   "license": "MIT",
   "type": "module",
@@ -12,6 +12,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
+    "@magidoc/plugin-query-generator": "../../plugins/query-generator/package",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21"
   },
