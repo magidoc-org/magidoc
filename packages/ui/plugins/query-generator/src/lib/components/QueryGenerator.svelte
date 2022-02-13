@@ -1,9 +1,8 @@
 <script lang="ts">
   import type { GraphQLField } from 'graphql'
   import CodeMirror from './CodeMirror.svelte'
-  import { generateGraphQLQuery } from '@magidoc/core/generator/queryGenerator'
-  import type { GeneratorConfig } from '@magidoc/core/generator/config'
-  import type { GraphQLQuery } from '@magidoc/core/models/query'
+  import type { GeneratorConfig, GraphQLQuery } from '@magidoc/core'
+  import { generateGraphQLQuery } from '@magidoc/core'
 
   export let field: GraphQLField<unknown, unknown, unknown>
   export let generatorConfig: Partial<GeneratorConfig> = {}
