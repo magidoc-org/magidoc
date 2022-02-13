@@ -7,6 +7,11 @@ const config = {
   preprocess: [preprocess(), optimizeImports()],
   kit: {
     adapter: adapter(),
+    vite: {
+      optimizeDeps: {
+        include: ['nullthrows'],
+      },
+    },
   },
 }
 
