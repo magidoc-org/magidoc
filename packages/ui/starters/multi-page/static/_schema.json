@@ -19,7 +19,7 @@
               "ofType": { "kind": "OBJECT", "name": "Farm", "ofType": null }
             },
             "isDeprecated": false,
-            "deprecationReason": null
+            "deprecationReason": "null"
           }
         ],
         "inputFields": null,

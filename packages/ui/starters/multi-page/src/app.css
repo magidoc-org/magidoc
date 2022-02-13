@@ -1,3 +1,7 @@
+.deprecated {
+  text-decoration: line-through !important;
+}
+
 @media (max-width: 1056px) {
   .bx--side-nav ~ .bx--content {
     margin-left: 0 !important;
