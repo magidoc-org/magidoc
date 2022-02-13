@@ -3,7 +3,7 @@
   import { page } from '$app/stores'
   import type { GraphQLField } from 'graphql'
   import { InlineNotification } from 'carbon-components-svelte'
-  import QueryGenerator from '../../../../../../plugins/query-generator/src/Component.svelte'
+  import QueryGenerator from '@magidoc/plugin-query-generator'
 
   let field: GraphQLField<unknown, unknown, unknown>
 
@@ -53,5 +53,5 @@
   {/if}
 
   <h4>Example</h4>
-  <QueryGenerator {field} generatorConfig={{}} />
+  <QueryGenerator {field} />
 </section>

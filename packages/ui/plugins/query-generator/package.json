@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "main": "dist/plugin-query-generator.es.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

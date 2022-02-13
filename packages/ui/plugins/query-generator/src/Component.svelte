@@ -6,7 +6,7 @@
   import type { GraphQLQuery } from '@core/models/query'
 
   export let field: GraphQLField<unknown, unknown, unknown>
-  export let generatorConfig: Partial<GeneratorConfig>
+  export let generatorConfig: Partial<GeneratorConfig> = {}
   export let theme = 'default'
 
   export let showQueryPanelLineNumbers = true

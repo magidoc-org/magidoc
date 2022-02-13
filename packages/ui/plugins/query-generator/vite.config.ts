@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
-import { resolve } from 'path'
+import path, { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,14 +9,15 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'query-generator',
+      formats: ['es'],
     },
-    rollupOptions: {
-      external: ['vue'],
-      output: {
-        globals: {
-          vue: 'Vue',
-        },
+  },
+  resolve: {
+    alias: [
+      {
+        find: '@core',
+        replacement: path.resolve(__dirname, '../../../core/src'),
       },
-    },
+    ],
   },
 })
