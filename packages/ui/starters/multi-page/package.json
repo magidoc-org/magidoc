@@ -12,7 +12,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@magidoc/plugin-query-generator": "../../plugins/query-generator/package",
+    "@magidoc/plugin-query-generator": "^0.0.2",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21"
   },
