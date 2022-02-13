@@ -1,9 +1,14 @@
 {
   "name": "@magidoc/core",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "release": "yarn build && yarn publish"
+  },
   "dependencies": {
     "glob-to-regexp": "^0.4.1",
     "graphql": "^16.3.0",

@@ -4,12 +4,12 @@
   "version": "0.0.1",
   "svelte": "index.js",
   "scripts": {
-    "build": "yarn check && svelte-kit build",
+    "build": "yarn check && yarn package",
     "package": "svelte-kit package",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "@magidoc/core": "^0.0.0",
+    "@magidoc/core": "^0.0.1",
     "codemirror": "^5.65.1",
     "codemirror-graphql": "^1.2.11",
     "graphql": "^16.3.0"
