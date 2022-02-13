@@ -1,22 +1,25 @@
-<script context="module" lang="ts">
-  import type { LoadInput, LoadOutput } from '@sveltejs/kit'
-
-  /** @type {import('@sveltejs/kit').Load} */
-  export function load({ params }: LoadInput): LoadOutput {
-    return {
-      props: {
-        queryName: params.name,
-      },
-    }
-  }
-</script>
-
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { schema } from '$lib/schema'
+  import { page } from '$app/stores'
+  import { argsToArgsConfig } from 'graphql/type/definition'
 
-  const queryName = $page.params.query
+  const field = $schema.getQueryType()?.getFields()[$page.params.query]
+  if (!field) {
+    throw new Error('what?')
+  }
+  field.args
 </script>
 
 <section>
-  {queryName}
+  <h1>{field.name}</h1>
+
+  {#if field.description}
+    <p>{field.description}</p>
+  {/if}
+
+  {#if field.args.length > 0}
+    {#each field.args as arg}
+      <p>{argsToArgsConfig.name}</p>
+    {/each}
+  {/if}
 </section>
