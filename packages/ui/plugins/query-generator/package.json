@@ -1,5 +1,5 @@
 {
-  "name": "@magidocql/plugin-query-generator",
+  "name": "@magidoc/plugin-query-generator",
   "private": false,
   "version": "1.0.0",
   "type": "module",

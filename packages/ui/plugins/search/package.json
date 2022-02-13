@@ -1,7 +1,7 @@
 {
-  "name": "@magidocql/plugin-search",
+  "name": "@magidoc/plugin-search",
   "version": "1.0.0",
-  "description": "A MagiDocQL plugin component that enable search capabilities inside your documentation website.",
+  "description": "A MagiDoc plugin component that enable search capabilities inside your documentation website.",
   "author": "Sunny Pelletier",
   "license": "MIT",
   "scripts": {
