@@ -1,7 +1,7 @@
 {
   "name": "@magidoc/plugin-query-generator",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "svelte": "index.js",
   "scripts": {
     "build": "yarn check && yarn package",
