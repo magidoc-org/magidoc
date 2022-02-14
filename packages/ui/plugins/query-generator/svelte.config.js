@@ -8,12 +8,7 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter(),
-    vite: {
-      optimizeDeps: {
-        include: ['@magidoc/core', 'codemirror', 'codemirror-graphql'],
-      },
-    },
+    adapter: adapter()
   },
 }
 

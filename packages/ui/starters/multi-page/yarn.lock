@@ -238,22 +238,22 @@
   dependencies:
     "@lezer/common" "^0.15.0"
 
-"@magidoc/core@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@magidoc/core/-/core-0.0.9.tgz#fc259b488e1ee9063aea952835ff6f61129e995f"
-  integrity sha512-L3cooDbl0Gda68kJ/CNVevHxxkJBHmP/70bKYBkf5wxG5TY/4Qs4wWqGu1EoZetmUp335F161ugXxGvpX9L1aw==
+"@magidoc/core@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@magidoc/core/-/core-0.0.11.tgz#c96bcaa00f5a89815cfcef86b444d766f17dd53a"
+  integrity sha512-ZmPO+iQwGNxgeyFfMvPkhUKEqFFQ+Huf3IQ0ewyG3yq/4aCdtP7Lv7zHHKLnmzbEAePLOh9IdNwCI0yAGyLJag==
   dependencies:
     glob-to-regexp "^0.4.1"
     graphql "^16.3.0"
     lodash "^4.17.21"
     prettier "^2.5.1"
 
-"@magidoc/plugin-query-generator@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@magidoc/plugin-query-generator/-/plugin-query-generator-0.0.9.tgz#a3325171541702eda56e48264214a406c1f33f1f"
-  integrity sha512-vNpp/QyJAWrSW3R6D9RONLfN7//kuEWftBYT0aGMqctP4htmbpW4hdMwmWONffcYa+UfZicw37sbV1955MVoHg==
+"@magidoc/plugin-query-generator@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@magidoc/plugin-query-generator/-/plugin-query-generator-0.0.11.tgz#756ab4858bc2cd012d872d9b77833ee26074abc7"
+  integrity sha512-Gg6kRfhaY1penEf+oxH4LNZIIKGkQHP8pz5QzQRf7qoW0yg9oD2wGN4BWVhM09X33g8wKRvKdDcV8P+W5JHWTQ==
   dependencies:
-    "@magidoc/core" "^0.0.9"
+    "@magidoc/core" "^0.0.11"
     codemirror "^5.65.1"
     codemirror-graphql "^1.2.11"
     graphql "^16.3.0"
