@@ -1,5 +1,5 @@
-import { prettify } from '@core/formatter/query'
-import { GraphQLQuery } from '@core/models/query'
+import { prettify } from '../formatter/query'
+import { GraphQLQuery } from '../models/query'
 import _ from 'lodash'
 
 export enum QueryType {

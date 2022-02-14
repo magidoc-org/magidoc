@@ -2,7 +2,6 @@
   import type { GraphQLField } from 'graphql'
   import QueryGenerator from '../../query-generator/src/lib/components/QueryGenerator.svelte'
   import { schema } from './lib/Schema'
-  import { NullGenerationStrategy } from '@core/generator/config'
 
   const queryType = $schema.getQueryType()
 
@@ -20,7 +19,6 @@
     queryPanelHeight={350}
     generatorConfig={{
       maxDepth: 5,
-      nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
     }}
   />
 </main>

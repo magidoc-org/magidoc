@@ -12,7 +12,8 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@magidoc/plugin-query-generator": "^0.0.5",
+    "@magidoc/plugin-query-generator": "^0.0.6",
+    "codemirror": "^5.65.1",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21"
   },
@@ -20,6 +21,7 @@
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
+    "@types/codemirror": "^5.60.5",
     "@types/graphql": "^14.5.0",
     "@types/lodash": "^4.14.178",
     "carbon-components-svelte": "^0.58.2",

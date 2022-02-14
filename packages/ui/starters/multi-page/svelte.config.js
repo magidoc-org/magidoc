@@ -12,7 +12,7 @@ const config = {
         include: ['nullthrows'],
       },
     },
-  },
+  },  
 }
 
 export default config

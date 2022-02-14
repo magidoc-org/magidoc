@@ -5,6 +5,7 @@ import {
   GraphQLInterfaceType,
   GraphQLObjectType,
   GraphQLScalarType,
+  GraphQLInputObjectType,
   GraphQLEnumType,
   GraphQLUnionType,
   GraphQLList,
@@ -76,13 +77,15 @@ export function typeToString(type: GraphQLInputType): string {
       return (type as GraphQLEnumType).name
     case GraphQLUnionType:
       return (type as unknown as GraphQLUnionType).name
+    case GraphQLInputObjectType:
+      return (type as GraphQLInputObjectType).name
     case GraphQLNonNull:
       return `${typeToString(unwrapOne(type))}!`
     case GraphQLList:
       return `[${typeToString(unwrapOne(type))}]`
     default:
       throw new Error(
-        `this should be unreachable but was reached with type ${typeof type}`,
+        `this should be unreachable but was reached with type ${typeof type}: ${type.toString()}`,
       )
   }
 }

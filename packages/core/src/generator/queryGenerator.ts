@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import { GraphQLQuery } from '@core/models/query'
+import { GraphQLQuery } from '../models/query'
 import { GeneratorConfig, NullGenerationStrategy } from './config'
 import {
   GraphQLField,

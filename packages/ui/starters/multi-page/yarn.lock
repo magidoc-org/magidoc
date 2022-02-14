@@ -238,22 +238,22 @@
   dependencies:
     "@lezer/common" "^0.15.0"
 
-"@magidoc/core@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@magidoc/core/-/core-0.0.3.tgz#323ff88aaabdb04d0d8af263a0ac1eda90bc5090"
-  integrity sha512-Q4e9FATzTCskufRHXpaB7jKgnPzClNvKfJBdR+0a2ij/k8ymKoa875rk84M36sG7og/9JPgiqJT91GVg4sMAEA==
+"@magidoc/core@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@magidoc/core/-/core-0.0.6.tgz#8dd25623b5b35ae5592d66bdac03c109d15c3765"
+  integrity sha512-YPd+Eo5b57OB6hTh1OwPG0Krnn23wSg7ncKyWrY/PN1T6VjGBT68EmOxBLypGoGxEXal9dhGcHaowTdLo22G6w==
   dependencies:
     glob-to-regexp "^0.4.1"
     graphql "^16.3.0"
     lodash "^4.17.21"
     prettier "^2.5.1"
 
-"@magidoc/plugin-query-generator@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@magidoc/plugin-query-generator/-/plugin-query-generator-0.0.5.tgz#7fa27d7f3664df9da7a61d0d130d23f87a0f6ede"
-  integrity sha512-UrxXgum76soN4OOTxLaTS0apeBgqhllRbxlUfgEQdAUhs7QesAVoccKGjyS7zZNWZCgSPipM7UeMhzxZYZO3gA==
+"@magidoc/plugin-query-generator@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@magidoc/plugin-query-generator/-/plugin-query-generator-0.0.6.tgz#0006325e43e515e7e046b59bac0b5cf579ab79d8"
+  integrity sha512-1yJoUy+5PDEzjOR3QvzD1GeghpxEaQzvg0E9DpwB35yNV4coUTUEYO5tZk3/cg8wmBrIZkSrmgivTQd6pUcXvw==
   dependencies:
-    "@magidoc/core" "^0.0.3"
+    "@magidoc/core" "^0.0.6"
     codemirror "^5.65.1"
     codemirror-graphql "^1.2.11"
     graphql "^16.3.0"
@@ -351,6 +351,18 @@
     magic-string "^0.25.7"
     svelte-hmr "^0.14.9"
 
+"@types/codemirror@^5.60.5":
+  version "5.60.5"
+  resolved "https://registry.yarnpkg.com/@types/codemirror/-/codemirror-5.60.5.tgz#5b989a3b4bbe657458cf372c92b6bfda6061a2b7"
+  integrity sha512-TiECZmm8St5YxjFUp64LK0c8WU5bxMDt9YaAek1UqUb9swrSCoJhh92fWu1p3mTEqlHjhB5sY7OFBhWroJXZVg==
+  dependencies:
+    "@types/tern" "*"
+
+"@types/estree@*":
+  version "0.0.51"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.51.tgz#cfd70924a25a3fd32b218e5e420e6897e1ac4f40"
+  integrity sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==
+
 "@types/graphql@^14.5.0":
   version "14.5.0"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.5.0.tgz#a545fb3bc8013a3547cf2f07f5e13a33642b75d6"
@@ -389,6 +401,13 @@
   integrity sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==
   dependencies:
     "@types/node" "*"
+
+"@types/tern@*":
+  version "0.23.4"
+  resolved "https://registry.yarnpkg.com/@types/tern/-/tern-0.23.4.tgz#03926eb13dbeaf3ae0d390caf706b2643a0127fb"
+  integrity sha512-JAUw1iXGO1qaWwEOzxTKJZ/5JxVeON9kvGZ/osgZaJImBnyjyn0cjovPsf6FNLmyGY8Vw9DoXZCMlfMkMwHRWg==
+  dependencies:
+    "@types/estree" "*"
 
 "@types/websocket@^1.0.4":
   version "1.0.5"

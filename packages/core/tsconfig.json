@@ -3,9 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "declaration": true,
-    "paths": {
-      "@core/*": ["./src/*"]
-    }
+    "emitDeclarationOnly": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "exclude": ["node_modules"]

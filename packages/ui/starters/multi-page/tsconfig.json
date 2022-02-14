@@ -17,8 +17,7 @@
     "checkJs": true,
     "paths": {
       "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"],
-      "@core/*": ["../../../core/src/*"]
+      "$lib/*": ["src/lib/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]

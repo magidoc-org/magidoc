@@ -12,9 +12,6 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": true,
-    "paths": {
-      "@core/*": ["../../../core/src/*"],
-    },
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
   "references": [{ "path": "./tsconfig.node.json" }]

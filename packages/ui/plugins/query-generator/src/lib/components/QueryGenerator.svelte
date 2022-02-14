@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { GraphQLField } from 'graphql'
   import CodeMirror from './CodeMirror.svelte'
-  import type { GeneratorConfig, GraphQLQuery } from '@magidoc/core'
+  import type { GeneratorConfig } from '@magidoc/core'
   import { generateGraphQLQuery } from '@magidoc/core'
 
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -16,10 +16,7 @@
   export let showVariablesPanel = true
   export let variablesPanelHeight: number | 'auto' = 'auto'
 
-  const result: GraphQLQuery | null = generateGraphQLQuery(
-    field,
-    generatorConfig,
-  )
+  const result = generateGraphQLQuery(field, generatorConfig)
 </script>
 
 {#if showQueryPanel}
