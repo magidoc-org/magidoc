@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+  import {generateGraphQLQuery} from '@magidoc/core'
+
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
 
@@ -11,6 +13,7 @@
   let QueryGenerator: unknown
 
   onMount(async () => {
+    console.log('query', generateGraphQLQuery)
     if (!window) return
     // eslint-disable-next-line no-undef
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access

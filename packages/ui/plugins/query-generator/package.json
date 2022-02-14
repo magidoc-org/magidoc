@@ -1,7 +1,7 @@
 {
   "name": "@magidoc/plugin-query-generator",
   "license": "MIT",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "svelte": "index.js",
   "scripts": {
     "build": "yarn check && yarn package",
@@ -10,7 +10,7 @@
     "release": "yarn build && cd package && yarn publish"
   },
   "dependencies": {
-    "@magidoc/core": "^0.0.6",
+    "@magidoc/core": "^0.0.8",
     "codemirror": "^5.65.1",
     "codemirror-graphql": "^1.2.11",
     "graphql": "^16.3.0"
