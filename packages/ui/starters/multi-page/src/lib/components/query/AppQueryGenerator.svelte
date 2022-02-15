@@ -30,12 +30,18 @@
 </script>
 
 {#if QueryGenerator}
-    <NumberInput
-      label={'Query Depth'}
-      min={3}
-      max={8}
-      bind:value={queryDepth}
-    />
+  <div class="control-bar-wrapper">
+    <div class="query-depth-wrapper">
+      <NumberInput
+        size="sm"
+        label={'Query Depth'}
+        min={3}
+        max={8}
+        bind:value={queryDepth}
+      />
+    </div>
+  </div>
+
   <svelte:component
     this={QueryGenerator}
     {field}
@@ -47,3 +53,17 @@
     showQueryPanelLineNumbers={false}
   />
 {/if}
+
+<style>
+  .control-bar-wrapper {
+    display: flex;
+    justify-content: right;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .query-depth-wrapper {
+    display: flex;
+    width: 12rem;
+  }
+</style>
