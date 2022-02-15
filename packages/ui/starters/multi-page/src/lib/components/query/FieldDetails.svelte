@@ -42,6 +42,8 @@
     {/each}
   {/if}
 
-  <h4>Example</h4>
+  <br />
+
+  <h4>Sample</h4>
   <AppQueryGenerator {field} />
 </section>

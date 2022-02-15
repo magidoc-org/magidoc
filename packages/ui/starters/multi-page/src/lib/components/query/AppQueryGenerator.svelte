@@ -3,12 +3,22 @@
 </script>
 
 <script lang="ts">
+  import {
+    Column,
+    Grid,
+    NumberInput,
+    Row,
+    Tile,
+  } from 'carbon-components-svelte'
+
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
 
   export let field: GraphQLField<unknown, unknown, unknown>
 
   let QueryGenerator: unknown
+
+  let queryDepth = 3
 
   onMount(async () => {
     if (!window) return
@@ -20,5 +30,20 @@
 </script>
 
 {#if QueryGenerator}
-  <svelte:component this={QueryGenerator} {field} queryPanelHeight={300} variablesPanelHeight={180} />
+    <NumberInput
+      label={'Query Depth'}
+      min={3}
+      max={8}
+      bind:value={queryDepth}
+    />
+  <svelte:component
+    this={QueryGenerator}
+    {field}
+    generatorConfig={{
+      maxDepth: queryDepth,
+    }}
+    queryPanelHeight={300}
+    variablesPanelHeight={180}
+    showQueryPanelLineNumbers={false}
+  />
 {/if}

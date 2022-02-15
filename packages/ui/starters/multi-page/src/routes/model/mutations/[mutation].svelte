@@ -7,7 +7,7 @@
   let field: GraphQLField<unknown, unknown, unknown>
 
   $: {
-    const target = $schema.getMutationType()?.getFields()[$page.params.query]
+    const target = $schema.getMutationType()?.getFields()[$page.params.mutation]
     if (!target) {
       throw new Error('what?')
     }
