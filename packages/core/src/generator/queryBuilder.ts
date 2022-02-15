@@ -135,11 +135,10 @@ export class QueryBuilder {
           ]
         }),
       )
-
     return {
       query: `
         {
-          ${fieldsAsQueries.join('')}
+          ${fieldsAsQueries.join(' ')}
         }
       `,
       variables: allQueryVariablesRequiredNested,

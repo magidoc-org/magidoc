@@ -16,10 +16,8 @@
   export let showVariablesPanel = true
   export let variablesPanelHeight: number | 'auto' = 'auto'
 
-  const result: GraphQLQuery | null = generateGraphQLQuery(
-    field,
-    generatorConfig,
-  )
+  let result: GraphQLQuery | null
+  $: result = generateGraphQLQuery(field, generatorConfig)
 </script>
 
 {#if showQueryPanel}

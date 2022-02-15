@@ -3,22 +3,40 @@
   import QueryGenerator from '../../query-generator/src/lib/components/QueryGenerator.svelte'
   import { schema } from './lib/Schema'
 
-  const queryType = $schema.getQueryType()
-
   let field: GraphQLField<unknown, unknown>
 
-  if (queryType) {
-    const fields = queryType.getFields()
-    field = fields[Object.keys(fields)[0]]
+  let depth = 4
+  let index = 0
+
+  $: {
+    const queryType = $schema.getQueryType()
+
+    if (queryType) {
+      const fields = queryType.getFields()
+      field = fields[Object.keys(fields)[index]]
+    }
   }
 </script>
 
 <main>
+  <div>
+    Depth:
+    <input type="number" bind:value={depth} />
+  </div>
+  <div>
+    Field:
+    <input
+      type="number"
+      bind:value={index}
+      min={0}
+      max={Math.max(Object.values($schema.getQueryType()?.getFields() || {}).length - 1, 0)}
+    />
+  </div>
   <QueryGenerator
     {field}
     queryPanelHeight={350}
     generatorConfig={{
-      maxDepth: 5,
+      maxDepth: depth,
     }}
   />
 </main>

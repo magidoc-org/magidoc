@@ -3,8 +3,6 @@
 </script>
 
 <script lang="ts">
-  import * as x from '@magidoc/core'
-
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
 
@@ -17,11 +15,10 @@
     // eslint-disable-next-line no-undef
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     window.CodeMirror = (await import('codemirror')).default
-    console.log(window.CodeMirror)
-
     QueryGenerator = (await import('@magidoc/plugin-query-generator')).default
-    console.log(QueryGenerator)
   })
 </script>
 
-<svelte:component this={QueryGenerator} {field} />
+{#if QueryGenerator}
+  <svelte:component this={QueryGenerator} {field} queryPanelHeight={300} variablesPanelHeight={180} />
+{/if}

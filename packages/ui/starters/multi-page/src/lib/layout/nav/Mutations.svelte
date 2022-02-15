@@ -6,7 +6,7 @@
 </script>
 
 <FieldsForRootType
-  type={$schema.getQueryType()}
-  baseUrl="/model/queries"
-  menuText="Queries"
+  type={$schema.getMutationType()}
+  baseUrl="/model/mutations"
+  menuText="Mutations"
 />
