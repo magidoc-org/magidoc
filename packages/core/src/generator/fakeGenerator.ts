@@ -9,7 +9,7 @@ import {
 import { GraphQLGenerationError } from './error'
 
 import { DEFAULT_FACTORIES } from './defaultFactories'
-import { typeToString, unwrapType } from './extractor.js'
+import { typeToString, unwrapType } from './extractor'
 import {
   GraphQLField,
   GraphQLArgument,
