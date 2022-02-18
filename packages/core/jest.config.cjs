@@ -2,12 +2,13 @@
 module.exports = {
   verbose: true,
   preset: 'ts-jest',
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
   moduleFileExtensions: ['ts', 'js', 'json'],
-  testMatch: ["**/__tests__/**/*.spec.ts"],
-  testEnvironment: 'node',
+  testMatch: ["**/tests/**/*.spec.ts"],
   collectCoverage: true,
-  setupFilesAfterEnv: ['./test/schema.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/tests/schema.setup.ts'],
+  globals: {
+    "ts-jest": {
+      tsconfig: 'tsconfig.json'
+    }
+  }
 }

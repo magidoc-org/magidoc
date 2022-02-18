@@ -7,7 +7,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "esbuild --minify --sourcemap --outdir=dist ./src/*.ts ./src/**/*.ts && tsc --declaration --emitDeclarationOnly --outDir dist",
+    "build": "esbuild --minify --sourcemap --outdir=dist ./src/*.ts ./src/**/*.ts && tsc --build tsconfig.build.json",
     "test": "jest",
     "release": "build && publish"
   },
