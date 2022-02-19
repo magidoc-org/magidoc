@@ -15,9 +15,9 @@
       Magidoc is a simple wrapper around a <a href="https://svelte.dev/"
         >Svelte</a
       >
-      Project to simplify your setup. It will automatically generate static
-      assets about your GraphQL API you can access throughout the application to
-      generate whatever you want. It is based upon
+      Project to simplify your setup. It will automatically generate static assets
+      about your GraphQL API you can access throughout the application to generate
+      whatever you want. It is based upon
       <a href="https://kit.svelte.dev/">Svelte Kit</a>, a framework to develop
       web applications with file-system based routing. For React Developers,
       this is similar to <a href="https://nextjs.org/">Next</a>, but for Svelte!

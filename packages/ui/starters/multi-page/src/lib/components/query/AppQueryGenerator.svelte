@@ -3,13 +3,7 @@
 </script>
 
 <script lang="ts">
-  import {
-    Column,
-    Grid,
-    NumberInput,
-    Row,
-    Tile,
-  } from 'carbon-components-svelte'
+  import { NumberInput } from 'carbon-components-svelte'
 
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'

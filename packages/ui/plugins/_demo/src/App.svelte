@@ -29,7 +29,10 @@
       type="number"
       bind:value={index}
       min={0}
-      max={Math.max(Object.values($schema.getQueryType()?.getFields() || {}).length - 1, 0)}
+      max={Math.max(
+        Object.values($schema.getQueryType()?.getFields() || {}).length - 1,
+        0,
+      )}
     />
   </div>
   <QueryGenerator

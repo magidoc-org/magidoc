@@ -7,7 +7,9 @@
   let field: GraphQLField<unknown, unknown, unknown>
 
   $: {
-    const target = $schema.getSubscriptionType()?.getFields()[$page.params.subscription]
+    const target = $schema.getSubscriptionType()?.getFields()[
+      $page.params.subscription
+    ]
     if (!target) {
       throw new Error('what?')
     }
