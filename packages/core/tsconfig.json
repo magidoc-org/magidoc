@@ -1,6 +1,5 @@
 {
   "extends": "../tsconfig.base.json",
   "include": ["src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts", "tests/**/*.js"],
-  "files": ["./test/schema.setup.d.ts"],
   "exclude": ["node_modules"]
 }

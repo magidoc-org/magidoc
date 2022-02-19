@@ -3,12 +3,15 @@ module.exports = {
   verbose: true,
   preset: 'ts-jest',
   moduleFileExtensions: ['ts', 'js', 'json'],
-  testMatch: ["**/tests/**/*.spec.ts"],
+  testMatch: ['**/tests/**/*.spec.ts'],
   collectCoverage: true,
-  setupFilesAfterEnv: ['<rootDir>/tests/schema.setup.ts'],
+  setupFilesAfterEnv: [
+    '<rootDir>/tests/global.setup.ts',
+    '<rootDir>/tests/schema.setup.ts',
+  ],
   globals: {
-    "ts-jest": {
-      tsconfig: 'tsconfig.json'
-    }
-  }
+    'ts-jest': {
+      tsconfig: 'tsconfig.json',
+    },
+  },
 }
