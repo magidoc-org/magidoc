@@ -30,7 +30,6 @@ describe('generating fakes for a GraphQL input argument', () => {
     it('generates the input properly with no null values', () => {
       const result = generateArgsForField(fieldWithArgs, config, context)
       console.log(result)
-      console.log(result)
     })
   })
 })

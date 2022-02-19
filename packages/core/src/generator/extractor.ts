@@ -56,8 +56,8 @@ export function unwrapOne(type: unknown) {
   return null
 }
 
-export function typeToString(type: GraphQLInputType): string {
-  function unwrapOne(type: GraphQLInputType): GraphQLInputType {
+export function typeToString(type: GraphQLType): string {
+  function unwrapOneOrThrow(type: GraphQLType): GraphQLType {
     const unwrapped = unwrapOne(type)
     if (!unwrapped) {
       throw createIntrospectionError(`Unexpected leaf element '${typeof type}'`)
@@ -80,9 +80,9 @@ export function typeToString(type: GraphQLInputType): string {
     case GraphQLInputObjectType:
       return (type as GraphQLInputObjectType).name
     case GraphQLNonNull:
-      return `${typeToString(unwrapOne(type))}!`
+      return `${typeToString(unwrapOneOrThrow(type))}!`
     case GraphQLList:
-      return `[${typeToString(unwrapOne(type))}]`
+      return `[${typeToString(unwrapOneOrThrow(type))}]`
     default:
       throw new Error(
         `this should be unreachable but was reached with type ${typeof type}: ${type.toString()}`,

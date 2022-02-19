@@ -20,9 +20,14 @@ import {
   isEnumType,
   isScalarType,
   isListType,
+  isNullableType,
 } from 'graphql'
 import { GenerationContext } from './queryGenerator'
 import { Parameter } from './queryBuilder'
+
+type FakeGenerationContext = GenerationContext & {
+  readonly generatedInputObjects: Set<string>
+}
 
 export function generateArgsForField(
   field: GraphQLField<unknown, unknown, unknown>,
@@ -30,14 +35,17 @@ export function generateArgsForField(
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {
   return field.args.map((argument) =>
-    generateInputParameter(argument, config, context),
+    generateInputParameter(argument, config, {
+      ...context,
+      generatedInputObjects: new Set(),
+    }),
   )
 }
 
 function generateInputParameter(
   input: GraphQLArgument,
   config: GeneratorConfig,
-  context: GenerationContext,
+  context: FakeGenerationContext,
 ): Parameter {
   return {
     name: input.name,
@@ -57,7 +65,7 @@ function generateInputParameter(
 function generateInput(
   input: GraphQLInputType,
   config: GeneratorConfig,
-  context: GenerationContext,
+  context: FakeGenerationContext,
   defaultValue: unknown = undefined,
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
@@ -65,6 +73,19 @@ function generateInput(
   const defaultFactory = unwrappedType.name
     ? DEFAULT_FACTORIES[unwrappedType.name]
     : undefined
+
+  if (isInputObjectType(unwrappedType)) {
+    if (context.generatedInputObjects.has(unwrappedType.name)) {
+      if (!isNullableType(input)) {
+        throw new Error(
+          'Fatal error: A recursive input with a non-nullable circular reference was detected, which makes it impossible to generate a query. If you ever see this error, it means that your GraphQL uses an invalid schema.',
+        )
+      }
+      return null
+    } else {
+      context.generatedInputObjects.add(unwrappedType.name)
+    }
+  }
 
   const factoryContext = {
     targetName: unwrappedType.name,
@@ -75,7 +96,7 @@ function generateInput(
     }`,
   }
 
-  return findMostSpecificFactory(
+  const factory = findMostSpecificFactory(
     input,
     config,
     context,
@@ -92,12 +113,14 @@ function generateInput(
       },
     },
   })
+
+  return factory
 }
 
 function findMostSpecificFactory(
   argumentType: GraphQLInputType,
   config: GeneratorConfig,
-  context: GenerationContext,
+  context: FakeGenerationContext,
   nullable = true,
 ): GraphQLFactory {
   // Did the user provide a factory for this exact type?
@@ -150,7 +173,7 @@ function findMostSpecificFactory(
 function randomFactory(
   argumentType: GraphQLNamedType,
   config: GeneratorConfig,
-  context: GenerationContext,
+  context: FakeGenerationContext,
 ): GraphQLFactory {
   if (isEnumType(argumentType)) {
     return () => _.sample(argumentType.getValues())?.name
@@ -178,8 +201,8 @@ function randomFactory(
 
     // Generates a random object the required fields in the object
     return () => {
-      return _.mapValues(fields, (input: GraphQLInputType) => {
-        return generateInput(input, config, context)
+      return _.mapValues(fields, (input) => {
+        return generateInput(input.type, config, context)
       })
     }
   }
