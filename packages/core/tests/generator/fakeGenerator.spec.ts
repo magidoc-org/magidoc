@@ -4,6 +4,7 @@ import {
   generateArgsForField,
   GenerationContext,
   GeneratorConfig,
+  GraphQLFactoryContext,
   NullGenerationStrategy,
   Parameter,
 } from '../../src'
@@ -23,9 +24,10 @@ describe('generating fakes for a GraphQL input argument', () => {
     maxDepth: 5,
     nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
   }
+
   const context: GenerationContext = {
     depth: 3,
-    path: 'some-path',
+    path: 'some.query.path$',
   }
 
   const allArgNames = fieldWithArgs.args.map((arg) => arg.name)
@@ -51,8 +53,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       )
       const defaultValue = defaultFactory
         ? defaultFactory({
-            depth: 1,
-            path: 'whatever',
+            ...context,
             targetName: name,
           })
         : null
@@ -117,7 +118,7 @@ describe('generating fakes for a GraphQL input argument', () => {
     )
   })
 
-  describe('with sometimes null', () => {
+  describe('with sometimes null generation strategy', () => {
     const config: GeneratorConfig = {
       ...baseConfig,
       nullGenerationStrategy: NullGenerationStrategy.SOMETIMES_NULL,
@@ -152,13 +153,138 @@ describe('generating fakes for a GraphQL input argument', () => {
     const results = _.range(0, 100).map(() =>
       generateArgsForField(fieldWithArgs, config, context),
     )
-    
+
     test.each(allArgNames)(
       'should generate all nullable parameters occasionally null',
       (arg) => {
         validateParameterIsOccasionallyNullIfNullable(arg, results)
       },
     )
+  })
+
+  describe('when providing a custom factory for a type', () => {
+    it('should call the custom factory with the right parameters', () => {
+      const output = 'testString'
+      const outerContext = context
+      const factory = jest.fn((context: GraphQLFactoryContext) => {
+        expect(context.defaultFactory).toBeDefined()
+        expect(context.defaultFactory?.provide()).toBeDefined()
+
+        if (context.targetName === 'defaultValueString') {
+          expect(context.defaultValue).toBe('test default value')
+        } else {
+          console.log(context)
+          expect(context.defaultValue).toBeUndefined()
+        }
+
+        expect(context.targetName).toBeDefined()
+
+        expect(context.depth).toBe(outerContext.depth)
+
+        expect(context.path).toStartWith(outerContext.path)
+        expect(context.path).toSatisfy(
+          (path: string) =>
+            path.endsWith(`$${context.targetName}`) ||
+            path.endsWith(`.${context.targetName}`),
+        )
+
+        expect(context.randomFactory).toBeDefined()
+        expect(context.randomFactory?.provide()).toBeDefined()
+        
+        return output
+      })
+
+      generateArgsForField(
+        fieldWithArgs,
+        {
+          ...baseConfig,
+          factories: {
+            String: factory,
+          },
+        },
+        context,
+      )
+    })
+
+    describe('for a raw type', () => {
+      const output =
+        'This is some dope test string that is clearly not hardcoded somewhere else'
+
+      const config: GeneratorConfig = {
+        ...baseConfig,
+        factories: {
+          String: () => output,
+        },
+      }
+
+      it('should work for direct type', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        expect(paramByType('String', result).value).toEqual(output)
+      })
+
+      it('should work for lists', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        expect(paramByType('[String]', result).value).toEqual([output])
+      })
+
+      it('should work for nested objects', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        const testInput = paramByType('TestInput', result)
+
+        const value = testInput.value
+        expect(value).toBeObject()
+
+        const record = value as Record<string, unknown>
+        expect(record['string']).toBe(output)
+        expect(record['listString']).toBe([output])
+      })
+
+      it('should still use the default factory for other types', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        const defaultFactory = DEFAULT_FACTORIES['Float']
+        if (!defaultFactory) {
+          fail('Expected a default factory for type `Float`')
+        }
+
+        const param = paramByType('Float', result)
+        expect(param.value).toEqual(
+          defaultFactory({
+            ...context,
+            targetName: param.name,
+          }),
+        )
+      })
+    })
+
+    describe('for a glob type', () => {
+      const outputString =
+        'This is some dope test string that is clearly not hardcoded somewhere else'
+      const outputFloat = 45.4
+      const outputEnum = 'RED'
+
+      const config: GeneratorConfig = {
+        ...baseConfig,
+        factories: {
+          'Str*': () => outputString,
+          '*loat': () => outputFloat,
+          '*est*nu*': () => outputEnum,
+        },
+      }
+
+      it('should work for direct type', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        expect(paramByType('String', result).value).toEqual(outputString)
+        expect(paramByType('Float', result).value).toEqual(outputFloat)
+        expect(paramByType('TestEnum', result).value).toEqual(outputEnum)
+      })
+
+      it('should work for lists', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        expect(paramByType('[String]', result).value).toEqual([outputString])
+        expect(paramByType('[Float]', result).value).toEqual([outputFloat])
+        expect(paramByType('[TestEnum]', result).value).toEqual([outputEnum])
+      })
+    })
   })
 })
 
@@ -169,6 +295,17 @@ function paramByName(
   const result = _.find(parameters, (item) => item.name === name)
   if (!result) {
     fail(`Expected a parameter named '${name}' in ${parameters.toString()}`)
+  }
+  return result
+}
+
+function paramByType(
+  type: string,
+  parameters: ReadonlyArray<Parameter>,
+): Parameter {
+  const result = _.find(parameters, (item) => item.type === type)
+  if (!result) {
+    fail(`Expected a parameter with type '${type}' in ${parameters.toString()}`)
   }
   return result
 }
