@@ -1,5 +1,8 @@
 import { GraphQLFactory } from './config'
 
+const date = "2022-03-06T08:23:45.000Z"
+const id = '08a16b83-9094-4e89-8c05-2ccadd5c1c7e'
+
 export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
   String: (context) => {
     switch (context.targetName.toLowerCase()) {
@@ -38,27 +41,28 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
         return 'Quebec'
       case 'city':
       case 'cities':
-        return 'QC'
+        return 'Montreal'
       case 'zipcode':
       case 'zipcodes':
-        return 'G1G43F'
+        return 'G1G 43F'
       case 'company':
       case 'companies':
-        return 'ACME'
+        return 'Acme'
       case 'department':
       case 'departments':
         return 'Engineering'
       case 'date':
       case 'dates':
       case 'datetime':
+      case 'datetimes':
       case 'instant':
-        return '2021-01-05T00:00:00.000Z'
+        return date
       case 'price':
       case 'prices':
         return '500$'
       case 'color':
       case 'colors':
-        return '#ffffff'
+        return '#e10098'
       case 'product':
       case 'products':
         return 'Soup'
@@ -67,7 +71,7 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
         return 'Wood'
       case 'id':
       case 'ids':
-        return '08a16b83-9094-4e89-8c05-2ccadd5c1c7e'
+        return id
       case 'name':
       case 'names':
         return 'Some name'
@@ -78,7 +82,7 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
         return 'abc'
     }
   },
-  ID: () => '08a16b83-9094-4e89-8c05-2ccadd5c1c7e',
+  ID: () => id,
   Boolean: () => 'true',
   Int: (context) => {
     switch (context.targetName) {
@@ -93,4 +97,5 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
     }
   },
   Float: () => 30.0,
+  Date: () => date,
 }
