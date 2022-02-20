@@ -1,4 +1,4 @@
-import { isNullableType } from 'graphql'
+import { GraphQLField, isNullableType } from 'graphql'
 import _ from 'lodash'
 import {
   generateArgsForField,
@@ -13,11 +13,7 @@ import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 const schema = getTestSchema()
 
 describe('generating fakes for a GraphQL input argument', () => {
-  const fieldWithArgs = schema.getQueryType()?.getFields()['hasArgs']
-
-  if (!fieldWithArgs) {
-    fail('fieldWithArgs should not be null... did you modify the test schema?')
-  }
+  const fieldWithArgs = getQueryField('hasArgs')
 
   const baseConfig: GeneratorConfig = {
     factories: {},
@@ -163,10 +159,7 @@ describe('generating fakes for a GraphQL input argument', () => {
   })
 
   describe('for a non-nullable type', () => {
-    const nonNullField = schema.getQueryType()?.getFields()['testNonNull']
-    if (!nonNullField) {
-      fail('nonNullField should not be null... did you modify the test schema?')
-    }
+    const nonNullField = getQueryField('testNonNull')
 
     it('should generate the field', () => {
       const result = generateArgsForField(nonNullField, baseConfig, context)
@@ -176,39 +169,38 @@ describe('generating fakes for a GraphQL input argument', () => {
   })
 
   describe('for non-standard scalars', () => {
-    const nonStandardScalarField = schema.getQueryType()?.getFields()[
-      'hasCustomScalarArg'
-    ]
-    if (!nonStandardScalarField) {
-      fail(
-        'nonStandardScalarField should not be null... did you modify the test schema?',
-      )
-    }
+    const nonStandardScalarField = getQueryField('hasCustomScalarArg')
 
     describe('no custom factory is available', () => {
       it('should raise an error', () => {
         try {
-          generateArgsForField(nonStandardScalarField, baseConfig, context)
+          const result = generateArgsForField(nonStandardScalarField, baseConfig, context)
+          console.log(result)
           fail('expected an error to be thrown')
         } catch (error) {
-          console.log(error)
           expect(error).toBeInstanceOf(Error)
           expect((error as Error).message).toContain(
-            'Cannot generate a random value for scalar SomeCustomScalar',
+            `Cannot generate a random value for scalar 'SomeCustomScalar'.`,
           )
           expect((error as Error).message).toContain(
-            `
-            {
-              'SomeCustomScalar': () => generateRandomCustomScalar()
-            }
-            `.trimStart(),
+            `'SomeCustomScalar': () => generateRandomCustomScalar()`,
           )
         }
       })
     })
 
     describe('a custom factory is available', () => {
-      it('should use the custom factory', () => {})
+      it('should use the custom factory', () => {
+        const expectedOutput = 'Some-output-for-my-scalar'
+        const result = generateArgsForField(nonStandardScalarField, {
+          ...baseConfig,
+          factories: {
+            'SomeCustomScalar': () => expectedOutput
+          }
+        }, context)
+
+        expect(paramByType("SomeCustomScalar", result).value).toEqual(expectedOutput)
+      })
     })
   })
 
@@ -359,5 +351,17 @@ function paramByType(
   if (!result) {
     fail(`Expected a parameter with type '${type}' in ${parameters.toString()}`)
   }
+  return result
+}
+
+function getQueryField(name: string): GraphQLField<unknown, unknown, unknown> {
+  const result = schema.getQueryType()?.getFields()[name]
+
+  if (!result) {
+    fail(
+      `field ${name} should not be null... did you modify the test schema?`,
+    )
+  }
+
   return result
 }

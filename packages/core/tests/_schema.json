@@ -85,7 +85,7 @@
                 "description": "non standard scalar",
                 "type": {
                   "kind": "SCALAR",
-                  "name": "Int",
+                  "name": "SomeCustomScalar",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -103,9 +103,9 @@
             "name": "deferrable",
             "description": null,
             "args": [],
-            "ofType": {
+            "type": {
               "kind": "OBJECT",
-              "name": "Test",
+              "name": "Deferrable",
               "ofType": null
             },
             "isDeprecated": false,
