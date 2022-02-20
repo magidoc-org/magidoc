@@ -1,6 +1,10 @@
 {
   "packages": [
     "packages/**/*"
+    
+  ],
+  "ignore": [
+    "packages/**/dist/*"
   ],
   "npmClient": "yarn",
   "version": "0.0.0"
