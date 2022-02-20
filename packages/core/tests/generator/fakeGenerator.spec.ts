@@ -27,7 +27,7 @@ describe('generating fakes for a GraphQL input argument', () => {
 
   const context: GenerationContext = {
     depth: 3,
-    path: 'some.query.path$',
+    path: 'some.query.path',
   }
 
   const allArgNames = fieldWithArgs.args.map((arg) => arg.name)
@@ -170,10 +170,10 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(context.defaultFactory).toBeDefined()
         expect(context.defaultFactory?.provide()).toBeDefined()
 
-        if (context.targetName === 'defaultValueString') {
+        console.log(context)
+        if (context.targetName === 'defaultValueString' || context.targetName === 'defaultValue') {
           expect(context.defaultValue).toBe('test default value')
         } else {
-          console.log(context)
           expect(context.defaultValue).toBeUndefined()
         }
 
@@ -181,7 +181,7 @@ describe('generating fakes for a GraphQL input argument', () => {
 
         expect(context.depth).toBe(outerContext.depth)
 
-        expect(context.path).toStartWith(outerContext.path)
+        expect(context.path).toStartWith(`${outerContext.path}$`)
         expect(context.path).toSatisfy(
           (path: string) =>
             path.endsWith(`$${context.targetName}`) ||
@@ -235,8 +235,8 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(value).toBeObject()
 
         const record = value as Record<string, unknown>
-        expect(record['string']).toBe(output)
-        expect(record['listString']).toBe([output])
+        expect(record['string']).toEqual(output)
+        expect(record['listString']).toEqual([output])
       })
 
       it('should still use the default factory for other types', () => {

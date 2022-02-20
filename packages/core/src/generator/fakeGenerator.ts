@@ -26,6 +26,8 @@ import { GenerationContext } from './queryGenerator'
 import { Parameter } from './queryBuilder'
 
 type FakeGenerationContext = GenerationContext & {
+  readonly targetName: string
+  readonly defaultValue: unknown
   readonly generatedInputObjects: Set<string>
 }
 
@@ -35,30 +37,25 @@ export function generateArgsForField(
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {
   return field.args.map((argument) =>
-    generateInputParameter(argument, config, {
-      ...context,
-      generatedInputObjects: new Set(),
-    }),
+    generateInputParameter(argument, config, context),
   )
 }
 
 function generateInputParameter(
   input: GraphQLArgument,
   config: GeneratorConfig,
-  context: FakeGenerationContext,
+  context: GenerationContext,
 ): Parameter {
   return {
     name: input.name,
     type: typeToString(input.type),
-    value: generateInput(
-      input.type,
-      config,
-      {
-        ...context,
-        path: `${context.path}$`,
-      },
-      input.defaultValue,
-    ),
+    value: generateInput(input.type, config, {
+      ...context,
+      generatedInputObjects: new Set(),
+      path: `${context.path}$`,
+      defaultValue: input.defaultValue,
+      targetName: input.name,
+    }),
   }
 }
 
@@ -66,7 +63,6 @@ function generateInput(
   input: GraphQLInputType,
   config: GeneratorConfig,
   context: FakeGenerationContext,
-  defaultValue: unknown = undefined,
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
   const unwrappedType = unwrapType(input)
@@ -87,13 +83,14 @@ function generateInput(
     }
   }
 
+  const path = `${context.path}${context.path.endsWith('$') ? '' : '.'}${
+    context.targetName
+  }`
   const factoryContext = {
-    targetName: unwrappedType.name,
-    defaultValue: defaultValue,
+    targetName: context.targetName,
+    path,
+    defaultValue: context.defaultValue,
     depth: context.depth,
-    path: `${context.path}${context.path.endsWith('$') ? '' : '.'}${
-      unwrappedType.name
-    }`,
   }
 
   const factory = findMostSpecificFactory(
@@ -202,7 +199,11 @@ function randomFactory(
     // Generates a random object the required fields in the object
     return () => {
       return _.mapValues(fields, (input) => {
-        return generateInput(input.type, config, context)
+        return generateInput(input.type, config, {
+          ...context,
+          targetName: input.name,
+          defaultValue: input.defaultValue,
+        })
       })
     }
   }
