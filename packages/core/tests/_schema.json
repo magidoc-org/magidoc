@@ -28,12 +28,84 @@
             "deprecationReason": null
           },
           {
+            "name": "testNonNull",
+            "description": "`testNonNull` field from `Test` type.",
+            "args": [
+              {
+                "name": "nonNullString",
+                "description": "A non-null string",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "nonNullStringList",
+                "description": "A non-null list of strings",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "String",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Test",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "hasCustomScalarArg",
+            "description": null,
+            "args": [
+              {
+                "name": "nonStandardScalar",
+                "description": "non standard scalar",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Test",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "deferrable",
             "description": null,
             "args": [],
-            "type": {
+            "ofType": {
               "kind": "OBJECT",
-              "name": "Deferrable",
+              "name": "Test",
               "ofType": null
             },
             "isDeprecated": false,
@@ -397,6 +469,16 @@
         "kind": "SCALAR",
         "name": "String",
         "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "SomeCustomScalar",
+        "description": "A custom scalar used for testing.",
         "fields": null,
         "inputFields": null,
         "interfaces": null,

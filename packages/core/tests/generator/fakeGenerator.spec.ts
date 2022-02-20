@@ -162,6 +162,56 @@ describe('generating fakes for a GraphQL input argument', () => {
     )
   })
 
+  describe('for a non-nullable type', () => {
+    const nonNullField = schema.getQueryType()?.getFields()['testNonNull']
+    if (!nonNullField) {
+      fail('nonNullField should not be null... did you modify the test schema?')
+    }
+
+    it('should generate the field', () => {
+      const result = generateArgsForField(nonNullField, baseConfig, context)
+      expect(paramByType('String!', result).value).toBeDefined()
+      expect(paramByType('[String!]!', result).value).toBeDefined()
+    })
+  })
+
+  describe('for non-standard scalars', () => {
+    const nonStandardScalarField = schema.getQueryType()?.getFields()[
+      'hasCustomScalarArg'
+    ]
+    if (!nonStandardScalarField) {
+      fail(
+        'nonStandardScalarField should not be null... did you modify the test schema?',
+      )
+    }
+
+    describe('no custom factory is available', () => {
+      it('should raise an error', () => {
+        try {
+          generateArgsForField(nonStandardScalarField, baseConfig, context)
+          fail('expected an error to be thrown')
+        } catch (error) {
+          console.log(error)
+          expect(error).toBeInstanceOf(Error)
+          expect((error as Error).message).toContain(
+            'Cannot generate a random value for scalar SomeCustomScalar',
+          )
+          expect((error as Error).message).toContain(
+            `
+            {
+              'SomeCustomScalar': () => generateRandomCustomScalar()
+            }
+            `.trimStart(),
+          )
+        }
+      })
+    })
+
+    describe('a custom factory is available', () => {
+      it('should use the custom factory', () => {})
+    })
+  })
+
   describe('when providing a custom factory for a type', () => {
     it('should call the custom factory with the right parameters', () => {
       const output = 'testString'
@@ -170,8 +220,10 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(context.defaultFactory).toBeDefined()
         expect(context.defaultFactory?.provide()).toBeDefined()
 
-        console.log(context)
-        if (context.targetName === 'defaultValueString' || context.targetName === 'defaultValue') {
+        if (
+          context.targetName === 'defaultValueString' ||
+          context.targetName === 'defaultValue'
+        ) {
           expect(context.defaultValue).toBe('test default value')
         } else {
           expect(context.defaultValue).toBeUndefined()
@@ -190,7 +242,7 @@ describe('generating fakes for a GraphQL input argument', () => {
 
         expect(context.randomFactory).toBeDefined()
         expect(context.randomFactory?.provide()).toBeDefined()
-        
+
         return output
       })
 

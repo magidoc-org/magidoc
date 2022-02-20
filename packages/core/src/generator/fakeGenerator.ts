@@ -187,7 +187,7 @@ function randomFactory(
         {
           '${argumentType.name}': () => generateRandomCustomScalar()
         }
-    `)
+    `.trimStart())
     }
 
     return defaultFactory
