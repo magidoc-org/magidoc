@@ -174,7 +174,11 @@ describe('generating fakes for a GraphQL input argument', () => {
     describe('no custom factory is available', () => {
       it('should raise an error', () => {
         try {
-          const result = generateArgsForField(nonStandardScalarField, baseConfig, context)
+          const result = generateArgsForField(
+            nonStandardScalarField,
+            baseConfig,
+            context,
+          )
           console.log(result)
           fail('expected an error to be thrown')
         } catch (error) {
@@ -192,14 +196,20 @@ describe('generating fakes for a GraphQL input argument', () => {
     describe('a custom factory is available', () => {
       it('should use the custom factory', () => {
         const expectedOutput = 'Some-output-for-my-scalar'
-        const result = generateArgsForField(nonStandardScalarField, {
-          ...baseConfig,
-          factories: {
-            'SomeCustomScalar': () => expectedOutput
-          }
-        }, context)
+        const result = generateArgsForField(
+          nonStandardScalarField,
+          {
+            ...baseConfig,
+            factories: {
+              SomeCustomScalar: () => expectedOutput,
+            },
+          },
+          context,
+        )
 
-        expect(paramByType("SomeCustomScalar", result).value).toEqual(expectedOutput)
+        expect(paramByType('SomeCustomScalar', result).value).toEqual(
+          expectedOutput,
+        )
       })
     })
   })
@@ -358,9 +368,7 @@ function getQueryField(name: string): GraphQLField<unknown, unknown, unknown> {
   const result = schema.getQueryType()?.getFields()[name]
 
   if (!result) {
-    fail(
-      `field ${name} should not be null... did you modify the test schema?`,
-    )
+    fail(`field ${name} should not be null... did you modify the test schema?`)
   }
 
   return result
