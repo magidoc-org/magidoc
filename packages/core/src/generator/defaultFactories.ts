@@ -83,12 +83,12 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
     }
   },
   ID: () => id,
-  Boolean: () => 'true',
+  Boolean: () => true,
   Int: (context) => {
-    switch (context.targetName) {
+    switch (context.targetName.toLocaleLowerCase()) {
       case 'salary':
       case 'salaries':
-        return 10_000
+        return 70_000
       case 'age':
       case 'ages':
         return 42
@@ -96,6 +96,6 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
         return 20
     }
   },
-  Float: () => 30.0,
+  Float: () => 30.7,
   Date: () => date,
 }
