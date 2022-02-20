@@ -13,7 +13,7 @@ export type GeneratorConfig = {
   readonly maxDepth: number
 
   /**
-   * For input values that allow for null values, the strategy here will define the default behaviour for generating the null values.
+   * For input values that allow for null values, the strategy here will define the default behavior for generating the null values.
    *
    * Choices are
    *  - NEVER_NULL, which will never pass nullable values as null

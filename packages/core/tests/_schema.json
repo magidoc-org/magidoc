@@ -45,7 +45,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -370,7 +370,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -459,7 +459,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -958,7 +958,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -2010,12 +2010,12 @@
       },
       {
         "name": "specifiedBy",
-        "description": "Exposes a URL that specifies the behaviour of this scalar.",
+        "description": "Exposes a URL that specifies the behavior of this scalar.",
         "locations": ["SCALAR"],
         "args": [
           {
             "name": "url",
-            "description": "The URL that specifies the behaviour of this scalar.",
+            "description": "The URL that specifies the behavior of this scalar.",
             "type": {
               "kind": "NON_NULL",
               "name": null,
