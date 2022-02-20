@@ -6,6 +6,7 @@ module.exports = {
   testMatch: ['**/tests/**/*.spec.ts'],
   collectCoverage: true,
   setupFilesAfterEnv: [
+    "jest-extended/all",
     '<rootDir>/tests/global.setup.ts',
     '<rootDir>/tests/schema.setup.ts',
   ],

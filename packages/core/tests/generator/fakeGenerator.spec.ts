@@ -116,6 +116,50 @@ describe('generating fakes for a GraphQL input argument', () => {
       },
     )
   })
+
+  describe('with sometimes null', () => {
+    const config: GeneratorConfig = {
+      ...baseConfig,
+      nullGenerationStrategy: NullGenerationStrategy.SOMETIMES_NULL,
+    }
+
+    function validateParameterIsOccasionallyNullIfNullable(
+      name: string,
+      result: ReadonlyArray<Parameter>[],
+    ) {
+      const parameters = result.map((params) => paramByName(name, params))
+
+      const argument = _.find(fieldWithArgs?.args, (arg) => arg.name === name)
+
+      if (!argument) {
+        fail(`expected argument to be defined by name '${name}'`)
+      }
+
+      if (isNullableType(argument.type)) {
+        expect(parameters).toSatisfyAny(
+          (item: Parameter) => item.value === null,
+        )
+        expect(parameters).toSatisfyAny(
+          (item: Parameter) => item.value !== null,
+        )
+      } else {
+        expect(parameters).toSatisfyAll(
+          (item: Parameter) => item.value !== null,
+        )
+      }
+    }
+
+    const results = _.range(0, 100).map(() =>
+      generateArgsForField(fieldWithArgs, config, context),
+    )
+    
+    test.each(allArgNames)(
+      'should generate all nullable parameters occasionally null',
+      (arg) => {
+        validateParameterIsOccasionallyNullIfNullable(arg, results)
+      },
+    )
+  })
 })
 
 function paramByName(
