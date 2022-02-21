@@ -365,11 +365,5 @@ function paramByType(
 }
 
 function getQueryField(name: string): GraphQLField<unknown, unknown, unknown> {
-  const result = schema.getQueryType()?.getFields()[name]
-
-  if (!result) {
-    fail(`field ${name} should not be null... did you modify the test schema?`)
-  }
-
-  return result
+  return getMandatoryField(schema.getQueryType(), name)
 }

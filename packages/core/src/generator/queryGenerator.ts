@@ -54,7 +54,7 @@ function generateField(
   context: GenerationContext,
 ): QueryBuilder | null {
   // Go no further
-  if (context.depth >= config.maxDepth) {
+  if (context.depth > config.maxDepth) {
     return null
   }
 
