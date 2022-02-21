@@ -92,6 +92,11 @@ function generateField(
     return null
   }
 
+  if (isLeafType(type)) {
+    // No more fields under
+    return null
+  }
+
   const builder = subSelectionBuilder()
 
   const fields = (type as GraphQLObjectType).getFields()
