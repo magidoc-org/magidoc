@@ -48,44 +48,6 @@ export function generateGraphQLQuery(
   return resultBuilder.build()
 }
 
-function generateField(
-  type: GraphQLType,
-  config: GeneratorConfig,
-  context: GenerationContext,
-): QueryBuilder | null {
-  // Go no further
-  if (context.depth > config.maxDepth) {
-    return null
-  }
-
-  if (isLeafType(type)) {
-    // No more fields under
-    return null
-  }
-
-  const builder = subSelectionBuilder()
-
-  const fields = (type as GraphQLObjectType).getFields()
-  const finalBuilderWithAllFields = _.reduce(
-    fields,
-    (memo: QueryBuilder, field: GraphQLField<unknown, unknown, unknown>) => {
-      return buildField(memo, field, config, {
-        depth: context.depth,
-        path: `${context.path}.${field.name}`,
-      })
-    },
-    builder,
-  )
-
-  if (finalBuilderWithAllFields === builder) {
-    // No change in the builder indicates that there were no leaf elements
-    // and that no sub fields could be selected due to max depth being reached
-    return null
-  }
-
-  return finalBuilderWithAllFields
-}
-
 function buildField(
   builder: QueryBuilder,
   field: GraphQLField<unknown, unknown, unknown>,
@@ -118,4 +80,37 @@ function buildField(
 
   // Modify the builder to select the sub field
   return builder.withField(field.name, parameters, generatedSubSelection)
+}
+
+function generateField(
+  type: GraphQLType,
+  config: GeneratorConfig,
+  context: GenerationContext,
+): QueryBuilder | null {
+  // Go no further
+  if (context.depth > config.maxDepth) {
+    return null
+  }
+
+  const builder = subSelectionBuilder()
+
+  const fields = (type as GraphQLObjectType).getFields()
+  const finalBuilderWithAllFields = _.reduce(
+    fields,
+    (memo: QueryBuilder, field: GraphQLField<unknown, unknown, unknown>) => {
+      return buildField(memo, field, config, {
+        depth: context.depth,
+        path: `${context.path}.${field.name}`,
+      })
+    },
+    builder,
+  )
+
+  if (finalBuilderWithAllFields === builder) {
+    // No change in the builder indicates that there were no leaf elements
+    // and that no sub fields could be selected due to max depth being reached
+    return null
+  }
+
+  return finalBuilderWithAllFields
 }

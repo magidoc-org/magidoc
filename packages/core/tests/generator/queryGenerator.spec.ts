@@ -173,9 +173,9 @@ describe('generating a query', () => {
   describe('a deep field but non recursive', () => {
     const deepNonRecursiveField = getQueryField('deferrable')
 
-    describe('and max depth is acceptable to return the field', () => {
+    describe('and max depth is larger than the field', () => {
       const config: Partial<GeneratorConfig> = {
-        maxDepth: 3,
+        maxDepth: 10,
       }
 
       it('generates the query properly', () => {
@@ -188,6 +188,11 @@ describe('generating a query', () => {
               deferrable {
                 normalString
                 deferredString(delay: $delay)
+                deferrableSecondLevel {
+                  deferrable {
+                    normalString
+                  }
+                }
               }
             }
           `,
@@ -205,11 +210,11 @@ describe('generating a query', () => {
 
     describe('and max depth is too low to return the field', () => {
       const config: Partial<GeneratorConfig> = {
-        maxDepth: 1,
+        maxDepth: 3,
       }
 
       it('generates the query properly', () => {
-        expect(generateGraphQLQuery(deepNonRecursiveField, config)).toBeNull()
+        const result = generateGraphQLQuery(deepNonRecursiveField, config)
 
         assertQueryEqual(
           result?.query,
