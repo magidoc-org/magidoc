@@ -16,39 +16,13 @@ import {
   isNonNullType,
   getNamedType,
 } from 'graphql'
-import { GraphQLIntrospectionResultError } from './error'
-
-export function unwrapFieldType(
-  field: GraphQLField<unknown, unknown, unknown>,
-): GraphQLType {
-  return unwrapType(field.type)
-}
-
-export function unwrapInputValueType(input: GraphQLInputType): GraphQLType {
-  return unwrapType(input)
-}
-
-export function unwrapNonNull(type: GraphQLType): GraphQLType {
-  if (isNonNullType(type)) {
-    return type.ofType
-  }
-
-  return type
-}
-
-export function unwrapList(type: GraphQLType): GraphQLType {
-  if (isListType(type)) {
-    return type.ofType
-  }
-
-  return type
-}
+import { GraphQLGenerationError, GraphQLIntrospectionResultError } from './error'
 
 export function unwrapType(type: GraphQLType): GraphQLNamedType {
   return getNamedType(type)
 }
 
-export function unwrapOne(type: unknown) {
+export function unwrapOne(type: unknown): GraphQLType | null {
   if (isWrappingType(type)) {
     return type.ofType
   }
@@ -60,7 +34,7 @@ export function typeToString(type: GraphQLType): string {
   function unwrapOneOrThrow(type: GraphQLType): GraphQLType {
     const unwrapped = unwrapOne(type)
     if (!unwrapped) {
-      throw createIntrospectionError(`Unexpected leaf element '${typeof type}'`)
+      throw new GraphQLGenerationError(`Unexpected leaf element '${type.toString()}'`)
     }
 
     return unwrapped
@@ -88,21 +62,4 @@ export function typeToString(type: GraphQLType): string {
         `this should be unreachable but was reached with type ${typeof type}: ${type.toString()}`,
       )
   }
-}
-
-export function createIntrospectionError(
-  message: string,
-): GraphQLIntrospectionResultError {
-  return new GraphQLIntrospectionResultError(
-    `
-        ${message}
-        ${thisIsNotSupposedToHappen()}
-      `.trimStart(),
-  )
-}
-
-function thisIsNotSupposedToHappen(): string {
-  return `
-        This is not supposed to happen in any valid GraphQL server implementation...
-    `
 }

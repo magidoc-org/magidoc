@@ -8,7 +8,7 @@ import {
   GraphQLObjectType,
   isLeafType,
 } from 'graphql'
-import { unwrapFieldType } from './extractor'
+import {  unwrapType } from './extractor'
 import { generateArgsForField } from './fakeGenerator'
 import {
   Parameter,
@@ -66,7 +66,7 @@ function buildField(
     context,
   )
 
-  const type = unwrapFieldType(field)
+  const type = unwrapType(field.type)
   const isLeafField = isLeafType(type)
 
   if (isLeafField) {
