@@ -11,12 +11,10 @@ import {
   GraphQLList,
   GraphQLNonNull,
   GraphQLNamedType,
-  isListType,
   isWrappingType,
-  isNonNullType,
   getNamedType,
 } from 'graphql'
-import { GraphQLGenerationError, GraphQLIntrospectionResultError } from './error'
+import { GraphQLGenerationError } from './error'
 
 export function unwrapType(type: GraphQLType): GraphQLNamedType {
   return getNamedType(type)
@@ -59,7 +57,7 @@ export function typeToString(type: GraphQLType): string {
       return `[${typeToString(unwrapOneOrThrow(type))}]`
     default:
       throw new Error(
-        `this should be unreachable but was reached with type ${typeof type}: ${type.toString()}`,
+        `this should be unreachable but was reached with type '${type.toString()}'`,
       )
   }
 }
