@@ -7,6 +7,7 @@ import {
   GraphQLFactoryContext,
   NullGenerationStrategy,
   Parameter,
+  QueryType,
 } from '../../src'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 
@@ -16,6 +17,7 @@ describe('generating fakes for a GraphQL input argument', () => {
   const fieldWithArgs = getQueryField('hasArgs')
 
   const baseConfig: GeneratorConfig = {
+    queryType: QueryType.QUERY,
     factories: {},
     maxDepth: 5,
     nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,

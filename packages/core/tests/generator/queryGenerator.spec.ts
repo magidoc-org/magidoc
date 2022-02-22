@@ -1,5 +1,12 @@
 import { GraphQLField } from 'graphql'
-import { generateGraphQLQuery, GeneratorConfig, gql, prettify } from '../../src'
+import {
+  generateGraphQLQuery,
+  GeneratorConfig,
+  gql,
+  NullGenerationStrategy,
+  prettify,
+  QueryType,
+} from '../../src'
 import minify from 'graphql-query-compress'
 
 const schema = getTestSchema()
@@ -116,6 +123,51 @@ describe('generating a query', () => {
 
         it('returns a null query', () => {
           expect(generateGraphQLQuery(recursiveField, config)).toBeNull()
+        })
+      })
+    })
+
+    describe('with custom config for null generation', () => {
+      const config: Partial<GeneratorConfig> = {
+        nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
+      }
+
+      it('generates the query up to the configured max depth', () => {
+        const result = generateGraphQLQuery(recursiveField, config)
+
+        assertQueryEqual(
+          result?.query,
+          gql`
+            query ($delay: Int, $delay2: Int, $delay3: Int, $delay4: Int) {
+              person {
+                name
+                age(delay: $delay)
+                friends {
+                  name
+                  age(delay: $delay2)
+                  friends {
+                    name
+                    age(delay: $delay3)
+                    friends {
+                      name
+                      age(delay: $delay4)
+                    }
+                  }
+                }
+              }
+            }
+          `,
+        )
+      })
+
+      it('provides values for all the variables', () => {
+        const result = generateGraphQLQuery(recursiveField, config)
+
+        expect(result?.variables).toEqual({
+          delay: null,
+          delay2: null,
+          delay3: null,
+          delay4: null,
         })
       })
     })
@@ -238,6 +290,78 @@ describe('generating a query', () => {
       })
     })
   })
+
+  describe('with a custom query name', () => {
+    const fieldWithNoArgs = getQueryField('id')
+    const config: Partial<GeneratorConfig> = {
+      queryName: 'GetId',
+    }
+
+    it('generates the right query', () => {
+      const result = generateGraphQLQuery(fieldWithNoArgs, config)
+
+      assertQueryEqual(
+        result?.query,
+        gql`
+          query GetId {
+            id
+          }
+        `,
+      )
+    })
+  })
+})
+
+describe('generating a mutation', () => {
+  const mutation = getMutationField('setString')
+  const config: Partial<GeneratorConfig> = {
+    queryType: QueryType.MUTATION,
+  }
+
+  it('generates the mutation properly', () => {
+    const result = generateGraphQLQuery(mutation, config)
+    assertQueryEqual(
+      result?.query,
+      gql`
+        mutation ($value: String) {
+          setString(value: $value)
+        }
+      `,
+    )
+  })
+
+  it('generates the variables properly', () => {
+    const result = generateGraphQLQuery(mutation, config)
+    expect(result?.variables).toEqual({
+      value: 'abc',
+    })
+  })
+})
+
+describe('generating a subscription', () => {
+  const subscription = getSubscriptionField('message')
+  const config: Partial<GeneratorConfig> = {
+    queryType: QueryType.SUBSCRIPTION,
+  }
+
+  it('generates the subscription properly', () => {
+    const result = generateGraphQLQuery(subscription, config)
+    assertQueryEqual(
+      result?.query,
+      gql`
+        subscription ($delay: Int) {
+          message(delay: $delay)
+        }
+      `,
+    )
+  })
+
+  it('generates the variables properly', () => {
+    const result = generateGraphQLQuery(subscription, config)
+    expect(result?.variables).toEqual({
+      delay: 20,
+    })
+  })
 })
 
 function assertQueryEqual(actual?: string, expected?: string) {
@@ -249,14 +373,14 @@ function getQueryField(name: string): GraphQLField<unknown, unknown, unknown> {
   return getMandatoryField(schema.getQueryType(), name)
 }
 
-// function getMutationField(
-//   name: string,
-// ): GraphQLField<unknown, unknown, unknown> {
-//   return getMandatoryField(schema.getMutationType(), name)
-// }
+function getMutationField(
+  name: string,
+): GraphQLField<unknown, unknown, unknown> {
+  return getMandatoryField(schema.getMutationType(), name)
+}
 
-// function getSubscriptionField(
-//   name: string,
-// ): GraphQLField<unknown, unknown, unknown> {
-//   return getMandatoryField(schema.getSubscriptionType(), name)
-// }
+function getSubscriptionField(
+  name: string,
+): GraphQLField<unknown, unknown, unknown> {
+  return getMandatoryField(schema.getSubscriptionType(), name)
+}

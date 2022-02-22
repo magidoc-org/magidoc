@@ -5,6 +5,7 @@ import _ from 'lodash'
 export enum QueryType {
   QUERY = 'query',
   MUTATION = 'mutation',
+  SUBSCRIPTION = 'subscription'
 }
 
 export type Parameter = {
@@ -44,8 +45,8 @@ export class QueryBuilder {
     return new QueryBuilder(type, this.name, this.fields)
   }
 
-  withName(name: string): QueryBuilder {
-    return new QueryBuilder(this.type, name, this.fields)
+  withName(name?: string): QueryBuilder {
+    return new QueryBuilder(this.type, name ?? '', this.fields)
   }
 
   withField(

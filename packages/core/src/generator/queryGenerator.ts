@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _, { merge } from 'lodash'
 
 import { GraphQLQuery } from '../models/query'
 import { GeneratorConfig, NullGenerationStrategy } from './config'
@@ -16,8 +16,11 @@ import {
   queryBuilder,
   subSelectionBuilder,
 } from './queryBuilder'
+import { QueryType } from '..'
 
 const DEFAULT_CONFIG: GeneratorConfig = {
+  queryName: undefined,
+  queryType: QueryType.QUERY,
   maxDepth: 5,
   nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
   factories: {},
@@ -45,7 +48,10 @@ export function generateGraphQLQuery(
     return null
   }
 
-  return resultBuilder.build()
+  return resultBuilder
+    .withType(mergedConfig.queryType)
+    .withName(mergedConfig.queryName)
+    .build()
 }
 
 function buildField(

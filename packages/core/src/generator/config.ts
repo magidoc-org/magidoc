@@ -1,3 +1,5 @@
+import { QueryType } from ".."
+
 export enum NullGenerationStrategy {
   NEVER_NULL = 'never',
   ALWAYS_NULL = 'always',
@@ -5,6 +7,16 @@ export enum NullGenerationStrategy {
 }
 
 export type GeneratorConfig = {
+  /**
+   * The type of the GraphQL Requests. This will default to "QUERY", but "MUTATION" and "SUBSCRIPTION" are also allowed
+   */
+  queryType: QueryType
+
+  /**
+   * The name of the query. By default, this will be undefined, which means the query is unnamed.
+   */
+  queryName?: string 
+
   /**
    * The max depth at which we want to generate the query.
    *
