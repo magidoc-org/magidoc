@@ -7,8 +7,11 @@ import {
   GraphQLType,
   GraphQLObjectType,
   isLeafType,
+  isUnionType,
+  isObjectType,
+  isInterfaceType,
 } from 'graphql'
-import {  unwrapType } from './extractor'
+import { unwrapType } from './extractor'
 import { generateArgsForField } from './fakeGenerator'
 import {
   Parameter,
@@ -92,6 +95,7 @@ function generateField(
   type: GraphQLType,
   config: GeneratorConfig,
   context: GenerationContext,
+  builder: QueryBuilder = subSelectionBuilder(),
 ): QueryBuilder | null {
   // Go no further
   if (context.depth > config.maxDepth) {
@@ -103,25 +107,53 @@ function generateField(
     return null
   }
 
-  const builder = subSelectionBuilder()
+  if (isUnionType(type)) {
+    const types = type.getTypes()
+    const finalBuilderWithAllFields = _.reduce(
+      types,
+      (memo: QueryBuilder, type: GraphQLObjectType<unknown, unknown>) => {
+        return memo.withField(
+          '',
+          [],
+          generateField(
+            type,
+            config,
+            context,
+            subSelectionBuilder().withInlineFragment(`... on ${type.name}`),
+          ) ?? subSelectionBuilder(),
+        )
+      },
+      builder,
+    )
 
-  const fields = (type as GraphQLObjectType).getFields()
-  const finalBuilderWithAllFields = _.reduce(
-    fields,
-    (memo: QueryBuilder, field: GraphQLField<unknown, unknown, unknown>) => {
-      return buildField(memo, field, config, {
-        depth: context.depth,
-        path: `${context.path}.${field.name}`,
-      })
-    },
-    builder,
-  )
+    if (finalBuilderWithAllFields === builder) {
+      // No change in the builder indicates that there were no leaf elements
+      // and that no sub fields could be selected due to max depth being reached
+      return null
+    }
 
-  if (finalBuilderWithAllFields === builder) {
-    // No change in the builder indicates that there were no leaf elements
-    // and that no sub fields could be selected due to max depth being reached
-    return null
+    return finalBuilderWithAllFields
+  } else if (isObjectType(type) || isInterfaceType(type)) {
+    const fields = type.getFields()
+    const finalBuilderWithAllFields = _.reduce(
+      fields,
+      (memo: QueryBuilder, field: GraphQLField<unknown, unknown, unknown>) => {
+        return buildField(memo, field, config, {
+          depth: context.depth,
+          path: `${context.path}.${field.name}`,
+        })
+      },
+      builder,
+    )
+
+    if (finalBuilderWithAllFields === builder) {
+      // No change in the builder indicates that there were no leaf elements
+      // and that no sub fields could be selected due to max depth being reached
+      return null
+    }
+
+    return finalBuilderWithAllFields
   }
 
-  return finalBuilderWithAllFields
+  throw new Error('This should be unreachable')
 }

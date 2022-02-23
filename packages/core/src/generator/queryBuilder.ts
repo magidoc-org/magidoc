@@ -5,7 +5,7 @@ import _ from 'lodash'
 export enum QueryType {
   QUERY = 'query',
   MUTATION = 'mutation',
-  SUBSCRIPTION = 'subscription'
+  SUBSCRIPTION = 'subscription',
 }
 
 export type Parameter = {
@@ -31,22 +31,38 @@ type QuerySubSelection = {
 }
 
 export class QueryBuilder {
-  private readonly type: QueryType
-  private readonly fields: BuilderFields = {}
   private readonly name: string = ''
+  private readonly type: QueryType
+  private readonly inlineFragment: string = ''
+  private readonly fields: BuilderFields = {}
 
-  constructor(type: QueryType, name: string, fields: BuilderFields) {
-    this.type = type
+  constructor(
+    type: QueryType,
+    name: string,
+    inlineFragment: string,
+    fields: BuilderFields,
+  ) {
     this.name = name
+    this.type = type
+    this.inlineFragment = inlineFragment
     this.fields = fields
   }
 
+  withInlineFragment(fragment?: string): QueryBuilder {
+    return new QueryBuilder(this.type, this.name, fragment ?? '', this.fields)
+  }
+
   withType(type: QueryType): QueryBuilder {
-    return new QueryBuilder(type, this.name, this.fields)
+    return new QueryBuilder(type, this.name, this.inlineFragment, this.fields)
   }
 
   withName(name?: string): QueryBuilder {
-    return new QueryBuilder(this.type, name ?? '', this.fields)
+    return new QueryBuilder(
+      this.type,
+      name ?? '',
+      this.inlineFragment,
+      this.fields,
+    )
   }
 
   withField(
@@ -56,7 +72,7 @@ export class QueryBuilder {
   ): QueryBuilder {
     name = name.trim()
 
-    return new QueryBuilder(this.type, this.name, {
+    return new QueryBuilder(this.type, this.name, this.inlineFragment, {
       ...this.fields,
       [name]: {
         parameters: parameters,
@@ -94,6 +110,7 @@ export class QueryBuilder {
 
     type BuiltSubSelection = {
       readonly parameters: ReadonlyArray<VariableParameter>
+      readonly inlineFragment?: string
       readonly subSelection?: QuerySubSelection
     }
 
@@ -138,7 +155,7 @@ export class QueryBuilder {
       )
     return {
       query: `
-        {
+        ${this.inlineFragment} {
           ${fieldsAsQueries.join(' ')}
         }
       `,
@@ -185,11 +202,11 @@ export class QueryBuilder {
 }
 
 export function queryBuilder(): QueryBuilder {
-  return new QueryBuilder(QueryType.QUERY, '', {})
+  return new QueryBuilder(QueryType.QUERY, '', '', {})
 }
 
 export function mutationBuilder(): QueryBuilder {
-  return new QueryBuilder(QueryType.MUTATION, '', {})
+  return new QueryBuilder(QueryType.MUTATION, '', '', {})
 }
 
 export function subSelectionBuilder(): QueryBuilder {

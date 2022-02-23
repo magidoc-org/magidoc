@@ -222,6 +222,20 @@ describe('generating a query', () => {
     })
   })
 
+  describe('for a union type field', () => {
+    const unionTypeField = getQueryField('union')
+
+    it('generates the query properly', () => {
+      const result = generateGraphQLQuery(unionTypeField, emptyConfig)
+      assertQueryEqual(
+        result?.query,
+        gql`
+        
+        `
+      )
+    });
+  })
+
   describe('a deep field but non recursive', () => {
     const deepNonRecursiveField = getQueryField('deferrable')
 
