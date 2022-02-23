@@ -95,7 +95,6 @@ function generateField(
   type: GraphQLType,
   config: GeneratorConfig,
   context: GenerationContext,
-  builder: QueryBuilder = subSelectionBuilder(),
 ): QueryBuilder | null {
   // Go no further
   if (context.depth > config.maxDepth) {
@@ -108,32 +107,29 @@ function generateField(
   }
 
   if (isUnionType(type)) {
+    const builder = subSelectionBuilder().withField('__typename', [])
+
     const types = type.getTypes()
     const finalBuilderWithAllFields = _.reduce(
       types,
       (memo: QueryBuilder, type: GraphQLObjectType<unknown, unknown>) => {
-        return memo.withField(
-          '',
-          [],
-          generateField(
-            type,
-            config,
-            context,
-            subSelectionBuilder().withInlineFragment(`... on ${type.name}`),
-          ) ?? subSelectionBuilder(),
-        )
+        const typeSubSelection = generateField(type, config, context)
+
+        if (typeSubSelection) {
+          return memo.withInlineFragment(type.name, typeSubSelection)
+        }
+
+        // We were not able to build the fragment due to max depth being reached, 
+        // so return without the fragment
+        return memo
       },
       builder,
     )
 
-    if (finalBuilderWithAllFields === builder) {
-      // No change in the builder indicates that there were no leaf elements
-      // and that no sub fields could be selected due to max depth being reached
-      return null
-    }
-
     return finalBuilderWithAllFields
   } else if (isObjectType(type) || isInterfaceType(type)) {
+    const builder = subSelectionBuilder()
+    
     const fields = type.getFields()
     const finalBuilderWithAllFields = _.reduce(
       fields,

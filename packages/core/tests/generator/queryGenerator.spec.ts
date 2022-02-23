@@ -223,16 +223,55 @@ describe('generating a query', () => {
   })
 
   describe('for a union type field', () => {
-    const unionTypeField = getQueryField('union')
 
-    it('generates the query properly', () => {
-      const result = generateGraphQLQuery(unionTypeField, emptyConfig)
-      assertQueryEqual(
-        result?.query,
-        gql`
-        
-        `
-      )
+    describe("and max depth is appropriate to generate the union", () =>{
+      const unionTypeField = getQueryField('union')
+      it('generates the query properly', () => {
+        const result = generateGraphQLQuery(unionTypeField, emptyConfig)
+        assertQueryEqual(
+          result?.query,
+          gql`
+            query {
+              union {
+                __typename
+                ... on First {
+                  name
+                  first {
+                    name
+                  }
+                }
+                ... on Second {
+                  name
+                  second {
+                    name
+                  }
+                }
+              }
+            }
+          `,
+        )
+      })
+    })
+
+    describe('and max depth is too low to generate a union type', () => {
+      const unionTypeField = getQueryField('unionTwoLevels')
+
+      it('generates skips generating the union type', () => {
+        const result = generateGraphQLQuery(unionTypeField, {
+          maxDepth: 2,
+        })
+  
+        assertQueryEqual(
+          result?.query,
+          gql`
+            query {
+              unionTwoLevels {
+                __typename
+              }
+            }
+          `,
+        )
+      })
     });
   })
 

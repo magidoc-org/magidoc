@@ -33,36 +33,38 @@ type QuerySubSelection = {
 export class QueryBuilder {
   private readonly name: string = ''
   private readonly type: QueryType
-  private readonly inlineFragment: string = ''
   private readonly fields: BuilderFields = {}
 
-  constructor(
-    type: QueryType,
-    name: string,
-    inlineFragment: string,
-    fields: BuilderFields,
-  ) {
+  constructor(type: QueryType, name: string, fields: BuilderFields) {
     this.name = name
     this.type = type
-    this.inlineFragment = inlineFragment
     this.fields = fields
   }
 
-  withInlineFragment(fragment?: string): QueryBuilder {
-    return new QueryBuilder(this.type, this.name, fragment ?? '', this.fields)
+  withInlineFragment(
+    fragment: string,
+    subSelection: QueryBuilder,
+  ): QueryBuilder {
+    /**
+     * An inline fragment is nothing more than a field with a complex name
+     *
+     * ... on Type {}
+     *
+     * has the same syntax as
+     *
+     * field {}
+     *
+     * a fragment name is also unique within a query, and so are fields
+     */
+    return this.withField(`... on ${fragment}`, [], subSelection)
   }
 
   withType(type: QueryType): QueryBuilder {
-    return new QueryBuilder(type, this.name, this.inlineFragment, this.fields)
+    return new QueryBuilder(type, this.name, this.fields)
   }
 
   withName(name?: string): QueryBuilder {
-    return new QueryBuilder(
-      this.type,
-      name ?? '',
-      this.inlineFragment,
-      this.fields,
-    )
+    return new QueryBuilder(this.type, name ?? '', this.fields)
   }
 
   withField(
@@ -72,7 +74,7 @@ export class QueryBuilder {
   ): QueryBuilder {
     name = name.trim()
 
-    return new QueryBuilder(this.type, this.name, this.inlineFragment, {
+    return new QueryBuilder(this.type, this.name, {
       ...this.fields,
       [name]: {
         parameters: parameters,
@@ -155,7 +157,7 @@ export class QueryBuilder {
       )
     return {
       query: `
-        ${this.inlineFragment} {
+        {
           ${fieldsAsQueries.join(' ')}
         }
       `,
@@ -202,11 +204,11 @@ export class QueryBuilder {
 }
 
 export function queryBuilder(): QueryBuilder {
-  return new QueryBuilder(QueryType.QUERY, '', '', {})
+  return new QueryBuilder(QueryType.QUERY, '', {})
 }
 
 export function mutationBuilder(): QueryBuilder {
-  return new QueryBuilder(QueryType.MUTATION, '', '', {})
+  return new QueryBuilder(QueryType.MUTATION, '', {})
 }
 
 export function subSelectionBuilder(): QueryBuilder {

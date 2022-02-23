@@ -175,6 +175,18 @@
             "deprecationReason": null
           },
           {
+            "name": "unionTwoLevels",
+            "description": "> union field with two level.",
+            "args": [],
+            "type": {
+              "kind": "UNION",
+              "name": "TestUnionTwoLevels",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "id",
             "description": "id field from Test type.",
             "args": [],
@@ -660,6 +672,27 @@
         ]
       },
       {
+        "kind": "UNION",
+        "name": "TestUnionTwoLevels",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "FirstTwoLevels",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "SecondTwoLevels",
+            "ofType": null
+          }
+        ]
+      },
+      {
         "kind": "OBJECT",
         "name": "First",
         "description": null,
@@ -676,6 +709,39 @@
             "isDeprecated": false,
             "deprecationReason": null
           },
+          {
+            "name": "first",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INTERFACE",
+                "name": "TestInterface",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "TestInterface",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "FirstTwoLevels",
+        "description": null,
+        "fields": [
           {
             "name": "first",
             "description": null,
@@ -755,6 +821,35 @@
             "isDeprecated": false,
             "deprecationReason": null
           },
+          {
+            "name": "second",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "INTERFACE",
+              "name": "TestInterface",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "TestInterface",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SecondTwoLevels",
+        "description": null,
+        "fields": [
           {
             "name": "second",
             "description": null,
