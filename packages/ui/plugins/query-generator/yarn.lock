@@ -238,10 +238,10 @@
   dependencies:
     "@lezer/common" "^0.15.0"
 
-"@magidoc/core@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@magidoc/core/-/core-0.0.13.tgz#f0cb0c5ea4aa1113dff8c9766571a4d3c087ba04"
-  integrity sha512-+HH01cy6iru45HD30dVih5SyuM+N+uo7FWlYgQbFKIA8ecCXm1MeZ44Y/VsquzdAaxskpVqXBKEX6iG+8qinew==
+"@magidoc/core@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@magidoc/core/-/core-0.0.16.tgz#21aaac160647c516305ced10680a8bd00a97138e"
+  integrity sha512-MJSRrffKBBlLTvqns20xVYeSfb/xdIUBlcedNaBHKLoQ4E7yDcghh86yWj5H0H0ysVzqR1SYxzjCZgU4PUFjGA==
   dependencies:
     glob-to-regexp "^0.4.1"
     graphql "^16.3.0"

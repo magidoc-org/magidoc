@@ -24,6 +24,18 @@
     {
       "name": "Core",
       "path": "./packages/core/"
+    },
+    {
+      "name": "Plugins/Demo",
+      "path": "./packages/ui/plugins/_demo"
+    },
+    {
+      "name": "Plugins/Query Generator",
+      "path": "./packages/ui/plugins/query-generator"
+    },
+    {
+      "name": "Starters/Multi-Page",
+      "path": "./packages/ui/starters/multi-page"
     }
   ],
   "extensions": {

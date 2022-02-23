@@ -1,16 +1,16 @@
 {
   "name": "@magidoc/plugin-query-generator",
   "license": "MIT",
-  "version": "0.0.13",
+  "version": "0.0.16",
   "svelte": "index.js",
   "scripts": {
     "build": "yarn check && yarn package",
     "package": "svelte-kit package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "release": "yarn build && cd package && yarn publish"
+    "release": "yarn build && cd dist && yarn publish"
   },
   "dependencies": {
-    "@magidoc/core": "^0.0.13",
+    "@magidoc/core": "^0.0.16",
     "codemirror": "^5.65.1",
     "codemirror-graphql": "^1.2.11",
     "graphql": "^16.3.0"

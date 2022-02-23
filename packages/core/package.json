@@ -1,7 +1,7 @@
 {
   "name": "@magidoc/core",
   "private": false,
-  "version": "0.0.13",
+  "version": "0.0.16",
   "type": "module",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "esbuild --minify --sourcemap --outdir=dist ./src/*.ts ./src/**/*.ts && tsc --build tsconfig.build.json",
     "test": "jest",
-    "release": "build && publish"
+    "release": "yarn build && yarn publish"
   },
   "dependencies": {
     "glob-to-regexp": "^0.4.1",
