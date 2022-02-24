@@ -1,8 +1,10 @@
 <script lang="ts">
   import { InlineNotification } from 'carbon-components-svelte'
   import type { GraphQLField } from 'graphql'
+  import type { QueryType } from '@magidoc/core'
   import AppQueryGenerator from './AppQueryGenerator.svelte'
 
+  export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
 </script>
 
@@ -12,6 +14,7 @@
       hideCloseButton
       kind="warning"
       title="Deprecated Query:"
+      style="max-width: 100%"
       subtitle={field.deprecationReason}
     />
   {/if}
@@ -45,5 +48,5 @@
   <br />
 
   <h4>Sample</h4>
-  <AppQueryGenerator {field} />
+  <AppQueryGenerator {type} {field} />
 </section>

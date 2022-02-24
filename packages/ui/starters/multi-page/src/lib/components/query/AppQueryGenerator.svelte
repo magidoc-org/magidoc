@@ -3,11 +3,13 @@
 </script>
 
 <script lang="ts">
+  import type { QueryType } from '@magidoc/core'
   import { NumberInput } from 'carbon-components-svelte'
 
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
 
+  export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
 
   let QueryGenerator: unknown
@@ -40,6 +42,7 @@
     this={QueryGenerator}
     {field}
     generatorConfig={{
+      queryType: type,
       maxDepth: queryDepth,
     }}
     queryPanelHeight={300}

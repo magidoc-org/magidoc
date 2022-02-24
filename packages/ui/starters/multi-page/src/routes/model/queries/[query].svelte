@@ -3,6 +3,7 @@
   import { page } from '$app/stores'
   import type { GraphQLField } from 'graphql'
   import FieldDetails from '$lib/components/query/FieldDetails.svelte'
+  import { QueryType } from '@magidoc/core'
 
   let field: GraphQLField<unknown, unknown, unknown>
 
@@ -15,4 +16,4 @@
   }
 </script>
 
-<FieldDetails {field} />
+<FieldDetails {field} type={QueryType.QUERY} />
