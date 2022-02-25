@@ -12,8 +12,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+		"types": []
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts", "tests/**/*.js"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts"],
   "exclude": ["node_modules"]
 }
