@@ -1,7 +1,7 @@
 {
   "name": "@magidoc/plugin-core-mirror",
   "license": "MIT",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "svelte": "index.js",
   "scripts": {
     "build": "pnpm check && pnpm package",
