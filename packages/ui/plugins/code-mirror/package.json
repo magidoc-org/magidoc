@@ -10,20 +10,20 @@
     "release": "pnpm build && cd dist && pnpm publish"
   },
   "dependencies": {
-    "codemirror": "^5.65.1",
-    "codemirror-graphql": "^1.2.11",
+    "codemirror": "^5.65.2",
+    "codemirror-graphql": "^1.2.12",
     "graphql": "^16.3.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/codemirror": "^5.60.5",
-    "svelte": "^3.44.0",
-    "svelte-check": "^2.2.6",
-    "svelte-preprocess": "^4.10.1",
-    "svelte2tsx": "^0.5.3",
+    "svelte": "^3.46.4",
+    "svelte-check": "^2.4.5",
+    "svelte-preprocess": "^4.10.4",
+    "svelte2tsx": "^0.5.5",
     "tslib": "^2.3.1",
-    "typescript": "~4.5.4"
+    "typescript": "~4.5.5"
   },
   "type": "module"
 }

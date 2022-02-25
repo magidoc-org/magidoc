@@ -59,17 +59,17 @@ importers:
 
   packages/ui/plugins/_demo:
     specifiers:
-      '@sveltejs/vite-plugin-svelte': ^1.0.0-next.30
+      '@sveltejs/vite-plugin-svelte': ^1.0.0-next.37
       '@tsconfig/svelte': ^2.0.1
-      carbon-components-svelte: ^0.58.0
+      carbon-components-svelte: ^0.58.4
       carbon-icons-svelte: ^10.44.4
       graphql: ^16.3.0
-      svelte: ^3.44.0
-      svelte-check: ^2.2.7
-      svelte-preprocess: ^4.9.8
+      svelte: ^3.46.4
+      svelte-check: ^2.4.5
+      svelte-preprocess: ^4.10.4
       tslib: ^2.3.1
-      typescript: ^4.5.4
-      vite: ^2.8.0
+      typescript: ^4.5.5
+      vite: ^2.8.4
     devDependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.37_svelte@3.46.4+vite@2.8.4
       '@tsconfig/svelte': 2.0.1
@@ -88,15 +88,15 @@ importers:
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@types/codemirror': ^5.60.5
-      codemirror: ^5.65.1
-      codemirror-graphql: ^1.2.11
+      codemirror: ^5.65.2
+      codemirror-graphql: ^1.2.12
       graphql: ^16.3.0
-      svelte: ^3.44.0
-      svelte-check: ^2.2.6
-      svelte-preprocess: ^4.10.1
-      svelte2tsx: ^0.5.3
+      svelte: ^3.46.4
+      svelte-check: ^2.4.5
+      svelte-preprocess: ^4.10.4
+      svelte2tsx: ^0.5.5
       tslib: ^2.3.1
-      typescript: ~4.5.4
+      typescript: ~4.5.5
     dependencies:
       codemirror: 5.65.2
       codemirror-graphql: 1.2.12_277e0985ed0f3795874f93ac24c0f4c4
@@ -114,21 +114,19 @@ importers:
 
   packages/ui/plugins/code-mirror/dist:
     specifiers:
-      '@magidoc/core': ^0.0.16
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@types/codemirror': ^5.60.5
-      codemirror: ^5.65.1
-      codemirror-graphql: ^1.2.11
+      codemirror: ^5.65.2
+      codemirror-graphql: ^1.2.12
       graphql: ^16.3.0
-      svelte: ^3.44.0
-      svelte-check: ^2.2.6
-      svelte-preprocess: ^4.10.1
-      svelte2tsx: ^0.5.3
+      svelte: ^3.46.4
+      svelte-check: ^2.4.5
+      svelte-preprocess: ^4.10.4
+      svelte2tsx: ^0.5.5
       tslib: ^2.3.1
-      typescript: ~4.5.4
+      typescript: ~4.5.5
     dependencies:
-      '@magidoc/core': link:../../../../core
       codemirror: 5.65.2
       codemirror-graphql: 1.2.12_277e0985ed0f3795874f93ac24c0f4c4
       graphql: 16.3.0
@@ -145,27 +143,27 @@ importers:
 
   packages/ui/starters/multi-page:
     specifiers:
-      '@magidoc/core': ^0.0.16
+      '@magidoc/core': workspace:^0.0.16
       '@magidoc/plugin-query-generator': ^0.0.16
       '@sveltejs/adapter-auto': next
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       '@types/codemirror': ^5.60.5
-      '@types/lodash': ^4.14.178
-      carbon-components-svelte: ^0.58.2
+      '@types/lodash': ^4.14.179
+      carbon-components-svelte: ^0.58.4
       carbon-icons-svelte: ^10.44.4
       carbon-preprocess-svelte: ^0.6.0
-      codemirror: ^5.65.1
+      codemirror: ^5.65.2
       graphql: ^16.3.0
       lodash: ^4.17.21
       svelte: ^3.46.4
-      svelte-check: ^2.4.3
-      svelte-preprocess: ^4.10.3
+      svelte-check: ^2.4.5
+      svelte-preprocess: ^4.10.4
       tslib: ^2.3.1
       typescript: ^4.5.5
     dependencies:
       '@magidoc/core': link:../../../core
-      '@magidoc/plugin-query-generator': link:../../plugins/code-mirror/dist
+      '@magidoc/plugin-query-generator': 0.0.16_typescript@4.5.5
       codemirror: 5.65.2
       graphql: 16.3.0
       lodash: 4.17.21
@@ -174,7 +172,7 @@ importers:
       '@sveltejs/adapter-static': 1.0.0-next.28
       '@sveltejs/kit': 1.0.0-next.287_svelte@3.46.4
       '@types/codemirror': 5.60.5
-      '@types/lodash': 4.14.178
+      '@types/lodash': 4.14.179
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.44.4
       carbon-preprocess-svelte: 0.6.0_svelte@3.46.4
@@ -1005,6 +1003,30 @@ packages:
       '@lezer/common': 0.15.11
     dev: false
 
+  /@magidoc/core/0.0.16:
+    resolution: {integrity: sha512-MJSRrffKBBlLTvqns20xVYeSfb/xdIUBlcedNaBHKLoQ4E7yDcghh86yWj5H0H0ysVzqR1SYxzjCZgU4PUFjGA==}
+    dependencies:
+      glob-to-regexp: 0.4.1
+      graphql: 16.3.0
+      lodash: 4.17.21
+      prettier: 2.5.1
+    dev: false
+
+  /@magidoc/plugin-query-generator/0.0.16_typescript@4.5.5:
+    resolution: {integrity: sha512-8euK1TYyfGtkKzs+hUHHT9g8p9AYvabTJlXpwRdRxlSy37c7Ki4tj4N6LpBO59O0luuz7yXHGgQpf1NQBP/y0Q==}
+    dependencies:
+      '@magidoc/core': 0.0.16
+      codemirror: 5.65.2
+      codemirror-graphql: 1.2.12_277e0985ed0f3795874f93ac24c0f4c4
+      graphql: 16.3.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - bufferutil
+      - encoding
+      - typescript
+      - utf-8-validate
+    dev: false
+
   /@n1ru4l/graphql-live-query/0.9.0_graphql@16.3.0:
     resolution: {integrity: sha512-BTpWy1e+FxN82RnLz4x1+JcEewVdfmUhV1C6/XYD5AjS7PQp9QFF7K8bCD6gzPTr2l+prvqOyVueQhFJxB1vfg==}
     peerDependencies:
@@ -1209,10 +1231,6 @@ packages:
 
   /@types/json-schema/7.0.9:
     resolution: {integrity: sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==}
-
-  /@types/lodash/4.14.178:
-    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
-    dev: true
 
   /@types/lodash/4.14.179:
     resolution: {integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==}
