@@ -9,7 +9,7 @@ const config = {
     adapter: adapter(),
     vite: {
       optimizeDeps: {
-        include: ['nullthrows'],
+        include: [],
       },
     },
   },  

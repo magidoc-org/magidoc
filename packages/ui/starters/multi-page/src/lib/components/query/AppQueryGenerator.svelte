@@ -30,14 +30,14 @@
     <div class="query-depth-wrapper">
       <NumberInput
         size="sm"
-        label={'Query Depth'}
+        label={'Max Query Depth'}
         min={2}
         max={8}
         bind:value={queryDepth}
       />
     </div>
   </div>
-
+  
   <svelte:component
     this={QueryGenerator}
     {field}

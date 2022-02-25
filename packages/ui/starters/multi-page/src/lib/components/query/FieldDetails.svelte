@@ -98,6 +98,6 @@
 
   <br />
 
-  <h4>Sample</h4>
+  <h4>Example</h4>
   <AppQueryGenerator {type} {field} />
 </section>
