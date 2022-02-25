@@ -10,7 +10,7 @@
     "test": "run-p test:*",
     "test:lint": "eslint '**/src/**/*.{ts,svelte}'",
     "test:prettier": "prettier --check '**/*.ts' '**/*.svelte'",
-    "test:unit": "pnpm run -r test",
+    "test:unit": "pnpm --filter {packages} -r run test",
     "fix": "run-p fix:*",
     "fix:prettier": "prettier --write '**/*.ts' '**/*.svelte'",
     "fix:lint": "eslint --fix '**/src/**/*.{ts,svelte}'"
