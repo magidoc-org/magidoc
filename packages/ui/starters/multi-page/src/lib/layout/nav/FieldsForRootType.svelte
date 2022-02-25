@@ -1,7 +1,7 @@
 <script lang="ts">
   import _ from 'lodash'
   import { SideNavMenu, SideNavMenuItem } from 'carbon-components-svelte'
-
+  import { page } from '$app/stores'
   import type { GraphQLField, GraphQLObjectType } from 'graphql'
 
   export let type: GraphQLObjectType | undefined | null
@@ -29,6 +29,7 @@
       <SideNavMenuItem
         href={query.href}
         text={query.name}
+        isSelected={$page.url.pathname === query.href}
         class={query.deprecated ? 'deprecated' : ''}
       />
     {/each}

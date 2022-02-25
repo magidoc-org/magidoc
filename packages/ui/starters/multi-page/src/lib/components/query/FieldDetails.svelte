@@ -36,6 +36,7 @@
   {#if field.args.length > 0}
     <h4>Arguments</h4>
     <DataTable
+      size="short"
       headers={[
         {
           key: 'name',
