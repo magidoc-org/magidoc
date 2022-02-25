@@ -10,7 +10,6 @@
     "release": "pnpm build && cd dist && pnpm publish"
   },
   "dependencies": {
-    "@magidoc/core": "^0.0.16",
     "codemirror": "^5.65.1",
     "codemirror-graphql": "^1.2.11",
     "graphql": "^16.3.0"
@@ -19,7 +18,6 @@
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/codemirror": "^5.60.5",
-    "@types/graphql": "^14.5.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
     "svelte-preprocess": "^4.10.1",

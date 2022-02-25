@@ -27,7 +27,6 @@ importers:
   packages/core:
     specifiers:
       '@types/glob-to-regexp': ^0.4.1
-      '@types/graphql': ^14.5.0
       '@types/jest': ^27.4.0
       '@types/lodash': ^4.14.178
       '@types/prettier': ^2.4.4
@@ -48,7 +47,6 @@ importers:
       prettier: 2.5.1
     devDependencies:
       '@types/glob-to-regexp': 0.4.1
-      '@types/graphql': 14.5.0
       '@types/jest': 27.4.1
       '@types/lodash': 4.14.178
       '@types/prettier': 2.4.4
@@ -63,7 +61,6 @@ importers:
     specifiers:
       '@sveltejs/vite-plugin-svelte': ^1.0.0-next.30
       '@tsconfig/svelte': ^2.0.1
-      '@types/graphql': ^14.5.0
       carbon-components-svelte: ^0.58.0
       carbon-icons-svelte: ^10.44.4
       graphql: ^16.3.0
@@ -76,7 +73,6 @@ importers:
     devDependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.37_svelte@3.46.4+vite@2.8.4
       '@tsconfig/svelte': 2.0.1
-      '@types/graphql': 14.5.0
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.44.4
       graphql: 16.3.0
@@ -87,13 +83,11 @@ importers:
       typescript: 4.5.5
       vite: 2.8.4
 
-  packages/ui/plugins/query-generator:
+  packages/ui/plugins/code-mirror:
     specifiers:
-      '@magidoc/core': ^0.0.16
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@types/codemirror': ^5.60.5
-      '@types/graphql': ^14.5.0
       codemirror: ^5.65.1
       codemirror-graphql: ^1.2.11
       graphql: ^16.3.0
@@ -104,7 +98,6 @@ importers:
       tslib: ^2.3.1
       typescript: ~4.5.4
     dependencies:
-      '@magidoc/core': link:../../../core
       codemirror: 5.65.2
       codemirror-graphql: 1.2.12_277e0985ed0f3795874f93ac24c0f4c4
       graphql: 16.3.0
@@ -112,7 +105,6 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.287_svelte@3.46.4
       '@types/codemirror': 5.60.5
-      '@types/graphql': 14.5.0
       svelte: 3.46.4
       svelte-check: 2.4.5_svelte@3.46.4
       svelte-preprocess: 4.10.4_svelte@3.46.4+typescript@4.5.5
@@ -120,13 +112,12 @@ importers:
       tslib: 2.3.1
       typescript: 4.5.5
 
-  packages/ui/plugins/query-generator/dist:
+  packages/ui/plugins/code-mirror/dist:
     specifiers:
       '@magidoc/core': ^0.0.16
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@types/codemirror': ^5.60.5
-      '@types/graphql': ^14.5.0
       codemirror: ^5.65.1
       codemirror-graphql: ^1.2.11
       graphql: ^16.3.0
@@ -145,7 +136,6 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.287_svelte@3.46.4
       '@types/codemirror': 5.60.5
-      '@types/graphql': 14.5.0
       svelte: 3.46.4
       svelte-check: 2.4.5_svelte@3.46.4
       svelte-preprocess: 4.10.4_svelte@3.46.4+typescript@4.5.5
@@ -161,7 +151,6 @@ importers:
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       '@types/codemirror': ^5.60.5
-      '@types/graphql': ^14.5.0
       '@types/lodash': ^4.14.178
       carbon-components-svelte: ^0.58.2
       carbon-icons-svelte: ^10.44.4
@@ -176,7 +165,7 @@ importers:
       typescript: ^4.5.5
     dependencies:
       '@magidoc/core': link:../../../core
-      '@magidoc/plugin-query-generator': link:../../plugins/query-generator/dist
+      '@magidoc/plugin-query-generator': link:../../plugins/code-mirror/dist
       codemirror: 5.65.2
       graphql: 16.3.0
       lodash: 4.17.21
@@ -185,7 +174,6 @@ importers:
       '@sveltejs/adapter-static': 1.0.0-next.28
       '@sveltejs/kit': 1.0.0-next.287_svelte@3.46.4
       '@types/codemirror': 5.60.5
-      '@types/graphql': 14.5.0
       '@types/lodash': 4.14.178
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.44.4
@@ -1194,13 +1182,6 @@ packages:
     resolution: {integrity: sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==}
     dependencies:
       '@types/node': 17.0.21
-    dev: true
-
-  /@types/graphql/14.5.0:
-    resolution: {integrity: sha512-MOkzsEp1Jk5bXuAsHsUi6BVv0zCO+7/2PTiZMXWDSsMXvNU6w/PLMQT2vHn8hy2i0JqojPz1Sz6rsFjHtsU0lA==}
-    deprecated: This is a stub types definition. graphql provides its own type definitions, so you do not need this installed.
-    dependencies:
-      graphql: 16.3.0
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:

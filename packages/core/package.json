@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@types/glob-to-regexp": "^0.4.1",
-    "@types/graphql": "^14.5.0",
     "@types/jest": "^27.4.0",
     "@types/lodash": "^4.14.178",
     "@types/prettier": "^2.4.4",
