@@ -1,6 +1,6 @@
 {
   "settings": {
-    "jest.jestCommandLine": "yarn run jest",
+    "jest.jestCommandLine": "pnpm run jest",
     "jest.autoRun": { "watch": false, "onSave": "test-src-file" },
     "jest.disabledWorkspaceFolders": ["ROOT"],
     "eslint.probe": [
@@ -14,7 +14,7 @@
       "svelte"
     ],
     "eslint.validate": ["typescript", "svelte"],
-    "eslint.packageManager": "yarn"
+    "eslint.packageManager": "pnpm"
   },
   "folders": [
     {

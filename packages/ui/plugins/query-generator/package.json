@@ -4,10 +4,10 @@
   "version": "0.0.16",
   "svelte": "index.js",
   "scripts": {
-    "build": "yarn check && yarn package",
+    "build": "pnpm check && pnpm package",
     "package": "svelte-kit package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "release": "yarn build && cd dist && yarn publish"
+    "release": "pnpm build && cd dist && pnpm publish"
   },
   "dependencies": {
     "@magidoc/core": "^0.0.16",

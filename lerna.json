@@ -6,6 +6,6 @@
   "ignore": [
     "packages/**/dist/*"
   ],
-  "npmClient": "yarn",
+  "npmClient": "pnpm",
   "version": "0.0.0"
 }

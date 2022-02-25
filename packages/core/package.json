@@ -9,7 +9,7 @@
   "scripts": {
     "build": "esbuild --minify --sourcemap --outdir=dist ./src/*.ts ./src/**/*.ts && tsc --build tsconfig.build.json",
     "test": "jest",
-    "release": "yarn build && yarn publish"
+    "release": "pnpm build && pnpm publish"
   },
   "dependencies": {
     "glob-to-regexp": "^0.4.1",
