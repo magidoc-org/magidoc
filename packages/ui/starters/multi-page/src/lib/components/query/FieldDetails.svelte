@@ -4,7 +4,7 @@
     InlineNotification,
     TooltipIcon,
   } from 'carbon-components-svelte'
-  import type { GraphQLField, GraphQLType } from 'graphql'
+  import type { GraphQLField } from 'graphql'
   import type { QueryType } from '@magidoc/core'
   import AppQueryGenerator from './AppQueryGenerator.svelte'
   import { generateTypeLink } from '$lib/schema'

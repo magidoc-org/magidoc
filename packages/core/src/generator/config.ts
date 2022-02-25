@@ -1,4 +1,4 @@
-import { QueryType } from ".."
+import { QueryType } from '..'
 
 export enum NullGenerationStrategy {
   NEVER_NULL = 'never',
@@ -15,7 +15,7 @@ export type GeneratorConfig = {
   /**
    * The name of the query. By default, this will be undefined, which means the query is unnamed.
    */
-  queryName?: string 
+  queryName?: string
 
   /**
    * The max depth at which we want to generate the query.

@@ -20,11 +20,11 @@ export function unwrapOne(type: unknown): GraphQLType | null {
 }
 
 export function typeToString(type: GraphQLType): string {
-  if(isNonNullType(type)) {
+  if (isNonNullType(type)) {
     return `${typeToString(type.ofType)}!`
   }
 
-  if(isListType(type)) {
+  if (isListType(type)) {
     return `[${typeToString(type.ofType)}]`
   }
 

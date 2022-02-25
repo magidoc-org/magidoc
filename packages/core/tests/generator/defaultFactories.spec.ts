@@ -164,14 +164,18 @@ describe('generating default values', () => {
   describe('input is an ID', () => {
     test.each(['anythingelse', 'asd'])(
       'should generate a generic ID for input type %s',
-      (name) => expect(runFactory('ID', name)).toEqual('08a16b83-9094-4e89-8c05-2ccadd5c1c7e'),
+      (name) =>
+        expect(runFactory('ID', name)).toEqual(
+          '08a16b83-9094-4e89-8c05-2ccadd5c1c7e',
+        ),
     )
   })
 
   describe('input is a Date', () => {
     test.each(['anythingelse', 'asd'])(
       'should generate a generic date for input type %s',
-      (name) => expect(runFactory('Date', name)).toEqual('2022-03-06T08:23:45.000Z'),
+      (name) =>
+        expect(runFactory('Date', name)).toEqual('2022-03-06T08:23:45.000Z'),
     )
   })
 })

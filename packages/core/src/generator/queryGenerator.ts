@@ -1,4 +1,4 @@
-import _, { merge } from 'lodash'
+import _ from 'lodash'
 
 import { GraphQLQuery } from '../models/query'
 import { GeneratorConfig, NullGenerationStrategy } from './config'
@@ -119,7 +119,7 @@ function generateField(
           return memo.withInlineFragment(type.name, typeSubSelection)
         }
 
-        // We were not able to build the fragment due to max depth being reached, 
+        // We were not able to build the fragment due to max depth being reached,
         // so return without the fragment
         return memo
       },
@@ -129,7 +129,7 @@ function generateField(
     return finalBuilderWithAllFields
   } else if (isObjectType(type) || isInterfaceType(type)) {
     const builder = subSelectionBuilder()
-    
+
     const fields = type.getFields()
     const finalBuilderWithAllFields = _.reduce(
       fields,

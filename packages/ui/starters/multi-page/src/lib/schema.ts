@@ -5,7 +5,6 @@ import {
   GraphQLType,
   isListType,
   isNonNullType,
-  isNamedType,
 } from 'graphql'
 import { readable } from 'svelte/store'
 

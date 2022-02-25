@@ -3,4 +3,3 @@ export class GraphQLGenerationError extends Error {
     super(message)
   }
 }
-

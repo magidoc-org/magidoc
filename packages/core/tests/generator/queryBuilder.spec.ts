@@ -1,6 +1,11 @@
 import minify from 'graphql-query-compress'
-import { gql, mutationBuilder, prettify, queryBuilder, subSelectionBuilder } from "../../src"
-
+import {
+  gql,
+  mutationBuilder,
+  prettify,
+  queryBuilder,
+  subSelectionBuilder,
+} from '../../src'
 
 describe('building a query', () => {
   const underTest = queryBuilder()
@@ -26,7 +31,7 @@ describe('building a query', () => {
             query Test {
               field
             }
-          `
+          `,
         )
       })
     })
@@ -41,7 +46,7 @@ describe('building a query', () => {
             query {
               field
             }
-          `
+          `,
         )
       })
 
@@ -76,7 +81,7 @@ describe('building a query', () => {
             query ($vegetable: VegetableInput, $name: String!) {
               field(vegetable: $vegetable, name: $name)
             }
-          `
+          `,
         )
       })
 
@@ -126,8 +131,8 @@ describe('building a query', () => {
                 type: 'Int!',
                 value: 234,
               },
-            ])
-          )
+            ]),
+          ),
         )
         .build()
 
@@ -148,7 +153,7 @@ describe('building a query', () => {
                 }
               }
             }
-          `
+          `,
         )
       })
 
@@ -202,7 +207,7 @@ describe('building a query', () => {
                   type: 'Boolean!',
                   value: true,
                 },
-              ])
+              ]),
             )
             .withField(
               'secondFirstLevel',
@@ -213,8 +218,8 @@ describe('building a query', () => {
                   type: 'Boolean!',
                   value: false,
                 },
-              ])
-            )
+              ]),
+            ),
         )
         .build()
 
@@ -239,7 +244,7 @@ describe('building a query', () => {
                 }
               }
             }
-          `
+          `,
         )
       })
 
@@ -266,7 +271,7 @@ describe('building a mutation', () => {
           type: 'String!',
           value: 'New name',
         },
-      ])
+      ]),
     )
     .build()
 
@@ -279,7 +284,7 @@ describe('building a mutation', () => {
             update(name: $name)
           }
         }
-      `
+      `,
     )
   })
 

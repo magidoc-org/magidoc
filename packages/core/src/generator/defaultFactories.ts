@@ -1,6 +1,6 @@
 import { GraphQLFactory } from './config'
 
-const date = "2022-03-06T08:23:45.000Z"
+const date = '2022-03-06T08:23:45.000Z'
 const id = '08a16b83-9094-4e89-8c05-2ccadd5c1c7e'
 
 export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {

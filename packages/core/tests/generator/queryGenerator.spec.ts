@@ -223,8 +223,7 @@ describe('generating a query', () => {
   })
 
   describe('for a union type field', () => {
-
-    describe("and max depth is appropriate to generate the union", () =>{
+    describe('and max depth is appropriate to generate the union', () => {
       const unionTypeField = getQueryField('union')
       it('generates the query properly', () => {
         const result = generateGraphQLQuery(unionTypeField, emptyConfig)
@@ -260,7 +259,7 @@ describe('generating a query', () => {
         const result = generateGraphQLQuery(unionTypeField, {
           maxDepth: 2,
         })
-  
+
         assertQueryEqual(
           result?.query,
           gql`
@@ -272,7 +271,7 @@ describe('generating a query', () => {
           `,
         )
       })
-    });
+    })
   })
 
   describe('a deep field but non recursive', () => {
