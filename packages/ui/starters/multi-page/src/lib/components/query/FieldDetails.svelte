@@ -1,8 +1,14 @@
 <script lang="ts">
-  import { InlineNotification } from 'carbon-components-svelte'
-  import type { GraphQLField } from 'graphql'
+  import {
+    DataTable,
+    InlineNotification,
+    TooltipIcon,
+  } from 'carbon-components-svelte'
+  import type { GraphQLField, GraphQLType } from 'graphql'
   import type { QueryType } from '@magidoc/core'
   import AppQueryGenerator from './AppQueryGenerator.svelte'
+  import { generateTypeLink } from '$lib/schema'
+  import WarningFilled16 from 'carbon-icons-svelte/lib/WarningFilled16'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -29,20 +35,64 @@
 
   {#if field.args.length > 0}
     <h4>Arguments</h4>
-    {#each field.args as arg}
-      <p>
-        <strong>{arg.name}</strong>
-      </p>
-    {/each}
+    <DataTable
+      headers={[
+        {
+          key: 'name',
+          value: 'Name',
+        },
+        {
+          key: 'description',
+          value: 'Description',
+        },
+        {
+          key: 'default',
+          value: 'Default',
+        },
+      ]}
+      rows={field.args.map((arg) => ({
+        id: arg.name,
+        deprecationReason: arg.deprecationReason,
+        name: arg.name,
+        typeLink: generateTypeLink(arg.type),
+        description: arg.description,
+        default: arg.defaultValue,
+      }))}
+    >
+      <svelte:fragment slot="cell" let:row let:cell>
+        {#if cell.key === 'name'}
+          <span class={row.deprecationReason ? 'deprecated' : ''}
+            >{cell.value}</span
+          >: {@html row.typeLink}
+          {#if row.deprecationReason}
+            <TooltipIcon
+              icon={WarningFilled16}
+              tooltipText={row.deprecationReason}
+            />
+          {/if}
+        {:else if cell.key == 'default'}
+          {#if typeof cell.value == 'string'}
+            "{cell.value}"
+          {:else if typeof cell.value === 'object'}
+            {JSON.stringify(cell.value, null, 2)}
+          {:else}
+            {cell.value ?? '-'}
+          {/if}
+        {:else}
+          {cell.value ?? '-'}
+        {/if}
+      </svelte:fragment>
+    </DataTable>
   {/if}
 
   <br />
 
-  {#if field.args.length > 0}
+  {#if field.type}
     <h4>Response</h4>
-    {#each field.args as arg}
-      <p>{arg.name}</p>
-    {/each}
+    <p>
+      Returns
+      {@html generateTypeLink(field.type)}
+    </p>
   {/if}
 
   <br />

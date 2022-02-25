@@ -31,7 +31,7 @@
       <NumberInput
         size="sm"
         label={'Query Depth'}
-        min={3}
+        min={2}
         max={8}
         bind:value={queryDepth}
       />

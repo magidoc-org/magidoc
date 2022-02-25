@@ -28,6 +28,55 @@
             "deprecationReason": null
           },
           {
+            "name": "testNonNull",
+            "description": "`testNonNull` field from `Test` type.",
+            "args": [
+              {
+                "name": "nonNullString",
+                "description": "A non-null string",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "nonNullStringList",
+                "description": "A non-null list of strings",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "String",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Test",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "deferrable",
             "description": null,
             "args": [],
@@ -45,7 +94,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -97,6 +146,18 @@
             "type": {
               "kind": "UNION",
               "name": "TestUnion",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "unionTwoLevels",
+            "description": "> union field with two level.",
+            "args": [],
+            "type": {
+              "kind": "UNION",
+              "name": "TestUnionTwoLevels",
               "ofType": null
             },
             "isDeprecated": false,
@@ -163,6 +224,17 @@
                   "ofType": null
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "deprecatedString",
+                "description": "A string",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "deprecationReason": "Why not, i'm tired"
               },
               {
                 "name": "int",
@@ -370,7 +442,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -379,6 +451,64 @@
                 "defaultValue": "600"
               }
             ],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deferrableSecondLevel",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "DeferrableLevelTwo",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "DeferrableLevelTwo",
+        "description": null,
+        "fields": [
+          {
+            "name": "deferrable",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "DeferrableLevelThree",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "DeferrableLevelThree",
+        "description": null,
+        "fields": [
+          {
+            "name": "normalString",
+            "description": null,
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -459,7 +589,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -520,6 +650,27 @@
         ]
       },
       {
+        "kind": "UNION",
+        "name": "TestUnionTwoLevels",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "FirstTwoLevels",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "SecondTwoLevels",
+            "ofType": null
+          }
+        ]
+      },
+      {
         "kind": "OBJECT",
         "name": "First",
         "description": null,
@@ -536,6 +687,39 @@
             "isDeprecated": false,
             "deprecationReason": null
           },
+          {
+            "name": "first",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INTERFACE",
+                "name": "TestInterface",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "TestInterface",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "FirstTwoLevels",
+        "description": null,
+        "fields": [
           {
             "name": "first",
             "description": null,
@@ -615,6 +799,35 @@
             "isDeprecated": false,
             "deprecationReason": null
           },
+          {
+            "name": "second",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "INTERFACE",
+              "name": "TestInterface",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [
+          {
+            "kind": "INTERFACE",
+            "name": "TestInterface",
+            "ofType": null
+          }
+        ],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SecondTwoLevels",
+        "description": null,
+        "fields": [
           {
             "name": "second",
             "description": null,
@@ -958,7 +1171,7 @@
             "args": [
               {
                 "name": "delay",
-                "description": "delay in milleseconds for subsequent results, for demonstration purposes",
+                "description": "delay in milliseconds for subsequent results, for demonstration purposes",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -2010,12 +2223,12 @@
       },
       {
         "name": "specifiedBy",
-        "description": "Exposes a URL that specifies the behaviour of this scalar.",
+        "description": "Exposes a URL that specifies the behavior of this scalar.",
         "locations": ["SCALAR"],
         "args": [
           {
             "name": "url",
-            "description": "The URL that specifies the behaviour of this scalar.",
+            "description": "The URL that specifies the behavior of this scalar.",
             "type": {
               "kind": "NON_NULL",
               "name": null,
