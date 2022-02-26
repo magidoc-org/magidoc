@@ -3,6 +3,7 @@
   "license": "MIT",
   "version": "0.0.18",
   "svelte": "index.js",
+  "private": false,
   "scripts": {
     "build": "pnpm check && pnpm package",
     "package": "svelte-kit package",
