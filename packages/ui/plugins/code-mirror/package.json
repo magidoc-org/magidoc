@@ -1,5 +1,5 @@
 {
-  "name": "@magidoc/plugin-core-mirror",
+  "name": "@magidoc/plugin-code-mirror",
   "license": "MIT",
   "version": "0.0.17",
   "svelte": "index.js",

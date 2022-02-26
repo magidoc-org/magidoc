@@ -143,8 +143,8 @@ importers:
 
   packages/ui/starters/multi-page:
     specifiers:
-      '@magidoc/core': workspace:^0.0.16
-      '@magidoc/plugin-query-generator': ^0.0.16
+      '@magidoc/core': workspace:^0.0.17
+      '@magidoc/plugin-code-mirror': workspace:^0.0.17
       '@sveltejs/adapter-auto': next
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
@@ -163,7 +163,7 @@ importers:
       typescript: ^4.5.5
     dependencies:
       '@magidoc/core': link:../../../core
-      '@magidoc/plugin-query-generator': 0.0.16_typescript@4.5.5
+      '@magidoc/plugin-code-mirror': link:../../plugins/code-mirror/dist
       codemirror: 5.65.2
       graphql: 16.3.0
       lodash: 4.17.21
@@ -1001,30 +1001,6 @@ packages:
     resolution: {integrity: sha512-bM6oE6VQZ6hIFxDNKk8bKPa14hqFrV07J/vHGOeiAbJReIaQXmkVb6xQu4MR+JBTLa5arGRyAAjJe1qaQt3Uvg==}
     dependencies:
       '@lezer/common': 0.15.11
-    dev: false
-
-  /@magidoc/core/0.0.16:
-    resolution: {integrity: sha512-MJSRrffKBBlLTvqns20xVYeSfb/xdIUBlcedNaBHKLoQ4E7yDcghh86yWj5H0H0ysVzqR1SYxzjCZgU4PUFjGA==}
-    dependencies:
-      glob-to-regexp: 0.4.1
-      graphql: 16.3.0
-      lodash: 4.17.21
-      prettier: 2.5.1
-    dev: false
-
-  /@magidoc/plugin-query-generator/0.0.16_typescript@4.5.5:
-    resolution: {integrity: sha512-8euK1TYyfGtkKzs+hUHHT9g8p9AYvabTJlXpwRdRxlSy37c7Ki4tj4N6LpBO59O0luuz7yXHGgQpf1NQBP/y0Q==}
-    dependencies:
-      '@magidoc/core': 0.0.16
-      codemirror: 5.65.2
-      codemirror-graphql: 1.2.12_277e0985ed0f3795874f93ac24c0f4c4
-      graphql: 16.3.0
-    transitivePeerDependencies:
-      - '@types/node'
-      - bufferutil
-      - encoding
-      - typescript
-      - utf-8-validate
     dev: false
 
   /@n1ru4l/graphql-live-query/0.9.0_graphql@16.3.0:

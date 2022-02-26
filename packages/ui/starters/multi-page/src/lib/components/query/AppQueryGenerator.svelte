@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import type { QueryType } from '@magidoc/core'
+  import { generateGraphQLQuery, GraphQLQuery, QueryType } from '@magidoc/core'
   import { NumberInput } from 'carbon-components-svelte'
 
   import type { GraphQLField } from 'graphql'
@@ -12,7 +12,8 @@
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
 
-  let QueryGenerator: unknown
+  let CodeMirror: unknown
+  let graphQLQuery: GraphQLQuery | null
 
   let queryDepth = 3
 
@@ -21,11 +22,16 @@
     // eslint-disable-next-line no-undef
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     window.CodeMirror = (await import('codemirror')).default
-    QueryGenerator = (await import('@magidoc/plugin-query-generator')).default
+    CodeMirror = (await import('@magidoc/plugin-code-mirror')).default
+  })
+
+  $: graphQLQuery = generateGraphQLQuery(field, {
+    queryType: type,
+    maxDepth: queryDepth,
   })
 </script>
 
-{#if QueryGenerator}
+{#if CodeMirror}
   <div class="control-bar-wrapper">
     <div class="query-depth-wrapper">
       <NumberInput
@@ -37,17 +43,12 @@
       />
     </div>
   </div>
-  
+
   <svelte:component
-    this={QueryGenerator}
-    {field}
-    generatorConfig={{
-      queryType: type,
-      maxDepth: queryDepth,
-    }}
-    queryPanelHeight={300}
-    variablesPanelHeight={180}
-    showQueryPanelLineNumbers={false}
+    this={CodeMirror}
+    code={graphQLQuery?.query ?? ''}
+    mode={'graphql'}
+    showLineNumbers={false}
   />
 {/if}
 
