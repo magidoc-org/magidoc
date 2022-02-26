@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import { generateGraphQLQuery, GraphQLQuery, QueryType } from '@magidoc/core'
-  import { NumberInput } from 'carbon-components-svelte'
+  import { ExpandableTile, NumberInput } from 'carbon-components-svelte'
 
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
@@ -50,6 +50,18 @@
     mode={'graphql'}
     showLineNumbers={false}
   />
+  <br />
+  <ExpandableTile>
+    <div slot="above" ><p>Variables</p></div>
+    <div slot="below" >  
+      <svelte:component
+      this={CodeMirror}
+      code={graphQLQuery?.variables ? JSON.stringify(graphQLQuery.variables, null, 2) : ''}
+      mode={'graphql-variables'}
+      showLineNumbers={false}
+    />
+  </div>
+  </ExpandableTile>
 {/if}
 
 <style>

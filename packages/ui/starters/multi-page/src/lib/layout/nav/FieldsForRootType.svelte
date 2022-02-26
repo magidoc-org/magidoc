@@ -1,9 +1,8 @@
 <script lang="ts">
   import _ from 'lodash'
-  import { Select, SideNavMenu, SideNavMenuItem } from 'carbon-components-svelte'
-  import { page } from '$app/stores'
+  import { SideNavMenu } from 'carbon-components-svelte'
   import type { GraphQLField, GraphQLObjectType } from 'graphql'
-import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte';
+  import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte';
 
   export let type: GraphQLObjectType | undefined | null
   export let menuText: string
