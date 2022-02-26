@@ -5,16 +5,10 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import { generateGraphQLQuery, GraphQLQuery, QueryType } from '@magidoc/core'
-  import {
-    ClickableTile,
-    ExpandableTile,
-    NumberInput,
-    Row,
-  } from 'carbon-components-svelte'
+  import { NumberInput, Tab, TabContent, Tabs } from 'carbon-components-svelte'
   import CodeMirrorComponent from '@magidoc/plugin-code-mirror'
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
-  import { ChevronDown16, ChevronUp16 } from 'carbon-icons-svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -23,8 +17,7 @@
 
   let queryDepth = 3
 
-  let showVariables: boolean = false
-
+  let selectedTab: number = 0
   onMount(async () => {
     if (browser) {
       const CodeMirror = (await import('codemirror')).default
@@ -50,38 +43,36 @@
   </div>
 </div>
 
-<CodeMirrorComponent
-  code={graphQLQuery?.query ?? ''}
-  mode={'graphql'}
-  showLineNumbers={false}
-/>
-
 <br />
 
-<ClickableTile
-  light
-  on:click={() => (showVariables = !showVariables)}
->
-  <span class="show-variables">
-    {#if showVariables}
-      <p>Hide Variables</p>
-      <ChevronUp16 />
-    {:else}
-      <p>Show Variables</p>
-      <ChevronDown16 />
-    {/if}
-  </span>
-</ClickableTile>
-
-{#if showVariables}
-  <CodeMirrorComponent
-    code={graphQLQuery?.variables
-      ? JSON.stringify(graphQLQuery.variables, null, 2)
-      : ''}
-    mode={'graphql-variables'}
-    showLineNumbers={false}
-  />
-{/if}
+<Tabs bind:selected={selectedTab} autoWidth>
+  <Tab label="Query" />
+  <Tab label="Variables" />
+  <svelte:fragment slot="content">
+    <TabContent style="padding:0">
+      {#if selectedTab === 0}
+        <CodeMirrorComponent
+          code={graphQLQuery?.query ?? ''}
+          mode={'graphql'}
+          height={'300px'}
+          showLineNumbers={false}
+        />
+      {/if}
+    </TabContent>
+    <TabContent style="padding:0">
+      {#if selectedTab === 1}
+        <CodeMirrorComponent
+          code={graphQLQuery?.variables
+            ? JSON.stringify(graphQLQuery.variables, null, 2)
+            : ''}
+          mode={'graphql-variables'}
+          height={'300px'}
+          showLineNumbers={false}
+        />
+      {/if}
+    </TabContent>
+  </svelte:fragment>
+</Tabs>
 
 <style>
   .control-bar-wrapper {
@@ -96,9 +87,7 @@
     width: 12rem;
   }
 
-  .show-variables {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .example-tab {
+    padding: 0 !important;
   }
 </style>
