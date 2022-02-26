@@ -12,7 +12,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@magidoc/core": "workspace:^0.0.17",
+    "@magidoc/core": "workspace:^0.0.18",
     "@magidoc/plugin-code-mirror": "workspace:^0.0.17",
     "codemirror": "^5.65.2",
     "graphql": "^16.3.0",
