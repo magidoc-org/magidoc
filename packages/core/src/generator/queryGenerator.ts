@@ -17,9 +17,9 @@ import {
   Parameter,
   QueryBuilder,
   queryBuilder,
+  QueryType,
   subSelectionBuilder,
 } from './queryBuilder'
-import { QueryType } from '..'
 
 const DEFAULT_CONFIG: GeneratorConfig = {
   queryName: undefined,
