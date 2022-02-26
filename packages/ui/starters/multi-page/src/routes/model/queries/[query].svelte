@@ -1,9 +1,9 @@
 <script lang="ts">
+  import { QueryType } from '@magidoc/core'
   import { schema } from '$lib/schema'
   import { page } from '$app/stores'
   import type { GraphQLField } from 'graphql'
   import FieldDetails from '$lib/components/query/FieldDetails.svelte'
-  import { QueryType } from '@magidoc/core'
 
   let field: GraphQLField<unknown, unknown, unknown>
 

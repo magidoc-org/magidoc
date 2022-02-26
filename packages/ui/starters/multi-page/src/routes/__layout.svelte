@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { browser } from '$app/env'
+
   import '../app.css'
 
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
@@ -17,7 +19,10 @@
     <Grid>
       <Row>
         <Column>
-          <slot />
+          <!-- in dev mode, vite uses SSR, which doesn't work well with code-mirror -->
+          {#if browser}
+            <slot />
+          {/if}
         </Column>
       </Row>
     </Grid>

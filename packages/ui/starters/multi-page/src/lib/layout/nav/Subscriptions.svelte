@@ -1,7 +1,7 @@
 <script lang="ts">
   import { schema } from '$lib/schema'
 
-  import FieldsForRootType from './FieldsForRootType.svelte'
+  import FieldsForRootType from '../../components/nav/FieldsForRootType.svelte'
 </script>
 
 <FieldsForRootType
