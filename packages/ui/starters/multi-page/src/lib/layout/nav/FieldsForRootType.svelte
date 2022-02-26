@@ -1,8 +1,9 @@
 <script lang="ts">
   import _ from 'lodash'
-  import { SideNavMenu, SideNavMenuItem } from 'carbon-components-svelte'
+  import { Select, SideNavMenu, SideNavMenuItem } from 'carbon-components-svelte'
   import { page } from '$app/stores'
   import type { GraphQLField, GraphQLObjectType } from 'graphql'
+import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte';
 
   export let type: GraphQLObjectType | undefined | null
   export let menuText: string
@@ -26,10 +27,9 @@
 {#if fields.length > 0}
   <SideNavMenu text={menuText} expanded>
     {#each fields as query}
-      <SideNavMenuItem
+      <SelectableNavMenuItem
         href={query.href}
         text={query.name}
-        isSelected={$page.url.pathname === query.href}
         class={query.deprecated ? 'deprecated' : ''}
       />
     {/each}
