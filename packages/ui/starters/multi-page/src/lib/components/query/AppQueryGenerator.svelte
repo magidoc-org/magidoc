@@ -5,10 +5,16 @@
 <script lang="ts">
   import { browser } from '$app/env'
   import { generateGraphQLQuery, GraphQLQuery, QueryType } from '@magidoc/core'
-  import { ExpandableTile, NumberInput } from 'carbon-components-svelte'
+  import {
+    ClickableTile,
+    ExpandableTile,
+    NumberInput,
+    Row,
+  } from 'carbon-components-svelte'
   import CodeMirrorComponent from '@magidoc/plugin-code-mirror'
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
+  import { ChevronDown16, ChevronUp16 } from 'carbon-icons-svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -17,13 +23,15 @@
 
   let queryDepth = 3
 
+  let showVariables: boolean = false
+
   onMount(async () => {
     if (browser) {
       const CodeMirror = (await import('codemirror')).default
       window.CodeMirror = CodeMirror
     }
   })
-  
+
   $: graphQLQuery = generateGraphQLQuery(field, {
     queryType: type,
     maxDepth: queryDepth,
@@ -50,18 +58,30 @@
 
 <br />
 
-<ExpandableTile>
-  <div slot="above"><p>Variables</p></div>
-  <div slot="below">
-    <CodeMirrorComponent
-      code={graphQLQuery?.variables
-        ? JSON.stringify(graphQLQuery.variables, null, 2)
-        : ''}
-      mode={'graphql-variables'}
-      showLineNumbers={false}
-    />
-  </div>
-</ExpandableTile>
+<ClickableTile
+  light
+  on:click={() => (showVariables = !showVariables)}
+>
+  <span class="show-variables">
+    {#if showVariables}
+      <p>Hide Variables</p>
+      <ChevronUp16 />
+    {:else}
+      <p>Show Variables</p>
+      <ChevronDown16 />
+    {/if}
+  </span>
+</ClickableTile>
+
+{#if showVariables}
+  <CodeMirrorComponent
+    code={graphQLQuery?.variables
+      ? JSON.stringify(graphQLQuery.variables, null, 2)
+      : ''}
+    mode={'graphql-variables'}
+    showLineNumbers={false}
+  />
+{/if}
 
 <style>
   .control-bar-wrapper {
@@ -74,5 +94,11 @@
   .query-depth-wrapper {
     display: flex;
     width: 12rem;
+  }
+
+  .show-variables {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>
