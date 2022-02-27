@@ -1,7 +1,3 @@
-<script context="module">
-  export const ssr = false
-</script>
-
 <script lang="ts">
   import { browser } from '$app/env'
   import { graphqlQuery } from './stores'
@@ -26,32 +22,33 @@
   $: {
     graphqlQuery.setField(field, type)
   }
-
 </script>
 
-<Tabs bind:selected={selectedTab} autoWidth>
-  <Tab label="Query" />
-  <Tab label="Variables" />
-  <svelte:fragment slot="content">
-    <TabContent style="padding:0">
-      {#if selectedTab === 0}
-        <AppCodeMirror
-          code={$graphqlQuery?.query ?? ''}
-          mode={'graphql'}
-          height={300}
-        />
-      {/if}
-    </TabContent>
-    <TabContent style="padding:0">
-      {#if selectedTab === 1}
-        <AppCodeMirror
-          code={$graphqlQuery?.variables
-            ? JSON.stringify($graphqlQuery?.variables, null, 2)
-            : ''}
-          mode={'graphql-variables'}
-          height={300}
-        />
-      {/if}
-    </TabContent>
-  </svelte:fragment>
-</Tabs>
+{#if browser}
+  <Tabs bind:selected={selectedTab} autoWidth>
+    <Tab label="Query" />
+    <Tab label="Variables" />
+    <svelte:fragment slot="content">
+      <TabContent style="padding:0">
+        {#if selectedTab === 0}
+          <AppCodeMirror
+            code={$graphqlQuery?.query ?? ''}
+            mode={'graphql'}
+            height={300}
+          />
+        {/if}
+      </TabContent>
+      <TabContent style="padding:0">
+        {#if selectedTab === 1}
+          <AppCodeMirror
+            code={$graphqlQuery?.variables
+              ? JSON.stringify($graphqlQuery?.variables, null, 2)
+              : ''}
+            mode={'graphql-variables'}
+            height={300}
+          />
+        {/if}
+      </TabContent>
+    </svelte:fragment>
+  </Tabs>
+{/if}

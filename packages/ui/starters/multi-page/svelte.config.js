@@ -6,11 +6,25 @@ import { optimizeImports } from 'carbon-preprocess-svelte'
 const config = {
   preprocess: [preprocess(), optimizeImports()],
   prerender: {
-    enabled: false
+    enabled: false,
   },
   kit: {
     adapter: adapter(),
-  },  
+    prerender: {
+      enabled: false,
+    },
+    vite: {
+      ssr: {
+        noExternal: [
+          'graphql',
+          'codemirror',
+          'codemirror-graphql',
+          'prettier',
+          'glob-to-regexp',
+        ],
+      },
+    },
+  },
 }
 
 export default config
