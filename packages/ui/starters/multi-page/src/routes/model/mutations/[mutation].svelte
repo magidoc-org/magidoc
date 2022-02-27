@@ -4,16 +4,14 @@
   import { page } from '$app/stores'
   import type { GraphQLField } from 'graphql'
   import FieldDetails from '$lib/components/query/FieldDetails.svelte'
+  import EntityNotFound from '$lib/components/EntityNotFound.svelte'
 
-  let field: GraphQLField<unknown, unknown, unknown>
-
-  $: {
-    const target = $schema.getMutationType()?.getFields()[$page.params.mutation]
-    if (!target) {
-      throw new Error('what?')
-    }
-    field = target
-  }
+  let field: GraphQLField<unknown, unknown, unknown> | undefined
+  $: field = $schema.getMutationType()?.getFields()[$page.params.mutation]
 </script>
 
-<FieldDetails {field} type={QueryType.MUTATION} />
+{#if field}
+  <FieldDetails {field} type={QueryType.MUTATION} />
+{:else}
+  <EntityNotFound type="mutation" name={$page.params.mutation} />
+{/if}

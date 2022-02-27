@@ -2,17 +2,16 @@
   import { schema } from '$lib/schema'
   import { page } from '$app/stores'
   import type { GraphQLNamedType } from 'graphql'
+  import EntityNotFound from '$lib/components/EntityNotFound.svelte'
 
-  let type: GraphQLNamedType
-  $: {
-    const target = $schema.getType($page.params.type)
-    if (!target) {
-      throw new Error('what?')
-    }
-    type = target
-  }
+  let type: GraphQLNamedType | undefined
+  $: type = $schema.getType($page.params.type)
 </script>
 
-<div>
-  {type.name}
-</div>
+{#if type}
+  <div>
+    {type.name}
+  </div>
+{:else}
+  <EntityNotFound type="type" name={$page.params.type} />
+{/if}
