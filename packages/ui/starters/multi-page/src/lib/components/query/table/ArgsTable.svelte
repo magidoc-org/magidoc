@@ -11,7 +11,7 @@
 </script>
 
 <DataTable
-  size="short"
+  size="medium"
   headers={[
     {
       key: 'name',

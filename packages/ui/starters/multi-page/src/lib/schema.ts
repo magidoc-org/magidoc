@@ -21,5 +21,5 @@ export function generateTypeLink(type: GraphQLType): string {
     return `${generateTypeLink(type.ofType)}!`
   }
 
-  return `<a href="/model/types/${type.name}">${type.name}</a>`
+  return `<a href="/model/types/${type.name}" class="bx--link bx--link--inline">${type.name}</a>`
 }

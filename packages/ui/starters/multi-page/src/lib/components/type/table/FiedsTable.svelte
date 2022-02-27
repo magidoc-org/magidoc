@@ -46,7 +46,7 @@
 
 <DataTable
   batchExpansion
-  size="short"
+  size="medium"
   nonExpandableRowIds={nonExpandableIds}
   headers={[
     {

@@ -1,3 +1,7 @@
+<script>
+  import { Link } from 'carbon-components-svelte'
+</script>
+
 <svelte:head>
   <title>Welcome</title>
 </svelte:head>
@@ -12,15 +16,15 @@
     </p>
     <br />
     <p>
-      Magidoc is a simple wrapper around a <a href="https://svelte.dev/"
-        >Svelte</a
+      Magidoc is a simple wrapper around a <Link href="https://svelte.dev/" size='lg'
+        >Svelte</Link
       >
       Project to simplify your setup. It will automatically generate static assets
       about your GraphQL API you can access throughout the application to generate
       whatever you want. It is based upon
-      <a href="https://kit.svelte.dev/">Svelte Kit</a>, a framework to develop
+      <Link href="https://kit.svelte.dev/" size='lg'>Svelte Kit</Link>, a framework to develop
       web applications with file-system based routing. For React Developers,
-      this is similar to <a href="https://nextjs.org/">Next</a>, but for Svelte!
+      this is similar to <Link href="https://nextjs.org/" size='lg'>Next</Link>, but for Svelte!
     </p>
     <br />
     <p>

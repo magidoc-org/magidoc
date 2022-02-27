@@ -72,4 +72,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  @media (max-width: 1056px) {
+    .code-mirror-section {
+      width: 86%;
+    }
+  }
 </style>
