@@ -33,8 +33,6 @@
     <UnionType {type} />
   {:else if isObjectType(type)}
     <ObjectType {type} />
-  {:else}
-    <!-- else content here -->
   {/if}
 {:else}
   <EntityNotFound type="type" name={$page.params.type} />

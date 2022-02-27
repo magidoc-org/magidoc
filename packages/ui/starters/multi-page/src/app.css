@@ -11,7 +11,3 @@
 .bx--side-nav__overlay-active {
   z-index: 7000;
 }
-
-main {
-  min-height: 100%;
-}
