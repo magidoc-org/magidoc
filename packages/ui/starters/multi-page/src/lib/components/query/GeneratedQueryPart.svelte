@@ -44,6 +44,9 @@
       hasIconOnly
       on:click={() => graphqlQuery.increaseDepth()}
     />
+    <p style="text-align:center">
+      {$graphqlQuery?.depth}
+    </p>
     <Button
       kind={'ghost'}
       icon={Subtract16}
