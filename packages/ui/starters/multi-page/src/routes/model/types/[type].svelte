@@ -4,6 +4,7 @@
   import { GraphQLNamedType, isEnumType, isScalarType } from 'graphql'
   import EntityNotFound from '$lib/components/EntityNotFound.svelte'
   import ScalarType from '$lib/components/type/ScalarType.svelte'
+  import EnumType from '$lib/components/type/EnumType.svelte'
 
   let type: GraphQLNamedType | undefined
   $: type = $schema.getType($page.params.type)
@@ -13,8 +14,7 @@
   {#if isScalarType(type)}
     <ScalarType {type} />
   {:else if isEnumType(type)}
-
-    <!-- else if content here -->
+    <EnumType {type} />
   {:else}
     <!-- else content here -->
   {/if}

@@ -158,6 +158,7 @@ importers:
       lodash: ^4.17.21
       svelte: ^3.46.4
       svelte-check: ^2.4.5
+      svelte-markdown: ^0.2.2
       svelte-preprocess: ^4.10.4
       tslib: ^2.3.1
       typescript: ^4.5.5
@@ -167,6 +168,7 @@ importers:
       codemirror: 5.65.2
       graphql: 16.3.0
       lodash: 4.17.21
+      svelte-markdown: 0.2.2_svelte@3.46.4
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.29
       '@sveltejs/adapter-static': 1.0.0-next.28
@@ -1211,6 +1213,10 @@ packages:
   /@types/lodash/4.14.179:
     resolution: {integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==}
     dev: true
+
+  /@types/marked/4.0.2:
+    resolution: {integrity: sha512-auNrZ/c0w6wsM9DccwVxWHssrMDezHUAXNesdp2RQrCVCyrQbOiSq7yqdJKrUQQpw9VTm7CGYJH2A/YG7jjrjQ==}
+    dev: false
 
   /@types/node/17.0.21:
     resolution: {integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==}
@@ -3827,6 +3833,12 @@ packages:
       tmpl: 1.0.5
     dev: true
 
+  /marked/4.0.12:
+    resolution: {integrity: sha512-hgibXWrEDNBWgGiK18j/4lkS6ihTe9sxtV4Q1OQppb/0zzyPSzoFANBa5MfsG/zgsWklmNnhm0XACZOH/0HBiQ==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
+
   /memorystream/0.3.1:
     resolution: {integrity: sha1-htcJCzDORV1j+64S3aUaR93K+bI=}
     engines: {node: '>= 0.10.0'}
@@ -4702,6 +4714,16 @@ packages:
     dependencies:
       svelte: 3.46.4
     dev: true
+
+  /svelte-markdown/0.2.2_svelte@3.46.4:
+    resolution: {integrity: sha512-bNxpG3gRbC2UjAFakIMcLEzVq5db2Md57aeU4wKCuffSfD6f7RkvtYDqbrAk2ycC55t3wykOy0E7KDuvVKyDYA==}
+    peerDependencies:
+      svelte: ^3.0.0
+    dependencies:
+      '@types/marked': 4.0.2
+      marked: 4.0.12
+      svelte: 3.46.4
+    dev: false
 
   /svelte-preprocess/4.10.4_svelte@3.46.4+typescript@4.5.5:
     resolution: {integrity: sha512-fuwol0N4UoHsNQolLFbMqWivqcJ9N0vfWO9IuPAiX/5okfoGXURyJ6nECbuEIv0nU3M8Xe2I1ONNje2buk7l6A==}

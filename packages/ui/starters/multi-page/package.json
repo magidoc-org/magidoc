@@ -16,7 +16,8 @@
     "@magidoc/plugin-code-mirror": "workspace:^0.0.19",
     "codemirror": "^5.65.2",
     "graphql": "^16.3.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "svelte-markdown": "^0.2.2"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",

@@ -9,6 +9,7 @@
   import { generateTypeLink } from '$lib/schema'
   import WarningFilled16 from 'carbon-icons-svelte/lib/WarningFilled16'
   import DeprecationNotice from '../common/DeprecationNotice.svelte'
+import MarkdownDescription from '../common/MarkdownDescription.svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -19,9 +20,7 @@
 
   <h1>{field.name}</h1>
 
-  {#if field.description}
-    <p>{field.description}</p>
-  {/if}
+  <MarkdownDescription description={field.description}/>
 
   <br />
 
