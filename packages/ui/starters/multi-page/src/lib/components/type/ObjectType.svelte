@@ -1,7 +1,5 @@
 <script type="ts">
   import { generateTypeLink } from '$lib/schema'
-  import { DataTable, TooltipIcon } from 'carbon-components-svelte'
-  import { WarningFilled16 } from 'carbon-icons-svelte'
 
   import type { GraphQLObjectType } from 'graphql'
   import _ from 'lodash'

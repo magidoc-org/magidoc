@@ -4,6 +4,7 @@
   import {
     GraphQLNamedType,
     isEnumType,
+    isInputObjectType,
     isInterfaceType,
     isObjectType,
     isScalarType,
@@ -15,6 +16,7 @@
   import InterfaceType from '$lib/components/type/InterfaceType.svelte'
   import ObjectType from '$lib/components/type/ObjectType.svelte'
   import UnionType from '$lib/components/type/UnionType.svelte'
+import InputObjectType from '$lib/components/type/InputObjectType.svelte';
 
   let type: GraphQLNamedType | undefined
   $: type = $schema.getType($page.params.type)
@@ -33,6 +35,8 @@
     <UnionType {type} />
   {:else if isObjectType(type)}
     <ObjectType {type} />
+  {:else if isInputObjectType(type)}
+    <InputObjectType {type} />
   {/if}
 {:else}
   <EntityNotFound type="type" name={$page.params.type} />
