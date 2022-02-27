@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     DataTable,
-    InlineNotification,
     TooltipIcon,
   } from 'carbon-components-svelte'
   import type { GraphQLField } from 'graphql'
@@ -9,21 +8,14 @@
   import AppQueryGenerator from './AppQueryGenerator.svelte'
   import { generateTypeLink } from '$lib/schema'
   import WarningFilled16 from 'carbon-icons-svelte/lib/WarningFilled16'
+  import DeprecationNotice from '../common/DeprecationNotice.svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
 </script>
 
 <section>
-  {#if field.deprecationReason}
-    <InlineNotification
-      hideCloseButton
-      kind="warning"
-      title="Deprecated Query:"
-      style="max-width: 100%"
-      subtitle={field.deprecationReason}
-    />
-  {/if}
+  <DeprecationNotice deprecationReason={field.deprecationReason} />
 
   <h1>{field.name}</h1>
 

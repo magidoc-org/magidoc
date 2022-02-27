@@ -2,7 +2,7 @@
   import _ from 'lodash'
   import { SideNavMenu } from 'carbon-components-svelte'
   import type { GraphQLField, GraphQLObjectType } from 'graphql'
-  import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte';
+  import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
 
   export let type: GraphQLObjectType | undefined | null
   export let menuText: string
@@ -12,7 +12,7 @@
     name: string
     deprecated: boolean
     href: string
-  }> =
+  }> = _.sortBy(
     _.map(
       type?.getFields(),
       (field: GraphQLField<unknown, unknown, unknown>) => ({
@@ -20,7 +20,9 @@
         deprecated: !!field.deprecationReason,
         href: `${baseUrl}/${field.name}`,
       }),
-    ) || []
+    ) || [],
+    (item) => item.name,
+  )
 </script>
 
 {#if fields.length > 0}

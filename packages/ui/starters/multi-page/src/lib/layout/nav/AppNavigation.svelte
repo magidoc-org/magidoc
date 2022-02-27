@@ -10,6 +10,7 @@
   import Queries from './Queries.svelte'
   import Subscriptions from './Subscriptions.svelte'
 import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte';
+import Types from './Types.svelte';
 
   export let isOpen = true
 </script>
@@ -22,5 +23,6 @@ import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.sve
     <Queries />
     <Mutations />
     <Subscriptions />
+    <Types />
   </SideNavItems>
 </SideNav>

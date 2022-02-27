@@ -3,13 +3,15 @@
   export let name: string
 </script>
 
-<h1>Not Found :(</h1>
-<div class="content-wrapper">
-  <img src="/logo.png" alt="Magidoc" class="logo" />
-  <h4>
-    Could not find any {type} named '{name}'
-  </h4>
-</div>
+<section>
+  <h1>Not Found :(</h1>
+  <div class="content-wrapper">
+    <img src="/logo.png" alt="Magidoc" class="logo" />
+    <h4>
+      Could not find any {type} named '{name}'
+    </h4>
+  </div>
+</section>
 
 <style>
   .content-wrapper {
@@ -24,6 +26,6 @@
   }
 
   .logo {
-      width: 15rem
+    width: 15rem;
   }
 </style>
