@@ -1,7 +1,17 @@
 <script lang="ts">
-  import { Header } from 'carbon-components-svelte'
+  import 'carbon-components-svelte/css/all.css'
+
+  import {
+    Header,
+    HeaderGlobalAction,
+    HeaderUtilities,
+    Theme,
+  } from 'carbon-components-svelte'
+  import { Moon16, Sun16 } from 'carbon-icons-svelte'
 
   export let isSideNavOpen = true
+
+  let theme: 'g10' | 'g90' = 'g10'
 </script>
 
 <Header href="/" bind:isSideNavOpen>
@@ -9,6 +19,22 @@
     <img src="/logo.png" alt="Magidoc" class="header-logo" />
     <span>Magidoc</span>
   </div>
+
+  <HeaderUtilities>
+    <Theme bind:theme persist persistKey="__carbon-theme" />
+    <HeaderGlobalAction
+      aria-label="Change Theme"
+      icon={theme === 'g10' ? Sun16 : Moon16}
+      on:click={() => {
+        console.log(theme)
+        if (theme === 'g10') {
+          theme = 'g90'
+        } else {
+          theme = 'g10'
+        }
+      }}
+    />
+  </HeaderUtilities>
 </Header>
 
 <style>
