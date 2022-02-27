@@ -10,6 +10,7 @@
   import WarningFilled16 from 'carbon-icons-svelte/lib/WarningFilled16'
   import DeprecationNotice from '../common/DeprecationNotice.svelte'
 import MarkdownDescription from '../common/MarkdownDescription.svelte'
+import _ from 'lodash';
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -19,7 +20,10 @@ import MarkdownDescription from '../common/MarkdownDescription.svelte'
   <DeprecationNotice deprecationReason={field.deprecationReason} />
 
   <h1>{field.name}</h1>
+  <h4>{_.capitalize(type.toLowerCase())}</h4>
 
+  <br />
+  
   <MarkdownDescription description={field.description}/>
 
   <br />

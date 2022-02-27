@@ -2,7 +2,7 @@
   import { DataTable, TooltipIcon } from 'carbon-components-svelte'
   import { WarningFilled16 } from 'carbon-icons-svelte'
 
-  import type { GraphQLEnumType, GraphQLScalarType } from 'graphql'
+  import type { GraphQLEnumType } from 'graphql'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
 
   export let type: GraphQLEnumType
@@ -10,12 +10,14 @@
 
 <section>
   <h1>{type.name}</h1>
-
+  <h4>Enum</h4>
+  <br />
+  
   <MarkdownDescription description={type.description} />
 
   <br />
 
-  <h2>Possible Values</h2>
+  <h3>Possible Values</h3>
   <DataTable
     headers={[
       {

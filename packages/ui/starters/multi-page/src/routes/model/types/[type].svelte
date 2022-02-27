@@ -15,6 +15,8 @@
     <ScalarType {type} />
   {:else if isEnumType(type)}
     <EnumType {type} />
+  {:else if isEnumType(type)}
+    <EnumType {type} />
   {:else}
     <!-- else content here -->
   {/if}

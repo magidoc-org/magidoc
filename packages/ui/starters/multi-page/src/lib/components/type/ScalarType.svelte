@@ -7,6 +7,9 @@
 
 <section>
   <h1>{type.name}</h1>
+  <h4>Scalar</h4>
+
+  <br />
 
   <MarkdownDescription description={type.description} />
 </section>
