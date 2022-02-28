@@ -8,10 +8,11 @@
     Theme,
   } from 'carbon-components-svelte'
   import { Moon16, Sun16 } from 'carbon-icons-svelte'
+  import type { AppTheme } from '$lib/theme'
 
   export let isSideNavOpen = true
 
-  let theme: 'g10' | 'g90' = 'g10'
+  let theme: AppTheme = 'g10'
 </script>
 
 <Header href="/" bind:isSideNavOpen>

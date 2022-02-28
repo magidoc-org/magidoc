@@ -11,7 +11,7 @@ export async function handle({
   event: RequestEvent
   resolve(event: RequestEvent, opts?: ResolveOptions): MaybePromise<Response>
 }) {
-  // SSR is useless since we do a static website
+  // Disable SSR for queries because of codemirror
   return await resolve(event, {
     ssr: false,
   })

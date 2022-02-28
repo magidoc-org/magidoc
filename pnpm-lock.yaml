@@ -153,6 +153,7 @@ importers:
       carbon-components-svelte: ^0.58.4
       carbon-icons-svelte: ^10.44.4
       carbon-preprocess-svelte: ^0.6.0
+      code-mirror-themes: ^1.0.0
       codemirror: ^5.65.2
       graphql: ^16.3.0
       lodash: ^4.17.21
@@ -165,6 +166,7 @@ importers:
     dependencies:
       '@magidoc/core': link:../../../core
       '@magidoc/plugin-code-mirror': link:../../plugins/code-mirror/dist
+      code-mirror-themes: 1.0.0
       codemirror: 5.65.2
       graphql: 16.3.0
       lodash: 4.17.21
@@ -1773,6 +1775,10 @@ packages:
     resolution: {integrity: sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
     dev: true
+
+  /code-mirror-themes/1.0.0:
+    resolution: {integrity: sha1-etjCeusaYnm0soAHIvFZnU4nzGE=}
+    dev: false
 
   /codemirror-graphql/1.2.12_277e0985ed0f3795874f93ac24c0f4c4:
     resolution: {integrity: sha512-irP+E8HOWtgIdU3PNTU77bNmpEXQYADRRDmKqkjh3w1m0welbxl6HtZgp+c+Mkkz+FXY1+3+gF6nEEj+eJ1xdg==}

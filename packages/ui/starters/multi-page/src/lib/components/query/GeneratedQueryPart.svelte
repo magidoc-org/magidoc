@@ -1,8 +1,11 @@
 <script type="ts">
   import CodeMirror from '@magidoc/plugin-code-mirror'
-  import { Button } from 'carbon-components-svelte'
+  import 'code-mirror-themes/themes/monokai.css'
+  import 'code-mirror-themes/themes/idle.css'
+  import { Button, Theme } from 'carbon-components-svelte'
   import { Add16, Copy16, Subtract16 } from 'carbon-icons-svelte'
   import { graphqlQuery } from './stores'
+  import type { AppTheme } from '$lib/theme'
 
   export let code: string
   export let height: number | 'auto'
@@ -25,7 +28,7 @@
 
 <div class="wrapper">
   <div class="code-mirror-section">
-    <CodeMirror {code} {mode} {height} showLineNumbers={false} />
+    <CodeMirror {code} {mode} {height} theme={'idle'} showLineNumbers={false} />
   </div>
   <div class="button-bar">
     <Button
