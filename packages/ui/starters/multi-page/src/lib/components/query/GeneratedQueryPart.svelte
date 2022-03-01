@@ -2,9 +2,6 @@
   import CodeMirror from '@magidoc/plugin-code-mirror'
   import 'code-mirror-themes/themes/monokai.css'
   import 'code-mirror-themes/themes/idle.css'
-  import 'codemirror/mode/javascript/javascript.js'
-  import 'codemirror/lib/codemirror'
-  import 'codemirror/lib/codemirror.css'
 
   import { Button } from 'carbon-components-svelte'
   import { Add16, Copy16, Subtract16 } from 'carbon-icons-svelte'
