@@ -47,12 +47,12 @@ describe('generating fakes for a GraphQL input argument', () => {
     ) {
       const parameter = paramByName(name, result)
       const defaultFactory = _.find(DEFAULT_FACTORIES, (__, key) =>
-        name.includes(key),
+        name.toLocaleLowerCase().includes(key.toLocaleLowerCase()),
       )
       const defaultValue = defaultFactory
         ? defaultFactory({
             ...context,
-            targetName: name,
+            targetName: name.replace('[', '').replace(']', '').replace('!', ''),
           })
         : null
 
@@ -68,6 +68,8 @@ describe('generating fakes for a GraphQL input argument', () => {
       } else if (isList) {
         expect(parameter.value).toHaveLength(1)
         expect((parameter.value as Array<unknown>)[0]).toBeTruthy()
+      } else if (name === 'enum') {
+        expect(parameter.value).toBe('RED')
       } else {
         expect(parameter.value).toBeTruthy()
       }

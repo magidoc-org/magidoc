@@ -173,7 +173,7 @@ function randomFactory(
   context: FakeGenerationContext,
 ): GraphQLFactory {
   if (isEnumType(argumentType)) {
-    return () => argumentType.getValues()[0]
+    return () => argumentType.getValues()[0].value as unknown
   }
 
   if (isScalarType(argumentType)) {
