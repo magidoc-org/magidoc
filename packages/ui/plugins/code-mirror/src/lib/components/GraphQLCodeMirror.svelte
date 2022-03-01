@@ -4,7 +4,7 @@
   import 'codemirror/addon/edit/matchbrackets'
   import 'codemirror/lib/codemirror.css'
   import 'codemirror-graphql/src/mode'
-  import { afterUpdate, onMount } from 'svelte'
+  import { onMount } from 'svelte'
 
   export let code: string
   export let mode: 'graphql' | 'graphql-variables'
@@ -37,18 +37,17 @@
     )
 
     codeMirror.setSize('auto', height)
+    codeMirror.refresh()
   })
 
-  afterUpdate(() => {
-    if (codeMirror) {
-      codeMirror.setOption('theme', theme)
-      codeMirror.setOption('lineNumbers', showLineNumbers)
-      codeMirror.setOption('mode', mode)
-      codeMirror.setValue(code)
-      codeMirror.setSize('auto', height)
-      codeMirror.refresh()
-    }
-  })
+  $: if (codeMirror) {
+    codeMirror.setOption('theme', theme)
+    codeMirror.setOption('lineNumbers', showLineNumbers)
+    codeMirror.setOption('mode', mode)
+    codeMirror.setValue(code)
+    codeMirror.setSize('auto', height)
+    codeMirror.refresh()
+  }
 </script>
 
 <template>

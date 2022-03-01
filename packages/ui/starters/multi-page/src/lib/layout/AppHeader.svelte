@@ -8,11 +8,9 @@
     Theme,
   } from 'carbon-components-svelte'
   import { Moon16, Sun16 } from 'carbon-icons-svelte'
-  import type { AppTheme } from '$lib/theme'
+  import { theme, themeValue } from '$lib/theme'
 
   export let isSideNavOpen = true
-
-  let theme: AppTheme = 'g10'
 </script>
 
 <Header href="/" bind:isSideNavOpen>
@@ -22,18 +20,14 @@
   </div>
 
   <HeaderUtilities>
-    <Theme bind:theme persist persistKey="__carbon-theme" />
+    <Theme
+      bind:theme={$themeValue}
+      persist
+    />
     <HeaderGlobalAction
       aria-label="Change Theme"
-      icon={theme === 'g10' ? Sun16 : Moon16}
-      on:click={() => {
-        console.log(theme)
-        if (theme === 'g10') {
-          theme = 'g90'
-        } else {
-          theme = 'g10'
-        }
-      }}
+      icon={$theme.value === 'g10' ? Sun16 : Moon16}
+      on:click={() => $theme.toggle()}
     />
   </HeaderUtilities>
 </Header>

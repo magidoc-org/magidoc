@@ -2,10 +2,10 @@
   import CodeMirror from '@magidoc/plugin-code-mirror'
   import 'code-mirror-themes/themes/monokai.css'
   import 'code-mirror-themes/themes/idle.css'
-  import { Button, Theme } from 'carbon-components-svelte'
+  import { Button } from 'carbon-components-svelte'
   import { Add16, Copy16, Subtract16 } from 'carbon-icons-svelte'
   import { graphqlQuery } from './stores'
-  import type { AppTheme } from '$lib/theme'
+  import { theme } from '$lib/theme'
 
   export let code: string
   export let height: number | 'auto'
@@ -24,11 +24,19 @@
       console.log(e)
     }
   }
+
+  $: codeMirrorTheme = $theme.value === 'g10' ? 'idle' : 'monokai'
 </script>
 
 <div class="wrapper">
   <div class="code-mirror-section">
-    <CodeMirror {code} {mode} {height} theme={'idle'} showLineNumbers={false} />
+    <CodeMirror
+      {code}
+      {mode}
+      {height}
+      theme={codeMirrorTheme}
+      showLineNumbers={false}
+    />
   </div>
   <div class="button-bar">
     <Button
@@ -74,11 +82,5 @@
   .button-bar {
     display: flex;
     flex-direction: column;
-  }
-
-  @media (max-width: 1056px) {
-    .code-mirror-section {
-      width: 86%;
-    }
   }
 </style>
