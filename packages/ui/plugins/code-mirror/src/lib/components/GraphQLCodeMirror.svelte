@@ -3,11 +3,14 @@
   import type { Editor } from 'codemirror'
   import 'codemirror/addon/edit/matchbrackets'
   import 'codemirror/lib/codemirror.css'
-  import 'codemirror-graphql/src/mode'
+  import 'codemirror-graphql/mode'
+  import 'codemirror-graphql/variables/mode'
+  import 'codemirror-graphql/results/mode'
+
   import { onMount } from 'svelte'
 
   export let code: string
-  export let mode: 'graphql' | 'graphql-variables'
+  export let mode: 'graphql' | 'graphql-variables' | 'graphql-results'
   export let height: number | 'auto'
   export let theme = 'default'
   export let showLineNumbers = true
@@ -44,8 +47,8 @@
     codeMirror.setOption('theme', theme)
     codeMirror.setOption('lineNumbers', showLineNumbers)
     codeMirror.setOption('mode', mode)
-    codeMirror.setValue(code)
     codeMirror.setSize('auto', height)
+    codeMirror.setValue(code)
     codeMirror.refresh()
   }
 </script>

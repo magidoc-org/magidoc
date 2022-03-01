@@ -2,6 +2,10 @@
   import CodeMirror from '@magidoc/plugin-code-mirror'
   import 'code-mirror-themes/themes/monokai.css'
   import 'code-mirror-themes/themes/idle.css'
+  import 'codemirror/mode/javascript/javascript.js'
+  import 'codemirror/lib/codemirror'
+  import 'codemirror/lib/codemirror.css'
+
   import { Button } from 'carbon-components-svelte'
   import { Add16, Copy16, Subtract16 } from 'carbon-icons-svelte'
   import { graphqlQuery } from './stores'
@@ -9,7 +13,7 @@
 
   export let code: string
   export let height: number | 'auto'
-  export let mode: 'graphql' | 'graphql-variables'
+  export let mode: 'graphql' | 'graphql-variables' | 'graphql-results'
 
   let copyButtonText = 'Copy query'
 

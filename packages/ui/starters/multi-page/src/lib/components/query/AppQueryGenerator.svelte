@@ -42,7 +42,7 @@
         {#if selectedTab === 1}
           <AppCodeMirror
             code={$graphqlQuery?.variables
-              ? JSON.stringify($graphqlQuery?.variables, null, 2)
+              ? JSON.stringify($graphqlQuery?.variables || {}, null, 2)
               : ''}
             mode={'graphql-variables'}
             height={300}
