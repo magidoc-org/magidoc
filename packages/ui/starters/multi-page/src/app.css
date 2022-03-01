@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 main {
   height: 100%;
@@ -18,7 +19,12 @@ main {
     padding: 1rem 0 1rem 0;
   }
 
-  tr.bx--parent-row.bx--expandable-row+tr[data-child-row] td {
+  tr.bx--parent-row.bx--expandable-row + tr[data-child-row] td {
     padding-left: 1rem !important;
   }
+}
+
+.CodeMirror * {
+  font-family: 'JetBrains Mono', Arial, monospace;
+  font-size: 0.85rem;
 }
