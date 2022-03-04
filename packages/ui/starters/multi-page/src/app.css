@@ -4,12 +4,24 @@ main {
   height: 100%;
 }
 
+h1 {
+  font-weight: 500 !important;
+}
+
 .deprecated {
   text-decoration: line-through !important;
 }
 
 .bx--side-nav__overlay-active {
   z-index: 7000;
+}
+
+.bx--link {
+  font-size: inherit !important;
+}
+
+.bx--structured-list {
+  margin-bottom: 0px !important;
 }
 
 /* Mobile Mode */
