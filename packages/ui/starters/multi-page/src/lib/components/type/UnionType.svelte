@@ -1,26 +1,26 @@
 <script type="ts">
   import { generateTypeLink } from '$lib/schema'
-  import { DataTable, TooltipIcon } from 'carbon-components-svelte'
-  import { WarningFilled16 } from 'carbon-icons-svelte'
+  import type { GraphQLUnionType } from 'graphql'
 
-  import { GraphQLUnionType } from 'graphql'
   import _ from 'lodash'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
+  import TypeTag from '../tags/TypeTag.svelte'
 
   export let type: GraphQLUnionType
 </script>
 
 <section>
-  <h1>{type.name}</h1>
-  <h4>Union</h4>
+  <h1>{type.name} <TypeTag {type} /></h1>
   <br />
 
   <MarkdownDescription description={type.description} />
 
   <br />
 
-  <h4>Types</h4>
-  Union of types {@html type.getTypes().map((item) => generateTypeLink(item)).join(', ')}
+  <h2>Types</h2>
+  Union of types {@html type
+    .getTypes()
+    .map((item) => generateTypeLink(item))
+    .join(', ')}
   <br />
-
 </section>

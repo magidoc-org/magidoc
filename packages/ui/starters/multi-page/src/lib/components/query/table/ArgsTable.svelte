@@ -5,28 +5,30 @@
   import { generateTypeLink } from '$lib/schema'
 
   import {
-    DataTable,
     StructuredList,
     StructuredListBody,
     StructuredListCell,
     StructuredListRow,
-    Tag,
   } from 'carbon-components-svelte'
   import type { GraphQLArgument } from 'graphql'
+  import _ from 'lodash'
   import DefaultValueCell from '../../common/table/DefaultValueCell.svelte'
-  import DeprecatableTypedCell from '../../common/table/DeprecatableTypedCell.svelte'
 
   export let data: ReadonlyArray<GraphQLArgument>
 
-  $: items = data.map((arg) => ({
-    id: arg.name,
-    deprecationReason: arg.deprecationReason,
-    name: arg.name,
-    typeLink: generateTypeLink(arg.type),
-    description: arg.description,
-    default: arg.defaultValue,
-    type: arg.type,
-  }))
+  $: items =
+    _.sortBy(
+      data.map((arg) => ({
+        id: arg.name,
+        deprecationReason: arg.deprecationReason,
+        name: arg.name,
+        typeLink: generateTypeLink(arg.type),
+        description: arg.description,
+        default: arg.defaultValue,
+        type: arg.type,
+      })),
+      (item) => item.name,
+    ) || []
 </script>
 
 <StructuredList condensed>

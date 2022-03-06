@@ -3,9 +3,7 @@
     SideNav,
     SideNavItems,
     SideNavMenu,
-    SideNavMenuItem,
   } from 'carbon-components-svelte'
-  import { page } from '$app/stores'
   import Mutations from './Mutations.svelte'
   import Queries from './Queries.svelte'
   import Subscriptions from './Subscriptions.svelte'

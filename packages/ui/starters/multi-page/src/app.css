@@ -24,6 +24,10 @@ h1 {
   margin-bottom: 0px !important;
 }
 
+.bx--structured-list-row:last-child  {
+  border-color: transparent !important;
+}
+
 /* Mobile Mode */
 @media (max-width: 1056px) {
   .bx--side-nav ~ .bx--content {
