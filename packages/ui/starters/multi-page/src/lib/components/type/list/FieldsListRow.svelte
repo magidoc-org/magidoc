@@ -1,21 +1,19 @@
 <script lang="ts">
-import TypeLink from '$lib/components/common/TypeLink.svelte';
+  import MarkdownDescription from '$lib/components/common/MarkdownDescription.svelte'
+  import TypeLink from '$lib/components/common/TypeLink.svelte'
 
   import ArgsList from '$lib/components/query/list/ArgsList.svelte'
 
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
-import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
+  import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 
   import {
     Button,
     StructuredListCell,
     StructuredListRow,
   } from 'carbon-components-svelte'
-  import {
-    ArrowDown16,
-    ArrowUp16,
-  } from 'carbon-icons-svelte'
+  import { ArrowDown16, ArrowUp16 } from 'carbon-icons-svelte'
   import type { GraphQLField } from 'graphql'
 
   export let item: GraphQLField<unknown, unknown, unknown>
@@ -26,12 +24,13 @@ import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
 <StructuredListRow>
   <StructuredListCell>
     <p>
-      <span style="font-weight: bold">{item.name}</span> <TypeLinkTag type={item.type}/>
+      <span style="font-weight: bold">{item.name}</span>
+      <TypeLinkTag type={item.type} />
       <DeprecatedTag reason={item.deprecationReason} />
       <NullableTag type={item.type} />
     </p>
     {#if item.description}
-      <p>{item.description}</p>
+      <MarkdownDescription description={item.description} />
     {/if}
     {#if item.args.length > 0}
       {#if showArguments}
@@ -62,9 +61,9 @@ import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
   .arguments-list-wrapper {
     border-left: 3px solid lightgrey;
     padding-left: 10px;
-    margin-top: 0.7rem;  
+    margin-top: 0.7rem;
     margin-bottom: 0.7rem;
-}
+  }
 
   .button-wrapper {
     display: flex;
