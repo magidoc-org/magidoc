@@ -29,8 +29,6 @@
 
     return 'Unknown'
   }
-
-  $: typeString = getTypeString()
 </script>
 
-<Tag type="blue">{typeString}</Tag>
+<Tag type="teal">{getTypeString()}</Tag>

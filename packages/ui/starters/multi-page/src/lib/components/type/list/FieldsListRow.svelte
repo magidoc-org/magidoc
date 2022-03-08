@@ -1,24 +1,20 @@
 <script lang="ts">
-  import ArgsTable from '$lib/components/query/table/ArgsTable.svelte'
+import TypeLink from '$lib/components/common/TypeLink.svelte';
+
+  import ArgsList from '$lib/components/query/list/ArgsList.svelte'
 
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
-
-  import { generateTypeLink } from '$lib/schema'
+import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
 
   import {
-    Accordion,
-    AccordionItem,
     Button,
-    Column,
     StructuredListCell,
     StructuredListRow,
   } from 'carbon-components-svelte'
   import {
-    Add16,
     ArrowDown16,
     ArrowUp16,
-    Subtract16,
   } from 'carbon-icons-svelte'
   import type { GraphQLField } from 'graphql'
 
@@ -30,9 +26,7 @@
 <StructuredListRow>
   <StructuredListCell>
     <p>
-      <span style="font-weight: bold">{item.name}</span>: {@html generateTypeLink(
-        item.type,
-      )}
+      <span style="font-weight: bold">{item.name}</span> <TypeLinkTag type={item.type}/>
       <DeprecatedTag reason={item.deprecationReason} />
       <NullableTag type={item.type} />
     </p>
@@ -41,8 +35,8 @@
     {/if}
     {#if item.args.length > 0}
       {#if showArguments}
-        <div class="arguments-table-wrapper">
-          <ArgsTable data={item.args} />
+        <div class="arguments-list-wrapper">
+          <ArgsList data={item.args} />
         </div>
       {/if}
       <div class="button-wrapper">
@@ -65,7 +59,7 @@
     border-radius: 500px !important;
   }
 
-  .arguments-table-wrapper {
+  .arguments-list-wrapper {
     border-left: 3px solid lightgrey;
     padding-left: 10px;
     margin-top: 0.7rem;  

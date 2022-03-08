@@ -7,6 +7,7 @@
 {#if deprecationReason}
   <InlineNotification
     hideCloseButton
+    lowContrast
     kind="warning"
     title="Deprecated Query:"
     style="max-width: 100%"

@@ -2,12 +2,12 @@
   import type { GraphQLField } from 'graphql'
   import type { QueryType } from '@magidoc/core'
   import AppQueryGenerator from './AppQueryGenerator.svelte'
-  import { generateTypeLink } from '$lib/schema'
   import DeprecationNotice from '../common/DeprecationNotice.svelte'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
   import _ from 'lodash'
-  import ArgsTable from './table/ArgsTable.svelte'
+  import ArgsList from './list/ArgsList.svelte'
   import QueryTypeTag from '../tags/QueryTypeTag.svelte'
+  import TypeLink from '../common/TypeLink.svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -25,15 +25,14 @@
   {#if field.args.length > 0}
     <br />
     <h2>Arguments</h2>
-    <ArgsTable data={field.args} />
+    <ArgsList data={field.args} />
   {/if}
 
   {#if field.type}
     <br />
     <h2>Response</h2>
     <p>
-      Returns
-      {@html generateTypeLink(field.type)}
+      Returns <TypeLink type={field.type} />
     </p>
   {/if}
 

@@ -1,11 +1,10 @@
 <script type="ts">
-  import { generateTypeLink } from '$lib/schema'
-
   import type { GraphQLObjectType } from 'graphql'
   import _ from 'lodash'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
 import TypeTag from '../tags/TypeTag.svelte';
-  import FiedsTable from './table/FiedsTable.svelte'
+  import FiedsTable from './list/FiedsList.svelte'
+import InterfaceList from './list/TypeEnumeration.svelte';
 
   export let type: GraphQLObjectType
 </script>
@@ -27,9 +26,7 @@ import TypeTag from '../tags/TypeTag.svelte';
 
   {#if type.getInterfaces().length > 0}
     <h2>Interfaces</h2>
-    Also implements {@html type
-      .getInterfaces()
-      .map((item) => generateTypeLink(item))
-      .join(', ')}
+
+    Also implements <InterfaceList types={type.getInterfaces()}/>
   {/if}
 </section>

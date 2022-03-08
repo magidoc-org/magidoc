@@ -3,7 +3,7 @@
   import _ from 'lodash'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
 import TypeTag from '../tags/TypeTag.svelte';
-  import InputFieldsTable from './table/InputFieldsTable.svelte'
+  import InputFieldsTable from './list/InputFieldsList.svelte'
 
   export let type: GraphQLInputObjectType
 </script>

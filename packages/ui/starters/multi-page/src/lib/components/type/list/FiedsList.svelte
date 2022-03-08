@@ -2,7 +2,7 @@
   import { StructuredList, StructuredListBody } from 'carbon-components-svelte'
   import type { GraphQLField } from 'graphql'
   import _ from 'lodash'
-  import FieldsTableRow from './FieldsTableRow.svelte'
+  import FieldsTableRow from './FieldsListRow.svelte'
 
   export let data: ReadonlyArray<GraphQLField<unknown, unknown, unknown>>
 

@@ -5,6 +5,7 @@
   import _ from 'lodash'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
+  import TypeEnumeration from './list/TypeEnumeration.svelte'
 
   export let type: GraphQLUnionType
 </script>
@@ -18,9 +19,6 @@
   <br />
 
   <h2>Types</h2>
-  Union of types {@html type
-    .getTypes()
-    .map((item) => generateTypeLink(item))
-    .join(', ')}
+  Union of types <TypeEnumeration types={type.getTypes()} />
   <br />
 </section>

@@ -1,8 +1,13 @@
 <script lang="ts">
+import DefaultValueDisplay from '$lib/components/common/DefaultValueDisplay.svelte';
+
+import TypeLink from '$lib/components/common/TypeLink.svelte';
+
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
+import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
+import TypeTag from '$lib/components/tags/TypeTag.svelte';
 
-  import { generateTypeLink } from '$lib/schema'
 
   import {
     StructuredList,
@@ -12,7 +17,6 @@
   } from 'carbon-components-svelte'
   import type { GraphQLArgument } from 'graphql'
   import _ from 'lodash'
-  import DefaultValueCell from '../../common/table/DefaultValueCell.svelte'
 
   export let data: ReadonlyArray<GraphQLArgument>
 
@@ -22,7 +26,6 @@
         id: arg.name,
         deprecationReason: arg.deprecationReason,
         name: arg.name,
-        typeLink: generateTypeLink(arg.type),
         description: arg.description,
         default: arg.defaultValue,
         type: arg.type,
@@ -37,7 +40,7 @@
       <StructuredListRow>
         <StructuredListCell>
           <p>
-            <span style="font-weight: bold">{item.name}</span>: {@html item.typeLink}
+            <span style="font-weight: bold">{item.name}</span> <TypeLinkTag type={item.type}/>
             <DeprecatedTag reason={item.deprecationReason} />
             <NullableTag type={item.type} />
           </p>
@@ -45,7 +48,7 @@
             <p>{item.description}</p>
           {/if}
           {#if item.default}
-            Default: <DefaultValueCell value={item.default} />
+            Default: <DefaultValueDisplay value={item.default} />
           {/if}
         </StructuredListCell>
       </StructuredListRow>
