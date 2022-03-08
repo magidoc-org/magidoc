@@ -22,20 +22,16 @@
       "path": "."
     },
     {
-      "name": "Core",
-      "path": "./packages/core/"
-    },
-    {
-      "name": "Plugins/Demo",
-      "path": "./packages/ui/plugins/_demo"
+      "name": "Plugins/Query Generator",
+      "path": "./packages/plugins/query-generator/"
     },
     {
       "name": "Plugins/CodeMirror",
-      "path": "./packages/ui/plugins/code-mirror"
+      "path": "./packages/plugins/code-mirror"
     },
     {
       "name": "Starters/Multi-Page",
-      "path": "./packages/ui/starters/multi-page"
+      "path": "./packages/starters/multi-page"
     }
   ],
   "extensions": {
