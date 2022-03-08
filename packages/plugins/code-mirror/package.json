@@ -1,5 +1,6 @@
 {
   "name": "@magidoc/plugin-code-mirror",
+  "description": "A plugin that provide a Svelte component to display GraphQL queries/variables/response",
   "license": "MIT",
   "version": "0.0.19",
   "svelte": "index.js",

@@ -1,5 +1,6 @@
 {
   "name": "@magidoc/plugin-query-generator",
+  "description": "A browser and nodeJS compatible plugin that allows to generate GraphQL Queries and Variables",
   "private": false,
   "version": "0.0.19",
   "type": "module",
