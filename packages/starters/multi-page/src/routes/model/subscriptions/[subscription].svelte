@@ -1,7 +1,7 @@
 <script lang="ts">
   import { schema } from '$lib/schema'
   import { page } from '$app/stores'
-  import { QueryType } from '@magidoc/core'
+  import { QueryType } from '@magidoc/plugin-query-generator'
   import type { GraphQLField } from 'graphql'
   import FieldDetails from '$lib/components/query/FieldDetails.svelte'
   import EntityNotFound from '$lib/components/EntityNotFound.svelte'

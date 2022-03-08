@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { GraphQLField } from 'graphql'
-  import type { QueryType } from '@magidoc/core'
+  import type { QueryType } from '@magidoc/plugin-query-generator'
   import AppQueryGenerator from './AppQueryGenerator.svelte'
   import DeprecationNotice from '../common/DeprecationNotice.svelte'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'

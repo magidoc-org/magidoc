@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { QueryType } from '@magidoc/core'
+  import { QueryType } from '@magidoc/plugin-query-generator'
   import { schema } from '$lib/schema'
   import { page } from '$app/stores'
   import type { GraphQLField } from 'graphql'

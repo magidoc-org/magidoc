@@ -5,7 +5,7 @@
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
   import AppCodeMirror from './GeneratedQueryPart.svelte'
-  import type { QueryType } from '@magidoc/core'
+  import type { QueryType } from '@magidoc/plugin-query-generator'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>

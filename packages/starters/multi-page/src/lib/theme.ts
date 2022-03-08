@@ -1,4 +1,5 @@
-import { derived, Writable, writable } from 'svelte/store'
+import { derived, writable } from 'svelte/store'
+import type { Writable } from 'svelte/store'
 
 export type AppThemeValue = 'g10' | 'g90'
 

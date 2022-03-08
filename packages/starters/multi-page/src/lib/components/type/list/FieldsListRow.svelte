@@ -54,10 +54,6 @@
 </StructuredListRow>
 
 <style>
-  .rounded {
-    border-radius: 500px !important;
-  }
-
   .arguments-list-wrapper {
     border-left: 3px solid lightgrey;
     padding-left: 10px;

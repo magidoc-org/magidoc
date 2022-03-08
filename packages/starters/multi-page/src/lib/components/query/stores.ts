@@ -4,7 +4,7 @@ import {
   GraphQLQuery,
   NullGenerationStrategy,
   QueryType,
-} from '@magidoc/core'
+} from '@magidoc/plugin-query-generator'
 import type { GraphQLField } from 'graphql'
 
 const MAX_DEPTH = 8
