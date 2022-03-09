@@ -27,8 +27,6 @@ import InputObjectType from '$lib/components/type/InputObjectType.svelte';
     <ScalarType {type} />
   {:else if isEnumType(type)}
     <EnumType {type} />
-  {:else if isEnumType(type)}
-    <EnumType {type} />
   {:else if isInterfaceType(type)}
     <InterfaceType {type} />
   {:else if isUnionType(type)}

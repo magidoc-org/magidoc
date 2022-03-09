@@ -1,6 +1,6 @@
 {
-  "name": "@magidoc/plugin-reverse-mapping",
-  "description": "A library that provides the ability to do a reverse mapping on GraphQL types.",
+  "name": "@magidoc/plugin-reverse-schema-mapper",
+  "description": "A library that provides the ability to do a reverse lookup on GraphQL types.",
   "private": false,
   "version": "0.0.19",
   "type": "module",
