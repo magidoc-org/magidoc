@@ -16,7 +16,7 @@
   import InterfaceType from '$lib/components/type/InterfaceType.svelte'
   import ObjectType from '$lib/components/type/ObjectType.svelte'
   import UnionType from '$lib/components/type/UnionType.svelte'
-import InputObjectType from '$lib/components/type/InputObjectType.svelte';
+  import InputObjectType from '$lib/components/type/InputObjectType.svelte'
 
   let type: GraphQLNamedType | undefined
   $: type = $schema.getType($page.params.type)

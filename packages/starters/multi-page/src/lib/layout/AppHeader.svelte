@@ -20,10 +20,7 @@
   </div>
 
   <HeaderUtilities>
-    <Theme
-      bind:theme={$themeValue}
-      persist
-    />
+    <Theme bind:theme={$themeValue} persist />
     <HeaderGlobalAction
       aria-label="Change Theme"
       icon={$theme.value === 'g10' ? Sun16 : Moon16}

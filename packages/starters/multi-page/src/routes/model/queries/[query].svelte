@@ -8,7 +8,6 @@
 
   let field: GraphQLField<unknown, unknown, unknown> | undefined
   $: field = $schema.getQueryType()?.getFields()[$page.params.query]
-
 </script>
 
 {#if field}

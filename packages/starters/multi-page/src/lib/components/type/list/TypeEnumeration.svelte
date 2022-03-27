@@ -7,5 +7,5 @@
 </script>
 
 {#each types as item, index}
-  <TypeLink type={item} />{#if index !== types.length - 1}{", "}{/if}
+  <TypeLink type={item} />{#if index !== types.length - 1}{', '}{/if}
 {/each}

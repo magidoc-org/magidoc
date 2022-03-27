@@ -1,14 +1,10 @@
 <script lang="ts">
-  import {
-    SideNav,
-    SideNavItems,
-    SideNavMenu,
-  } from 'carbon-components-svelte'
+  import { SideNav, SideNavItems, SideNavMenu } from 'carbon-components-svelte'
   import Mutations from './Mutations.svelte'
   import Queries from './Queries.svelte'
   import Subscriptions from './Subscriptions.svelte'
-import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte';
-import Types from './Types.svelte';
+  import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
+  import Types from './Types.svelte'
 
   export let isOpen = true
 </script>
@@ -16,7 +12,7 @@ import Types from './Types.svelte';
 <SideNav {isOpen}>
   <SideNavItems>
     <SideNavMenu text="Introduction" expanded>
-      <SelectableNavMenuItem href="/introduction/welcome" text="Welcome"/>
+      <SelectableNavMenuItem href="/introduction/welcome" text="Welcome" />
     </SideNavMenu>
     <Queries />
     <Mutations />

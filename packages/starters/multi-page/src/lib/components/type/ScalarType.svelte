@@ -1,7 +1,7 @@
 <script type="ts">
   import type { GraphQLScalarType } from 'graphql'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
-import TypeTag from '../tags/TypeTag.svelte';
+  import TypeTag from '../tags/TypeTag.svelte'
 
   export let type: GraphQLScalarType
 </script>

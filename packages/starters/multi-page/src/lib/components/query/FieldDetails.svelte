@@ -4,7 +4,6 @@
   import AppQueryGenerator from './AppQueryGenerator.svelte'
   import DeprecationNotice from '../common/DeprecationNotice.svelte'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
-  import _ from 'lodash'
   import ArgsList from './list/ArgsList.svelte'
   import QueryTypeTag from '../tags/QueryTypeTag.svelte'
   import TypeLink from '../common/TypeLink.svelte'

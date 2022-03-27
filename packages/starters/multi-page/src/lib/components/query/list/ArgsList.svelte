@@ -1,13 +1,9 @@
 <script lang="ts">
-import DefaultValueDisplay from '$lib/components/common/DefaultValueDisplay.svelte';
-
-import TypeLink from '$lib/components/common/TypeLink.svelte';
+  import DefaultValueDisplay from '$lib/components/common/DefaultValueDisplay.svelte'
 
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
-import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
-import TypeTag from '$lib/components/tags/TypeTag.svelte';
-
+  import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 
   import {
     StructuredList,
@@ -40,7 +36,8 @@ import TypeTag from '$lib/components/tags/TypeTag.svelte';
       <StructuredListRow>
         <StructuredListCell>
           <p>
-            <span style="font-weight: bold">{item.name}</span> <TypeLinkTag type={item.type}/>
+            <span style="font-weight: bold">{item.name}</span>
+            <TypeLinkTag type={item.type} />
             <DeprecatedTag reason={item.deprecationReason} />
             <NullableTag type={item.type} />
           </p>

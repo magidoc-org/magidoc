@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { generateTypeLink } from '$lib/schema'
-
   import {
     StructuredList,
     StructuredListBody,
@@ -11,8 +9,8 @@
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
   import _ from 'lodash'
-import DefaultValueDisplay from '$lib/components/common/DefaultValueDisplay.svelte';
-import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
+  import DefaultValueDisplay from '$lib/components/common/DefaultValueDisplay.svelte'
+  import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 
   export let data: ReadonlyArray<GraphQLInputField>
 
@@ -36,7 +34,8 @@ import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte';
       <StructuredListRow>
         <StructuredListCell>
           <p>
-            <span style="font-weight: bold">{item.name}</span> <TypeLinkTag type={item.type}/>
+            <span style="font-weight: bold">{item.name}</span>
+            <TypeLinkTag type={item.type} />
             <DeprecatedTag reason={item.deprecationReason} />
             <NullableTag type={item.type} />
           </p>

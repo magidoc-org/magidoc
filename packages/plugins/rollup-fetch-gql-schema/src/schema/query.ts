@@ -54,6 +54,6 @@ export default async function queryGraphQLSchema(
         )
       }
 
-      return res.data as IntrospectionQuery
+      return res.data
     })
 }

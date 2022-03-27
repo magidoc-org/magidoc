@@ -1,6 +1,5 @@
 <script lang="ts">
   import MarkdownDescription from '$lib/components/common/MarkdownDescription.svelte'
-  import TypeLink from '$lib/components/common/TypeLink.svelte'
 
   import ArgsList from '$lib/components/query/list/ArgsList.svelte'
 

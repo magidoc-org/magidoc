@@ -17,5 +17,3 @@ export type ReverseObjectUsage = ReverseUsage
 export type ReverseInputObjectUsage = ReverseUsage
 
 export type ReverseEnumObjectUsage = ReverseUsage
-
-

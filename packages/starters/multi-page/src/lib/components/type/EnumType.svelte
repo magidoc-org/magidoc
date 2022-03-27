@@ -4,7 +4,6 @@
     StructuredListBody,
     StructuredListCell,
     StructuredListRow,
-    TooltipIcon,
   } from 'carbon-components-svelte'
 
   import type { GraphQLEnumType } from 'graphql'

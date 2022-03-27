@@ -14,7 +14,7 @@ describe('fetching the graphql schema', () => {
   beforeEach(() => {
     nock.cleanAll()
   })
-  
+
   describe('using default parameters', () => {
     const expectedRequest = getIntrospectionQuery({
       descriptions: true,
@@ -29,9 +29,9 @@ describe('fetching the graphql schema', () => {
         nock(basePath)
           .matchHeader('content-type', 'application/json')
           .post(path, {
-              operationName: 'IntrospectionQuery',
-              query: expectedRequest.trim(),
-              variables: null,
+            operationName: 'IntrospectionQuery',
+            query: expectedRequest.trim(),
+            variables: null,
           })
           .reply(200, introspectionResult)
       })
@@ -51,9 +51,11 @@ describe('fetching the graphql schema', () => {
       })
 
       it('throws an error', async () => {
-        (await expect(async () => {
+        ;(
+          await expect(async () => {
             await queryGraphQLSchema(fullPath, {})
-        })).rejects.toThrowError('Request failed with status code 401')
+          })
+        ).rejects.toThrowError('Request failed with status code 401')
       })
     })
   })
@@ -66,6 +68,27 @@ describe('fetching the graphql schema', () => {
     it('uses the custom method', async () => {
       const result = await queryGraphQLSchema(fullPath, {
         method: 'GET',
+      })
+
+      expect(result).toBe(introspectionResult.data)
+    })
+  })
+
+  describe('providing custom headers', () => {
+    const authorization = 'Bearer abc'
+
+    beforeEach(() => {
+      nock(basePath)
+        .matchHeader('Authorization', authorization)
+        .post(path)
+        .reply(200, introspectionResult)
+    })
+
+    it('uses the custom headers', async () => {
+      const result = await queryGraphQLSchema(fullPath, {
+        headers: {
+          Authorization: authorization,
+        },
       })
 
       expect(result).toBe(introspectionResult.data)

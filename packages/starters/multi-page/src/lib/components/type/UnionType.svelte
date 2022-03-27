@@ -1,8 +1,6 @@
 <script type="ts">
-  import { generateTypeLink } from '$lib/schema'
   import type { GraphQLUnionType } from 'graphql'
 
-  import _ from 'lodash'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
   import TypeEnumeration from './list/TypeEnumeration.svelte'

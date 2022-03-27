@@ -16,4 +16,3 @@
     {/each}
   </StructuredListBody>
 </StructuredList>
-
