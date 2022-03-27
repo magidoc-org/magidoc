@@ -3,10 +3,10 @@ import adapter from '@sveltejs/adapter-static'
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
 
-/** 
- * @type {import('@sveltejs/kit').Config} 
+/**
+ * @type {import('@sveltejs/kit').Config}
  * @type {import('@magidoc/plugin-code-mirror').default}
-*/
+ */
 const config = {
   preprocess: [preprocess(), optimizeImports()],
   kit: {
@@ -14,12 +14,14 @@ const config = {
     prerender: {
       enabled: true,
       crawl: true,
-      default: true
+      default: true,
     },
     vite: {
-      plugins: [fetchGraphQLSchema({
-        url: "https://graphiql-test.netlify.app/.netlify/functions/schema-demo",
-      })],
+      plugins: [
+        fetchGraphQLSchema({
+          url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
+        }),
+      ],
       ssr: {
         noExternal: [
           'graphql',
