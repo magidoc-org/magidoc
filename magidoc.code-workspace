@@ -22,6 +22,10 @@
       "path": "."
     },
     {
+      "name": "Plugins/Fetch GraphQL Schema",
+      "path": "./packages/plugins/rollup-fetch-gql-schema/"
+    },
+    {
       "name": "Plugins/Query Generator",
       "path": "./packages/plugins/query-generator/"
     },

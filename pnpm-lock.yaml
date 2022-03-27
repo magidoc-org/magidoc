@@ -43,8 +43,8 @@ importers:
       codemirror-graphql: 1.2.12_277e0985ed0f3795874f93ac24c0f4c4
       graphql: 16.3.0
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.294_svelte@3.46.4
+      '@sveltejs/adapter-auto': 1.0.0-next.33
+      '@sveltejs/kit': 1.0.0-next.303_svelte@3.46.4
       '@types/codemirror': 5.60.5
       svelte: 3.46.4
       svelte-check: 2.4.5_svelte@3.46.4
@@ -72,8 +72,8 @@ importers:
       codemirror-graphql: 1.2.12_277e0985ed0f3795874f93ac24c0f4c4
       graphql: 16.3.0
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.294_svelte@3.46.4
+      '@sveltejs/adapter-auto': 1.0.0-next.33
+      '@sveltejs/kit': 1.0.0-next.303_svelte@3.46.4
       '@types/codemirror': 5.60.5
       svelte: 3.46.4
       svelte-check: 2.4.5_svelte@3.46.4
@@ -100,37 +100,6 @@ importers:
       typescript: ^4.6.2
     dependencies:
       glob-to-regexp: 0.4.1
-      graphql: 16.3.0
-      lodash: 4.17.21
-      prettier: 2.5.1
-    devDependencies:
-      '@types/glob-to-regexp': 0.4.1
-      '@types/jest': 27.4.1
-      '@types/lodash': 4.14.179
-      '@types/prettier': 2.4.4
-      esbuild: 0.14.23
-      graphql-query-compress: 1.2.4
-      jest: 27.5.1
-      jest-extended: 2.0.0_jest@27.5.1
-      ts-jest: 27.1.3_e4aa6da947964e31912ecf11d66b9af1
-      typescript: 4.6.2
-
-  packages/plugins/reverse-mapping:
-    specifiers:
-      '@types/glob-to-regexp': ^0.4.1
-      '@types/jest': ^27.4.1
-      '@types/lodash': ^4.14.179
-      '@types/prettier': ^2.4.4
-      esbuild: ^0.14.23
-      graphql: ^16.3.0
-      graphql-query-compress: ^1.2.4
-      jest: ^27.5.1
-      jest-extended: ^2.0.0
-      lodash: ^4.17.21
-      prettier: ^2.5.1
-      ts-jest: ^27.1.3
-      typescript: ^4.6.2
-    dependencies:
       graphql: 16.3.0
       lodash: 4.17.21
       prettier: 2.5.1
@@ -177,10 +146,34 @@ importers:
       ts-jest: 27.1.3_e4aa6da947964e31912ecf11d66b9af1
       typescript: 4.6.2
 
+  packages/plugins/rollup-fetch-gql-schema:
+    specifiers:
+      '@types/jest': ^27.4.1
+      '@types/prettier': ^2.4.4
+      esbuild: ^0.14.23
+      graphql: ^16.3.0
+      jest: ^27.5.1
+      jest-extended: ^2.0.0
+      rollup: ^2.70.1
+      ts-jest: ^27.1.3
+      typescript: ^4.6.2
+    dependencies:
+      graphql: 16.3.0
+    devDependencies:
+      '@types/jest': 27.4.1
+      '@types/prettier': 2.4.4
+      esbuild: 0.14.23
+      jest: 27.5.1
+      jest-extended: 2.0.0_jest@27.5.1
+      rollup: 2.70.1
+      ts-jest: 27.1.3_f37ae7880c9466ddc33e78a179622e93
+      typescript: 4.6.3
+
   packages/starters/multi-page:
     specifiers:
       '@magidoc/plugin-code-mirror': workspace:^0.0.19
       '@magidoc/plugin-query-generator': workspace:^0.0.19
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.0.19
       '@sveltejs/adapter-auto': next
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
@@ -208,9 +201,10 @@ importers:
       lodash: 4.17.21
       svelte-markdown: 0.2.2_svelte@3.46.4
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.31
+      '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
+      '@sveltejs/adapter-auto': 1.0.0-next.33
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.294_svelte@3.46.4
+      '@sveltejs/kit': 1.0.0-next.303_svelte@3.46.4
       '@types/codemirror': 5.60.5
       '@types/lodash': 4.14.179
       carbon-components-svelte: 0.58.4
@@ -1089,22 +1083,22 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@sveltejs/adapter-auto/1.0.0-next.31:
-    resolution: {integrity: sha512-N1ZFGxulcSAOJrtdFR567diwbWKUvLrHZiUE9TiEvIahnndeRa50MF9LDg/CuIvpa6fHqz5K827XXrADlPAr9g==}
+  /@sveltejs/adapter-auto/1.0.0-next.33:
+    resolution: {integrity: sha512-FVEBSw5XIYCrqMPY2VGmaGyT4ZvbahcdQJ613O4lgAoafRdUy7ZaE8GoeDmCJxtTUsqhAQUFu7jx9IIhz+QrsQ==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.15
-      '@sveltejs/adapter-netlify': 1.0.0-next.50
-      '@sveltejs/adapter-vercel': 1.0.0-next.46
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.16
+      '@sveltejs/adapter-netlify': 1.0.0-next.51
+      '@sveltejs/adapter-vercel': 1.0.0-next.47
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.15:
-    resolution: {integrity: sha512-kq3vNFpKmRVgAOfz4HrcleBnUADs++dfVF8S61EAFqNTEvGtOVdJKLql66Pe/uxlY0VxAp1dplxtEDf4/R70lQ==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.16:
+    resolution: {integrity: sha512-ripTRtOasAtxDJEIF3kwwji/9WHfX069i5LuRwGUzOi4/cbcGfgV1RFBVfo/8G6hr3ehqLeKCdloet1yTsp34A==}
     dependencies:
       esbuild: 0.14.23
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.50:
-    resolution: {integrity: sha512-lpHvjcHiC77SPyLp7OjhenJF9KYfKsXlmUua7icNh0Hc8SKtRQf0dn+a1Zy77AslikvOX7/4HZE8zPIyIvYYqw==}
+  /@sveltejs/adapter-netlify/1.0.0-next.51:
+    resolution: {integrity: sha512-P7/cW/0z8zd8J6DOI2yxKZG0+HRMMuzfOf0yzFXX0vRwBePhKlZ/H4qhTOo2NrCmj3Len545o+ugj5gyMXl1+g==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.23
@@ -1117,14 +1111,14 @@ packages:
       tiny-glob: 0.2.9
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.46:
-    resolution: {integrity: sha512-6Rwf3kZF6uX2JxDMoYgZWZe5TjVTTWZa57VukdNGjnlAT3CrfsEOBWyskX/8hx7AiYX5fucZaAtYPNZpUmueIA==}
+  /@sveltejs/adapter-vercel/1.0.0-next.47:
+    resolution: {integrity: sha512-VV3vP8KqL9XOc7xfQLVhXTM5jrTme+r1qJy98u5/dhAhkdjqrGDwAKo/s7MoB3rTYxLb2b8I4QxAaoz2Y2aIBg==}
     dependencies:
       esbuild: 0.14.23
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.294_svelte@3.46.4:
-    resolution: {integrity: sha512-whTYeri/oaV672KErlhCAvAawlsnd8iu/MQmjdu85TApDYolLe8FDTg6GQ55+0IJbx1N7dOer/HopWzKudPgFA==}
+  /@sveltejs/kit/1.0.0-next.303_svelte@3.46.4:
+    resolution: {integrity: sha512-WdxDc8OiF1WEd/bEza7CBdzA+3qIcCi1GKBj/gieKX9I3N8iDJt/Cg2POrLo9wQoJ47nZcAd1eOhfr7XEX1aIQ==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -1154,7 +1148,7 @@ packages:
         optional: true
     dependencies:
       '@rollup/pluginutils': 4.1.2
-      debug: 4.3.3
+      debug: 4.3.4
       kleur: 4.1.4
       magic-string: 0.25.7
       svelte: 3.46.4
@@ -4431,8 +4425,8 @@ packages:
       glob: 7.2.0
     dev: true
 
-  /rollup/2.68.0:
-    resolution: {integrity: sha512-XrMKOYK7oQcTio4wyTz466mucnd8LzkiZLozZ4Rz0zQD+HeX4nUK4B8GrTX/2EvN2/vBF/i2WnaXboPxo0JylA==}
+  /rollup/2.70.1:
+    resolution: {integrity: sha512-CRYsI5EuzLbXdxC6RnYhOuRdtz4bhejPMSWjsFLfVM/7w/85n2szZv6yExqUXsBdz5KT8eoubeyDUDjhLHEslA==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -5036,6 +5030,41 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
+  /ts-jest/27.1.3_f37ae7880c9466ddc33e78a179622e93:
+    resolution: {integrity: sha512-6Nlura7s6uM9BVUAoqLH7JHyMXjz8gluryjpPXxr3IxZdAXnU6FhjvVLHFtfd1vsE1p8zD1OJfskkc0jhTSnkA==}
+    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    hasBin: true
+    peerDependencies:
+      '@babel/core': '>=7.0.0-beta.0 <8'
+      '@types/jest': ^27.0.0
+      babel-jest: '>=27.0.0 <28'
+      esbuild: ~0.14.0
+      jest: ^27.0.0
+      typescript: '>=3.8 <5.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@types/jest':
+        optional: true
+      babel-jest:
+        optional: true
+      esbuild:
+        optional: true
+    dependencies:
+      '@types/jest': 27.4.1
+      bs-logger: 0.2.6
+      esbuild: 0.14.23
+      fast-json-stable-stringify: 2.1.0
+      jest: 27.5.1
+      jest-util: 27.5.1
+      json5: 2.2.0
+      lodash.memoize: 4.1.2
+      make-error: 1.3.6
+      semver: 7.3.5
+      typescript: 4.6.3
+      yargs-parser: 20.2.9
+    dev: true
+
   /ts-node/9.1.1_typescript@4.5.5:
     resolution: {integrity: sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg==}
     engines: {node: '>=10.0.0'}
@@ -5206,7 +5235,7 @@ packages:
       esbuild: 0.14.23
       postcss: 8.4.7
       resolve: 1.22.0
-      rollup: 2.68.0
+      rollup: 2.70.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true

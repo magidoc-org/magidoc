@@ -5,11 +5,13 @@ import { optimizeImports } from 'carbon-preprocess-svelte'
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: [preprocess(), optimizeImports()],
-  prerender: {
-    enabled: false,
-  },
   kit: {
     adapter: adapter(),
+    prerender: {
+      enabled: true,
+      crawl: true,
+      default: true
+    },
     vite: {
       ssr: {
         noExternal: [

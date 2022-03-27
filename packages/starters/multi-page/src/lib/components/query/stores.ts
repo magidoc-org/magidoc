@@ -62,7 +62,7 @@ export const graphqlQuery = {
       return current
     }),
   setField: (field: GraphQLField<unknown, unknown, unknown>, type: QueryType) =>
-    currentQuery.update((current) =>
-      generateQuery({ field, type, depth: current?.depth ?? DEFAULT_DEPTH }),
+    currentQuery.update(() =>
+      generateQuery({ field, type, depth: DEFAULT_DEPTH }),
     ),
 }

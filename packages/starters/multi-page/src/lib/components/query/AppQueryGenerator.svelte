@@ -4,7 +4,7 @@
   import { Tab, TabContent, Tabs } from 'carbon-components-svelte'
   import type { GraphQLField } from 'graphql'
   import { onMount } from 'svelte'
-  import AppCodeMirror from './GeneratedQueryPart.svelte'
+  import AppCodeMirror from './AppCodeMirror.svelte'
   import type { QueryType } from '@magidoc/plugin-query-generator'
 
   export let type: QueryType
