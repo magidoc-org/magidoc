@@ -2,21 +2,40 @@ import { getIntrospectionQuery, IntrospectionQuery } from 'graphql'
 
 export default async function queryGraphQLSchema(
   url: string,
+  method?: string,
   headers?: Record<string, string>,
 ): Promise<IntrospectionQuery> {
+  const actualMethod = method || 'POST'
+  const body = JSON.stringify({
+    operationName: 'IntrospectionQuery',
+    query: getIntrospectionQuery({
+      descriptions: true,
+      directiveIsRepeatable: true,
+      inputValueDeprecation: true,
+      schemaDescription: true,
+      specifiedByUrl: true,
+    }).trim(),
+    variables: null,
+  })
+
   return fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify({
-      query: getIntrospectionQuery({
-        descriptions: true,
-        directiveIsRepeatable: true,
-        inputValueDeprecation: true,
-        schemaDescription: true,
-        specifiedByUrl: true,
-      }),
-    }),
+    method: actualMethod,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(headers || {}),
+    },
+    body: body,
   })
     .then((res) => res.json())
-    .then((res) => res.data as IntrospectionQuery)
+    .then((res) => {
+      if (res.errors && res.errors.length > 0) {
+        throw new Error(
+          `Introspection query failed: \n Method: ${actualMethod} \n Response: ${JSON.stringify(
+            res,
+          )} \n\n Query: ${body.replaceAll('\\n', '\n')}`,
+        )
+      }
+
+      return res.data as IntrospectionQuery
+    })
 }

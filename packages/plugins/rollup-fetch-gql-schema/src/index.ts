@@ -1,12 +1,19 @@
-import { IntrospectionQuery } from 'graphql'
-import type { Plugin, NormalizedInputOptions, PluginContext } from 'rollup'
-import queryGraphQLSchema from './schema/fetch'
+import type { Plugin, PluginContext } from 'rollup'
+import queryGraphQLSchema from './schema/fetch.js'
+import {writeFileSync} from 'fs'
 
 export type PluginOptions = {
   /**
    * The URL the of the GraphQL API from which to fetch the GraphQL Schema using the introspection query.
    */
   url: string
+
+  /**
+   * The HTTP method used to call the GraphQL API. 
+   * 
+   * @default 'POST'
+   */
+  method?: string
 
   /**
    * A record of headers to pass inside the GraphQL Request performed to the server. Mostly useful when Authorization is required.
@@ -18,20 +25,15 @@ export type PluginOptions = {
   /**
    * Indicates the target path for the JSON Schema resulting from the Query.
    *
-   * @default _schema.json
+   * @default static/_schema.json
    */
   target?: string
 }
 
 export default function fetchGraphQLSchema(options: PluginOptions): Plugin {
   async function setSchema(this: PluginContext) {
-    this.emitFile({
-      type: 'asset',
-      fileName: options.target || '_schema.json',
-      source: JSON.stringify(
-        await queryGraphQLSchema(options.url, options.headers),
-      ),
-    })
+    const schema = await queryGraphQLSchema(options.url, options.method, options.headers)
+    writeFileSync(options.target || 'static/_schema.json', JSON.stringify(schema))
   }
 
   return {
