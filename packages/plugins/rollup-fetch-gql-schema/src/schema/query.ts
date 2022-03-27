@@ -1,17 +1,27 @@
-import { getIntrospectionQuery, GraphQLError, IntrospectionQuery } from 'graphql'
-import fetch from "node-fetch";
+import {
+  getIntrospectionQuery,
+  GraphQLError,
+  IntrospectionQuery,
+} from 'graphql'
+import axios from 'axios'
 
 type IntrospectionResponse = {
-    errors?: GraphQLError[]
-    data: IntrospectionQuery
+  errors?: GraphQLError[]
+  data: IntrospectionQuery
 }
+
+type Parameters = {
+  method?: Method
+  headers?: Record<string, string>
+}
+
+export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 export default async function queryGraphQLSchema(
   url: string,
-  method?: string,
-  headers?: Record<string, string>,
+  parameters: Parameters,
 ): Promise<IntrospectionQuery> {
-  const actualMethod = method || 'POST'
+  const actualMethod: Method = parameters.method || 'POST'
   const body = JSON.stringify({
     operationName: 'IntrospectionQuery',
     query: getIntrospectionQuery({
@@ -24,15 +34,17 @@ export default async function queryGraphQLSchema(
     variables: null,
   })
 
-  return fetch(url, {
+  return axios({
+    url: url,
     method: actualMethod,
     headers: {
       'Content-Type': 'application/json',
-      ...(headers || {}),
+      ...(parameters.headers || {}),
     },
-    body: body,
+    data: body,
+    responseType: 'json',
   })
-    .then((res) => res.json() as unknown as IntrospectionResponse)
+    .then((res) => res.data as IntrospectionResponse)
     .then((res) => {
       if (res.errors && res.errors.length > 0) {
         throw new Error(

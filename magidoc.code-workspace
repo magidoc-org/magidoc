@@ -1,6 +1,6 @@
 {
   "settings": {
-    "jest.jestCommandLine": "pnpm run jest",
+    "jest.jestCommandLine": "pnpm jest",
     "jest.autoRun": { "watch": false, "onSave": "test-src-file" },
     "jest.disabledWorkspaceFolders": ["ROOT"],
     "eslint.probe": [
