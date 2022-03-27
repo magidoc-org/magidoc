@@ -12,12 +12,10 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "release": "pnpm build && cd dist && pnpm publish"
   },
-  "dependencies": {
+  "devDependencies": {
     "codemirror": "^5.65.2",
     "codemirror-graphql": "^1.2.12",
-    "graphql": "^16.3.0"
-  },
-  "devDependencies": {
+    "graphql": "^16.3.0",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/codemirror": "^5.60.5",

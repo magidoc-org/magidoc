@@ -22,6 +22,10 @@
       "path": "."
     },
     {
+      "name": "Docs",
+      "path": "./packages/docs"
+    },
+    {
       "name": "Plugins/Fetch GraphQL Schema",
       "path": "./packages/plugins/rollup-fetch-gql-schema/"
     },
