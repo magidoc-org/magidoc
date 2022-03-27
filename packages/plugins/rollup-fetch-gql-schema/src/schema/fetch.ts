@@ -1,4 +1,10 @@
-import { getIntrospectionQuery, IntrospectionQuery } from 'graphql'
+import { getIntrospectionQuery, GraphQLError, IntrospectionQuery } from 'graphql'
+import fetch from "node-fetch";
+
+type IntrospectionResponse = {
+    errors?: GraphQLError[]
+    data: IntrospectionQuery
+}
 
 export default async function queryGraphQLSchema(
   url: string,
@@ -26,7 +32,7 @@ export default async function queryGraphQLSchema(
     },
     body: body,
   })
-    .then((res) => res.json())
+    .then((res) => res.json() as unknown as IntrospectionResponse)
     .then((res) => {
       if (res.errors && res.errors.length > 0) {
         throw new Error(
