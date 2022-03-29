@@ -26,43 +26,34 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-code-mirror': workspace:^0.0.19
       '@magidoc/plugin-query-generator': workspace:^0.0.19
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       '@types/codemirror': ^5.60.5
-      '@types/lodash': ^4.14.179
       carbon-components-svelte: ^0.58.4
       carbon-icons-svelte: ^10.44.4
       carbon-preprocess-svelte: ^0.6.0
       code-mirror-themes: ^1.0.0
       codemirror: ^5.65.2
-      graphql: ^16.3.0
-      lodash: ^4.17.21
       svelte: ^3.46.4
       svelte-check: ^2.4.5
       svelte-markdown: ^0.2.2
       svelte-preprocess: ^4.10.4
       tslib: ^2.3.1
       typescript: ^4.5.5
-    dependencies:
-      '@magidoc/plugin-code-mirror': link:../plugins/code-mirror/dist
-      '@magidoc/plugin-query-generator': link:../plugins/query-generator
-      code-mirror-themes: 1.0.0
-      codemirror: 5.65.2
-      graphql: 16.3.0
-      lodash: 4.17.21
-      svelte-markdown: 0.2.2_svelte@3.46.4
     devDependencies:
+      '@magidoc/plugin-query-generator': link:../plugins/query-generator
       '@sveltejs/adapter-static': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.303_svelte@3.46.4
       '@types/codemirror': 5.60.5
-      '@types/lodash': 4.14.179
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.44.4
       carbon-preprocess-svelte: 0.6.0_svelte@3.46.4
+      code-mirror-themes: 1.0.0
+      codemirror: 5.65.2
       svelte: 3.46.4
       svelte-check: 2.4.5_svelte@3.46.4
+      svelte-markdown: 0.2.2_svelte@3.46.4
       svelte-preprocess: 4.10.4_svelte@3.46.4+typescript@4.6.3
       tslib: 2.3.1
       typescript: 4.6.3
@@ -1315,6 +1306,7 @@ packages:
 
   /@types/marked/4.0.2:
     resolution: {integrity: sha512-auNrZ/c0w6wsM9DccwVxWHssrMDezHUAXNesdp2RQrCVCyrQbOiSq7yqdJKrUQQpw9VTm7CGYJH2A/YG7jjrjQ==}
+    dev: true
 
   /@types/node/17.0.21:
     resolution: {integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==}
@@ -1891,6 +1883,7 @@ packages:
 
   /code-mirror-themes/1.0.0:
     resolution: {integrity: sha1-etjCeusaYnm0soAHIvFZnU4nzGE=}
+    dev: true
 
   /codemirror-graphql/1.2.12_277e0985ed0f3795874f93ac24c0f4c4:
     resolution: {integrity: sha512-irP+E8HOWtgIdU3PNTU77bNmpEXQYADRRDmKqkjh3w1m0welbxl6HtZgp+c+Mkkz+FXY1+3+gF6nEEj+eJ1xdg==}
@@ -1912,6 +1905,7 @@ packages:
 
   /codemirror/5.65.2:
     resolution: {integrity: sha512-SZM4Zq7XEC8Fhroqe3LxbEEX1zUPWH1wMr5zxiBuiUF64iYOUH/JI88v4tBag8MiBS8B8gRv8O1pPXGYXQ4ErA==}
+    dev: true
 
   /collect-v8-coverage/1.0.1:
     resolution: {integrity: sha512-iBPtljfCNcTKNAto0KEtDfZ3qzjJvqE3aTGZsbhjSBlorqpXJlaWWtPO35D+ZImoC3KWejX64o+yPGxhWSTzfg==}
@@ -3989,6 +3983,7 @@ packages:
     resolution: {integrity: sha512-hgibXWrEDNBWgGiK18j/4lkS6ihTe9sxtV4Q1OQppb/0zzyPSzoFANBa5MfsG/zgsWklmNnhm0XACZOH/0HBiQ==}
     engines: {node: '>= 12'}
     hasBin: true
+    dev: true
 
   /memorystream/0.3.1:
     resolution: {integrity: sha1-htcJCzDORV1j+64S3aUaR93K+bI=}
@@ -4922,6 +4917,7 @@ packages:
       '@types/marked': 4.0.2
       marked: 4.0.12
       svelte: 3.46.4
+    dev: true
 
   /svelte-preprocess/4.10.4_svelte@3.46.4+typescript@4.5.5:
     resolution: {integrity: sha512-fuwol0N4UoHsNQolLFbMqWivqcJ9N0vfWO9IuPAiX/5okfoGXURyJ6nECbuEIv0nU3M8Xe2I1ONNje2buk7l6A==}

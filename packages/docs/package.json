@@ -21,7 +21,6 @@
     "carbon-preprocess-svelte": "^0.6.0",
     "code-mirror-themes": "^1.0.0",
     "codemirror": "^5.65.2",
-    "lodash": "^4.17.21",
     "svelte": "^3.46.4",
     "svelte-check": "^2.4.5",
     "svelte-markdown": "^0.2.2",

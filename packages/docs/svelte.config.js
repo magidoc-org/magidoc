@@ -1,7 +1,6 @@
 import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-static'
 import { optimizeImports } from 'carbon-preprocess-svelte'
-import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -17,19 +16,8 @@ const config = {
       default: true,
     },
     vite: {
-      plugins: [
-        fetchGraphQLSchema({
-          url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
-        }),
-      ],
       ssr: {
-        noExternal: [
-          'graphql',
-          'codemirror',
-          'codemirror-graphql',
-          'prettier',
-          'glob-to-regexp',
-        ],
+        noExternal: ['codemirror', 'codemirror-graphql'],
       },
     },
   },
