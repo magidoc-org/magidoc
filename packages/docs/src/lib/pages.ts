@@ -27,14 +27,10 @@ export type Pages = {
   tree: (Page | TreeSection)[]
 }
 
-const pathRegex = new RegExp(
-  `^(?:..\/)*(?:static\/)(?:${PAGES_FOLDER}\/)([0-9]+\.[a-zA-Z0-9-]+\/)*([0-9]+\.[a-zA-Z0-9-]+\.markdown)$`,
-  'g',
-)
-
 const pagesValue: Writable<Pages> = writable({
-  tree: []
+  tree: [],
 })
+
 export const pages = derived(pagesValue, (value: Pages) => {
   return {
     tree: value.tree,
@@ -54,12 +50,14 @@ export const pages = derived(pagesValue, (value: Pages) => {
           )
         }
 
-        return {
+        const newSection: TreeSection = {
           name: name,
           ordinal: ordinal,
           type: 'tree',
           children: [],
         }
+        children.push(newSection)
+        return newSection
       }
 
       function parseName(name: string): { ordinal: number; name: string } {
@@ -75,10 +73,15 @@ export const pages = derived(pagesValue, (value: Pages) => {
       }
 
       paths.forEach((path) => {
+        const pathRegex = new RegExp(
+          `^(?:..\/)*(?:static\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-]+\.markdown)$`,
+          'g',
+        )
+
         const match = pathRegex.exec(path)
         if (!match) {
           console.error(
-            `path: ${path} for regex ${pathRegex}... page will be omitted`,
+            `path: '${path}' for regex '${pathRegex}'... page will be omitted`,
           )
           return null
         }
@@ -94,12 +97,15 @@ export const pages = derived(pagesValue, (value: Pages) => {
         const fullPage: Page = {
           name: parsedPage.name,
           ordinal: parsedPage.ordinal,
-          href: `/${groups.join('/')}`,
+          href: `/${PAGES_FOLDER}$/${groups.join('/')}`,
           path: path,
           type: 'page',
         }
 
-        if (sections.length === 0) return fullPage
+        if (sections.length === 0) {
+          tree.push(fullPage)
+          return
+        }
 
         var current: TreeSection | undefined
         sections.forEach((section) => {
@@ -109,8 +115,9 @@ export const pages = derived(pagesValue, (value: Pages) => {
         current?.children.push(fullPage)
       })
 
+      console.log(tree)
       pagesValue.set({
-        tree: tree
+        tree: tree,
       })
     },
   }
@@ -122,24 +129,24 @@ export type CurrentPage = {
   hasPrevious: Boolean
 }
 
-const currentPageIndex: Writable<number> = writable(0)
-export const currentPage: Readable<CurrentPage> = derived(
-  [currentPageIndex, pagesValue],
-  ([pageNumber, pages]: [number, ReadonlyArray<Page>]) => {
-    const page = pages[Math.max(0, Math.min(pages.length, pageNumber))]
-    const hasNext = pageNumber >= pages.length - 1
-    const hasPrevious = pageNumber > 0
+// const currentPageIndex: Writable<number> = writable(0)
+// export const currentPage: Readable<CurrentPage> = derived(
+//   [currentPageIndex, pagesValue],
+//   ([pageNumber, pages]: [number, ReadonlyArray<Page>]) => {
+//     const page = pages[Math.max(0, Math.min(pages.length, pageNumber))]
+//     const hasNext = pageNumber >= pages.length - 1
+//     const hasPrevious = pageNumber > 0
 
-    return {
-      value: page,
-      hasPrevious: hasPrevious,
-      hasNext: hasNext,
-      next: () => {
-        if (hasNext) currentPageIndex.set(pageNumber + 1)
-      },
-      previous: () => {
-        if (hasPrevious) currentPageIndex.set(pageNumber - 1)
-      },
-    }
-  },
-)
+//     return {
+//       value: page,
+//       hasPrevious: hasPrevious,
+//       hasNext: hasNext,
+//       next: () => {
+//         if (hasNext) currentPageIndex.set(pageNumber + 1)
+//       },
+//       previous: () => {
+//         if (hasPrevious) currentPageIndex.set(pageNumber - 1)
+//       },
+//     }
+//   },
+// )

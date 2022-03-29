@@ -10,5 +10,7 @@
 </script>
 
 {#each $pages.tree as item}
-     {item.name}
+  <div>
+    {item.name}
+  </div>
 {/each}
