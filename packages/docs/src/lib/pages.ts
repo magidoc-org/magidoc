@@ -9,6 +9,7 @@ export type Page = {
   fetchRef: string
   href: string
   path: string
+  contentFetcher: () => Promise<string>
 }
 
 export type TreeSection = {
@@ -45,7 +46,10 @@ function createPageList(
   return result
 }
 
-export function createPages(paths: string[]): Pages {
+export function createPages(targets: {
+  path: string,
+  contentFetcher: () => Promise<string>
+}[]): Pages {
   const tree: (Page | TreeSection)[] = []
 
   function findOrCreateSection(
@@ -83,9 +87,9 @@ export function createPages(paths: string[]): Pages {
     }
   }
 
-  paths.forEach((path) => {
+  targets.forEach(({path, contentFetcher: contentFetcher}) => {
     const pathRegex = new RegExp(
-      `^(?:..\/)*(?:static\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-]+\.md)$`,
+      `^(?:..\/)*(?:src\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-]+\.md)$`,
       'g',
     )
 
@@ -119,6 +123,7 @@ export function createPages(paths: string[]): Pages {
         .join('/')}`,
       path: path,
       type: 'page',
+      contentFetcher: contentFetcher,
     }
 
     if (sections.length === 0) {

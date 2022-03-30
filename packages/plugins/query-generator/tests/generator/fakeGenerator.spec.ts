@@ -178,12 +178,11 @@ describe('generating fakes for a GraphQL input argument', () => {
     describe('no custom factory is available', () => {
       it('should raise an error', () => {
         try {
-          const result = generateArgsForField(
+          generateArgsForField(
             nonStandardScalarField,
             baseConfig,
             context,
           )
-          console.log(result)
           fail('expected an error to be thrown')
         } catch (error) {
           expect(error).toBeInstanceOf(Error)

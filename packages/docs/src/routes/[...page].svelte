@@ -1,9 +1,5 @@
 <script lang="ts" context="module">
-  export async function load({
-    url,
-    fetch,
-    stuff,
-  }: LoadInput): Promise<LoadOutput> {
+  export async function load({ url, stuff }: LoadInput): Promise<LoadOutput> {
     const href = url.pathname
     const currentPage = getCurrentPage(href, stuff.pages as Pages)
     if (!currentPage) {
@@ -12,11 +8,12 @@
       }
     }
 
-    const response = await fetch(currentPage.value.fetchRef)
+    const pageSource = await currentPage.value.contentFetcher()
     return {
-      status: response.status,
+      status: 200,
       props: {
-        pageSource: await response.text(),
+        currentPage: currentPage,
+        pageSource: pageSource
       },
     }
   }
@@ -29,13 +26,13 @@
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
   import type { LoadInput } from '@sveltejs/kit/types/internal'
 
-  export let pageSource: string
   export let currentPage: CurrentPage
+  export let pageSource : string
 </script>
 
 <svelte:head>
   <title>
-    {currentPage?.value?.name || 'Magidoc'}
+    {currentPage.value.name}
   </title>
 </svelte:head>
 

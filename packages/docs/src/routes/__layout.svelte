@@ -1,10 +1,14 @@
 <script lang="ts" context="module">
   export function load() {
-    const allPagesPaths = import.meta.glob(
-      '../../static/sections/**/*.md',
+    const allPagesPaths = import.meta.glob('../../src/sections/**/*.md')
+    const pages = createPages(
+      Object.keys(allPagesPaths).map((slug) => ({
+        path: slug,
+        contentFetcher: async () =>
+          ((await allPagesPaths[slug]()) as unknown as { default: string }).default,
+      })),
     )
 
-    const pages = createPages(Object.keys(allPagesPaths))
     return {
       stuff: {
         pages,

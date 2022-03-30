@@ -9,16 +9,17 @@ import { string } from "rollup-plugin-string";
  */
 const config = {
   preprocess: [preprocess(), optimizeImports()],
-  extensions: [".svelte", ".md"],
   kit: {
     adapter: adapter(),
     prerender: {
       default: true
     },
     vite: {
-      plugins: [string({
-        include: "**/md"
-      })],
+      plugins: [
+        string({
+          include: "**/*.md"
+      })
+    ],
       ssr: {
         noExternal: ['codemirror', 'codemirror-graphql'],
       },
