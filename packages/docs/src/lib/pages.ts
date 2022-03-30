@@ -1,7 +1,6 @@
 import { derived, writable } from 'svelte/store'
 import type { Writable, Readable } from 'svelte/store'
 import { capitalize } from './utils/strings'
-import { text } from 'svelte/internal'
 
 export type AppThemeValue = 'g10' | 'g90'
 
@@ -108,7 +107,7 @@ export const pages = derived(pagesValue, (value: Pages) => {
         const match = pathRegex.exec(path)
         if (!match) {
           console.error(
-            `path: '${path}' for regex '${pathRegex}'... page will be omitted`,
+            `path: '${path}' for regex '${pathRegex.source}'... page will be omitted`,
           )
           return null
         }
@@ -143,7 +142,7 @@ export const pages = derived(pagesValue, (value: Pages) => {
           return
         }
 
-        var current: TreeSection | undefined
+        let current: TreeSection | undefined
         sections.forEach((section) => {
           const children = current ? current.children : tree
           current = findOrCreateSection(section.name, section.ordinal, children)

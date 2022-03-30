@@ -29,7 +29,7 @@
   <Content>
     <Grid>
       <Row>
-        <Column class="content">
+        <Column class="main-content">
           <slot />
         </Column>
       </Row>
@@ -38,7 +38,7 @@
 </main>
 
 <style global>
-  .content p {
+  .main-content p {
     margin-top: 0.5rem !important;
     margin-bottom: 0.8rem !important;
   }

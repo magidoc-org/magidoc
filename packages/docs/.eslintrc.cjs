@@ -1,4 +1,4 @@
-const base = require('../../../.eslintrc.cjs')
+const base = require('../../.eslintrc.cjs')
 
 module.exports = {
   ...base,
