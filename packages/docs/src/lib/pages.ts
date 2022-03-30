@@ -1,6 +1,7 @@
 import { derived, writable } from 'svelte/store'
 import type { Writable, Readable } from 'svelte/store'
 import { capitalize } from './utils/strings'
+import { text } from 'svelte/internal'
 
 export type AppThemeValue = 'g10' | 'g90'
 
@@ -12,6 +13,7 @@ export type Page = {
   name: string
   ordinal: number
   type: 'page'
+  fetchRef: string
   href: string
   path: string
 }
@@ -24,16 +26,41 @@ export type TreeSection = {
 }
 
 export type Pages = {
-  tree: (Page | TreeSection)[]
+  tree: ReadonlyArray<Page | TreeSection>
+  values: ReadonlyArray<Page>
 }
 
 const pagesValue: Writable<Pages> = writable({
   tree: [],
+  values: [],
 })
+
+function sort(tree: (Page | TreeSection)[]) {
+  tree.sort((a, b) => a.ordinal - b.ordinal)
+  tree
+    .filter((x): x is TreeSection => x.type === 'tree')
+    .forEach((tree) => sort(tree.children))
+}
+
+function createPageList(
+  tree: (Page | TreeSection)[],
+  result: Page[] = [],
+): Page[] {
+  tree.forEach((item) => {
+    if (item.type === 'page') {
+      result.push(item)
+    } else {
+      createPageList(item.children, result)
+    }
+  })
+
+  return result
+}
 
 export const pages = derived(pagesValue, (value: Pages) => {
   return {
     tree: value.tree,
+    values: value.values,
     setPagesPaths(paths: string[]) {
       const tree: (Page | TreeSection)[] = []
 
@@ -46,7 +73,7 @@ export const pages = derived(pagesValue, (value: Pages) => {
         if (result && result.type === 'tree') return result
         if (result) {
           console.error(
-            `Error - overriding an existing page ${result.path} with tree section ${item.name}`,
+            `Error - overriding an existing page ${result.path} with tree section ${name}`,
           )
         }
 
@@ -94,10 +121,19 @@ export const pages = derived(pagesValue, (value: Pages) => {
         const page = groups[groups.length - 1]
         const parsedPage = parseName(page)
 
+        console.log(groups)
         const fullPage: Page = {
           name: parsedPage.name,
           ordinal: parsedPage.ordinal,
-          href: `/${PAGES_FOLDER}$/${groups.join('/')}`,
+          fetchRef: `/${PAGES_FOLDER}/${groups.join('/')}`,
+          href: `/${groups
+            .map((group) =>
+              group
+                .replace(/^[\d]+\./, '')
+                .replace(/\.markdown$/, '')
+                .toLocaleLowerCase(),
+            )
+            .join('/')}`,
           path: path,
           type: 'page',
         }
@@ -115,9 +151,11 @@ export const pages = derived(pagesValue, (value: Pages) => {
         current?.children.push(fullPage)
       })
 
-      console.log(tree)
+      sort(tree)
+
       pagesValue.set({
         tree: tree,
+        values: createPageList(tree),
       })
     },
   }
@@ -125,28 +163,62 @@ export const pages = derived(pagesValue, (value: Pages) => {
 
 export type CurrentPage = {
   value: Page
-  hasNext: Boolean
-  hasPrevious: Boolean
+  number: number
+  hasNext: boolean
+  hasPrevious: boolean
+  fetchContent: () => Promise<PageContent>
+  set: (href: string) => void
 }
 
-// const currentPageIndex: Writable<number> = writable(0)
-// export const currentPage: Readable<CurrentPage> = derived(
-//   [currentPageIndex, pagesValue],
-//   ([pageNumber, pages]: [number, ReadonlyArray<Page>]) => {
-//     const page = pages[Math.max(0, Math.min(pages.length, pageNumber))]
-//     const hasNext = pageNumber >= pages.length - 1
-//     const hasPrevious = pageNumber > 0
+export type PageContent = {
+  content: string | undefined
+  status: number
+}
 
-//     return {
-//       value: page,
-//       hasPrevious: hasPrevious,
-//       hasNext: hasNext,
-//       next: () => {
-//         if (hasNext) currentPageIndex.set(pageNumber + 1)
-//       },
-//       previous: () => {
-//         if (hasPrevious) currentPageIndex.set(pageNumber - 1)
-//       },
-//     }
-//   },
-// )
+const currentPageIndex: Writable<number> = writable(0)
+export const currentPage: Readable<CurrentPage | undefined> = derived(
+  [currentPageIndex, pagesValue],
+  ([pageIndex, pages]: [number, Pages]) => {
+    const page =
+      pages.values[Math.max(0, Math.min(pages.values.length, pageIndex))]
+
+    if (!page) {
+      return undefined
+    }
+
+    const hasNext = pageIndex >= pages.values.length - 1
+    const hasPrevious = pageIndex > 0
+
+    return {
+      value: page,
+      number: pageIndex + 1,
+      hasPrevious: hasPrevious,
+      hasNext: hasNext,
+      fetchContent: async (): Promise<PageContent> => {
+        const response = await fetch(page.fetchRef)
+        if (response.status >= 300) {
+          return {
+            status: response.status,
+            content: undefined,
+          }
+        }
+
+        return {
+          status: response.status,
+          content: await response.text(),
+        }
+      },
+      next: () => {
+        if (hasNext) currentPageIndex.set(pageIndex + 1)
+      },
+      previous: () => {
+        if (hasPrevious) currentPageIndex.set(pageIndex - 1)
+      },
+      set: (href: string) => {
+        const index = pages.values.findIndex((page) => page.href === href)
+        console.log('index', index)
+        if (index !== -1) currentPageIndex.set(index)
+      },
+    }
+  },
+)

@@ -1,16 +1,27 @@
 <script lang="ts">
-  import { pages } from '$lib/pages'
-  import { onMount } from 'svelte'
+  import { page } from '$app/stores'
 
-  const allPages = import.meta.glob('../../static/sections/**/*.markdown')
+  import MarkdownSection from '$lib/components/common/MarkdownSection.svelte'
 
-  onMount(() => {
-    $pages.setPagesPaths(Object.keys(allPages))
-  })
+  import FetchError from '$lib/layout/error/FetchError.svelte'
+  import { currentPage, type PageContent } from '$lib/pages'
+
+  let pageContent: PageContent | undefined = undefined
+
+  $: {
+    $currentPage?.set($page.url.pathname)
+  }
+
+  $: {
+    $currentPage
+      ?.fetchContent()
+      .then((content) => (pageContent = content))
+      .catch((error) => console.error(error))
+  }
 </script>
 
-{#each $pages.tree as item}
-  <div>
-    {item.name}
-  </div>
-{/each}
+{#if pageContent && (pageContent.status < 200 || pageContent.status >= 300)}
+  <FetchError status={pageContent.status} />
+{:else if pageContent && pageContent.content}
+  <MarkdownSection source={pageContent.content} />
+{/if}

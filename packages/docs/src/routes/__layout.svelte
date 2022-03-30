@@ -1,22 +1,24 @@
 <script lang="ts">
-  import { browser } from '$app/env'
-
   import '../app.css'
 
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
-  import { page } from '$app/stores'
-  import { capitalize } from '$lib/utils/strings'
+  import { onMount } from 'svelte'
+  import { pages, currentPage } from '$lib/pages'
 
   let isSideNavOpen: boolean
+
+  const allPages = import.meta.glob('../../static/sections/**/*.markdown')
+
+  onMount(() => {
+    $pages.setPagesPaths(Object.keys(allPages))
+  })
 </script>
 
 <svelte:head>
   <title>
-    {
-      $page.url.pathname.substring($page.url.pathname.lastIndexOf('/') + 1).split('-').map((part) => capitalize(part)).join(' ')
-    }
+    {$currentPage?.value?.name || 'Magidoc'}
   </title>
 </svelte:head>
 
