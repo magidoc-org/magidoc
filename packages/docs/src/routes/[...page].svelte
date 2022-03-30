@@ -7,16 +7,24 @@
   import { currentPage, type PageContent } from '$lib/pages'
 
   let pageContent: PageContent | undefined = undefined
+  let loading: boolean = true
 
   $: {
-    $currentPage?.set($page.url.pathname)
+    $currentPage.set($page.url.pathname)
   }
 
   $: {
-    $currentPage
-      ?.fetchContent()
-      .then((content) => (pageContent = content))
-      .catch((error) => console.error(error))
+    if ($currentPage) {
+      $currentPage.fetchContent()
+        .then((content) => {
+          pageContent = content
+        })
+        .catch((error) => {
+          console.error('error fetching page content', error)
+        })
+    } else {
+      loading = false
+    }
   }
 </script>
 

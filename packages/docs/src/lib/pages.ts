@@ -162,8 +162,8 @@ export const pages = derived(pagesValue, (value: Pages) => {
 })
 
 export type CurrentPage = {
-  value: Page
-  number: number
+  value?: Page
+  number?: number
   hasNext: boolean
   hasPrevious: boolean
   fetchContent: () => Promise<PageContent>
@@ -176,25 +176,27 @@ export type PageContent = {
 }
 
 const currentPageIndex: Writable<number> = writable(0)
-export const currentPage: Readable<CurrentPage | undefined> = derived(
+export const currentPage: Readable<CurrentPage> = derived(
   [currentPageIndex, pagesValue],
   ([pageIndex, pages]: [number, Pages]) => {
-    const page =
-      pages.values[Math.max(0, Math.min(pages.values.length, pageIndex))]
-
-    if (!page) {
-      return undefined
-    }
-
-    const hasNext = pageIndex >= pages.values.length - 1
-    const hasPrevious = pageIndex > 0
+    const page = pages.values[pageIndex]
+    const hasNext =
+      pages.values.length > 0 && pageIndex >= pages.values.length - 1
+    const hasPrevious = pages.values.length > 0 && pageIndex > 0
 
     return {
       value: page,
-      number: pageIndex + 1,
+      number: page ? pageIndex + 1 : undefined,
       hasPrevious: hasPrevious,
       hasNext: hasNext,
       fetchContent: async (): Promise<PageContent> => {
+        if (!page) {
+          return {
+            status: 404,
+            content: undefined,
+          }
+        }
+
         const response = await fetch(page.fetchRef)
         if (response.status >= 300) {
           return {
@@ -215,9 +217,10 @@ export const currentPage: Readable<CurrentPage | undefined> = derived(
         if (hasPrevious) currentPageIndex.set(pageIndex - 1)
       },
       set: (href: string) => {
-        const index = pages.values.findIndex((page) => page.href === href)
-        console.log('index', index)
-        if (index !== -1) currentPageIndex.set(index)
+        const index = pages.values.findIndex(
+          (page) => page.href.toLocaleLowerCase() === href.toLocaleLowerCase(),
+        )
+        currentPageIndex.set(index)
       },
     }
   },
