@@ -85,7 +85,7 @@ export function createPages(paths: string[]): Pages {
 
   paths.forEach((path) => {
     const pathRegex = new RegExp(
-      `^(?:..\/)*(?:static\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-]+\.markdown)$`,
+      `^(?:..\/)*(?:static\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-]+\.md)$`,
       'g',
     )
 
@@ -113,7 +113,7 @@ export function createPages(paths: string[]): Pages {
         .map((group) =>
           group
             .replace(/^[\d]+\./, '')
-            .replace(/\.markdown$/, '')
+            .replace(/\.md$/, '')
             .toLocaleLowerCase(),
         )
         .join('/')}`,

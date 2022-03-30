@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   export function load() {
     const allPagesPaths = import.meta.glob(
-      '../../static/sections/**/*.markdown',
+      '../../static/sections/**/*.md',
     )
 
     const pages = createPages(Object.keys(allPagesPaths))
