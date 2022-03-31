@@ -20,7 +20,7 @@
 </script>
 
 <script lang="ts">
-  import MarkdownSection from '$lib/components/common/MarkdownSection.svelte'
+  import MarkdownSection from '$lib/components/common/markdown/MarkdownSection.svelte'
 
   import { getCurrentPage, type CurrentPage, type Pages } from '$lib/pages'
   import type { LoadOutput } from '@sveltejs/kit/types/internal'

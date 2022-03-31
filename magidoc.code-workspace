@@ -38,6 +38,10 @@
       "path": "./packages/plugins/code-mirror"
     },
     {
+      "name": "Plugins/PrismJS",
+      "path": "./packages/plugins/prismjs"
+    },
+    {
       "name": "Starters/Multi-Page",
       "path": "./packages/starters/multi-page"
     }
