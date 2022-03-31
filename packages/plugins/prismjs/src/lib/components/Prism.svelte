@@ -22,11 +22,7 @@
   bind:this={root}
   class={showCopyButton ? 'show-copy-button' : 'hide-copy-button'}
 >
-  <pre class={`${lineNumbers ? 'line-numbers' : ''}`}>
-    <code class={`language-${language}`}>
-      {source}
-    </code>
-  </pre>
+  <pre class={`language-${language} ${lineNumbers ? 'line-numbers' : ''}`}><code>{source}</code></pre>
 </div>
 
 <style global>
