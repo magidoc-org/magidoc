@@ -13,7 +13,7 @@
       status: 200,
       props: {
         currentPage: currentPage,
-        pageSource: pageSource
+        pageSource: pageSource,
       },
     }
   }
@@ -27,7 +27,7 @@
   import type { LoadInput } from '@sveltejs/kit/types/internal'
 
   export let currentPage: CurrentPage
-  export let pageSource : string
+  export let pageSource: string
 </script>
 
 <svelte:head>

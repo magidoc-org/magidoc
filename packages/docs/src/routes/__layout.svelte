@@ -4,11 +4,12 @@
     const pages = createPages(
       Object.keys(allPagesPaths).map((slug) => ({
         path: slug,
-        // This is the ugly thing that makes it all possible. 
+        // This is the ugly thing that makes it all possible.
         // With vite, import.meta.glob returns a dictionary of { path: function }, where the function performs the actual import
         // Since we use rollup-plugin-string to convert markdown to string modules, we can then access then content
         contentFetcher: async () =>
-          ((await allPagesPaths[slug]()) as unknown as { default: string }).default,
+          ((await allPagesPaths[slug]()) as unknown as { default: string })
+            .default,
       })),
     )
 

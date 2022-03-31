@@ -46,10 +46,12 @@ function createPageList(
   return result
 }
 
-export function createPages(targets: {
-  path: string,
-  contentFetcher: () => Promise<string>
-}[]): Pages {
+export function createPages(
+  targets: {
+    path: string
+    contentFetcher: () => Promise<string>
+  }[],
+): Pages {
   const tree: (Page | TreeSection)[] = []
 
   function findOrCreateSection(
@@ -87,7 +89,7 @@ export function createPages(targets: {
     }
   }
 
-  targets.forEach(({path, contentFetcher: contentFetcher}) => {
+  targets.forEach(({ path, contentFetcher: contentFetcher }) => {
     const pathRegex = new RegExp(
       `^(?:..\/)*(?:src\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-]+\.md)$`,
       'g',
@@ -154,19 +156,21 @@ export type CurrentPage = {
   next?: Page
 }
 
-export function getCurrentPage(href: string, pages: Pages): CurrentPage | null  {
-    const pageIndex = pages.values.findIndex((page) => page.href.toLocaleLowerCase() === href.toLocaleLowerCase())
-    if(pageIndex < 0) {
-      return null
-    }
-    
-    const next = pages.values[pageIndex + 1]
-    const previous = pages.values[pageIndex - 1]
+export function getCurrentPage(href: string, pages: Pages): CurrentPage | null {
+  const pageIndex = pages.values.findIndex(
+    (page) => page.href.toLocaleLowerCase() === href.toLocaleLowerCase(),
+  )
+  if (pageIndex < 0) {
+    return null
+  }
 
-    return {
-      value: pages.values[pageIndex],
-      number: pageIndex +1,
-      previous: previous,
-      next: next,
+  const next = pages.values[pageIndex + 1]
+  const previous = pages.values[pageIndex - 1]
+
+  return {
+    value: pages.values[pageIndex],
+    number: pageIndex + 1,
+    previous: previous,
+    next: next,
   }
 }
