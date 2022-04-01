@@ -7,7 +7,7 @@ import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
  * @type {import('@sveltejs/kit').Config}
  * @type {import('@magidoc/plugin-code-mirror').default}
  */
-const config = {
+export default {
   preprocess: [preprocess(), optimizeImports()],
   kit: {
     adapter: adapter(),
@@ -34,5 +34,3 @@ const config = {
     },
   },
 }
-
-export default config

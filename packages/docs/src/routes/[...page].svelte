@@ -8,27 +8,34 @@
       }
     }
 
-    const pageSource = await currentPage.value.contentFetcher()
+    const pageContent = await currentPage.value.contentFetcher()
     return {
       status: 200,
       props: {
         currentPage: currentPage,
-        pageSource: pageSource,
+        pageContent: pageContent,
       },
     }
   }
 </script>
 
 <script lang="ts">
+  import ArticleTitle from '$lib/components/article/ArticleTitle.svelte'
+
   import NextPreviousArticle from '$lib/components/article/NextPreviousArticle.svelte'
   import MarkdownSection from '$lib/components/common/markdown/MarkdownSection.svelte'
 
-  import { getCurrentPage, type CurrentPage, type Pages } from '$lib/pages'
+  import {
+    getCurrentPage,
+    type CurrentPage,
+    type PageContent,
+    type Pages,
+  } from '$lib/pages'
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
   import type { LoadInput } from '@sveltejs/kit/types/internal'
 
   export let currentPage: CurrentPage
-  export let pageSource: string
+  export let pageContent: PageContent
 </script>
 
 <svelte:head>
@@ -37,7 +44,8 @@
   </title>
 </svelte:head>
 
-<MarkdownSection source={pageSource} />
+<ArticleTitle {pageContent} />
+<MarkdownSection source={pageContent.body} />
 
 <div class={'next-previous-buttons'}>
   <NextPreviousArticle {currentPage} />

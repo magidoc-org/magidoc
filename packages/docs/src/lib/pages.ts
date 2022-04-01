@@ -9,7 +9,19 @@ export type Page = {
   fetchRef: string
   href: string
   path: string
-  contentFetcher: () => Promise<string>
+  contentFetcher: () => Promise<PageContent>
+}
+
+export type PageContent = {
+  body: string
+  attributes: PageContentAttributes,
+}
+
+export type PageContentAttributes = {
+  title: string
+  tags: string[]
+  deprecationReason?: string
+  since?: string
 }
 
 export type TreeSection = {
@@ -49,7 +61,7 @@ function createPageList(
 export function createPages(
   targets: {
     path: string
-    contentFetcher: () => Promise<string>
+    contentFetcher: () => Promise<PageContent>
   }[],
 ): Pages {
   const tree: (Page | TreeSection)[] = []

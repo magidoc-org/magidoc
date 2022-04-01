@@ -3,12 +3,9 @@
 
   import {
     Header,
-    HeaderGlobalAction,
     HeaderUtilities,
     Theme,
   } from 'carbon-components-svelte'
-  import { Moon16, Sun16 } from 'carbon-icons-svelte'
-  import { theme, themeValue } from '$lib/theme'
 
   export let isSideNavOpen = true
 </script>
@@ -20,12 +17,7 @@
   </div>
 
   <HeaderUtilities>
-    <Theme bind:theme={$themeValue} persist />
-    <HeaderGlobalAction
-      aria-label="Change Theme"
-      icon={$theme.value === 'g10' ? Sun16 : Moon16}
-      on:click={() => $theme.toggle()}
-    />
+    <Theme theme={'g10'} persist />
   </HeaderUtilities>
 </Header>
 

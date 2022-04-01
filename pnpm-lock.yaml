@@ -36,6 +36,7 @@ importers:
       carbon-preprocess-svelte: ^0.6.0
       code-mirror-themes: ^1.0.0
       codemirror: ^5.65.2
+      front-matter: ^4.0.2
       prismjs: ^1.27.0
       remove: ^0.1.5
       rollup-plugin-string: ^3.0.0
@@ -52,13 +53,14 @@ importers:
       '@magidoc/plugin-prismjs': link:../plugins/prismjs/dist
       '@magidoc/plugin-query-generator': link:../plugins/query-generator
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.303_svelte@3.46.4
+      '@sveltejs/kit': 1.0.0-next.304_svelte@3.46.4
       '@types/codemirror': 5.60.5
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.45.1
       carbon-preprocess-svelte: 0.6.0_svelte@3.46.4
       code-mirror-themes: 1.0.0
       codemirror: 5.65.2
+      front-matter: 4.0.2
       prismjs: 1.27.0
       rollup-plugin-string: 3.0.0
       svelte: 3.46.4
@@ -1266,6 +1268,25 @@ packages:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.37_svelte@3.46.5+vite@2.9.0
       sade: 1.8.1
       svelte: 3.46.5
+      vite: 2.9.0
+    transitivePeerDependencies:
+      - diff-match-patch
+      - less
+      - sass
+      - stylus
+      - supports-color
+    dev: true
+
+  /@sveltejs/kit/1.0.0-next.304_svelte@3.46.4:
+    resolution: {integrity: sha512-3+bCoDsF2Omolx51lK6+4Zgr8NYge8USxKpZpAg8OfonEW8L4GToyV4g+udLMCI3CC4QEw3eS1RFUj9UxLf2NQ==}
+    engines: {node: '>=14.13'}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.44.0
+    dependencies:
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.37_svelte@3.46.4+vite@2.9.0
+      sade: 1.8.1
+      svelte: 3.46.4
       vite: 2.9.0
     transitivePeerDependencies:
       - diff-match-patch
@@ -3037,6 +3058,12 @@ packages:
     dependencies:
       node-domexception: 1.0.0
       web-streams-polyfill: 4.0.0-beta.1
+    dev: true
+
+  /front-matter/4.0.2:
+    resolution: {integrity: sha512-I8ZuJ/qG92NWX8i5x1Y8qyj3vizhXS31OxjKDu3LKP+7/qBgfIKValiZIEwoVoJKUHlhWtYrktkxV1XsX+pPlg==}
+    dependencies:
+      js-yaml: 3.14.1
     dev: true
 
   /fs.realpath/1.0.0:

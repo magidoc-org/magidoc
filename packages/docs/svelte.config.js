@@ -6,7 +6,7 @@ import { string } from 'rollup-plugin-string'
 /**
  * @type {import('@sveltejs/kit').Config}
  */
-const config = {
+export default {
   preprocess: [preprocess(), optimizeImports()],
   kit: {
     adapter: adapter(),
@@ -22,7 +22,7 @@ const config = {
       server: {
         watch: {
           include: ['**/*.md'],
-        }
+        },
       },
       ssr: {
         noExternal: ['prismjs'],
@@ -30,5 +30,3 @@ const config = {
     },
   },
 }
-
-export default config

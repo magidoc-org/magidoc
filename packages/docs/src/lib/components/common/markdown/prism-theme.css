@@ -93,7 +93,7 @@ pre[class*='language-'] {
 .token.comment,
 .token.prolog,
 .token.cdata {
-  color: hsl(220, 10%, 40%);
+  color: hsl(220, 10%, 60%);
 }
 
 .token.doctype,
@@ -325,7 +325,7 @@ pre[id].linkable-line-numbers.linkable-line-numbers
 /* Stuff in the gutter */
 .line-numbers .line-numbers-rows > span:before,
 .command-line .command-line-prompt > span:before {
-  color: hsl(220, 14%, 45%);
+  color: hsl(220, 14%, 60%);
 }
 
 /* Match Braces plugin overrides */
