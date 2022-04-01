@@ -20,6 +20,7 @@
 </script>
 
 <script lang="ts">
+  import NextPreviousArticle from '$lib/components/article/NextPreviousArticle.svelte'
   import MarkdownSection from '$lib/components/common/markdown/MarkdownSection.svelte'
 
   import { getCurrentPage, type CurrentPage, type Pages } from '$lib/pages'
@@ -37,3 +38,13 @@
 </svelte:head>
 
 <MarkdownSection source={pageSource} />
+
+<div class={'next-previous-buttons'}>
+  <NextPreviousArticle {currentPage} />
+</div>
+
+<style>
+  .next-previous-buttons {
+    margin-top: 2rem;
+  }
+</style>

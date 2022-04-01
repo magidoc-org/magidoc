@@ -19,8 +19,13 @@ const config = {
           include: '**/*.md',
         }),
       ],
+      server: {
+        watch: {
+          include: ['**/*.md'],
+        }
+      },
       ssr: {
-        noExternal: ['codemirror', 'codemirror-graphql'],
+        noExternal: ['prismjs'],
       },
     },
   },

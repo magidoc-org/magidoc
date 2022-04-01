@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   export function load() {
-    const allPagesPaths = import.meta.glob('../../src/sections/**/*.md')
+    const allPagesPaths = import.meta.glob('../lib/sections/**/*.md')
     const pages = createPages(
       Object.keys(allPagesPaths).map((slug) => ({
         path: slug,
