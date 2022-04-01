@@ -7,10 +7,9 @@
 </script>
 
 <div class="previous-next-button-container">
-  <div>
-    {#if currentPage.previous}
+  {#if currentPage.previous}
+    <div>
       <Button
-        expressive
         kind="tertiary"
         icon={ArrowLeft16}
         class="inverted"
@@ -21,13 +20,12 @@
           <div>{currentPage.previous.name}</div>
         </div>
       </Button>
-    {/if}
-  </div>
+    </div>
+  {/if}
 
-  <div>
-    {#if currentPage.next}
+  {#if currentPage.next}
+    <div>
       <Button
-        expressive
         kind="tertiary"
         icon={ArrowRight16}
         href={currentPage.next.href}
@@ -37,8 +35,8 @@
           <div style="text-overflow: ellipsis">{currentPage.next.name}</div>
         </div>
       </Button>
-    {/if}
-  </div>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -46,7 +44,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 1rem;
+    column-gap: 4rem;
+    row-gap: 1rem;
     align-items: stretch;
   }
 
@@ -56,7 +55,7 @@
 
   :global(.previous-next-button-container .bx--btn) {
     width: 100% !important;
-    min-width: 12rem;
+    min-width: 14rem;
     max-width: inherit;
     height: 100%;
   }
@@ -73,7 +72,7 @@
   }
 
   .direction {
-      font-weight: lighter;
-      font-size: 0.8rem;
+    font-weight: lighter;
+    font-size: 0.7rem;
   }
 </style>
