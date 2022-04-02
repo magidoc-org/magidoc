@@ -1,5 +1,6 @@
 <script lang="ts">
   import { InlineNotification } from 'carbon-components-svelte'
+  import SvelteMarkdown from 'svelte-markdown'
 
   const info = /^[\s]*info[\s]*:/gi
   const warning = /^[\s]*warning[\s]*:/gi
@@ -28,5 +29,5 @@
 </script>
 
 <InlineNotification kind={type} lowContrast hideCloseButton>
-  {cleanText}
+  <SvelteMarkdown source={cleanText} />
 </InlineNotification>

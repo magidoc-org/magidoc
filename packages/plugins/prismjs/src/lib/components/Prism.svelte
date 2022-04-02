@@ -20,10 +20,10 @@
 
 <div
   bind:this={root}
-  class={showCopyButton ? 'show-copy-button' : 'hide-copy-button'}
+  class={`${showCopyButton ? 'show-copy-button' : 'hide-copy-button'}`}
 >
-  <pre class={`language-${language} ${showLineNumbers ? 'line-numbers' : ''}`}><code
-      >{source}</code
+  <pre class={`${showLineNumbers ? 'line-numbers' : ''}`}><code
+      class={`language-${language}`}>{source}</code
     ></pre>
 </div>
 
