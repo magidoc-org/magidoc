@@ -37,6 +37,7 @@ importers:
       code-mirror-themes: ^1.0.0
       codemirror: ^5.65.2
       front-matter: ^4.0.2
+      prism-svelte: ^0.5.0
       prismjs: ^1.27.0
       remove: ^0.1.5
       rollup-plugin-string: ^3.0.0
@@ -61,6 +62,7 @@ importers:
       code-mirror-themes: 1.0.0
       codemirror: 5.65.2
       front-matter: 4.0.2
+      prism-svelte: 0.5.0
       prismjs: 1.27.0
       rollup-plugin-string: 3.0.0
       svelte: 3.46.4
@@ -4803,6 +4805,10 @@ packages:
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
       react-is: 17.0.2
+    dev: true
+
+  /prism-svelte/0.5.0:
+    resolution: {integrity: sha512-db91Bf3pRGKDPz1lAqLFSJXeW13mulUJxhycysFpfXV5MIK7RgWWK2E5aPAa71s8TCzQUXxF5JOV42/iOs6QkA==}
     dev: true
 
   /prismjs/1.27.0:

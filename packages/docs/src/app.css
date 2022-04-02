@@ -6,12 +6,20 @@ h1 {
   font-weight: 500 !important;
 }
 
+h1:not(:first-child), h2, h3, h4, h5, h6 {
+  margin-top: 1rem !important;
+}
+
 .deprecated {
   text-decoration: line-through !important;
 }
 
 .bx--side-nav__overlay-active {
   z-index: 7000;
+}
+
+.bx--inline-notification {
+  max-width: inherit !important;
 }
 
 .bx--link {

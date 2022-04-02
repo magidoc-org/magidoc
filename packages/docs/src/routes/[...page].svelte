@@ -1,7 +1,9 @@
 <script lang="ts" context="module">
   export async function load({ url, stuff }: LoadInput): Promise<LoadOutput> {
     const href = url.pathname
-    const currentPage = getCurrentPage(href, stuff.pages as Pages)
+    const pages = stuff.pages as Pages
+    const currentPage = getCurrentPage(href, pages)
+
     if (!currentPage) {
       return {
         status: 404,
@@ -36,6 +38,14 @@
 
   export let currentPage: CurrentPage
   export let pageContent: PageContent
+
+  if (import.meta.hot) {
+    import.meta.hot.on('markdown-update', (data: { file: string }) => {
+      if (currentPage.value.path.endsWith(data.file)) {
+        window.location.reload()
+      }
+    })
+  }
 </script>
 
 <svelte:head>

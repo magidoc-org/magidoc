@@ -23,6 +23,7 @@
     "code-mirror-themes": "^1.0.0",
     "codemirror": "^5.65.2",
     "front-matter": "^4.0.2",
+    "prism-svelte": "^0.5.0",
     "prismjs": "^1.27.0",
     "rollup-plugin-string": "^3.0.0",
     "svelte": "^3.46.4",

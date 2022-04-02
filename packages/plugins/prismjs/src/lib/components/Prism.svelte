@@ -10,8 +10,8 @@
   export let language: string
   export let source: string
 
-  export let lineNumbers = true
-  export let showCopyButton = true
+  export let showLineNumbers = false
+  export let showCopyButton = false
 
   let root: HTMLElement
 
@@ -22,7 +22,7 @@
   bind:this={root}
   class={showCopyButton ? 'show-copy-button' : 'hide-copy-button'}
 >
-  <pre class={`language-${language} ${lineNumbers ? 'line-numbers' : ''}`}><code
+  <pre class={`language-${language} ${showLineNumbers ? 'line-numbers' : ''}`}><code
       >{source}</code
     ></pre>
 </div>

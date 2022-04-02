@@ -18,12 +18,27 @@ export default {
         string({
           include: '**/*.md',
         }),
-      ],
-      server: {
-        watch: {
-          include: ['**/*.md'],
+        {
+          handleHotUpdate(ctx) {
+            const file = ctx.file.substring(ctx.file.indexOf('/lib/') + 5)
+
+            const isMd = /.*\.md$/g.exec(file)
+            if (isMd) {
+              ctx.server.ws.send({
+                type: 'custom',
+                event: 'markdown-update',
+                data: {
+                  file: file,
+                },
+              })
+
+              return []
+            }
+
+            return ctx.modules
+          },
         },
-      },
+      ],
       ssr: {
         noExternal: ['prismjs'],
       },
