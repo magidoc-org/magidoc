@@ -1,3 +1,5 @@
+import { generateGraphQLQuery } from './generator/queryGenerator'
+
 export * from './formatter/query'
 
 export * from './generator/config'
@@ -7,3 +9,5 @@ export * from './generator/queryBuilder'
 export * from './generator/queryGenerator'
 
 export * from './models/query'
+
+export default generateGraphQLQuery

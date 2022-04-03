@@ -1,36 +1,49 @@
 import { QueryType } from '..'
 
 export enum NullGenerationStrategy {
+  /**
+   * All nullable fields will never be null
+   */
   NEVER_NULL = 'never',
+  /**
+   * All nullable fields will always be null
+   */
   ALWAYS_NULL = 'always',
+  /**
+   * Nullable fields will sometimes be need. This may be useful in some cases,
+   * The nullability of a field is determined by a random generator, so the output query will never be the same.
+   */
   SOMETIMES_NULL = 'sometimes',
 }
 
 export type GeneratorConfig = {
   /**
-   * The type of the GraphQL Requests. This will default to "QUERY", but "MUTATION" and "SUBSCRIPTION" are also allowed
+   * The type of the GraphQL Requests.
+   *
+   * @default QueryType.QUERY
    */
-  queryType: QueryType
+  readonly queryType: QueryType
 
   /**
-   * The name of the query. By default, this will be undefined, which means the query is unnamed.
+   * The name of the query. By default, this will be undefined, which means the query is anonymous.
+   *
+   * @default undefined
    */
-  queryName?: string
+  readonly queryName?: string
 
   /**
    * The max depth at which we want to generate the query.
    *
    * If the query gets over that depth, all fields that are not leaves are discarded from the query.
+   *
+   * @default 5
    */
   readonly maxDepth: number
 
   /**
    * For input values that allow for null values, the strategy here will define the default behavior for generating the null values.
    *
-   * Choices are
-   *  - NEVER_NULL, which will never pass nullable values as null
-   *  - ALWAYS_NULL, which will always pass nullable values as null
-   *  - SOMETIMES_NULL, which will randomly pass null or not
+   * @default NullGenerationStrategy.NEVER_NULL
    */
   readonly nullGenerationStrategy: NullGenerationStrategy
 
@@ -60,12 +73,12 @@ export type GraphQLFactoryContext = {
   /**
    * The default value provided by the GraphQL schema.
    *
-   * By default, ATG will not use the default value provided in the schema, but you can DYI by providing factory that returns the default value.
+   * By default, the default value provided in the schema is never used, but you can decide to use it by providing a factory that will return it if it exists.
    */
   readonly defaultValue?: unknown
 
   /**
-   * The context for the default value provider that would be used otherwise.
+   * The default factory that exists for this type.
    * Can be useful if you want to perform custom actions and fallback to the default provider.
    * Note that this factory is always the factory for a scalar value. Thus, if you create a factory for a [String!]!, then the default factory will return a String, not an array of strings. You will be required to return an array yourself.
    *

@@ -13,28 +13,21 @@
   },
   "devDependencies": {
     "@magidoc/plugin-prismjs": "workspace:^0.0.19",
-    "@magidoc/plugin-query-generator": "workspace:^0.0.19",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
-    "@types/codemirror": "^5.60.5",
     "carbon-components-svelte": "^0.58.4",
     "carbon-icons-svelte": "^10.45.1",
     "carbon-preprocess-svelte": "^0.6.0",
-    "code-mirror-themes": "^1.0.0",
-    "codemirror": "^5.65.2",
     "front-matter": "^4.0.2",
     "prism-svelte": "^0.5.0",
     "prismjs": "^1.27.0",
     "rollup-plugin-string": "^3.0.0",
-    "svelte": "^3.46.4",
-    "svelte-check": "^2.4.5",
+    "svelte": "^3.46.6",
+    "svelte-check": "^2.4.6",
     "svelte-markdown": "^0.2.2",
     "svelte-preprocess": "^4.10.4",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.5",
-    "vite": "^2.9.0"
-  },
-  "dependencies": {
-    "remove": "^0.1.5"
+    "typescript": "^4.6.3",
+    "vite": "^2.9.1"
   }
 }

@@ -1,7 +1,6 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
-import {
-  generateGraphQLQuery,
+import generateGraphQLQuery, {
   NullGenerationStrategy,
   QueryType,
 } from '@magidoc/plugin-query-generator'

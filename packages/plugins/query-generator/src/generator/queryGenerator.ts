@@ -22,8 +22,8 @@ import {
 } from './queryBuilder'
 
 const DEFAULT_CONFIG: GeneratorConfig = {
-  queryName: undefined,
   queryType: QueryType.QUERY,
+  queryName: undefined,
   maxDepth: 5,
   nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
   factories: {},

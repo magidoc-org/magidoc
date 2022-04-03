@@ -4,6 +4,7 @@
   import 'prism-svelte'
   import 'prismjs/components/prism-graphql'
   import 'prismjs/components/prism-json'
+  import 'prismjs/components/prism-typescript'
 </script>
 
 <Prism

@@ -163,7 +163,6 @@ function findMostSpecificFactory(
     return wildCardFactory
   }
 
-  // Factory that matches by wildcard
   return randomFactory(unwrappedArgumentType, config, context)
 }
 

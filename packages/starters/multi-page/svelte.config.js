@@ -24,11 +24,8 @@ export default {
       ],
       ssr: {
         noExternal: [
-          'graphql',
           'codemirror',
-          'codemirror-graphql',
-          'prettier',
-          'glob-to-regexp',
+          'codemirror-graphql'
         ],
       },
     },

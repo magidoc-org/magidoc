@@ -3,8 +3,17 @@ import { GraphQLQuery } from '../models/query'
 import _ from 'lodash'
 
 export enum QueryType {
+  /**
+   * Generates a query 
+   */
   QUERY = 'query',
+  /**
+   * Generates a mutation 
+   */
   MUTATION = 'mutation',
+  /**
+   * Generates a subscription
+   */
   SUBSCRIPTION = 'subscription',
 }
 
