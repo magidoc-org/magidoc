@@ -30,7 +30,7 @@ h1:not(:first-child), h2, h3, h4, h5, h6 {
   margin-bottom: 0px !important;
 }
 
-.bx--structured-list-row:last-child  {
+.bx--structured-list-tbody .bx--structured-list-row:last-child  {
   border-color: transparent !important;
 }
 

@@ -5,6 +5,7 @@
   import 'prismjs/components/prism-graphql'
   import 'prismjs/components/prism-json'
   import 'prismjs/components/prism-typescript'
+  import 'prismjs/components/prism-bash'
 </script>
 
 <Prism

@@ -3,6 +3,6 @@ import { StructuredListRow } from "carbon-components-svelte";
 
 </script>
 
-<StructuredListRow head>
+<StructuredListRow>
     <slot />
 </StructuredListRow>

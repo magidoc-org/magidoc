@@ -24,7 +24,7 @@ h1 {
   margin-bottom: 0px !important;
 }
 
-.bx--structured-list-row:last-child  {
+.bx--structured-list-tbody .bx--structured-list-row:last-child  {
   border-color: transparent !important;
 }
 
