@@ -17,6 +17,13 @@ module.exports = {
   settings: {
     'svelte3/typescript': true,
   },
+  ignorePatterns: [
+    '**/node_modules',
+    '**/build',
+    '**/dist',
+    '**/package',
+    '**/.svelte-kit',
+  ],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
