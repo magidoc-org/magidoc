@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { page } from '$app/stores'
-
   import type { PageContent } from '$lib/pages'
   import { capitalize } from '$lib/utils/strings'
   import { InlineNotification, Tag } from 'carbon-components-svelte'

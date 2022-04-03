@@ -4,6 +4,6 @@
   export let href: string
 </script>
 
-<Link {href} >
+<Link {href}>
   <slot />
 </Link>

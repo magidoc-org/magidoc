@@ -12,14 +12,17 @@
             (await allPagesPaths[slug]()) as unknown as { default: string }
           ).default
 
-          const extracted: FrontMatterResult<Record<string, unknown>> = frontMatterExtractor(raw)
+          const extracted: FrontMatterResult<Record<string, unknown>> =
+            frontMatterExtractor(raw)
           return {
             body: extracted.body,
             attributes: {
-              title: extracted.attributes['title'] as string || '', 
-              deprecationReason: extracted.attributes["deprecationReason"] as string | undefined,
-              since: extracted.attributes["since"] as string | undefined,
-              tags: extracted.attributes["tags"] as string[] || [],
+              title: (extracted.attributes['title'] as string) || '',
+              deprecationReason: extracted.attributes['deprecationReason'] as
+                | string
+                | undefined,
+              since: extracted.attributes['since'] as string | undefined,
+              tags: (extracted.attributes['tags'] as string[]) || [],
             },
           }
         },
@@ -65,4 +68,3 @@
     </Grid>
   </Content>
 </main>
-

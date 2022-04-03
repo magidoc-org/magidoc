@@ -118,7 +118,7 @@ export function createPages(
       .substring(path.indexOf(`${PAGES_FOLDER}/`) + PAGES_FOLDER.length + 1)
       .split('/')
 
-    const parsedGroups = rawGroups.map((section) => parseName(section))    
+    const parsedGroups = rawGroups.map((section) => parseName(section))
     const sections = parsedGroups.slice(0, parsedGroups.length - 1)
     const page = parsedGroups[parsedGroups.length - 1]
 

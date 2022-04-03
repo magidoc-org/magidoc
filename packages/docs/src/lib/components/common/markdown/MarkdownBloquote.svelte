@@ -28,6 +28,11 @@
   $: cleanText = getText()
 </script>
 
-<InlineNotification kind={type} lowContrast hideCloseButton iconDescription={type}>
+<InlineNotification
+  kind={type}
+  lowContrast
+  hideCloseButton
+  iconDescription={type}
+>
   <SvelteMarkdown source={cleanText} />
 </InlineNotification>

@@ -25,11 +25,7 @@
 
   {#if currentPage.next}
     <div>
-      <Button
-        kind="tertiary"
-        icon={ArrowRight16}
-        href={currentPage.next.href}
-      >
+      <Button kind="tertiary" icon={ArrowRight16} href={currentPage.next.href}>
         <div>
           <div class="direction">Next</div>
           <div style="text-overflow: ellipsis">{currentPage.next.name}</div>

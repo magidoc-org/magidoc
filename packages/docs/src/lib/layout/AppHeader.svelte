@@ -1,11 +1,7 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css'
 
-  import {
-    Header,
-    HeaderUtilities,
-    Theme,
-  } from 'carbon-components-svelte'
+  import { Header, HeaderUtilities, Theme } from 'carbon-components-svelte'
 
   export let isSideNavOpen = true
 </script>

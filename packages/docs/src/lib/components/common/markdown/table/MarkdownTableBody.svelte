@@ -1,8 +1,7 @@
 <script lang="ts">
-import { StructuredListBody } from "carbon-components-svelte";
-
+  import { StructuredListBody } from 'carbon-components-svelte'
 </script>
 
 <StructuredListBody>
-    <slot />
+  <slot />
 </StructuredListBody>

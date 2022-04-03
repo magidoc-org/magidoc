@@ -4,11 +4,11 @@ import _ from 'lodash'
 
 export enum QueryType {
   /**
-   * Generates a query 
+   * Generates a query
    */
   QUERY = 'query',
   /**
-   * Generates a mutation 
+   * Generates a mutation
    */
   MUTATION = 'mutation',
   /**

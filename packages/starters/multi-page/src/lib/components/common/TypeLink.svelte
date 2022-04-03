@@ -1,7 +1,12 @@
 <script lang="ts">
   import { Link } from 'carbon-components-svelte'
 
-  import { type GraphQLType, isListType, isNamedType, isNonNullType } from 'graphql'
+  import {
+    type GraphQLType,
+    isListType,
+    isNamedType,
+    isNonNullType,
+  } from 'graphql'
 
   export let type: GraphQLType
   /* eslint-disable @typescript-eslint/restrict-template-expressions */
