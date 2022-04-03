@@ -5,10 +5,10 @@
   "version": "0.0.19",
   "type": "module",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "scripts": {
-    "build": "esbuild --minify --sourcemap --outdir=dist ./src/*.ts ./src/**/*.ts && tsc --build tsconfig.build.json",
+    "build": "esbuild --minify --sourcemap --outdir=build ./src/*.ts ./src/**/*.ts && tsc --build tsconfig.build.json",
     "test": "jest",
     "release": "pnpm build && pnpm publish"
   },
