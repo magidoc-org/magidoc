@@ -40,7 +40,7 @@ export default {
         },
       ],
       ssr: {
-        noExternal: ['prismjs'],
+        noExternal: ['prismjs', 'prism-svelte'],
       },
     },
   },

@@ -1,6 +1,6 @@
 <script lang="ts">
   import './beforeImport'
-  import Prism from 'prismjs'
+  import Prism from 'prismjs'  
   import 'prismjs/plugins/line-numbers/prism-line-numbers'
   import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
   import 'prismjs/plugins/toolbar/prism-toolbar'
@@ -15,7 +15,7 @@
 
   let root: HTMLElement
 
-  $: root && Prism.highlightAllUnder(root)
+  $: root && Prism && Prism.highlightAllUnder(root)
 </script>
 
 <div
