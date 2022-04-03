@@ -6,7 +6,6 @@ export type Page = {
   name: string
   ordinal: number
   type: 'page'
-  fetchRef: string
   href: string
   path: string
   contentFetcher: () => Promise<PageContent>
@@ -14,7 +13,7 @@ export type Page = {
 
 export type PageContent = {
   body: string
-  attributes: PageContentAttributes,
+  attributes: PageContentAttributes
 }
 
 export type PageContentAttributes = {
@@ -107,7 +106,7 @@ export function createPages(
       'g',
     )
 
-    const match = pathRegex.exec(path)
+    const match = pathRegex.test(path)
     if (!match) {
       console.error(
         `path: '${path}' for regex '${pathRegex.source}'... page will be omitted`,
@@ -115,19 +114,18 @@ export function createPages(
       return null
     }
 
-    const groups = match.slice(1)
-    const sections = groups
-      .slice(0, groups.length - 1)
-      .map((section) => parseName(section))
+    const rawGroups = path
+      .substring(path.indexOf(`${PAGES_FOLDER}/`) + PAGES_FOLDER.length + 1)
+      .split('/')
 
-    const page = groups[groups.length - 1]
-    const parsedPage = parseName(page)
+    const parsedGroups = rawGroups.map((section) => parseName(section))    
+    const sections = parsedGroups.slice(0, parsedGroups.length - 1)
+    const page = parsedGroups[parsedGroups.length - 1]
 
     const fullPage: Page = {
-      name: parsedPage.name,
-      ordinal: parsedPage.ordinal,
-      fetchRef: `/${PAGES_FOLDER}/${groups.join('/')}`,
-      href: `/${groups
+      name: page.name,
+      ordinal: page.ordinal,
+      href: `/${rawGroups
         .map((group) =>
           group
             .replace(/^[\d]+\./, '')
