@@ -30,6 +30,10 @@
       "path": "./packages/plugins/rollup-fetch-gql-schema/"
     },
     {
+      "name": "Plugins/Reverse Schema Mapper",
+      "path": "./packages/plugins/reverse-schema-mapper/"
+    },
+    {
       "name": "Plugins/Query Generator",
       "path": "./packages/plugins/query-generator/"
     },

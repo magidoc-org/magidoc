@@ -10,7 +10,7 @@
     "build": "pnpm check && pnpm package",
     "package": "svelte-kit package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "release": "pnpm build && cd build && pnpm publish"
+    "release": "pnpm build && cd package && pnpm publish"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
