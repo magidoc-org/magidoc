@@ -50,7 +50,7 @@
 
 <svelte:head>
   <title>
-    {currentPage.value.name}
+    Magidoc - {currentPage.value.name}
   </title>
 </svelte:head>
 

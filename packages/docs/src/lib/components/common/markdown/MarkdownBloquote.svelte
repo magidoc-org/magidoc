@@ -7,7 +7,7 @@
 
   export let text: string
 
-  function getType(): 'info' | 'warning' {
+  function getType(text: string): 'info' | 'warning' {
     if (text.match(info)) {
       return 'info'
     } else if (text.match(warning)) {
@@ -17,15 +17,12 @@
     return 'info'
   }
 
-  function getText(): string {
+  function getText(text: string): string {
     return text.replace(info, '').replace(warning, '')
   }
 
-  let type: 'info' | 'warning'
-  $: type = getType()
-
-  let cleanText: string
-  $: cleanText = getText()
+  $: cleanText = getText(text)
+  $: type = getType(text)
 </script>
 
 <InlineNotification
