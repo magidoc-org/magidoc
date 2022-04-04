@@ -9,7 +9,8 @@
   "scripts": {
     "prepare": "husky install",
     "build": "pnpm -r build",
-    "test": "run-s test:*",
+    "test": "run-p test:*",
+    "test-ci": "run-p test:unit test:prettier",
     "test:lint": "eslint '**/src/**/*.{ts,svelte}'",
     "test:prettier": "prettier --check '**/*.ts' '**/*.svelte'",
     "test:unit": "pnpm --filter {packages} -r run test",
