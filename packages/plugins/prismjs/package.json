@@ -16,7 +16,6 @@
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/prismjs": "^1.26.0",
-    "graphql": "^16.3.0",
     "prismjs": "^1.27.0",
     "svelte": "^3.46.4",
     "svelte-check": "^2.4.5",

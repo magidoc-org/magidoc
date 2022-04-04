@@ -13,17 +13,11 @@
     "release": "pnpm build && pnpm publish"
   },
   "dependencies": {
-    "graphql": "^16.3.0",
-    "lodash": "^4.17.21",
-    "prettier": "^2.5.1"
+    "graphql": "^16.3.0"
   },
   "devDependencies": {
-    "@types/glob-to-regexp": "^0.4.1",
     "@types/jest": "^27.4.1",
-    "@types/lodash": "^4.14.179",
-    "@types/prettier": "^2.4.4",
     "esbuild": "^0.14.23",
-    "graphql-query-compress": "^1.2.4",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "ts-jest": "^27.1.3",
