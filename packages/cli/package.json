@@ -12,9 +12,6 @@
     "test": "jest",
     "release": "pnpm build && pnpm publish"
   },
-  "dependencies": {
-    
-  },
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "esbuild": "^0.14.23",

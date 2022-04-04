@@ -5,11 +5,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'json'],
   testMatch: ['**/tests/**/*.spec.ts'],
   collectCoverage: true,
-  setupFilesAfterEnv: [
-    "jest-extended/all",
-    '<rootDir>/tests/global.setup.ts',
-    '<rootDir>/tests/schema.setup.ts',
-  ],
+  setupFilesAfterEnv: ['jest-extended/all'],
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.json',
