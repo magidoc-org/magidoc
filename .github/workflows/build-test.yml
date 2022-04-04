@@ -32,4 +32,4 @@ jobs:
 
       - run: pnpm -r install --frozen-lockfile --strict-peer-dependencies
       - run: pnpm test-ci
-      - run: pnpm build
+      - run: pnpm build-ci

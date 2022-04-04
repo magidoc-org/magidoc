@@ -8,7 +8,7 @@
   "private": false,
   "scripts": {
     "prepare": "husky install",
-    "build": "pnpm -r build",
+    "build-ci": "pnpm -r --filter packages/plugins build && pnpm -r install && pnpm -r --filter !packages/plugins build",
     "test": "run-p test:*",
     "test-ci": "run-s test:unit test:prettier",
     "test:lint": "eslint '**/src/**/*.{ts,svelte}'",
