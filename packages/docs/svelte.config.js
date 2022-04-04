@@ -40,7 +40,7 @@ export default {
         },
       ],
       ssr: {
-        noExternal: ['prismjs', 'prism-svelte'],
+        noExternal: ['@magidoc/plugin-prismjs', 'prismjs', 'prism-svelte'],
       },
     },
   },
