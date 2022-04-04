@@ -22,5 +22,5 @@ jobs:
         with:
           node-version: 16
           cache: pnpm
-      - run: pnpm test-ci
+      - run: pnpm test
       - run: pnpm build
