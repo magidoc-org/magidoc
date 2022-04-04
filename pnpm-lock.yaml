@@ -165,7 +165,6 @@ importers:
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@types/prismjs': ^1.26.0
-      graphql: ^16.3.0
       prismjs: ^1.27.0
       svelte: ^3.46.4
       svelte-check: ^2.4.5
@@ -177,7 +176,6 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.34
       '@sveltejs/kit': 1.0.0-next.304_svelte@3.46.6
       '@types/prismjs': 1.26.0
-      graphql: 16.3.0
       prismjs: 1.27.0
       svelte: 3.46.6
       svelte-check: 2.4.6_svelte@3.46.6
