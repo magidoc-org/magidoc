@@ -1,4 +1,5 @@
 import { capitalize } from './utils/strings'
+import { base } from '$app/paths'
 
 export const PAGES_FOLDER = 'sections'
 
@@ -125,7 +126,7 @@ export function createPages(
     const fullPage: Page = {
       name: page.name,
       ordinal: page.ordinal,
-      href: `/${rawGroups
+      href: `${base}/${rawGroups
         .map((group) =>
           group
             .replace(/^[\d]+\./, '')

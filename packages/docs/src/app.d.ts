@@ -7,7 +7,7 @@ import type { Pages } from '$lib/pages'
 declare global {
   declare namespace App {
     interface Stuff {
-      pages: Pages
+      readonly pages: Pages
     }
   }
 }

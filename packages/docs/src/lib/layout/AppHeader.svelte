@@ -1,14 +1,15 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css'
+  import { base } from '$app/paths'
 
   import { Header, HeaderUtilities, Theme } from 'carbon-components-svelte'
 
   export let isSideNavOpen = true
 </script>
 
-<Header href="/" bind:isSideNavOpen>
+<Header href={`${base}/`} bind:isSideNavOpen>
   <div slot="platform" class="header-logo-wrapper">
-    <img src="/logo.png" alt="Magidoc" class="header-logo" />
+    <img src={`${base}/logo.png`} alt="Magidoc" class="header-logo" />
     <span>Magidoc</span>
   </div>
 

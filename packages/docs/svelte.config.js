@@ -13,6 +13,10 @@ export default {
     prerender: {
       default: true,
     },
+    paths: {
+			base: dev ? '' : '/magidoc',
+			base: dev ? '' : '/magidoc',
+		},
     vite: {
       plugins: [
         string({
