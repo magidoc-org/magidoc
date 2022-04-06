@@ -1,5 +1,4 @@
 import { capitalize } from './utils/strings'
-import { base } from '$app/paths'
 
 export const PAGES_FOLDER = 'sections'
 
@@ -59,6 +58,7 @@ function createPageList(
 }
 
 export function createPages(
+  baseHref: string, 
   targets: {
     path: string
     contentFetcher: () => Promise<PageContent>
@@ -126,7 +126,7 @@ export function createPages(
     const fullPage: Page = {
       name: page.name,
       ordinal: page.ordinal,
-      href: `${base}/${rawGroups
+      href: `${baseHref}/${rawGroups
         .map((group) =>
           group
             .replace(/^[\d]+\./, '')
