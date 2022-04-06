@@ -8,7 +8,8 @@
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "deploy": "pnpm build && gh-pages --dist build --dotfiles"
   },
   "devDependencies": {
     "@magidoc/plugin-prismjs": "workspace:^0.0.19",
@@ -18,6 +19,7 @@
     "carbon-icons-svelte": "^10.45.1",
     "carbon-preprocess-svelte": "^0.6.0",
     "front-matter": "^4.0.2",
+    "gh-pages": "^3.2.3",
     "prism-svelte": "^0.5.0",
     "prismjs": "^1.27.0",
     "rollup-plugin-string": "^3.0.0",
