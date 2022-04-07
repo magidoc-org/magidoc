@@ -1,3 +1,4 @@
+ignore-workspace-root-check: true
 packages:
   - "packages/**"
   - "!packages/**/package/*"
