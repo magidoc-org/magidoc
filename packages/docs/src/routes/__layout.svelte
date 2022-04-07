@@ -2,7 +2,7 @@
   export function load() {
     const allPagesPaths = import.meta.glob('../lib/sections/**/*.md')
     const pages = createPages(
-      base, 
+      base,
       Object.keys(allPagesPaths).map((slug) => ({
         path: slug,
         // This is the ugly thing that makes it all possible.

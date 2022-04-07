@@ -58,7 +58,7 @@ function createPageList(
 }
 
 export function createPages(
-  baseHref: string, 
+  baseHref: string,
   targets: {
     path: string
     contentFetcher: () => Promise<PageContent>
