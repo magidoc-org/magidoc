@@ -10,7 +10,7 @@
   "scripts": {
     "build": "esbuild --minify --sourcemap --outdir=build ./src/*.ts  && tsc --build tsconfig.build.json",
     "test": "jest",
-    "release": "pnpm publish"
+    "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
     "graphql": "^16.3.0"
