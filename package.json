@@ -17,7 +17,7 @@
     "fix": "run-p fix:*",
     "fix:prettier": "prettier --write '**/*.ts' '**/*.svelte'",
     "fix:lint": "eslint --fix '**/src/**/*.{ts,svelte}'",
-    "patch": "pnpm version patch && VERSION=$(pnpm --silent get-version) && pnpm-r exec pnpm version --no-git-tag-version $VERSION",
+    "patch": "pnpm version patch && VERSION=$(pnpm --silent get-version) && pnpm -r exec pnpm version --no-git-tag-version $VERSION",
     "minor": "pnpm -r exec pnpm version --no-git-tag-version minor",
     "major": "pnpm -r exec pnpm version --no-git-tag-version major",
     "get-version": "echo $npm_package_version"
