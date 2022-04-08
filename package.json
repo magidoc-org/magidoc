@@ -1,6 +1,6 @@
 {
   "name": "magidoc",
-  "version": "0.1.3",
+  "version": "0.1.0",
   "description": "MagiDoc is a documentation website generator for GraphQL based on Svelte and that allows for infinite customization through plugins.",
   "repository": "git@github.com:pelletier197/magidocql.git",
   "author": "Sunny Pelletier",
@@ -17,9 +17,9 @@
     "fix": "run-p fix:*",
     "fix:prettier": "prettier --write '**/*.ts' '**/*.svelte'",
     "fix:lint": "eslint --fix '**/src/**/*.{ts,svelte}'",
-    "patch": "pnpm version patch && VERSION=$(pnpm --silent get-version) && pnpm -r exec pnpm version --no-git-tag-version $VERSION",
-    "minor": "pnpm -r exec pnpm version --no-git-tag-version minor",
-    "major": "pnpm -r exec pnpm version --no-git-tag-version major",
+    "patch": "pnpm version --no-git-tag-version patch | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version",
+    "minor": "pnpm version --no-git-tag-version minor | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version",
+    "major": "pnpm version --no-git-tag-version major | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version",
     "get-version": "echo $npm_package_version"
   },
   "devDependencies": {
