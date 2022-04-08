@@ -3,7 +3,7 @@
   "description": "A plugin that provide a Svelte component to display GraphQL queries/variables/response",
   "type": "module",
   "license": "MIT",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "svelte": "index.js",
   "private": false,
   "scripts": {
