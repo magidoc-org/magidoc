@@ -12,8 +12,6 @@ export default {
   kit: {
     adapter: adapter(),
     prerender: {
-      enabled: true,
-      crawl: true,
       default: true,
     },
     vite: {
@@ -23,9 +21,11 @@ export default {
         }),
       ],
       ssr: {
-        noExternal: [
-          'codemirror',
-          'codemirror-graphql'
+        noExternal: [         
+          '@magidoc/plugin-query-generator',
+          '@magidoc/plugin-code-mirror',
+          'prettier',
+          'glob-to-regexp'
         ],
       },
     },

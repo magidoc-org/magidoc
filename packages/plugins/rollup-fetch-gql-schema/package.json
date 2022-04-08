@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/prettier": "^2.4.4",
-    "esbuild": "^0.14.32",
+    "esbuild": "^0.14.34",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "nock": "^13.2.4",

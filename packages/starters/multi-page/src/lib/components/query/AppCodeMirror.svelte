@@ -1,5 +1,4 @@
 <script type="ts">
-  import CodeMirror from '@magidoc/plugin-code-mirror'
   import 'code-mirror-themes/themes/monokai.css'
   import 'code-mirror-themes/themes/idle.css'
 
@@ -8,6 +7,7 @@
   import { graphqlQuery } from './stores'
   import { theme } from '$lib/theme'
   import { browser } from '$app/env'
+  import { onMount } from 'svelte'
 
   export let code: string
   export let height: number | 'auto'
@@ -27,13 +27,18 @@
     }
   }
 
+  let CodeMirror: unknown 
+  onMount(async () => {
+    CodeMirror = (await import('@magidoc/plugin-code-mirror')).default
+  })
   $: codeMirrorTheme = $theme.value === 'g10' ? 'idle' : 'monokai'
 </script>
 
 <div class="wrapper">
   <div class="code-mirror-section">
     {#if browser}
-      <CodeMirror
+      <svelte:component
+        this={CodeMirror}
         {code}
         {mode}
         {height}

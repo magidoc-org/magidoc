@@ -6,7 +6,7 @@
   import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
   import Types from './Types.svelte'
   import type { GraphQLSchema } from 'graphql'
-import _ from 'lodash';
+  import _ from 'lodash'
 
   export let isOpen = true
   export let schema: GraphQLSchema
