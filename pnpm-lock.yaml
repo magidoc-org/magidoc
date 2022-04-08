@@ -44,7 +44,7 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-prismjs': workspace:^0.1.4
+      '@magidoc/plugin-prismjs': workspace:^0.2.0
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       carbon-components-svelte: ^0.58.4
@@ -267,9 +267,9 @@ importers:
 
   packages/starters/multi-page:
     specifiers:
-      '@magidoc/plugin-code-mirror': workspace:^0.1.4
-      '@magidoc/plugin-query-generator': workspace:^0.1.4
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.1.4
+      '@magidoc/plugin-code-mirror': workspace:^0.2.0
+      '@magidoc/plugin-query-generator': workspace:^0.2.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.2.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
