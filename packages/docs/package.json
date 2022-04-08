@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "0.0.1",
+  "version": "0.0.20",
   "license": "MIT",
   "type": "module",
   "scripts": {
