@@ -28,9 +28,10 @@ jobs:
           node-version: 16
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: pnpm -r install --frozen-lockfile --strict-peer-dependencies
+        run: pnpm -r install --ignore-scripts --frozen-lockfile --strict-peer-dependencies
 
       - name: Release
         env:
