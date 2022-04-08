@@ -1,12 +1,6 @@
 name: Release
 
-on: 
-  workflow_dispatch:
-  workflow_run:
-    workflows: ["Build and tests"]
-    branches: [main]
-    types: 
-      - completed
+on: [workflow_dispatch]
 
 jobs:
   release:
