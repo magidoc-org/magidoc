@@ -38,4 +38,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm semantic-release
+        run: |
+          VERSION=$(pnpm --silent get-version)
+          pnpm -r exec pnpm version --no-git-tag-version --allow-same-version $VERSION
+          git tag $VERSION && git push origin --tags
+          pnpm -r release
