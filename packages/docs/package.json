@@ -12,7 +12,7 @@
     "release": "pnpm build && gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "@magidoc/plugin-prismjs": "workspace:^0.0.19",
+    "@magidoc/plugin-prismjs": "workspace:^0.1.0",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
     "carbon-components-svelte": "^0.58.4",
