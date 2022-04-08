@@ -27,7 +27,7 @@
     }
   }
 
-  let CodeMirror: unknown 
+  let CodeMirror: unknown
   onMount(async () => {
     CodeMirror = (await import('@magidoc/plugin-code-mirror')).default
   })

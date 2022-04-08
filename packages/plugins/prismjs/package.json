@@ -3,7 +3,7 @@
   "description": "A plugin that provide a Svelte component any code using PrismJS",
   "type": "module",
   "license": "MIT",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "svelte": "index.js",
   "private": false,
   "scripts": {
