@@ -9,7 +9,7 @@
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "release": "pnpm build && gh-pages --dist build --dotfiles true"
+    "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
     "@magidoc/plugin-prismjs": "workspace:^0.1.0",

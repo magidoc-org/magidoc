@@ -40,4 +40,4 @@ jobs:
           VERSION=$(pnpm --silent get-version)
           pnpm -r exec pnpm version --no-git-tag-version --allow-same-version $VERSION
           git tag $VERSION && git push origin --tags
-          pnpm -r release
+          pnpm release
