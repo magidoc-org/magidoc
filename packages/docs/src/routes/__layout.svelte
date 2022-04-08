@@ -2,6 +2,7 @@
   export function load() {
     const allPagesPaths = import.meta.glob('../lib/sections/**/*.md')
     const pages = createPages(
+      base,
       Object.keys(allPagesPaths).map((slug) => ({
         path: slug,
         // This is the ugly thing that makes it all possible.
@@ -42,7 +43,7 @@
 
 <script lang="ts">
   import '../app.css'
-
+  import { base } from '$app/paths'
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
