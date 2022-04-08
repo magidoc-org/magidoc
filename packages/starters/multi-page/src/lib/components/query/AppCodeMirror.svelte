@@ -7,6 +7,7 @@
   import { Add16, Copy16, Subtract16 } from 'carbon-icons-svelte'
   import { graphqlQuery } from './stores'
   import { theme } from '$lib/theme'
+  import { browser } from '$app/env'
 
   export let code: string
   export let height: number | 'auto'
@@ -31,13 +32,15 @@
 
 <div class="wrapper">
   <div class="code-mirror-section">
-    <CodeMirror
-      {code}
-      {mode}
-      {height}
-      theme={codeMirrorTheme}
-      showLineNumbers={false}
-    />
+    {#if browser}
+      <CodeMirror
+        {code}
+        {mode}
+        {height}
+        theme={codeMirrorTheme}
+        showLineNumbers={false}
+      />
+    {/if}
   </div>
   <div class="button-bar">
     <Button

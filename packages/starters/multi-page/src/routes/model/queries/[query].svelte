@@ -1,17 +1,30 @@
-<script lang="ts">
-  import { QueryType } from '@magidoc/plugin-query-generator'
-  import { schema } from '$lib/schema'
-  import { page } from '$app/stores'
-  import type { GraphQLField } from 'graphql'
-  import FieldDetails from '$lib/components/query/FieldDetails.svelte'
-  import EntityNotFound from '$lib/components/EntityNotFound.svelte'
+<script lang="ts" context="module">
+  export function load({ stuff, params }: LoadInput): LoadOutput {
+    const field: GraphQLField<unknown, unknown, undefined> | undefined =
+      stuff.schema?.getQueryType()?.getFields()[params.query]
 
-  let field: GraphQLField<unknown, unknown, unknown> | undefined
-  $: field = $schema.getQueryType()?.getFields()[$page.params.query]
+    if (!field) {
+      return {
+        status: 404,
+        error: `Query ${params.query} not found`,
+      }
+    }
+
+    return {
+      props: {
+        field,
+      },
+    }
+  }
 </script>
 
-{#if field}
-  <FieldDetails {field} type={QueryType.QUERY} />
-{:else}
-  <EntityNotFound type="query" name={$page.params.query} />
-{/if}
+<script lang="ts">
+  import { QueryType } from '@magidoc/plugin-query-generator'
+  import type { GraphQLField } from 'graphql'
+  import FieldDetails from '$lib/components/query/FieldDetails.svelte'
+  import type { LoadInput, LoadOutput } from '@sveltejs/kit/types/internal'
+
+  export let field: GraphQLField<unknown, unknown, unknown>
+</script>
+
+<FieldDetails {field} type={QueryType.QUERY} />

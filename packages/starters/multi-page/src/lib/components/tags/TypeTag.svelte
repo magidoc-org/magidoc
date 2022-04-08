@@ -7,7 +7,7 @@
     isScalarType,
     isUnionType,
     isObjectType,
-    GraphQLNamedType,
+    type GraphQLNamedType,
   } from 'graphql'
 
   export let type: GraphQLNamedType

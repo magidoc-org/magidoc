@@ -5,8 +5,11 @@
   import Subscriptions from './Subscriptions.svelte'
   import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
   import Types from './Types.svelte'
+  import type { GraphQLSchema } from 'graphql'
+import _ from 'lodash';
 
   export let isOpen = true
+  export let schema: GraphQLSchema
 </script>
 
 <SideNav {isOpen}>
@@ -14,9 +17,9 @@
     <SideNavMenu text="Introduction" expanded>
       <SelectableNavMenuItem href="/introduction/welcome" text="Welcome" />
     </SideNavMenu>
-    <Queries />
-    <Mutations />
-    <Subscriptions />
-    <Types />
+    <Queries type={schema.getQueryType()} />
+    <Mutations type={schema.getMutationType()} />
+    <Subscriptions type={schema.getSubscriptionType()} />
+    <Types types={_.map(schema.getTypeMap(), (type) => type)} />
   </SideNavItems>
 </SideNav>
