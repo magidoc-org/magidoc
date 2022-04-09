@@ -1,17 +1,15 @@
 <script type="ts">
-  import 'code-mirror-themes/themes/monokai.css'
-  import 'code-mirror-themes/themes/idle.css'
+  import './prism-theme.css'
+  import Prism from '@magidoc/plugin-prismjs'
+  import 'prismjs/components/prism-graphql'
+  import 'prismjs/components/prism-json'
 
   import { Button } from 'carbon-components-svelte'
   import { Add16, Copy16, Subtract16 } from 'carbon-icons-svelte'
   import { graphqlQuery } from './stores'
-  import { theme } from '$lib/theme'
-  import { browser } from '$app/env'
-  import { onMount } from 'svelte'
 
   export let code: string
-  export let height: number | 'auto'
-  export let mode: 'graphql' | 'graphql-variables' | 'graphql-results'
+  export let language: 'graphql' | 'json'
 
   let copyButtonText = 'Copy query'
 
@@ -26,26 +24,11 @@
       console.log(e)
     }
   }
-
-  let CodeMirror: unknown
-  onMount(async () => {
-    CodeMirror = (await import('@magidoc/plugin-code-mirror')).default
-  })
-  $: codeMirrorTheme = $theme.value === 'g10' ? 'idle' : 'monokai'
 </script>
 
 <div class="wrapper">
-  <div class="code-mirror-section">
-    {#if browser}
-      <svelte:component
-        this={CodeMirror}
-        {code}
-        {mode}
-        {height}
-        theme={codeMirrorTheme}
-        showLineNumbers={false}
-      />
-    {/if}
+  <div class="code-section">
+    <Prism source={code} {language} showLineNumbers={false} />
   </div>
   <div class="button-bar">
     <Button
@@ -84,7 +67,7 @@
     justify-content: flex-start;
   }
 
-  .code-mirror-section {
+  .code-section {
     width: 100%;
   }
 

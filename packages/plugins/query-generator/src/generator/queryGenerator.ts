@@ -151,5 +151,7 @@ function generateField(
     return finalBuilderWithAllFields
   }
 
-  throw new Error(`this portion of the query generator should be unreachable... if you ever see this error, please open an issue: ${type.toJSON()}`)
+  throw new Error(
+    `this portion of the query generator should be unreachable... if you ever see this error, please open an issue: ${type.toJSON()}`,
+  )
 }

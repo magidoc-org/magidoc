@@ -19,11 +19,9 @@ export default {
           url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
         }),
       ],
-      optimizeDeps: {
-        include: ["prettier"]
-      },
       ssr: {
-        noExternal: ['prettier'],
+        // TODO - this is temporary. There seems to be an issue with SSR
+        noExternal: process.env.NODE_ENV == 'development' ? [] : ['prettier', 'prismjs'],
       },
     },
   },

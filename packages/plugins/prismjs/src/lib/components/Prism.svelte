@@ -15,15 +15,20 @@
 
   let root: HTMLElement
 
-  $: root && Prism && Prism.highlightAllUnder(root)
+  let innerHtml = ''
+  $: {
+    if (root && Prism && source) {
+      innerHtml = Prism.highlight(source, Prism.languages.graphql, 'graphql')
+    }
+  }
 </script>
 
-<div
-  bind:this={root}
-  class={`${showCopyButton ? 'show-copy-button' : 'hide-copy-button'}`}
->
-  <pre class={`${showLineNumbers ? 'line-numbers' : ''}`}><code
-      class={`language-${language}`}>{source}</code
+<div class={`${showCopyButton ? 'show-copy-button' : 'hide-copy-button'}`}>
+  <pre
+    class={`${
+      showLineNumbers ? 'line-numbers' : ''
+    } language-${language}`}><code bind:this={root} class="language-{language}"
+      >{@html innerHtml}</code
     ></pre>
 </div>
 

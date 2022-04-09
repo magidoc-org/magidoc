@@ -42,10 +42,6 @@
       "path": "./packages/plugins/query-generator/"
     },
     {
-      "name": "Plugins/CodeMirror",
-      "path": "./packages/plugins/code-mirror"
-    },
-    {
       "name": "Plugins/PrismJS",
       "path": "./packages/plugins/prismjs"
     },
