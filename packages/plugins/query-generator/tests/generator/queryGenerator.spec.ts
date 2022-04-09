@@ -1,13 +1,12 @@
-import { GraphQLField } from 'graphql'
+import type { GraphQLField } from 'graphql'
 import {
   generateGraphQLQuery,
   GeneratorConfig,
-  gql,
   NullGenerationStrategy,
-  prettify,
   QueryType,
 } from '../../src'
 import minify from 'graphql-query-compress'
+import { gql, prettify } from '../../src/formatter/query'
 
 const schema = getTestSchema()
 

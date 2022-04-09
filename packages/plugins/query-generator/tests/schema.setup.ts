@@ -5,7 +5,7 @@ import {
   GraphQLSchema,
   IntrospectionQuery,
 } from 'graphql'
-import { Maybe } from 'graphql/jsutils/Maybe'
+import type { Maybe } from 'graphql/jsutils/Maybe'
 import schema from './_schema.json'
 
 declare global {

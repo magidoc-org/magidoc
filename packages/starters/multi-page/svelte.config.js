@@ -5,7 +5,6 @@ import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
 
 /**
  * @type {import('@sveltejs/kit').Config}
- * @type {import('@magidoc/plugin-code-mirror').default}
  */
 export default {
   preprocess: [preprocess(), optimizeImports()],
@@ -20,13 +19,11 @@ export default {
           url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
         }),
       ],
+      optimizeDeps: {
+        include: ["prettier"]
+      },
       ssr: {
-        noExternal: [         
-          '@magidoc/plugin-query-generator',
-          '@magidoc/plugin-code-mirror',
-          'prettier',
-          'glob-to-regexp'
-        ],
+        noExternal: ['prettier'],
       },
     },
   },

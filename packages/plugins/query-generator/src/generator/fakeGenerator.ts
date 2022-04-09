@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import globToRegExp from 'glob-to-regexp'
+import globToRegExp from './utils/globToRegex'
 
 import {
   GeneratorConfig,
@@ -22,8 +22,8 @@ import {
   isListType,
   isNullableType,
 } from 'graphql'
-import { GenerationContext } from './queryGenerator'
-import { Parameter } from './queryBuilder'
+import type { GenerationContext } from './queryGenerator'
+import type { Parameter } from './queryBuilder'
 
 type FakeGenerationContext = GenerationContext & {
   readonly targetName: string
@@ -208,7 +208,7 @@ You have to provide a custom factory by providing this in your config:
     }
   }
 
-  throw new Error('this should be unreachable')
+  throw new Error(`this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${argumentType.toJSON()}`)
 }
 function findWildCardFactory(
   name: string,

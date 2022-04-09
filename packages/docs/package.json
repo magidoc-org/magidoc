@@ -24,7 +24,7 @@
     "prismjs": "^1.27.0",
     "rollup-plugin-string": "^3.0.0",
     "svelte": "^3.47.0",
-    "svelte-check": "^2.5.0",
+    "svelte-check": "^2.6.0",
     "svelte-markdown": "^0.2.2",
     "svelte-preprocess": "^4.10.5",
     "tslib": "^2.3.1",

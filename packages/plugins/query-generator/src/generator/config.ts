@@ -1,4 +1,4 @@
-import { QueryType } from '..'
+import type { QueryType } from '..'
 
 export enum NullGenerationStrategy {
   /**

@@ -56,7 +56,7 @@ importers:
       prismjs: ^1.27.0
       rollup-plugin-string: ^3.0.0
       svelte: ^3.47.0
-      svelte-check: ^2.5.0
+      svelte-check: ^2.6.0
       svelte-markdown: ^0.2.2
       svelte-preprocess: ^4.10.5
       tslib: ^2.3.1
@@ -75,7 +75,7 @@ importers:
       prismjs: 1.27.0
       rollup-plugin-string: 3.0.0
       svelte: 3.47.0
-      svelte-check: 2.5.0_svelte@3.47.0
+      svelte-check: 2.6.0_svelte@3.47.0
       svelte-markdown: 0.2.2_svelte@3.47.0
       svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.6.3
       tslib: 2.3.1
@@ -91,9 +91,9 @@ importers:
       codemirror-graphql: ^1.2.15
       graphql: ^16.3.0
       svelte: ^3.47.0
-      svelte-check: ^2.5.0
+      svelte-check: ^2.6.0
       svelte-preprocess: ^4.10.5
-      svelte2tsx: ^0.5.7
+      svelte2tsx: ^0.5.8
       tslib: ^2.3.1
       typescript: ~4.5.5
     devDependencies:
@@ -104,9 +104,9 @@ importers:
       codemirror-graphql: 1.2.15_277e0985ed0f3795874f93ac24c0f4c4
       graphql: 16.3.0
       svelte: 3.47.0
-      svelte-check: 2.5.0_svelte@3.47.0
+      svelte-check: 2.6.0_svelte@3.47.0
       svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.5.5
-      svelte2tsx: 0.5.7_svelte@3.47.0+typescript@4.5.5
+      svelte2tsx: 0.5.8_svelte@3.47.0+typescript@4.5.5
       tslib: 2.3.1
       typescript: 4.5.5
 
@@ -119,9 +119,9 @@ importers:
       codemirror-graphql: ^1.2.15
       graphql: ^16.3.0
       svelte: ^3.47.0
-      svelte-check: ^2.5.0
+      svelte-check: ^2.6.0
       svelte-preprocess: ^4.10.5
-      svelte2tsx: ^0.5.7
+      svelte2tsx: ^0.5.8
       tslib: ^2.3.1
       typescript: ~4.5.5
     devDependencies:
@@ -132,9 +132,9 @@ importers:
       codemirror-graphql: 1.2.15_277e0985ed0f3795874f93ac24c0f4c4
       graphql: 16.3.0
       svelte: 3.47.0
-      svelte-check: 2.5.0_svelte@3.47.0
+      svelte-check: 2.6.0_svelte@3.47.0
       svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.5.5
-      svelte2tsx: 0.5.7_svelte@3.47.0+typescript@4.5.5
+      svelte2tsx: 0.5.8_svelte@3.47.0+typescript@4.5.5
       tslib: 2.3.1
       typescript: 4.5.5
 
@@ -145,9 +145,9 @@ importers:
       '@types/prismjs': ^1.26.0
       prismjs: ^1.27.0
       svelte: ^3.47.0
-      svelte-check: ^2.5.0
+      svelte-check: ^2.6.0
       svelte-preprocess: ^4.10.5
-      svelte2tsx: ^0.5.7
+      svelte2tsx: ^0.5.8
       tslib: ^2.3.1
       typescript: ~4.5.5
     devDependencies:
@@ -156,9 +156,9 @@ importers:
       '@types/prismjs': 1.26.0
       prismjs: 1.27.0
       svelte: 3.47.0
-      svelte-check: 2.5.0_svelte@3.47.0
+      svelte-check: 2.6.0_svelte@3.47.0
       svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.5.5
-      svelte2tsx: 0.5.7_svelte@3.47.0+typescript@4.5.5
+      svelte2tsx: 0.5.8_svelte@3.47.0+typescript@4.5.5
       tslib: 2.3.1
       typescript: 4.5.5
 
@@ -169,9 +169,9 @@ importers:
       '@types/prismjs': ^1.26.0
       prismjs: ^1.27.0
       svelte: ^3.47.0
-      svelte-check: ^2.5.0
+      svelte-check: ^2.6.0
       svelte-preprocess: ^4.10.5
-      svelte2tsx: ^0.5.7
+      svelte2tsx: ^0.5.8
       tslib: ^2.3.1
       typescript: ~4.5.5
     devDependencies:
@@ -180,20 +180,18 @@ importers:
       '@types/prismjs': 1.26.0
       prismjs: 1.27.0
       svelte: 3.47.0
-      svelte-check: 2.5.0_svelte@3.47.0
+      svelte-check: 2.6.0_svelte@3.47.0
       svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.5.5
-      svelte2tsx: 0.5.7_svelte@3.47.0+typescript@4.5.5
+      svelte2tsx: 0.5.8_svelte@3.47.0+typescript@4.5.5
       tslib: 2.3.1
       typescript: 4.5.5
 
   packages/plugins/query-generator:
     specifiers:
-      '@types/glob-to-regexp': ^0.4.1
       '@types/jest': ^27.4.1
       '@types/lodash': ^4.14.181
       '@types/prettier': ^2.4.4
       esbuild: ^0.14.34
-      glob-to-regexp: ^0.4.1
       graphql: ^16.3.0
       graphql-query-compress: ^1.2.4
       jest: ^27.5.1
@@ -203,12 +201,10 @@ importers:
       ts-jest: ^27.1.4
       typescript: ^4.6.3
     dependencies:
-      glob-to-regexp: 0.4.1
       graphql: 16.3.0
       lodash: 4.17.21
       prettier: 2.6.2
     devDependencies:
-      '@types/glob-to-regexp': 0.4.1
       '@types/jest': 27.4.1
       '@types/lodash': 4.14.181
       '@types/prettier': 2.4.4
@@ -283,14 +279,15 @@ importers:
       graphql: ^16.3.0
       lodash: ^4.17.21
       svelte: ^3.47.0
-      svelte-check: ^2.5.0
+      svelte-check: ^2.6.0
       svelte-markdown: ^0.2.2
       svelte-preprocess: ^4.10.5
       tslib: ^2.3.1
       typescript: ^4.6.3
+    dependencies:
+      '@magidoc/plugin-query-generator': link:../../plugins/query-generator
     devDependencies:
       '@magidoc/plugin-code-mirror': link:../../plugins/code-mirror/package
-      '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-auto': 1.0.0-next.34
       '@sveltejs/adapter-static': 1.0.0-next.29
@@ -305,7 +302,7 @@ importers:
       graphql: 16.3.0
       lodash: 4.17.21
       svelte: 3.47.0
-      svelte-check: 2.5.0_svelte@3.47.0
+      svelte-check: 2.6.0_svelte@3.47.0
       svelte-markdown: 0.2.2_svelte@3.47.0
       svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.6.3
       tslib: 2.3.1
@@ -1294,10 +1291,6 @@ packages:
 
   /@types/estree/0.0.51:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
-    dev: true
-
-  /@types/glob-to-regexp/0.4.1:
-    resolution: {integrity: sha512-S0mIukll6fbF0tvrKic/jj+jI8SHoSvGU+Cs95b/jzZEnBYCbj+7aJtQ9yeABuK3xP1okwA3jEH9qIRayijnvQ==}
     dev: true
 
   /@types/graceful-fs/4.1.5:
@@ -2931,10 +2924,6 @@ packages:
     dependencies:
       is-glob: 4.0.3
     dev: true
-
-  /glob-to-regexp/0.4.1:
-    resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
-    dev: false
 
   /glob/7.2.0:
     resolution: {integrity: sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==}
@@ -5031,8 +5020,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check/2.5.0_svelte@3.47.0:
-    resolution: {integrity: sha512-/laO032JQ1TpmYHgaaLndHNPeWW3VSL3liMB97sA9fYTEzlIy3jIo4Rgr7EzjNvieiNWG73C5voOAeNHlrwbpg==}
+  /svelte-check/2.6.0_svelte@3.47.0:
+    resolution: {integrity: sha512-POL3IqLUuGqb9DdvuXQaSTNXYnw/odK4hqW86+2LwGcZTdbUPKBBln7pq74wXmcnRE+12bXMY1CvbcUNa2d5nw==}
     hasBin: true
     peerDependencies:
       svelte: ^3.24.0
@@ -5044,8 +5033,8 @@ packages:
       sade: 1.8.1
       source-map: 0.7.3
       svelte: 3.47.0
-      svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.5.5
-      typescript: 4.5.5
+      svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.6.3
+      typescript: 4.6.3
     transitivePeerDependencies:
       - '@babel/core'
       - coffeescript
@@ -5185,8 +5174,8 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /svelte2tsx/0.5.7_svelte@3.47.0+typescript@4.5.5:
-    resolution: {integrity: sha512-rekPWR5at7DNvIlJRSCyKFZ6Go/KyqjDRL/zRWQSNMbvTIocsm/gDtSbLz64ZP5Qz3tUeod7QzDqX13lF60kCg==}
+  /svelte2tsx/0.5.8_svelte@3.47.0+typescript@4.5.5:
+    resolution: {integrity: sha512-z5Mfpmy/jkpFIiePAocgWxGRJg+Ka0zlxyvFlpP2X1BoQuXjFC6pnIR9CGebOTmi+W1JnSUAdxrCCj/sEMXZ8Q==}
     peerDependencies:
       svelte: ^3.24
       typescript: ^4.1.2

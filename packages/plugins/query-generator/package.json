@@ -8,18 +8,16 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "esbuild --minify --sourcemap --outdir=build ./src/*.ts ./src/**/*.ts && tsc --build tsconfig.build.json",
+    "build": "esbuild --minify --format=esm --target=es2020,chrome58,firefox57,safari11,edge16,node12 --outdir=build `find ./src  -name '*.ts'` && tsc --build tsconfig.build.json",
     "test": "jest",
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "glob-to-regexp": "^0.4.1",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21",
     "prettier": "^2.6.2"
   },
   "devDependencies": {
-    "@types/glob-to-regexp": "^0.4.1",
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.181",
     "@types/prettier": "^2.4.4",

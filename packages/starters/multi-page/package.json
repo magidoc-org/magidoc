@@ -10,9 +10,13 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
+  "dependencies": {
+    "@magidoc/plugin-query-generator": "workspace:^0.2.0"
+  },
   "devDependencies": {
     "@magidoc/plugin-code-mirror": "workspace:^0.2.0",
-    "@magidoc/plugin-query-generator": "workspace:^0.2.0",
+    "graphql": "^16.3.0",
+    "lodash": "^4.17.21",
     "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.2.0",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-static": "next",
@@ -24,10 +28,8 @@
     "carbon-preprocess-svelte": "^0.7.0",
     "code-mirror-themes": "^1.0.0",
     "codemirror": "^5.65.2",
-    "graphql": "^16.3.0",
-    "lodash": "^4.17.21",
     "svelte": "^3.47.0",
-    "svelte-check": "^2.5.0",
+    "svelte-check": "^2.6.0",
     "svelte-markdown": "^0.2.2",
     "svelte-preprocess": "^4.10.5",
     "tslib": "^2.3.1",

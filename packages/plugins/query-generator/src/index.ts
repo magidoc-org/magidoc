@@ -1,13 +1,23 @@
 import { generateGraphQLQuery } from './generator/queryGenerator'
 
-export * from './formatter/query'
+export {
+  NullGenerationStrategy,
+  type GeneratorConfig,
+  type GraphQLFactory,
+  type GraphQLFactoryContext,
+  type GraphQLFactoryContextDefault,
+} from './generator/config'
 
-export * from './generator/config'
-export * from './generator/error'
-export * from './generator/fakeGenerator'
-export * from './generator/queryBuilder'
-export * from './generator/queryGenerator'
+export { GraphQLGenerationError } from './generator/error'
 
-export * from './models/query'
+export { QueryType } from './generator/queryBuilder'
+export {
+  generateGraphQLQuery,
+  type GenerationContext,
+} from './generator/queryGenerator'
+
+export type { GraphQLQuery, GraphQLVariables } from './models/query'
+
+export { gql } from './formatter/query'
 
 export default generateGraphQLQuery

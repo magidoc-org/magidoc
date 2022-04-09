@@ -8,7 +8,7 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "esbuild --minify --sourcemap --outdir=build ./src/*.ts && tsc --build tsconfig.build.json",
+    "build": "esbuild --minify --format=esm --target=node12 --outdir=build `find ./src  -name '*.ts'` && tsc --build tsconfig.build.json",
     "test": "jest",
     "release": "pnpm publish --no-git-checks --access public"
   },

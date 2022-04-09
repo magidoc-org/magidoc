@@ -1,15 +1,15 @@
 import { GraphQLField, isNullableType } from 'graphql'
 import _ from 'lodash'
 import {
-  generateArgsForField,
   GenerationContext,
   GeneratorConfig,
   GraphQLFactoryContext,
   NullGenerationStrategy,
-  Parameter,
   QueryType,
 } from '../../src'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
+import { generateArgsForField } from '../../src/generator/fakeGenerator'
+import type { Parameter } from '../../src/generator/queryBuilder'
 
 const schema = getTestSchema()
 
