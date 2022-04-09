@@ -29,13 +29,20 @@ importers:
   packages/cli:
     specifiers:
       '@types/jest': ^27.4.1
+      '@types/pkginfo': ^0.4.0
+      commander: ^9.1.0
       esbuild: ^0.14.34
       jest: ^27.5.1
       jest-extended: ^2.0.0
+      pkginfo: ^0.4.1
       ts-jest: ^27.1.4
       typescript: ^4.6.3
+    dependencies:
+      commander: 9.1.0
+      pkginfo: 0.4.1
     devDependencies:
       '@types/jest': 27.4.1
+      '@types/pkginfo': 0.4.0
       esbuild: 0.14.34
       jest: 27.5.1
       jest-extended: 2.0.0_jest@27.5.1
@@ -1027,6 +1034,12 @@ packages:
     resolution: {integrity: sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==}
     dev: true
 
+  /@types/pkginfo/0.4.0:
+    resolution: {integrity: sha512-4DGKkOlWkMuVDZQvytWzzWWAjyqDmlLKRYE4lzeA8t0s7fK0aF25uPbX9eBVermUjLJdeLHu9k1WmNiAssqCcg==}
+    dependencies:
+      '@types/node': 17.0.23
+    dev: true
+
   /@types/prettier/2.4.4:
     resolution: {integrity: sha512-ReVR2rLTV1kvtlWFyuot+d1pkpG2Fw/XKE3PDAdj57rbM97ttSp9JZ2UsP+2EHTylra9cUf6JA7tGwW1INzUrA==}
     dev: true
@@ -1630,6 +1643,11 @@ packages:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
     dev: true
+
+  /commander/9.1.0:
+    resolution: {integrity: sha512-i0/MaqBtdbnJ4XQs4Pmyb+oFQl+q0lsAmokVUH92SlSw4fkeAcG3bVon+Qt7hmtF+u3Het6o4VgrcY3qAoEB6w==}
+    engines: {node: ^12.20.0 || >=14}
+    dev: false
 
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}
@@ -3895,6 +3913,11 @@ packages:
     dependencies:
       find-up: 4.1.0
     dev: true
+
+  /pkginfo/0.4.1:
+    resolution: {integrity: sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=}
+    engines: {node: '>= 0.4.0'}
+    dev: false
 
   /postcss-selector-parser/6.0.10:
     resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}

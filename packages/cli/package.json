@@ -8,12 +8,20 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "esbuild --minify --format=esm --target=node12 --outdir=build `find ./src  -name '*.ts'` && tsc --build tsconfig.build.json",
+    "start": "pnpm build:esbuild && cd build && node index.js",
+    "build": "run-p build:*",
+    "build:esbuild": "esbuild --minify --format=esm --target=node12 --outdir=build `find ./src  -name '*.ts'`",
+    "build:tsc": "tsc --build tsconfig.build.json",
     "test": "jest",
     "release": "pnpm publish --no-git-checks --access public"
   },
+  "dependencies": {
+    "commander": "^9.1.0",
+    "pkginfo": "^0.4.1"
+  },
   "devDependencies": {
     "@types/jest": "^27.4.1",
+    "@types/pkginfo": "^0.4.0",
     "esbuild": "^0.14.34",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
