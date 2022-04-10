@@ -1,6 +1,6 @@
 import { Command, Option } from 'commander'
 import generate from '.'
-import { KeyValue, parseKeyValuePair } from '../utils/command'
+import { KeyValue, parseKeyValuePair } from '../../utils/args'
 import type { Method } from './schema/fetch'
 
 type GenerateCommandOptions = {
