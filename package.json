@@ -18,7 +18,7 @@
     "fix": "run-p fix:*",
     "fix:prettier": "prettier --write '**/*.ts' '**/*.svelte'",
     "fix:lint": "eslint --fix '**/src/**/*.{ts,svelte}'",
-    "release": "pnpm build-ci && pnpm -r release",
+    "release": "pnpm build-ci && node packages/starters/zipStarters.cjs && pnpm -r release",
     "patch": "pnpm version --no-git-tag-version patch | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version",
     "minor": "pnpm version --no-git-tag-version minor | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version",
     "major": "pnpm version --no-git-tag-version major | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version",
