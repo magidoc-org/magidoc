@@ -31,5 +31,5 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - run: pnpm -r install --frozen-lockfile --strict-peer-dependencies
-      - run: pnpm test-ci
       - run: pnpm build-ci
+      - run: pnpm test-ci
