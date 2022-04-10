@@ -23,17 +23,19 @@ program
     'Specifies the output directory of the built website',
     './build',
   )
-  .addOption(new Option(
+  .addOption(
+    new Option(
       '-u|--url [url]',
-      'Specifies the target GraphQL API to fetch the schema from using the introspection query'
-  ))
+      'Specifies the target GraphQL API to fetch the schema from using the introspection query',
+    ),
+  )
   .addOption(
     new Option(
       '-h|--header [header...]',
       'Specifies headers to pass to the query. ',
     ),
   )
-  
+
   .action((output: string) => {
     generate({
       output,

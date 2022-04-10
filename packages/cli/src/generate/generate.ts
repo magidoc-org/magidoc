@@ -6,5 +6,5 @@ export type GenerationConfig = {
 }
 
 export default function generate(config: GenerationConfig) {
-    console.log(config)
+  console.log(config)
 }

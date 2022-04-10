@@ -16,13 +16,11 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "commander": "^9.1.0",
-    "pkginfo": "^0.4.1"
+    "commander": "^9.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.1",
     "@types/jest": "^27.4.1",
-    "@types/pkginfo": "^0.4.0",
     "esbuild": "^0.14.34",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
