@@ -151,7 +151,7 @@ importers:
     specifiers:
       '@types/jest': ^27.4.1
       '@types/lodash': ^4.14.181
-      '@types/prettier': ^2.4.4
+      '@types/prettier': ^2.6.0
       esbuild: ^0.14.34
       graphql: ^16.3.0
       graphql-query-compress: ^1.2.4
@@ -168,7 +168,7 @@ importers:
     devDependencies:
       '@types/jest': 27.4.1
       '@types/lodash': 4.14.181
-      '@types/prettier': 2.4.4
+      '@types/prettier': 2.6.0
       esbuild: 0.14.34
       graphql-query-compress: 1.2.4
       jest: 27.5.1
@@ -198,7 +198,7 @@ importers:
   packages/plugins/rollup-fetch-gql-schema:
     specifiers:
       '@types/jest': ^27.4.1
-      '@types/prettier': ^2.4.4
+      '@types/prettier': ^2.6.0
       axios: ^0.26.1
       esbuild: ^0.14.34
       graphql: ^16.3.0
@@ -213,7 +213,7 @@ importers:
       graphql: 16.3.0
     devDependencies:
       '@types/jest': 27.4.1
-      '@types/prettier': 2.4.4
+      '@types/prettier': 2.6.0
       esbuild: 0.14.34
       jest: 27.5.1
       jest-extended: 2.0.0_jest@27.5.1
@@ -1085,8 +1085,8 @@ packages:
     resolution: {integrity: sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==}
     dev: true
 
-  /@types/prettier/2.4.4:
-    resolution: {integrity: sha512-ReVR2rLTV1kvtlWFyuot+d1pkpG2Fw/XKE3PDAdj57rbM97ttSp9JZ2UsP+2EHTylra9cUf6JA7tGwW1INzUrA==}
+  /@types/prettier/2.6.0:
+    resolution: {integrity: sha512-G/AdOadiZhnJp0jXCaBQU449W2h716OW/EoXeYkCytxKL06X1WCXB4DZpp8TpZ8eyIJVS1cw4lrlkkSYU21cDw==}
     dev: true
 
   /@types/prismjs/1.26.0:
@@ -3447,7 +3447,7 @@ packages:
       '@jest/transform': 27.5.1
       '@jest/types': 27.5.1
       '@types/babel__traverse': 7.14.2
-      '@types/prettier': 2.4.4
+      '@types/prettier': 2.6.0
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.17.9
       chalk: 4.1.2
       expect: 27.5.1
@@ -3760,8 +3760,8 @@ packages:
       tslib: 2.3.1
     dev: true
 
-  /lru-cache/7.8.0:
-    resolution: {integrity: sha512-AmXqneQZL3KZMIgBpaPTeI6pfwh+xQ2vutMsyqOu1TBdEXFZgpG/80wuJ531w2ZN7TI0/oc8CPxzh/DKQudZqg==}
+  /lru-cache/7.8.1:
+    resolution: {integrity: sha512-E1v547OCgJvbvevfjgK9sNKIVXO96NnsTsFPBlg4ZxjhsJSODoH9lk8Bm0OxvHNm6Vm5Yqkl/1fErDxhYL8Skg==}
     engines: {node: '>=12'}
     dev: true
 
@@ -4472,7 +4472,7 @@ packages:
     engines: {node: ^10.0.0 || ^12.0.0 || ^14.0.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      lru-cache: 7.8.0
+      lru-cache: 7.8.1
     dev: true
 
   /shebang-command/1.2.0:
@@ -4756,8 +4756,8 @@ packages:
       sade: 1.8.1
       source-map: 0.7.3
       svelte: 3.47.0
-      svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.6.3
-      typescript: 4.6.3
+      svelte-preprocess: 4.10.5_svelte@3.47.0+typescript@4.5.5
+      typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
       - coffeescript
