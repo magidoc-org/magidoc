@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.2.3",
+    "axios": "^0.26.1",
     "commander": "^9.1.0"
   },
   "devDependencies": {

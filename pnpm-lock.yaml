@@ -33,6 +33,7 @@ importers:
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.2.3
       '@rollup/plugin-typescript': ^8.3.1
       '@types/jest': ^27.4.1
+      axios: ^0.26.1
       commander: ^9.1.0
       esbuild: ^0.14.34
       jest: ^27.5.1
@@ -44,6 +45,7 @@ importers:
       typescript: ^4.6.3
     dependencies:
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../plugins/rollup-fetch-gql-schema
+      axios: 0.26.1
       commander: 9.1.0
     devDependencies:
       '@rollup/plugin-typescript': 8.3.1_8fb0118e9d69f3600cbb8f144f7d456c
