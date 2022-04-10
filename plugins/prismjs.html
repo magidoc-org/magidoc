@@ -9,13 +9,13 @@
   </title>
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/__layout.svelte-1c6e0f8d.css">
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/_...page_.svelte-b521907f.css">
-	<link rel="modulepreload" href="/magidoc/_app/start-9fb2dca1.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/index-4f94c69f.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/index-884ab4f0.js">
+	<link rel="modulepreload" href="/magidoc/_app/start-875e1763.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/index-8e39ae93.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/index-87287dbe.js">
 	<link rel="modulepreload" href="/magidoc/_app/chunks/preload-helper-f9a09824.js">
-	<link rel="modulepreload" href="/magidoc/_app/pages/__layout.svelte-14a81ffb.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/pages-5cad6275.js">
-	<link rel="modulepreload" href="/magidoc/_app/pages/_...page_.svelte-b061b9d8.js">
+	<link rel="modulepreload" href="/magidoc/_app/pages/__layout.svelte-e4866504.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/pages-94fec4b4.js">
+	<link rel="modulepreload" href="/magidoc/_app/pages/_...page_.svelte-8c1a6ed6.js">
 	</head>
 	<body>
 		<div>
@@ -56,18 +56,18 @@
 
 <h1>PrismJS</h1>
 <div class="tags svelte-kyu9xc">
-<div id="ccs-0.cozuc1hqmxh" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.6bk4ljg0m3v" class="bx--tag              bx--tag--outline">
     <span>Standalone
     </span></div>
-<div id="ccs-0.a72n2n40g" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.lluh1hkbxa" class="bx--tag              bx--tag--outline">
     <span>Plugin
     </span></div>
-<div id="ccs-0.rdujelbhe8k" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.pr9u0uewm8m" class="bx--tag              bx--tag--outline">
     <span>Svelte
     </span></div>
 
   
-<div id="ccs-0.ilh1zzov77h" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.xmtkfydj7a" class="bx--tag              bx--tag--outline">
     <span>Since: 1.0.0</span></div>
 </div>
 
@@ -82,46 +82,18 @@
     </div><p class="md-paragraph svelte-1bchwpe">The PrismJS plugin is a Svelte plugin built with TypeScript that gives you to get syntax highlighting for displaying code inside the browser, using 
 <a href="https://www.npmjs.com/package/prismjs" class="bx--link     ">PrismJS</a> under the hood.
 </p><h2 id="install">Install</h2><p class="md-paragraph svelte-1bchwpe">PrismJS is required as a peer dependency so you can use the themes and languages provided. 
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-bash">pnpm install -D @magidoc/plugin-prismjs prismjs @types/prismjs</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-bash"><code class="language-bash"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><p class="md-paragraph svelte-1bchwpe">For ViteJS users or SvelteKit users, <code>prismjs</code> needs to be added to the <code>noExternal</code> dependencies. Here is an example for a <code>svelte.config.js</code>.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-javascript">export default {
-  kit: {
-    vite: {
-      ssr: {
-        noExternal: [&#39;prismjs&#39;],
-      },
-    },
-  },
-}</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-javascript"><code class="language-javascript"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h2 id="usage">Usage</h2><p class="md-paragraph svelte-1bchwpe">The plugin exposes attributes to provide the source and the language. Attributes to display line numbers and a copy button are also available.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-svelte">&lt;script lang=&quot;ts&quot;&gt;
-  import Prism from &#39;@magidoc/plugin-prismjs&#39;
-&lt;/script&gt;
-
-&lt;Prism
-  language={&#39;javascript}
-  source={`
-    const x = &#39;best plugin ever&#39;
-    console.log(x)
-  `}
-  showLineNumbers
-  showCopyButton
-/&gt;
-</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-svelte"><code class="language-svelte"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h2 id="install-languages">Install languages</h2><p class="md-paragraph svelte-1bchwpe">PrismJS supports a 
 <a href="https://prismjs.com/#supported-languages" class="bx--link     ">ton of languages</a> out of the box. You can use any of these languages simply by importing the syntax highlighting. Most languages plugins will install themselves automatically, but PrismJS must be imported first.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-svelte">&lt;script lang=&quot;ts&quot;&gt;
-  import Prism from &#39;@magidoc/plugin-prismjs&#39;
-  import &#39;prismjs/components/prism-graphql&#39; 
-  import &#39;prism-svelte&#39; // https://github.com/pngwn/prism-svelte
-&lt;/script&gt;</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-svelte"><code class="language-svelte"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h2 id="themes">Themes</h2><p class="md-paragraph svelte-1bchwpe">You can modify Prism code sections style simply by importing a stylesheet. PrismJS provides many 
 <a href="https://github.com/PrismJS/prism/tree/master/themes" class="bx--link     ">themes</a> out of the box that you can easily import. Otherwise, there is a wide variety of themes available on the web and even a 
 <a href="https://k88hudson.github.io/syntax-highlighting-theme-generator/www/" class="bx--link     ">theme generator</a>. 
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-svelte">&lt;script lang=&quot;ts&quot;&gt;
-  import Prism from &#39;@magidoc/plugin-prismjs&#39;
-  import &#39;prismjs/themes/prism-dark.css&#39;
-&lt;/script&gt;</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-svelte"><code class="language-svelte"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div>
 <div role="alert" kind="info" class="bx--inline-notification bx--inline-notification--low-contrast bx--inline-notification--hide-close-button  bx--inline-notification--info    "><div class="bx--inline-notification__details">
 <svg data-carbon-icon="InformationFilled20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="20" height="20" class="bx--inline-notification__icon" preserveAspectRatio="xMidYMid meet" role="img" focusable="false"><path fill="none" d="M16,8a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,8Zm4,13.875H17.125v-8H13v2.25h1.875v5.75H12v2.25h8Z" data-icon-path="inner-path"></path><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,6a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,8Zm4,16.125H12v-2.25h2.875v-5.75H13v-2.25h4.125v8H20Z"></path>
@@ -147,10 +119,10 @@
 </div></div></div></div></main></main>
 
 
-		<script type="module" data-hydrate="1b80o7m">
-		import { start } from "/magidoc/_app/start-9fb2dca1.js";
+		<script type="module" data-hydrate="1nnzs2h">
+		import { start } from "/magidoc/_app/start-875e1763.js";
 		start({
-			target: document.querySelector('[data-hydrate="1b80o7m"]').parentNode,
+			target: document.querySelector('[data-hydrate="1nnzs2h"]').parentNode,
 			paths: {"base":"/magidoc","assets":"/magidoc"},
 			session: {},
 			route: true,
@@ -160,8 +132,8 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/magidoc/_app/pages/__layout.svelte-14a81ffb.js"),
-						import("/magidoc/_app/pages/_...page_.svelte-b061b9d8.js")
+					import("/magidoc/_app/pages/__layout.svelte-e4866504.js"),
+						import("/magidoc/_app/pages/_...page_.svelte-8c1a6ed6.js")
 				],
 				params: {page:"plugins\u002Fprismjs"},
 				routeId: "[...page]"

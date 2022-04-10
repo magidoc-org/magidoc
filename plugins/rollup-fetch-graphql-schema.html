@@ -9,13 +9,13 @@
   </title>
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/__layout.svelte-1c6e0f8d.css">
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/_...page_.svelte-b521907f.css">
-	<link rel="modulepreload" href="/magidoc/_app/start-9fb2dca1.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/index-4f94c69f.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/index-884ab4f0.js">
+	<link rel="modulepreload" href="/magidoc/_app/start-875e1763.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/index-8e39ae93.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/index-87287dbe.js">
 	<link rel="modulepreload" href="/magidoc/_app/chunks/preload-helper-f9a09824.js">
-	<link rel="modulepreload" href="/magidoc/_app/pages/__layout.svelte-14a81ffb.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/pages-5cad6275.js">
-	<link rel="modulepreload" href="/magidoc/_app/pages/_...page_.svelte-b061b9d8.js">
+	<link rel="modulepreload" href="/magidoc/_app/pages/__layout.svelte-e4866504.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/pages-94fec4b4.js">
+	<link rel="modulepreload" href="/magidoc/_app/pages/_...page_.svelte-8c1a6ed6.js">
 	</head>
 	<body>
 		<div>
@@ -56,21 +56,21 @@
 
 <h1>Rollup fetch GraphQL Schema plugin</h1>
 <div class="tags svelte-kyu9xc">
-<div id="ccs-0.8bjmr9zsxio" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.2ojp1mi3p8d" class="bx--tag              bx--tag--outline">
     <span>Standalone
     </span></div>
-<div id="ccs-0.5prhk2m845v" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.eqpgo85jueg" class="bx--tag              bx--tag--outline">
     <span>Plugin
     </span></div>
-<div id="ccs-0.b9krp25cjf6" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.6i6fklw5w8j" class="bx--tag              bx--tag--outline">
     <span>Rollup
     </span></div>
-<div id="ccs-0.jdu28f4hi0g" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.j1quxc36hsf" class="bx--tag              bx--tag--outline">
     <span>Vite
     </span></div>
 
   
-<div id="ccs-0.rn3brzxw2y" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.t7dyq1xogb" class="bx--tag              bx--tag--outline">
     <span>Since: 1.0.0</span></div>
 </div>
 
@@ -85,34 +85,11 @@
     </div><p class="md-paragraph svelte-1bchwpe">This rollup plugin fetches the GraphQL Schema required by Magidoc Plugins and to build your website documentation. It performs a full 
 <a href="https://graphql.org/learn/introspection/" class="bx--link     ">GraphQL Introspection Query</a> and stores the result on the file-system. This approach keeps your documentation independent from the actual API.
 </p><h2 id="install">Install</h2><p class="md-paragraph svelte-1bchwpe">First, add the module to your project.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-bash">pnpm install -D @magidoc/rollup-plugin-fetch-gql-schema</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-bash"><code class="language-bash"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><p class="md-paragraph svelte-1bchwpe">Then, add the plugin to your <code>ViteJS/Rollup</code> configuration. Here is an example for a <code>svelte.config.js</code>.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-javascript">import fetchGraphQLSchema from &#39;@magidoc/rollup-plugin-fetch-gql-schema&#39;
-
-export default {
-  kit: {
-    vite: {
-      plugins: [
-        fetchGraphQLSchema({
-          url: &#39;https://your-api-url.com&#39;,
-        }),
-      ],
-    },
-  },
-}</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-javascript"><code class="language-javascript"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h2 id="configuration">Configuration</h2><p class="md-paragraph svelte-1bchwpe">Configurations are available for the plugin to change the behavior of the introspection query. Here is the full configuration example and its default values.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-javascript">fetchGraphQLSchema({
-    // This is mandatory. Put your API URL here.
-    url: &#39;https://your-api-url.com&#39;,
-    // The HTTP method to use for the introspection query.
-    method: &#39;POST&#39; ,
-    // The HTTP headers to provide in the introspection query.
-    // Mainly useful if your API requires authentication.
-    headers: {},
-    // The target path where to put the introspection query result.
-    // This defaults to the static asset directory of SvelteKit.
-    target: &#39;static/_schema.json&#39;,
-})</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-javascript"><code class="language-javascript"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div>
 
 <div class="next-previous-buttons svelte-92ma9l"><div class="previous-next-button-container svelte-hebak7"><div>
@@ -136,10 +113,10 @@ export default {
 </div></div></div></div></main></main>
 
 
-		<script type="module" data-hydrate="1q81ypt">
-		import { start } from "/magidoc/_app/start-9fb2dca1.js";
+		<script type="module" data-hydrate="3hop0n">
+		import { start } from "/magidoc/_app/start-875e1763.js";
 		start({
-			target: document.querySelector('[data-hydrate="1q81ypt"]').parentNode,
+			target: document.querySelector('[data-hydrate="3hop0n"]').parentNode,
 			paths: {"base":"/magidoc","assets":"/magidoc"},
 			session: {},
 			route: true,
@@ -149,8 +126,8 @@ export default {
 				status: 200,
 				error: null,
 				nodes: [
-					import("/magidoc/_app/pages/__layout.svelte-14a81ffb.js"),
-						import("/magidoc/_app/pages/_...page_.svelte-b061b9d8.js")
+					import("/magidoc/_app/pages/__layout.svelte-e4866504.js"),
+						import("/magidoc/_app/pages/_...page_.svelte-8c1a6ed6.js")
 				],
 				params: {page:"plugins\u002Frollup-fetch-graphql-schema"},
 				routeId: "[...page]"

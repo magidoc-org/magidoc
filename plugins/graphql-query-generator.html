@@ -9,13 +9,13 @@
   </title>
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/__layout.svelte-1c6e0f8d.css">
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/_...page_.svelte-b521907f.css">
-	<link rel="modulepreload" href="/magidoc/_app/start-9fb2dca1.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/index-4f94c69f.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/index-884ab4f0.js">
+	<link rel="modulepreload" href="/magidoc/_app/start-875e1763.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/index-8e39ae93.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/index-87287dbe.js">
 	<link rel="modulepreload" href="/magidoc/_app/chunks/preload-helper-f9a09824.js">
-	<link rel="modulepreload" href="/magidoc/_app/pages/__layout.svelte-14a81ffb.js">
-	<link rel="modulepreload" href="/magidoc/_app/chunks/pages-5cad6275.js">
-	<link rel="modulepreload" href="/magidoc/_app/pages/_...page_.svelte-b061b9d8.js">
+	<link rel="modulepreload" href="/magidoc/_app/pages/__layout.svelte-e4866504.js">
+	<link rel="modulepreload" href="/magidoc/_app/chunks/pages-94fec4b4.js">
+	<link rel="modulepreload" href="/magidoc/_app/pages/_...page_.svelte-8c1a6ed6.js">
 	</head>
 	<body>
 		<div>
@@ -56,21 +56,21 @@
 
 <h1>GraphQL Query Generator</h1>
 <div class="tags svelte-kyu9xc">
-<div id="ccs-0.14ecmi001j2" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.z7zwsxj2zdg" class="bx--tag              bx--tag--outline">
     <span>Standalone
     </span></div>
-<div id="ccs-0.ayyhfgiom99" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.ffsrb5syfqv" class="bx--tag              bx--tag--outline">
     <span>Plugin
     </span></div>
-<div id="ccs-0.csq2o2ig4m" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.qjam7r32sbd" class="bx--tag              bx--tag--outline">
     <span>Node
     </span></div>
-<div id="ccs-0.cjc1sdkh1iu" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.k4shx747s4f" class="bx--tag              bx--tag--outline">
     <span>Browser
     </span></div>
 
   
-<div id="ccs-0.nt7sjuw4e8g" class="bx--tag              bx--tag--outline">
+<div id="ccs-0.aiyp1bqah3t" class="bx--tag              bx--tag--outline">
     <span>Since: 1.0.0</span></div>
 </div>
 
@@ -85,47 +85,15 @@
     </div><p class="md-paragraph svelte-1bchwpe">The GraphQL Query Generator plugin does exactly as its name suggests: it automatically build GraphQL queries and variables from a root query type. Generating GraphQL queries requires complex logic that is abstracted by the generator.
 </p><h2 id="example">Example</h2><p class="md-paragraph svelte-1bchwpe">Here is a sample generated query using the plugin. It supports parameter generation, duplicate names, union types and many other things.
 </p><p class="md-paragraph svelte-1bchwpe"><strong>Query</strong>
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-graphql">query getPerson($delay: Int, $delay2: Int) {
-  person {
-    name
-    age(delay: $delay)
-    friends {
-      name
-      age(delay: $delay2)
-    }
-  }
-}</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-graphql"><code class="language-graphql"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><p class="md-paragraph svelte-1bchwpe"><strong>Variables</strong>
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-json">{
-  &quot;delay&quot;: 20,
-  &quot;delay2&quot;: 20
-}</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-json"><code class="language-json"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h2 id="install">Install</h2><p class="md-paragraph svelte-1bchwpe">This plugin requires 
 <a href="https://www.npmjs.com/package/graphql" class="bx--link     ">GraphQL.js</a> as peer dependency.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-bash">pnpm install -D @magidoc/plugin-query-generator graphql</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-bash"><code class="language-bash"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h2 id="usage">Usage</h2><p class="md-paragraph svelte-1bchwpe">Here is a sample usage of the query generator using TypeScript that would generate the 
 <a href="#example" class="bx--link     ">above query</a>. Note that this plugin can be used from Svelte applications as well.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-typescript">import generateGraphQLQuery, {
-  NullGenerationStrategy,
-  QueryType,
-} from &#39;@magidoc/plugin-query-generator&#39;
-import { buildClientSchema, type IntrospectionQuery } from &#39;graphql&#39;
-import schemaJson from &#39;_schema.json&#39;
-
-// Use GraphQL.js to build the schema
-const schema = buildClientSchema(schemaJson as unknown as IntrospectionQuery)
-const personField = schema.getQueryType()?.getFields()[&#39;person&#39;]!!
-
-// Generates query for the `person` field
-const result = generateGraphQLQuery(personField, {
-  queryName: &#39;getPerson&#39;,
-  queryType: QueryType.QUERY,
-  maxDepth: 3,
-  nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
-  factories: {},
-})
-
-console.log(result)</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-typescript"><code class="language-typescript"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h2 id="factories">Factories</h2><p class="md-paragraph svelte-1bchwpe">Factories is the most important part of the available configuration. It allows to customize how the plugin will generate the random values used as 
 <a href="https://graphql.org/learn/queries/#variables" class="bx--link     ">query variables</a>. The plugin offers many 
 <a href="https://github.com/pelletier197/magidoc/blob/main/packages/plugins/query-generator/src/generator/defaultFactories.ts" class="bx--link     ">default factories</a>. Each of these factories can be overwritten and custom ones can be added.
@@ -135,40 +103,15 @@ console.log(result)</code></pre>
 </p><h3 id="custom-scalar-types">Custom scalar types</h3><p class="md-paragraph svelte-1bchwpe">Many GraphQL APIs implement 
 <a href="https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/" class="bx--link     ">custom scalars</a>. Since the plugin cannot automatically determine what is backing these scalars, a custom factory is required for them.
 </p><p class="md-paragraph svelte-1bchwpe">For instance, given schema has a scalar named <code>OddNumber</code>, representing any odd number.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-graphql">scalar OddNumber</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-graphql"><code class="language-graphql"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><p class="md-paragraph svelte-1bchwpe">The factory below could be provided.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-typescript">const result = generateGraphQLQuery(field, {
-  factories: {
-    OddNumber: () =&gt; 5,
-  },
-})</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-typescript"><code class="language-typescript"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h3 id="factory-key">Factory key</h3><p class="md-paragraph svelte-1bchwpe">The key for the GraphQL factory object uses glob syntax to determine which factory to use. The factories are used in order of specificity, from the most specific to the least specific. Only the most specific factory will be used to generate the value.
 </p><p class="md-paragraph svelte-1bchwpe">Here is a set of examples of factories going from the most specific to the least specific.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-typescript">const result = generateGraphQLQuery(field, {
-  factories: {
-    &#39;[OddNumber!]!&#39;: () =&gt; [5],
-    &#39;[OddNumber!]&#39;: () =&gt; [7],
-    &#39;OddNumber!&#39;: () =&gt; 9,
-    OddNumber: () =&gt; 11,
-    &#39;*Number&#39;: () =&gt; 13,
-  },
-})</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-typescript"><code class="language-typescript"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><h4 id="type-unwrapping">Type unwrapping</h4><p class="md-paragraph svelte-1bchwpe">The query generator uses type unwrapping to try to find a factory in all the provided values. This means that you generally don&#39;t need to provide a factory for a <code>[OddNumber!]!</code>, because a factory <code>OddNumber</code> will be used for all possible wrapping of the type: <code>OddNumber</code>, <code>OddNumber!</code>, <code>[OddNumber!]</code> and <code>[OddNumber!]!</code>.
 </p><h3 id="factory-context">Factory context</h3><p class="md-paragraph svelte-1bchwpe">Some GraphQL types, like <code>String</code>, are used widely within most GraphQL APIs. It can be desired to return a different value for this field based on the context where this type is used. This can be achieved using the <code>context</code> parameter provided in the factory function.
-</p><div class="show-copy-button"><pre class="line-numbers"><code class="language-typescript">import generateGraphQLQuery, { type QueryType } from &#39;@magidoc/plugin-query-generator&#39;
-const result = generateGraphQLQuery(field, {
-  factories: {
-    String: (context: GraphQLFactoryContext) =&gt; {
-      switch(context.targetName.toLowerCase()) {
-        case: &#39;email&#39;:
-          return &#39;some-email@mycompany.com&#39;
-        case: &#39;policyName&#39;
-          return &#39;Policy Name&#39;
-        default: context.defaultFactory ? context.defaultFactory.provide() : &#39;abc&#39;
-      }
-    },
-  },
-})</code></pre>
+</p><div class="show-copy-button"><pre class="line-numbers language-typescript"><code class="language-typescript"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></code></pre>
 </div><p class="md-paragraph svelte-1bchwpe">The available parameters and their description can be found here
 </p><!-- HTML_TAG_START --><!-- prettier-ignore -->
 <!-- HTML_TAG_END -->
@@ -239,10 +182,10 @@ const result = generateGraphQLQuery(field, {
 </div></div></div></div></main></main>
 
 
-		<script type="module" data-hydrate="10dapdz">
-		import { start } from "/magidoc/_app/start-9fb2dca1.js";
+		<script type="module" data-hydrate="ba61t">
+		import { start } from "/magidoc/_app/start-875e1763.js";
 		start({
-			target: document.querySelector('[data-hydrate="10dapdz"]').parentNode,
+			target: document.querySelector('[data-hydrate="ba61t"]').parentNode,
 			paths: {"base":"/magidoc","assets":"/magidoc"},
 			session: {},
 			route: true,
@@ -252,8 +195,8 @@ const result = generateGraphQLQuery(field, {
 				status: 200,
 				error: null,
 				nodes: [
-					import("/magidoc/_app/pages/__layout.svelte-14a81ffb.js"),
-						import("/magidoc/_app/pages/_...page_.svelte-b061b9d8.js")
+					import("/magidoc/_app/pages/__layout.svelte-e4866504.js"),
+						import("/magidoc/_app/pages/_...page_.svelte-8c1a6ed6.js")
 				],
 				params: {page:"plugins\u002Fgraphql-query-generator"},
 				routeId: "[...page]"

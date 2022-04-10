@@ -1,11 +1,11 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-9fb2dca1.js",
+    "file": "start-875e1763.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-4f94c69f.js",
-      "_index-884ab4f0.js",
+      "_index-8e39ae93.js",
+      "_index-87287dbe.js",
       "_preload-helper-f9a09824.js"
     ],
     "dynamicImports": [
@@ -16,15 +16,15 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-14a81ffb.js",
+    "file": "pages/__layout.svelte-e4866504.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_preload-helper-f9a09824.js",
-      "_index-4f94c69f.js",
-      "_pages-5cad6275.js",
-      "_index-884ab4f0.js"
+      "_index-8e39ae93.js",
+      "_pages-94fec4b4.js",
+      "_index-87287dbe.js"
     ],
     "dynamicImports": [
       "src/lib/sections/01.introduction/01.Welcome.md",
@@ -38,53 +38,53 @@
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-adfccf37.js",
+    "file": "error.svelte-d8338b22.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-4f94c69f.js"
+      "_index-8e39ae93.js"
     ]
   },
   "src/routes/[...page].svelte": {
-    "file": "pages/_...page_.svelte-b061b9d8.js",
+    "file": "pages/_...page_.svelte-8c1a6ed6.js",
     "src": "src/routes/[...page].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-4f94c69f.js",
-      "_pages-5cad6275.js",
-      "_index-884ab4f0.js"
+      "_index-8e39ae93.js",
+      "_pages-94fec4b4.js",
+      "_index-87287dbe.js"
     ],
     "css": [
       "assets/pages/_...page_.svelte-b521907f.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-d511a186.js",
+    "file": "pages/index.svelte-5a54e848.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-4f94c69f.js"
+      "_index-8e39ae93.js"
     ]
   },
-  "_index-4f94c69f.js": {
-    "file": "chunks/index-4f94c69f.js"
+  "_index-8e39ae93.js": {
+    "file": "chunks/index-8e39ae93.js"
   },
-  "_index-884ab4f0.js": {
-    "file": "chunks/index-884ab4f0.js",
+  "_index-87287dbe.js": {
+    "file": "chunks/index-87287dbe.js",
     "imports": [
-      "_index-4f94c69f.js"
+      "_index-8e39ae93.js"
     ]
   },
   "_preload-helper-f9a09824.js": {
     "file": "chunks/preload-helper-f9a09824.js"
   },
-  "_pages-5cad6275.js": {
-    "file": "chunks/pages-5cad6275.js",
+  "_pages-94fec4b4.js": {
+    "file": "chunks/pages-94fec4b4.js",
     "imports": [
-      "_index-4f94c69f.js"
+      "_index-8e39ae93.js"
     ]
   },
   "src/lib/sections/01.introduction/01.Welcome.md": {
@@ -108,7 +108,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/02.plugins/03.PrismJS.md": {
-    "file": "chunks/03.PrismJS-3deed165.js",
+    "file": "chunks/03.PrismJS-0dc9ab95.js",
     "src": "src/lib/sections/02.plugins/03.PrismJS.md",
     "isDynamicEntry": true
   }
