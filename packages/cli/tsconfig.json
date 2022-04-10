@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
-		"importsNotUsedAsValues": "error",
+    "importsNotUsedAsValues": "error",
     "isolatedModules": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -11,11 +11,12 @@
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "sourceMap": true,
+    "outDir": "build",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["esnext", "dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["build", "node_modules"]
 }

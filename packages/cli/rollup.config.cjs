@@ -3,7 +3,7 @@ const typescript = require('@rollup/plugin-typescript')
 
 module.exports = defineConfig({
   input: ['src/index.ts'],
-  plugins: [typescript()],
+  plugins: [typescript({})],
   external: ['commander', 'fs'],
   output: {
     dir: 'build',
