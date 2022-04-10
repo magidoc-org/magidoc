@@ -7,6 +7,9 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "bin": {
+    "magidoc": "./build/index.js"
+  },
   "scripts": {
     "start": "pnpm build:rollup && cd build && node index.js",
     "build": "run-p build:*",
