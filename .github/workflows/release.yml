@@ -28,20 +28,27 @@ jobs:
           node-version: 16
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: pnpm -r install --ignore-scripts --frozen-lockfile --strict-peer-dependencies
 
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Set version
+        id: version
         run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git config --global user.email "support+actions@github.com"
-          git config --global user.name "github-actions-bot"
-          VERSION=$(pnpm --silent get-version)
+          echo "::set-output name=TAG_NAME::$(pnpm --silent get-version)"
+
+      - name: Release Node Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION: ${{ steps.version.outputs.TAG_NAME }}
+        run: |
           pnpm -r exec pnpm version --no-git-tag-version --allow-same-version $VERSION
-          git tag $VERSION && git push origin --tags
           pnpm release
+
+      - name: Release Git
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.version.outputs.TAG_NAME }}
+          artifacts: "packages/starters/starter-*.zip"
