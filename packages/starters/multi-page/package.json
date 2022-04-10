@@ -12,8 +12,8 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.2.0",
     "@magidoc/plugin-query-generator": "workspace:^0.2.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.2.0",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21"
   },
@@ -23,6 +23,7 @@
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
     "@types/lodash": "^4.14.181",
+    "@types/prismjs": "^1.26.0",
     "carbon-components-svelte": "^0.58.4",
     "carbon-icons-svelte": "^10.45.1",
     "carbon-preprocess-svelte": "^0.7.0",

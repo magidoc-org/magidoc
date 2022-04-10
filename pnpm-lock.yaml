@@ -76,7 +76,7 @@ importers:
       typescript: ^4.6.3
       vite: ^2.9.1
     devDependencies:
-      '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs
+      '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.310_svelte@3.47.0
       carbon-components-svelte: 0.58.4
@@ -227,6 +227,7 @@ importers:
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       '@types/lodash': ^4.14.181
+      '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.58.4
       carbon-icons-svelte: ^10.45.1
       carbon-preprocess-svelte: ^0.7.0
@@ -241,7 +242,7 @@ importers:
       typescript: ^4.6.3
     dependencies:
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
-      '@magidoc/plugin-svelte-prismjs': link:../../plugins/prismjs
+      '@magidoc/plugin-svelte-prismjs': link:../../plugins/prismjs/package
       graphql: 16.3.0
       lodash: 4.17.21
     devDependencies:
@@ -250,6 +251,7 @@ importers:
       '@sveltejs/adapter-static': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.310_svelte@3.47.0
       '@types/lodash': 4.14.181
+      '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.45.1
       carbon-preprocess-svelte: 0.7.0_svelte@3.47.0
