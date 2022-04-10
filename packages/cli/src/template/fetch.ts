@@ -5,5 +5,5 @@ export type FetchTemplateConfig = {
 }
 
 export default function fetchTemplate(config: FetchTemplateConfig) {
-    console.log(config)
+  console.log(config)
 }
