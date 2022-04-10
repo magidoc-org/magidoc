@@ -57,7 +57,7 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-prismjs': workspace:^0.2.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.2.0
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       carbon-components-svelte: ^0.58.4
@@ -76,7 +76,7 @@ importers:
       typescript: ^4.6.3
       vite: ^2.9.1
     devDependencies:
-      '@magidoc/plugin-prismjs': link:../plugins/prismjs/package
+      '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs
       '@sveltejs/adapter-static': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.310_svelte@3.47.0
       carbon-components-svelte: 0.58.4
@@ -220,8 +220,8 @@ importers:
 
   packages/starters/multi-page:
     specifiers:
-      '@magidoc/plugin-prismjs': workspace:^0.2.0
       '@magidoc/plugin-query-generator': workspace:^0.2.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.2.0
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.2.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/adapter-static': next
@@ -240,8 +240,8 @@ importers:
       tslib: ^2.3.1
       typescript: ^4.6.3
     dependencies:
-      '@magidoc/plugin-prismjs': link:../../plugins/prismjs/package
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
+      '@magidoc/plugin-svelte-prismjs': link:../../plugins/prismjs
       graphql: 16.3.0
       lodash: 4.17.21
     devDependencies:

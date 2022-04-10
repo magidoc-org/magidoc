@@ -12,7 +12,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@magidoc/plugin-prismjs": "workspace:^0.2.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.2.0",
     "@magidoc/plugin-query-generator": "workspace:^0.2.0",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21"

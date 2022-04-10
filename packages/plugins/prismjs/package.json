@@ -1,6 +1,6 @@
 {
-  "name": "@magidoc/plugin-prismjs",
-  "description": "A plugin that provide a Svelte component any code using PrismJS",
+  "name": "@magidoc/plugin-svelte-prismjs",
+  "description": "A Svelte component library providing an easy to use component to display PrismJS code blocks",
   "type": "module",
   "license": "MIT",
   "version": "0.2.0",
