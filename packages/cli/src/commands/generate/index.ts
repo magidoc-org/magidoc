@@ -1,6 +1,10 @@
 import type { Template } from '../../template'
 import fetchTemplate from '../../template/fetch'
-import { tmpTemplateFileName } from '../../template/tmp'
+import {
+  tmpTemplateArchiveFile,
+  tmpTemplateDirectory,
+} from '../../template/tmp'
+import { unzipTemplate } from '../../template/unzip'
 import type { FetchConfig } from './schema/fetch'
 
 export type GenerationConfig = {
@@ -26,13 +30,21 @@ export type GenerationConfig = {
 }
 
 export default async function generate(config: GenerationConfig) {
-  const tmpFile = tmpTemplateFileName()
+  const tmpArchive = tmpTemplateArchiveFile()
+  const tmpDirectory = tmpTemplateDirectory()
 
   await fetchTemplate({
     template: config.template,
     version: config.templateVersion,
-    destination: tmpFile,
+    destination: tmpArchive.path,
   })
 
-  console.log(`Output zip file to ${tmpFile}`)
+  console.log(`Output zip file to ${tmpArchive.path}`)
+
+  await unzipTemplate({
+    zipLocation: tmpArchive.path,
+    destination: tmpDirectory.path,
+  })
+  
+  console.log(`Unzipped directory to ${tmpDirectory.path}`)
 }
