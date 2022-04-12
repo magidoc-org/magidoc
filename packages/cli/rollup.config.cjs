@@ -1,9 +1,10 @@
 const { defineConfig } = require('rollup')
 const typescript = require('@rollup/plugin-typescript')
+const shebang = require('rollup-plugin-preserve-shebang')
 
 module.exports = defineConfig({
   input: ['src/index.ts'],
-  plugins: [typescript({})],
+  plugins: [shebang(), typescript()],
   external: ['commander', 'fs'],
   output: {
     dir: 'build',

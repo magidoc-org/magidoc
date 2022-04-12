@@ -1,6 +1,19 @@
+import type { Template } from '../../template'
+import fetchTemplate from '../../template/fetch'
+import { tmpTemplateFileName } from '../../template/tmp'
 import type { FetchConfig } from './schema/fetch'
 
 export type GenerationConfig = {
+  /**
+   * The target template for generation
+   */
+  template: Template
+
+  /**
+   * The template version to use for generation
+   */
+  templateVersion: string
+
   /**
    * The configuration used for fetching the GraphQL Schema from the remote server
    */
@@ -12,6 +25,14 @@ export type GenerationConfig = {
   output: string
 }
 
-export default function generate(config: GenerationConfig) {
-  console.log(JSON.stringify(config))
+export default async function generate(config: GenerationConfig) {
+  const tmpFile = tmpTemplateFileName()
+
+  await fetchTemplate({
+    template: config.template,
+    version: config.templateVersion,
+    destination: tmpFile,
+  })
+
+  console.log(`Output zip file to ${tmpFile}`)
 }
