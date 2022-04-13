@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const archiver = require('archiver')
-const { start } = require('repl')
 
 const basePath = __dirname
 
@@ -17,10 +16,20 @@ function listStarterDirectories() {
     })
 }
 
+function getCleanedPackageJson(path) {
+  let content = fs.readFileSync(path).toString()
+
+  while (content.includes('workspace:')) {
+    content = content.replace('workspace:', '')
+  }
+
+  return content
+}
+
 async function zipStarter(starterDirectory) {
   const outputPath = path.join(
-      path.dirname(starterDirectory),
-      `starter-${path.basename(starterDirectory)}.zip`
+    path.dirname(starterDirectory),
+    `starter-${path.basename(starterDirectory)}.zip`,
   )
   fs.rmSync(outputPath, { force: true })
 
@@ -51,8 +60,14 @@ async function zipStarter(starterDirectory) {
   archive.glob(`**/*`, {
     dot: true,
     cwd: starterDirectory,
-    ignore: excludedPatterns,
+    // Exclude package.json because we are going to modify it
+    ignore: excludedPatterns + ['package.json'],
   })
+
+  archive.append(
+    getCleanedPackageJson(path.join(starterDirectory, 'package.json')),
+    { name: 'package.json' },
+  )
 
   await archive.finalize()
 }

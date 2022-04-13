@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import { Command } from 'commander'
 import { readFileSync } from 'fs'
 import buildGenerateCommand from './commands/generate/command'
@@ -21,7 +23,7 @@ const program = new Command()
   )
   .version(version)
 
-buildGenerateCommand(program)
+buildGenerateCommand(program, version)
 buildInitCommand(program)
 
 program.parse()

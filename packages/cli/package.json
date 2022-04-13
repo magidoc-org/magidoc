@@ -7,6 +7,9 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "bin": {
+    "magidoc": "./build/index.js"
+  },
   "scripts": {
     "start": "pnpm build:rollup && cd build && node index.js",
     "build": "run-p build:*",
@@ -17,16 +20,21 @@
   },
   "dependencies": {
     "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.2.3",
-    "commander": "^9.1.0"
+    "axios": "^0.26.1",
+    "commander": "^9.1.0",
+    "extract-zip": "^2.0.1",
+    "tmp": "^0.2.1"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.1",
     "@types/jest": "^27.4.1",
+    "@types/tmp": "^0.2.3",
     "esbuild": "^0.14.34",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "listr2": "^4.0.5",
     "rollup": "^2.70.1",
+    "rollup-plugin-preserve-shebang": "^1.0.1",
     "ts-jest": "^27.1.4",
     "tslib": "^2.3.1",
     "typescript": "^4.6.3"
