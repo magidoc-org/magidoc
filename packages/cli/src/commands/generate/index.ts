@@ -45,6 +45,6 @@ export default async function generate(config: GenerationConfig) {
     zipLocation: tmpArchive.path,
     destination: tmpDirectory.path,
   })
-  
+
   console.log(`Unzipped directory to ${tmpDirectory.path}`)
 }
