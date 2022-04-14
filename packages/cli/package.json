@@ -2,7 +2,7 @@
   "name": "@magidoc/cli",
   "description": "A CLI application responsible for generating starter projects for a GraphQL API",
   "private": false,
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -19,10 +19,11 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.3.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.3.1",
     "axios": "^0.26.1",
     "commander": "^9.1.0",
     "extract-zip": "^2.0.1",
+    "listr2": "^4.0.5",
     "tmp": "^0.2.1"
   },
   "devDependencies": {
@@ -32,7 +33,6 @@
     "esbuild": "^0.14.34",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
-    "listr2": "^4.0.5",
     "rollup": "^2.70.1",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "ts-jest": "^27.1.4",

@@ -61,7 +61,7 @@ async function zipStarter(starterDirectory) {
     dot: true,
     cwd: starterDirectory,
     // Exclude package.json because we are going to modify it
-    ignore: excludedPatterns + ['package.json'],
+    ignore: excludedPatterns.concat(['package.json']),
   })
 
   archive.append(
