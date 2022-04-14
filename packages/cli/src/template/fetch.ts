@@ -50,12 +50,11 @@ export default async function fetchTemplate(config: FetchTemplateConfig) {
         if (error.response.status === 404) {
           throw new Error(
             `Could not find template '${config.template}' with version '${config.version}'. \nSearched the following location: \n - ${targetUrl}`,
+            error,
           )
         }
       }
 
-      throw new Error(
-        `Unable to fetch template at ${targetUrl}. Cause: ${error.message}`,
-      )
+      throw new Error(`Unable to fetch template at ${targetUrl}`, error)
     })
 }

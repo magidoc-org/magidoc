@@ -1,4 +1,4 @@
-import { Listr, ListrGetRendererClassFromValue } from 'listr2'
+import { Listr } from 'listr2'
 import type {
   ListrContext,
   ListrTaskWrapper,
@@ -82,6 +82,9 @@ export default async function generate(config: GenerationConfig) {
     ],
     {
       exitOnError: true,
+      rendererOptions: {
+        showTimer: true,
+      },
     },
   )
 
@@ -97,14 +100,10 @@ function newTask({
     ctx: ListrContext,
     task: ListrTaskWrapper<ListrContext, ListrDefaultRenderer>,
   ) => Promise<void> | void
-}): ListrTask<
-  ListrContext,
-  ListrGetRendererClassFromValue<ListrDefaultRenderer>
-> {
+}): ListrTask<TaskContext, ListrDefaultRenderer> {
   return {
     title: title,
     options: {
-      showTimer: true,
       persistentOutput: true,
     },
     task: executor,

@@ -11,6 +11,7 @@ type GenerateCommandOptions = {
   url: string
   method: Method
   header: KeyValue[]
+  stacktrace: boolean
 }
 
 export default function buildGenerateCommand(
@@ -63,6 +64,12 @@ export default function buildGenerateCommand(
           parseKeyValuePair(value),
         ]),
     )
+    .addOption(
+      new Option(
+        '-s|--stacktrace',
+        'Useful to debug errors. Will print the whole exception to the terminal in case the error message is not precise enough.',
+      ).default(false),
+    )
     .action(
       async ({
         output,
@@ -71,17 +78,28 @@ export default function buildGenerateCommand(
         header,
         template,
         templateVersion,
+        stacktrace,
       }: GenerateCommandOptions) => {
-        await generate({
-          template,
-          templateVersion,
-          output,
-          fetchConfig: {
-            url,
-            headers: header,
-            method,
-          },
-        })
+        try {
+          await generate({
+            template,
+            templateVersion,
+            output,
+            fetchConfig: {
+              url,
+              headers: header,
+              method,
+            },
+          })
+        } catch (error) {
+          process.exitCode = 1
+
+          if (stacktrace) {
+            console.log()
+            console.log('------- Stacktrace -------')
+            console.log(error)
+          }
+        }
       },
     )
 }

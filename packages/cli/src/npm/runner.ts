@@ -10,15 +10,15 @@ export type NpmRunner = {
 
 export function fetchNpmRunner(): NpmRunner {
   if (isRunnerAvailable('pnpm')) {
-    return createRunner('pnpm')
+    return createRunner({ type: 'pnpm' })
   }
 
   if (isRunnerAvailable('yarn')) {
-    return createRunner('yarn')
+    return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
   }
 
   if (isRunnerAvailable('npm')) {
-    return createRunner('npm')
+    return createRunner({ type: 'npm' })
   }
 
   throw new Error(
@@ -26,29 +26,41 @@ export function fetchNpmRunner(): NpmRunner {
   )
 }
 
-function createRunner(type: RunnerType): NpmRunner {
+function createRunner({
+  type,
+  installArgs,
+}: {
+  type: RunnerType
+  installArgs?: string
+}): NpmRunner {
   return {
     type,
-    runInstall: createInstall(type),
+    runInstall: createInstall(type, installArgs),
   }
 }
 
-function createInstall(type: RunnerType): (directory: string) => Promise<void> {
+function createInstall(
+  type: RunnerType,
+  args = '',
+): (directory: string) => Promise<void> {
   return (directory: string) => {
     try {
-      execSync(`${type} install`, {
+      execSync(`${type} install ${args}`, {
         cwd: directory,
       })
     } catch (error: unknown) {
       const spawnError = error as SpawnSyncReturns<Buffer>
-      console.log(spawnError.stdout.toString())
-      console.log('-----------')
-      console.log(spawnError.stderr.toString())
+      const lines = spawnError.stdout.toString().split('\n')
+
+      const meaningfulErrors = lines.filter((line) => line.includes('ERR_'))
+
       return Promise.reject(
         new Error(
           `'${type} install' failed with status ${
             spawnError.status?.toString() || 'unknown'
-          } when ran in directory ${directory}`,
+          } when executed in directory ${directory}\n${meaningfulErrors.join(
+            '\n',
+          )}`,
         ),
       )
     }
