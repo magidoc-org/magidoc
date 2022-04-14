@@ -13,6 +13,7 @@ module.exports = defineConfig({
     'extract-zip',
     'listr2',
     'child_process',
+    'util',
   ],
   output: {
     dir: 'build',

@@ -1,5 +1,8 @@
-import { execSync } from 'child_process'
+import { exec } from 'child_process'
 import type { SpawnSyncReturns } from 'child_process'
+import { promisify } from 'util'
+
+const execPromise = promisify(exec)
 
 export type RunnerType = 'pnpm' | 'yarn' | 'npm'
 
@@ -8,16 +11,16 @@ export type NpmRunner = {
   runInstall: (directory: string) => Promise<void>
 }
 
-export function fetchNpmRunner(): NpmRunner {
-  if (isRunnerAvailable('pnpm')) {
+export async function fetchNpmRunner(): Promise<NpmRunner> {
+  if (await isRunnerAvailable('pnpm')) {
     return createRunner({ type: 'pnpm' })
   }
 
-  if (isRunnerAvailable('yarn')) {
+  if (await isRunnerAvailable('yarn')) {
     return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
   }
 
-  if (isRunnerAvailable('npm')) {
+  if (await isRunnerAvailable('npm')) {
     return createRunner({ type: 'npm' })
   }
 
@@ -43,25 +46,24 @@ function createInstall(
   type: RunnerType,
   args = '',
 ): (directory: string) => Promise<void> {
-  return (directory: string) => {
+  return async (directory: string) => {
     try {
-      execSync(`${type} install ${args}`, {
+      await execPromise(`${type} install ${args}`, {
         cwd: directory,
       })
     } catch (error: unknown) {
+      // https://nodejs.org/api/child_process.html#child_processexecsynccommand-options
       const spawnError = error as SpawnSyncReturns<Buffer>
       const lines = spawnError.stdout.toString().split('\n')
 
       const meaningfulErrors = lines.filter((line) => line.includes('ERR_'))
 
-      return Promise.reject(
-        new Error(
-          `'${type} install' failed with status ${
-            spawnError.status?.toString() || 'unknown'
-          } when executed in directory ${directory}\n${meaningfulErrors.join(
-            '\n',
-          )}`,
-        ),
+      throw new Error(
+        `'${type} install' failed with status ${
+          spawnError.status?.toString() || 'unknown'
+        } when executed in directory ${directory}\n${meaningfulErrors.join(
+          '\n',
+        )}`,
       )
     }
 
@@ -69,9 +71,9 @@ function createInstall(
   }
 }
 
-function isRunnerAvailable(type: RunnerType): boolean {
+async function isRunnerAvailable(type: RunnerType): Promise<boolean> {
   try {
-    execSync(`${type} --version`)
+    await execPromise(`${type} --version`)
     return true
   } catch (error) {
     return false

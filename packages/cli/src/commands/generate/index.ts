@@ -49,13 +49,13 @@ export default async function generate(config: GenerationConfig) {
     [
       newTask({
         title: 'Select NPM runner',
-        executor: (ctx: TaskContext, task) => {
-          ctx.npmRunner = fetchNpmRunner()
+        executor: async (ctx: TaskContext, task) => {
+          ctx.npmRunner = await fetchNpmRunner()
           task.output = `Selected ${ctx.npmRunner.type}`
         },
       }),
       newTask({
-        title: `Fetching template ${config.template}@${config.templateVersion}`,
+        title: `Fetch template ${config.template}@${config.templateVersion}`,
         executor: async () => {
           await fetchTemplate({
             template: config.template,
@@ -65,7 +65,7 @@ export default async function generate(config: GenerationConfig) {
         },
       }),
       newTask({
-        title: `Unzipping template`,
+        title: `Unzip template`,
         executor: async () => {
           await unzipTemplate({
             zipLocation: tmpArchive.path,
