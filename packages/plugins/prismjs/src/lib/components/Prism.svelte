@@ -17,7 +17,7 @@
 
   $: {
     if (root && Prism) {
-      // This is the way found to make PrismJS re-render on change 
+      // This is the way found to make PrismJS re-render on change
       // and also keep the toolbar working
       root.textContent = source
       Prism.highlightElement(root)
