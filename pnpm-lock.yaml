@@ -80,7 +80,7 @@ importers:
       svelte-preprocess: ^4.10.6
       tslib: ^2.3.1
       typescript: ^4.6.3
-      vite: ^2.9.4
+      vite: ^2.9.5
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.29
@@ -99,7 +99,7 @@ importers:
       svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.6.3
       tslib: 2.3.1
       typescript: 4.6.3
-      vite: 2.9.4
+      vite: 2.9.5
 
   packages/plugins/prismjs:
     specifiers:
@@ -1014,7 +1014,7 @@ packages:
       '@babel/types': 7.17.0
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
-      '@types/babel__traverse': 7.14.2
+      '@types/babel__traverse': 7.17.0
     dev: true
 
   /@types/babel__generator/7.6.4:
@@ -1030,8 +1030,8 @@ packages:
       '@babel/types': 7.17.0
     dev: true
 
-  /@types/babel__traverse/7.14.2:
-    resolution: {integrity: sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==}
+  /@types/babel__traverse/7.17.0:
+    resolution: {integrity: sha512-r8aveDbd+rzGP+ykSdF3oPuTVRWRfbBiHl0rVDM2yNEmSMXfkObQLV46b4RnCv3Lra51OlfnZhkkFaDl2MIRaA==}
     dependencies:
       '@babel/types': 7.17.0
     dev: true
@@ -1470,7 +1470,7 @@ packages:
       '@babel/template': 7.16.7
       '@babel/types': 7.17.0
       '@types/babel__core': 7.1.19
-      '@types/babel__traverse': 7.14.2
+      '@types/babel__traverse': 7.17.0
     dev: true
 
   /babel-preset-current-node-syntax/1.0.1_@babel+core@7.17.9:
@@ -1549,7 +1549,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001332
-      electron-to-chromium: 1.4.107
+      electron-to-chromium: 1.4.108
       escalade: 3.1.1
       node-releases: 2.0.3
       picocolors: 1.0.0
@@ -1956,8 +1956,8 @@ packages:
       webidl-conversions: 5.0.0
     dev: true
 
-  /electron-to-chromium/1.4.107:
-    resolution: {integrity: sha512-Huen6taaVrUrSy8o7mGStByba8PfOWWluHNxSHGBrCgEdFVLtvdQDBr9LBCF9Uci8SYxh28QNNMO0oC17wbGAg==}
+  /electron-to-chromium/1.4.108:
+    resolution: {integrity: sha512-/36KkMuL6+WTrodVlOjtHhH9Ro7BgRaQrh0bfKckwDtdRSjTBuZCOddeXxzK1PkwphoeTxGUFVT9xnmvQ7xEdw==}
     dev: true
 
   /email-addresses/3.1.0:
@@ -2813,8 +2813,8 @@ packages:
       - supports-color
     dev: true
 
-  /https-proxy-agent/5.0.0:
-    resolution: {integrity: sha512-EkYm5BcKUGiduxzSt3Eppko+PiNWNEpa4ySk9vTC6wDsQJW9rHSa+UhGNJoRYp7bz6Ht1eaRIa6QaJqO5rCFbA==}
+  /https-proxy-agent/5.0.1:
+    resolution: {integrity: sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==}
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
@@ -3470,7 +3470,7 @@ packages:
       '@babel/types': 7.17.0
       '@jest/transform': 27.5.1
       '@jest/types': 27.5.1
-      '@types/babel__traverse': 7.14.2
+      '@types/babel__traverse': 7.17.0
       '@types/prettier': 2.6.0
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.17.9
       chalk: 4.1.2
@@ -3596,7 +3596,7 @@ packages:
       form-data: 3.0.1
       html-encoding-sniffer: 2.0.1
       http-proxy-agent: 4.0.1
-      https-proxy-agent: 5.0.0
+      https-proxy-agent: 5.0.1
       is-potential-custom-element-name: 1.0.1
       nwsapi: 2.2.0
       parse5: 6.0.1
@@ -5178,30 +5178,6 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
-    dev: true
-
-  /vite/2.9.4:
-    resolution: {integrity: sha512-7pO6ruZMsyTpaPB7kGtW+yj15Ze5g+E4w4Ramk1sAJLIuI4uPd5sauqubmZNpq0Yc1vLVxoXRf2Uj+qWxk5aXw==}
-    engines: {node: '>=12.2.0'}
-    hasBin: true
-    peerDependencies:
-      less: '*'
-      sass: '*'
-      stylus: '*'
-    peerDependenciesMeta:
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-    dependencies:
-      esbuild: 0.14.36
-      postcss: 8.4.12
-      resolve: 1.22.0
-      rollup: 2.70.1
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /vite/2.9.5:
