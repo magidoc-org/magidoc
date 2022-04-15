@@ -46,6 +46,10 @@ type TaskContext = {
   npmRunner: NpmRunner
 }
 
+type TaskContext = {
+  npmRunner: NpmRunner
+}
+
 export default async function generate(config: GenerationConfig) {
   const templateLocationName = `${config.template}@${config.templateVersion}`
   const tmpArchive = tmpTemplateArchiveFile(templateLocationName)
