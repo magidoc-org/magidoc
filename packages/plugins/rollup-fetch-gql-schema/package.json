@@ -11,7 +11,8 @@
     "rollup-plugin",
     "vite-plugin",
     "graphql",
-    "graphql-schema"
+    "graphql-schema",
+    "magidoc"
   ],
   "scripts": {
     "build": "run-p build:*",

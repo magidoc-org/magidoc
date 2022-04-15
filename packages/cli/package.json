@@ -1,12 +1,17 @@
 {
   "name": "@magidoc/cli",
-  "description": "A CLI application responsible for generating starter projects for a GraphQL API",
+  "description": "Magidoc CLI application responsible for generating GraphQL documentation websites.",
   "private": false,
   "version": "0.4.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "keywords": [
+    "cli",
+    "node",
+    "magidoc"
+  ],
   "bin": {
     "magidoc": "./build/index.js"
   },

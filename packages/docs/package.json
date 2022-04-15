@@ -3,6 +3,10 @@
   "version": "0.4.1",
   "license": "MIT",
   "type": "module",
+  "keywords": [
+    "docs",
+    "magidoc"
+  ],
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",

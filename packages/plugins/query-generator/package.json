@@ -7,6 +7,13 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "keywords": [
+    "graphql",
+    "query",
+    "generator",
+    "node",
+    "browser"
+  ],
   "scripts": {
     "build": "run-p build:*",
     "build:rollup": "rollup -c",
