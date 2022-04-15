@@ -1,5 +1,4 @@
-import fs from 'fs/promises'
-import fsSync from 'fs'
+import fs from 'fs-extra'
 import os from 'os'
 import path from 'path'
 
@@ -13,20 +12,18 @@ export type TmpLocation = {
 
 export function tmpTemplateArchiveFile(name: string): TmpLocation {
   const actualName = name.endsWith('.zip') ? name : name + '.zip'
-  const path = asTmpPath(actualName)
-  return {
-    path: path,
-    exists: () => Promise.resolve(fsSync.existsSync(path)),
-    delete: () => fs.rm(path, { force: true }),
-  }
+  return tmpLocation(asTmpPath(actualName))
 }
 
 export function tmpTemplateDirectory(name: string): TmpLocation {
-  const path = asTmpPath(name)
+  return tmpLocation(asTmpPath(name))
+}
+
+function tmpLocation(path: string): TmpLocation {
   return {
     path: path,
-    exists: () => Promise.resolve(fsSync.existsSync(path)),
-    delete: () => fs.rmdir(path, { recursive: true }),
+    exists: () => Promise.resolve(fs.existsSync(path)),
+    delete: () => fs.rm(path, { recursive: true, force: true }),
   }
 }
 

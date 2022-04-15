@@ -14,6 +14,8 @@ import {
 import { unzipTemplate } from '../../template/unzip'
 import type { FetchConfig } from './schema/fetch'
 import { fetchNpmRunner, NpmRunner } from '../../npm/runner'
+import path from 'path'
+import { moveOutputBuild } from '../../template/output'
 
 export type GenerationConfig = {
   /**
@@ -50,6 +52,7 @@ export default async function generate(config: GenerationConfig) {
   const templateLocationName = `${config.template}@${config.templateVersion}`
   const tmpArchive = tmpTemplateArchiveFile(templateLocationName)
   const tmpDirectory = tmpTemplateDirectory(templateLocationName)
+  const outDirectory = path.resolve(config.output)
 
   const listr = new Listr<TaskContext>(
     [
@@ -115,6 +118,16 @@ export default async function generate(config: GenerationConfig) {
           await ctx.npmRunner.buildProject({
             cwd: tmpDirectory.path,
           })
+        },
+      }),
+      newTask({
+        title: `Move output`,
+        executor: async (_, task) => {
+          await moveOutputBuild(
+            path.join(tmpDirectory.path, 'build'),
+            outDirectory,
+          )
+          task.output = `Moved output at ${outDirectory}`
         },
       }),
     ],

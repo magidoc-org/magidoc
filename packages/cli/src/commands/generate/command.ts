@@ -38,7 +38,7 @@ export default function buildGenerateCommand(
     .option(
       '-o|--output <destination>',
       'Specifies the output directory of the built website',
-      './build',
+      './docs',
     )
     .addOption(
       new Option(

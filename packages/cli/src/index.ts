@@ -5,7 +5,7 @@ import { readFileSync } from 'fs'
 import buildGenerateCommand from './commands/generate/command'
 import buildInitCommand from './commands/init/command'
 
-const packageJson = JSON.parse(readFileSync('../package.json').toString()) as {
+const packageJson = JSON.parse(readFileSync('./package.json').toString()) as {
   version: string
 }
 
