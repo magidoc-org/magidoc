@@ -7,8 +7,8 @@ module.exports = defineConfig({
   external: [
     'lodash',
     'graphql',
-    'prettier/standalone',
-    'prettier/parser-graphql',
+    'prettier/standalone.js',
+    'prettier/parser-graphql.js',
   ],
   output: {
     dir: 'build',

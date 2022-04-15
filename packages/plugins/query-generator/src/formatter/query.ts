@@ -1,5 +1,5 @@
-import prettierGraphql from 'prettier/parser-graphql'
-import prettier from 'prettier/standalone'
+import prettierGraphql from 'prettier/parser-graphql.js'
+import prettier from 'prettier/standalone.js'
 
 /**
  * Simple utility, because many libraries will recognize strings templated with gql`...`

@@ -1,5 +1,5 @@
 import fetchGqlSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
-import type { Method as PluginMethod } from '@magidoc/rollup-plugin-fetch-gql-schema/build/schema/query'
+import type { Method as PluginMethod } from '@magidoc/rollup-plugin-fetch-gql-schema'
 
 export type Method = PluginMethod
 

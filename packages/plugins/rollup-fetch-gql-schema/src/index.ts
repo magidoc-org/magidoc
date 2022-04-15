@@ -2,6 +2,8 @@ import type { Plugin, PluginContext } from 'rollup'
 import queryGraphQLSchema, { Method } from './schema/query.js'
 import { writeFileSync } from 'fs'
 
+export type { Method }
+
 export type PluginOptions = {
   /**
    * The URL the of the GraphQL API from which to fetch the GraphQL Schema using the introspection query.
