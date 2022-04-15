@@ -1,4 +1,5 @@
 .svelte-kit
+
 .pnpm-debug.log
 dist/
 build/
@@ -108,3 +109,4 @@ dist
 
 # TernJS port file
 .tern-port
+
