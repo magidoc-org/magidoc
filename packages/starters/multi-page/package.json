@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-multi-page",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -13,20 +13,20 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@magidoc/plugin-query-generator": "workspace:^0.3.1",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.3.1",
+    "@magidoc/plugin-query-generator": "workspace:^0.3.2",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.3.2",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.3.1",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.3.2",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
     "@types/lodash": "^4.14.181",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "carbon-components-svelte": "^0.58.4",
     "carbon-icons-svelte": "^10.45.1",
     "carbon-preprocess-svelte": "^0.7.0",
@@ -34,9 +34,9 @@
     "eslint-plugin-svelte3": "^3.4.1",
     "prismjs": "^1.27.0",
     "svelte": "^3.47.0",
-    "svelte-check": "^2.6.0",
+    "svelte-check": "^2.7.0",
     "svelte-markdown": "^0.2.2",
-    "svelte-preprocess": "^4.10.5",
+    "svelte-preprocess": "^4.10.6",
     "tslib": "^2.3.1",
     "typescript": "^4.6.3"
   }

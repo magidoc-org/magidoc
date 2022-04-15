@@ -1,23 +1,33 @@
-import { execSync } from 'child_process'
+import { exec } from 'child_process'
 import type { SpawnSyncReturns } from 'child_process'
+import { promisify } from 'util'
+
+const execPromise = promisify(exec)
 
 export type RunnerType = 'pnpm' | 'yarn' | 'npm'
 
-export type NpmRunner = {
-  type: RunnerType
-  runInstall: (directory: string) => Promise<void>
+export type CommandConfiguration = {
+  cwd: string
 }
 
-export function fetchNpmRunner(): NpmRunner {
-  if (isRunnerAvailable('pnpm')) {
+export type NpmRunner = {
+  type: RunnerType
+
+  runInstall: (config: CommandConfiguration) => Promise<void>
+
+  buildProject: (config: CommandConfiguration) => Promise<void>
+}
+
+export async function fetchNpmRunner(): Promise<NpmRunner> {
+  if (await isRunnerAvailable('pnpm')) {
     return createRunner({ type: 'pnpm' })
   }
 
-  if (isRunnerAvailable('yarn')) {
+  if (await isRunnerAvailable('yarn')) {
     return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
   }
 
-  if (isRunnerAvailable('npm')) {
+  if (await isRunnerAvailable('npm')) {
     return createRunner({ type: 'npm' })
   }
 
@@ -35,43 +45,52 @@ function createRunner({
 }): NpmRunner {
   return {
     type,
-    runInstall: createInstall(type, installArgs),
+    runInstall: (config: CommandConfiguration) =>
+      runNodeCommand(`${type} install ${installArgs ?? ''}`, config),
+    buildProject: (config: CommandConfiguration) =>
+      runNodeCommand(`${type} run build`, config),
   }
 }
 
-function createInstall(
-  type: RunnerType,
-  args = '',
-): (directory: string) => Promise<void> {
-  return (directory: string) => {
-    try {
-      execSync(`${type} install ${args}`, {
-        cwd: directory,
-      })
-    } catch (error: unknown) {
+async function runNodeCommand(
+  command: string,
+  config: CommandConfiguration,
+): Promise<void> {
+  try {
+    await execPromise(command, {
+      cwd: config.cwd,
+    })
+  } catch (error: unknown) {
+    const record = error as Record<string, unknown>
+
+    // https://nodejs.org/api/child_process.html#child_processexecsynccommand-options
+    if (record['stdout']) {
       const spawnError = error as SpawnSyncReturns<Buffer>
       const lines = spawnError.stdout.toString().split('\n')
 
-      const meaningfulErrors = lines.filter((line) => line.includes('ERR_'))
-
-      return Promise.reject(
-        new Error(
-          `'${type} install' failed with status ${
-            spawnError.status?.toString() || 'unknown'
-          } when executed in directory ${directory}\n${meaningfulErrors.join(
-            '\n',
-          )}`,
-        ),
+      throw new Error(
+        `Command '${command}' failed with status ${
+          spawnError.status?.toString() || 'unknown'
+        } when executed in directory ${
+          config.cwd
+        }\n\n---- Program Output----\n${lines.join('\n')}`,
+      )
+    } else if (error instanceof Error) {
+      throw new Error(
+        `Command '${command}' failed with an unknown error when ran in director ${config.cwd}: ${error.message}`,
+        error,
+      )
+    } else {
+      throw new Error(
+        `Command failed with unknown error: ${JSON.stringify(error)}`,
       )
     }
-
-    return Promise.resolve()
   }
 }
 
-function isRunnerAvailable(type: RunnerType): boolean {
+async function isRunnerAvailable(type: RunnerType): Promise<boolean> {
   try {
-    execSync(`${type} --version`)
+    await execPromise(`${type} --version`)
     return true
   } catch (error) {
     return false

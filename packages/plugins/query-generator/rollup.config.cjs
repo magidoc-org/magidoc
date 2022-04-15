@@ -1,21 +1,14 @@
 const { defineConfig } = require('rollup')
 const typescript = require('@rollup/plugin-typescript')
-const shebang = require('rollup-plugin-preserve-shebang')
 
 module.exports = defineConfig({
   input: ['src/index.ts'],
-  plugins: [shebang(), typescript()],
+  plugins: [typescript()],
   external: [
-    'commander',
-    'fs',
-    'axios',
-    'extract-zip',
-    'listr2',
-    'child_process',
-    'util',
-    'fs/promise',
-    'os',
-    'path',
+    'lodash',
+    'graphql',
+    'prettier/standalone',
+    'prettier/parser-graphql',
   ],
   output: {
     dir: 'build',
