@@ -28,7 +28,7 @@
 
 <div class="wrapper">
   <div class="code-section">
-    <Prism source={code} {language} showLineNumbers={false}  showCopyButton/>
+    <Prism source={code} {language} />
   </div>
   <div class="button-bar">
     <Button

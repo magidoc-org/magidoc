@@ -30,7 +30,7 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.1
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.4.1
@@ -67,7 +67,7 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.1
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       carbon-components-svelte: ^0.58.4
@@ -88,7 +88,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.45.1
       carbon-preprocess-svelte: 0.6.0_svelte@3.47.0
@@ -119,7 +119,7 @@ importers:
       typescript: ~4.5.5
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       '@types/prismjs': 1.26.0
       prismjs: 1.27.0
       svelte: 3.47.0
@@ -143,7 +143,7 @@ importers:
       typescript: ~4.5.5
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       '@types/prismjs': 1.26.0
       prismjs: 1.27.0
       svelte: 3.47.0
@@ -228,9 +228,9 @@ importers:
 
   packages/starters/multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^0.4.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.0
+      '@magidoc/plugin-query-generator': workspace:^0.4.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.1
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.1
       '@sveltejs/adapter-auto': next
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
@@ -261,7 +261,7 @@ importers:
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-auto': 1.0.0-next.34
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       '@types/lodash': 4.14.181
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
@@ -965,8 +965,8 @@ packages:
       esbuild: 0.14.36
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.312_svelte@3.47.0:
-    resolution: {integrity: sha512-l07ct0FJQnt+y3/NSEBvHKDKVE/7syYQnFhCVZ6H+4LEYRtTNybFxUTC8jA3xpZwPqJLZz1X+Tt+Sa8ZMuVzDg==}
+  /@sveltejs/kit/1.0.0-next.314_svelte@3.47.0:
+    resolution: {integrity: sha512-EkXjEd30XO8+AydBLARxAtI6Ak8V0KFSEJ07sNsrkGq9J70sWPL7yGenhGaeq6S852XZAqeyWd6uGQZmQLR4Wg==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:

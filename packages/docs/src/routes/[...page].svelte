@@ -24,7 +24,7 @@
 <script lang="ts">
   import ArticleTitle from '$lib/components/article/ArticleTitle.svelte'
 
-  import NextPreviousArticle from '$lib/components/article/NextPreviousArticle.svelte'
+  import NextPreviousArticleButtons from '$lib/components/article/NextPreviousArticleButtons.svelte'
   import MarkdownSection from '$lib/components/common/markdown/MarkdownSection.svelte'
 
   import {
@@ -58,7 +58,7 @@
 <MarkdownSection source={pageContent.body} />
 
 <div class={'next-previous-buttons'}>
-  <NextPreviousArticle {currentPage} />
+  <NextPreviousArticleButtons {currentPage} />
 </div>
 
 <style>

@@ -15,13 +15,12 @@
 
   let root: HTMLElement
 
-  // let innerHtml = ''
   $: {
     if (root && Prism) {
+      // This is the way found to make PrismJS re-render on change 
+      // and also keep the toolbar working
       root.textContent = source
       Prism.highlightElement(root)
-
-      // innerHtml = Prism.highlight(source, Prism.languages[language], language)
     }
   }
 </script>
@@ -34,9 +33,10 @@
   <pre
     class={`${
       showLineNumbers ? 'line-numbers' : ''
-    } language-${language}`}><code bind:this={root} class="language-{language}"
-      ></code
-    ></pre>
+    } language-${language}`}><code
+      bind:this={root}
+      class="language-{language}"
+    /></pre>
 </div>
 
 <style global>
