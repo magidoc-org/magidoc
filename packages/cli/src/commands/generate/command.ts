@@ -12,6 +12,7 @@ type GenerateCommandOptions = {
   method: Method
   header: KeyValue[]
   stacktrace: boolean
+  clean: boolean
 }
 
 export default function buildGenerateCommand(
@@ -66,6 +67,12 @@ export default function buildGenerateCommand(
     )
     .addOption(
       new Option(
+        '-c|--clean',
+        'Clean install, so delete the local copy of the template if there is one and fetch it again.',
+      ).default(false),
+    )
+    .addOption(
+      new Option(
         '-s|--stacktrace',
         'Useful to debug errors. Will print the whole exception to the terminal in case the error message is not precise enough.',
       ).default(false),
@@ -79,12 +86,14 @@ export default function buildGenerateCommand(
         template,
         templateVersion,
         stacktrace,
+        clean,
       }: GenerateCommandOptions) => {
         try {
           await generate({
             template,
             templateVersion,
             output,
+            clean,
             fetchConfig: {
               url,
               headers: header,

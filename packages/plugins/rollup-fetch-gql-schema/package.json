@@ -14,7 +14,9 @@
     "graphql-schema"
   ],
   "scripts": {
-    "build": "esbuild --minify --sourcemap --outdir=build ./src/*.ts ./src/**/*.ts && tsc --build tsconfig.build.json",
+    "build": "run-p build:*",
+    "build:rollup": "rollup -c",
+    "build:tsc": "tsc --build tsconfig.build.json",
     "test": "jest",
     "release": "pnpm publish --no-git-checks --access public"
   },
@@ -25,7 +27,6 @@
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/prettier": "^2.6.0",
-    "esbuild": "^0.14.34",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "nock": "^13.2.4",
