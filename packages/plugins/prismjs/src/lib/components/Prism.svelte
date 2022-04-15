@@ -15,29 +15,36 @@
 
   let root: HTMLElement
 
-  let innerHtml = ''
+  // let innerHtml = ''
   $: {
-    if (root && Prism && source) {
-      innerHtml = Prism.highlight(source, Prism.languages.graphql, 'graphql')
+    if (root && Prism) {
+      root.textContent = source
+      Prism.highlightElement(root)
+
+      // innerHtml = Prism.highlight(source, Prism.languages[language], language)
     }
   }
 </script>
 
-<div class={`${showCopyButton ? 'show-copy-button' : 'hide-copy-button'}`}>
+<div
+  class={`${
+    showCopyButton ? 'prism--show-copy-button' : 'prism--hide-copy-button'
+  }`}
+>
   <pre
     class={`${
       showLineNumbers ? 'line-numbers' : ''
     } language-${language}`}><code bind:this={root} class="language-{language}"
-      >{@html innerHtml}</code
+      ></code
     ></pre>
 </div>
 
 <style global>
-  .show-copy-button .copy-to-clipboard-button {
+  .prism--show-copy-button .copy-to-clipboard-button {
     display: block;
   }
 
-  .hide-copy-button .copy-to-clipboard-button {
+  .prism--hide-copy-button .copy-to-clipboard-button {
     display: none;
   }
 </style>
