@@ -5,7 +5,7 @@ export function unzipTemplateTask(): Task {
   return newTask({
     title: `Unzip template`,
     executor: async (ctx, task) => {
-      if(await ctx.tmpDirectory.exists()) {
+      if (await ctx.tmpDirectory.exists()) {
         return task.skip('Template already unzipped')
       }
 
