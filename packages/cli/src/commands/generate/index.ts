@@ -76,18 +76,15 @@ export default async function generate(config: GenerationConfig) {
 
 export function newTask({
   title,
-  skip,
   enabled,
   executor,
 }: {
   title: string
-  skip?: (ctx: TaskContext) => Promise<string | false>
   enabled?: boolean
   executor: TaskExecutor
 }): Task {
   return {
     title: title,
-    skip: skip,
     enabled: enabled,
     options: {
       persistentOutput: true,

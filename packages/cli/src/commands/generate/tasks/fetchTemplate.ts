@@ -4,14 +4,11 @@ import fetchTemplate from '../../../template/fetch'
 export function fetchTemplateTask(config: GenerationConfig): Task {
   return newTask({
     title: `Fetch template ${config.template}@${config.templateVersion}`,
-    skip: async (ctx) => {
-      if (await ctx.tmpArchive.exists()) {
-        return 'Template already downloaded'
+    executor: async (ctx, task) => {
+      if(await ctx.tmpArchive.exists()) {
+        return task.skip('Template already downloaded')
       }
 
-      return false
-    },
-    executor: async (ctx) => {
       await fetchTemplate({
         template: config.template,
         version: config.templateVersion,
