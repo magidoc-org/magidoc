@@ -30,12 +30,14 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.1
       '@rollup/plugin-typescript': ^8.3.2
+      '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.4.1
       axios: ^0.26.1
       commander: ^9.1.0
       extract-zip: ^2.0.1
+      fs-extra: ^10.0.1
       jest: ^27.5.1
       jest-extended: ^2.0.0
       listr2: ^4.0.5
@@ -49,9 +51,11 @@ importers:
       axios: 0.26.1
       commander: 9.1.0
       extract-zip: 2.0.1
+      fs-extra: 10.0.1
       listr2: 4.0.5
     devDependencies:
       '@rollup/plugin-typescript': 8.3.2_8fb0118e9d69f3600cbb8f144f7d456c
+      '@types/fs-extra': 9.0.13
       '@types/jest': 27.4.1
       jest: 27.5.1
       jest-extended: 2.0.0_jest@27.5.1
@@ -63,7 +67,7 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.1
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
       carbon-components-svelte: ^0.58.4
@@ -84,7 +88,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       carbon-components-svelte: 0.58.4
       carbon-icons-svelte: 10.45.1
       carbon-preprocess-svelte: 0.6.0_svelte@3.47.0
@@ -115,7 +119,7 @@ importers:
       typescript: ~4.5.5
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       '@types/prismjs': 1.26.0
       prismjs: 1.27.0
       svelte: 3.47.0
@@ -139,7 +143,7 @@ importers:
       typescript: ~4.5.5
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       '@types/prismjs': 1.26.0
       prismjs: 1.27.0
       svelte: 3.47.0
@@ -224,9 +228,9 @@ importers:
 
   packages/starters/multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^0.4.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.0
+      '@magidoc/plugin-query-generator': workspace:^0.4.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.4.1
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.4.1
       '@sveltejs/adapter-auto': next
       '@sveltejs/adapter-static': next
       '@sveltejs/kit': next
@@ -257,7 +261,7 @@ importers:
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-auto': 1.0.0-next.34
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       '@types/lodash': 4.14.181
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
@@ -961,8 +965,8 @@ packages:
       esbuild: 0.14.36
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.312_svelte@3.47.0:
-    resolution: {integrity: sha512-l07ct0FJQnt+y3/NSEBvHKDKVE/7syYQnFhCVZ6H+4LEYRtTNybFxUTC8jA3xpZwPqJLZz1X+Tt+Sa8ZMuVzDg==}
+  /@sveltejs/kit/1.0.0-next.314_svelte@3.47.0:
+    resolution: {integrity: sha512-EkXjEd30XO8+AydBLARxAtI6Ak8V0KFSEJ07sNsrkGq9J70sWPL7yGenhGaeq6S852XZAqeyWd6uGQZmQLR4Wg==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -1038,6 +1042,12 @@ packages:
 
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
+    dev: true
+
+  /@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
+    dependencies:
+      '@types/node': 17.0.24
     dev: true
 
   /@types/graceful-fs/4.1.5:
@@ -2585,6 +2595,15 @@ packages:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
     dev: true
 
+  /fs-extra/10.0.1:
+    resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==}
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.10
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: false
+
   /fs-extra/8.1.0:
     resolution: {integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==}
     engines: {node: '>=6 <7 || >=8'}
@@ -2741,7 +2760,6 @@ packages:
 
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
-    dev: true
 
   /graphql-query-compress/1.2.4:
     resolution: {integrity: sha512-W5SMy8/2RAsC9uMOV9VTwnUkp+8N3BZz6qef6jRCIxOVrVxRBiX2btvpaKrEnPU4nchnc1bCfmMDkEtCRzJUiw==}
@@ -3654,6 +3672,14 @@ packages:
     optionalDependencies:
       graceful-fs: 4.2.10
     dev: true
+
+  /jsonfile/6.1.0:
+    resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
+    dependencies:
+      universalify: 2.0.0
+    optionalDependencies:
+      graceful-fs: 4.2.10
+    dev: false
 
   /kleur/3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
@@ -5149,6 +5175,11 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
     dev: true
+
+  /universalify/2.0.0:
+    resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
+    engines: {node: '>= 10.0.0'}
+    dev: false
 
   /uri-js/4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}

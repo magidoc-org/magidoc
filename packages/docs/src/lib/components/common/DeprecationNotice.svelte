@@ -9,7 +9,7 @@
     hideCloseButton
     lowContrast
     kind="warning"
-    title="Deprecated Query:"
+    title="Deprecation: "
     style="max-width: 100%"
     subtitle={deprecationReason}
   />

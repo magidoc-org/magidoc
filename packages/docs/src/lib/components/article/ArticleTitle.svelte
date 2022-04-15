@@ -1,24 +1,18 @@
 <script lang="ts">
   import type { PageContent } from '$lib/pages'
   import { capitalize } from '$lib/utils/strings'
-  import { InlineNotification, Tag } from 'carbon-components-svelte'
+  import { Tag } from 'carbon-components-svelte'
   import type { TagProps } from 'carbon-components-svelte/types/Tag/Tag.svelte'
+  import DeprecationNotice from '../common/DeprecationNotice.svelte'
 
   export let pageContent: PageContent
 
   const tagStyles: TagProps['type'][] = ['outline']
 </script>
 
-{#if pageContent.attributes.deprecationReason}
-  <InlineNotification
-    kind="warning"
-    lowContrast
-    hideCloseButton
-    title="Deprecation"
-    iconDescription="Deprecation"
-    subtitle={pageContent.attributes.deprecationReason}
-  />
-{/if}
+<DeprecationNotice
+  deprecationReason={pageContent.attributes.deprecationReason}
+/>
 
 <h1>
   {pageContent.attributes.title}

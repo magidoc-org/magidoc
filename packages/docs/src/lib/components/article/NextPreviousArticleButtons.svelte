@@ -40,8 +40,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    column-gap: 4rem;
-    row-gap: 1rem;
+    grid-column-gap: 4rem;
+    grid-row-gap: 1rem;
     align-items: stretch;
   }
 

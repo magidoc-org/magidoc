@@ -1,17 +1,22 @@
 {
   "name": "@magidoc/cli",
-  "description": "A CLI application responsible for generating starter projects for a GraphQL API",
+  "description": "Magidoc CLI application responsible for generating GraphQL documentation websites.",
   "private": false,
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "keywords": [
+    "cli",
+    "node",
+    "magidoc"
+  ],
   "bin": {
     "magidoc": "./build/index.js"
   },
   "scripts": {
-    "start": "pnpm build:rollup && cd build && node index.js",
+    "start": "pnpm build:rollup && node build/index.js",
     "build": "run-p build:*",
     "build:rollup": "rollup -c",
     "build:tsc": "tsc --build tsconfig.build.json",
@@ -19,14 +24,16 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.4.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.4.1",
     "axios": "^0.26.1",
     "commander": "^9.1.0",
     "extract-zip": "^2.0.1",
+    "fs-extra": "^10.0.1",
     "listr2": "^4.0.5"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.2",
+    "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.1",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",

@@ -2,6 +2,7 @@ import { Command, Option } from 'commander'
 import generate from '.'
 import { availableTemplates, Template } from '../../template'
 import { KeyValue, parseKeyValuePair } from '../../utils/args'
+import path from 'path'
 import type { Method } from './schema/fetch'
 
 type GenerateCommandOptions = {
@@ -38,7 +39,7 @@ export default function buildGenerateCommand(
     .option(
       '-o|--output <destination>',
       'Specifies the output directory of the built website',
-      './build',
+      './docs',
     )
     .addOption(
       new Option(
@@ -92,7 +93,7 @@ export default function buildGenerateCommand(
           await generate({
             template,
             templateVersion,
-            output,
+            output: path.resolve(output),
             clean,
             fetchConfig: {
               url,
@@ -107,6 +108,9 @@ export default function buildGenerateCommand(
             console.log()
             console.log('------- Stacktrace -------')
             console.log(error)
+          } else {
+            console.log()
+            console.log('For a more detailed output, run with --stacktrace')
           }
         }
       },

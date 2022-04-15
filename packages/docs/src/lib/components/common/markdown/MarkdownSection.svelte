@@ -9,6 +9,7 @@
   import MarkdownTableBody from './table/MarkdownTableBody.svelte'
   import MarkdownTableRow from './table/MarkdownTableRow.svelte'
   import MarkdownTableCell from './table/MarkdownTableCell.svelte'
+  import MarkdownHeading from './MarkdownHeading.svelte'
 
   export let source: string
 </script>
@@ -25,5 +26,6 @@
     tablebody: MarkdownTableBody,
     tablerow: MarkdownTableRow,
     tablecell: MarkdownTableCell,
+    heading: MarkdownHeading,
   }}
 />

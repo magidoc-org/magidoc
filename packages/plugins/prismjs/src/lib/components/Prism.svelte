@@ -15,29 +15,36 @@
 
   let root: HTMLElement
 
-  let innerHtml = ''
   $: {
-    if (root && Prism && source) {
-      innerHtml = Prism.highlight(source, Prism.languages.graphql, 'graphql')
+    if (root && Prism) {
+      // This is the way found to make PrismJS re-render on change
+      // and also keep the toolbar working
+      root.textContent = source
+      Prism.highlightElement(root)
     }
   }
 </script>
 
-<div class={`${showCopyButton ? 'show-copy-button' : 'hide-copy-button'}`}>
+<div
+  class={`${
+    showCopyButton ? 'prism--show-copy-button' : 'prism--hide-copy-button'
+  }`}
+>
   <pre
     class={`${
       showLineNumbers ? 'line-numbers' : ''
-    } language-${language}`}><code bind:this={root} class="language-{language}"
-      >{@html innerHtml}</code
-    ></pre>
+    } language-${language}`}><code
+      bind:this={root}
+      class="language-{language}"
+    /></pre>
 </div>
 
 <style global>
-  .show-copy-button .copy-to-clipboard-button {
+  .prism--show-copy-button .copy-to-clipboard-button {
     display: block;
   }
 
-  .hide-copy-button .copy-to-clipboard-button {
+  .prism--hide-copy-button .copy-to-clipboard-button {
     display: none;
   }
 </style>
