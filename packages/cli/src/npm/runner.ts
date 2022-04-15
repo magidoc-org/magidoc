@@ -18,7 +18,7 @@ export type NpmRunner = {
   buildProject: (config: CommandConfiguration) => Promise<void>
 }
 
-export async function fetchNpmRunner(): Promise<NpmRunner> {
+export async function selectNpmRunner(): Promise<NpmRunner> {
   if (await isRunnerAvailable('pnpm')) {
     return createRunner({ type: 'pnpm' })
   }
