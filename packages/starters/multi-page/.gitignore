@@ -3,7 +3,6 @@ static/_schema.json
 node_modules
 /build
 /.svelte-kit
-!/.svelte-kit/tsconfig.json
 /package
 .env
 .env.*
