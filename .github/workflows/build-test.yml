@@ -2,7 +2,7 @@ name: Build and tests
 
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize]
   push:
     branches:
       - main
