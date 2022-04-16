@@ -7,7 +7,8 @@
     HeaderUtilities,
     Theme,
   } from 'carbon-components-svelte'
-  import { Moon16, Sun16 } from 'carbon-icons-svelte'
+  import Moon from 'carbon-icons-svelte/lib/Moon.svelte'
+  import Sun from 'carbon-icons-svelte/lib/Sun.svelte'
   import { theme, themeValue } from '$lib/theme'
 
   export let isSideNavOpen = true
@@ -23,7 +24,7 @@
     <Theme bind:theme={$themeValue} persist />
     <HeaderGlobalAction
       aria-label="Change Theme"
-      icon={$theme.value === 'g10' ? Sun16 : Moon16}
+      icon={$theme.value === 'g10' ? Sun : Moon}
       on:click={() => $theme.toggle()}
     />
   </HeaderUtilities>

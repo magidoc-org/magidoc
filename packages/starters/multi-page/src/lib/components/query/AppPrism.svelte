@@ -5,7 +5,9 @@
   import 'prismjs/components/prism-json'
 
   import { Button } from 'carbon-components-svelte'
-  import { Add16, Copy16, Subtract16 } from 'carbon-icons-svelte'
+  import Add from 'carbon-icons-svelte/lib/Add.svelte'
+  import Copy from 'carbon-icons-svelte/lib/Copy.svelte'
+  import Subtract from 'carbon-icons-svelte/lib/Subtract.svelte'
   import { graphqlQuery } from './stores'
 
   export let code: string
@@ -33,7 +35,7 @@
   <div class="button-bar">
     <Button
       kind={'ghost'}
-      icon={Copy16}
+      icon={Copy}
       iconDescription={copyButtonText}
       tooltipPosition={'left'}
       hasIconOnly
@@ -41,7 +43,7 @@
     />
     <Button
       kind={'ghost'}
-      icon={Add16}
+      icon={Add}
       iconDescription={'Increase query depth'}
       tooltipPosition={'left'}
       hasIconOnly
@@ -52,7 +54,7 @@
     </p>
     <Button
       kind={'ghost'}
-      icon={Subtract16}
+      icon={Subtract}
       iconDescription={'Decrease query depth'}
       tooltipPosition={'left'}
       hasIconOnly
