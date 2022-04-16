@@ -1,5 +1,4 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
 		"moduleResolution": "node",
 		"module": "es2020",
@@ -7,6 +6,7 @@
 		"target": "es2020",
 		"isolatedModules": true,
 		"resolveJsonModule": true,
+		"importsNotUsedAsValues": "error",
 		"sourceMap": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,

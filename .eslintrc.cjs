@@ -23,6 +23,8 @@ module.exports = {
     '**/dist',
     '**/package',
     '**/.svelte-kit',
+    '**/.vscode',
+    '**/coverage',
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',

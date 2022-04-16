@@ -15,7 +15,8 @@
     "browser"
   ],
   "scripts": {
-    "build": "pnpm check && pnpm package",
+    "build": "pnpm package",
+    "test": "pnpm check",
     "package": "svelte-kit package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "release": "cd package && pnpm publish --no-git-checks --access public"
