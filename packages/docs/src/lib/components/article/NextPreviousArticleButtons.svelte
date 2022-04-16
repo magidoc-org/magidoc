@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { CurrentPage } from '$lib/pages'
   import { Button } from 'carbon-components-svelte'
-  import { ArrowLeft16, ArrowRight16 } from 'carbon-icons-svelte'
+  import ArrowLeft from 'carbon-icons-svelte/lib/ArrowLeft.svelte'
+  import ArrowRight from 'carbon-icons-svelte/lib/ArrowRight.svelte'
 
   export let currentPage: CurrentPage
 </script>
@@ -11,7 +12,7 @@
     <div>
       <Button
         kind="tertiary"
-        icon={ArrowLeft16}
+        icon={ArrowLeft}
         class="inverted"
         href={currentPage.previous.href}
       >
@@ -25,7 +26,7 @@
 
   {#if currentPage.next}
     <div>
-      <Button kind="tertiary" icon={ArrowRight16} href={currentPage.next.href}>
+      <Button kind="tertiary" icon={ArrowRight} href={currentPage.next.href}>
         <div>
           <div class="direction">Next</div>
           <div style="text-overflow: ellipsis">{currentPage.next.name}</div>
