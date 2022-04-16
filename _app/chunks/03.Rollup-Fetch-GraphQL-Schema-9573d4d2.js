@@ -48,8 +48,8 @@ fetchGraphQLSchema({
     // Mainly useful if your API requires authentication.
     headers: {},
     // The target path where to put the introspection query result.
-    // This defaults to the static asset directory of SvelteKit.
-    target: 'static/_schema.json',
+    // This defaults to the src asset directory of SvelteKit, so that the asset can be imported directly.
+    target: 'src/_schema.json',
 })
 \`\`\`
 `;export{e as default};
