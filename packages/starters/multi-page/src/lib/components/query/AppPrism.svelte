@@ -1,8 +1,8 @@
 <script type="ts">
   import './prism-theme.css'
   import Prism from '@magidoc/plugin-svelte-prismjs'
-  import 'prismjs/components/prism-graphql'
-  import 'prismjs/components/prism-json'
+  import 'prismjs/components/prism-graphql.js'
+  import 'prismjs/components/prism-json.js'
 
   import { Button } from 'carbon-components-svelte'
   import Add from 'carbon-icons-svelte/lib/Add.svelte'

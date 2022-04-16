@@ -18,13 +18,13 @@ module.exports = {
     'svelte3/typescript': true,
   },
   ignorePatterns: [
-    '**/node_modules',
     '**/build',
     '**/dist',
     '**/package',
     '**/.svelte-kit',
     '**/.vscode',
     '**/coverage',
+    '**/svelte.config.js'
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',

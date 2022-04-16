@@ -21,7 +21,10 @@ export default {
       ],
       ssr: {
         // TODO - this is temporary. There seems to be an issue with SSR
-        noExternal: process.env.NODE_ENV == 'development' ? [] : ['prettier', 'prismjs'],
+        noExternal:
+          process.env.NODE_ENV == 'development'
+            ? []
+            : ['graphql', 'prettier', 'prismjs'],
       },
     },
   },
