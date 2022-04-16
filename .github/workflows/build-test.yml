@@ -32,4 +32,6 @@ jobs:
 
       - run: pnpm -r install --ignore-scripts --frozen-lockfile --strict-peer-dependencies
       - run: pnpm build-ci
+        env: 
+          NODE_OPTIONS: "--max_old_space_size=4096"
       - run: pnpm test-ci
