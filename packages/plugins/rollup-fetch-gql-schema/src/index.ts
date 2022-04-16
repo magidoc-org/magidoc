@@ -39,14 +39,14 @@ export default function fetchGraphQLSchema(options: PluginOptions): Plugin {
       headers: options.headers,
     })
 
-    writeFileSync(
-      options.target || 'static/_schema.json',
-      JSON.stringify(schema),
-    )
+    const output = options.target || 'src/_schema.json'
+
+    writeFileSync(output, JSON.stringify(schema))
   }
 
   return {
     name: 'fetch-graphql-schema',
+
     buildStart: async function () {
       await setSchema.bind(this)()
     },

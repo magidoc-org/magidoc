@@ -12,7 +12,8 @@
     StructuredListCell,
     StructuredListRow,
   } from 'carbon-components-svelte'
-  import { ArrowDown16, ArrowUp16 } from 'carbon-icons-svelte'
+  import ArrowDown from 'carbon-icons-svelte/lib/ArrowDown.svelte'
+  import ArrowUp from 'carbon-icons-svelte/lib/ArrowUp.svelte'
   import type { GraphQLField } from 'graphql'
 
   export let item: GraphQLField<unknown, unknown, unknown>
@@ -42,7 +43,7 @@
           kind="ghost"
           size="small"
           style="border-radius: 20px"
-          icon={showArguments ? ArrowUp16 : ArrowDown16}
+          icon={showArguments ? ArrowUp : ArrowDown}
           on:click={() => (showArguments = !showArguments)}
         >
           {showArguments ? 'Hide Arguments' : 'Show Arguments'}
