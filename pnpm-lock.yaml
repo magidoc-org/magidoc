@@ -68,11 +68,11 @@ importers:
   packages/docs:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.5.0
-      '@sveltejs/adapter-static': next
-      '@sveltejs/kit': next
-      carbon-components-svelte: ^0.58.4
-      carbon-icons-svelte: ^10.45.1
-      carbon-preprocess-svelte: ^0.6.0
+      '@sveltejs/adapter-static': ^1.0.0-next.29
+      '@sveltejs/kit': ^1.0.0-next.314
+      carbon-components-svelte: ^0.62.3
+      carbon-icons-svelte: ^11.0.1
+      carbon-preprocess-svelte: ^0.8.2
       front-matter: ^4.0.2
       gh-pages: ^3.2.3
       prism-svelte: ^0.5.0
@@ -89,9 +89,9 @@ importers:
       '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
-      carbon-components-svelte: 0.58.4
-      carbon-icons-svelte: 10.45.1
-      carbon-preprocess-svelte: 0.6.0_svelte@3.47.0
+      carbon-components-svelte: 0.62.3
+      carbon-icons-svelte: 11.0.1
+      carbon-preprocess-svelte: 0.8.2_svelte@3.47.0
       front-matter: 4.0.2
       gh-pages: 3.2.3
       prism-svelte: 0.5.0
@@ -107,8 +107,8 @@ importers:
 
   packages/plugins/prismjs:
     specifiers:
-      '@sveltejs/adapter-auto': next
-      '@sveltejs/kit': next
+      '@sveltejs/adapter-auto': ^1.0.0-next.34
+      '@sveltejs/kit': ^1.0.0-next.314
       '@types/prismjs': ^1.26.0
       prismjs: ^1.27.0
       svelte: ^3.47.0
@@ -116,7 +116,7 @@ importers:
       svelte-preprocess: ^4.10.6
       svelte2tsx: ^0.5.9
       tslib: ^2.3.1
-      typescript: ~4.5.5
+      typescript: ~4.6.3
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
       '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
@@ -124,15 +124,15 @@ importers:
       prismjs: 1.27.0
       svelte: 3.47.0
       svelte-check: 2.7.0_svelte@3.47.0
-      svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.5.5
-      svelte2tsx: 0.5.9_svelte@3.47.0+typescript@4.5.5
+      svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.6.3
+      svelte2tsx: 0.5.9_svelte@3.47.0+typescript@4.6.3
       tslib: 2.3.1
-      typescript: 4.5.5
+      typescript: 4.6.3
 
   packages/plugins/prismjs/package:
     specifiers:
-      '@sveltejs/adapter-auto': next
-      '@sveltejs/kit': next
+      '@sveltejs/adapter-auto': ^1.0.0-next.34
+      '@sveltejs/kit': ^1.0.0-next.314
       '@types/prismjs': ^1.26.0
       prismjs: ^1.27.0
       svelte: ^3.47.0
@@ -140,7 +140,7 @@ importers:
       svelte-preprocess: ^4.10.6
       svelte2tsx: ^0.5.9
       tslib: ^2.3.1
-      typescript: ~4.5.5
+      typescript: ~4.6.3
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
       '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
@@ -148,10 +148,10 @@ importers:
       prismjs: 1.27.0
       svelte: 3.47.0
       svelte-check: 2.7.0_svelte@3.47.0
-      svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.5.5
-      svelte2tsx: 0.5.9_svelte@3.47.0+typescript@4.5.5
+      svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.6.3
+      svelte2tsx: 0.5.9_svelte@3.47.0+typescript@4.6.3
       tslib: 2.3.1
-      typescript: 4.5.5
+      typescript: 4.6.3
 
   packages/plugins/query-generator:
     specifiers:
@@ -231,16 +231,16 @@ importers:
       '@magidoc/plugin-query-generator': workspace:^0.5.0
       '@magidoc/plugin-svelte-prismjs': workspace:^0.5.0
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.5.0
-      '@sveltejs/adapter-auto': next
-      '@sveltejs/adapter-static': next
-      '@sveltejs/kit': next
+      '@sveltejs/adapter-auto': ^1.0.0-next.34
+      '@sveltejs/adapter-static': ^1.0.0-next.29
+      '@sveltejs/kit': ^1.0.0-next.314
       '@types/lodash': ^4.14.181
       '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.19.0
       '@typescript-eslint/parser': ^5.19.0
-      carbon-components-svelte: ^0.58.4
-      carbon-icons-svelte: ^10.45.1
-      carbon-preprocess-svelte: ^0.7.0
+      carbon-components-svelte: ^0.62.3
+      carbon-icons-svelte: ^11.0.1
+      carbon-preprocess-svelte: ^0.8.2
       eslint: ^8.13.0
       eslint-plugin-svelte3: ^3.4.1
       graphql: ^16.3.0
@@ -266,9 +266,9 @@ importers:
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
       '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
-      carbon-components-svelte: 0.58.4
-      carbon-icons-svelte: 10.45.1
-      carbon-preprocess-svelte: 0.7.0_svelte@3.47.0
+      carbon-components-svelte: 0.62.3
+      carbon-icons-svelte: 11.0.1
+      carbon-preprocess-svelte: 0.8.2_svelte@3.47.0
       eslint: 8.13.0
       eslint-plugin-svelte3: 3.4.1_eslint@8.13.0+svelte@3.47.0
       prismjs: 1.27.0
@@ -1618,38 +1618,18 @@ packages:
     resolution: {integrity: sha512-10T30NYOEQtN6C11YGg411yebhvpnC6Z102+B95eAsN0oB6KUs01ivE8u+G6FMIRtIrVlYXhL+LUwQ3/hXwDWw==}
     dev: true
 
-  /carbon-components-svelte/0.58.4:
-    resolution: {integrity: sha512-aWOOimXvfuZtt7WH5q6pl2xy9QjghPX3yG/5BPPcTRePZNGd2NMEl0MgYaXuoPfowCrBHxweNBZYPqYvC3+H9w==}
+  /carbon-components-svelte/0.62.3:
+    resolution: {integrity: sha512-/MWO0vEKEKZ3t12tCKrMW6JY97b9g/csbDFg7kppOrvEvpOhvK3Fu3JGQr6+ob3ngNLDmCSOmXqgs05uybtR5A==}
     dependencies:
       flatpickr: 4.6.9
     dev: true
 
-  /carbon-icons-svelte/10.45.1:
-    resolution: {integrity: sha512-Uz3byPkSBzjpvLmjt/ZWYJkQG1omfqKh1vzF1FeFYOYqbGOCwc4sHbyF8oet2CseT2cECn1BbEyY4yWvlWYd/w==}
+  /carbon-icons-svelte/11.0.1:
+    resolution: {integrity: sha512-0CCJLmHW3yJ8T9DM2HNGQx304b2VLGY13Xeg6T1cJWeU2oTPIvBbTfveChIULBBI9FIFGLB9m8ZZgeYWEjAAew==}
     dev: true
 
-  /carbon-preprocess-svelte/0.6.0_svelte@3.47.0:
-    resolution: {integrity: sha512-z/SOcB1jqrodshM87YPWdTcLdQzCKKLiWueM4RPfTIz9EIo7DgJSn0gbnVtEOk8Vy/xOZ0EnnAu5fY8ualzngQ==}
-    dependencies:
-      purgecss: 4.1.3
-      svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.6.3
-      typescript: 4.6.3
-    transitivePeerDependencies:
-      - '@babel/core'
-      - coffeescript
-      - less
-      - node-sass
-      - postcss
-      - postcss-load-config
-      - pug
-      - sass
-      - stylus
-      - sugarss
-      - svelte
-    dev: true
-
-  /carbon-preprocess-svelte/0.7.0_svelte@3.47.0:
-    resolution: {integrity: sha512-HaUEOdHSoxlLqQQyEy8zyGmrKJ68EFix5dBUGZsTMiO7O5sdK/0ad5SsfBSMIZsInIH49nVA17roFbglat3c1A==}
+  /carbon-preprocess-svelte/0.8.2_svelte@3.47.0:
+    resolution: {integrity: sha512-dOy9pcC4prPCDYfznX8o403At5GQhEHn2nSpFEzLAWOqcw+h1ZAr5fvrkI6y8GrrQRjkti7Xs53/N/piyxo5Yw==}
     dependencies:
       purgecss: 4.1.3
       svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.6.3
@@ -4825,8 +4805,8 @@ packages:
       sade: 1.8.1
       source-map: 0.7.3
       svelte: 3.47.0
-      svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.5.5
-      typescript: 4.5.5
+      svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.6.3
+      typescript: 4.6.3
     transitivePeerDependencies:
       - '@babel/core'
       - coffeescript
@@ -4857,57 +4837,6 @@ packages:
       '@types/marked': 4.0.3
       marked: 4.0.14
       svelte: 3.47.0
-    dev: true
-
-  /svelte-preprocess/4.10.6_svelte@3.47.0+typescript@4.5.5:
-    resolution: {integrity: sha512-I2SV1w/AveMvgIQlUF/ZOO3PYVnhxfcpNyGt8pxpUVhPfyfL/CZBkkw/KPfuFix5FJ9TnnNYMhACK3DtSaYVVQ==}
-    engines: {node: '>= 9.11.2'}
-    requiresBuild: true
-    peerDependencies:
-      '@babel/core': ^7.10.2
-      coffeescript: ^2.5.1
-      less: ^3.11.3 || ^4.0.0
-      node-sass: '*'
-      postcss: ^7 || ^8
-      postcss-load-config: ^2.1.0 || ^3.0.0
-      pug: ^3.0.0
-      sass: ^1.26.8
-      stylus: ^0.55.0
-      sugarss: ^2.0.0
-      svelte: ^3.23.0
-      typescript: ^3.9.5 || ^4.0.0
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      coffeescript:
-        optional: true
-      less:
-        optional: true
-      node-sass:
-        optional: true
-      postcss:
-        optional: true
-      postcss-load-config:
-        optional: true
-      pug:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@types/pug': 2.0.6
-      '@types/sass': 1.43.1
-      detect-indent: 6.1.0
-      magic-string: 0.25.9
-      sorcery: 0.10.0
-      strip-indent: 3.0.0
-      svelte: 3.47.0
-      typescript: 4.5.5
     dev: true
 
   /svelte-preprocess/4.10.6_svelte@3.47.0+typescript@4.6.3:
@@ -4966,7 +4895,7 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /svelte2tsx/0.5.9_svelte@3.47.0+typescript@4.5.5:
+  /svelte2tsx/0.5.9_svelte@3.47.0+typescript@4.6.3:
     resolution: {integrity: sha512-xTDASjlh+rKo4QRhTRYSH87sS7fRoyX67xhGIMPKa3FYqftRHRmMes6nVgEskiuhBovslNHYYpMMg5YM5n/STg==}
     peerDependencies:
       svelte: ^3.24
@@ -4975,7 +4904,7 @@ packages:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 3.47.0
-      typescript: 4.5.5
+      typescript: 4.6.3
     dev: true
 
   /symbol-tree/3.2.4:
@@ -5155,12 +5084,6 @@ packages:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
       is-typedarray: 1.0.0
-    dev: true
-
-  /typescript/4.5.5:
-    resolution: {integrity: sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: true
 
   /typescript/4.6.3:
