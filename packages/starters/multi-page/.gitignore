@@ -1,4 +1,4 @@
-static/_schema.json
+src/_schema.json
 .DS_Store
 node_modules
 /build

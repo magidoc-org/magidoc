@@ -4,12 +4,12 @@
     GraphQLSchema,
     type IntrospectionQuery,
   } from 'graphql'
+  import schemaJson from '../_schema.json'
 
-  export async function load({ fetch }: LoadInput): Promise<LoadOutput> {
-    const schemaJson = (await fetch('/_schema.json').then((response) =>
-      response.json(),
-    )) as IntrospectionQuery
-    const schema = buildClientSchema(schemaJson)
+  export function load(): LoadOutput {
+    const schema = buildClientSchema(
+      schemaJson as unknown as IntrospectionQuery,
+    )
 
     return {
       stuff: {
@@ -28,7 +28,7 @@
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
-  import type { LoadInput, LoadOutput } from '@sveltejs/kit/types/internal'
+  import type { LoadOutput } from '@sveltejs/kit/types/internal'
 
   let isSideNavOpen: boolean
 
