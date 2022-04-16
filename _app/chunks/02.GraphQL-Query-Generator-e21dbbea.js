@@ -4,8 +4,6 @@ since: 1.0.0
 tags: ['standalone', 'plugin', 'node', 'browser']
 ---
 
-> Info: This plugin is a standalone plugin and can be used outside of Magidoc. It was built to be used both in a browser environment and with NodeJS.
-
 The GraphQL Query Generator plugin does exactly as its name suggests: it automatically build GraphQL queries and variables from a root query type. Generating GraphQL queries requires complex logic that is abstracted by the generator.
 
 ## Example

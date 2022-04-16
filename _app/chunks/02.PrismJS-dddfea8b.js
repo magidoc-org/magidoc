@@ -4,8 +4,6 @@ since: 1.0.0
 tags: ['standalone', 'plugin', 'svelte']
 ---
 
-> Info: This plugin is a standalone plugin and can be used outside of Magidoc. It is built to be re-usable outside of Magidoc for any Svelte or SvelteKit Project.
-
 The PrismJS plugin is a Svelte plugin built with TypeScript that gives you to get syntax highlighting for displaying code inside the browser, using [PrismJS](https://www.npmjs.com/package/prismjs) under the hood.
 
 ## Install

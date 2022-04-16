@@ -1,0 +1,11 @@
+var e=`---
+title: Welcome
+---
+
+Welcome to **Magidoc**! Magidoc a is a free open source project that can help you build static documentation website for GraphQL APIs or anything else (like this website).
+
+
+## Why Magidoc?
+
+Magidoc is the only tool out-there that can help you create an entirely customizable GraphQL documentation website easily. Either choose between one of the provided base templates with limited customization options, or generate a starter project from and customize it however you want using technologies you (or may not \u{1F608}) already know, like [TypeScript](https://www.typescriptlang.org/), [Svelte](https://svelte.dev/) (using [Svelte-Kit](https://kit.svelte.dev/)), and many others. 
+`;export{e as default};
