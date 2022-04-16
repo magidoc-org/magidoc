@@ -27,7 +27,7 @@ export type PluginOptions = {
   /**
    * Indicates the target path for the JSON Schema resulting from the Query.
    *
-   * @default static/_schema.json
+   * @default src/_schema.json
    */
   target?: string
 }

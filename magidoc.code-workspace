@@ -1,5 +1,14 @@
 {
   "settings": {
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/*.code-search": true,
+      "**/.svelte-kit": true,
+      "**/coverage": true,
+      "**/build": true,
+      "**/package": true
+    },
     "jest.jestCommandLine": "pnpm jest",
     "jest.autoRun": { "watch": false, "onSave": "test-src-file" },
     "jest.disabledWorkspaceFolders": ["ROOT"],

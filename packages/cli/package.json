@@ -2,7 +2,7 @@
   "name": "@magidoc/cli",
   "description": "Magidoc CLI application responsible for generating GraphQL documentation websites.",
   "private": false,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -24,7 +24,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.5.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.5.1",
     "axios": "^0.26.1",
     "commander": "^9.2.0",
     "extract-zip": "^2.0.1",
