@@ -10,14 +10,16 @@
   import Moon from 'carbon-icons-svelte/lib/Moon.svelte'
   import Sun from 'carbon-icons-svelte/lib/Sun.svelte'
   import { theme, themeValue } from '$lib/theme'
+  import AppIcon from '$lib/components/common/AppIcon.svelte'
+  import AppTitle from '$lib/components/common/AppTitle.svelte'
 
   export let isSideNavOpen = true
 </script>
 
 <Header href="/" bind:isSideNavOpen>
   <div slot="platform" class="header-logo-wrapper">
-    <img src="/logo.png" alt="Magidoc" class="header-logo" />
-    <span>Magidoc</span>
+    <AppIcon class="header-logo" />
+    <AppTitle />
   </div>
 
   <HeaderUtilities>
@@ -37,7 +39,7 @@
     height: 100%;
   }
 
-  .header-logo {
+  .header-logo-wrapper :global(.header-logo) {
     height: 100%;
     padding: 0.2rem 0.5rem 0.2rem 0rem;
   }
