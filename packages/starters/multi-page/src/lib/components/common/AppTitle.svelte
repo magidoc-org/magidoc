@@ -1,9 +1,7 @@
 <script lang="ts">
-  import variables from '@magidoc/plugin-starter-variables'
+  import { common } from '@magidoc/plugin-starter-variables'
 
-  const title =
-    (import.meta.env[variables.common.APP_TITLE] as unknown as string) ??
-    'Magidoc'
+  const title = common.APP_TITLE.vite.getOrDefault('Magidoc')
 </script>
 
 <span>{title}</span>

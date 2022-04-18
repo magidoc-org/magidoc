@@ -12,9 +12,9 @@ export type ViteVariable<T> = {
   getOrDefault: (def: T) => T
 }
 
-export function createVariable<T>(key: string): Variable<T> {
+export function createVariable<T = string | boolean>(key: string): Variable<T> {
   const viteKey = `VITE_${key.toUpperCase()}`
-  const viteGet = () => import.meta.env[key] as unknown as T
+  const viteGet = () => import.meta.env[key] as T
 
   return {
     vite: {

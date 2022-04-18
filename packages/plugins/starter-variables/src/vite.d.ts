@@ -1,5 +1,5 @@
 interface ImportMetaEnv {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 interface ImportMeta {
