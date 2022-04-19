@@ -21,15 +21,15 @@ function testStringVariable(target: Variable<string>, viteKey: string) {
   expect(target.vite.key).toEqual(viteKey)
 
   console.log({ env: { [viteKey]: 'Potato' } })
-  expect(target.vite.get({ env: { [viteKey]: 'Potato' } })).toBe('Potato')
-  expect(target.vite.get({ env: { [viteKey]: false } })).toBe('false')
-  expect(target.vite.get({ env: {} })).toBeNull()
+  expect(target.vite.get({ [viteKey]: 'Potato' })).toBe('Potato')
+  expect(target.vite.get({ [viteKey]: false })).toBe('false')
+  expect(target.vite.get({})).toBeNull()
 
-  expect(
-    target.vite.getOrDefault({ env: { [viteKey]: 'Potato' } }, 'Default'),
-  ).toBe('Potato')
-  expect(
-    target.vite.getOrDefault({ env: { [viteKey]: false } }, 'Default'),
-  ).toBe('false')
-  expect(target.vite.getOrDefault({ env: {} }, 'Default')).toBe('Default')
+  expect(target.vite.getOrDefault({ [viteKey]: 'Potato' }, 'Default')).toBe(
+    'Potato',
+  )
+  expect(target.vite.getOrDefault({ [viteKey]: false }, 'Default')).toBe(
+    'false',
+  )
+  expect(target.vite.getOrDefault({}, 'Default')).toBe('Default')
 }
