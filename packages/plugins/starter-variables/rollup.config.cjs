@@ -4,19 +4,7 @@ const shebang = require('rollup-plugin-preserve-shebang')
 
 module.exports = defineConfig({
   input: ['src/index.ts'],
-  plugins: [shebang(), typescript()],
-  external: [
-    'commander',
-    'axios',
-    'extract-zip',
-    'listr2',
-    'child_process',
-    'util',
-    'fs',
-    'fs-extra',
-    'os',
-    'path',
-  ],
+  plugins: [typescript()],
   output: {
     dir: 'build',
     format: 'esm',

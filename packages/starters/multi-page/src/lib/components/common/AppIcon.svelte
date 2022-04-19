@@ -1,7 +1,7 @@
 <script lang="ts">
   import { common } from '@magidoc/plugin-starter-variables'
 
-  const logoPath = common.APP_LOGO_PATH.vite.getOrDefault('/logo.png')
+  const logoPath = common.APP_LOGO_PATH.vite.getOrDefault(import.meta, '/logo.png')
 </script>
 
 <img src={logoPath} alt="Magidoc" {...$$props} />

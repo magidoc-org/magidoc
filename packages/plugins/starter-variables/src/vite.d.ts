@@ -1,7 +1,10 @@
-interface ImportMetaEnv {
+/**
+ * Copy of the ViteJS import meta interface
+ */
+interface MetaEnv {
   [key: string]: unknown
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
+interface Meta {
+  readonly env: MetaEnv
 }
