@@ -6,7 +6,7 @@
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
   import ArgsList from './list/ArgsList.svelte'
   import QueryTypeTag from '../tags/QueryTypeTag.svelte'
-  import TypeLink from '../common/TypeLink.svelte'
+  import TypeLink from '../type/TypeLink.svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>

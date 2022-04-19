@@ -27,4 +27,8 @@
   export let field: GraphQLField<unknown, unknown, unknown>
 </script>
 
+<svelte:head>
+  <title>Subscription - {field.name}</title>
+</svelte:head>
+
 <FieldDetails {field} type={QueryType.SUBSCRIPTION} />

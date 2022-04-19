@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Tag } from 'carbon-components-svelte'
   import type { GraphQLType } from 'graphql'
-  import TypeLink from '../common/TypeLink.svelte'
+  import TypeLink from '../type/TypeLink.svelte'
 
   export let type: GraphQLType
 </script>

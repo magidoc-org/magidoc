@@ -31,15 +31,19 @@
       "path": "."
     },
     {
-      "name": "Cli",
-      "path": "./packages/cli"
-    },
-    {
       "name": "Docs",
       "path": "./packages/docs"
     },
     {
-      "name": "Plugins/Fetch GraphQL Schema",
+      "name": "Cli",
+      "path": "./packages/cli"
+    },
+    {
+      "name": "Plugins/Starter Variables",
+      "path": "./packages/plugins/starter-variables"
+    },
+    {
+      "name": "Plugins/Rollup Fetch GraphQL Schema",
       "path": "./packages/plugins/rollup-fetch-gql-schema/"
     },
     {
