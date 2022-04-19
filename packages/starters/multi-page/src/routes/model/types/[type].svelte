@@ -40,6 +40,10 @@
   export let type: GraphQLNamedType
 </script>
 
+<svelte:head>
+  <title>Type - {type.name}</title>
+</svelte:head>
+
 {#if isScalarType(type)}
   <ScalarType {type} />
 {:else if isEnumType(type)}

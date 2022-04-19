@@ -1,11 +1,18 @@
+/**
+ * Copy of the ViteJS import meta interface
+ */
+interface MetaEnv {
+  [key: string]: unknown
+}
+
 export type Variable<T> = {
   vite: ViteVariable<T>
 }
 
 export type ViteVariable<T> = {
   key: string
-  get: (meta: Meta) => T | null
-  getOrDefault: (meta: Meta, def: T) => T
+  get: (env: MetaEnv) => T | null
+  getOrDefault: (env: MetaEnv, def: T) => T
 }
 
 export function createVariable<T = string | boolean>(
@@ -13,14 +20,14 @@ export function createVariable<T = string | boolean>(
   conversion: (target: unknown) => T,
 ): Variable<T> {
   const viteKey = `VITE_${key.toUpperCase()}`
-  const viteGet = (meta: Meta) =>
-    meta.env[viteKey] !== undefined ? conversion(meta.env[viteKey]) : null
+  const viteGet = (env: MetaEnv) =>
+    env[viteKey] !== undefined ? conversion(env[viteKey]) : null
 
   return {
     vite: {
       key: viteKey,
       get: viteGet,
-      getOrDefault: (meta, def) => viteGet(meta) ?? def,
+      getOrDefault: (env, def) => viteGet(env) ?? def,
     },
   }
 }

@@ -11,7 +11,6 @@
   import Sun from 'carbon-icons-svelte/lib/Sun.svelte'
   import { theme, themeValue } from '$lib/theme'
   import AppIcon from '$lib/components/common/AppIcon.svelte'
-  import AppTitle from '$lib/components/common/AppTitle.svelte'
 
   export let isSideNavOpen = true
 </script>
@@ -19,7 +18,6 @@
 <Header href="/" bind:isSideNavOpen>
   <div slot="platform" class="header-logo-wrapper">
     <AppIcon class="header-logo" />
-    <AppTitle />
   </div>
 
   <HeaderUtilities>
