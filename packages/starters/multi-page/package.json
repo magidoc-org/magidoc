@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-multi-page",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -19,14 +19,14 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@magidoc/plugin-query-generator": "workspace:^0.5.1",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.5.1",
+    "@magidoc/plugin-query-generator": "workspace:^0.6.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.6.0",
     "graphql": "^16.3.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.5.1",
-    "@magidoc/plugin-starter-variables": "workspace:^0.5.1",
+    "@magidoc/plugin-starter-variables": "workspace:^0.6.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.6.0",
     "@sveltejs/adapter-auto": "^1.0.0-next.34",
     "@sveltejs/adapter-static": "^1.0.0-next.29",
     "@sveltejs/kit": "^1.0.0-next.314",
