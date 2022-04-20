@@ -9,7 +9,11 @@
 
 <Header href={`${base}/`} bind:isSideNavOpen>
   <div slot="platform" class="header-logo-wrapper">
-    <img src="https://github.com/magidoc-org/magidoc/blob/main/logo/logo_horizontal.png?raw=true" alt="Magidoc" class="header-logo" />
+    <img
+      src="https://github.com/magidoc-org/magidoc/blob/main/logo/logo_horizontal.png?raw=true"
+      alt="Magidoc"
+      class="header-logo"
+    />
   </div>
 
   <HeaderUtilities>
