@@ -26,7 +26,7 @@ export default {
         noExternal:
           process.env.NODE_ENV == 'development'
             ? []
-            : ['graphql', 'prettier', 'prismjs'],
+            : ['prettier', 'prismjs'],
       },
     },
   },

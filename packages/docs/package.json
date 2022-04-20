@@ -19,7 +19,7 @@
   "devDependencies": {
     "@magidoc/plugin-svelte-prismjs": "workspace:^0.6.1",
     "@sveltejs/adapter-static": "^1.0.0-next.29",
-    "@sveltejs/kit": "^1.0.0-next.316",
+    "@sveltejs/kit": "^1.0.0-next.317",
     "carbon-components-svelte": "^0.63.1",
     "carbon-icons-svelte": "^11.0.1",
     "carbon-preprocess-svelte": "^0.9.0",

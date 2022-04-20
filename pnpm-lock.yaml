@@ -77,7 +77,7 @@ importers:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.6.1
       '@sveltejs/adapter-static': ^1.0.0-next.29
-      '@sveltejs/kit': ^1.0.0-next.316
+      '@sveltejs/kit': ^1.0.0-next.317
       carbon-components-svelte: ^0.63.1
       carbon-icons-svelte: ^11.0.1
       carbon-preprocess-svelte: ^0.9.0
@@ -96,7 +96,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../plugins/prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.316_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.317_svelte@3.47.0
       carbon-components-svelte: 0.63.1
       carbon-icons-svelte: 11.0.1
       carbon-preprocess-svelte: 0.9.0_svelte@3.47.0
@@ -115,8 +115,8 @@ importers:
 
   packages/plugins/prismjs:
     specifiers:
-      '@sveltejs/adapter-auto': ^1.0.0-next.34
-      '@sveltejs/kit': ^1.0.0-next.316
+      '@sveltejs/adapter-auto': ^1.0.0-next.35
+      '@sveltejs/kit': ^1.0.0-next.317
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.47.0
@@ -126,8 +126,8 @@ importers:
       tslib: ^2.3.1
       typescript: ~4.6.3
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.316_svelte@3.47.0
+      '@sveltejs/adapter-auto': 1.0.0-next.35
+      '@sveltejs/kit': 1.0.0-next.317_svelte@3.47.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
       svelte: 3.47.0
@@ -139,8 +139,8 @@ importers:
 
   packages/plugins/prismjs/package:
     specifiers:
-      '@sveltejs/adapter-auto': ^1.0.0-next.34
-      '@sveltejs/kit': ^1.0.0-next.316
+      '@sveltejs/adapter-auto': ^1.0.0-next.35
+      '@sveltejs/kit': ^1.0.0-next.317
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.47.0
@@ -150,8 +150,8 @@ importers:
       tslib: ^2.3.1
       typescript: ~4.6.3
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.316_svelte@3.47.0
+      '@sveltejs/adapter-auto': 1.0.0-next.35
+      '@sveltejs/kit': 1.0.0-next.317_svelte@3.47.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
       svelte: 3.47.0
@@ -258,9 +258,9 @@ importers:
       '@magidoc/plugin-starter-variables': workspace:^0.6.1
       '@magidoc/plugin-svelte-prismjs': workspace:^0.6.1
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.6.1
-      '@sveltejs/adapter-auto': ^1.0.0-next.34
+      '@sveltejs/adapter-auto': ^1.0.0-next.35
       '@sveltejs/adapter-static': ^1.0.0-next.29
-      '@sveltejs/kit': ^1.0.0-next.316
+      '@sveltejs/kit': ^1.0.0-next.317
       '@types/lodash': ^4.14.182
       '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.20.0
@@ -287,9 +287,9 @@ importers:
     devDependencies:
       '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
-      '@sveltejs/adapter-auto': 1.0.0-next.34
+      '@sveltejs/adapter-auto': 1.0.0-next.35
       '@sveltejs/adapter-static': 1.0.0-next.29
-      '@sveltejs/kit': 1.0.0-next.316_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.317_svelte@3.47.0
       '@types/lodash': 4.14.182
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
@@ -313,7 +313,7 @@ packages:
     resolution: {integrity: sha512-hoyByceqwKirw7w3Z7gnIIZC3Wx3J484Y3L/cMpXFbr7d9ZQj2mODrirNzcJa+SM3UlpWXYvKV4RlRpFXlWgXg==}
     engines: {node: '>=6.0.0'}
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.7
+      '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
   /@babel/code-frame/7.16.7:
@@ -792,7 +792,7 @@ packages:
       glob: 7.2.0
       graceful-fs: 4.2.10
       istanbul-lib-coverage: 3.2.0
-      istanbul-lib-instrument: 5.1.0
+      istanbul-lib-instrument: 5.2.0
       istanbul-lib-report: 3.0.0
       istanbul-lib-source-maps: 4.0.1
       istanbul-reports: 3.1.4
@@ -883,8 +883,8 @@ packages:
     resolution: {integrity: sha512-Fg32GrJo61m+VqYSdRSjRXMjQ06j8YIYfcTqndLYVAaHmroZHLJZCydsWBOTDqXS2v+mjxohBWEMfg97GXmYQg==}
     dev: true
 
-  /@jridgewell/trace-mapping/0.3.7:
-    resolution: {integrity: sha512-8XC0l0PwCbdg2Uc8zIIf6djNX3lYiz9GqQlC1LJ9WQvTYvcfP8IA9K2IKRnPm5tAX6X/+orF+WwKZ0doGcgJlg==}
+  /@jridgewell/trace-mapping/0.3.9:
+    resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
     dependencies:
       '@jridgewell/resolve-uri': 3.0.5
       '@jridgewell/sourcemap-codec': 1.4.11
@@ -958,23 +958,23 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@sveltejs/adapter-auto/1.0.0-next.34:
-    resolution: {integrity: sha512-BzZVfy39idFojauroLrE/v9paJ1/HOlS2R857ooCwaLg+RrRy6zJHWwYxNSv5e8AaZiVg7ioZZpU/2g6ZgUpaQ==}
+  /@sveltejs/adapter-auto/1.0.0-next.35:
+    resolution: {integrity: sha512-x0FLfs1c22lckDuO3Lqq++MQXw8vlKpNCj+AeYtK8EmGfQH3qHTxjPqLWzp/qcTkEx9c+UZyoZsJsGXBwISdFw==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.17
-      '@sveltejs/adapter-netlify': 1.0.0-next.51
-      '@sveltejs/adapter-vercel': 1.0.0-next.47
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.18
+      '@sveltejs/adapter-netlify': 1.0.0-next.52
+      '@sveltejs/adapter-vercel': 1.0.0-next.48
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.17:
-    resolution: {integrity: sha512-B2ze5L0LsHFsZctVNy4sw0XxgV2YiVEHyMrWRo3pmpTwpu6GT5V3U2fsEoCMg/RKMazlWkyKTCuUqmcpYjjf2g==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.18:
+    resolution: {integrity: sha512-iIb7ScN2hnnfVQPhRjw0FYpovYJrw4n22BFAQIg6QvOwmmGz1E3QkyBkm/tRmyY7emDfnljgXtvk4Hsoszp5Ug==}
     dependencies:
       esbuild: 0.14.36
       worktop: 0.8.0-next.12
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.51:
-    resolution: {integrity: sha512-P7/cW/0z8zd8J6DOI2yxKZG0+HRMMuzfOf0yzFXX0vRwBePhKlZ/H4qhTOo2NrCmj3Len545o+ugj5gyMXl1+g==}
+  /@sveltejs/adapter-netlify/1.0.0-next.52:
+    resolution: {integrity: sha512-QvlPSaU09mPY6eNgvqWct/KnZqr1MdyydUM/CF3c6fgwwqTPrxLdxqjLADSLNhbzjk1BMwx1uydVM0pvkoBC7Q==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.36
@@ -987,14 +987,14 @@ packages:
       tiny-glob: 0.2.9
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.47:
-    resolution: {integrity: sha512-VV3vP8KqL9XOc7xfQLVhXTM5jrTme+r1qJy98u5/dhAhkdjqrGDwAKo/s7MoB3rTYxLb2b8I4QxAaoz2Y2aIBg==}
+  /@sveltejs/adapter-vercel/1.0.0-next.48:
+    resolution: {integrity: sha512-l1CXPI8J6guIqEavyTpDdNVzpf1Tmi2QxnvuPIl4uotaAwOTSKE2mMSoAe9zZ3pINjmhxtFX0Uhb+6Dm0O55vQ==}
     dependencies:
       esbuild: 0.14.36
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.316_svelte@3.47.0:
-    resolution: {integrity: sha512-oLjWOWzjriJD2t210r7ALuH/8ZADrJGsOODzRCRSJvRBCt0Q7VKVLqwKbM/RlZzD1k8Af2uRodQT11kP98hAIA==}
+  /@sveltejs/kit/1.0.0-next.317_svelte@3.47.0:
+    resolution: {integrity: sha512-04WqvYXfz4THy3HghkXYWNrbG6bMLaQTaTfGNMoGpoSUaboJ1enikReeD+9bt4AzxqWkLav+C6Q3NgwJXwYAiw==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -1498,7 +1498,7 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@istanbuljs/load-nyc-config': 1.1.0
       '@istanbuljs/schema': 0.1.3
-      istanbul-lib-instrument: 5.1.0
+      istanbul-lib-instrument: 5.2.0
       test-exclude: 6.0.0
     transitivePeerDependencies:
       - supports-color
@@ -1590,7 +1590,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001332
-      electron-to-chromium: 1.4.114
+      electron-to-chromium: 1.4.115
       escalade: 3.1.1
       node-releases: 2.0.3
       picocolors: 1.0.0
@@ -1978,8 +1978,8 @@ packages:
       webidl-conversions: 5.0.0
     dev: true
 
-  /electron-to-chromium/1.4.114:
-    resolution: {integrity: sha512-gRwLpVYWHGbERPU6o8pKfR168V6enWEXzZc6zQNNXbgJ7UJna+9qzAIHY94+9KOv71D/CH+QebLA9pChD2q8zA==}
+  /electron-to-chromium/1.4.115:
+    resolution: {integrity: sha512-yy1W7cTcreskCWSRTtvp8CNLEci3uYBn5s1U4IytDz7v485iLVPh4QwFuSCavsFbxRLVvwnHNXEFIDShrk/UnQ==}
     dev: true
 
   /email-addresses/3.1.0:
@@ -3074,8 +3074,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /istanbul-lib-instrument/5.1.0:
-    resolution: {integrity: sha512-czwUz525rkOFDJxfKK6mYfIs9zBKILyrZQxjz3ABhjQXhbhFsSbo1HW/BFcsDnfJYJWA6thRR5/TUY2qs5W99Q==}
+  /istanbul-lib-instrument/5.2.0:
+    resolution: {integrity: sha512-6Lthe1hqXHBNsqvgDzGO6l03XNeu3CrG4RqQ1KM9+l5+jNGpEJfIELx1NS3SEHmJQA8np/u+E4EPRKRiu6m19A==}
     engines: {node: '>=8'}
     dependencies:
       '@babel/core': 7.17.9
