@@ -1,7 +1,3 @@
-export enum Template {
-  MULTI_PAGE = 'multi-page',
-}
+export const AVAILABLE_TEMPLATES = ['multi-page'] as const
 
-export function availableTemplates(): Template[] {
-  return Object.values(Template).map((value) => value as Template)
-}
+export type Template = typeof AVAILABLE_TEMPLATES[number]

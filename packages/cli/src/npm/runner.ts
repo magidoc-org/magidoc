@@ -8,6 +8,7 @@ export type RunnerType = 'pnpm' | 'yarn' | 'npm'
 
 export type CommandConfiguration = {
   cwd: string
+  env?: Record<string, string>
 }
 
 export type NpmRunner = {
@@ -59,6 +60,7 @@ async function runNodeCommand(
   try {
     await execPromise(command, {
       cwd: config.cwd,
+      env: config.env,
     })
   } catch (error: unknown) {
     const record = error as Record<string, unknown>

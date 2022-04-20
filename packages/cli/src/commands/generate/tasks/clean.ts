@@ -1,4 +1,5 @@
-import { GenerationConfig, newTask, Task } from '..'
+import type { GenerationConfig } from '../config'
+import { newTask, Task } from '../task'
 
 export function clean(config: GenerationConfig): Task {
   return newTask({

@@ -1,21 +1,11 @@
 #! /usr/bin/env node
 
 import { Command } from 'commander'
-import { readFileSync } from 'fs'
 import buildGenerateCommand from './commands/generate/command'
 import buildInitCommand from './commands/init/command'
+import { getVersion } from './version'
 
-const packageJson = JSON.parse(readFileSync('./package.json').toString()) as {
-  version: string
-}
-
-const version: string = packageJson.version
-if (!version) {
-  throw new Error(
-    'Expected version to be defined in package.json. Could not extract version number, but it is required to fetch the right template versions.',
-  )
-}
-
+const version = getVersion()
 const program = new Command()
   .name('Magidoc')
   .description(
@@ -23,7 +13,7 @@ const program = new Command()
   )
   .version(version)
 
-buildGenerateCommand(program, version)
+buildGenerateCommand(program)
 buildInitCommand(program)
 
 program.parse()

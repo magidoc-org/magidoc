@@ -1,70 +1,26 @@
 import { Command, Option } from 'commander'
 import generate from '.'
-import { availableTemplates, Template } from '../../template'
-import { KeyValue, parseKeyValuePair } from '../../utils/args'
 import path from 'path'
-import type { Method } from './schema/fetch'
+import type { FileConfiguration } from './config/types'
+import { readConfiguration } from './config/read'
 
 type GenerateCommandOptions = {
-  template: Template
-  templateVersion: string
-  output: string
-  url: string
-  method: Method
-  header: KeyValue[]
+  file: string
   stacktrace: boolean
   clean: boolean
 }
 
-export default function buildGenerateCommand(
-  program: Command,
-  version: string,
-) {
+export default function buildGenerateCommand(program: Command) {
   program
     .command('generate')
     .description(
       "Generates a full static website using a template. Using this option doesn't give you the ability to customize the output website. If you wish to customize the website, use the init command to generate a fresh project.",
     )
     .addOption(
-      new Option('-t|--template <name>', 'Specifies the target template')
-        .choices(availableTemplates())
-        .default(availableTemplates()[0]),
-    )
-    .addOption(
       new Option(
-        '-e|--template-version <version>',
-        'Specifies the target template version. This defaults to the current CLI version. Note that there may be issues when fetching templates from a different version from the current one, so use this option at your own risk.',
-      ).default(version),
-    )
-    .option(
-      '-o|--output <destination>',
-      'Specifies the output directory of the built website',
-      './docs',
-    )
-    .addOption(
-      new Option(
-        '-u|--url <url>',
-        'Specifies the target GraphQL API to fetch the schema from using the introspection query',
-      ),
-    )
-    .addOption(
-      new Option(
-        '-m|--method <method>',
-        'The HTTP method to use to fetch the GraphQL Schema',
-      )
-        .choices(['POST', 'GET', 'PUT', 'DELETE'])
-        .default('POST'),
-    )
-    .addOption(
-      new Option(
-        '-h|--header [name=value...]',
-        'Specifies headers to pass to the query in the format <name>=<value>. Can be specified multiple times.',
-      )
-        .default([])
-        .argParser((value: string, previous: KeyValue[]) => [
-          ...previous,
-          parseKeyValuePair(value),
-        ]),
+        '-f|--file <magidoc.yml>',
+        'The magidoc.yml configuration file location',
+      ).default('./magidoc.yml'),
     )
     .addOption(
       new Option(
@@ -78,41 +34,57 @@ export default function buildGenerateCommand(
         'Useful to debug errors. Will print the whole exception to the terminal in case the error message is not precise enough.',
       ).default(false),
     )
-    .action(
-      async ({
-        output,
-        url,
-        method,
-        header,
-        template,
-        templateVersion,
-        stacktrace,
-        clean,
-      }: GenerateCommandOptions) => {
-        try {
-          await generate({
-            template,
-            templateVersion,
-            output: path.resolve(output),
-            clean,
-            fetchConfig: {
-              url,
-              headers: header,
-              method,
-            },
-          })
-        } catch (error) {
-          process.exitCode = 1
+    .action(async ({ file, stacktrace, clean }: GenerateCommandOptions) => {
+      const fileConfiguration = loadFileConfiguration(file)
+      if (!fileConfiguration) {
+        process.exitCode = 1
+        return
+      }
 
-          if (stacktrace) {
-            console.log()
-            console.log('------- Stacktrace -------')
-            console.log(error)
-          } else {
-            console.log()
-            console.log('For a more detailed output, run with --stacktrace')
-          }
+      try {
+        await generate({
+          template: fileConfiguration.website.template,
+          templateVersion: fileConfiguration.website.templateVersion,
+          output: path.resolve(fileConfiguration.website.output),
+          clean,
+          fetchConfig: {
+            url: fileConfiguration.introspection.url,
+            headers: Object.keys(
+              fileConfiguration.introspection.headers || {},
+            ).map((header) => {
+              return {
+                name: header,
+                value: (fileConfiguration.introspection.headers || {})[header],
+              }
+            }),
+            method: fileConfiguration.introspection.method,
+          },
+        })
+      } catch (error) {
+        process.exitCode = 2
+
+        if (stacktrace) {
+          console.log()
+          console.log('------- Stacktrace -------')
+          console.log(error)
+        } else {
+          console.log()
+          console.log('For a more detailed output, run with --stacktrace')
         }
-      },
-    )
+      }
+    })
+}
+
+function loadFileConfiguration(configPath: string): FileConfiguration | null {
+  try {
+    return readConfiguration(configPath)
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message)
+    } else {
+      console.log(error)
+    }
+
+    return null
+  }
 }

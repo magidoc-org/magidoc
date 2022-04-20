@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import { newTask, Task } from '../task'
 import { unzipTemplate } from '../../../template/unzip'
 
 export function unzipTemplateTask(): Task {

@@ -30,33 +30,41 @@ importers:
 
   packages/cli:
     specifiers:
+      '@magidoc/plugin-starter-variables': workspace:^0.5.1
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.5.1
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.4.1
+      '@types/js-yaml': ^4.0.5
       axios: ^0.26.1
       commander: ^9.2.0
       extract-zip: ^2.0.1
       fs-extra: ^10.1.0
       jest: ^27.5.1
       jest-extended: ^2.0.0
+      js-yaml: ^4.1.0
       listr2: ^4.0.5
       rollup: ^2.70.2
       rollup-plugin-preserve-shebang: ^1.0.1
       ts-jest: ^27.1.4
       tslib: ^2.3.1
       typescript: ^4.6.3
+      zod: ^3.14.4
     dependencies:
+      '@magidoc/plugin-starter-variables': link:../plugins/starter-variables
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../plugins/rollup-fetch-gql-schema
       axios: 0.26.1
       commander: 9.2.0
       extract-zip: 2.0.1
       fs-extra: 10.1.0
+      js-yaml: 4.1.0
       listr2: 4.0.5
+      zod: 3.14.4
     devDependencies:
       '@rollup/plugin-typescript': 8.3.2_eaab4980cb5a437133211ecd98513266
       '@types/fs-extra': 9.0.13
       '@types/jest': 27.4.1
+      '@types/js-yaml': 4.0.5
       jest: 27.5.1
       jest-extended: 2.0.0_jest@27.5.1
       rollup: 2.70.2
@@ -1099,6 +1107,10 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
+  /@types/js-yaml/4.0.5:
+    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
+    dev: true
+
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -1415,7 +1427,6 @@ packages:
 
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-    dev: true
 
   /array-union/1.0.2:
     resolution: {integrity: sha1-mjRBDk9OPaI96jdb5b5w8kd47Dk=}
@@ -3598,7 +3609,6 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
-    dev: true
 
   /jsdom/16.7.0:
     resolution: {integrity: sha512-u9Smc2G1USStM+s/x1ru5Sxrl6mPYCbByG1U/hUmqaVsm4tbNyS7CicOSRyuGQYZhTu0h84qkZZQ/I+dzizSVw==}
@@ -5363,3 +5373,7 @@ packages:
       compress-commons: 4.1.1
       readable-stream: 3.6.0
     dev: true
+
+  /zod/3.14.4:
+    resolution: {integrity: sha512-U9BFLb2GO34Sfo9IUYp0w3wJLlmcyGoMd75qU9yf+DrdGA4kEx6e+l9KOkAlyUO0PSQzZCa3TR4qVlcmwqSDuw==}
+    dev: false

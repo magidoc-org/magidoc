@@ -1,12 +1,4 @@
 import { Listr } from 'listr2'
-import type {
-  ListrContext,
-  ListrTaskWrapper,
-  ListrTask,
-  ListrDefaultRenderer,
-} from 'listr2'
-import type { Template } from '../../template'
-import type { FetchConfig } from './schema/fetch'
 import { clean as cleanTask } from './tasks/clean'
 import { determineTmpDirectoryTask } from './tasks/determineTmpDir'
 import { selectNpmRunnerTask } from './tasks/selectNpmRunner'
@@ -15,41 +7,8 @@ import { unzipTemplateTask } from './tasks/unzipTemplate'
 import { installDependenciesTask } from './tasks/installDependencies'
 import { buildTemplateTask } from './tasks/buildTemplate'
 import { moveOutputTask } from './tasks/moveOutput'
-import type { TmpLocation } from '../../template/tmp'
-import type { NpmRunner } from '../../npm/runner'
-
-export type GenerationConfig = {
-  /**
-   * The target template for generation
-   */
-  template: Template
-
-  /**
-   * The template version to use for generation
-   */
-  templateVersion: string
-
-  /**
-   * The configuration used for fetching the GraphQL Schema from the remote server
-   */
-  fetchConfig?: FetchConfig
-
-  /**
-   * The output target directory
-   */
-  output: string
-
-  /**
-   * Wether to clean the existing cache
-   */
-  clean: boolean
-}
-
-export type TaskContext = {
-  tmpArchive: TmpLocation
-  tmpDirectory: TmpLocation
-  npmRunner: NpmRunner
-}
+import type { TaskContext } from './task'
+import type { GenerationConfig } from './config'
 
 export default async function generate(config: GenerationConfig) {
   const listr = new Listr<TaskContext>(
@@ -73,29 +32,3 @@ export default async function generate(config: GenerationConfig) {
 
   await listr.run()
 }
-
-export function newTask({
-  title,
-  enabled,
-  executor,
-}: {
-  title: string
-  enabled?: boolean
-  executor: TaskExecutor
-}): Task {
-  return {
-    title: title,
-    enabled: enabled,
-    options: {
-      persistentOutput: true,
-    },
-    task: executor,
-  }
-}
-
-export type TaskExecutor = (
-  ctx: TaskContext,
-  task: ListrTaskWrapper<ListrContext, ListrDefaultRenderer>,
-) => Promise<void> | void
-
-export type Task = ListrTask<TaskContext, ListrDefaultRenderer>

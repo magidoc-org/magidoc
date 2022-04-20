@@ -1,6 +1,7 @@
-import { GenerationConfig, newTask, Task } from '..'
+import { newTask, Task } from '../task'
 import { moveOutputBuild } from '../../../template/output'
 import path from 'path'
+import type { GenerationConfig } from '../config'
 
 export function moveOutputTask(config: GenerationConfig): Task {
   return newTask({
