@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   export function load({ stuff, params }: LoadInput): LoadOutput {
-    const field: GraphQLField<unknown, unknown, undefined> | undefined =
+    const field: GraphQLField<unknown, unknown, unknown> | undefined =
       stuff.schema?.getQueryType()?.getFields()[params.query]
 
     if (!field) {
