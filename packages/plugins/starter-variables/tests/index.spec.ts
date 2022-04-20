@@ -17,7 +17,6 @@ describe('variables', () => {
 function testStringVariable(target: Variable<string>, viteKey: string) {
   expect(target.vite.key).toEqual(viteKey)
 
-  console.log({ env: { [viteKey]: 'Potato' } })
   expect(target.vite.get({ [viteKey]: 'Potato' })).toBe('Potato')
   expect(target.vite.get({ [viteKey]: false })).toBe('false')
   expect(target.vite.get({})).toBeNull()
