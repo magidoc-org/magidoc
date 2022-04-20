@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-  {title} - Welcome
+  <title>{title} - Welcome</title>
 </svelte:head>
 
 <h1>Welcome</h1>
