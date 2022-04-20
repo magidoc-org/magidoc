@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import { newTask, Task } from '../task'
 
 export function installDependenciesTask(): Task {
   return newTask({

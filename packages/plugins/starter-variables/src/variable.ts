@@ -33,9 +33,21 @@ export function createVariable<T = string | boolean>(
 }
 
 export function stringConversion() {
-  return (target: unknown) => String(target)
+  return (target: unknown): string => String(target)
 }
 
 export function booleanConversion() {
-  return (target: unknown) => Boolean(target)
+  return (target: unknown): boolean => {
+    switch (typeof target) {
+      case 'boolean':
+        return target
+      case 'string':
+        const lowerCase = target.toLowerCase().trim()
+        return lowerCase === 'true' || lowerCase === 't' || lowerCase === '1'
+      case 'number':
+        return target !== 0
+      default:
+        return !!target
+    }
+  }
 }

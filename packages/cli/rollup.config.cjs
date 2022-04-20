@@ -16,6 +16,8 @@ module.exports = defineConfig({
     'fs-extra',
     'os',
     'path',
+    'js-yaml',
+    'zod',
   ],
   output: {
     dir: 'build',

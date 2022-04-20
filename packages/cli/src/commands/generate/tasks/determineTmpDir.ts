@@ -1,8 +1,9 @@
-import { GenerationConfig, newTask, Task } from '..'
 import {
   tmpTemplateArchiveFile,
   tmpTemplateDirectory,
 } from '../../../template/tmp'
+import type { GenerationConfig } from '../config'
+import { newTask, Task } from '../task'
 
 export function determineTmpDirectoryTask(config: GenerationConfig): Task {
   return newTask({

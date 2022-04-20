@@ -1,5 +1,6 @@
-import { GenerationConfig, newTask, Task } from '..'
+import { newTask, Task } from '../task'
 import fetchTemplate from '../../../template/fetch'
+import type { GenerationConfig } from '../config'
 
 export function fetchTemplateTask(config: GenerationConfig): Task {
   return newTask({

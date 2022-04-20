@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -17,16 +17,16 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.5.1",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.6.0",
     "@sveltejs/adapter-static": "^1.0.0-next.29",
-    "@sveltejs/kit": "^1.0.0-next.314",
+    "@sveltejs/kit": "^1.0.0-next.316",
     "carbon-components-svelte": "^0.62.3",
     "carbon-icons-svelte": "^11.0.1",
     "carbon-preprocess-svelte": "^0.8.2",
     "front-matter": "^4.0.2",
     "gh-pages": "^3.2.3",
     "prism-svelte": "^0.5.0",
-    "prismjs": "^1.27.0",
+    "prismjs": "^1.28.0",
     "rollup-plugin-string": "^3.0.0",
     "svelte": "^3.47.0",
     "svelte-check": "^2.7.0",

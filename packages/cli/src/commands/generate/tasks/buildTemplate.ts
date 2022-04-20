@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import { newTask, Task } from '../task'
 
 export function buildTemplateTask(): Task {
   return newTask({
@@ -6,6 +6,7 @@ export function buildTemplateTask(): Task {
     executor: async (ctx) => {
       await ctx.npmRunner.buildProject({
         cwd: ctx.tmpDirectory.path,
+        env: {}, // TODO
       })
     },
   })
