@@ -18,11 +18,10 @@ export type ViteVariable<T> = {
 
 export function createVariable<T = string | boolean>(
   key: string,
-  conversion: (target: unknown) => T,
+  conversion: (target: unknown) => T | null,
 ): Variable<T> {
   const viteKey = `VITE_${key.toUpperCase()}`
-  const viteGet = (env: MetaEnv) =>
-    env[viteKey] !== undefined ? conversion(env[viteKey]) : null
+  const viteGet = (env: MetaEnv) => conversion(env[viteKey])
 
   return {
     names: [key, toCamelCase(key)],
@@ -39,12 +38,22 @@ function toCamelCase(key: string): string {
     return $1.toUpperCase().replace('-', '').replace('_', '')
   })
 }
+
 export function stringConversion() {
-  return (target: unknown): string => String(target)
+  return (target: unknown): string | null => {
+    if (target === null || target === undefined || target === '') {
+      return null
+    }
+
+    return String(target)
+  }
 }
 
 export function booleanConversion() {
-  return (target: unknown): boolean => {
+  return (target: unknown): boolean | null => {
+    if (target === null) return null
+    if (target === undefined) return null
+
     switch (typeof target) {
       case 'boolean':
         return target
@@ -54,7 +63,7 @@ export function booleanConversion() {
       case 'number':
         return target !== 0
       default:
-        return !!target
+        return null
     }
   }
 }

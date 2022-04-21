@@ -15,18 +15,14 @@ export default {
     },
     vite: {
       plugins: [
-        {
-          ...fetchGraphQLSchema({
-            url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
-          })
-        },
+        fetchGraphQLSchema({
+          url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
+        }),
       ],
       ssr: {
         // TODO - this is temporary. There seems to be an issue with SSR
         noExternal:
-          process.env.NODE_ENV == 'development'
-            ? []
-            : ['prettier', 'prismjs'],
+          process.env.NODE_ENV == 'development' ? [] : ['prettier', 'prismjs'],
       },
     },
   },

@@ -1,3 +1,5 @@
-import common from './common'
+import templates from './variables/templates'
+import magidoc from './variables/magidoc'
 
-export { common }
+export { templates }
+export { magidoc }

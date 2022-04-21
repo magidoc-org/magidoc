@@ -1,7 +1,10 @@
 <script>
-  import { common } from '@magidoc/plugin-starter-variables'
+  import { templates } from '@magidoc/plugin-starter-variables'
 
-  const title = common.APP_TITLE.vite.getOrDefault(import.meta.env, 'Magidoc')
+  const title = templates.APP_TITLE.vite.getOrDefault(
+    import.meta.env,
+    'Magidoc',
+  )
 </script>
 
 <svelte:head>
