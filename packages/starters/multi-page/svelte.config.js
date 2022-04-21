@@ -17,7 +17,7 @@ export default {
     vite: {
       plugins: [
         // Skill this rollup plugin if we are in the context of magidoc generate command
-        magidoc.MAGIDOC_GENERATE.vite.get(process.env)
+        !magidoc.MAGIDOC_GENERATE.vite.get(process.env)
           ? fetchGraphQLSchema({
               url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
             })
