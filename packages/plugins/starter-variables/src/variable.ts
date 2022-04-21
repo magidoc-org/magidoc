@@ -6,6 +6,7 @@ interface MetaEnv {
 }
 
 export type Variable<T> = {
+  names: string[]
   vite: ViteVariable<T>
 }
 
@@ -24,6 +25,7 @@ export function createVariable<T = string | boolean>(
     env[viteKey] !== undefined ? conversion(env[viteKey]) : null
 
   return {
+    names: [key, toCamelCase(key)],
     vite: {
       key: viteKey,
       get: viteGet,
@@ -32,6 +34,11 @@ export function createVariable<T = string | boolean>(
   }
 }
 
+function toCamelCase(key: string): string {
+  return key.toLowerCase().replace(/([-_][a-z])/gi, ($1) => {
+    return $1.toUpperCase().replace('-', '').replace('_', '')
+  })
+}
 export function stringConversion() {
   return (target: unknown): string => String(target)
 }

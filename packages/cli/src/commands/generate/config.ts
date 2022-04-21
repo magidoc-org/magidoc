@@ -1,5 +1,5 @@
+import type { Method } from '@magidoc/rollup-plugin-fetch-gql-schema'
 import type { Template } from '../../template'
-import type { FetchConfig } from './schema/fetch'
 
 export type GenerationConfig = {
   /**
@@ -15,7 +15,7 @@ export type GenerationConfig = {
   /**
    * The configuration used for fetching the GraphQL Schema from the remote server
    */
-  fetchConfig?: FetchConfig
+  fetchConfig: FetchConfig
 
   /**
    * The output target directory
@@ -31,4 +31,19 @@ export type GenerationConfig = {
    * Common and template-specific options
    */
   options: Record<string, string | boolean | number>
+}
+
+export type FetchConfig = {
+  /**
+   * The URL of the target server
+   */
+  url: string
+  /**
+   * The HTTP method to to fetch the schema
+   */
+  method: Method
+  /**
+   * The headers to pass to the query
+   */
+  headers: Record<string, string>
 }

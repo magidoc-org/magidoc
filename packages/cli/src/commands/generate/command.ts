@@ -50,14 +50,7 @@ export default function buildGenerateCommand(program: Command) {
           options: fileConfiguration.website.options,
           fetchConfig: {
             url: fileConfiguration.introspection.url,
-            headers: Object.keys(
-              fileConfiguration.introspection.headers || {},
-            ).map((header) => {
-              return {
-                name: header,
-                value: (fileConfiguration.introspection.headers || {})[header],
-              }
-            }),
+            headers: fileConfiguration.introspection.headers || {},
             method: fileConfiguration.introspection.method,
           },
         })
