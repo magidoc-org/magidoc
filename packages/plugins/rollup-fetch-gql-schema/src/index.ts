@@ -40,7 +40,10 @@ export async function fetchSchema(options: PluginOptions) {
 
   const output = options.target || 'src/_schema.json'
 
-  writeFileSync(output, JSON.stringify(schema))
+  writeFileSync(output, JSON.stringify(schema), {
+    encoding: 'utf-8',
+    flag: 'w',
+  })
 }
 
 export default function fetchGraphQLSchema(options: PluginOptions): Plugin {

@@ -1,4 +1,4 @@
-import type { Variable } from '@magidoc/plugin-starter-variables/build/variable'
+import type { Variable } from '@magidoc/plugin-starter-variables'
 import type {
   ListrContext,
   ListrDefaultRenderer,

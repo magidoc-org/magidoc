@@ -1,3 +1,7 @@
-import common from './common'
+import templates from './variables/templates'
+import magidoc from './variables/magidoc'
+import type { Variable, ViteVariable } from './variables/variable'
 
-export { common }
+export { templates }
+export { magidoc }
+export type { Variable, ViteVariable }

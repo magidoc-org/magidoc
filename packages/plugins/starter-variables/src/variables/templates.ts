@@ -1,4 +1,4 @@
-import { createVariable, stringConversion } from '../variable'
+import { createVariable, stringConversion } from './variable'
 
 export default {
   APP_LOGO: createVariable<string>('APP_LOGO', stringConversion()),
