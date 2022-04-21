@@ -104,5 +104,5 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
   BigInteger: () => bigNumber,
   Long: () => bigNumber,
   Url: () => url,
-  URL: () => url
+  URL: () => url,
 }
