@@ -2,7 +2,7 @@ import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 
 describe('generating default values', () => {
   beforeAll(() => {
-    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(6)
+    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(11)
   })
 
   describe('input is a string', () => {
@@ -176,6 +176,40 @@ describe('generating default values', () => {
       'should generate a generic date for input type %s',
       (name) =>
         expect(runFactory('Date', name)).toEqual('2022-03-06T08:23:45.000Z'),
+    )
+  })
+
+  describe('input is an Instant', () => {
+    test.each(['anythingelse', 'asd'])(
+      'should generate a generic instant for input type %s',
+      (name) =>
+        expect(runFactory('Instant', name)).toEqual('2022-03-06T08:23:45.000Z'),
+    )
+  })
+
+  describe('input is a Big Integer', () => {
+    test.each(['anythingelse', 'asd'])(
+      'should generate a generic big number for input type %s',
+      (name) => expect(runFactory('BigInteger', name)).toEqual(123456789),
+    )
+  })
+
+  describe('input is a Long', () => {
+    test.each(['anythingelse', 'asd'])(
+      'should generate a generic big number for input type %s',
+      (name) => expect(runFactory('Long', name)).toEqual(123456789),
+    )
+  })
+
+  describe('input is an URL', () => {
+    test.each(['anythingelse', 'asd'])(
+      'should generate a generic big number for input type %s',
+      (name) => expect(runFactory('URL', name)).toEqual('https://website.com'),
+    )
+
+    test.each(['anythingelse', 'asd'])(
+      'should generate a generic big number for input type %s',
+      (name) => expect(runFactory('Url', name)).toEqual('https://website.com'),
     )
   })
 })

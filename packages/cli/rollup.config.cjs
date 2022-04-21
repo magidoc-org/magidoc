@@ -7,6 +7,7 @@ module.exports = defineConfig({
   plugins: [shebang(), typescript()],
   external: [
     '@magidoc/rollup-plugin-fetch-gql-schema',
+    '@magidoc/plugin-starter-variables',
     'commander',
     'axios',
     'extract-zip',

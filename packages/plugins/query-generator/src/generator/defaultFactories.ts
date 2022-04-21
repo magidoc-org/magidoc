@@ -2,6 +2,8 @@ import type { GraphQLFactory } from './config'
 
 const date = '2022-03-06T08:23:45.000Z'
 const id = '08a16b83-9094-4e89-8c05-2ccadd5c1c7e'
+const bigNumber = 123456789
+const url = 'https://website.com'
 
 export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
   String: (context) => {
@@ -98,4 +100,9 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
   },
   Float: () => 30.7,
   Date: () => date,
+  Instant: () => date,
+  BigInteger: () => bigNumber,
+  Long: () => bigNumber,
+  Url: () => url,
+  URL: () => url
 }
