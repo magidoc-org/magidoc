@@ -1,13 +1,15 @@
-import { existsSync, readFileSync } from 'fs'
+import { existsSync } from 'fs'
 import type { FileConfiguration } from './types'
 import path from 'path'
 import { parseConfiguration } from './parser'
 
-const allowedExtensions = ['.yaml', '.yml']
+const allowedExtensions = ['.js', '.cjs']
 
-export function readConfiguration(configPath: string): FileConfiguration {
+export async function readConfiguration(
+  configPath: string,
+): Promise<FileConfiguration> {
   const extension = path.extname(configPath)
-  if (!isValidYamlExtension(extension)) {
+  if (!isValidJsExtension(extension)) {
     throw new Error(
       `Unrecognized Magidoc configuration file extension: ${extension}...  Supported values are ${allowedExtensions.toString()}`,
     )
@@ -19,10 +21,15 @@ export function readConfiguration(configPath: string): FileConfiguration {
     )
   }
 
-  return parseConfiguration(readFileSync(configPath).toString())
+  const config = ((await import(configPath)) as { default?: unknown }).default
+  if (!config) {
+    throw new Error(`File ${configPath} has no default export`)
+  }
+
+  return parseConfiguration(config)
 }
 
-export function isValidYamlExtension(extension: string): boolean {
+export function isValidJsExtension(extension: string): boolean {
   const lower = extension.toLocaleLowerCase()
   return allowedExtensions.includes(lower)
 }

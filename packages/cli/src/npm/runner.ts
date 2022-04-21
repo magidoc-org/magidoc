@@ -60,7 +60,10 @@ async function runNodeCommand(
   try {
     await execPromise(command, {
       cwd: config.cwd,
-      env: config.env,
+      env: {
+        ...process.env,
+        ...config.env,
+      },
     })
   } catch (error: unknown) {
     const record = error as Record<string, unknown>

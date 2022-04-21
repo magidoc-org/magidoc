@@ -26,4 +26,9 @@ export type GenerationConfig = {
    * Wether to clean the existing cache
    */
   clean: boolean
+
+  /**
+   * Common and template-specific options
+   */
+  options: Record<string, string | boolean | number>
 }
