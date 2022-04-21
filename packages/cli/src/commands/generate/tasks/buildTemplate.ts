@@ -1,3 +1,4 @@
+import { magidoc } from '@magidoc/plugin-starter-variables'
 import type { GenerationConfig } from '../config'
 import { newTask, Task, TaskContext } from '../task'
 
@@ -43,5 +44,11 @@ function buildEnv(
       }`,
     )
   }
+
+  insertDefaultVariables(newRecord)
   return newRecord
+}
+
+function insertDefaultVariables(newRecord: Record<string, string>) {
+  newRecord[magidoc.MAGIDOC_GENERATE.vite.key] = 'true'
 }
