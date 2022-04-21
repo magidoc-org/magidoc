@@ -1,6 +1,6 @@
 import { newTask, Task } from '../task'
 import path from 'path'
-import type { Variable } from '@magidoc/plugin-starter-variables/build/variable'
+import type { Variable } from '@magidoc/plugin-starter-variables'
 
 export function loadTemplateConfiguration(): Task {
   return newTask({
