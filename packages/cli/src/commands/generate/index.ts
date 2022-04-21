@@ -9,17 +9,23 @@ import { buildTemplateTask } from './tasks/buildTemplate'
 import { moveOutputTask } from './tasks/moveOutput'
 import type { TaskContext } from './task'
 import type { GenerationConfig } from './config'
+import { warnVersion } from './tasks/warnVersion'
+import { loadTemplateConfiguration } from './tasks/loadTemplateConfig'
+import { loadGraphQLSchema } from './tasks/loadGraphqlSchema'
 
 export default async function generate(config: GenerationConfig) {
   const listr = new Listr<TaskContext>(
     [
+      warnVersion(config),
       determineTmpDirectoryTask(config),
       cleanTask(config),
       selectNpmRunnerTask(),
       fetchTemplateTask(config),
       unzipTemplateTask(),
+      loadTemplateConfiguration(),
+      loadGraphQLSchema(config),
       installDependenciesTask(),
-      buildTemplateTask(),
+      buildTemplateTask(config),
       moveOutputTask(config),
     ],
     {

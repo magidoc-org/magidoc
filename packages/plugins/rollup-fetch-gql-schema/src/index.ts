@@ -1,4 +1,4 @@
-import type { Plugin, PluginContext } from 'rollup'
+import type { Plugin } from 'rollup'
 import queryGraphQLSchema, { Method } from './schema/query.js'
 import { writeFileSync } from 'fs'
 
@@ -32,23 +32,23 @@ export type PluginOptions = {
   target?: string
 }
 
+export async function fetchSchema(options: PluginOptions) {
+  const schema = await queryGraphQLSchema(options.url, {
+    method: options.method,
+    headers: options.headers,
+  })
+
+  const output = options.target || 'src/_schema.json'
+
+  writeFileSync(output, JSON.stringify(schema))
+}
+
 export default function fetchGraphQLSchema(options: PluginOptions): Plugin {
-  async function setSchema(this: PluginContext) {
-    const schema = await queryGraphQLSchema(options.url, {
-      method: options.method,
-      headers: options.headers,
-    })
-
-    const output = options.target || 'src/_schema.json'
-
-    writeFileSync(output, JSON.stringify(schema))
-  }
-
   return {
     name: 'fetch-graphql-schema',
 
     buildStart: async function () {
-      await setSchema.bind(this)()
+      await fetchSchema(options)
     },
   }
 }

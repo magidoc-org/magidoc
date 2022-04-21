@@ -18,9 +18,9 @@ export default function buildGenerateCommand(program: Command) {
     )
     .addOption(
       new Option(
-        '-f|--file <magidoc.yml>',
-        'The magidoc.yml configuration file location',
-      ).default('./magidoc.yml'),
+        '-f|--file <magidoc.js>',
+        'The magidoc.js configuration file location',
+      ).default('./magidoc.js'),
     )
     .addOption(
       new Option(
@@ -35,7 +35,7 @@ export default function buildGenerateCommand(program: Command) {
       ).default(false),
     )
     .action(async ({ file, stacktrace, clean }: GenerateCommandOptions) => {
-      const fileConfiguration = loadFileConfiguration(file)
+      const fileConfiguration = await loadFileConfiguration(file)
       if (!fileConfiguration) {
         process.exitCode = 1
         return
@@ -47,16 +47,10 @@ export default function buildGenerateCommand(program: Command) {
           templateVersion: fileConfiguration.website.templateVersion,
           output: path.resolve(fileConfiguration.website.output),
           clean,
+          options: fileConfiguration.website.options,
           fetchConfig: {
             url: fileConfiguration.introspection.url,
-            headers: Object.keys(
-              fileConfiguration.introspection.headers || {},
-            ).map((header) => {
-              return {
-                name: header,
-                value: (fileConfiguration.introspection.headers || {})[header],
-              }
-            }),
+            headers: fileConfiguration.introspection.headers || {},
             method: fileConfiguration.introspection.method,
           },
         })
@@ -75,9 +69,11 @@ export default function buildGenerateCommand(program: Command) {
     })
 }
 
-function loadFileConfiguration(configPath: string): FileConfiguration | null {
+async function loadFileConfiguration(
+  configPath: string,
+): Promise<FileConfiguration | null> {
   try {
-    return readConfiguration(configPath)
+    return await readConfiguration(path.resolve(configPath))
   } catch (error) {
     if (error instanceof Error) {
       console.log(error.message)

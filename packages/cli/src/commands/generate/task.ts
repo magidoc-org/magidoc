@@ -1,3 +1,4 @@
+import type { Variable } from '@magidoc/plugin-starter-variables/build/variable'
 import type {
   ListrContext,
   ListrDefaultRenderer,
@@ -11,6 +12,12 @@ export type TaskContext = {
   tmpArchive: TmpLocation
   tmpDirectory: TmpLocation
   npmRunner: NpmRunner
+  templateConfiguration: TemplateConfiguration
+}
+
+export type TemplateConfiguration = {
+  supportedOptions: Variable<unknown>[]
+  schemaTargetLocation: string
 }
 
 export function newTask({
