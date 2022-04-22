@@ -1,4 +1,3 @@
-import { Listr } from 'listr2'
 import { clean as cleanTask } from './tasks/clean'
 import { determineTmpDirectoryTask } from './tasks/determineTmpDir'
 import { selectNpmRunnerTask } from './tasks/selectNpmRunner'
@@ -7,34 +6,24 @@ import { unzipTemplateTask } from './tasks/unzipTemplate'
 import { installDependenciesTask } from './tasks/installDependencies'
 import { buildTemplateTask } from './tasks/buildTemplate'
 import { moveOutputTask } from './tasks/moveOutput'
-import type { TaskContext } from './task'
 import type { GenerationConfig } from './config'
 import { warnVersion } from './tasks/warnVersion'
 import { loadTemplateConfiguration } from './tasks/loadTemplateConfig'
 import { loadGraphQLSchema } from './tasks/loadGraphqlSchema'
+import { executeAllTasks } from '../../tasks'
 
 export default async function generate(config: GenerationConfig) {
-  const listr = new Listr<TaskContext>(
-    [
-      warnVersion(config),
-      determineTmpDirectoryTask(config),
-      cleanTask(config),
-      selectNpmRunnerTask(),
-      fetchTemplateTask(config),
-      unzipTemplateTask(),
-      installDependenciesTask(),
-      loadTemplateConfiguration(),
-      loadGraphQLSchema(config),
-      buildTemplateTask(config),
-      moveOutputTask(config),
-    ],
-    {
-      exitOnError: true,
-      rendererOptions: {
-        showTimer: true,
-      },
-    },
-  )
-
-  await listr.run()
+  await executeAllTasks([
+    warnVersion(config),
+    determineTmpDirectoryTask(config),
+    cleanTask(config),
+    selectNpmRunnerTask(),
+    fetchTemplateTask(config),
+    unzipTemplateTask(),
+    installDependenciesTask(),
+    loadTemplateConfiguration(),
+    loadGraphQLSchema(config),
+    buildTemplateTask(config),
+    moveOutputTask(config),
+  ])
 }

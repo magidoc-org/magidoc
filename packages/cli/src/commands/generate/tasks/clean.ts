@@ -1,7 +1,7 @@
 import type { GenerationConfig } from '../config'
-import { newTask, Task } from '../task'
+import { newTask, GenerateTask } from '../task'
 
-export function clean(config: GenerationConfig): Task {
+export function clean(config: GenerationConfig): GenerateTask {
   return newTask({
     title: 'Clean',
     enabled: config.clean,

@@ -1,8 +1,8 @@
 import { Command, Option } from 'commander'
 import generate from '.'
 import path from 'path'
-import type { FileConfiguration } from './config/types'
-import { readConfiguration } from './config/read'
+import { loadFileConfiguration } from '../utils/loadConfigFile'
+import { withStacktrace } from '../utils/withStacktrace'
 
 type GenerateCommandOptions = {
   file: string
@@ -41,7 +41,7 @@ export default function buildGenerateCommand(program: Command) {
         return
       }
 
-      try {
+      await withStacktrace(stacktrace, async () => {
         await generate({
           template: fileConfiguration.website.template,
           templateVersion: fileConfiguration.website.templateVersion,
@@ -54,33 +54,6 @@ export default function buildGenerateCommand(program: Command) {
             method: fileConfiguration.introspection.method,
           },
         })
-      } catch (error) {
-        process.exitCode = 2
-
-        if (stacktrace) {
-          console.log()
-          console.log('------- Stacktrace -------')
-          console.log(error)
-        } else {
-          console.log()
-          console.log('For a more detailed output, run with --stacktrace')
-        }
-      }
+      })
     })
-}
-
-async function loadFileConfiguration(
-  configPath: string,
-): Promise<FileConfiguration | null> {
-  try {
-    return await readConfiguration(path.resolve(configPath))
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log(error.message)
-    } else {
-      console.log(error)
-    }
-
-    return null
-  }
 }

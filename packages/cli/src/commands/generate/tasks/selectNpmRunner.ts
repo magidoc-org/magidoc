@@ -1,7 +1,7 @@
-import { newTask, Task } from '../task'
+import { newTask, GenerateTask } from '../task'
 import { selectNpmRunner } from '../../../npm/runner'
 
-export function selectNpmRunnerTask(): Task {
+export function selectNpmRunnerTask(): GenerateTask {
   return newTask({
     title: 'Select NPM runner',
     executor: async (ctx, task) => {

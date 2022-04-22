@@ -1,8 +1,8 @@
 import { magidoc } from '@magidoc/plugin-starter-variables'
 import type { GenerationConfig } from '../config'
-import { newTask, Task, TaskContext } from '../task'
+import { newTask, GenerateTask, GenerateTaskContext } from '../task'
 
-export function buildTemplateTask(config: GenerationConfig): Task {
+export function buildTemplateTask(config: GenerationConfig): GenerateTask {
   return newTask({
     title: `Build template`,
     executor: async (ctx) => {
@@ -15,7 +15,7 @@ export function buildTemplateTask(config: GenerationConfig): Task {
 }
 
 function buildEnv(
-  ctx: TaskContext,
+  ctx: GenerateTaskContext,
   config: GenerationConfig,
 ): Record<string, string> {
   const newRecord: Record<string, string> = {}

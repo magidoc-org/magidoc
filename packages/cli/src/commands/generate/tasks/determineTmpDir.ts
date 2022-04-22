@@ -3,9 +3,11 @@ import {
   tmpTemplateDirectory,
 } from '../../../template/tmp'
 import type { GenerationConfig } from '../config'
-import { newTask, Task } from '../task'
+import { newTask, GenerateTask } from '../task'
 
-export function determineTmpDirectoryTask(config: GenerationConfig): Task {
+export function determineTmpDirectoryTask(
+  config: GenerationConfig,
+): GenerateTask {
   return newTask({
     title: 'Determine tmp directories',
     executor: (ctx) => {

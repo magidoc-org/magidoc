@@ -1,6 +1,6 @@
-import { newTask, Task } from '../task'
+import { newTask, GenerateTask } from '../task'
 
-export function installDependenciesTask(): Task {
+export function installDependenciesTask(): GenerateTask {
   return newTask({
     title: `Install dependencies`,
     executor: async (ctx) => {

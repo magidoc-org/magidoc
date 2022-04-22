@@ -4,7 +4,9 @@ import { promisify } from 'util'
 
 const execPromise = promisify(exec)
 
-export type RunnerType = 'pnpm' | 'yarn' | 'npm'
+export const RUNNER_TYPES = ['pnpm', 'yarn', 'npm'] as const
+
+export type RunnerType = typeof RUNNER_TYPES[number]
 
 export type CommandConfiguration = {
   cwd: string
@@ -21,20 +23,39 @@ export type NpmRunner = {
 
 export async function selectNpmRunner(): Promise<NpmRunner> {
   if (await isRunnerAvailable('pnpm')) {
-    return createRunner({ type: 'pnpm' })
+    return createPnpn()
   }
 
   if (await isRunnerAvailable('yarn')) {
-    return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
+    return createYarn()
   }
 
   if (await isRunnerAvailable('npm')) {
-    return createRunner({ type: 'npm' })
+    return createNpm()
   }
 
   throw new Error(
-    'No NPM runner was found among on of the following: [pnpm, yarn, npm]. Make sure that one of these is installed.',
+    `No NPM runner was found among on of the following: ${RUNNER_TYPES.toString()}. Make sure that one of these is installed.`,
   )
+}
+
+export function getRunner(type: RunnerType) {
+  if (type === 'pnpm') return createPnpn()
+  if (type === 'yarn') return createYarn()
+  if (type === 'npm') return createNpm()
+  throw new Error(`Unknown NPM Runner ${type as string}.`)
+}
+
+function createPnpn(): NpmRunner {
+  return createRunner({ type: 'pnpm' })
+}
+
+function createYarn(): NpmRunner {
+  return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
+}
+
+function createNpm(): NpmRunner {
+  return createRunner({ type: 'npm' })
 }
 
 function createRunner({
@@ -93,7 +114,7 @@ async function runNodeCommand(
   }
 }
 
-async function isRunnerAvailable(type: RunnerType): Promise<boolean> {
+export async function isRunnerAvailable(type: RunnerType): Promise<boolean> {
   try {
     await execPromise(`${type} --version`)
     return true

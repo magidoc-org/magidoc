@@ -6,7 +6,7 @@ module.exports = {
   plugins: ['svelte3', '@typescript-eslint'],
   parserOptions: {
     project: ['packages/**/tsconfig.json'],
-    extraFileExtensions: ['.svelte'],
+    extraFileExtensions: ['.svelte', '.cjs', '.mjs'],
   },
   overrides: [
     {
@@ -24,7 +24,7 @@ module.exports = {
     '**/.svelte-kit',
     '**/.vscode',
     '**/coverage',
-    '**/svelte.config.js'
+    '**/svelte.config.js',
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',
