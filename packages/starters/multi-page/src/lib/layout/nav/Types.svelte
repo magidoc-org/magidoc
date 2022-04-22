@@ -26,7 +26,6 @@
     ),
     (item) => item.name,
   )
-
 </script>
 
 {#if types.length > 0}
@@ -38,10 +37,5 @@
         class={type.deprecated ? 'deprecated' : ''}
       />
     {/each}
-    <SelectableNavMenuItem
-    href={'/wow'}
-    text={'Quesse'}
-    class={''}
-  />
   </SideNavMenu>
 {/if}
