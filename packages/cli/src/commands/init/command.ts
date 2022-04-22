@@ -4,7 +4,10 @@ import { AVAILABLE_TEMPLATES, Template } from '../../template'
 import { getVersion } from '../../version'
 import path from 'path'
 import { withStacktrace } from '../utils/withStacktrace'
-import { PackageManagerType, PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
+import {
+  PackageManagerType,
+  PACKAGE_MANAGER_TYPES,
+} from '../../node/packageManager'
 
 type InitCommandOptions = {
   template: Template
