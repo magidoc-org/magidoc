@@ -6,7 +6,7 @@ export function buildTemplateTask(config: GenerationConfig): GenerateTask {
   return newTask({
     title: `Build template`,
     executor: async (ctx) => {
-      await ctx.npmRunner.buildProject({
+      await ctx.packageManager.buildProject({
         cwd: ctx.tmpDirectory.path,
         env: buildEnv(ctx, config),
       })

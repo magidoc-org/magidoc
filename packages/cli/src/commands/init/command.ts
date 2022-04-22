@@ -4,12 +4,12 @@ import { AVAILABLE_TEMPLATES, Template } from '../../template'
 import { getVersion } from '../../version'
 import path from 'path'
 import { withStacktrace } from '../utils/withStacktrace'
-import { RunnerType, RUNNER_TYPES } from '../../npm/runner'
+import { PackageManagerType, PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
 
 type InitCommandOptions = {
   template: Template
   templateVersion: string
-  runnerType: RunnerType
+  runnerType: PackageManagerType
   destination: string
   stacktrace: boolean
 }
@@ -42,10 +42,10 @@ export default function buildInitCommand(program: Command) {
     .addOption(
       new Option(
         '-r|--runner-type <type>',
-        'Selects a different NPM Runner. Pnpm is the recommended default.',
+        'Selects a different Package Manager. Pnpm is the recommended default.',
       )
         .default('pnpm')
-        .choices(RUNNER_TYPES),
+        .choices(PACKAGE_MANAGER_TYPES),
     )
     .addOption(
       new Option(
@@ -63,7 +63,7 @@ export default function buildInitCommand(program: Command) {
       }: InitCommandOptions) => {
         await withStacktrace(stacktrace, async () => {
           await init({
-            runnerType,
+            packageManagerType: runnerType,
             template,
             templateVersion,
             destination: path.resolve(destination),

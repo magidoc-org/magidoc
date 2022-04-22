@@ -1,6 +1,6 @@
 import { clean as cleanTask } from './tasks/clean'
 import { determineTmpDirectoryTask } from './tasks/determineTmpDir'
-import { selectNpmRunnerTask } from './tasks/selectNpmRunner'
+import { selectPackageManagerTask } from './tasks/selectPackageManager'
 import { fetchTemplateTask } from './tasks/fetchTemplate'
 import { unzipTemplateTask } from './tasks/unzipTemplate'
 import { installDependenciesTask } from './tasks/installDependencies'
@@ -17,7 +17,7 @@ export default async function generate(config: GenerationConfig) {
     warnVersion(config),
     determineTmpDirectoryTask(config),
     cleanTask(config),
-    selectNpmRunnerTask(),
+    selectPackageManagerTask(),
     fetchTemplateTask(config),
     unzipTemplateTask(),
     installDependenciesTask(),

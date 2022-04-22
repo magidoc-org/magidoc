@@ -1,6 +1,6 @@
 import type { Variable } from '@magidoc/plugin-starter-variables'
 
-import type { NpmRunner } from '../../npm/runner'
+import type { PackageManager } from '../../node/packageManager'
 import { newTask as buildNewTask } from '../../tasks'
 import type { Task, TaskExecutor, TaskParams } from '../../tasks'
 import type { TmpLocation } from '../../template/tmp'
@@ -8,8 +8,8 @@ import type { TmpLocation } from '../../template/tmp'
 export type GenerateTaskContext = {
   tmpArchive: TmpLocation
   tmpDirectory: TmpLocation
-  npmRunner: NpmRunner
   templateConfiguration: TemplateConfiguration
+  packageManager: PackageManager
 }
 
 export type TemplateConfiguration = {
