@@ -18,9 +18,9 @@ export default function buildGenerateCommand(program: Command) {
     )
     .addOption(
       new Option(
-        '-f|--file <magidoc.js>',
-        'The magidoc.js configuration file location',
-      ).default('./magidoc.js'),
+        '-f|--file <file.js|file.mjs|file.cjs>',
+        'The magidoc configuration file location. By default, Magidoc looks for an ESModule Javascript file (mjs), but cjs is supported as well.',
+      ).default('./magidoc.mjs'),
     )
     .addOption(
       new Option(

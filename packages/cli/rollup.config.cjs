@@ -20,6 +20,7 @@ module.exports = defineConfig({
     'path',
     'js-yaml',
     'zod',
+    'url',
   ],
   output: {
     dir: 'build',

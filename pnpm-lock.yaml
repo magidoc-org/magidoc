@@ -30,8 +30,8 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^0.7.2
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.7.2
+      '@magidoc/plugin-starter-variables': workspace:^0.7.3
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.7.3
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.4.1
@@ -71,7 +71,7 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.7.2
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.7.3
       '@sveltejs/adapter-static': ^1.0.0-next.29
       '@sveltejs/kit': ^1.0.0-next.318
       carbon-components-svelte: ^0.63.1
@@ -250,10 +250,10 @@ importers:
 
   packages/starters/multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^0.7.2
-      '@magidoc/plugin-starter-variables': workspace:^0.7.2
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.7.2
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.7.2
+      '@magidoc/plugin-query-generator': workspace:^0.7.3
+      '@magidoc/plugin-starter-variables': workspace:^0.7.3
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.7.3
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.7.3
       '@sveltejs/adapter-static': ^1.0.0-next.29
       '@sveltejs/kit': ^1.0.0-next.318
       '@types/lodash': ^4.14.182
