@@ -3,9 +3,9 @@
 </script>
 
 {#if typeof value == 'string'}
-  "{value}"
+  <code>"{value}"</code>
 {:else if typeof value === 'object'}
-  {JSON.stringify(value, null, 2)}
+  <code>{JSON.stringify(value, null, 2)}</code>
 {:else}
-  {value ?? '-'}
+  <code>{value ?? '-'}</code>
 {/if}

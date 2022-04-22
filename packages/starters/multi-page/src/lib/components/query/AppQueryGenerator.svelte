@@ -21,14 +21,14 @@
   <svelte:fragment slot="content">
     <TabContent style="padding:0">
       {#if selectedTab === 0}
-        <AppPrism code={$graphqlQuery?.query ?? ''} language={'graphql'} />
+        <AppPrism code={$graphqlQuery.value?.query ?? '# No query generated. Try increasing the depth'} language={'graphql'} />
       {/if}
     </TabContent>
     <TabContent style="padding:0">
       {#if selectedTab === 1}
         <AppPrism
-          code={$graphqlQuery?.variables
-            ? JSON.stringify($graphqlQuery?.variables || {}, null, 2)
+          code={$graphqlQuery.value?.variables
+            ? JSON.stringify($graphqlQuery.value?.variables || {}, null, 2)
             : ''}
           language={'json'}
         />

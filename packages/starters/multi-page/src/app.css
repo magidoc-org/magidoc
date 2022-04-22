@@ -16,6 +16,16 @@ h1 {
   z-index: 7000;
 }
 
+.bx--side-nav__item {
+  /* show all elements in the navbar */
+  overflow: visible !important;
+}
+
+.bx--side-nav__submenu[aria-expanded=false]+.bx--side-nav__menu {
+  /* Makes sure no scroll bar is present when menus are collapsed*/
+  display: none;
+}
+
 .bx--link {
   font-size: inherit !important;
 }

@@ -48,7 +48,7 @@
       on:click={() => graphqlQuery.increaseDepth()}
     />
     <p style="text-align:center">
-      {$graphqlQuery?.depth}
+      {$graphqlQuery.depth}
     </p>
     <Button
       kind={'ghost'}

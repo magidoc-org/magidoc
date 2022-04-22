@@ -11,36 +11,32 @@ const MAX_DEPTH = 8
 const MIN_DEPTH = 2
 const DEFAULT_DEPTH = 3
 
-export type GeneratedGraphQLQuery = GraphQLQuery & {
+export type GeneratedGraphQLQuery = {
+  value: GraphQLQuery | null
   type: QueryType
   field: GraphQLField<unknown, unknown, unknown>
   depth: number
 }
 
-const currentQuery: Writable<GeneratedGraphQLQuery | null> = writable()
+const currentQuery: Writable<GeneratedGraphQLQuery> = writable()
 
 const generateQuery = (expected: {
   field: GraphQLField<unknown, unknown, unknown>
   type: QueryType
   depth: number
-}): GeneratedGraphQLQuery | null => {
+}): GeneratedGraphQLQuery => {
   const result = generateGraphQLQuery(expected.field, {
     queryType: expected.type,
     maxDepth: expected.depth,
     nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
   })
 
-  if (result) {
-    return {
-      depth: expected.depth,
-      query: result.query,
-      variables: result.variables,
-      field: expected.field,
-      type: expected.type,
-    }
+  return {
+    value: result ?? null,
+    depth: expected.depth,
+    field: expected.field,
+    type: expected.type,
   }
-
-  return null
 }
 
 export const graphqlQuery = {
