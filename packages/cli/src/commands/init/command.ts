@@ -24,7 +24,9 @@ export default function buildInitCommand(program: Command) {
       new Option(
         '-t|--template <template>',
         'Specifies the template name to use.',
-      ).choices(AVAILABLE_TEMPLATES),
+      )
+        .choices(AVAILABLE_TEMPLATES)
+        .makeOptionMandatory(),
     )
     .addOption(
       new Option(
@@ -33,7 +35,7 @@ export default function buildInitCommand(program: Command) {
       ).default(getVersion()),
     )
     .option(
-      '-d|--destination [directory]',
+      '-d|--destination <directory>',
       'Specifies the destination directory of the project',
       './docs',
     )
@@ -53,6 +55,7 @@ export default function buildInitCommand(program: Command) {
     )
     .action(
       async ({
+        runnerType,
         template,
         templateVersion,
         destination,
@@ -60,6 +63,7 @@ export default function buildInitCommand(program: Command) {
       }: InitCommandOptions) => {
         await withStacktrace(stacktrace, async () => {
           await init({
+            runnerType,
             template,
             templateVersion,
             destination: path.resolve(destination),
