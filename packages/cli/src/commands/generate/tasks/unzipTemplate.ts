@@ -1,7 +1,7 @@
-import { newTask, Task } from '../task'
+import { newTask, GenerateTask } from '../task'
 import { unzipTemplate } from '../../../template/unzip'
 
-export function unzipTemplateTask(): Task {
+export function unzipTemplateTask(): GenerateTask {
   return newTask({
     title: `Unzip template`,
     executor: async (ctx, task) => {

@@ -4,46 +4,67 @@ import { promisify } from 'util'
 
 const execPromise = promisify(exec)
 
-export type RunnerType = 'pnpm' | 'yarn' | 'npm'
+export const PACKAGE_MANAGER_TYPES = ['pnpm', 'yarn', 'npm'] as const
+
+export type PackageManagerType = typeof PACKAGE_MANAGER_TYPES[number]
 
 export type CommandConfiguration = {
   cwd: string
   env?: Record<string, string>
 }
 
-export type NpmRunner = {
-  type: RunnerType
+export type PackageManager = {
+  type: PackageManagerType
 
   runInstall: (config: CommandConfiguration) => Promise<void>
 
   buildProject: (config: CommandConfiguration) => Promise<void>
 }
 
-export async function selectNpmRunner(): Promise<NpmRunner> {
-  if (await isRunnerAvailable('pnpm')) {
-    return createRunner({ type: 'pnpm' })
+export async function selectPackageManager(): Promise<PackageManager> {
+  if (await isPackageManagerAvailable('pnpm')) {
+    return createPnpn()
   }
 
-  if (await isRunnerAvailable('yarn')) {
-    return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
+  if (await isPackageManagerAvailable('yarn')) {
+    return createYarn()
   }
 
-  if (await isRunnerAvailable('npm')) {
-    return createRunner({ type: 'npm' })
+  if (await isPackageManagerAvailable('npm')) {
+    return createNpm()
   }
 
   throw new Error(
-    'No NPM runner was found among on of the following: [pnpm, yarn, npm]. Make sure that one of these is installed.',
+    `No Package Manager runner was found among on of the following: ${PACKAGE_MANAGER_TYPES.toString()}. Make sure that one of these is installed.`,
   )
+}
+
+export function getPackageManager(type: PackageManagerType) {
+  if (type === 'pnpm') return createPnpn()
+  if (type === 'yarn') return createYarn()
+  if (type === 'npm') return createNpm()
+  throw new Error(`Unknown NPM Runner ${type as string}.`)
+}
+
+function createPnpn(): PackageManager {
+  return createRunner({ type: 'pnpm' })
+}
+
+function createYarn(): PackageManager {
+  return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
+}
+
+function createNpm(): PackageManager {
+  return createRunner({ type: 'npm' })
 }
 
 function createRunner({
   type,
   installArgs,
 }: {
-  type: RunnerType
+  type: PackageManagerType
   installArgs?: string
-}): NpmRunner {
+}): PackageManager {
   return {
     type,
     runInstall: (config: CommandConfiguration) =>
@@ -93,7 +114,9 @@ async function runNodeCommand(
   }
 }
 
-async function isRunnerAvailable(type: RunnerType): Promise<boolean> {
+export async function isPackageManagerAvailable(
+  type: PackageManagerType,
+): Promise<boolean> {
   try {
     await execPromise(`${type} --version`)
     return true

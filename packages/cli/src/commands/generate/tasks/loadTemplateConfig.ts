@@ -1,8 +1,8 @@
-import { newTask, Task } from '../task'
+import { newTask, GenerateTask } from '../task'
 import path from 'path'
 import type { Variable } from '@magidoc/plugin-starter-variables'
 
-export function loadTemplateConfiguration(): Task {
+export function loadTemplateConfiguration(): GenerateTask {
   return newTask({
     title: `Load template configuration`,
     executor: async (ctx, task) => {

@@ -1,8 +1,9 @@
-import { newTask, GenerateTask } from '../task'
 import fetchTemplate from '../../../template/fetch'
-import type { GenerationConfig } from '../config'
+import type { InitConfig } from '../config'
+import type { InitTask } from '../task'
+import { newTask } from '../task'
 
-export function fetchTemplateTask(config: GenerationConfig): GenerateTask {
+export function fetchTemplateTask(config: InitConfig): InitTask {
   return newTask({
     title: `Fetch template ${config.template}@${config.templateVersion}`,
     executor: async (ctx, task) => {
