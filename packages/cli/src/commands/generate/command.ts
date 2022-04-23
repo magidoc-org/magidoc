@@ -4,6 +4,7 @@ import path from 'path'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
 import chalk from 'chalk'
+import type { FileConfiguration } from './config/types'
 
 type GenerateCommandOptions = {
   file: string
@@ -57,28 +58,35 @@ export default function buildGenerateCommand(program: Command) {
             method: fileConfiguration.introspection.method,
           },
         })
+
+        printPostExecution(file, fileConfiguration)
       })
-
-      console.log()
-      console.log('-----------')
-      console.log()
-      console.log(
-        `Website generated at ${chalk.cyan(fileConfiguration.website.output)}`,
-      )
-      console.log()
-
-      if (file === DEFAULT_CONFIG_FILE) {
-        console.log(
-          `Run ${chalk.cyan('magidoc preview')} to preview you build locally.`,
-        )
-      } else {
-        console.log(
-          `Run ${chalk.cyan(
-            `magidoc preview --file ${file}`,
-          )} to preview your build locally.`,
-        )
-      }
-
-      console.log()
     })
+}
+
+function printPostExecution(
+  configFile: string,
+  fileConfiguration: FileConfiguration,
+) {
+  console.log()
+  console.log('-----------')
+  console.log()
+  console.log(
+    `Website generated at ${chalk.cyan(fileConfiguration.website.output)}`,
+  )
+  console.log()
+
+  if (configFile === DEFAULT_CONFIG_FILE) {
+    console.log(
+      `Run ${chalk.cyan('magidoc preview')} to preview you build locally.`,
+    )
+  } else {
+    console.log(
+      `Run ${chalk.cyan(
+        `magidoc preview --file ${configFile}`,
+      )} to preview your build locally.`,
+    )
+  }
+
+  console.log()
 }
