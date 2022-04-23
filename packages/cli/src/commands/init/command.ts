@@ -72,20 +72,20 @@ export default function buildInitCommand(program: Command) {
             templateVersion,
             destination: path.resolve(destination),
           })
+
+          console.log()
+          console.log('-----------')
+          console.log()
+
+          console.log(`Template ${chalk.cyan(template)} created.`)
+          console.log()
+          console.log(
+            `Run ${chalk.cyan(
+              `cd ${destination} && ${packageManager} run dev`,
+            )} and start editing!`,
+          )
+          console.log()
         })
-
-        console.log()
-        console.log('-----------')
-        console.log()
-
-        console.log(`Template ${chalk.cyan(template)} created.`)
-        console.log()
-        console.log(
-          `Run ${chalk.cyan(
-            `cd ${destination} && ${packageManager} run dev`,
-          )} and start editing!`,
-        )
-        console.log()
       },
     )
 }

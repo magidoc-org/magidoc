@@ -1,5 +1,4 @@
-import { exec } from 'child_process'
-import type { SpawnSyncReturns } from 'child_process'
+import { spawn, exec } from 'child_process'
 import { promisify } from 'util'
 
 const execPromise = promisify(exec)
@@ -51,7 +50,7 @@ function createPnpn(): PackageManager {
 }
 
 function createYarn(): PackageManager {
-  return createRunner({ type: 'yarn', installArgs: '--non-interactive' })
+  return createRunner({ type: 'yarn', installArgs: ['--non-interactive'] })
 }
 
 function createNpm(): PackageManager {
@@ -63,55 +62,51 @@ function createRunner({
   installArgs,
 }: {
   type: PackageManagerType
-  installArgs?: string
+  installArgs?: string[]
 }): PackageManager {
   return {
     type,
     runInstall: (config: CommandConfiguration) =>
-      runNodeCommand(`${type} install ${installArgs ?? ''}`, config),
+      runNodeCommand(type, ['install', ...(installArgs || [])], config),
     buildProject: (config: CommandConfiguration) =>
-      runNodeCommand(`${type} run build`, config),
+      runNodeCommand(type, ['run', 'build'], config),
   }
 }
 
 async function runNodeCommand(
   command: string,
+  args: string[],
   config: CommandConfiguration,
 ): Promise<void> {
-  try {
-    await execPromise(command, {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, {
       cwd: config.cwd,
       env: {
         ...process.env,
         ...config.env,
       },
     })
-  } catch (error: unknown) {
-    const record = error as Record<string, unknown>
 
-    // https://nodejs.org/api/child_process.html#child_processexecsynccommand-options
-    if (record['stdout']) {
-      const spawnError = error as SpawnSyncReturns<Buffer>
-      const lines = spawnError.stdout.toString().split('\n')
+    let output = ''
+    child.stdout.on('data', (chunk) => (output += String(chunk)))
+    child.stderr.on('data', (chunk) => (output += String(chunk)))
 
-      throw new Error(
-        `Command '${command}' failed with status ${
-          spawnError.status?.toString() || 'unknown'
-        } when executed in directory ${
-          config.cwd
-        }\n\n---- Program Output----\n${lines.join('\n')}`,
-      )
-    } else if (error instanceof Error) {
-      throw new Error(
-        `Command '${command}' failed with an unknown error when ran in director ${config.cwd}: ${error.message}`,
-        error,
-      )
-    } else {
-      throw new Error(
-        `Command failed with unknown error: ${JSON.stringify(error)}`,
-      )
-    }
-  }
+    child.on('exit', (code) => {
+      if (code === 0) {
+        resolve()
+      } else {
+        reject(
+          new Error(
+            `Command '${command}' failed with status ${
+              code?.toString() || 'unknown'
+            } when executed in directory ${
+              config.cwd
+            }\n\n---- Program Output----\n${output}`,
+          ),
+        )
+      }
+    })
+  })
 }
 
 export async function isPackageManagerAvailable(

@@ -91,7 +91,6 @@ export function createPages(
 
   function parseName(name: string): { ordinal: number; name: string } {
     const parts = name.split('.')
-
     return {
       ordinal: Number.parseInt(parts[0]),
       name: parts[1]
@@ -103,7 +102,7 @@ export function createPages(
 
   targets.forEach(({ path, contentFetcher: contentFetcher }) => {
     const pathRegex = new RegExp(
-      `^(?:..\/)*(?:lib\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-]+\.md)$`,
+      `^(?:..\/)*(?:lib\/)(?:${PAGES_FOLDER}\/)(?:([0-9]+.[a-zA-Z0-9-]+)\/)*([0-9]+\.[a-zA-Z0-9-\()]+\.md)$`,
       'g',
     )
 

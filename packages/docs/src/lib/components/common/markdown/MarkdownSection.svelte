@@ -10,6 +10,9 @@
   import MarkdownTableRow from './table/MarkdownTableRow.svelte'
   import MarkdownTableCell from './table/MarkdownTableCell.svelte'
   import MarkdownHeading from './MarkdownHeading.svelte'
+  import MarkdownList from './list/MarkdownList.svelte'
+  import MarkdownListItem from './list/MarkdownListItem.svelte'
+  import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
 
   export let source: string
 </script>
@@ -27,5 +30,8 @@
     tablerow: MarkdownTableRow,
     tablecell: MarkdownTableCell,
     heading: MarkdownHeading,
+    list: MarkdownList,
+    listitem: MarkdownListItem,
+    codespan: MarkdownCodeSpan,
   }}
 />
