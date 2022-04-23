@@ -2,11 +2,15 @@ import { newTask, GenerateTask } from '../task'
 import path from 'path'
 import type { Variable } from '@magidoc/plugin-starter-variables'
 
-export function loadTemplateConfiguration(): GenerateTask {
+export function templateConfigurationFile(templateDirectory: string): string {
+  return path.join(templateDirectory, 'magidoc.config.js')
+}
+
+export function loadTemplateConfigurationTask(): GenerateTask {
   return newTask({
     title: `Load template configuration`,
     executor: async (ctx, task) => {
-      const configPath = path.join(ctx.tmpDirectory.path, 'magidoc.config.js')
+      const configPath = templateConfigurationFile(ctx.tmpDirectory.path)
 
       const config = (await import(configPath)) as {
         SUPPORTED_OPTIONS?: Variable<unknown>[]

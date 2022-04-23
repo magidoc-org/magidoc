@@ -2,7 +2,7 @@ import type { GenerationConfig } from '../config'
 import { fetchSchema } from '@magidoc/rollup-plugin-fetch-gql-schema'
 import { newTask, GenerateTask } from '../task'
 
-export function loadGraphQLSchema(config: GenerationConfig): GenerateTask {
+export function loadGraphQLSchemaTask(config: GenerationConfig): GenerateTask {
   return newTask({
     title: `Load GraphQL Schema`,
     executor: async (ctx) => {

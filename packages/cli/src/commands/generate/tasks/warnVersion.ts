@@ -2,7 +2,7 @@ import { newTask, GenerateTask } from '../task'
 import type { GenerationConfig } from '../config'
 import { getVersion } from '../../../version'
 
-export function warnVersion(config: GenerationConfig): GenerateTask {
+export function warnVersionTask(config: GenerationConfig): GenerateTask {
   return newTask({
     title: `Template version warning`,
     enabled: config.templateVersion !== getVersion(),

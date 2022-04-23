@@ -34,7 +34,7 @@ export type TaskExecutor<T> = (
 
 export type Task<T> = ListrTask<T, ListrDefaultRenderer>
 
-export async function executeAllTasks<T>(tasks: Task<T>[]): Promise<void> {
+export async function executeAllTasks<T>(tasks: Task<T>[]): Promise<T> {
   const listr = new Listr<T>(tasks, {
     exitOnError: true,
     rendererOptions: {
@@ -42,5 +42,5 @@ export async function executeAllTasks<T>(tasks: Task<T>[]): Promise<void> {
     },
   })
 
-  await listr.run()
+  return await listr.run()
 }
