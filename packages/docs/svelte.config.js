@@ -17,7 +17,6 @@ export default {
     },
     paths: {
 			base: dev ? '' : '/magidoc',
-			base: dev ? '' : '/magidoc',
 		},
     vite: {
       plugins: [
