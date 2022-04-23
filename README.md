@@ -5,5 +5,6 @@
 
 # Magidoc
 Fast and highly customizable static documentation generator for GraphQL APIs. 
+
 ## Documentation 
 [Read the docs!](https://magidoc-org.github.io/magidoc)
