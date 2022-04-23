@@ -25,7 +25,6 @@ module.exports = {
     '**/.vscode',
     '**/coverage',
     '**/svelte.config.js',
-    './packages/cli/docs'
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',
