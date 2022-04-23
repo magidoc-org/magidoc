@@ -1,8 +1,14 @@
 <script lang="ts">
-  import 'carbon-components-svelte/css/all.css'
+  import 'carbon-components-svelte/css/g10.css'
   import { base } from '$app/paths'
 
-  import { Header, HeaderUtilities, Theme } from 'carbon-components-svelte'
+  import {
+    Header,
+    HeaderGlobalAction,
+    HeaderUtilities,
+    Theme,
+  } from 'carbon-components-svelte'
+  import LogoGithub from 'carbon-icons-svelte/lib/LogoGithub.svelte'
 
   export let isSideNavOpen = true
 </script>
@@ -18,6 +24,9 @@
 
   <HeaderUtilities>
     <Theme theme={'g10'} persist />
+    <a href="https://github.com/magidoc-org/magidoc" target="_blank">
+      <HeaderGlobalAction aria-label="Github" icon={LogoGithub} />
+    </a>
   </HeaderUtilities>
 </Header>
 

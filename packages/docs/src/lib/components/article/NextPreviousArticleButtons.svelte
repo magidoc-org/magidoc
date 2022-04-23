@@ -69,7 +69,7 @@
   }
 
   .direction {
-    font-weight: lighter;
+    font-weight: 400;
     font-size: 0.7rem;
   }
 </style>
