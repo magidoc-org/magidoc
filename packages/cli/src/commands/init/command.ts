@@ -12,10 +12,11 @@ import {
 type InitCommandOptions = {
   template: Template
   templateVersion: string
-  runnerType: PackageManagerType
+  packageManager: PackageManagerType
   destination: string
   stacktrace: boolean
 }
+import chalk from 'chalk'
 
 export default function buildInitCommand(program: Command) {
   program
@@ -44,7 +45,7 @@ export default function buildInitCommand(program: Command) {
     )
     .addOption(
       new Option(
-        '-r|--runner-type <type>',
+        '-p|--package-manager <type>',
         'Selects a different Package Manager. Pnpm is the recommended default.',
       )
         .default('pnpm')
@@ -58,7 +59,7 @@ export default function buildInitCommand(program: Command) {
     )
     .action(
       async ({
-        runnerType,
+        packageManager,
         template,
         templateVersion,
         destination,
@@ -66,12 +67,25 @@ export default function buildInitCommand(program: Command) {
       }: InitCommandOptions) => {
         await withStacktrace(stacktrace, async () => {
           await init({
-            packageManagerType: runnerType,
+            packageManagerType: packageManager,
             template,
             templateVersion,
             destination: path.resolve(destination),
           })
         })
+
+        console.log()
+        console.log('-----------')
+        console.log()
+
+        console.log(`Template ${chalk.cyan(template)} created.`)
+        console.log()
+        console.log(
+          `Run ${chalk.cyan(
+            `cd ${destination} && ${packageManager} run dev`,
+          )} and start editing!`,
+        )
+        console.log()
       },
     )
 }
