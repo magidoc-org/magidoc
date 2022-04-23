@@ -1,5 +1,5 @@
 var e=`---
-title: Rollup fetch GraphQL Schema plugin
+title: Rollup fetch GraphQL Schema
 since: 1.0.0
 tags: ['standalone', 'plugin', 'rollup', 'vite']
 ---

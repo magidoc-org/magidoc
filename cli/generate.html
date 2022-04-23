@@ -5,7 +5,7 @@
 		<meta name="description" content="Magidoc" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content=""><title>
-    Magidoc - PrismJS
+    Magidoc - Generate
   </title>
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/__layout.svelte-8dc4cd99.css">
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/_...page_.svelte-633cf6fe.css">
@@ -44,7 +44,7 @@
   <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/introduction/welcome" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Welcome</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/introduction/get-started" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Get Started</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Cli</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/magidoc-configuration" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Magidoc Configuration</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/generate" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Generate</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/init" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Init</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
+  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/magidoc-configuration" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Magidoc Configuration</span></a></li><li class="bx--side-nav__menu-item"><a aria-current="page" href="/magidoc/cli/generate" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Generate</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/init" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Init</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Templates</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
   <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/templates/carbon-multi-page" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Carbon Multi Page</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
@@ -53,78 +53,42 @@
   <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/graphql-query-generator" class="bx--side-nav__link"><span class="bx--side-nav__link-text">GraphQL Query Generator</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/rollup-fetch-graphql-schema" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Rollup Fetch GraphQL Schema</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Svelte Plugins</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/svelte-plugins/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a aria-current="page" href="/magidoc/svelte-plugins/prismjs" class="bx--side-nav__link"><span class="bx--side-nav__link-text">PrismJS</span></a></li></ul></li></ul></nav>
+  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/svelte-plugins/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/svelte-plugins/prismjs" class="bx--side-nav__link"><span class="bx--side-nav__link-text">PrismJS</span></a></li></ul></li></ul></nav>
 
   <main id="main-content" class="bx--content"><div class="bx--grid"><div class="bx--row"><div class="bx--col">
 
 
 
-<h1>PrismJS</h1>
+<h1>Command - Generate</h1>
 <div class="tags svelte-kyu9xc">
-<div id="ccs-0.03tomwzr177l" class="bx--tag              bx--tag--outline">
-    <span>Standalone
-    </span></div>
-<div id="ccs-0.0fa9lko8cf67" class="bx--tag              bx--tag--outline">
-    <span>Plugin
-    </span></div>
-<div id="ccs-0.azv9igxpnrr" class="bx--tag              bx--tag--outline">
-    <span>Svelte
-    </span></div>
 
   
-<div id="ccs-0.nwnn86db2on" class="bx--tag              bx--tag--outline">
-    <span>Since: 1.0.0</span></div>
 </div>
-<p class="md-paragraph svelte-1bchwpe">The PrismJS plugin is a Svelte plugin built with TypeScript that gives you to get syntax highlighting for displaying code inside the browser, using 
-<a href="https://www.npmjs.com/package/prismjs" class="bx--link     ">PrismJS
-    </a> under the hood.
-</p><h2 id="install" class="header svelte-rjdali"><span>Install</span>
-  
-</h2><p class="md-paragraph svelte-1bchwpe">PrismJS is required as a peer dependency so you can use the themes and languages provided. 
+<p class="md-paragraph svelte-1bchwpe">The generate command builds a static website using the <code class="code-span svelte-1292o4f">magidoc.mjs</code> configuration file as input. Available additional options can be listed with the following command. 
 </p><div class="prism--show-copy-button"><pre class="line-numbers language-bash"><code class="language-bash"></code></pre>
-</div><p class="md-paragraph svelte-1bchwpe">For ViteJS users or SvelteKit users, <code class="code-span svelte-1292o4f">prismjs</code> needs to be added to the <code class="code-span svelte-1292o4f">noExternal</code> dependencies. Here is an example for a <code class="code-span svelte-1292o4f">svelte.config.js</code>.
-</p><div class="prism--show-copy-button"><pre class="line-numbers language-javascript"><code class="language-javascript"></code></pre>
-</div><h2 id="usage" class="header svelte-rjdali"><span>Usage</span>
-  
-</h2><p class="md-paragraph svelte-1bchwpe">The plugin exposes attributes to provide the source and the language. Attributes to display line numbers and a copy button are also available.
-</p><div class="prism--show-copy-button"><pre class="line-numbers language-svelte"><code class="language-svelte"></code></pre>
-</div><h2 id="install-languages" class="header svelte-rjdali"><span>Install languages</span>
-  
-</h2><p class="md-paragraph svelte-1bchwpe">PrismJS supports a 
-<a href="https://prismjs.com/#supported-languages" class="bx--link     ">ton of languages
-    </a> out of the box. You can use any of these languages simply by importing the syntax highlighting. Most languages plugins will install themselves automatically, but PrismJS must be imported first.
-</p><div class="prism--show-copy-button"><pre class="line-numbers language-svelte"><code class="language-svelte"></code></pre>
-</div><h2 id="themes" class="header svelte-rjdali"><span>Themes</span>
-  
-</h2><p class="md-paragraph svelte-1bchwpe">You can modify Prism code sections style simply by importing a stylesheet. PrismJS provides many 
-<a href="https://github.com/PrismJS/prism/tree/master/themes" class="bx--link     ">themes
-    </a> out of the box that you can easily import. Otherwise, there is a wide variety of themes available on the web and even a 
-<a href="https://k88hudson.github.io/syntax-highlighting-theme-generator/www/" class="bx--link     ">theme generator
-    </a>. 
-</p><div class="prism--show-copy-button"><pre class="line-numbers language-svelte"><code class="language-svelte"></code></pre>
+</div><p class="md-paragraph svelte-1bchwpe">When your website is built successfully, the output can be previewed locally using the <code class="code-span svelte-1292o4f">preview</code> command. This command also uses the <code class="code-span svelte-1292o4f">magidoc.mjs</code> file. 
+</p><div class="prism--show-copy-button"><pre class="line-numbers language-bash"><code class="language-bash"></code></pre>
 </div>
-<div role="alert" kind="info" class="bx--inline-notification bx--inline-notification--low-contrast bx--inline-notification--hide-close-button  bx--inline-notification--info    "><div class="bx--inline-notification__details"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" role="img" class="bx--inline-notification__icon"><title>Closes notification</title><path fill="none" d="M16,8a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,8Zm4,13.875H17.125v-8H13v2.25h1.875v5.75H12v2.25h8Z" data-icon-path="inner-path"></path><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,6a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,8Zm4,16.125H12v-2.25h2.875v-5.75H13v-2.25h4.125v8H20Z"></path></svg>
-      <div class="bx--inline-notification__text-wrapper"><p class="bx--inline-notification__title"></p>
-        <div class="bx--inline-notification__subtitle"></div>
-        <p> This website uses the PrismJS plugin to display code. If you like the theme used, it is a slightly modified version of the OneDark theme and is available <a href="https://github.com/pelletier197/magidoc/blob/main/packages/docs/src/lib/components/common/markdown/prism-theme.css">here</a>.</p></div></div>
-    
-    </div>
 
 <div class="next-previous-buttons svelte-92ma9l"><div class="previous-next-button-container svelte-vklxlc"><div>
 
-  <a tabindex="0" href="/magidoc/svelte-plugins/introduction" class="bx--btn bx--btn--tertiary inverted">
+  <a tabindex="0" href="/magidoc/cli/magidoc-configuration" class="bx--btn bx--btn--tertiary inverted">
     <div><div class="direction svelte-vklxlc">Previous</div>
-          <div>Introduction</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"></path></svg></a></div>
+          <div>Magidoc Configuration</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"></path></svg></a></div>
 
-  
+  <div>
+
+  <a tabindex="0" href="/magidoc/cli/init" class="bx--btn bx--btn--tertiary">
+    <div><div class="direction svelte-vklxlc">Next</div>
+          <div style="text-overflow: ellipsis">Init</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></a></div>
 </div>
 </div></div></div></div></main></main>
 
 
-		<script type="module" data-hydrate="cugzfs">
+		<script type="module" data-hydrate="1obvt20">
 		import { start } from "/magidoc/_app/start-3b82f0c9.js";
 		start({
-			target: document.querySelector('[data-hydrate="cugzfs"]').parentNode,
+			target: document.querySelector('[data-hydrate="1obvt20"]').parentNode,
 			paths: {"base":"/magidoc","assets":"/magidoc"},
 			session: {},
 			route: true,
@@ -137,7 +101,7 @@
 					import("/magidoc/_app/pages/__layout.svelte-aa73e782.js"),
 						import("/magidoc/_app/pages/_...page_.svelte-baf4e9e8.js")
 				],
-				params: {page:"svelte-plugins\u002Fprismjs"},
+				params: {page:"cli\u002Fgenerate"},
 				routeId: "[...page]"
 			}
 		});

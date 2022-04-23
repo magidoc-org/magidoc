@@ -1,12 +1,12 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-c1658c53.js",
+    "file": "start-3b82f0c9.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
       "_index-035695ed.js",
-      "_index-5b0c7453.js",
-      "_preload-helper-f9a09824.js"
+      "_paths-71fbb276.js",
+      "_preload-helper-4330dcf9.js"
     ],
     "dynamicImports": [
       "src/routes/__layout.svelte",
@@ -16,27 +16,31 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-3471db46.js",
+    "file": "pages/__layout.svelte-aa73e782.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_preload-helper-f9a09824.js",
+      "_preload-helper-4330dcf9.js",
       "_index-035695ed.js",
-      "_pages-eb06eee3.js",
-      "_index-5b0c7453.js"
+      "_paths-71fbb276.js",
+      "_pages-d9c16d9a.js"
     ],
     "dynamicImports": [
       "src/lib/sections/01.introduction/01.Welcome.md",
       "src/lib/sections/01.introduction/02.Get-Started.md",
-      "src/lib/sections/02.plugins/01.Introduction.md",
-      "src/lib/sections/02.plugins/02.GraphQL-Query-Generator.md",
-      "src/lib/sections/02.plugins/03.Rollup-Fetch-GraphQL-Schema.md",
-      "src/lib/sections/03.svelte-plugins/01.Introduction.md",
-      "src/lib/sections/03.svelte-plugins/02.PrismJS.md"
+      "src/lib/sections/02.cli/01.Magidoc-configuration.md",
+      "src/lib/sections/02.cli/02.Generate.md",
+      "src/lib/sections/02.cli/03.Init.md",
+      "src/lib/sections/03.templates/01.Carbon-multi-page.md",
+      "src/lib/sections/04.plugins/01.Introduction.md",
+      "src/lib/sections/04.plugins/02.GraphQL-Query-Generator.md",
+      "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md",
+      "src/lib/sections/05.svelte-plugins/01.Introduction.md",
+      "src/lib/sections/05.svelte-plugins/02.PrismJS.md"
     ],
     "css": [
-      "assets/pages/__layout.svelte-64949658.css"
+      "assets/pages/__layout.svelte-8dc4cd99.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -49,17 +53,17 @@
     ]
   },
   "src/routes/[...page].svelte": {
-    "file": "pages/_...page_.svelte-5b350214.js",
+    "file": "pages/_...page_.svelte-baf4e9e8.js",
     "src": "src/routes/[...page].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-035695ed.js",
-      "_pages-eb06eee3.js",
-      "_index-5b0c7453.js"
+      "_pages-d9c16d9a.js",
+      "_paths-71fbb276.js"
     ],
     "css": [
-      "assets/pages/_...page_.svelte-1c6fa989.css"
+      "assets/pages/_...page_.svelte-633cf6fe.css"
     ]
   },
   "src/routes/index.svelte": {
@@ -74,54 +78,74 @@
   "_index-035695ed.js": {
     "file": "chunks/index-035695ed.js"
   },
-  "_index-5b0c7453.js": {
-    "file": "chunks/index-5b0c7453.js",
+  "_paths-71fbb276.js": {
+    "file": "chunks/paths-71fbb276.js",
     "imports": [
       "_index-035695ed.js"
     ]
   },
-  "_preload-helper-f9a09824.js": {
-    "file": "chunks/preload-helper-f9a09824.js"
+  "_preload-helper-4330dcf9.js": {
+    "file": "chunks/preload-helper-4330dcf9.js"
   },
-  "_pages-eb06eee3.js": {
-    "file": "chunks/pages-eb06eee3.js",
+  "_pages-d9c16d9a.js": {
+    "file": "chunks/pages-d9c16d9a.js",
     "imports": [
       "_index-035695ed.js"
     ]
   },
   "src/lib/sections/01.introduction/01.Welcome.md": {
-    "file": "chunks/01.Welcome-2a20788b.js",
+    "file": "chunks/01.Welcome-0020f918.js",
     "src": "src/lib/sections/01.introduction/01.Welcome.md",
     "isDynamicEntry": true
   },
   "src/lib/sections/01.introduction/02.Get-Started.md": {
-    "file": "chunks/02.Get-Started-66b3ed8c.js",
+    "file": "chunks/02.Get-Started-a10a2048.js",
     "src": "src/lib/sections/01.introduction/02.Get-Started.md",
     "isDynamicEntry": true
   },
-  "src/lib/sections/02.plugins/01.Introduction.md": {
-    "file": "chunks/01.Introduction-aef2d074.js",
-    "src": "src/lib/sections/02.plugins/01.Introduction.md",
+  "src/lib/sections/02.cli/01.Magidoc-configuration.md": {
+    "file": "chunks/01.Magidoc-configuration-3ef073c3.js",
+    "src": "src/lib/sections/02.cli/01.Magidoc-configuration.md",
     "isDynamicEntry": true
   },
-  "src/lib/sections/02.plugins/02.GraphQL-Query-Generator.md": {
-    "file": "chunks/02.GraphQL-Query-Generator-e21dbbea.js",
-    "src": "src/lib/sections/02.plugins/02.GraphQL-Query-Generator.md",
+  "src/lib/sections/02.cli/02.Generate.md": {
+    "file": "chunks/02.Generate-460a47e7.js",
+    "src": "src/lib/sections/02.cli/02.Generate.md",
     "isDynamicEntry": true
   },
-  "src/lib/sections/02.plugins/03.Rollup-Fetch-GraphQL-Schema.md": {
-    "file": "chunks/03.Rollup-Fetch-GraphQL-Schema-9573d4d2.js",
-    "src": "src/lib/sections/02.plugins/03.Rollup-Fetch-GraphQL-Schema.md",
+  "src/lib/sections/02.cli/03.Init.md": {
+    "file": "chunks/03.Init-6de75ac2.js",
+    "src": "src/lib/sections/02.cli/03.Init.md",
     "isDynamicEntry": true
   },
-  "src/lib/sections/03.svelte-plugins/01.Introduction.md": {
-    "file": "chunks/01.Introduction-7f1b2bd9.js",
-    "src": "src/lib/sections/03.svelte-plugins/01.Introduction.md",
+  "src/lib/sections/03.templates/01.Carbon-multi-page.md": {
+    "file": "chunks/01.Carbon-multi-page-a7541c9d.js",
+    "src": "src/lib/sections/03.templates/01.Carbon-multi-page.md",
     "isDynamicEntry": true
   },
-  "src/lib/sections/03.svelte-plugins/02.PrismJS.md": {
-    "file": "chunks/02.PrismJS-4ad8bc5b.js",
-    "src": "src/lib/sections/03.svelte-plugins/02.PrismJS.md",
+  "src/lib/sections/04.plugins/01.Introduction.md": {
+    "file": "chunks/01.Introduction-789b66b1.js",
+    "src": "src/lib/sections/04.plugins/01.Introduction.md",
+    "isDynamicEntry": true
+  },
+  "src/lib/sections/04.plugins/02.GraphQL-Query-Generator.md": {
+    "file": "chunks/02.GraphQL-Query-Generator-cb5521af.js",
+    "src": "src/lib/sections/04.plugins/02.GraphQL-Query-Generator.md",
+    "isDynamicEntry": true
+  },
+  "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md": {
+    "file": "chunks/03.Rollup-Fetch-GraphQL-Schema-7119d5a1.js",
+    "src": "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md",
+    "isDynamicEntry": true
+  },
+  "src/lib/sections/05.svelte-plugins/01.Introduction.md": {
+    "file": "chunks/01.Introduction-841879e5.js",
+    "src": "src/lib/sections/05.svelte-plugins/01.Introduction.md",
+    "isDynamicEntry": true
+  },
+  "src/lib/sections/05.svelte-plugins/02.PrismJS.md": {
+    "file": "chunks/02.PrismJS-480c5e2a.js",
+    "src": "src/lib/sections/05.svelte-plugins/02.PrismJS.md",
     "isDynamicEntry": true
   }
 }
