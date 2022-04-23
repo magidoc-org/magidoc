@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-starter-variables",
   "description": "A shared library that contains common Magidoc starter environment variables keys.",
   "private": false,
-  "version": "0.7.3",
+  "version": "0.8.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
