@@ -3,12 +3,15 @@ import generate from '.'
 import path from 'path'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
+import chalk from 'chalk'
 
 type GenerateCommandOptions = {
   file: string
   stacktrace: boolean
   clean: boolean
 }
+
+export const DEFAULT_CONFIG_FILE = './magidoc.mjs'
 
 export default function buildGenerateCommand(program: Command) {
   program
@@ -20,7 +23,7 @@ export default function buildGenerateCommand(program: Command) {
       new Option(
         '-f|--file <file.js|file.mjs|file.cjs>',
         'The magidoc configuration file location. By default, Magidoc looks for an ESModule Javascript file (mjs), but cjs is supported as well.',
-      ).default('./magidoc.mjs'),
+      ).default(DEFAULT_CONFIG_FILE),
     )
     .addOption(
       new Option(
@@ -55,5 +58,27 @@ export default function buildGenerateCommand(program: Command) {
           },
         })
       })
+
+      console.log()
+      console.log('-----------')
+      console.log()
+      console.log(
+        `Website generated at ${chalk.cyan(fileConfiguration.website.output)}`,
+      )
+      console.log()
+
+      if (file === DEFAULT_CONFIG_FILE) {
+        console.log(
+          `Run ${chalk.cyan('magidoc preview')} to preview you build locally.`,
+        )
+      } else {
+        console.log(
+          `Run ${chalk.cyan(
+            `magidoc preview --file ${file}`,
+          )} to preview your build locally.`,
+        )
+      }
+
+      console.log()
     })
 }
