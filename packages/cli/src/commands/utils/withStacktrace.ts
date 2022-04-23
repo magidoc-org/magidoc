@@ -1,6 +1,6 @@
 export async function withStacktrace(
   stacktrace: boolean,
-  handler: () => Promise<void>,
+  handler: () => Promise<void> | void,
 ) {
   try {
     await handler()
