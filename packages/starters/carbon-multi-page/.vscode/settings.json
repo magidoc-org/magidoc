@@ -12,14 +12,11 @@
   "jest.autoRun": { "watch": false, "onSave": "test-src-file" },
   "eslint.probe": [
     "javascript",
-    "javascriptreact",
     "typescript",
-    "typescriptreact",
     "html",
-    "vue",
     "markdown",
     "svelte"
   ],
   "eslint.validate": ["typescript", "svelte"],
-  "eslint.packageManager": "pnpm"
+  "eslint.packageManager": "pnpm",
 }

@@ -14,11 +14,8 @@
     "jest.disabledWorkspaceFolders": ["ROOT"],
     "eslint.probe": [
       "javascript",
-      "javascriptreact",
       "typescript",
-      "typescriptreact",
       "html",
-      "vue",
       "markdown",
       "svelte"
     ],
@@ -55,12 +52,12 @@
       "path": "./packages/plugins/query-generator/"
     },
     {
-      "name": "Plugins/PrismJS",
-      "path": "./packages/plugins/prismjs"
+      "name": "Plugins/Svelte-PrismJS",
+      "path": "./packages/plugins/svelte-prismjs"
     },
     {
-      "name": "Starters/Multi-Page",
-      "path": "./packages/starters/multi-page"
+      "name": "Starters/Carbon-Multi-Page",
+      "path": "./packages/starters/carbon-multi-page"
     }
   ],
   "extensions": {
