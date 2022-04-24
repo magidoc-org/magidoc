@@ -1,0 +1,37 @@
+var e=`---
+title: Get Started
+---
+
+
+## 1) Configuration file
+
+The first thing to do is to create a Magidoc configuration file. Here is a minimal \`magidoc.mjs\` example.
+
+\`\`\`javascript
+// magidoc.mjs
+
+export default {
+  introspection: {
+    type: 'url',
+    url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
+  },
+  website: {
+    template: 'carbon-multi-page',
+  },
+}
+\`\`\`
+
+For the full reference, see the dedicated [Magidoc Configuration](/cli/magidoc-configuration) page.
+
+## 2) Run Magidoc Generate
+\`\`\`bash
+npx @magidoc/cli@latest generate
+\`\`\`
+
+For more details on how to use the \`generate\` command, see the [related documentation](/cli/generate).
+## 3) That's it!
+The built static website outputs in the \`./docs\` folder by default. To preview the website locally, run the following command.
+
+\`\`\`bash
+npx @magidoc/cli@latest preview
+\`\`\``;export{e as default};

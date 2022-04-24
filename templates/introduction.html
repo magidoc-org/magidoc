@@ -5,7 +5,7 @@
 		<meta name="description" content="Magidoc" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content=""><title>
-    Magidoc - Rollup Fetch GraphQL Schema
+    Magidoc - Introduction
   </title>
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/__layout.svelte-8dc4cd99.css">
 	<link rel="stylesheet" href="/magidoc/_app/assets/pages/_...page_.svelte-92642973.css">
@@ -47,10 +47,10 @@
   <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/magidoc-configuration" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Magidoc Configuration</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/generate" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Generate</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/cli/init" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Init</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Templates</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/templates/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/templates/carbon-multi-page" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Carbon Multi Page</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
+  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a aria-current="page" href="/magidoc/templates/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/templates/carbon-multi-page" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Carbon Multi Page</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Plugins</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/graphql-query-generator" class="bx--side-nav__link"><span class="bx--side-nav__link-text">GraphQL Query Generator</span></a></li><li class="bx--side-nav__menu-item"><a aria-current="page" href="/magidoc/plugins/rollup-fetch-graphql-schema" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Rollup Fetch GraphQL Schema</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
+  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/graphql-query-generator" class="bx--side-nav__link"><span class="bx--side-nav__link-text">GraphQL Query Generator</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/plugins/rollup-fetch-graphql-schema" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Rollup Fetch GraphQL Schema</span></a></li></ul></li><li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Svelte Plugins</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
   <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/svelte-plugins/introduction" class="bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/svelte-plugins/prismjs" class="bx--side-nav__link"><span class="bx--side-nav__link-text">PrismJS</span></a></li></ul></li></ul></nav>
@@ -59,65 +59,42 @@
 
 
 
-<h1>Rollup fetch GraphQL Schema</h1>
+<h1>Introduction</h1>
 <div class="tags svelte-kyu9xc">
-<div id="ccs-0.95lr2twkask" class="bx--tag              bx--tag--outline">
-    <span>Standalone
-    </span></div>
-<div id="ccs-0.vawscyj89w" class="bx--tag              bx--tag--outline">
-    <span>Plugin
-    </span></div>
-<div id="ccs-0.tr1tn7dkw3a" class="bx--tag              bx--tag--outline">
-    <span>Rollup
-    </span></div>
-<div id="ccs-0.82y7qbyeweg" class="bx--tag              bx--tag--outline">
-    <span>Vite
-    </span></div>
 
   
-<div id="ccs-0.itww0fw858g" class="bx--tag              bx--tag--outline">
-    <span>Since: 1.0.0</span></div>
 </div>
-<p class="md-paragraph svelte-1bchwpe">This rollup plugin fetches the GraphQL Schema required by Magidoc Plugins to build your website documentation. It performs a full 
-<a href="https://graphql.org/learn/introspection/" class="bx--link     ">GraphQL Introspection Query
-    </a> and stores the result on the file-system. This approach keeps your documentation independent from the actual API.
+<p class="md-paragraph svelte-1bchwpe">This section contains a list of all the available templates to be used either with the 
+<a href="/magidoc/cli/generate" class="bx--link     ">generate
+    </a> or 
+<a href="/magidoc/cli/init" class="bx--link     ">init
+    </a> commands. 
 </p>
-<div role="alert" kind="info" class="bx--inline-notification bx--inline-notification--low-contrast bx--inline-notification--hide-close-button  bx--inline-notification--info    "><div class="bx--inline-notification__details"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" role="img" class="bx--inline-notification__icon"><title>Closes notification</title><path fill="none" d="M16,8a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,8Zm4,13.875H17.125v-8H13v2.25h1.875v5.75H12v2.25h8Z" data-icon-path="inner-path"></path><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,6a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,8Zm4,16.125H12v-2.25h2.875v-5.75H13v-2.25h4.125v8H20Z"></path></svg>
-      <div class="bx--inline-notification__text-wrapper"><p class="bx--inline-notification__title"></p>
-        <div class="bx--inline-notification__subtitle"></div>
-        <p> This plugin is also compatible with <a href="https://vitejs.dev/">ViteJS</a>, which is used by SvelteKit.</p></div></div>
-    
-    </div><h2 id="install" class="header svelte-143ysyt"><span>Install</span>
-  
-</h2><p class="md-paragraph svelte-1bchwpe">First, add the module to your project.
-</p><div class="prism--show-copy-button"><pre class="line-numbers language-bash"><code class="language-bash"></code></pre>
-</div><p class="md-paragraph svelte-1bchwpe">Then, add the plugin to your <code class="code-span svelte-1292o4f">Rollup/ViteJS</code> configuration. Here is an example for a <code class="code-span svelte-1292o4f">svelte.config.js</code>.
-</p><div class="prism--show-copy-button"><pre class="line-numbers language-javascript"><code class="language-javascript"></code></pre>
-</div><h2 id="configuration" class="header svelte-143ysyt"><span>Configuration</span>
-  
-</h2><p class="md-paragraph svelte-1bchwpe">Configurations are available for the plugin to change the behavior of the introspection query. Here is the full configuration example and its default values.
-</p><div class="prism--show-copy-button"><pre class="line-numbers language-javascript"><code class="language-javascript"></code></pre>
-</div>
+<ul class="bx--list--unordered bx--list--nested bx--list--expressive">
+<li class="list-item bx--list__item">
+<a href="/magidoc/templates/carbon-multi-page" class="bx--link     ">carbon-multi-page
+    </a>
+            </li></ul>
 
 <div class="next-previous-buttons svelte-92ma9l"><div class="previous-next-button-container svelte-vklxlc"><div>
 
-  <a tabindex="0" href="/magidoc/plugins/graphql-query-generator" class="bx--btn bx--btn--tertiary inverted">
+  <a tabindex="0" href="/magidoc/cli/init" class="bx--btn bx--btn--tertiary inverted">
     <div><div class="direction svelte-vklxlc">Previous</div>
-          <div>GraphQL Query Generator</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"></path></svg></a></div>
+          <div>Init</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"></path></svg></a></div>
 
   <div>
 
-  <a tabindex="0" href="/magidoc/svelte-plugins/introduction" class="bx--btn bx--btn--tertiary">
+  <a tabindex="0" href="/magidoc/templates/carbon-multi-page" class="bx--btn bx--btn--tertiary">
     <div><div class="direction svelte-vklxlc">Next</div>
-          <div style="text-overflow: ellipsis">Introduction</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></a></div>
+          <div style="text-overflow: ellipsis">Carbon Multi Page</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></a></div>
 </div>
 </div></div></div></div></main></main>
 
 
-		<script type="module" data-hydrate="1yehvst">
+		<script type="module" data-hydrate="18skj9c">
 		import { start } from "/magidoc/_app/start-1c9a1f0c.js";
 		start({
-			target: document.querySelector('[data-hydrate="1yehvst"]').parentNode,
+			target: document.querySelector('[data-hydrate="18skj9c"]').parentNode,
 			paths: {"base":"/magidoc","assets":"/magidoc"},
 			session: {},
 			route: true,
@@ -130,7 +107,7 @@
 					import("/magidoc/_app/pages/__layout.svelte-4fc52591.js"),
 						import("/magidoc/_app/pages/_...page_.svelte-2184edc7.js")
 				],
-				params: {page:"plugins\u002Frollup-fetch-graphql-schema"},
+				params: {page:"templates\u002Fintroduction"},
 				routeId: "[...page]"
 			}
 		});
