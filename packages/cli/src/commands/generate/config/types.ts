@@ -12,7 +12,7 @@ export const ZIntrospectionConfiguration = z.union([
   z.object({
     type: z.literal('url'),
     url: z.string().url(),
-    query:  z.string().nonempty().optional(),
+    query: z.string().nonempty().optional(),
     method: z.enum(['GET', 'POST', 'PUT', 'DELETE']).default('POST'),
     headers: z.record(z.string().nonempty(), z.string()).optional(),
   }),

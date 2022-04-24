@@ -183,7 +183,9 @@ describe('generating default values', () => {
     test.each(['anythingelse', 'asd'])(
       'should generate a generic datetime for input type %s',
       (name) =>
-        expect(runFactory('DateTime', name)).toEqual('2022-03-06T08:23:45.000Z'),
+        expect(runFactory('DateTime', name)).toEqual(
+          '2022-03-06T08:23:45.000Z',
+        ),
     )
   })
 
