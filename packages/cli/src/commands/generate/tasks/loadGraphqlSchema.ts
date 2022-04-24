@@ -22,6 +22,11 @@ export function loadGraphQLSchemaTask(config: GenerationConfig): GenerateTask {
             ctx.templateConfiguration.schemaTargetLocation,
           )
           break
+        case 'raw':
+          await fs.writeFile(
+            ctx.templateConfiguration.schemaTargetLocation,
+            config.introspection.content,
+          )
       }
     },
   })

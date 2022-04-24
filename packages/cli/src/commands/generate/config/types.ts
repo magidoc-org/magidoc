@@ -19,6 +19,10 @@ export const ZIntrospectionConfiguration = z.union([
     type: z.literal('file'),
     location: ZPath,
   }),
+  z.object({
+    type: z.literal('raw'),
+    content: z.string().nonempty(),
+  }),
 ])
 
 export const ZWebsiteConfiguration = z.object({
