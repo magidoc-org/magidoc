@@ -1,5 +1,5 @@
 import { existsSync } from 'fs'
-import type { FileConfiguration } from './types'
+import type { MagidocConfiguration } from './types'
 import path from 'path'
 import { parseConfiguration } from './parser'
 
@@ -7,7 +7,7 @@ const allowedExtensions = ['.js', '.cjs', '.mjs']
 
 export async function readConfiguration(
   configPath: string,
-): Promise<FileConfiguration> {
+): Promise<MagidocConfiguration> {
   const extension = path.extname(configPath)
   if (!isValidJsExtension(extension)) {
     throw new Error(
@@ -17,7 +17,7 @@ export async function readConfiguration(
 
   if (!existsSync(configPath)) {
     throw new Error(
-      `Could not find Magidoc configuration file at path ${configPath}. Magidoc recommends using ESM modules for the configuration.\nTo do so, define a configuration file named \`magidoc.mjs\``,
+      `Could not find Magidoc configuration file at path ${configPath}.`,
     )
   }
 

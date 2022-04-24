@@ -20,7 +20,7 @@ function buildEnv(
 ): Record<string, string> {
   const newRecord: Record<string, string> = {}
   const nonExistingOptions: string[] = []
-  Object.keys(config.options).forEach((key) => {
+  Object.keys(config.website.options).forEach((key) => {
     const variable = ctx.templateConfiguration.supportedOptions.find((option) =>
       option.names.includes(key),
     )
@@ -29,13 +29,13 @@ function buildEnv(
       return
     }
 
-    newRecord[variable.vite.key] = String(config.options[key])
+    newRecord[variable.vite.key] = String(config.website.options[key])
   })
 
   if (nonExistingOptions.length > 0) {
     throw new Error(
       `Options ${nonExistingOptions.toString()} are not supported by template ${
-        config.template
+        config.website.template
       }... Supported option names are ${
         (ctx.templateConfiguration.supportedOptions.flatMap(
           (value) => value.names,

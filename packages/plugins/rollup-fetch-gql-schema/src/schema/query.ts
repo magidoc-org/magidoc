@@ -11,6 +11,7 @@ type IntrospectionResponse = {
 }
 
 type Parameters = {
+  query?: string
   method?: Method
   headers?: Record<string, string>
 }
@@ -24,13 +25,15 @@ export default async function queryGraphQLSchema(
   const actualMethod: Method = parameters.method || 'POST'
   const body = JSON.stringify({
     operationName: 'IntrospectionQuery',
-    query: getIntrospectionQuery({
-      descriptions: true,
-      directiveIsRepeatable: true,
-      inputValueDeprecation: true,
-      schemaDescription: true,
-      specifiedByUrl: true,
-    }).trim(),
+    query:
+      parameters.query ??
+      getIntrospectionQuery({
+        descriptions: true,
+        directiveIsRepeatable: true,
+        inputValueDeprecation: true,
+        schemaDescription: true,
+        specifiedByUrl: true,
+      }).trim(),
     variables: null,
   })
 

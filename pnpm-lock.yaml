@@ -30,8 +30,8 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^0.8.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.8.0
+      '@magidoc/plugin-starter-variables': workspace:^0.9.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.9.0
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.4.1
@@ -75,10 +75,10 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.8.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.9.0
       '@sveltejs/adapter-static': ^1.0.0-next.29
       '@sveltejs/kit': ^1.0.0-next.320
-      carbon-components-svelte: ^0.63.1
+      carbon-components-svelte: ^0.63.2
       carbon-icons-svelte: ^11.0.1
       carbon-preprocess-svelte: ^0.9.0
       front-matter: ^4.0.2
@@ -97,7 +97,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': link:../plugins/svelte-prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.29
       '@sveltejs/kit': 1.0.0-next.320_svelte@3.47.0
-      carbon-components-svelte: 0.63.1
+      carbon-components-svelte: 0.63.2
       carbon-icons-svelte: 11.0.1
       carbon-preprocess-svelte: 0.9.0_svelte@3.47.0
       front-matter: 4.0.2
@@ -254,17 +254,17 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^0.8.0
-      '@magidoc/plugin-starter-variables': workspace:^0.8.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.8.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.8.0
+      '@magidoc/plugin-query-generator': workspace:^0.9.0
+      '@magidoc/plugin-starter-variables': workspace:^0.9.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.9.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.9.0
       '@sveltejs/adapter-static': ^1.0.0-next.29
       '@sveltejs/kit': ^1.0.0-next.320
       '@types/lodash': ^4.14.182
       '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
-      carbon-components-svelte: ^0.63.1
+      carbon-components-svelte: ^0.63.2
       carbon-icons-svelte: ^11.0.1
       carbon-preprocess-svelte: ^0.9.0
       eslint: ^8.14.0
@@ -292,7 +292,7 @@ importers:
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
-      carbon-components-svelte: 0.63.1
+      carbon-components-svelte: 0.63.2
       carbon-icons-svelte: 11.0.1
       carbon-preprocess-svelte: 0.9.0_svelte@3.47.0
       eslint: 8.14.0
@@ -367,7 +367,7 @@ packages:
       '@babel/compat-data': 7.17.7
       '@babel/core': 7.17.9
       '@babel/helper-validator-option': 7.16.7
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       semver: 6.3.0
     dev: true
 
@@ -1584,8 +1584,8 @@ packages:
     resolution: {integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==}
     dev: true
 
-  /browserslist/4.20.2:
-    resolution: {integrity: sha512-CQOBCqp/9pDvDbx3xfMi+86pr4KXIf2FDkTTdeuYw8OxS9t898LA1Khq57gtufFILXpfgsSx5woNgsBgvGjpsA==}
+  /browserslist/4.20.3:
+    resolution: {integrity: sha512-NBhymBQl1zM0Y5dQT/O+xiLP9/rzOIQdKM/eMJBAq7yBgaB6krIYLGejrwVYnSHZdqjscB1SPuAjHwxjvN6Wdg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
@@ -1649,8 +1649,8 @@ packages:
     resolution: {integrity: sha512-10T30NYOEQtN6C11YGg411yebhvpnC6Z102+B95eAsN0oB6KUs01ivE8u+G6FMIRtIrVlYXhL+LUwQ3/hXwDWw==}
     dev: true
 
-  /carbon-components-svelte/0.63.1:
-    resolution: {integrity: sha512-gB6qGalCXG87nFiPp6KzBAjTDFjZm8vcOTBa7gQFDtwL5TzM4oeg8zHxqPSpPuNJvVym/3AlVNnvHbZBRomBzQ==}
+  /carbon-components-svelte/0.63.2:
+    resolution: {integrity: sha512-ZTBJezz/PIYYUliEg8hAj8cL81dC8xP9bpy2P6q2rO4lsw6t2hDhgE+N2QW/HOY9A2YICa+yStF7Rg0wqWfy5w==}
     dependencies:
       flatpickr: 4.6.9
     dev: true

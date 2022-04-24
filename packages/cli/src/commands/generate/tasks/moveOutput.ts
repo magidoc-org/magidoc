@@ -9,9 +9,9 @@ export function moveOutputTask(config: GenerationConfig): GenerateTask {
     executor: async (ctx, task) => {
       await moveOutputBuild(
         path.join(ctx.tmpDirectory.path, 'build'),
-        config.output,
+        config.website.output,
       )
-      task.output = `Moved output at ${config.output}`
+      task.output = `Moved output at ${config.website.output}`
     },
   })
 }

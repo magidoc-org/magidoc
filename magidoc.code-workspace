@@ -32,6 +32,10 @@
       "path": "./packages/docs"
     },
     {
+      "name": "Examples",
+      "path": "./packages/examples"
+    },
+    {
       "name": "Cli",
       "path": "./packages/cli"
     },

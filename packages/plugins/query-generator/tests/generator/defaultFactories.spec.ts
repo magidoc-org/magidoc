@@ -2,7 +2,7 @@ import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 
 describe('generating default values', () => {
   beforeAll(() => {
-    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(11)
+    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(12)
   })
 
   describe('input is a string', () => {
@@ -176,6 +176,16 @@ describe('generating default values', () => {
       'should generate a generic date for input type %s',
       (name) =>
         expect(runFactory('Date', name)).toEqual('2022-03-06T08:23:45.000Z'),
+    )
+  })
+
+  describe('input is a DateTime', () => {
+    test.each(['anythingelse', 'asd'])(
+      'should generate a generic datetime for input type %s',
+      (name) =>
+        expect(runFactory('DateTime', name)).toEqual(
+          '2022-03-06T08:23:45.000Z',
+        ),
     )
   })
 
