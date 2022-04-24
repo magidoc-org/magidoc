@@ -17,7 +17,7 @@ export async function readConfiguration(
 
   if (!existsSync(configPath)) {
     throw new Error(
-      `Could not find Magidoc configuration file at path ${configPath}. Magidoc recommends using ESM modules for the configuration.\nTo do so, define a configuration file named \`magidoc.mjs\``,
+      `Could not find Magidoc configuration file at path ${configPath}.`,
     )
   }
 

@@ -12,6 +12,7 @@ export function loadGraphQLSchemaTask(config: GenerationConfig): GenerateTask {
           await fetchSchema({
             url: config.introspection.url,
             method: config.introspection.method,
+            query: config.introspection.query,
             headers: config.introspection.headers,
             target: ctx.templateConfiguration.schemaTargetLocation,
           })

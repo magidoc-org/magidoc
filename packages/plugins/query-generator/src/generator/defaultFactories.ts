@@ -100,6 +100,7 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = {
   },
   Float: () => 30.7,
   Date: () => date,
+  DateTime: () => date,
   Instant: () => date,
   BigInteger: () => bigNumber,
   Long: () => bigNumber,
