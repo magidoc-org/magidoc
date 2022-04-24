@@ -60,6 +60,26 @@ describe('fetching the graphql schema', () => {
     })
   })
 
+  describe('providing a custom query', () => {
+    const query = 'Potato'
+
+    beforeEach(() => {
+      nock(basePath)
+        .post(path, {
+          operationName: 'IntrospectionQuery',
+          query: query,
+          variables: null,
+        })
+        .reply(200, introspectionResult)
+    })
+
+    it('uses the custom headers', async () => {
+      const result = await queryGraphQLSchema(fullPath, { query: query })
+
+      expect(result).toBe(introspectionResult.data)
+    })
+  })
+
   describe('providing a custom method', () => {
     beforeEach(() => {
       nock(basePath).get(path).reply(200, introspectionResult)

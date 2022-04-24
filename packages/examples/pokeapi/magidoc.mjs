@@ -1,18 +1,10 @@
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-
-const introspectionResult = fs
-.readFileSync(
-  path.join(path.dirname(fileURLToPath(import.meta.url)), 'schema.json'),
-)
-.toString()
-
-console.log(introspectionResult.slice(0, 20))
 export default {
   introspection: {
-    type: 'raw',
-    content: introspectionResult,
+    type: 'url',
+    url: 'https://api.github.com/graphql',
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    },
   },
   website: {
     template: 'carbon-multi-page',
