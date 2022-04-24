@@ -11,7 +11,7 @@ export function determineTmpDirectoryTask(
   return newTask({
     title: 'Determine tmp directories',
     executor: (ctx) => {
-      const templateLocationName = `${config.template}@${config.templateVersion}`
+      const templateLocationName = `${config.website.template}@${config.website.templateVersion}`
       ctx.tmpArchive = tmpTemplateArchiveFile(templateLocationName)
       ctx.tmpDirectory = tmpTemplateDirectory(templateLocationName)
     },

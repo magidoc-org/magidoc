@@ -16,6 +16,7 @@ module.exports = defineConfig({
     'util',
     'fs',
     'fs-extra',
+    'fs/promises',
     'os',
     'path',
     'js-yaml',

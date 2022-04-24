@@ -20,7 +20,7 @@
     "@magidoc/plugin-svelte-prismjs": "workspace:^0.8.0",
     "@sveltejs/adapter-static": "^1.0.0-next.29",
     "@sveltejs/kit": "^1.0.0-next.320",
-    "carbon-components-svelte": "^0.63.1",
+    "carbon-components-svelte": "^0.63.2",
     "carbon-icons-svelte": "^11.0.1",
     "carbon-preprocess-svelte": "^0.9.0",
     "front-matter": "^4.0.2",

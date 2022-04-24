@@ -1,10 +1,9 @@
 import { Command, Option } from 'commander'
 import generate from '.'
-import path from 'path'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
 import chalk from 'chalk'
-import type { FileConfiguration } from './config/types'
+import type { MagidocConfiguration } from './config/types'
 
 type GenerateCommandOptions = {
   file: string
@@ -47,16 +46,8 @@ export default function buildGenerateCommand(program: Command) {
 
       await withStacktrace(stacktrace, async () => {
         await generate({
-          template: fileConfiguration.website.template,
-          templateVersion: fileConfiguration.website.templateVersion,
-          output: path.resolve(fileConfiguration.website.output),
+          ...fileConfiguration,
           clean,
-          options: fileConfiguration.website.options,
-          fetchConfig: {
-            url: fileConfiguration.introspection.url,
-            headers: fileConfiguration.introspection.headers || {},
-            method: fileConfiguration.introspection.method,
-          },
         })
 
         printPostExecution(file, fileConfiguration)
@@ -66,7 +57,7 @@ export default function buildGenerateCommand(program: Command) {
 
 function printPostExecution(
   configFile: string,
-  fileConfiguration: FileConfiguration,
+  fileConfiguration: MagidocConfiguration,
 ) {
   console.log()
   console.log('-----------')

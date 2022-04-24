@@ -33,7 +33,7 @@
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "carbon-components-svelte": "^0.63.1",
+    "carbon-components-svelte": "^0.63.2",
     "carbon-icons-svelte": "^11.0.1",
     "carbon-preprocess-svelte": "^0.9.0",
     "eslint": "^8.14.0",

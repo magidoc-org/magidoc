@@ -1,5 +1,5 @@
 import { existsSync } from 'fs'
-import type { FileConfiguration } from './types'
+import type { MagidocConfiguration } from './types'
 import path from 'path'
 import { parseConfiguration } from './parser'
 
@@ -7,7 +7,7 @@ const allowedExtensions = ['.js', '.cjs', '.mjs']
 
 export async function readConfiguration(
   configPath: string,
-): Promise<FileConfiguration> {
+): Promise<MagidocConfiguration> {
   const extension = path.extname(configPath)
   if (!isValidJsExtension(extension)) {
     throw new Error(

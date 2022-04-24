@@ -1,6 +1,7 @@
 export default {
   introspection: {
-    url: 'https://beta.pokeapi.co/graphql/v1beta',
+    type: 'file',
+    location: './schema.json'
   },
   website: {
     template: 'carbon-multi-page',
