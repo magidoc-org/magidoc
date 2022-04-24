@@ -49,6 +49,7 @@
     * Trick to have headers at the right place when scrolling to the header
     */
     padding-top: 3.2rem;
-    margin-top: -3.2rem !important;
+    margin-top: -2.8rem !important;
   }
+  
 </style>

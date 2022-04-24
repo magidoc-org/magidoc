@@ -1,5 +1,5 @@
 # Magidoc - PrismJS
-A Svelte wrapper library around PrismJS using Typescript for better syntax highlighting and type safety in your code.   
+A Svelte wrapper library around PrismJS using TypeScript for better syntax highlighting and type safety in your code.   
 
 > This plugin can be used in any Svelte or SvelteKit application.
 ## Documentation
