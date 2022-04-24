@@ -51,5 +51,4 @@
     padding-top: 3.2rem;
     margin-top: -2.8rem !important;
   }
-  
 </style>
