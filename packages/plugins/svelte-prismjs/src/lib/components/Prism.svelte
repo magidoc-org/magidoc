@@ -7,7 +7,7 @@
   import 'prismjs/plugins/toolbar/prism-toolbar.css'
   import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard'
 
-  export let language: string
+  export let language: string | undefined
   export let source: string
 
   export let showLineNumbers = false
@@ -15,12 +15,28 @@
 
   let root: HTMLElement
 
+  function highlight(root: HTMLElement, language: string, source: string) {
+    // The _ (language) parameter is important to force Svelte to reload if the language change
+    
+    // This is the way found to make PrismJS re-render on change
+    // and also keep the toolbar working
+    root.textContent = source
+
+    // Clear class list and add the new language in it
+    // Looks hacky, but since this component can be re-used, 
+    // it is important that the class is added before highlighting, 
+    // which is not always the case if done inside the html template.
+    root.classList.forEach((item) => root.classList.remove(item))
+    if(language) {
+      root.classList.add(`language-${language}`)
+    } 
+
+    Prism.highlightElement(root)
+  }
+
   $: {
     if (root && Prism) {
-      // This is the way found to make PrismJS re-render on change
-      // and also keep the toolbar working
-      root.textContent = source
-      Prism.highlightElement(root)
+      highlight(root, language, source)
     }
   }
 </script>
@@ -30,12 +46,8 @@
     showCopyButton ? 'prism--show-copy-button' : 'prism--hide-copy-button'
   }`}
 >
-  <pre
-    class={`${
-      showLineNumbers ? 'line-numbers' : ''
-    } language-${language}`}><code
+  <pre class={`${showLineNumbers ? 'line-numbers' : ''}`}><code
       bind:this={root}
-      class="language-{language}"
     /></pre>
 </div>
 
