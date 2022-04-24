@@ -17,19 +17,19 @@
 
   function highlight(root: HTMLElement, language: string, source: string) {
     // The _ (language) parameter is important to force Svelte to reload if the language change
-    
+
     // This is the way found to make PrismJS re-render on change
     // and also keep the toolbar working
     root.textContent = source
 
     // Clear class list and add the new language in it
-    // Looks hacky, but since this component can be re-used, 
-    // it is important that the class is added before highlighting, 
+    // Looks hacky, but since this component can be re-used,
+    // it is important that the class is added before highlighting,
     // which is not always the case if done inside the html template.
     root.classList.forEach((item) => root.classList.remove(item))
-    if(language) {
+    if (language) {
       root.classList.add(`language-${language}`)
-    } 
+    }
 
     Prism.highlightElement(root)
   }
