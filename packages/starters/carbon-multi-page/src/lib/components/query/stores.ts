@@ -4,8 +4,10 @@ import generateGraphQLQuery, {
   NullGenerationStrategy,
   QueryType,
 } from '@magidoc/plugin-query-generator'
+import { templates } from '@magidoc/plugin-starter-variables'
 import type { GraphQLQuery } from '@magidoc/plugin-query-generator'
 import type { GraphQLField } from 'graphql'
+import _ from 'lodash'
 
 const MAX_DEPTH = 8
 const MIN_DEPTH = 2
@@ -29,6 +31,16 @@ const generateQuery = (expected: {
     queryType: expected.type,
     maxDepth: expected.depth,
     nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+    factories: _.reduce(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      templates.QUERY_GENERATION_FACTORIES.vite.get(import.meta.env),
+      (prev, curr, key) => ({
+        ...prev,
+        [key]: () => curr,
+      }),
+      {},
+    ),
   })
 
   return {

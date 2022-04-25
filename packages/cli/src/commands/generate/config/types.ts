@@ -30,10 +30,7 @@ export const ZWebsiteConfiguration = z.object({
   template: z.enum(AVAILABLE_TEMPLATES),
   templateVersion: z.string().nonempty().default(getVersion()),
   output: ZPath.default(path.resolve('./docs')),
-  options: z.record(
-    z.string().nonempty(),
-    z.union([z.string(), z.number(), z.boolean()]),
-  ),
+  options: z.record(z.string().nonempty(), z.unknown()),
 })
 
 export const ZMagidocConfiguration = z.object({
