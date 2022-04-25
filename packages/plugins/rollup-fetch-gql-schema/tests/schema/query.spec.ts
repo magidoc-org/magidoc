@@ -16,13 +16,7 @@ describe('fetching the graphql schema', () => {
   })
 
   describe('using default parameters', () => {
-    const expectedRequest = getIntrospectionQuery({
-      descriptions: true,
-      directiveIsRepeatable: true,
-      inputValueDeprecation: true,
-      schemaDescription: true,
-      specifiedByUrl: true,
-    })
+    const expectedRequest = getIntrospectionQuery()
 
     describe('request succeeds', () => {
       beforeEach(() => {

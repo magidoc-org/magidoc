@@ -25,9 +25,7 @@ export default async function queryGraphQLSchema(
   const actualMethod: Method = parameters.method || 'POST'
   const body = JSON.stringify({
     operationName: 'IntrospectionQuery',
-    query:
-      parameters.query ??
-      getIntrospectionQuery().trim(),
+    query: parameters.query ?? getIntrospectionQuery().trim(),
     variables: null,
   })
 
