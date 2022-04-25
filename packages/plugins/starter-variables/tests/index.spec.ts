@@ -1,5 +1,6 @@
 import * as variables from '../src/index'
 import type { Variable } from '../src/variables/variable'
+import z from 'zod'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
@@ -7,10 +8,18 @@ describe('variables', () => {
   })
 
   it('contains the right templates variables', () => {
-    expect(Object.keys(variables.templates)).toEqual(['APP_LOGO', 'APP_TITLE'])
+    expect(Object.keys(variables.templates)).toEqual([
+      'APP_LOGO',
+      'APP_TITLE',
+      'QUERY_GENERATION_FACTORIES',
+    ])
 
     testStringVariable(variables.templates.APP_TITLE, 'VITE_APP_TITLE')
     testStringVariable(variables.templates.APP_LOGO, 'VITE_APP_LOGO')
+    testRecordVariable(
+      variables.templates.QUERY_GENERATION_FACTORIES,
+      'VITE_QUERY_GENERATION_FACTORIES',
+    )
   })
 
   it('contains the right magidoc variables', () => {
@@ -24,8 +33,6 @@ describe('variables', () => {
 })
 
 function testStringVariable(target: Variable<string>, viteKey: string) {
-  expect(target.vite.key).toEqual(viteKey)
-
   expect(target.vite.get({ [viteKey]: 'Potato' })).toBe('Potato')
   expect(target.vite.get({ [viteKey]: false })).toBe('false')
   expect(target.vite.get({})).toBeNull()
@@ -37,11 +44,11 @@ function testStringVariable(target: Variable<string>, viteKey: string) {
     'false',
   )
   expect(target.vite.getOrDefault({}, 'Default')).toBe('Default')
+
+  expect(target.asEnv('Potato')).toEqual({ [viteKey]: 'Potato' })
 }
 
 function testBooleanVariable(target: Variable<boolean>, viteKey: string) {
-  expect(target.vite.key).toEqual(viteKey)
-
   expect(target.vite.get({ [viteKey]: true })).toBe(true)
   expect(target.vite.get({ [viteKey]: 'true' })).toBe(true)
   expect(target.vite.get({ [viteKey]: 't' })).toBe(true)
@@ -61,4 +68,33 @@ function testBooleanVariable(target: Variable<boolean>, viteKey: string) {
   expect(target.vite.getOrDefault({ [viteKey]: false }, true)).toBe(false)
   expect(target.vite.getOrDefault({ [viteKey]: {} }, true)).toBe(true)
   expect(target.vite.getOrDefault({}, true)).toBe(true)
+
+  expect(target.asEnv(true)).toEqual({ [viteKey]: 'true' })
+  expect(target.asEnv(false)).toEqual({ [viteKey]: 'false' })
+}
+
+function testRecordVariable(
+  target: Variable<Record<string, unknown>>,
+  viteKey: string,
+) {
+  expect(target.vite.get({ [viteKey]: true })).toBeNull()
+  expect(target.vite.get({ [viteKey]: 'true' })).toBeNull()
+  expect(target.vite.get({ [viteKey]: '4234' })).toBeNull()
+  expect(target.vite.get({ [viteKey]: 4234 })).toBeNull()
+
+  expect(target.vite.get({ [viteKey]: { abc: '123' } })).toEqual({ abc: '123' })
+  expect(
+    target.vite.get({ [viteKey]: JSON.stringify({ abc: '123' }) }),
+  ).toEqual({ abc: '123' })
+
+  expect(target.vite.getOrDefault({ [viteKey]: false }, { abc: 123 })).toEqual({
+    abc: 123,
+  })
+  expect(target.vite.getOrDefault({ [viteKey]: {} }, { abc: 123 })).toEqual({})
+  expect(target.vite.getOrDefault({}, { abc: 123 })).toEqual({ abc: 123 })
+
+  expect(target.asEnv({ abc: 123 })).toEqual({
+    [viteKey]: JSON.stringify({ abc: 123 }),
+  })
+  expect(target.asEnv({})).toEqual({ [viteKey]: '{}' })
 }

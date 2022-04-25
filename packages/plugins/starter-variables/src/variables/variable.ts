@@ -1,3 +1,5 @@
+import type { ZodType, ZodTypeDef } from 'zod'
+
 /**
  * Copy of the ViteJS import meta interface
  */
@@ -6,27 +8,45 @@ interface MetaEnv {
 }
 
 export type Variable<T> = {
-  names: string[]
+  name: string
+  asEnv: (value: T) => Record<string, string>
+  zod: ZodVariable<T>
   vite: ViteVariable<T>
 }
 
+export type ZodTypeProvider<T> = (
+  zod: typeof import('zod'),
+) => ZodType<T | undefined, ZodTypeDef, T | undefined>
+
+export type ZodVariable<T> = {
+  type: ZodTypeProvider<T>
+}
+
+export type Converter<T> = {
+  convert: (target: unknown) => T | null
+  asString: (value: T) => string
+  type: ZodTypeProvider<T>
+}
+
 export type ViteVariable<T> = {
-  key: string
   get: (env: MetaEnv) => T | null
   getOrDefault: (env: MetaEnv, def: T) => T
 }
 
-export function createVariable<T = string | boolean>(
+export function createVariable<T>(
   key: string,
-  conversion: (target: unknown) => T | null,
+  converter: Converter<T>,
 ): Variable<T> {
   const viteKey = `VITE_${key.toUpperCase()}`
-  const viteGet = (env: MetaEnv) => conversion(env[viteKey])
+  const viteGet = (env: MetaEnv) => converter.convert(env[viteKey])
 
   return {
-    names: [key, toCamelCase(key)],
+    name: toCamelCase(key),
+    asEnv: (value: T) => ({ [viteKey]: converter.asString(value) }),
+    zod: {
+      type: converter.type,
+    },
     vite: {
-      key: viteKey,
       get: viteGet,
       getOrDefault: (env, def) => viteGet(env) ?? def,
     },
@@ -37,33 +57,4 @@ function toCamelCase(key: string): string {
   return key.toLowerCase().replace(/([-_][a-z])/gi, ($1) => {
     return $1.toUpperCase().replace('-', '').replace('_', '')
   })
-}
-
-export function stringConversion() {
-  return (target: unknown): string | null => {
-    if (target === null || target === undefined || target === '') {
-      return null
-    }
-
-    return String(target)
-  }
-}
-
-export function booleanConversion() {
-  return (target: unknown): boolean | null => {
-    if (target === null) return null
-    if (target === undefined) return null
-
-    switch (typeof target) {
-      case 'boolean':
-        return target
-      case 'string':
-        const lowerCase = target.toLowerCase().trim()
-        return lowerCase === 'true' || lowerCase === 't' || lowerCase === '1'
-      case 'number':
-        return target !== 0
-      default:
-        return null
-    }
-  }
 }

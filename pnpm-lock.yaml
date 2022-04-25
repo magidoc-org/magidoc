@@ -195,6 +195,7 @@ importers:
       ts-jest: ^27.1.4
       tslib: ^2.4.0
       typescript: ^4.6.3
+      zod: ^3.14.4
     devDependencies:
       '@rollup/plugin-typescript': 8.3.2_056aba5e56e0ab5307259a29131f3fbe
       '@types/jest': 27.4.1
@@ -203,6 +204,7 @@ importers:
       ts-jest: 27.1.4_9985e1834e803358b7be1e6ce5ca0eea
       tslib: 2.4.0
       typescript: 4.6.3
+      zod: 3.14.4
 
   packages/plugins/svelte-prismjs:
     specifiers:
@@ -5395,4 +5397,3 @@ packages:
 
   /zod/3.14.4:
     resolution: {integrity: sha512-U9BFLb2GO34Sfo9IUYp0w3wJLlmcyGoMd75qU9yf+DrdGA4kEx6e+l9KOkAlyUO0PSQzZCa3TR4qVlcmwqSDuw==}
-    dev: false
