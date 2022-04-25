@@ -1,4 +1,5 @@
 import { magidoc } from '@magidoc/plugin-starter-variables'
+import _ from 'lodash'
 import type { GenerationConfig } from '../config'
 import { newTask, GenerateTask, GenerateTaskContext } from '../task'
 
@@ -18,18 +19,21 @@ function buildEnv(
   ctx: GenerateTaskContext,
   config: GenerationConfig,
 ): Record<string, string> {
-  const newRecord: Record<string, string> = {}
+  let newRecord: Record<string, string> = {}
   const nonExistingOptions: string[] = []
-  Object.keys(config.website.options).forEach((key) => {
-    const variable = ctx.templateConfiguration.supportedOptions.find((option) =>
-      option.names.includes(key),
+  _.forEach(config.website.options, (value, key) => {
+    const variable = ctx.templateConfiguration.supportedOptions.find(
+      (option) => option.name === key,
     )
     if (!variable) {
       nonExistingOptions.push(key)
       return
     }
 
-    newRecord[variable.vite.key] = String(config.website.options[key])
+    newRecord = {
+      ...newRecord,
+      ...variable.asEnv(value),
+    }
   })
 
   if (nonExistingOptions.length > 0) {
@@ -37,9 +41,7 @@ function buildEnv(
       `Options ${nonExistingOptions.toString()} are not supported by template ${
         config.website.template
       }... Supported option names are ${
-        (ctx.templateConfiguration.supportedOptions.flatMap(
-          (value) => value.names,
-        ),
+        (ctx.templateConfiguration.supportedOptions.map((value) => value.name),
         toString())
       }`,
     )

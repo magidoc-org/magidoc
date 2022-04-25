@@ -25,6 +25,7 @@ module.exports = defineConfig({
     'sirv',
     'http',
     'chalk',
+    'lodash'
   ],
   output: {
     dir: 'build',

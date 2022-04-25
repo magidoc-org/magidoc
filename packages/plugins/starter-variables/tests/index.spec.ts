@@ -33,6 +33,8 @@ describe('variables', () => {
 })
 
 function testStringVariable(target: Variable<string>, viteKey: string) {
+  expect(target.vite.key).toEqual(viteKey)
+
   expect(target.vite.get({ [viteKey]: 'Potato' })).toBe('Potato')
   expect(target.vite.get({ [viteKey]: false })).toBe('false')
   expect(target.vite.get({})).toBeNull()
@@ -49,6 +51,8 @@ function testStringVariable(target: Variable<string>, viteKey: string) {
 }
 
 function testBooleanVariable(target: Variable<boolean>, viteKey: string) {
+  expect(target.vite.key).toEqual(viteKey)
+
   expect(target.vite.get({ [viteKey]: true })).toBe(true)
   expect(target.vite.get({ [viteKey]: 'true' })).toBe(true)
   expect(target.vite.get({ [viteKey]: 't' })).toBe(true)
@@ -77,6 +81,8 @@ function testRecordVariable(
   target: Variable<Record<string, unknown>>,
   viteKey: string,
 ) {
+  expect(target.vite.key).toEqual(viteKey)
+
   expect(target.vite.get({ [viteKey]: true })).toBeNull()
   expect(target.vite.get({ [viteKey]: 'true' })).toBeNull()
   expect(target.vite.get({ [viteKey]: '4234' })).toBeNull()

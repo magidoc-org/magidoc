@@ -1,30 +1,50 @@
 import { MagidocConfiguration, ZMagidocConfiguration } from './types'
 import chalk from 'chalk'
+import { templates } from '@magidoc/plugin-starter-variables'
+import _ from 'lodash'
+import z, { ZodIssue, ZodType } from 'zod'
 
 export function parseConfiguration(content: unknown): MagidocConfiguration {
   const result = ZMagidocConfiguration.safeParse(content)
   if (result.success) {
+    validateOptions(result.data.website.options)
     return result.data
   }
 
-  const issues = result.error.issues
-  const formattedIssues = issues.map((issue) => {
-    const path = formatErrorPath(issue.path)
-    switch (issue.code) {
-      case 'invalid_type':
-        return `  ‣ ${issue.message} '${issue.expected}' but received '${issue.received}' at path '${path}'`
-      case 'invalid_union':
-        const formattedErrors = issue.unionErrors
-          .flatMap((current) =>
-            current.issues.map((issue) => `    - ${issue.message}`),
-          )
-          .join('\n')
-        return `  ‣ ${issue.message} at path '${path}':\n${formattedErrors}`
-      default:
-        return `  ‣ ${issue.message} at path '${path}'`
+  throwConfigurationError(result.error.issues)
+}
+
+function validateOptions(options: Record<string, unknown>): void | never {
+  const allOptionsByName = _.keyBy(Object.values(templates), (template) =>
+    String(template.name),
+  )
+  const issues: ZodIssue[] = []
+  _.forEach(options, (value, key) => {
+    const variable = allOptionsByName[key]
+    if (!variable) {
+      issues.push({
+        message: `No option available with name: ${key}`,
+        code: 'custom',
+        path: [key],
+      })
+    }
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const zodType = variable.zod.type(z) as unknown as ZodType<unknown>
+    const result = zodType.safeParse(value)
+    if (!result.success) {
+      issues.concat(result.error.issues)
     }
   })
 
+  if (issues.length > 0) {
+    throwConfigurationError(issues, 'website.options.')
+  }
+}
+
+function throwConfigurationError(issues: ZodIssue[], basePath = ''): never {
+  const formattedIssues = convertZodIssues(issues, basePath)
   const pluralIssue = issues.length > 1 ? 'issues' : 'issue'
   const issuesText = chalk.red(`${issues.length} ${pluralIssue}`)
   throw new Error(
@@ -42,4 +62,23 @@ function formatErrorPath(path: (string | number)[]): string {
   }, '')
 
   return `${chalk.cyan(result)}`
+}
+
+function convertZodIssues(issues: ZodIssue[], basePath: string): string[] {
+  return issues.map((issue) => {
+    const path = `${basePath}${formatErrorPath(issue.path)}`
+    switch (issue.code) {
+      case 'invalid_type':
+        return `  ‣ ${issue.message} '${issue.expected}' but received '${issue.received}' at path '${path}'`
+      case 'invalid_union':
+        const formattedErrors = issue.unionErrors
+          .flatMap((current) =>
+            current.issues.map((issue) => `    - ${issue.message}`),
+          )
+          .join('\n')
+        return `  ‣ ${issue.message} at path '${path}':\n${formattedErrors}`
+      default:
+        return `  ‣ ${issue.message} at path '${path}'`
+    }
+  })
 }

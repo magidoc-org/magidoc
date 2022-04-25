@@ -29,6 +29,7 @@ export type Converter<T> = {
 }
 
 export type ViteVariable<T> = {
+  key: string
   get: (env: MetaEnv) => T | null
   getOrDefault: (env: MetaEnv, def: T) => T
 }
@@ -47,6 +48,7 @@ export function createVariable<T>(
       type: converter.type,
     },
     vite: {
+      key: viteKey,
       get: viteGet,
       getOrDefault: (env, def) => viteGet(env) ?? def,
     },
