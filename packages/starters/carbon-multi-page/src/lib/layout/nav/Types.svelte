@@ -15,15 +15,13 @@
 
   let mappedTypes: ReadonlyArray<MappedTyped>
   $: mappedTypes = _.sortBy(
-    _.filter(types, (type) => !type.name.startsWith('__')).map(
-      (type: GraphQLNamedType) => ({
-        name: type.name,
-        deprecated: !!(type as unknown as Record<string, unknown>)[
-          'deprecationReason'
-        ],
-        href: `/model/types/${type.name}`,
-      }),
-    ),
+    types.map((type: GraphQLNamedType) => ({
+      name: type.name,
+      deprecated: !!(type as unknown as Record<string, unknown>)[
+        'deprecationReason'
+      ],
+      href: `/model/types/${type.name}`,
+    })),
     (item) => item.name,
   )
 </script>

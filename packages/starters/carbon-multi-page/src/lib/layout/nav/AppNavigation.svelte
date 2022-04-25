@@ -20,6 +20,14 @@
     <Queries type={schema.getQueryType()} />
     <Mutations type={schema.getMutationType()} />
     <Subscriptions type={schema.getSubscriptionType()} />
-    <Types types={_.map(schema.getTypeMap(), (type) => type)} />
+    <Types
+      types={_.map(schema.getTypeMap(), (type) => type).filter(
+        (type) =>
+          !type.name.startsWith('__') &&
+          type !== schema.getQueryType() &&
+          type !== schema.getMutationType() &&
+          type !== schema.getSubscriptionType(),
+      )}
+    />
   </SideNavItems>
 </SideNav>
