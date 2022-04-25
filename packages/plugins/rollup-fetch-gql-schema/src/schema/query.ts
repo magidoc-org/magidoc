@@ -27,13 +27,7 @@ export default async function queryGraphQLSchema(
     operationName: 'IntrospectionQuery',
     query:
       parameters.query ??
-      getIntrospectionQuery({
-        descriptions: true,
-        directiveIsRepeatable: true,
-        inputValueDeprecation: true,
-        schemaDescription: true,
-        specifiedByUrl: true,
-      }).trim(),
+      getIntrospectionQuery().trim(),
     variables: null,
   })
 
