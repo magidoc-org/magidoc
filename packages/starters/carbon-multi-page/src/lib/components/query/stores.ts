@@ -35,6 +35,7 @@ const generateQuery = (expected: {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       templates.QUERY_GENERATION_FACTORIES.vite.get(import.meta.env),
+      // Merge the factories values provided by environment variable.
       (prev, curr, key) => ({
         ...prev,
         [key]: () => curr,
