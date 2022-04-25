@@ -68,6 +68,7 @@
 
   .code-section {
     width: 100%;
+    overflow: hidden;
   }
 
   .button-bar {
