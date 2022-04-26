@@ -18,14 +18,15 @@ function validateOptions(options: Record<string, unknown>): void | never {
   const allOptionsByName = _.keyBy(Object.values(templates), (template) =>
     String(template.name),
   )
-  const issues: ZodIssue[] = []
+  let issues: ZodIssue[] = []
   _.forEach(options, (value, key) => {
     const variable = allOptionsByName[key]
+    const path: (string | number)[] = ['website', 'options', key]
     if (!variable) {
       issues.push({
         message: `No option available with name: ${key}`,
         code: 'custom',
-        path: [key],
+        path,
       })
     }
 
@@ -34,17 +35,22 @@ function validateOptions(options: Record<string, unknown>): void | never {
     const zodType = variable.zod.type(z) as unknown as ZodType<unknown>
     const result = zodType.safeParse(value)
     if (!result.success) {
-      issues.concat(result.error.issues)
+      issues = issues.concat(
+        result.error.issues.map((issue) => ({
+          ...issue,
+          path: path.concat(issue.path),
+        })),
+      )
     }
   })
 
   if (issues.length > 0) {
-    throwConfigurationError(issues, 'website.options.')
+    throwConfigurationError(issues)
   }
 }
 
-function throwConfigurationError(issues: ZodIssue[], basePath = ''): never {
-  const formattedIssues = convertZodIssues(issues, basePath)
+function throwConfigurationError(issues: ZodIssue[]): never {
+  const formattedIssues = convertZodIssues(issues)
   const pluralIssue = issues.length > 1 ? 'issues' : 'issue'
   const issuesText = chalk.red(`${issues.length} ${pluralIssue}`)
   throw new Error(
@@ -64,12 +70,12 @@ function formatErrorPath(path: (string | number)[]): string {
   return `${chalk.cyan(result)}`
 }
 
-function convertZodIssues(issues: ZodIssue[], basePath: string): string[] {
+function convertZodIssues(issues: ZodIssue[]): string[] {
   return issues.map((issue) => {
-    const path = `${basePath}${formatErrorPath(issue.path)}`
+    const path = formatErrorPath(issue.path)
     switch (issue.code) {
       case 'invalid_type':
-        return `  ‣ ${issue.message} '${issue.expected}' but received '${issue.received}' at path '${path}'`
+        return `  ‣ Expected: '${issue.expected}' but received '${issue.received}' at path '${path}'`
       case 'invalid_union':
         const formattedErrors = issue.unionErrors
           .flatMap((current) =>
