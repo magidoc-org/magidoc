@@ -1,6 +1,7 @@
 <script lang="ts">
   import { InlineNotification } from 'carbon-components-svelte'
   import CarbonMarkdown from './CarbonMarkdown.svelte'
+  import { baseVar } from './stores'
 
   const info = /^[\s]*(information|info)[\s]*:/gi
   const warning = /^[\s]*(warning|warn)[\s]*:/gi
@@ -31,5 +32,5 @@
   hideCloseButton
   iconDescription={type}
 >
-  <CarbonMarkdown source={cleanText} />
+  <CarbonMarkdown source={cleanText} base={$baseVar} />
 </InlineNotification>

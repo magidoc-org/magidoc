@@ -1,5 +1,5 @@
 <script lang="ts">
-  import AppMarkdownLink from './AppMarkdownLink.svelte'
+  import { base } from '$app/paths'
 
   import { CarbonMarkdown } from '@magidoc/plugin-svelte-carbon-commons'
   import AppMarkdownHeading from './AppMarkdownHeading.svelte'
@@ -9,8 +9,8 @@
 
 <CarbonMarkdown
   {source}
+  {base}
   renderers={{
-    link: AppMarkdownLink,
     heading: AppMarkdownHeading,
   }}
 />

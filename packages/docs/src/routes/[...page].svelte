@@ -33,12 +33,12 @@
   } from '$lib/pages'
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
   import type { LoadInput } from '@sveltejs/kit/types/internal'
-  import { CarbonMarkdown } from '@magidoc/plugin-svelte-carbon-commons'
   import 'prismjs/components/prism-graphql.js'
   import 'prismjs/components/prism-json.js'
   import 'prismjs/components/prism-typescript.js'
   import 'prismjs/components/prism-bash.js'
   import 'prism-svelte'
+  import AppMarkdown from '$lib/components/markdown/AppMarkdown.svelte'
 
   export let currentPage: CurrentPage
   export let pageContent: PageContent
@@ -60,7 +60,7 @@
 
 <ArticleTitle {pageContent} />
 
-<CarbonMarkdown source={pageContent.body} />
+<AppMarkdown source={pageContent.body} />
 
 <div class={'next-previous-buttons'}>
   <NextPreviousArticleButtons {currentPage} />
