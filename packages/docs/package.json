@@ -17,6 +17,7 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
+    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.10.1",
     "@magidoc/plugin-svelte-prismjs": "workspace:^0.10.1",
     "@sveltejs/adapter-static": "^1.0.0-next.29",
     "@sveltejs/kit": "^1.0.0-next.320",

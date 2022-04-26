@@ -1,6 +1,6 @@
 <script lang="ts">
   import { InlineNotification } from 'carbon-components-svelte'
-  import MarkdownSection from './MarkdownSection.svelte'
+  import MarkdownSection from './CarbonMarkdown.svelte'
 
   const info = /^[\s]*info[\s]*:/gi
   const warning = /^[\s]*warning[\s]*:/gi

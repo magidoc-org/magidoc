@@ -1,5 +1,6 @@
 <script lang="ts">
   import SvelteMarkdown from 'svelte-markdown'
+  import type { Renderers } from 'svelte-markdown'
   import MarkdownBloquote from './MarkdownBloquote.svelte'
   import MarkdownCode from './MarkdownCode.svelte'
   import MarkdownLink from './MarkdownLink.svelte'
@@ -15,6 +16,7 @@
   import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
 
   export let source: string
+  export let renderers: Partial<Renderers>
 </script>
 
 <SvelteMarkdown
@@ -33,5 +35,6 @@
     list: MarkdownList,
     listitem: MarkdownListItem,
     codespan: MarkdownCodeSpan,
+    ...renderers,
   }}
 />

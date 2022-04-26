@@ -4,7 +4,7 @@
   export let href: string
 
   let relativeHref: string
-  $: relativeHref = href.startsWith('/') ? `${base}${href}` : href
+  $: relativeHref = href.startsWith('/') ? `${String(base)}${href}` : href
 </script>
 
 <Link href={relativeHref}>
