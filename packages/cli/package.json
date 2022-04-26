@@ -41,7 +41,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.182",
-    "jest": "^28.0.1",
+    "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
     "rollup": "^2.70.2",
     "rollup-plugin-preserve-shebang": "^1.0.1",
