@@ -1,6 +1,6 @@
 <script lang="ts">
   import { InlineNotification } from 'carbon-components-svelte'
-  import SvelteMarkdown from 'svelte-markdown'
+  import MarkdownSection from './MarkdownSection.svelte'
 
   const info = /^[\s]*info[\s]*:/gi
   const warning = /^[\s]*warning[\s]*:/gi
@@ -31,5 +31,5 @@
   hideCloseButton
   iconDescription={type}
 >
-  <SvelteMarkdown source={cleanText} />
+  <MarkdownSection source={cleanText} />
 </InlineNotification>
