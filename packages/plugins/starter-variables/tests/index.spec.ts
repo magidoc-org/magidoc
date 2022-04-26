@@ -78,7 +78,7 @@ function testBooleanVariable(target: Variable<boolean>, viteKey: string) {
 }
 
 function testRecordVariable(
-  target: Variable<Record<string, unknown>>,
+  target: Variable<Record<string, any>>,
   viteKey: string,
 ) {
   expect(target.vite.key).toEqual(viteKey)

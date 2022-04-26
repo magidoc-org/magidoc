@@ -41,7 +41,8 @@ function buildEnv(
       `Options [${nonExistingOptions.toString()}] are not supported by template ${
         config.website.template
       }... Supported option names are [${ctx.templateConfiguration.supportedOptions
-        .map((value) => value.name).join(', ')}]`,
+        .map((value) => value.name)
+        .join(', ')}]`,
     )
   }
 
