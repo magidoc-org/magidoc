@@ -20,6 +20,7 @@
 
   export let text: string
   export let depth: number
+  export let showAnchor = false
 
   let visible = false
 
@@ -35,7 +36,7 @@
   on:mouseleave={() => (visible = false)}
 >
   <span>{text}</span>
-  {#if depth > 1}
+  {#if depth > 1 && showAnchor}
     <MarkdownHeadingAnchor {id} {visible} />
   {/if}
 </svelte:element>

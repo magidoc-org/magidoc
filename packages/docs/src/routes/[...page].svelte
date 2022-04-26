@@ -25,8 +25,6 @@
   import ArticleTitle from '$lib/components/article/ArticleTitle.svelte'
 
   import NextPreviousArticleButtons from '$lib/components/article/NextPreviousArticleButtons.svelte'
-  import MarkdownSection from '$lib/components/common/markdown/MarkdownSection.svelte'
-
   import {
     getCurrentPage,
     type CurrentPage,
@@ -35,6 +33,12 @@
   } from '$lib/pages'
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
   import type { LoadInput } from '@sveltejs/kit/types/internal'
+  import 'prismjs/components/prism-graphql.js'
+  import 'prismjs/components/prism-json.js'
+  import 'prismjs/components/prism-typescript.js'
+  import 'prismjs/components/prism-bash.js'
+  import 'prism-svelte'
+  import AppMarkdown from '$lib/components/markdown/AppMarkdown.svelte'
 
   export let currentPage: CurrentPage
   export let pageContent: PageContent
@@ -55,7 +59,8 @@
 </svelte:head>
 
 <ArticleTitle {pageContent} />
-<MarkdownSection source={pageContent.body} />
+
+<AppMarkdown source={pageContent.body} />
 
 <div class={'next-previous-buttons'}>
   <NextPreviousArticleButtons {currentPage} />

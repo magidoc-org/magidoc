@@ -15,7 +15,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "graphql": "^16.3.0"
+    "graphql": "^16.4.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",

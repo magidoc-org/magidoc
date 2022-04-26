@@ -3,7 +3,7 @@
   import { capitalize } from '$lib/utils/strings'
   import { Tag } from 'carbon-components-svelte'
   import type { TagProps } from 'carbon-components-svelte/types/Tag/Tag.svelte'
-  import DeprecationNotice from '../common/DeprecationNotice.svelte'
+  import { DeprecationNotice } from '@magidoc/plugin-svelte-carbon-commons'
 
   export let pageContent: PageContent
 

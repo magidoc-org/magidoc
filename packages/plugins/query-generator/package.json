@@ -22,7 +22,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "graphql": "^16.3.0",
+    "graphql": "^16.4.0",
     "lodash": "^4.17.21",
     "prettier": "^2.6.2"
   },

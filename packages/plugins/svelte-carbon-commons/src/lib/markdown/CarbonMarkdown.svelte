@@ -1,5 +1,6 @@
 <script lang="ts">
   import SvelteMarkdown from 'svelte-markdown'
+  import type { Renderers } from 'svelte-markdown'
   import MarkdownBloquote from './MarkdownBloquote.svelte'
   import MarkdownCode from './MarkdownCode.svelte'
   import MarkdownLink from './MarkdownLink.svelte'
@@ -13,8 +14,25 @@
   import MarkdownList from './list/MarkdownList.svelte'
   import MarkdownListItem from './list/MarkdownListItem.svelte'
   import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
+  import { baseVar } from './stores'
 
+  /**
+   * The markdown source
+   */
   export let source: string
+
+  /**
+   * The base path to your application.
+   * This is required when the application does not run in root context to generate the links properly.
+   */
+  export let base: `/${string}`
+
+  /**
+   * Optional renderers that can overwrite the default ones.
+   */
+  export let renderers: Partial<Renderers> = {}
+
+  $: baseVar.update(() => base)
 </script>
 
 <SvelteMarkdown
@@ -33,5 +51,6 @@
     list: MarkdownList,
     listitem: MarkdownListItem,
     codespan: MarkdownCodeSpan,
+    ...renderers,
   }}
 />

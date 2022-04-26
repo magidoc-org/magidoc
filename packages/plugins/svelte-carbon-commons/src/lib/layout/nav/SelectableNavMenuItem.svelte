@@ -1,14 +1,14 @@
 <script type="ts">
   import { SideNavMenuItem } from 'carbon-components-svelte'
-  import { page } from '$app/stores'
 
   export let href: string
   export let text: string
+  export let currentRef: string
 </script>
 
 <SideNavMenuItem
   {href}
   {text}
-  isSelected={$page.url.pathname === href}
+  isSelected={currentRef === href}
   {...$$restProps}
 />

@@ -1,15 +1,10 @@
 <script lang="ts">
-  import { Link } from 'carbon-components-svelte'
-  import SvelteMarkdown from 'svelte-markdown'
+  import { CarbonMarkdown } from '@magidoc/plugin-svelte-carbon-commons'
+  import { base } from '$app/paths'
 
   export let description: string | undefined | null
 </script>
 
 {#if description}
-  <SvelteMarkdown
-    source={description}
-    renderers={{
-      link: Link,
-    }}
-  />
+  <CarbonMarkdown source={description} {base} />
 {/if}

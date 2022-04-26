@@ -2,11 +2,11 @@
   import type { GraphQLField } from 'graphql'
   import type { QueryType } from '@magidoc/plugin-query-generator'
   import AppQueryGenerator from './AppQueryGenerator.svelte'
-  import DeprecationNotice from '../common/DeprecationNotice.svelte'
   import MarkdownDescription from '../common/MarkdownDescription.svelte'
   import ArgsList from './list/ArgsList.svelte'
   import QueryTypeTag from '../tags/QueryTypeTag.svelte'
   import TypeLink from '../type/TypeLink.svelte'
+  import { DeprecationNotice } from '@magidoc/plugin-svelte-carbon-commons'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>

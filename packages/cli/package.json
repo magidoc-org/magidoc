@@ -26,7 +26,7 @@
   "dependencies": {
     "@magidoc/plugin-starter-variables": "workspace:^0.10.1",
     "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.10.1",
-    "axios": "^0.26.1",
+    "axios": "^0.27.1",
     "chalk": "^5.0.1",
     "commander": "^9.2.0",
     "extract-zip": "^2.0.1",
