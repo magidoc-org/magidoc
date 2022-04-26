@@ -1,4 +1,3 @@
-import { z } from 'zod'
 import { recordConverter, stringConverter } from './converters'
 import { createVariable } from './variable'
 
@@ -18,7 +17,7 @@ export default {
         zod.boolean(),
         zod.number(),
         zod.null(),
-        zod.record(z.unknown()),
+        zod.record(zod.unknown()),
       ]),
     ),
   ),
