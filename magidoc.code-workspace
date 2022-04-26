@@ -60,6 +60,10 @@
       "path": "./packages/plugins/svelte-prismjs"
     },
     {
+      "name": "Plugins/Svelte-Carbon-Commons",
+      "path": "./packages/plugins/svelte-carbon-commons"
+    },
+    {
       "name": "Starters/Carbon-Multi-Page",
       "path": "./packages/starters/carbon-multi-page"
     }
