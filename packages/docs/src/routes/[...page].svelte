@@ -25,7 +25,6 @@
   import ArticleTitle from '$lib/components/article/ArticleTitle.svelte'
 
   import NextPreviousArticleButtons from '$lib/components/article/NextPreviousArticleButtons.svelte'
-
   import {
     getCurrentPage,
     type CurrentPage,
@@ -35,10 +34,10 @@
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
   import type { LoadInput } from '@sveltejs/kit/types/internal'
   import { CarbonMarkdown } from '@magidoc/plugin-svelte-carbon-commons'
-  import 'prismjs/components/prism-graphql'
-  import 'prismjs/components/prism-json'
-  import 'prismjs/components/prism-typescript'
-  import 'prismjs/components/prism-bash'
+  import 'prismjs/components/prism-graphql.js'
+  import 'prismjs/components/prism-json.js'
+  import 'prismjs/components/prism-typescript.js'
+  import 'prismjs/components/prism-bash.js'
   import 'prism-svelte'
 
   export let currentPage: CurrentPage
@@ -60,6 +59,7 @@
 </svelte:head>
 
 <ArticleTitle {pageContent} />
+
 <CarbonMarkdown source={pageContent.body} />
 
 <div class={'next-previous-buttons'}>
