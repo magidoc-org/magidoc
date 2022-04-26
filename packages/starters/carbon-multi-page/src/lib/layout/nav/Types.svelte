@@ -1,5 +1,7 @@
 <script lang="ts">
-  import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
+  import { page } from '$app/stores'
+
+  import { SelectableNavMenuItem } from '@magidoc/plugin-svelte-carbon-commons'
 
   import { SideNavMenu } from 'carbon-components-svelte'
   import type { GraphQLNamedType } from 'graphql'
@@ -32,6 +34,7 @@
       <SelectableNavMenuItem
         href={type.href}
         text={type.name}
+        currentRef={$page.url.pathname}
         class={type.deprecated ? 'deprecated' : ''}
       />
     {/each}

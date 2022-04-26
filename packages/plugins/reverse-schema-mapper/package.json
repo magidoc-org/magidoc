@@ -15,11 +15,11 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "graphql": "^16.3.0"
+    "graphql": "^16.4.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
-    "jest": "^27.5.1",
+    "jest": "^28.0.1",
     "jest-extended": "^2.0.0",
     "rollup": "^2.70.2",
     "ts-jest": "^27.1.4",

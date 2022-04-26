@@ -2,7 +2,8 @@
   import _ from 'lodash'
   import { SideNavMenu } from 'carbon-components-svelte'
   import type { GraphQLField, GraphQLObjectType } from 'graphql'
-  import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
+  import { SelectableNavMenuItem } from '@magidoc/plugin-svelte-carbon-commons'
+  import { page } from '$app/stores'
 
   export let type: GraphQLObjectType | undefined | null
   export let menuText: string
@@ -31,6 +32,7 @@
       <SelectableNavMenuItem
         href={query.href}
         text={query.name}
+        currentRef={$page.url.pathname}
         class={query.deprecated ? 'deprecated' : ''}
       />
     {/each}

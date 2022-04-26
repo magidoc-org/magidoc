@@ -15,8 +15,15 @@
   import MarkdownListItem from './list/MarkdownListItem.svelte'
   import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
 
+  /**
+   * The markdown source
+   */
   export let source: string
-  export let renderers: Partial<Renderers>
+
+  /**
+   * Optional renderers that can overwrite the default ones.
+   */
+  export let renderers: Partial<Renderers> = {}
 </script>
 
 <SvelteMarkdown

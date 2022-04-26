@@ -13,6 +13,10 @@ import MarkdownList from './markdown/list/MarkdownList.svelte'
 import MarkdownListItem from './markdown/list/MarkdownListItem.svelte'
 import MarkdownCodeSpan from './markdown/MarkdownCodeSpan.svelte'
 
+import SelectableNavMenuItem from './layout/nav/SelectableNavMenuItem.svelte'
+
+import DeprecationNotice from './notice/DeprecationNotice.svelte'
+
 export {
   CarbonMarkdown,
   MarkdownBloquote,
@@ -28,4 +32,6 @@ export {
   MarkdownTableCell,
   MarkdownTableHead,
   MarkdownTableRow,
+  SelectableNavMenuItem,
+  DeprecationNotice,
 }
