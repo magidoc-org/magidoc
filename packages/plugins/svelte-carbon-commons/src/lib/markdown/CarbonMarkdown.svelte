@@ -25,7 +25,7 @@
    * The base path to your application.
    * This is required when the application does not run in root context to generate the links properly.
    */
-  export let base: string
+  export let base: `/${string}`
 
   /**
    * Optional renderers that can overwrite the default ones.
