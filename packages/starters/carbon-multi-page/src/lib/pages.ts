@@ -51,9 +51,7 @@ function asCustomContent(path: string[], page: Page): CustomContent {
   return {
     type: 'menu',
     title: page.title,
-    children: (page.content ).map((child) =>
-      asCustomContent(newPath, child),
-    ),
+    children: page.content.map((child) => asCustomContent(newPath, child)),
   }
 }
 
