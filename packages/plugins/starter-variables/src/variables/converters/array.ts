@@ -10,15 +10,11 @@ export function arrayConverter<V>(
       }
 
       if (typeof target === 'string') {
-        try {
-          const result = JSON.parse(target) as Record<string, V>
-          if (!Array.isArray(result)) {
-            return null
-          }
-          return result
-        } catch {
+        const result = JSON.parse(target) as Record<string, V>
+        if (!Array.isArray(result)) {
           return null
         }
+        return result
       }
 
       return null

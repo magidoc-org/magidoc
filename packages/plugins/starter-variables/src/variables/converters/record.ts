@@ -10,15 +10,11 @@ export function recordConverter<V>(
       }
 
       if (typeof target === 'string') {
-        try {
-          const result = JSON.parse(target) as Record<string, V>
-          if (typeof result !== 'object') {
-            return null
-          }
-          return result
-        } catch {
+        const result = JSON.parse(target) as Record<string, V>
+        if (typeof result !== 'object') {
           return null
         }
+        return result
       }
 
       return null
