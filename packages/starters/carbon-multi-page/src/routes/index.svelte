@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
-  import { findFirstPage } from '$lib/pages'
+  import { base } from '$app/paths'
+
+  import { findFirstPage, joinUrlPaths } from '$lib/pages'
 
   import type { LoadInput, LoadOutput } from '@sveltejs/kit'
   import _ from 'lodash'
@@ -13,7 +15,7 @@
     let url = firstPage
       ? firstPage.href
       : firstQuery
-      ? `/model/queries/${firstQuery.name}`
+      ? joinUrlPaths(base, `/model/queries/${firstQuery.name}`)
       : null
 
     if (!url) {

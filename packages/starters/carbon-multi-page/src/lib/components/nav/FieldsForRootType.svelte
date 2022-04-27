@@ -4,6 +4,8 @@
   import type { GraphQLField, GraphQLObjectType } from 'graphql'
   import { SelectableNavMenuItem } from '@magidoc/plugin-svelte-carbon-commons'
   import { page } from '$app/stores'
+  import { joinUrlPaths } from '$lib/pages'
+  import { base } from '$app/paths'
 
   export let type: GraphQLObjectType | undefined | null
   export let menuText: string
@@ -30,7 +32,7 @@
   <SideNavMenu text={menuText} expanded>
     {#each fields as query}
       <SelectableNavMenuItem
-        href={query.href}
+        href={joinUrlPaths(base, String(query.href))}
         text={query.name}
         currentRef={$page.url.pathname}
         class={query.deprecated ? 'deprecated' : ''}

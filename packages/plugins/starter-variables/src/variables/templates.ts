@@ -10,6 +10,7 @@ export type Page = {
 export default {
   APP_LOGO: createVariable<string>('APP_LOGO', stringConverter()),
   APP_TITLE: createVariable<string>('APP_TITLE', stringConverter()),
+  SITE_ROOT: createVariable<string>('SITE_ROOT', stringConverter()),
   QUERY_GENERATION_FACTORIES: createVariable<
     Record<
       string,

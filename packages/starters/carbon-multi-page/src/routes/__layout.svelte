@@ -10,6 +10,7 @@
     )
 
     const pages = formatPages(
+      base,
       templates.PAGES.vite.getOrDefault(import.meta.env, [
         {
           title: 'Introduction',
@@ -62,6 +63,7 @@
   import { templates } from '@magidoc/plugin-starter-variables'
   import { formatPages } from '$lib/pages'
   import type { CustomContent } from 'src/app'
+  import { base } from '$app/paths'
 
   let isSideNavOpen: boolean
 
