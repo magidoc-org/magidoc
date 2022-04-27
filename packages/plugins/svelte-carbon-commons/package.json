@@ -3,7 +3,7 @@
   "description": "A component library shared between Carbon templates.",
   "type": "module",
   "license": "MIT",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "svelte": "index.js",
   "private": false,
   "keywords": [
@@ -22,7 +22,7 @@
     "release": "cd package && pnpm publish --no-git-checks --access public"
   },
   "devDependencies": {
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.10.1",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.11.0",
     "@sveltejs/adapter-auto": "^1.0.0-next.39",
     "@sveltejs/kit": "^1.0.0-next.322",
     "@types/prismjs": "^1.26.0",
