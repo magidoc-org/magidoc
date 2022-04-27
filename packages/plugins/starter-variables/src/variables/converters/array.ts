@@ -1,17 +1,17 @@
 import type { Converter, ZodTypeProvider } from '../variable'
 
-export function recordConverter<V>(
+export function arrayConverter<V>(
   valueType: ZodTypeProvider<V>,
-): Converter<Record<string, V | undefined>> {
+): Converter<Array<V | undefined>> {
   return {
     convert: (target) => {
-      if (typeof target === 'object') {
-        return target as Record<string, V>
+      if (Array.isArray(target)) {
+        return target as Array<V>
       }
 
       if (typeof target === 'string') {
         const result = JSON.parse(target) as Record<string, V>
-        if (typeof result !== 'object') {
+        if (!Array.isArray(result)) {
           return null
         }
         return result
@@ -20,6 +20,6 @@ export function recordConverter<V>(
       return null
     },
     asString: (value) => JSON.stringify(value),
-    type: (z) => z.record(valueType(z).optional()).optional(),
+    type: (z) => z.array(valueType(z)).optional(),
   }
 }

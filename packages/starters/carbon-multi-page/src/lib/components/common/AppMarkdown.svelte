@@ -2,9 +2,9 @@
   import { CarbonMarkdown } from '@magidoc/plugin-svelte-carbon-commons'
   import { base } from '$app/paths'
 
-  export let description: string | undefined | null
+  export let source: string | undefined | null
 </script>
 
-{#if description}
-  <CarbonMarkdown source={description} {base} />
+{#if source}
+  <CarbonMarkdown {source} {base} />
 {/if}

@@ -1,5 +1,11 @@
-import { recordConverter, stringConverter } from './converters'
+import type { ZodType } from 'zod'
+import { arrayConverter, recordConverter, stringConverter } from './converters'
 import { createVariable } from './variable'
+
+export type Page = {
+  title: string
+  content: string | Page[]
+}
 
 export default {
   APP_LOGO: createVariable<string>('APP_LOGO', stringConverter()),
@@ -20,5 +26,17 @@ export default {
         zod.record(zod.unknown()),
       ]),
     ),
+  ),
+  PAGES: createVariable<Array<Page | undefined>>(
+    'PAGES',
+    arrayConverter((zod) => {
+      const type: ZodType<Page> = zod.lazy(() =>
+        zod.object({
+          title: zod.string().nonempty(),
+          content: zod.union([zod.array(type), zod.string().nonempty()]),
+        }),
+      )
+      return type
+    }),
   ),
 }

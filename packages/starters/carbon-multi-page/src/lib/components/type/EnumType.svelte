@@ -7,7 +7,7 @@
   } from 'carbon-components-svelte'
 
   import type { GraphQLEnumType } from 'graphql'
-  import MarkdownDescription from '../common/MarkdownDescription.svelte'
+  import AppMarkdown from '../common/AppMarkdown.svelte'
   import DeprecatedTag from '../tags/DeprecatedTag.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
 
@@ -18,7 +18,7 @@
   <h1>{type.name} <TypeTag {type} /></h1>
   <br />
 
-  <MarkdownDescription description={type.description} />
+  <AppMarkdown source={type.description} />
 
   <br />
 
