@@ -15,7 +15,7 @@ export default {
       default: true,
     },
     paths: {
-      base: templates.SITE_ROOT.vite.get(),
+      base: templates.SITE_ROOT.vite.get(process.env) ?? '',
     },
     vite: {
       plugins: [
