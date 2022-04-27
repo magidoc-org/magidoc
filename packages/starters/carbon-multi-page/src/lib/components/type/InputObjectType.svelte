@@ -1,7 +1,7 @@
 <script type="ts">
   import type { GraphQLInputObjectType } from 'graphql'
   import _ from 'lodash'
-  import MarkdownDescription from '../common/MarkdownDescription.svelte'
+  import AppMarkdown from '../common/AppMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
   import InputFieldsTable from './list/InputFieldsList.svelte'
 
@@ -12,7 +12,7 @@
   <h1>{type.name} <TypeTag {type} /></h1>
   <br />
 
-  <MarkdownDescription description={type.description} />
+  <AppMarkdown source={type.description} />
 
   <br />
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MarkdownDescription from '$lib/components/common/MarkdownDescription.svelte'
+  import AppMarkdown from '$lib/components/common/AppMarkdown.svelte'
 
   import ArgsList from '$lib/components/query/list/ArgsList.svelte'
 
@@ -29,9 +29,9 @@
       <DeprecatedTag reason={item.deprecationReason} />
       <NullableTag type={item.type} />
     </p>
-    {#if item.description}
-      <MarkdownDescription description={item.description} />
-    {/if}
+
+    <AppMarkdown source={item.description} />
+
     {#if item.args.length > 0}
       {#if showArguments}
         <div class="arguments-list-wrapper">

@@ -59,7 +59,7 @@ describe('variables', () => {
       const pagesType: ZodType<Page> = z.lazy(() =>
         z.object({
           title: z.string(),
-          content: z.union([pagesType, z.string()]),
+          content: z.union([z.array(pagesType), z.string()]),
         }),
       )
 

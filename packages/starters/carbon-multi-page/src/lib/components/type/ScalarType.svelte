@@ -1,6 +1,6 @@
 <script type="ts">
   import type { GraphQLScalarType } from 'graphql'
-  import MarkdownDescription from '../common/MarkdownDescription.svelte'
+  import AppMarkdown from '../common/AppMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
 
   export let type: GraphQLScalarType
@@ -10,5 +10,5 @@
   <h1>{type.name} <TypeTag {type} /></h1>
   <br />
 
-  <MarkdownDescription description={type.description} />
+  <AppMarkdown source={type.description} />
 </section>

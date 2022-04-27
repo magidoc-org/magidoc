@@ -4,7 +4,7 @@ import { createVariable } from './variable'
 
 export type Page = {
   title: string
-  content: string | Page
+  content: string | Page[]
 }
 
 export default {
@@ -33,7 +33,7 @@ export default {
       const type: ZodType<Page> = zod.lazy(() =>
         zod.object({
           title: zod.string().nonempty(),
-          content: zod.union([type, zod.string().nonempty()]),
+          content: zod.union([zod.array(type), zod.string().nonempty()]),
         }),
       )
       return type
