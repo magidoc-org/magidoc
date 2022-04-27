@@ -1,6 +1,5 @@
 import * as variables from '../src/index'
 import type { Variable } from '../src/variables/variable'
-import z from 'zod'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
@@ -12,6 +11,7 @@ describe('variables', () => {
       'APP_LOGO',
       'APP_TITLE',
       'QUERY_GENERATION_FACTORIES',
+      'PAGES',
     ])
 
     testStringVariable(variables.templates.APP_TITLE, 'VITE_APP_TITLE')
@@ -20,6 +20,7 @@ describe('variables', () => {
       variables.templates.QUERY_GENERATION_FACTORIES,
       'VITE_QUERY_GENERATION_FACTORIES',
     )
+    testArrayVariable(variables.templates.PAGES, 'VITE_PAGES')
   })
 
   it('contains the right magidoc variables', () => {
@@ -103,4 +104,38 @@ function testRecordVariable(
     [viteKey]: JSON.stringify({ abc: 123 }),
   })
   expect(target.asEnv({})).toEqual({ [viteKey]: '{}' })
+}
+
+function testArrayVariable(target: Variable<Array<any>>, viteKey: string) {
+  expect(target.vite.key).toEqual(viteKey)
+
+  expect(target.vite.get({ [viteKey]: true })).toBeNull()
+  expect(target.vite.get({ [viteKey]: 'true' })).toBeNull()
+  expect(target.vite.get({ [viteKey]: '4234' })).toBeNull()
+  expect(target.vite.get({ [viteKey]: 4234 })).toBeNull()
+  expect(target.vite.get({ [viteKey]: {} })).toBeNull()
+
+  expect(target.vite.get({ [viteKey]: [{ abc: '123' }] })).toEqual([
+    { abc: '123' },
+  ])
+  expect(
+    target.vite.get({ [viteKey]: JSON.stringify([{ abc: '123' }]) }),
+  ).toEqual([{ abc: '123' }])
+
+  expect(
+    target.vite.getOrDefault({ [viteKey]: false }, [{ abc: 123 }]),
+  ).toEqual([
+    {
+      abc: 123,
+    },
+  ])
+  expect(target.vite.getOrDefault({ [viteKey]: [] }, [{ abc: 123 }])).toEqual(
+    [],
+  )
+  expect(target.vite.getOrDefault({}, [{ abc: 123 }])).toEqual([{ abc: 123 }])
+
+  expect(target.asEnv([{ abc: 123 }])).toEqual({
+    [viteKey]: JSON.stringify([{ abc: 123 }]),
+  })
+  expect(target.asEnv([])).toEqual({ [viteKey]: '[]' })
 }
