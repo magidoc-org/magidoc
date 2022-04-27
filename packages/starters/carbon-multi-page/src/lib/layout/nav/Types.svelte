@@ -1,5 +1,8 @@
 <script lang="ts">
+  import { base } from '$app/paths'
+
   import { page } from '$app/stores'
+  import { joinUrlPaths } from '$lib/pages'
 
   import { SelectableNavMenuItem } from '@magidoc/plugin-svelte-carbon-commons'
 
@@ -32,7 +35,7 @@
   <SideNavMenu text="Types" expanded>
     {#each mappedTypes as type}
       <SelectableNavMenuItem
-        href={type.href}
+        href={joinUrlPaths(base, String(type.href))}
         text={type.name}
         currentRef={$page.url.pathname}
         class={type.deprecated ? 'deprecated' : ''}

@@ -2,7 +2,7 @@ import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-static'
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
-import { magidoc } from '@magidoc/plugin-starter-variables'
+import { magidoc, templates } from '@magidoc/plugin-starter-variables'
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -13,6 +13,9 @@ export default {
     adapter: adapter(),
     prerender: {
       default: true,
+    },
+    paths: {
+      base: templates.SITE_ROOT.vite.get(process.env) ?? '',
     },
     vite: {
       plugins: [

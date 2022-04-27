@@ -1,10 +1,23 @@
 import type { Page } from '@magidoc/plugin-starter-variables'
 import type { CustomContent, CustomPage } from 'src/app'
 
-export function formatPages(pages: (Page | undefined)[]): CustomContent[] {
+export function formatPages(
+  base: string,
+  pages: (Page | undefined)[],
+): CustomContent[] {
   return pages
     .filter((page): page is Page => !!page)
-    .map((item) => asCustomContent([], item))
+    .map((item) => asCustomContent(base, [], item))
+}
+
+export function joinUrlPaths(...paths: string[]): string {
+  return (
+    '/' +
+    paths
+      .flatMap((path) => path.split('/'))
+      .filter((path) => !!path)
+      .join('/')
+  )
 }
 
 export function findFirstPage(pages: CustomContent[]): CustomPage | null {
@@ -36,14 +49,17 @@ function firstPageBy(
   return null
 }
 
-function asCustomContent(path: string[], page: Page): CustomContent {
+function asCustomContent(
+  base: string,
+  path: string[],
+  page: Page,
+): CustomContent {
   if (typeof page.content === 'string') {
-    const base = path.length === 0 ? '' : '/' + path.join('/')
     return {
       type: 'page',
       title: page.title,
       content: page.content,
-      href: base + '/' + generatePath(page.title),
+      href: joinUrlPaths(base, ...path, generatePath(page.title)),
     }
   }
 
@@ -51,7 +67,9 @@ function asCustomContent(path: string[], page: Page): CustomContent {
   return {
     type: 'menu',
     title: page.title,
-    children: page.content.map((child) => asCustomContent(newPath, child)),
+    children: page.content.map((child) =>
+      asCustomContent(base, newPath, child),
+    ),
   }
 }
 

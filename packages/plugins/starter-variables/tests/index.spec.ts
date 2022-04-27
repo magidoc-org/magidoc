@@ -14,6 +14,7 @@ describe('variables', () => {
       expect(Object.keys(variables.templates)).toEqual([
         'APP_LOGO',
         'APP_TITLE',
+        'SITE_ROOT',
         'QUERY_GENERATION_FACTORIES',
         'PAGES',
       ])
@@ -31,6 +32,14 @@ describe('variables', () => {
       testStringVariable(
         variables.templates.APP_LOGO,
         'VITE_APP_LOGO',
+        z.string().optional(),
+      )
+    })
+
+    test('site root', () => {
+      testStringVariable(
+        variables.templates.SITE_ROOT,
+        'VITE_SITE_ROOT',
         z.string().optional(),
       )
     })
