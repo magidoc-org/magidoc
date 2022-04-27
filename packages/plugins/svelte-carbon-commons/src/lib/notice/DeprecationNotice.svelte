@@ -8,6 +8,9 @@
 
 {#if deprecationReason}
   <InlineNotification hideCloseButton lowContrast kind="warning">
-    <CarbonMarkdown source={`**Deprecated**: ${deprecationReason}`} base={$baseVar} />
+    <CarbonMarkdown
+      source={`**Deprecated**: ${deprecationReason}`}
+      base={$baseVar}
+    />
   </InlineNotification>
 {/if}
