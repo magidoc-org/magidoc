@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
-
 main {
   height: 100%;
 }
 
 h1 {
   font-weight: 500 !important;
+}
+
+h1:not(:first-child),
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1rem !important;
 }
 
 .deprecated {
@@ -16,14 +23,12 @@ h1 {
   z-index: 7000;
 }
 
-.bx--side-nav__item {
-  /* show all elements in the navbar */
-  overflow: visible !important;
+.bx--inline-notification {
+  max-width: inherit !important;
 }
 
-.bx--side-nav__submenu[aria-expanded=false]+.bx--side-nav__menu {
-  /* Makes sure no scroll bar is present when menus are collapsed*/
-  display: none;
+.bx--inline-notification__text-wrapper {
+  padding: 0.7rem 0 !important;
 }
 
 .bx--link {
@@ -34,7 +39,7 @@ h1 {
   margin-bottom: 0px !important;
 }
 
-.bx--structured-list-tbody .bx--structured-list-row:last-child  {
+.bx--structured-list-tbody .bx--structured-list-row:last-child {
   border-color: transparent !important;
 }
 
@@ -48,9 +53,4 @@ h1 {
   tr.bx--parent-row.bx--expandable-row + tr[data-child-row] td {
     padding-left: 1rem !important;
   }
-}
-
-.CodeMirror * {
-  font-family: 'JetBrains Mono', Arial, monospace;
-  font-size: 0.85rem;
 }

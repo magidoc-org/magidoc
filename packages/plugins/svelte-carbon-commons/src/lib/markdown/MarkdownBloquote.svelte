@@ -34,3 +34,17 @@
 >
   <CarbonMarkdown source={cleanText} base={$baseVar} />
 </InlineNotification>
+
+<style>
+  :global(.bx--inline-notification) {
+    max-width: inherit !important;
+  }
+
+  :global(.bx--inline-notification__text-wrapper) {
+    padding: 0.7rem 0 !important;
+  }
+
+  :global(.bx--inline-notification__text-wrapper .md-paragraph) {
+    margin: 0 !important;
+  }
+</style>
