@@ -29,7 +29,7 @@ export default {
           content: markdown`
             # 👋 Hi
 
-            Welcome to [FaunaDB](https://docs.fauna.com/fauna/v4/start/graphql)'s GraphQL documentation
+            Welcome to [FaunaDB](https://fauna.com/blog/try-faunadbs-graphql-api)'s GraphQL documentation
             generated with [Magidoc](https://github.com/magidoc-org/magidoc), a free open source software designed to build customizable static GraphQL documentation websites with little effort.
 
             You wonder how easy it was to build this website? Have a look at the [configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs).
