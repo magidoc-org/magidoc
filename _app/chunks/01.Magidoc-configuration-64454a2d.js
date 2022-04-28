@@ -65,7 +65,7 @@ export default {
     type: 'file',
 
     /**
-     * The location of the file. If you use a relative path here, 
+     * The location of the file. If you use a relative path here,
      * it will be relative to where the Magidoc CLI is launched.
      */
     location: '/a/path/to/schema.json',
@@ -118,7 +118,7 @@ export default {
      * @default current CLI version
      */
     templateVersion: '<magidoc-version>',
-    
+
     /**
      * The optional output location for the built website.
      *
@@ -147,14 +147,67 @@ export default {
       appLogo: 'https://website.com/logo.png',
 
       /**
+       * The a root path where your website will be served from.
+       * It is common to see docs websites hosted on a /docs path.
+       * Example: https://your-website.com/docs
+       *
+       * If your website is served from the root path, leave this undefined.
+       *
+       * @default undefined
+       */
+      siteRoot: '/docs',
+
+      /**
+       * Customize pages and their content. Each of these pages will be presented before the graphQL documentation.
+       * Use this to present your API urls, authentication flows, designs, concepts, or whatever you want.
+       *
+       * @default (A default Magidoc page)
+       */
+      pages: [
+        {
+          /**
+           * Each page must have a title for the navbar.
+           */
+          title: 'First item',
+
+          /**
+           * The content. Markdown is supported, but be careful with the indentation.
+           * Javascript multi-line templates conserve the indentation you have in your strings, which will not output properly.
+           * It is recommended to either get your markdown from files or use a library to un-indent your strings.
+           *
+           * @see: https://www.npmjs.com/package/dedent
+           */
+          content: \`
+            # Title
+
+            Your markdown here
+          \`,
+        },
+        {
+          title: 'Second Item',
+          /**
+           * Content can also be an array of sub-pages.
+           * Some templates may not support multi-level nesting.
+           * Make sure to check out the documentation of your template.
+           */
+          content: [
+            {
+              title: 'Nested Item',
+              content: \`Same as before\`,
+            },
+          ],
+        },
+      ],
+
+      /**
        * Optional query generation factory. See more details below
-       * 
+       *
        * @default {}
        */
       queryGenerationFactories: {
-        "Int!": 420,
-        String: "abc",
-      }
+        'Int!': 420,
+        String: 'abc',
+      },
     },
   },
 }
@@ -162,9 +215,11 @@ export default {
 
 The list of available templates can be found on the [templates page](/templates/introduction).
 
-### queryGenerationFactories 
-The query generation factories are used to customize query parameters in the generated queries. This is useful in the event that your API contains custom scalars, or that you want to return custom values for a type. 
+### queryGenerationFactories
 
-To know more about the extent of what is possible with \`queryGenerationFactories\`, read the [query generator](/plugins/graphql-query-generator) documentation. 
+The query generation factories are used to customize query parameters in the generated queries. This is useful in the event that your API contains custom scalars, or that you want to return custom values for a type.
 
-> Warning: Magidoc CLI uses environment variables to pass options to the templates, which means that functions are not supported here, unlike when using the \`graphql-query-generator\` directly. If you wish to have more customization options of the output variables, you will need to use the [init command](/cli/init) and customize the template directly. `;export{n as default};
+To know more about the extent of what is possible with \`queryGenerationFactories\`, read the [query generator](/plugins/graphql-query-generator) documentation.
+
+> Warning: Magidoc CLI uses environment variables to pass options to the templates, which means that functions are not supported here, unlike when using the \`graphql-query-generator\` directly. If you wish to have more customization options of the output variables, you will need to use the [init command](/cli/init) and customize the template directly.
+`;export{n as default};
