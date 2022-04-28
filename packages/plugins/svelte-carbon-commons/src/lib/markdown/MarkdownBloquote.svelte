@@ -5,14 +5,20 @@
 
   const info = /^[\s]*(information|info)[\s]*:/gi
   const warning = /^[\s]*(warning|warn)[\s]*:/gi
+  const success = /^[\s]*(success)[\s]*:/gi
+  const error = /^[\s]*(error)[\s]*:/gi
 
   export let text: string
 
-  function getType(text: string): 'info' | 'warning' {
+  function getType(text: string): 'info' | 'warning' | 'success' | 'error' {
     if (text.match(info)) {
       return 'info'
     } else if (text.match(warning)) {
       return 'warning'
+    } else if (text.match(success)) {
+      return 'success'
+    } else if (text.match(error)) {
+      return 'error'
     }
 
     return 'info'

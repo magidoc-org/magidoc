@@ -10,6 +10,7 @@ type PreviewCommandOptions = {
 
 import preview from '.'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
+import { templates } from '@magidoc/plugin-starter-variables'
 
 export default function buildPreviewCommand(program: Command) {
   program
@@ -43,9 +44,11 @@ export default function buildPreviewCommand(program: Command) {
       }
 
       await withStacktrace(stacktrace, () => {
+        const root = fileConfiguration.website.options[templates.SITE_ROOT.name]
         preview({
           websiteLocation: path.resolve(fileConfiguration.website.output),
           port,
+          siteRoot: root ? String(root) : undefined,
         })
       })
     })
