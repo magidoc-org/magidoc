@@ -1,0 +1,4 @@
+type Query {
+  todos: [Todo]
+  todo(todoId: ID): Todo
+}

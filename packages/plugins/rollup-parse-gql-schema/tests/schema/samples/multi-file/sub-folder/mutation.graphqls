@@ -1,0 +1,6 @@
+type Mutation {
+  createTodo(input: TodoInput!): Todo
+  updateTodo(input: TodoInput!): Todo
+  toggleTodo(todoId: ID!): Todo
+  deleteTodo(input: TodoInput!): [Todo]
+}
