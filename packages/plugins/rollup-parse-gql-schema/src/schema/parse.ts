@@ -29,7 +29,11 @@ async function readFullSchema(globPaths: string[]): Promise<string> {
     )
   }
 
-  return (await Promise.all(paths.map((path) => readFile(path)))).join('\n\n')
+  return (
+    await Promise.all(
+      paths.map((path) => readFile(path).then((buff) => buff.toString())),
+    )
+  ).join('\n\n')
 }
 
 async function readGlobPaths(path: string): Promise<string[]> {

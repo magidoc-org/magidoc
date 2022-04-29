@@ -1,12 +1,23 @@
+import { buildClientSchema, IntrospectionQuery } from 'graphql'
 import path from 'path'
+import { parseGraphqlSchema } from '../../src/schema/parse'
+import expected from './samples/expected-introspection.json'
 
 describe('when parsing a single file', () => {
   const file = relativeToAbsolute('./samples/single-file.graphqls')
+
+  it('should create the introspection result properly', async () => {
+    verifyEqualExpected(await run([file]))
+  })
 })
 
 describe('when parsing glob files', () => {
   describe('with a single glob path', () => {
     const glob = relativeToAbsolute('./samples/multi-file/**/*.graphqls')
+
+    it('should create the introspection result properly', async () => {
+      verifyEqualExpected(await run([glob]))
+    })
   })
 
   describe('with multiple paths', () => {
@@ -16,12 +27,24 @@ describe('when parsing glob files', () => {
       relativeToAbsolute('./samples/multi-file/*.graphqls'),
     ]
 
-    it('should parse the schema properly', () => {
-        
+    it('should create the introspection result properly', async () => {
+      verifyEqualExpected(await run(globs))
     })
   })
 })
 
+async function run(paths: string[]): Promise<IntrospectionQuery> {
+  return await parseGraphqlSchema({
+    globPaths: paths,
+  })
+}
+
 function relativeToAbsolute(target: string): string {
   return path.join(__dirname, target)
+}
+
+function verifyEqualExpected(first: IntrospectionQuery) {
+  expect(buildClientSchema(first)).toEqual(
+    buildClientSchema(expected as unknown as IntrospectionQuery),
+  )
 }
