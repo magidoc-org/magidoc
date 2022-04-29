@@ -19,6 +19,19 @@ h6 {
   text-decoration: line-through !important;
 }
 
+.bx--side-nav__item {
+  overflow: visible !important;
+}
+
+.bx--side-nav__submenu .bx--side-nav__menu {
+ visibility: inherit !important;
+ display: none;
+}
+
+.bx--side-nav__submenu[aria-expanded=true]+.bx--side-nav__menu {
+display: block;
+}
+
 .bx--side-nav__overlay-active {
   z-index: 7000;
 }
