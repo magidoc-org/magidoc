@@ -69,12 +69,10 @@ function logError(message: string) {
 function startApp(server: http.Server, port: number) {
   server.listen(port, 'localhost', () => {
     const address = server.address() as AddressInfo
-    const host = address.address === '127.0.0.1' ? 'localhost' : address.address
-
     console.log()
 
     console.log(
-      `Server listening on ${chalk.cyan(`http://${host}:${address.port}`)}`,
+      `Server listening on ${chalk.cyan(`http://localhost:${address.port}`)}`,
     )
   })
 }
