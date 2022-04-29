@@ -21,7 +21,9 @@ export async function parseGraphqlSchema(
     return introspectionFromSchema(schema)
   } catch (error) {
     throw new Error(
-      `Unable to extract a GraphQL introspection from provided schema: ${String(error)}`,
+      `Unable to extract a GraphQL introspection from provided schema: ${String(
+        error,
+      )}`,
       {
         cause: error as Error,
       },

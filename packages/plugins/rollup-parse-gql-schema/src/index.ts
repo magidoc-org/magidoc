@@ -2,8 +2,6 @@ import type { Plugin } from 'rollup'
 import { writeFileSync } from 'fs'
 import { parseGraphqlSchema } from './schema/parse'
 
-export type { Method }
-
 export type PluginOptions = {
   /**
    * The paths to the GraphQL SDL files. Glob syntax may be used.
