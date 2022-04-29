@@ -1,0 +1,11 @@
+type Todo {
+  id: ID
+  name: String
+  complete: Boolean
+}
+
+input TodoInput {
+  todoId: ID
+  name: String
+  complete: Boolean
+}

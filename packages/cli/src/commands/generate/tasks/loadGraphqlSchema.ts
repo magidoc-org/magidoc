@@ -1,5 +1,6 @@
 import type { GenerationConfig } from '../config'
 import { fetchSchema } from '@magidoc/rollup-plugin-fetch-gql-schema'
+import { parseSchema } from '@magidoc/rollup-plugin-parse-gql-schema'
 import { newTask, GenerateTask } from '../task'
 import fs from 'fs/promises'
 
@@ -14,6 +15,12 @@ export function loadGraphQLSchemaTask(config: GenerationConfig): GenerateTask {
             method: config.introspection.method,
             query: config.introspection.query,
             headers: config.introspection.headers,
+            target: ctx.templateConfiguration.schemaTargetLocation,
+          })
+          break
+        case 'sdl':
+          await parseSchema({
+            paths: config.introspection.paths,
             target: ctx.templateConfiguration.schemaTargetLocation,
           })
           break

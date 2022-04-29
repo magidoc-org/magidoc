@@ -1,0 +1,38 @@
+{
+  "name": "@magidoc/rollup-plugin-parse-gql-schema",
+  "description": "A Rollup and ViteJS plugin that allows to fetch a GraphQL Schema from a target URL and save it to a target output folder.",
+  "private": false,
+  "version": "0.12.1",
+  "type": "module",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "keywords": [
+    "rollup-plugin",
+    "vite-plugin",
+    "graphql",
+    "graphql-schema",
+    "magidoc"
+  ],
+  "scripts": {
+    "build": "run-p build:*",
+    "build:rollup": "rollup -c",
+    "build:tsc": "tsc --build tsconfig.build.json",
+    "test": "jest",
+    "release": "pnpm publish --no-git-checks --access public"
+  },
+  "dependencies": {
+    "glob": "^8.0.1",
+    "graphql": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/jest": "^27.4.1",
+    "@types/prettier": "^2.6.0",
+    "jest": "^27.5.1",
+    "jest-extended": "^2.0.0",
+    "rollup": "^2.70.2",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  }
+}

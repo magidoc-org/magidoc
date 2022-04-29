@@ -45,15 +45,19 @@
     },
     {
       "name": "Plugins/Rollup Fetch GraphQL Schema",
-      "path": "./packages/plugins/rollup-fetch-gql-schema/"
+      "path": "./packages/plugins/rollup-fetch-gql-schema"
+    },
+    {
+      "name": "Plugins/Rollup Parse GraphQL Schema",
+      "path": "./packages/plugins/rollup-parse-gql-schema"
     },
     {
       "name": "Plugins/Reverse Schema Mapper",
-      "path": "./packages/plugins/reverse-schema-mapper/"
+      "path": "./packages/plugins/reverse-schema-mapper"
     },
     {
       "name": "Plugins/Query Generator",
-      "path": "./packages/plugins/query-generator/"
+      "path": "./packages/plugins/query-generator"
     },
     {
       "name": "Plugins/Svelte-PrismJS",

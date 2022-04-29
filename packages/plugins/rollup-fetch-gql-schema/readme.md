@@ -1,7 +1,7 @@
 # Magidoc - Fetch GraphQL Schema
-A Rollup/ViteJS plugin fetchs a remote GraphQL schema using the introspection query. Configuration is available to pass custom headers, url, method, etc.
+A Rollup/ViteJS plugin that fetches a remote GraphQL schema using the introspection query. Configuration is available to pass custom headers, url, method, etc.
 
-> This plugin can be used in any Javascript application, wether it is browser or NodeJS based.
+> This plugin can be used in any project that uses Rollup/ViteJS, wether it is browser or NodeJS based.
 
 ## Documentation
 For more details on how to use this plugin, see the [documentation](https://magidoc-org.github.io/magidoc/plugins/rollup-fetch-graphql-schema).
