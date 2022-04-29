@@ -17,6 +17,10 @@ export const ZIntrospectionConfiguration = z.union([
     headers: z.record(z.string().nonempty(), z.string()).optional(),
   }),
   z.object({
+    type: z.literal('sdl'),
+    paths: z.array(ZPath).nonempty(),
+  }),
+  z.object({
     type: z.literal('file'),
     location: ZPath,
   }),

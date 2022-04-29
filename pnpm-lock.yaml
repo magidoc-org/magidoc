@@ -32,6 +32,7 @@ importers:
     specifiers:
       '@magidoc/plugin-starter-variables': workspace:^0.12.1
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.12.1
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^0.12.1
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.4.1
@@ -55,6 +56,7 @@ importers:
     dependencies:
       '@magidoc/plugin-starter-variables': link:../plugins/starter-variables
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../plugins/rollup-fetch-gql-schema
+      '@magidoc/rollup-plugin-parse-gql-schema': link:../plugins/rollup-parse-gql-schema
       axios: 0.27.2
       chalk: 5.0.1
       commander: 9.2.0
