@@ -1,12 +1,10 @@
-import { glob } from 'glob'
+import glob from 'fast-glob'
 import {
   buildSchema,
   introspectionFromSchema,
   IntrospectionQuery,
 } from 'graphql'
-import { lstatSync } from 'fs'
 import { readFile } from 'fs/promises'
-import path from 'path'
 
 export type Parameters = {
   globPaths: string[]
@@ -54,29 +52,5 @@ async function readFullSchema(globPaths: string[]): Promise<string> {
 }
 
 async function readGlobPaths(globPath: string): Promise<string[]> {
-  return new Promise((resolve, reject) => {
-    glob(globPath, (error: Error | null, matches: string[]) => {
-      if (error) {
-        return reject(
-          new Error(`Could not read path: ${globPath} - ${String(error)}`, {
-            cause: error,
-          }),
-        )
-      }
-
-      resolve(
-        matches
-          .map((target) => path.resolve(target))
-          .filter((target) => !isDirectory(target)),
-      )
-    })
-  })
-}
-
-function isDirectory(path: string): boolean {
-  try {
-    return lstatSync(path).isDirectory()
-  } catch {
-    return false
-  }
+  return await glob(globPath, { dot: true })
 }
