@@ -22,7 +22,7 @@ export default {
         // Skill this rollup plugin if we are in the context of magidoc generate command
         !magidoc.MAGIDOC_GENERATE.vite.get(process.env)
           ? fetchGraphQLSchema({
-              url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
+              url: 'https://qohash.qo-dev.com/api/dev/introspection/graphql',
             })
           : null,
       ],
