@@ -4,7 +4,9 @@ import {
   introspectionFromSchema,
   IntrospectionQuery,
 } from 'graphql'
+import { lstatSync } from 'fs'
 import { readFile } from 'fs/promises'
+import path from 'path'
 
 export type Parameters = {
   globPaths: string[]
@@ -14,41 +16,65 @@ export async function parseGraphqlSchema(
   options: Parameters,
 ): Promise<IntrospectionQuery> {
   const rawSchema = await readFullSchema(options.globPaths)
-  const schema = buildSchema(rawSchema)
-  return introspectionFromSchema(schema)
+  try {
+    const schema = buildSchema(rawSchema)
+    return introspectionFromSchema(schema)
+  } catch (error) {
+    throw new Error(
+      `Unable to extract a GraphQL introspection from provided schema: ${String(error)}`,
+      {
+        cause: error as Error,
+      },
+    )
+  }
 }
 
 async function readFullSchema(globPaths: string[]): Promise<string> {
-  const paths = (
-    await Promise.all(globPaths.map((path) => readGlobPaths(path)))
-  ).flatMap((it) => it)
+  const paths = new Set(
+    (await Promise.all(globPaths.map((path) => readGlobPaths(path)))).flatMap(
+      (it) => it,
+    ),
+  )
 
-  if (paths.length === 0) {
+  if (paths.size === 0) {
     throw new Error(
-      `No paths found matching target glob patterns: ${globPaths.toString()}.\nIf you used relative paths, make sure the paths are relative to where the node command was launched or use absolute paths.`,
+      `No paths found matching target glob patterns: [${globPaths.toString()}].\nIf you used relative paths, make sure the paths are relative to where the node command was launched or use absolute paths.`,
     )
   }
 
   return (
     await Promise.all(
-      paths.map((path) => readFile(path).then((buff) => buff.toString())),
+      Array.from(paths.values()).map((path) =>
+        readFile(path).then((buff) => buff.toString()),
+      ),
     )
   ).join('\n\n')
 }
 
-async function readGlobPaths(path: string): Promise<string[]> {
-  console.log('path', path)
+async function readGlobPaths(globPath: string): Promise<string[]> {
   return new Promise((resolve, reject) => {
-    glob(path, (error: Error | null, matches: string[]) => {
+    glob(globPath, (error: Error | null, matches: string[]) => {
       if (error) {
         return reject(
-          new Error(`Could not read path: ${path}`, {
+          new Error(`Could not read path: ${globPath} - ${String(error)}`, {
             cause: error,
           }),
         )
       }
 
-      resolve(matches)
+      resolve(
+        matches
+          .map((target) => path.resolve(target))
+          .filter((target) => !isDirectory(target)),
+      )
     })
   })
+}
+
+function isDirectory(path: string): boolean {
+  try {
+    return lstatSync(path).isDirectory()
+  } catch {
+    return false
+  }
 }

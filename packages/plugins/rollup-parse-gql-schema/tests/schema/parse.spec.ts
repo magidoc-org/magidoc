@@ -33,6 +33,30 @@ describe('when parsing glob files', () => {
   })
 })
 
+describe('providing no paths', () => {
+  it('fails', async () => {
+    await expect(async () => await run([])).rejects.toThrowError(
+      'No paths found',
+    )
+  })
+})
+
+describe('providing garbage paths', () => {
+  it('fails', async () => {
+    await expect(async () => await run(['@sdfsa'])).rejects.toThrowError(
+      'No paths found',
+    )
+  })
+})
+
+describe('providing non graphql files', () => {
+  it('fails', async () => {
+    await expect(
+      async () => await run([relativeToAbsolute('./samples/**/*')]),
+    ).rejects.toThrowError('Syntax Error')
+  })
+})
+
 async function run(paths: string[]): Promise<IntrospectionQuery> {
   return await parseGraphqlSchema({
     globPaths: paths,
