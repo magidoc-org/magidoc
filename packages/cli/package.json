@@ -44,7 +44,7 @@
     "@types/lodash": "^4.14.182",
     "jest": "^27.5.1",
     "jest-extended": "^2.0.0",
-    "rollup": "^2.70.2",
+    "rollup": "^2.71.1",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "ts-jest": "^27.1.4",
     "tslib": "^2.4.0",
