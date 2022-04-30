@@ -63,7 +63,9 @@ export default {
               content: markdown`
                 # ⚠️ Blockquotes
 
-                Your can show error, warning and info blockquotes.
+                Your can show error, warning, info and success blockquotes.
+
+                > Success: Good job!
 
                 > Info: You like info? There you go. **They support inner markdown**!
 

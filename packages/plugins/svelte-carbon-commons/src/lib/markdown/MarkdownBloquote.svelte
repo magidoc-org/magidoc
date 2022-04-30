@@ -25,7 +25,11 @@
   }
 
   function getText(text: string): string {
-    return text.replace(info, '').replace(warning, '')
+    return text
+      .replace(info, '')
+      .replace(warning, '')
+      .replace(error, '')
+      .replace(success, '')
   }
 
   $: cleanText = getText(text)
