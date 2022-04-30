@@ -45,12 +45,14 @@ export default {
             {
               title: 'Code',
               content: markdown`
-                # 💻 Yes, the markdown supports code
+                # 💻 Code blocks
+
+                Yes, you can input code blocks directly in your pages, and they will be rendered using PrismJS.
 
                 ~~~graphql
-                {
+                query {
                   look(at: "this") {
-                    query
+                    thing
                   }
                 }
                 ~~~
@@ -59,11 +61,29 @@ export default {
             {
               title: 'Blockquote',
               content: markdown`
-                # ⚠️ You can even show blockquotes
+                # ⚠️ Blockquotes
 
-                > Warning: You like warnings? Well here's one.
+                Your can show error, warning and info blockquotes.
 
-                > Info: Or even info. **They support markdown too**
+                > Info: You like info? There you go. **They support inner markdown**!
+
+                > Warning: You like warnings too? Well here's one.
+
+                > Error: Oops, something happened? 🤷
+              `,
+            },
+            {
+              title: 'Tables',
+              content: markdown`
+                # 📚 Tables
+
+                Tables are supported as well.
+
+                | **Animal** | **Emoji** | **Sound** |
+                | ---------- | ---------- | --------- |
+                | Dog        | 🐶         | Woof!     |
+                | Cat        | 🐱         | Meow!     |
+                | Cow        | 🐄         | Moo       |
               `,
             },
           ],
