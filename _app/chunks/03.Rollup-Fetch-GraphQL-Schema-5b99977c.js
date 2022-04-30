@@ -1,4 +1,4 @@
-var e=`---
+var n=`---
 title: Rollup fetch GraphQL Schema
 since: 1.0.0
 tags: ['standalone', 'plugin', 'rollup', 'vite']
@@ -44,23 +44,27 @@ fetchGraphQLSchema({
    * Your API URL.
    */
   url: 'https://your-graphql-api-url.com/graphql',
+
   /**
    * The HTTP Method to use.
    *
    * @default 'POST'
    */
   method: 'POST',
+
   /**
    * Some APIs do not follow the GraphQL.js standard, so the introspection may be invalid for your API.
    * If this happens, you can specify a different introspection query to use.
    */
   query: '<introspection-query>',
+
   /**
    * Optional headers to provide in the request.
    *
    * @default {}
    */
   headers: {},
+  
   /**
    * The target path where to put the introspection query result.
    * This defaults to the src asset directory of SvelteKit, so that the asset can be imported directly.
@@ -70,4 +74,4 @@ fetchGraphQLSchema({
   target: 'src/_schema.json',
 })
 \`\`\`
-`;export{e as default};
+`;export{n as default};

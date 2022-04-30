@@ -1,11 +1,11 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-85809d89.js",
+    "file": "start-be2056cf.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-28d5b300.js",
-      "_paths-d72b1147.js",
+      "_index-7b8ef155.js",
+      "_paths-6bae2c62.js",
       "_preload-helper-4330dcf9.js"
     ],
     "dynamicImports": [
@@ -16,15 +16,15 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-7bcf9ece.js",
+    "file": "pages/__layout.svelte-cc0281f3.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_preload-helper-4330dcf9.js",
-      "_index-28d5b300.js",
-      "_paths-d72b1147.js",
-      "_pages-71fc573e.js"
+      "_index-7b8ef155.js",
+      "_paths-6bae2c62.js",
+      "_pages-6677415c.js"
     ],
     "dynamicImports": [
       "src/lib/sections/01.introduction/01.Welcome.md",
@@ -37,6 +37,7 @@
       "src/lib/sections/04.plugins/01.Introduction.md",
       "src/lib/sections/04.plugins/02.GraphQL-Query-Generator.md",
       "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md",
+      "src/lib/sections/04.plugins/04.Rollup-Parse-GraphQL-Schema.md",
       "src/lib/sections/05.svelte-plugins/01.Introduction.md",
       "src/lib/sections/05.svelte-plugins/02.PrismJS.md"
     ],
@@ -45,53 +46,53 @@
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-b1840687.js",
+    "file": "error.svelte-78ff8058.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-28d5b300.js"
+      "_index-7b8ef155.js"
     ]
   },
   "src/routes/[...page].svelte": {
-    "file": "pages/_...page_.svelte-e4453e42.js",
+    "file": "pages/_...page_.svelte-6393efd3.js",
     "src": "src/routes/[...page].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-28d5b300.js",
-      "_pages-71fc573e.js",
-      "_paths-d72b1147.js"
+      "_index-7b8ef155.js",
+      "_pages-6677415c.js",
+      "_paths-6bae2c62.js"
     ],
     "css": [
       "assets/pages/_...page_.svelte-674ebf55.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-977e3240.js",
+    "file": "pages/index.svelte-c463c64e.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-28d5b300.js"
+      "_index-7b8ef155.js"
     ]
   },
-  "_index-28d5b300.js": {
-    "file": "chunks/index-28d5b300.js"
+  "_index-7b8ef155.js": {
+    "file": "chunks/index-7b8ef155.js"
   },
-  "_paths-d72b1147.js": {
-    "file": "chunks/paths-d72b1147.js",
+  "_paths-6bae2c62.js": {
+    "file": "chunks/paths-6bae2c62.js",
     "imports": [
-      "_index-28d5b300.js"
+      "_index-7b8ef155.js"
     ]
   },
   "_preload-helper-4330dcf9.js": {
     "file": "chunks/preload-helper-4330dcf9.js"
   },
-  "_pages-71fc573e.js": {
-    "file": "chunks/pages-71fc573e.js",
+  "_pages-6677415c.js": {
+    "file": "chunks/pages-6677415c.js",
     "imports": [
-      "_index-28d5b300.js"
+      "_index-7b8ef155.js"
     ],
     "css": [
       "assets/pages-ac997299.css"
@@ -108,7 +109,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/02.cli/01.Magidoc-configuration.md": {
-    "file": "chunks/01.Magidoc-configuration-64454a2d.js",
+    "file": "chunks/01.Magidoc-configuration-596e3dcc.js",
     "src": "src/lib/sections/02.cli/01.Magidoc-configuration.md",
     "isDynamicEntry": true
   },
@@ -143,8 +144,13 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md": {
-    "file": "chunks/03.Rollup-Fetch-GraphQL-Schema-a4d5fb96.js",
+    "file": "chunks/03.Rollup-Fetch-GraphQL-Schema-5b99977c.js",
     "src": "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md",
+    "isDynamicEntry": true
+  },
+  "src/lib/sections/04.plugins/04.Rollup-Parse-GraphQL-Schema.md": {
+    "file": "chunks/04.Rollup-Parse-GraphQL-Schema-4c0e9aff.js",
+    "src": "src/lib/sections/04.plugins/04.Rollup-Parse-GraphQL-Schema.md",
     "isDynamicEntry": true
   },
   "src/lib/sections/05.svelte-plugins/01.Introduction.md": {
