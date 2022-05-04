@@ -15,4 +15,4 @@ See the demonstration using FaunaDB's example GraphQL API:
 - [Carbon Multi-Page](https://magidoc-carbon-multi-page.netlify.app)
 
 ## Documentation 
-[Read the docs!](https://magidoc-org.github.io/magidoc)
+[Read the docs!](https://magidoc-org.github.io/magidoc/introduction/welcome)
