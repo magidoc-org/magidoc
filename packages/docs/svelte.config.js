@@ -55,3 +55,20 @@ export default {
     },
   },
 }
+
+`
+Introducing Magidoc: Fast and highly customizable GraphQL documentation generator
+`
+
+`
+https://magidoc-org.github.io/magidoc
+`
+
+`
+I have been working on the last few months on a new alternative solution to generate modern static GraphQL documentation, focusing mainly on customization and providing enhanced, more useful details to the users than with the existing solutions.
+
+Written from scratch, Magidoc helps you build GraphQL documentation websites in a few seconds. It aims to offer a vast variety of plugins and templates to make all this super convenient and flexible.
+
+Docs: https://magidoc-org.github.io/magidoc
+Repo: https://github.com/magidoc-org/magidoc
+`
