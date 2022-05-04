@@ -10,6 +10,10 @@ Magidoc is an open source tool built from scratch that improves developer experi
 It can generate the static documentation directly from a GraphQL endpoint or SDL files in a few seconds and it supports markdown for the [SDL comments](https://dgraph.io/docs/graphql/schema/documentation/) and the custom pages.
 
 ## Demo
+<p align="center">
+  <img width="70%" src="./logo/cli.gif">
+</p>
+
 See the demonstration using FaunaDB's example GraphQL API:
 
 - [Carbon Multi-Page](https://magidoc-carbon-multi-page.netlify.app)
