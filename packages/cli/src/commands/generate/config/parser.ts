@@ -28,6 +28,7 @@ function validateOptions(options: Record<string, unknown>): void | never {
         code: 'custom',
         path,
       })
+      return
     }
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
