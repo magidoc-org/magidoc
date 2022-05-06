@@ -23,6 +23,8 @@ type CustomContent = CustomPage | CustomSubMenu
 declare global {
   declare namespace App {
     interface Stuff {
+      readonly homeUrl: string
+
       readonly schema: GraphQLSchema
 
       readonly content: CustomContent[]
