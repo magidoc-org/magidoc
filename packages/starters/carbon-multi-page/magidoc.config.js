@@ -7,6 +7,7 @@ export const SUPPORTED_OPTIONS = [
   templates.APP_LOGO,
   templates.APP_TITLE,
   templates.SITE_ROOT,
+  templates.SITE_META,
   templates.QUERY_GENERATION_FACTORIES,
   templates.PAGES,
 ]
