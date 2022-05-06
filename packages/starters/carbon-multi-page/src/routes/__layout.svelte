@@ -31,10 +31,13 @@
       props: {
         schema,
         content: pages,
-        meta: generateMeta({
-          appTitle: title,
-          appIcon: logo,
-        }),
+        meta: generateMeta(
+          {
+            appTitle: title,
+            appIcon: logo,
+          },
+          templates.SITE_META.vite.get(import.meta.env),
+        ),
       },
     }
   }
