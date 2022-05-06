@@ -20,8 +20,8 @@
     "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.13.4",
     "@magidoc/plugin-svelte-prismjs": "workspace:^0.13.4",
     "@sveltejs/adapter-static": "^1.0.0-next.29",
-    "@sveltejs/kit": "^1.0.0-next.324",
-    "carbon-components-svelte": "^0.63.4",
+    "@sveltejs/kit": "^1.0.0-next.326",
+    "carbon-components-svelte": "^0.63.7",
     "carbon-icons-svelte": "^11.0.1",
     "carbon-preprocess-svelte": "^0.9.0",
     "front-matter": "^4.0.2",
@@ -35,6 +35,6 @@
     "svelte-preprocess": "^4.10.6",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
-    "vite": "^2.9.6"
+    "vite": "^2.9.8"
   }
 }
