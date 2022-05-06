@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { DEFAULT_LOGO } from '$lib/logo'
+
   import { templates } from '@magidoc/plugin-starter-variables'
 
   const logoPath = templates.APP_LOGO.vite.getOrDefault(
     import.meta.env,
-    'https://github.com/magidoc-org/magidoc/blob/main/logo/logo_horizontal.png?raw=true',
+    DEFAULT_LOGO,
   )
 </script>
 

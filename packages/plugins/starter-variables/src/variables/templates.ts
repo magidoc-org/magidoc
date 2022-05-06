@@ -11,6 +11,10 @@ export default {
   APP_LOGO: createVariable<string>('APP_LOGO', stringConverter()),
   APP_TITLE: createVariable<string>('APP_TITLE', stringConverter()),
   SITE_ROOT: createVariable<string>('SITE_ROOT', stringConverter()),
+  SITE_META: createVariable<Record<string, string | undefined>>(
+    'SITE_META',
+    recordConverter((zod) => zod.string()),
+  ),
   QUERY_GENERATION_FACTORIES: createVariable<
     Record<
       string,

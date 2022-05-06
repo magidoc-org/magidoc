@@ -23,6 +23,10 @@ export default {
     template: 'carbon-multi-page',
     options: {
       appTitle: 'FaunaDB',
+      siteMeta: {
+        description: "Magidoc demo for FaunaDB's GraphQL API.",
+        'og:description': "Magidoc demo for FaunaDB's GraphQL API.",
+      },
       pages: [
         {
           title: 'Welcome',
@@ -82,10 +86,10 @@ export default {
                 Tables are supported as well.
 
                 | **Animal** | **Emoji** | **Sound** |
-                | ---------- | ---------- | --------- |
-                | Dog        | 🐶         | Woof!     |
-                | Cat        | 🐱         | Meow!     |
-                | Cow        | 🐄         | Moo       |
+                | ---------- | --------- | --------- |
+                | Dog        | 🐶        | Woof!     |
+                | Cat        | 🐱        | Meow!     |
+                | Cow        | 🐄        | Moo       |
               `,
             },
           ],
