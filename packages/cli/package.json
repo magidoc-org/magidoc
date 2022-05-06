@@ -2,7 +2,7 @@
   "name": "@magidoc/cli",
   "description": "Magidoc CLI application responsible for generating GraphQL documentation websites.",
   "private": false,
-  "version": "0.13.3",
+  "version": "0.13.4",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -24,9 +24,9 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "@magidoc/plugin-starter-variables": "workspace:^0.13.3",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.13.3",
-    "@magidoc/rollup-plugin-parse-gql-schema": "workspace:^0.13.3",
+    "@magidoc/plugin-starter-variables": "workspace:^0.13.4",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.13.4",
+    "@magidoc/rollup-plugin-parse-gql-schema": "workspace:^0.13.4",
     "axios": "^0.27.2",
     "chalk": "^5.0.1",
     "commander": "^9.2.0",
@@ -35,18 +35,18 @@
     "listr2": "^4.0.5",
     "lodash": "^4.17.21",
     "sirv": "^2.0.2",
-    "zod": "^3.14.4"
+    "zod": "^3.15.1"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.0",
     "@types/lodash": "^4.14.182",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
     "jest-extended": "^2.0.0",
-    "rollup": "^2.71.1",
+    "rollup": "^2.72.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
-    "ts-jest": "^27.1.4",
+    "ts-jest": "^28.0.1",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
   }
