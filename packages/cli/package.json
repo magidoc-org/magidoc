@@ -42,11 +42,11 @@
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.5.0",
     "@types/lodash": "^4.14.182",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
     "jest-extended": "^2.0.0",
     "rollup": "^2.72.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
-    "ts-jest": "^27.1.4",
+    "ts-jest": "^28.0.1",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
   }
