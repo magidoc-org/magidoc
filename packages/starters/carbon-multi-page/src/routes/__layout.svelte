@@ -17,6 +17,11 @@
       ),
     )
 
+    const logo = templates.APP_LOGO.vite.getOrDefault(
+      import.meta.env,
+      DEFAULT_LOGO,
+    )
+
     return {
       stuff: {
         homeUrl: getHomePageUrl(base, pages, schema),
@@ -26,6 +31,10 @@
       props: {
         schema,
         content: pages,
+        meta: generateMeta({
+          appTitle: title,
+          appIcon: logo,
+        }),
       },
     }
   }
@@ -48,13 +57,21 @@
   import { formatPages, getDefaultPages, getHomePageUrl } from '$lib/pages'
   import type { CustomContent } from 'src/app'
   import { base } from '$app/paths'
+  import { generateMeta, type Meta } from '$lib/meta'
+  import { DEFAULT_LOGO } from '$lib/logo'
 
   let isSideNavOpen: boolean
 
   export let schema: GraphQLSchema
-
   export let content: CustomContent[]
+  export let meta: Meta[]
 </script>
+
+<svelte:head>
+  {#each meta as item}
+    <meta name={item.name} content={item.content} />
+  {/each}
+</svelte:head>
 
 <main>
   <AppHeader bind:isSideNavOpen />

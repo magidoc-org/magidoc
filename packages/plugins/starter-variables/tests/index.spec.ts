@@ -15,6 +15,7 @@ describe('variables', () => {
         'APP_LOGO',
         'APP_TITLE',
         'SITE_ROOT',
+        'SITE_META',
         'QUERY_GENERATION_FACTORIES',
         'PAGES',
       ])
@@ -41,6 +42,14 @@ describe('variables', () => {
         variables.templates.SITE_ROOT,
         'VITE_SITE_ROOT',
         z.string().optional(),
+      )
+    })
+
+    test('site meta', () => {
+      testRecordVariable(
+        variables.templates.SITE_META,
+        'VITE_SITE_META',
+        z.record(z.string().optional()).optional(),
       )
     })
 

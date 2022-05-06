@@ -8,7 +8,7 @@ const ZPath = z
   .nonempty()
   .transform((arg) => path.resolve(arg))
 
-export const ZIntrospectionConfiguration = z.union([
+export const ZIntrospectionConfiguration = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('url'),
     url: z.string().url(),
