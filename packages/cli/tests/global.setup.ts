@@ -3,8 +3,8 @@ jest.mock('../src/commands/utils/import-meta', () => ({
 }))
 
 jest.mock('chalk', () => ({
-    red: (input: string) => input,
-    cyan: (input: string) => input, 
+  red: (input: string) => input,
+  cyan: (input: string) => input,
 }))
 
 export {}
