@@ -23,9 +23,10 @@ export function loadTemplateConfigurationTask(): GenerateTask {
         config.SCHEMA_TARGET_LOCATION || '',
       )
 
-      task.output = ''
-      task.output += `Found ${supportedOptions.length} supported keys\n`
-      task.output += `Target schema location: ${schemaTargetLocation}`
+      let output = `Found ${supportedOptions.length} supported keys\n`
+      output += `Target schema location: ${schemaTargetLocation}`
+
+      task.output = output
 
       ctx.templateConfiguration = {
         supportedOptions,

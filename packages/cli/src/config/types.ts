@@ -1,6 +1,6 @@
 import z from 'zod'
-import { AVAILABLE_TEMPLATES } from '../../../template'
-import { getVersion } from '../../../version'
+import { AVAILABLE_TEMPLATES } from '../template'
+import { getVersion } from '../version'
 import path from 'path'
 
 const ZPath = z

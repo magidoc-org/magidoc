@@ -39,6 +39,7 @@ export async function executeAllTasks<T>(tasks: Task<T>[]): Promise<T> {
     exitOnError: true,
     rendererOptions: {
       showTimer: true,
+      formatOutput: 'wrap',
     },
   })
 

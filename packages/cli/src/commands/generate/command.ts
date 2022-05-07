@@ -3,7 +3,7 @@ import generate from '.'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
 import chalk from 'chalk'
-import type { MagidocConfiguration } from './config/types'
+import type { MagidocConfiguration } from '../../config/types'
 
 type GenerateCommandOptions = {
   file: string
