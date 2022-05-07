@@ -3,11 +3,14 @@ const base = require('../../jest.config.cjs')
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 const config = {
   ...base,
+  preset: 'ts-jest',
   setupFilesAfterEnv: ['jest-extended/all', '<rootDir>/tests/global.setup.ts'],
-  transformIgnorePatterns: ['/node_modules/(?!(chalk)/)'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!(@magidoc/plugin-starter-variables)/)',
+  ],
   transform: {
-    "^.+\\.ts$": "ts-jest",
-    "^.+\\.js$": "babel-jest"
+    '^.+\\.js$': 'babel-jest',
+    '^.+\\.ts$': 'ts-jest',
   },
   globals: {
     'ts-jest': {
