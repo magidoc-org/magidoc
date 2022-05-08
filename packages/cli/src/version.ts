@@ -1,7 +1,6 @@
 import { readFileSync, existsSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { importMetaUrl } from './commands/utils/import-meta'
 
 let version: string | undefined = undefined
 
@@ -31,7 +30,7 @@ export function getVersion(): string {
 
 function findPackageJsonPath(
   test: string = path.join(
-    path.dirname(fileURLToPath(importMetaUrl())),
+    path.dirname(fileURLToPath(import.meta.url)),
     './package.json',
   ),
 ): string | undefined {

@@ -15,6 +15,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    
     "lib": ["esnext"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts"],

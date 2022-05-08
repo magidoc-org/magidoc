@@ -2,8 +2,8 @@ import { Command, Option } from 'commander'
 import generate from '.'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
-import chalk from 'chalk'
 import type { MagidocConfiguration } from '../../config/types'
+import { cyan } from '../utils/outputColors'
 
 type GenerateCommandOptions = {
   file: string
@@ -62,18 +62,14 @@ function printPostExecution(
   console.log()
   console.log('-----------')
   console.log()
-  console.log(
-    `Website generated at ${chalk.cyan(fileConfiguration.website.output)}`,
-  )
+  console.log(`Website generated at ${cyan(fileConfiguration.website.output)}`)
   console.log()
 
   if (configFile === DEFAULT_CONFIG_FILE) {
-    console.log(
-      `Run ${chalk.cyan('magidoc preview')} to preview you build locally.`,
-    )
+    console.log(`Run ${cyan('magidoc preview')} to preview you build locally.`)
   } else {
     console.log(
-      `Run ${chalk.cyan(
+      `Run ${cyan(
         `magidoc preview --file ${configFile}`,
       )} to preview your build locally.`,
     )
