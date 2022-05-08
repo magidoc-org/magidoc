@@ -4,6 +4,7 @@
 const config = {
   introspection: {
     type: 'url',
+    url: 'https://potato.com/graphql',
     headers: {
       Authorization: 'something',
     },
@@ -13,4 +14,4 @@ const config = {
   },
 }
 
-module.exports = config
+export default config

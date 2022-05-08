@@ -21,6 +21,7 @@ export async function readConfiguration(
     )
   }
 
+  console.log(await import(configPath))
   const config = ((await import(configPath)) as { default?: unknown }).default
   if (!config) {
     throw new Error(`File ${configPath} has no default export`)

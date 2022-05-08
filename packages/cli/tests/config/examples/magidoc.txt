@@ -4,6 +4,7 @@
 const config = {
   introspection: {
     type: 'url',
+    url: 'https://potato.com/graphql',
     headers: {
       Authorization: 'something',
     },
