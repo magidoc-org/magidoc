@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "0.14.2",
+  "version": "0.15.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -17,11 +17,11 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.14.2",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.14.2",
-    "@sveltejs/adapter-static": "^1.0.0-next.29",
-    "@sveltejs/kit": "^1.0.0-next.326",
-    "carbon-components-svelte": "^0.63.7",
+    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.15.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.15.0",
+    "@sveltejs/adapter-static": "^1.0.0-next.30",
+    "@sveltejs/kit": "^1.0.0-next.328",
+    "carbon-components-svelte": "^0.63.8",
     "carbon-icons-svelte": "^11.0.1",
     "carbon-preprocess-svelte": "^0.9.0",
     "front-matter": "^4.0.2",
@@ -35,6 +35,6 @@
     "svelte-preprocess": "^4.10.6",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
-    "vite": "^2.9.8"
+    "vite": "^2.9.9"
   }
 }

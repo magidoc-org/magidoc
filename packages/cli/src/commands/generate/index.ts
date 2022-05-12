@@ -17,7 +17,7 @@ export default async function generate(config: GenerationConfig) {
     warnVersionTask(config),
     determineTmpDirectoryTask(config),
     cleanTask(config),
-    selectPackageManagerTask(),
+    selectPackageManagerTask(config),
     fetchTemplateTask(config),
     unzipTemplateTask(),
     installDependenciesTask(),
