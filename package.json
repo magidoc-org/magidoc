@@ -1,6 +1,6 @@
 {
   "name": "magidoc",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "description": "MagiDoc is a documentation website generator for GraphQL based on Svelte and that allows for infinite customization through plugins.",
   "repository": "git@github.com:pelletier197/magidocql.git",
   "author": "Sunny Pelletier",
@@ -30,7 +30,7 @@
     "archiver": "^5.3.1",
     "eslint": "^8.15.0",
     "eslint-plugin-svelte3": "^4.0.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2",
     "prettier-plugin-svelte": "^2.7.0",

@@ -36,7 +36,7 @@
             appTitle: title,
             appIcon: logo,
           },
-          templates.SITE_META.vite.get(import.meta.env),
+          templates.SITE_META.vite.get(import.meta.env) || {},
         ),
       },
     }
