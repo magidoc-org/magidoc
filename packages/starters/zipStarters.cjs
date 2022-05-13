@@ -19,8 +19,14 @@ function listStarterDirectories() {
 function getCleanedPackageJson(path) {
   let content = fs.readFileSync(path).toString()
 
+  // Replace workspace deps with deployed deps
   while (content.includes('workspace:')) {
     content = content.replace('workspace:', '')
+  }
+
+  // Use fix versions
+  while (content.includes('"^')) {
+    content = content.replace('"^', '"')
   }
 
   return content

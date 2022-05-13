@@ -19,7 +19,7 @@ const config = {
     },
     vite: {
       plugins: [
-        // Skill this rollup plugin if we are in the context of magidoc generate command
+        // Skip this rollup plugin if we are in the context of magidoc generate command
         !magidoc.MAGIDOC_GENERATE.vite.get(process.env)
           ? fetchGraphQLSchema({
               url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
@@ -27,7 +27,6 @@ const config = {
           : null,
       ],
       ssr: {
-        // TODO - this is temporary. There seems to be an issue with SSR
         noExternal:
           process.env.NODE_ENV == 'development' ? [] : ['prettier', 'prismjs'],
       },

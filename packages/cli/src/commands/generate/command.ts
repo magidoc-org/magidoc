@@ -4,9 +4,14 @@ import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
 import type { MagidocConfiguration } from '../../config/types'
 import { cyan } from '../utils/outputColors'
+import {
+  PackageManagerType,
+  PACKAGE_MANAGER_TYPES,
+} from '../../node/packageManager'
 
 type GenerateCommandOptions = {
   file: string
+  packageManager?: PackageManagerType
   stacktrace: boolean
   clean: boolean
 }
@@ -27,6 +32,12 @@ export default function buildGenerateCommand(program: Command) {
     )
     .addOption(
       new Option(
+        '-p|--package-manager <package-manager>',
+        'Selects a different Package Manager. By default, Magidoc will try to use any package manager available in order of preference. Recommended is pnpm.',
+      ).choices(PACKAGE_MANAGER_TYPES),
+    )
+    .addOption(
+      new Option(
         '-c|--clean',
         'Clean install, so delete the local copy of the template if there is one and fetch it again.',
       ).default(false),
@@ -37,22 +48,30 @@ export default function buildGenerateCommand(program: Command) {
         'Useful to debug errors. Will print the whole exception to the terminal in case the error message is not precise enough.',
       ).default(false),
     )
-    .action(async ({ file, stacktrace, clean }: GenerateCommandOptions) => {
-      const fileConfiguration = await loadFileConfiguration(file)
-      if (!fileConfiguration) {
-        process.exitCode = 1
-        return
-      }
+    .action(
+      async ({
+        packageManager,
+        file,
+        stacktrace,
+        clean,
+      }: GenerateCommandOptions) => {
+        const fileConfiguration = await loadFileConfiguration(file)
+        if (!fileConfiguration) {
+          process.exitCode = 1
+          return
+        }
 
-      await withStacktrace(stacktrace, async () => {
-        await generate({
-          ...fileConfiguration,
-          clean,
+        await withStacktrace(stacktrace, async () => {
+          await generate({
+            ...fileConfiguration,
+            packageManager,
+            clean,
+          })
+
+          printPostExecution(file, fileConfiguration)
         })
-
-        printPostExecution(file, fileConfiguration)
-      })
-    })
+      },
+    )
 }
 
 function printPostExecution(
