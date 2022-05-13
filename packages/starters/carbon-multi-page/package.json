@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -19,13 +19,11 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@magidoc/plugin-query-generator": "workspace:^0.15.0",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.15.0",
-    "graphql": "^16.5.0",
-    "lodash": "^4.17.21",
-    "@magidoc/plugin-starter-variables": "workspace:^0.15.0",
-    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.15.0",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.15.0",
+    "@magidoc/plugin-query-generator": "workspace:^0.15.1",
+    "@magidoc/plugin-starter-variables": "workspace:^0.15.1",
+    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.15.1",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.15.1",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.15.1",
     "@sveltejs/adapter-static": "^1.0.0-next.30",
     "@sveltejs/kit": "^1.0.0-next.327",
     "@types/lodash": "^4.14.182",
@@ -37,6 +35,8 @@
     "carbon-preprocess-svelte": "^0.9.0",
     "eslint": "^8.15.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "graphql": "^16.5.0",
+    "lodash": "^4.17.21",
     "prismjs": "^1.28.0",
     "svelte": "^3.48.0",
     "svelte-check": "^2.7.0",
