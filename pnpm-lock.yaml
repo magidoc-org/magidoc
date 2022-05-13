@@ -9,7 +9,7 @@ importers:
       archiver: ^5.3.1
       eslint: ^8.15.0
       eslint-plugin-svelte3: ^4.0.0
-      husky: ^7.0.4
+      husky: ^8.0.1
       npm-run-all: ^4.1.5
       prettier: ^2.6.2
       prettier-plugin-svelte: ^2.7.0
@@ -21,7 +21,7 @@ importers:
       archiver: 5.3.1
       eslint: 8.15.0
       eslint-plugin-svelte3: 4.0.0_usjo443ynfgvutifl4ot2fkxzy
-      husky: 7.0.4
+      husky: 8.0.1
       npm-run-all: 4.1.5
       prettier: 2.6.2
       prettier-plugin-svelte: 2.7.0_kkjbqzpydplecjtkxrgomroeru
@@ -83,13 +83,13 @@ importers:
     specifiers:
       '@magidoc/plugin-svelte-carbon-commons': workspace:^0.15.0
       '@magidoc/plugin-svelte-prismjs': workspace:^0.15.0
-      '@sveltejs/adapter-static': ^1.0.0-next.30
-      '@sveltejs/kit': ^1.0.0-next.328
+      '@sveltejs/adapter-static': 1.0.0-next.30
+      '@sveltejs/kit': 1.0.0-next.327
       carbon-components-svelte: ^0.63.8
       carbon-icons-svelte: ^11.0.1
       carbon-preprocess-svelte: ^0.9.0
       front-matter: ^4.0.2
-      gh-pages: ^3.2.3
+      gh-pages: ^4.0.0
       prism-svelte: ^0.5.0
       prismjs: ^1.28.0
       rollup-plugin-string: ^3.0.0
@@ -104,12 +104,12 @@ importers:
       '@magidoc/plugin-svelte-carbon-commons': link:../plugins/svelte-carbon-commons/package
       '@magidoc/plugin-svelte-prismjs': link:../plugins/svelte-prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.30
-      '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       carbon-components-svelte: 0.63.8
       carbon-icons-svelte: 11.0.1
       carbon-preprocess-svelte: 0.9.0_svelte@3.48.0
       front-matter: 4.0.2
-      gh-pages: 3.2.3
+      gh-pages: 4.0.0
       prism-svelte: 0.5.0
       prismjs: 1.28.0
       rollup-plugin-string: 3.0.0
@@ -172,7 +172,7 @@ importers:
   packages/plugins/rollup-fetch-gql-schema:
     specifiers:
       '@types/jest': ^27.5.1
-      '@types/node': ^17.0.32
+      '@types/node': ^17.0.33
       '@types/prettier': ^2.6.1
       axios: ^0.27.2
       graphql: ^16.5.0
@@ -187,9 +187,9 @@ importers:
       graphql: 16.5.0
     devDependencies:
       '@types/jest': 27.5.1
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       '@types/prettier': 2.6.1
-      jest: 28.1.0_@types+node@17.0.32
+      jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       nock: 13.2.4
       rollup: 2.72.1
@@ -199,7 +199,7 @@ importers:
   packages/plugins/rollup-parse-gql-schema:
     specifiers:
       '@types/jest': ^27.5.1
-      '@types/node': ^17.0.32
+      '@types/node': ^17.0.33
       '@types/prettier': ^2.6.1
       fast-glob: ^3.2.11
       graphql: ^16.5.0
@@ -213,9 +213,9 @@ importers:
       graphql: 16.5.0
     devDependencies:
       '@types/jest': 27.5.1
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       '@types/prettier': 2.6.1
-      jest: 28.1.0_@types+node@17.0.32
+      jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       rollup: 2.72.1
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
@@ -245,8 +245,8 @@ importers:
   packages/plugins/svelte-carbon-commons:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.15.0
-      '@sveltejs/adapter-auto': ^1.0.0-next.40
-      '@sveltejs/kit': ^1.0.0-next.328
+      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.63.8
       prismjs: ^1.28.0
@@ -260,7 +260,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.63.8
       prismjs: 1.28.0
@@ -275,8 +275,8 @@ importers:
   packages/plugins/svelte-carbon-commons/package:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.15.0
-      '@sveltejs/adapter-auto': ^1.0.0-next.40
-      '@sveltejs/kit': ^1.0.0-next.328
+      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/kit': 1.0.0-next.328
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.63.8
       prismjs: ^1.28.0
@@ -304,8 +304,8 @@ importers:
 
   packages/plugins/svelte-prismjs:
     specifiers:
-      '@sveltejs/adapter-auto': ^1.0.0-next.40
-      '@sveltejs/kit': ^1.0.0-next.328
+      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.48.0
@@ -316,7 +316,7 @@ importers:
       typescript: ~4.6.4
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
       svelte: 3.48.0
@@ -328,8 +328,8 @@ importers:
 
   packages/plugins/svelte-prismjs/package:
     specifiers:
-      '@sveltejs/adapter-auto': ^1.0.0-next.40
-      '@sveltejs/kit': ^1.0.0-next.328
+      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/kit': 1.0.0-next.328
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.48.0
@@ -358,7 +358,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.15.0
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.15.0
       '@sveltejs/adapter-static': ^1.0.0-next.30
-      '@sveltejs/kit': ^1.0.0-next.328
+      '@sveltejs/kit': ^1.0.0-next.327
       '@types/lodash': ^4.14.182
       '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.23.0
@@ -377,14 +377,11 @@ importers:
       svelte-preprocess: ^4.10.6
       tslib: ^2.4.0
       typescript: ^4.6.4
-    dependencies:
-      '@magidoc/plugin-query-generator': link:../../plugins/query-generator
-      '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
-      graphql: 16.5.0
-      lodash: 4.17.21
     devDependencies:
+      '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
       '@magidoc/plugin-svelte-carbon-commons': link:../../plugins/svelte-carbon-commons/package
+      '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-static': 1.0.0-next.30
       '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
@@ -397,6 +394,8 @@ importers:
       carbon-preprocess-svelte: 0.9.0_svelte@3.48.0
       eslint: 8.15.0
       eslint-plugin-svelte3: 4.0.0_usjo443ynfgvutifl4ot2fkxzy
+      graphql: 16.5.0
+      lodash: 4.17.21
       prismjs: 1.28.0
       svelte: 3.48.0
       svelte-check: 2.7.0_svelte@3.48.0
@@ -787,7 +786,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     dependencies:
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       chalk: 4.1.2
       jest-message-util: 28.1.0
       jest-util: 28.1.0
@@ -808,14 +807,14 @@ packages:
       '@jest/test-result': 28.1.0
       '@jest/transform': 28.1.0
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       ci-info: 3.3.1
       exit: 0.1.2
       graceful-fs: 4.2.10
       jest-changed-files: 28.0.2
-      jest-config: 28.1.0_@types+node@17.0.32
+      jest-config: 28.1.0_@types+node@17.0.33
       jest-haste-map: 28.1.0
       jest-message-util: 28.1.0
       jest-regex-util: 28.0.2
@@ -843,7 +842,7 @@ packages:
     dependencies:
       '@jest/fake-timers': 28.1.0
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       jest-mock: 28.1.0
     dev: true
 
@@ -870,7 +869,7 @@ packages:
     dependencies:
       '@jest/types': 28.1.0
       '@sinonjs/fake-timers': 9.1.2
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       jest-message-util: 28.1.0
       jest-mock: 28.1.0
       jest-util: 28.1.0
@@ -902,7 +901,7 @@ packages:
       '@jest/transform': 28.1.0
       '@jest/types': 28.1.0
       '@jridgewell/trace-mapping': 0.3.13
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       chalk: 4.1.2
       collect-v8-coverage: 1.0.1
       exit: 0.1.2
@@ -990,7 +989,7 @@ packages:
       '@jest/schemas': 28.0.2
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       '@types/yargs': 17.0.10
       chalk: 4.1.2
     dev: true
@@ -1132,6 +1131,26 @@ packages:
       esbuild: 0.14.39
     dev: true
 
+  /@sveltejs/kit/1.0.0-next.327_svelte@3.48.0:
+    resolution: {integrity: sha512-tzvZm2PXAdN1GsSMHzQ56mBdDe1WsHY98tNW71GhyXyoj+jSMqrKbCPUXLv6okzbtyiwNQ/j/VNbAplsPfMlXA==}
+    engines: {node: '>=14.13'}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.44.0
+    dependencies:
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.44_svelte@3.48.0+vite@2.9.9
+      chokidar: 3.5.3
+      sade: 1.8.1
+      svelte: 3.48.0
+      vite: 2.9.9
+    transitivePeerDependencies:
+      - diff-match-patch
+      - less
+      - sass
+      - stylus
+      - supports-color
+    dev: true
+
   /@sveltejs/kit/1.0.0-next.328_svelte@3.48.0:
     resolution: {integrity: sha512-L1RJ7wwLkOgo7aE+JiYppJEtVsSIpGPfgBZtjrS3J0avXVYUSTy+AfXbvjFJxTdk94uuCcTLUk/0vVODFm+Khg==}
     engines: {node: '>=14.13'}
@@ -1211,13 +1230,13 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
     dev: true
 
   /@types/graceful-fs/4.1.5:
     resolution: {integrity: sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==}
     dependencies:
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:
@@ -1255,8 +1274,8 @@ packages:
     resolution: {integrity: sha512-HnMWQkLJEf/PnxZIfbm0yGJRRZYYMhb++O9M36UCTA9z53uPvVoSlAwJr3XOpDEryb7Hwl1qAx/MV6YIW1RXxg==}
     dev: true
 
-  /@types/node/17.0.32:
-    resolution: {integrity: sha512-eAIcfAvhf/BkHcf4pkLJ7ECpBAhh9kcxRBpip9cTiO+hf+aJrsxYxBeS6OXvOd9WqNAJmavXVpZvY1rBjNsXmw==}
+  /@types/node/17.0.33:
+    resolution: {integrity: sha512-miWq2m2FiQZmaHfdZNcbpp9PuXg34W5JZ5CrJ/BaS70VuhoJENBEQybeiYSaPBRNq6KQGnjfEnc/F3PN++D+XQ==}
 
   /@types/prettier/2.6.1:
     resolution: {integrity: sha512-XFjFHmaLVifrAKaZ+EKghFHtHSUonyw8P2Qmy2/+osBnrKbH9UYtlK10zg8/kCt47MFilll/DEDKy3DHfJ0URw==}
@@ -1273,7 +1292,7 @@ packages:
   /@types/sass/1.43.1:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
     dev: true
 
   /@types/stack-utils/2.0.1:
@@ -1294,7 +1313,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
     dev: false
     optional: true
 
@@ -2761,8 +2780,8 @@ packages:
       get-intrinsic: 1.1.1
     dev: true
 
-  /gh-pages/3.2.3:
-    resolution: {integrity: sha512-jA1PbapQ1jqzacECfjUaO9gV8uBgU6XNMV0oXLtfCX3haGLe5Atq8BxlrADhbD6/UdG9j6tZLWAkAybndOXTJg==}
+  /gh-pages/4.0.0:
+    resolution: {integrity: sha512-p8S0T3aGJc68MtwOcZusul5qPSNZCalap3NWbhRUZYu1YOdp+EjZ+4kPmRM8h3NNRdqw00yuevRjlkuSzCn7iQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -2854,7 +2873,6 @@ packages:
   /graphql/16.5.0:
     resolution: {integrity: sha512-qbHgh8Ix+j/qY+a/ZcJnFQ+j8ezakqPiHwPiZhV/3PgGlgf96QMBB5/f2rkiC9sgLoy/xvT6TSiaf2nTHJh5iA==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
-    dev: false
 
   /has-bigints/1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
@@ -2908,9 +2926,9 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /husky/7.0.4:
-    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
-    engines: {node: '>=12'}
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
@@ -3157,7 +3175,7 @@ packages:
       '@jest/expect': 28.1.0
       '@jest/test-result': 28.1.0
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       chalk: 4.1.2
       co: 4.6.0
       dedent: 0.7.0
@@ -3204,7 +3222,7 @@ packages:
       - ts-node
     dev: true
 
-  /jest-cli/28.1.0_@types+node@17.0.32:
+  /jest-cli/28.1.0_@types+node@17.0.33:
     resolution: {integrity: sha512-fDJRt6WPRriHrBsvvgb93OxgajHHsJbk4jZxiPqmZbMDRcHskfJBBfTyjFko0jjfprP544hOktdSi9HVgl4VUQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     hasBin: true
@@ -3221,7 +3239,7 @@ packages:
       exit: 0.1.2
       graceful-fs: 4.2.10
       import-local: 3.1.0
-      jest-config: 28.1.0_@types+node@17.0.32
+      jest-config: 28.1.0_@types+node@17.0.33
       jest-util: 28.1.0
       jest-validate: 28.1.0
       prompts: 2.4.2
@@ -3270,7 +3288,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-config/28.1.0_@types+node@17.0.32:
+  /jest-config/28.1.0_@types+node@17.0.33:
     resolution: {integrity: sha512-aOV80E9LeWrmflp7hfZNn/zGA4QKv/xsn2w8QCBP0t0+YqObuCWTSgNbHJ0j9YsTuCO08ZR/wsvlxqqHX20iUA==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     peerDependencies:
@@ -3285,7 +3303,7 @@ packages:
       '@babel/core': 7.17.10
       '@jest/test-sequencer': 28.1.0
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       babel-jest: 28.1.0_@babel+core@7.17.10
       chalk: 4.1.2
       ci-info: 3.3.1
@@ -3354,7 +3372,7 @@ packages:
       '@jest/environment': 28.1.0
       '@jest/fake-timers': 28.1.0
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       jest-mock: 28.1.0
       jest-util: 28.1.0
     dev: true
@@ -3386,7 +3404,7 @@ packages:
     dependencies:
       '@jest/types': 28.1.0
       '@types/graceful-fs': 4.1.5
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       anymatch: 3.1.2
       fb-watchman: 2.0.1
       graceful-fs: 4.2.10
@@ -3447,7 +3465,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     dependencies:
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
     dev: true
 
   /jest-pnp-resolver/1.2.2_jest-resolve@28.1.0:
@@ -3501,7 +3519,7 @@ packages:
       '@jest/test-result': 28.1.0
       '@jest/transform': 28.1.0
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       chalk: 4.1.2
       emittery: 0.10.2
       graceful-fs: 4.2.10
@@ -3587,7 +3605,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     dependencies:
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       chalk: 4.1.2
       ci-info: 3.3.1
       graceful-fs: 4.2.10
@@ -3612,7 +3630,7 @@ packages:
     dependencies:
       '@jest/test-result': 28.1.0
       '@jest/types': 28.1.0
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       emittery: 0.10.2
@@ -3624,7 +3642,7 @@ packages:
     resolution: {integrity: sha512-ZHwM6mNwaWBR52Snff8ZvsCTqQsvhCxP/bT1I6T6DAnb6ygkshsyLQIMxFwHpYxht0HOoqt23JlC01viI7T03A==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     dependencies:
-      '@types/node': 17.0.32
+      '@types/node': 17.0.33
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -3648,7 +3666,7 @@ packages:
       - ts-node
     dev: true
 
-  /jest/28.1.0_@types+node@17.0.32:
+  /jest/28.1.0_@types+node@17.0.33:
     resolution: {integrity: sha512-TZR+tHxopPhzw3c3560IJXZWLNHgpcz1Zh0w5A65vynLGNcg/5pZ+VildAd7+XGOu6jd58XMY/HNn0IkZIXVXg==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     hasBin: true
@@ -3660,7 +3678,7 @@ packages:
     dependencies:
       '@jest/core': 28.1.0
       import-local: 3.1.0
-      jest-cli: 28.1.0_@types+node@17.0.32
+      jest-cli: 28.1.0_@types+node@17.0.33
     transitivePeerDependencies:
       - '@types/node'
       - supports-color

@@ -17,8 +17,6 @@
 
   <h1>{field.name} <QueryTypeTag {type} /></h1>
 
-  <br />
-
   <AppMarkdown source={field.description} />
 
   {#if field.args.length > 0}
