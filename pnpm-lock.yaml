@@ -276,7 +276,7 @@ importers:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.15.1
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.328
+      '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.63.8
       prismjs: ^1.28.0
@@ -290,7 +290,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.63.8
       prismjs: 1.28.0
@@ -329,7 +329,7 @@ importers:
   packages/plugins/svelte-prismjs/package:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.328
+      '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.48.0
@@ -340,7 +340,7 @@ importers:
       typescript: ~4.6.4
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
       svelte: 3.48.0
