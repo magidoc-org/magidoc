@@ -46,14 +46,14 @@ export default {
           `,
         },
         {
-          title: 'Samples',
+          title: 'Custom pages',
           content: [
             {
               title: 'Code',
               content: markdown`
                 # 💻 Code blocks
 
-                Yes, you can input code blocks directly in your pages, and they will be rendered using PrismJS.
+                You can input code blocks directly in your custom pages, and they will be rendered using PrismJS.
 
                 ~~~graphql
                 query {
