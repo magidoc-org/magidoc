@@ -14,6 +14,7 @@ describe('variables', () => {
       expect(Object.keys(variables.templates)).toEqual([
         'APP_LOGO',
         'APP_TITLE',
+        'APP_FAVICON',
         'SITE_ROOT',
         'SITE_META',
         'QUERY_GENERATION_FACTORIES',
@@ -33,6 +34,14 @@ describe('variables', () => {
       testStringVariable(
         variables.templates.APP_LOGO,
         'VITE_APP_LOGO',
+        z.string().optional(),
+      )
+    })
+
+    test('app favicon', () => {
+      testStringVariable(
+        variables.templates.APP_FAVICON,
+        'VITE_APP_FAVICON',
         z.string().optional(),
       )
     })
