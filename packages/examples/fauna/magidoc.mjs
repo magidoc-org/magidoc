@@ -23,7 +23,7 @@ export default {
     template: 'carbon-multi-page',
     options: {
       appTitle: 'FaunaDB',
-      appLogo: 'https://everipedia-storage.s3.amazonaws.com/ProfilePicture/en/fauna-faunadb__93abe7_medium.webp',
+      appLogo: 'https://dbdb.io/media/logos/fauna2020.png.280x250_q85.png',
       appFavicon: 'https://docs.fauna.com/_/img/favicon.png',
       siteMeta: {
         description: "Magidoc demo for FaunaDB's GraphQL API.",
