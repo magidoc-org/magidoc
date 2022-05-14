@@ -14,7 +14,7 @@ export default function preview(config: PreviewConfig) {
   )
 
   const assets = sirv(config.websiteLocation, {
-    maxAge: 31536000, // 1Y
+    maxAge: 0, // 0
     immutable: true,
   })
 
