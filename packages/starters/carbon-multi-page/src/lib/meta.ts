@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { appLogo } from './logo'
 import { appTitle } from './pages'
 
-export const siteMeta = generateMeta(
+export const siteMeta: ReadonlyArray<Meta> = generateMeta(
   {
     appTitle: appTitle,
     appIcon: appLogo,
