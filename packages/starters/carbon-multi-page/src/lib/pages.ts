@@ -22,15 +22,6 @@ export const pages: ReadonlyArray<CustomContent> = Object.freeze(
 
 export const homePageUrl = getHomePageUrl(base, pages, schema)
 
-export function formatPages(
-  base: string,
-  pages: (Page | undefined)[],
-): ReadonlyArray<CustomContent> {
-  return pages
-    .filter((page): page is Page => !!page)
-    .map((item) => asCustomContent(base, [], item))
-}
-
 export function joinUrlPaths(...paths: string[]): string {
   return (
     '/' +
@@ -41,7 +32,16 @@ export function joinUrlPaths(...paths: string[]): string {
   )
 }
 
-export function getHomePageUrl(
+function formatPages(
+  base: string,
+  pages: (Page | undefined)[],
+): ReadonlyArray<CustomContent> {
+  return pages
+    .filter((page): page is Page => !!page)
+    .map((item) => asCustomContent(base, [], item))
+}
+
+function getHomePageUrl(
   base: string,
   pages: ReadonlyArray<CustomContent>,
   schema: GraphQLSchema,
@@ -71,9 +71,7 @@ export function getHomePageUrl(
   )
 }
 
-export function findFirstPage(
-  pages: ReadonlyArray<CustomContent>,
-): CustomPage | null {
+function findFirstPage(pages: ReadonlyArray<CustomContent>): CustomPage | null {
   return firstPageBy(pages, () => true)
 }
 
@@ -143,7 +141,7 @@ function generatePath(value: string): string {
   )
 }
 
-export function getDefaultPages(title: string): Page[] {
+function getDefaultPages(title: string): Page[] {
   return [
     {
       title: 'Introduction',

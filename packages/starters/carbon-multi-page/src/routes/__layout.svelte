@@ -1,10 +1,6 @@
 <script lang="ts" context="module">
-  export function load(): LoadOutput {
-    const logo = templates.APP_LOGO.vite.getOrDefault(
-      import.meta.env,
-      DEFAULT_LOGO,
-    )
-
+  export function load({ url }: LoadInput): LoadOutput {
+    console.log('url', url.pathname)
     return {
       stuff: {
         homeUrl: homePageUrl,
@@ -14,13 +10,7 @@
       props: {
         schema,
         content: pages,
-        meta: generateMeta(
-          {
-            appTitle: appTitle,
-            appIcon: logo,
-          },
-          templates.SITE_META.vite.get(import.meta.env) || {},
-        ),
+        meta: siteMeta,
       },
     }
   }
@@ -32,13 +22,11 @@
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
-  import type { LoadOutput } from '@sveltejs/kit/types/internal'
-  import { templates } from '@magidoc/plugin-starter-variables'
-  import { appTitle, homePageUrl, pages } from '$lib/pages'
+  import type { LoadInput, LoadOutput } from '@sveltejs/kit/types/internal'
   import type { CustomContent } from 'src/app'
-  import { generateMeta, type Meta } from '$lib/meta'
-  import { DEFAULT_LOGO } from '$lib/logo'
   import { schema } from '$lib/model'
+  import { siteMeta, type Meta } from '$lib/meta'
+  import { homePageUrl, pages } from '$lib/pages'
 
   let isSideNavOpen: boolean
 

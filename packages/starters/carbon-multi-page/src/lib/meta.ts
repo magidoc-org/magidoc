@@ -1,4 +1,15 @@
+import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
+import { appLogo } from './logo'
+import { appTitle } from './pages'
+
+export const siteMeta = generateMeta(
+  {
+    appTitle: appTitle,
+    appIcon: appLogo,
+  },
+  templates.SITE_META.vite.get(import.meta.env) || {},
+)
 
 export type WebsiteData = {
   appTitle: string
@@ -10,7 +21,7 @@ export type Meta = {
   content: string
 }
 
-export function generateMeta(
+function generateMeta(
   data: WebsiteData,
   optionalMeta?: Record<string, string | undefined>,
 ): Meta[] {
