@@ -1,5 +1,5 @@
 import path from 'path'
-import { readConfiguration } from '../../src/config/read'
+import { readConfiguration } from '../../src/config/reader'
 import { fileURLToPath } from 'url'
 
 describe('reading an esm configuration', () => {

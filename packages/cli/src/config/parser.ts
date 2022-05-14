@@ -24,7 +24,7 @@ function validateOptions(options: Record<string, unknown>): void | never {
     const path: (string | number)[] = ['website', 'options', key]
     if (!variable) {
       issues.push({
-        message: `No option available with name: ${key}`,
+        message: `No option available with name '${key}'`,
         code: 'custom',
         path,
       })

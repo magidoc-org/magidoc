@@ -1,4 +1,4 @@
-import { readConfiguration } from '../../config/read'
+import { readConfiguration } from '../../config/reader'
 import type { MagidocConfiguration } from '../../config/types'
 import path from 'path'
 
