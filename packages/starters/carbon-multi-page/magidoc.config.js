@@ -6,6 +6,7 @@ import { templates } from '@magidoc/plugin-starter-variables'
 export const SUPPORTED_OPTIONS = [
   templates.APP_LOGO,
   templates.APP_TITLE,
+  templates.APP_FAVICON,
   templates.SITE_ROOT,
   templates.SITE_META,
   templates.QUERY_GENERATION_FACTORIES,

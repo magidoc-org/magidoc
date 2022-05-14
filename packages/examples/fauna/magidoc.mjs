@@ -23,6 +23,8 @@ export default {
     template: 'carbon-multi-page',
     options: {
       appTitle: 'FaunaDB',
+      appLogo: 'https://dbdb.io/media/logos/fauna2020.png',
+      appFavicon: 'https://docs.fauna.com/_/img/favicon.png',
       siteMeta: {
         description: "Magidoc demo for FaunaDB's GraphQL API.",
         'og:description': "Magidoc demo for FaunaDB's GraphQL API.",
