@@ -25,7 +25,6 @@ module.exports = defineConfig({
     'url',
     'sirv',
     'http',
-    'chalk',
     'lodash'
   ],
   output: {

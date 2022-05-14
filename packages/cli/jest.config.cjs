@@ -1,12 +1,17 @@
 const base = require('../../jest.config.cjs')
 
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-module.exports = {
+const config = {
   ...base,
+  preset: 'ts-jest',
   setupFilesAfterEnv: ['jest-extended/all'],
+  extensionsToTreatAsEsm: [".ts"],
   globals: {
     'ts-jest': {
+      useESM: true,
       tsconfig: 'tsconfig.json',
     },
   },
 }
+
+module.exports = config

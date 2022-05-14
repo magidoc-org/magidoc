@@ -1,5 +1,5 @@
-import { readConfiguration } from '../generate/config/read'
-import type { MagidocConfiguration } from '../generate/config/types'
+import { readConfiguration } from '../../config/reader'
+import type { MagidocConfiguration } from '../../config/types'
 import path from 'path'
 
 export async function loadFileConfiguration(

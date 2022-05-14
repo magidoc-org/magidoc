@@ -7,7 +7,7 @@ import { magidoc, templates } from '@magidoc/plugin-starter-variables'
 /**
  * @type {import('@sveltejs/kit').Config}
  */
-const config =  {
+const config = {
   preprocess: [preprocess(), optimizeImports()],
   kit: {
     adapter: adapter(),

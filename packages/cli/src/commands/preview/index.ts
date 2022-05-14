@@ -1,14 +1,14 @@
 import type { PreviewConfig } from './config'
 import http from 'http'
 import type { AddressInfo } from 'net'
-import chalk from 'chalk'
 import sirv from 'sirv'
+import { cyan, red, yellow } from '../utils/outputColors'
 
 const DEFAULT_PORT = 4000
 
 export default function preview(config: PreviewConfig) {
   console.log(
-    `⚠️ ${chalk.yellow(
+    `⚠️ ${yellow(
       'Preview command is not meant to be used for static file serving in production.',
     )}`,
   )
@@ -36,15 +36,13 @@ export default function preview(config: PreviewConfig) {
     if (error.message.includes('EADDRINUSE')) {
       if (config.port) {
         logError(
-          `Could not start server... port ${chalk.cyan(
-            config.port,
-          )} already in use.`,
+          `Could not start server... port ${cyan(config.port)} already in use.`,
         )
       } else {
         // Use a random port since the default hardcoded port isn't free
         console.log()
         console.log(
-          `Port ${chalk.cyan(
+          `Port ${cyan(
             DEFAULT_PORT,
           )} is occupied. Falling back to random port.`,
         )
@@ -64,7 +62,7 @@ export default function preview(config: PreviewConfig) {
 }
 
 function logError(message: string) {
-  console.log(`${chalk.red('Error: ')} ${message}`)
+  console.log(`${red('Error: ')} ${message}`)
 }
 function startApp(server: http.Server, port: number) {
   server.listen(port, 'localhost', () => {
@@ -72,7 +70,7 @@ function startApp(server: http.Server, port: number) {
     console.log()
 
     console.log(
-      `Server listening on ${chalk.cyan(`http://localhost:${address.port}`)}`,
+      `Server listening on ${cyan(`http://localhost:${address.port}`)}`,
     )
   })
 }

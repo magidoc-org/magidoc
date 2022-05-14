@@ -20,7 +20,7 @@
     "build": "run-p build:*",
     "build:rollup": "rollup -c",
     "build:tsc": "tsc --build tsconfig.build.json",
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
@@ -28,7 +28,6 @@
     "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.15.1",
     "@magidoc/rollup-plugin-parse-gql-schema": "workspace:^0.15.1",
     "axios": "^0.27.2",
-    "chalk": "^5.0.1",
     "commander": "^9.2.0",
     "extract-zip": "^2.0.1",
     "fs-extra": "^10.1.0",

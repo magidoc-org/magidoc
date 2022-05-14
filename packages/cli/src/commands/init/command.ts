@@ -16,7 +16,7 @@ type InitCommandOptions = {
   destination: string
   stacktrace: boolean
 }
-import chalk from 'chalk'
+import { cyan } from '../utils/outputColors'
 
 export default function buildInitCommand(program: Command) {
   program
@@ -77,10 +77,10 @@ export default function buildInitCommand(program: Command) {
           console.log('-----------')
           console.log()
 
-          console.log(`Template ${chalk.cyan(template)} created.`)
+          console.log(`Template ${cyan(template)} created.`)
           console.log()
           console.log(
-            `Run ${chalk.cyan(
+            `Run ${cyan(
               `cd ${destination} && ${packageManager} run dev`,
             )} and start editing!`,
           )

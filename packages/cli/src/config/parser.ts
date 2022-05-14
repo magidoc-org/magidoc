@@ -1,8 +1,8 @@
 import { MagidocConfiguration, ZMagidocConfiguration } from './types'
-import chalk from 'chalk'
 import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
 import z, { ZodIssue, ZodType } from 'zod'
+import { cyan, red } from '../commands/utils/outputColors'
 
 export function parseConfiguration(content: unknown): MagidocConfiguration {
   const result = ZMagidocConfiguration.safeParse(content)
@@ -24,7 +24,7 @@ function validateOptions(options: Record<string, unknown>): void | never {
     const path: (string | number)[] = ['website', 'options', key]
     if (!variable) {
       issues.push({
-        message: `No option available with name: ${key}`,
+        message: `No option available with name '${key}'`,
         code: 'custom',
         path,
       })
@@ -53,7 +53,7 @@ function validateOptions(options: Record<string, unknown>): void | never {
 function throwConfigurationError(issues: ZodIssue[]): never {
   const formattedIssues = convertZodIssues(issues)
   const pluralIssue = issues.length > 1 ? 'issues' : 'issue'
-  const issuesText = chalk.red(`${issues.length} ${pluralIssue}`)
+  const issuesText = red(`${issues.length} ${pluralIssue}`)
   throw new Error(
     `${issuesText} found with the Magidoc configuration provided:\n${formattedIssues.join(
       '\n',
@@ -68,7 +68,7 @@ function formatErrorPath(path: (string | number)[]): string {
     return `${previous}.${String(current)}`
   }, '')
 
-  return `${chalk.cyan(result)}`
+  return `${cyan(result)}`
 }
 
 function convertZodIssues(issues: ZodIssue[]): string[] {

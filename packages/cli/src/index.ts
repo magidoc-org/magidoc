@@ -5,6 +5,7 @@ import buildGenerateCommand from './commands/generate/command'
 import buildInitCommand from './commands/init/command'
 import buildPreviewCommand from './commands/preview/command'
 import { getVersion } from './version'
+import type { MagidocConfiguration } from './config/types'
 
 const version = getVersion()
 const program = new Command()
@@ -19,3 +20,5 @@ buildPreviewCommand(program)
 buildInitCommand(program)
 
 program.parse()
+
+export type { MagidocConfiguration }
