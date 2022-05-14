@@ -31,7 +31,7 @@
   let isSideNavOpen: boolean
 
   export let content: CustomContent[]
-  export let meta: Meta[]
+  export let meta: ReadonlyArray<Meta>
 </script>
 
 <svelte:head>
