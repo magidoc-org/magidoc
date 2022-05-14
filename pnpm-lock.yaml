@@ -30,9 +30,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^0.16.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.16.0
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^0.16.0
+      '@magidoc/plugin-starter-variables': workspace:^0.16.1
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.16.1
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^0.16.1
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.5.1
@@ -79,8 +79,8 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.16.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.0
+      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.16.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
       '@sveltejs/adapter-static': 1.0.0-next.30
       '@sveltejs/kit': 1.0.0-next.327
       carbon-components-svelte: ^0.63.8
@@ -130,7 +130,7 @@ importers:
       jest-extended: ^2.0.0
       lodash: ^4.17.21
       prettier: ^2.6.2
-      rollup: ^2.72.1
+      rollup: ^2.73.0
       ts-jest: ^28.0.2
       typescript: ^4.6.4
     dependencies:
@@ -144,7 +144,7 @@ importers:
       graphql-query-compress: 1.2.4
       jest: 28.1.0
       jest-extended: 2.0.0_jest@28.1.0
-      rollup: 2.72.1
+      rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
       typescript: 4.6.4
 
@@ -154,7 +154,7 @@ importers:
       graphql: ^16.5.0
       jest: ^28.1.0
       jest-extended: ^2.0.0
-      rollup: ^2.72.1
+      rollup: ^2.73.0
       ts-jest: ^28.0.2
       typescript: ^4.6.4
     dependencies:
@@ -163,7 +163,7 @@ importers:
       '@types/jest': 27.5.1
       jest: 28.1.0
       jest-extended: 2.0.0_jest@28.1.0
-      rollup: 2.72.1
+      rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
       typescript: 4.6.4
 
@@ -177,7 +177,7 @@ importers:
       jest: ^28.1.0
       jest-extended: ^2.0.0
       nock: ^13.2.4
-      rollup: ^2.72.1
+      rollup: ^2.73.0
       ts-jest: ^28.0.2
       typescript: ^4.6.4
     dependencies:
@@ -190,7 +190,7 @@ importers:
       jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       nock: 13.2.4
-      rollup: 2.72.1
+      rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
       typescript: 4.6.4
 
@@ -203,7 +203,7 @@ importers:
       graphql: ^16.5.0
       jest: ^28.1.0
       jest-extended: ^2.0.0
-      rollup: ^2.72.1
+      rollup: ^2.73.0
       ts-jest: ^28.0.2
       typescript: ^4.6.4
     dependencies:
@@ -215,7 +215,7 @@ importers:
       '@types/prettier': 2.6.1
       jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
-      rollup: 2.72.1
+      rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
       typescript: 4.6.4
 
@@ -224,7 +224,7 @@ importers:
       '@rollup/plugin-typescript': ^8.3.2
       '@types/jest': ^27.5.1
       jest: ^28.1.0
-      rollup: ^2.72.1
+      rollup: ^2.73.0
       ts-jest: ^28.0.2
       tslib: ^2.4.0
       typescript: ^4.6.4
@@ -232,18 +232,18 @@ importers:
     optionalDependencies:
       zod: 3.16.0
     devDependencies:
-      '@rollup/plugin-typescript': 8.3.2_dsrqihoegvzgycupzno43pt4sq
+      '@rollup/plugin-typescript': 8.3.2_qvmxwb53ll4ofwdq3bekbs74hi
       '@types/jest': 27.5.1
       jest: 28.1.0
-      rollup: 2.72.1
+      rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
       tslib: 2.4.0
       typescript: 4.6.4
 
   packages/plugins/svelte-carbon-commons:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.0
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.63.8
@@ -257,7 +257,7 @@ importers:
       typescript: ~4.6.4
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs/package
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.63.8
@@ -272,8 +272,8 @@ importers:
 
   packages/plugins/svelte-carbon-commons/package:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.0
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.63.8
@@ -287,7 +287,7 @@ importers:
       typescript: ~4.6.4
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../../svelte-prismjs/package
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.63.8
@@ -302,7 +302,7 @@ importers:
 
   packages/plugins/svelte-prismjs:
     specifiers:
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
@@ -313,7 +313,7 @@ importers:
       tslib: ^2.4.0
       typescript: ~4.6.4
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
@@ -326,7 +326,7 @@ importers:
 
   packages/plugins/svelte-prismjs/package:
     specifiers:
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
@@ -337,7 +337,7 @@ importers:
       tslib: ^2.4.0
       typescript: ~4.6.4
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.40
+      '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
@@ -350,13 +350,13 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^0.16.0
-      '@magidoc/plugin-starter-variables': workspace:^0.16.0
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.16.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.16.0
-      '@sveltejs/adapter-static': ^1.0.0-next.30
-      '@sveltejs/kit': ^1.0.0-next.327
+      '@magidoc/plugin-query-generator': workspace:^0.16.1
+      '@magidoc/plugin-starter-variables': workspace:^0.16.1
+      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.16.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.16.1
+      '@sveltejs/adapter-static': 1.0.0-next.30
+      '@sveltejs/kit': 1.0.0-next.327
       '@types/lodash': ^4.14.182
       '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.23.0
@@ -382,7 +382,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-static': 1.0.0-next.30
-      '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.327_svelte@3.48.0
       '@types/lodash': 4.14.182
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.23.0_c63nfttrfhylg3zmgcxfslaw44
@@ -1043,21 +1043,6 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: false
 
-  /@rollup/plugin-typescript/8.3.2_dsrqihoegvzgycupzno43pt4sq:
-    resolution: {integrity: sha512-MtgyR5LNHZr3GyN0tM7gNO9D0CS+Y+vflS4v/PHmrX17JCkHUYKvQ5jN5o3cz1YKllM3duXUqu3yOHwMPUxhDg==}
-    engines: {node: '>=8.0.0'}
-    peerDependencies:
-      rollup: ^2.14.0
-      tslib: '*'
-      typescript: '>=3.7.0'
-    dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@2.72.1
-      resolve: 1.22.0
-      rollup: 2.72.1
-      tslib: 2.4.0
-      typescript: 4.6.4
-    dev: true
-
   /@rollup/plugin-typescript/8.3.2_qvmxwb53ll4ofwdq3bekbs74hi:
     resolution: {integrity: sha512-MtgyR5LNHZr3GyN0tM7gNO9D0CS+Y+vflS4v/PHmrX17JCkHUYKvQ5jN5o3cz1YKllM3duXUqu3yOHwMPUxhDg==}
     engines: {node: '>=8.0.0'}
@@ -1071,18 +1056,6 @@ packages:
       rollup: 2.73.0
       tslib: 2.4.0
       typescript: 4.6.4
-    dev: true
-
-  /@rollup/pluginutils/3.1.0_rollup@2.72.1:
-    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
-    engines: {node: '>= 8.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0
-    dependencies:
-      '@types/estree': 0.0.39
-      estree-walker: 1.0.1
-      picomatch: 2.3.1
-      rollup: 2.72.1
     dev: true
 
   /@rollup/pluginutils/3.1.0_rollup@2.73.0:
@@ -1121,12 +1094,12 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@sveltejs/adapter-auto/1.0.0-next.40:
-    resolution: {integrity: sha512-TT6YJUF3asJ/2RbviEpcDJQ/TixPcvmH0L2266fGNT7+KfAf9wbbVdegPWRODk2E2hTN0X+h5YS9l+lap+BK9w==}
+  /@sveltejs/adapter-auto/1.0.0-next.42:
+    resolution: {integrity: sha512-AMTrR0A2Uss1FQkpYDV/7lYgQtRHyTrvwGCrll1lwZNPexb9MZGU4+x8csGKTNgf29Dg3lCEc9JBQti89rHZbw==}
     dependencies:
       '@sveltejs/adapter-cloudflare': 1.0.0-next.19
-      '@sveltejs/adapter-netlify': 1.0.0-next.56
-      '@sveltejs/adapter-vercel': 1.0.0-next.50
+      '@sveltejs/adapter-netlify': 1.0.0-next.57
+      '@sveltejs/adapter-vercel': 1.0.0-next.51
     dev: true
 
   /@sveltejs/adapter-cloudflare/1.0.0-next.19:
@@ -1136,8 +1109,8 @@ packages:
       worktop: 0.8.0-next.13
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.56:
-    resolution: {integrity: sha512-fM3aBHsr7syCGfIJcuB1mEoZwynqyOxVijvmyrd9OWHi6MP3bXSP+GhKDMtDpQRwejJJiwuZNTx2PUbV3uirvA==}
+  /@sveltejs/adapter-netlify/1.0.0-next.57:
+    resolution: {integrity: sha512-rqvOr488+7NGkEHw/D6v1Y8Fg0MbiUP/YI1uSYjKy+tA8/4FOdBgU8Nk8daPTxWEU+CpsgzvA4X8IVonuML9SA==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.39
@@ -1150,34 +1123,14 @@ packages:
       tiny-glob: 0.2.9
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.50:
-    resolution: {integrity: sha512-yta0AkuWEr7qrm8LB34F4ZdCtMxj+cHD4huwrRYCgjv+PSJHLPwe7aH53+Mhrv6La0TgeyQ/f2lTyhBMXZXn9Q==}
+  /@sveltejs/adapter-vercel/1.0.0-next.51:
+    resolution: {integrity: sha512-U4GSe1tYcWq90XCQfLK4qmEEVA1MyWgnT6i7LhbLVOoNP8bf3ict3xKjGrHcx/CY4jNUBA80DXSkj/hpFkweAg==}
     dependencies:
       esbuild: 0.14.39
     dev: true
 
   /@sveltejs/kit/1.0.0-next.327_svelte@3.48.0:
     resolution: {integrity: sha512-tzvZm2PXAdN1GsSMHzQ56mBdDe1WsHY98tNW71GhyXyoj+jSMqrKbCPUXLv6okzbtyiwNQ/j/VNbAplsPfMlXA==}
-    engines: {node: '>=14.13'}
-    hasBin: true
-    peerDependencies:
-      svelte: ^3.44.0
-    dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.0-next.44_svelte@3.48.0+vite@2.9.9
-      chokidar: 3.5.3
-      sade: 1.8.1
-      svelte: 3.48.0
-      vite: 2.9.9
-    transitivePeerDependencies:
-      - diff-match-patch
-      - less
-      - sass
-      - stylus
-      - supports-color
-    dev: true
-
-  /@sveltejs/kit/1.0.0-next.328_svelte@3.48.0:
-    resolution: {integrity: sha512-L1RJ7wwLkOgo7aE+JiYppJEtVsSIpGPfgBZtjrS3J0avXVYUSTy+AfXbvjFJxTdk94uuCcTLUk/0vVODFm+Khg==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -1539,7 +1492,7 @@ packages:
     resolution: {integrity: sha512-bEL/yUb/fNNiNTuUz979Z0Yg5L+LzLxGJz8x79lYmR54fmTIb6ob/hNQgkQnIUDWIFjZVQwl9Xs356I6BAMHfw==}
     engines: {node: '>= 6'}
     dependencies:
-      glob: 7.2.0
+      glob: 7.2.2
       graceful-fs: 4.2.10
       lazystream: 1.0.1
       lodash.defaults: 4.2.0
@@ -2827,17 +2780,6 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /glob/7.2.0:
-    resolution: {integrity: sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==}
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 3.1.2
-      once: 1.4.0
-      path-is-absolute: 1.0.1
-    dev: true
-
   /glob/7.2.2:
     resolution: {integrity: sha512-NzDgHDiJwKYByLrL5lONmQFpK/2G78SMMfo+E9CuGlX4IkvfKDsiQSNPwAYxEy+e6p7ZQ3uslSLlwlJcqezBmQ==}
     dependencies:
@@ -2882,7 +2824,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       array-union: 1.0.2
-      glob: 7.2.0
+      glob: 7.2.2
       object-assign: 4.1.1
       pify: 2.3.0
       pinkie-promise: 2.0.1
@@ -4385,7 +4327,7 @@ packages:
     hasBin: true
     dependencies:
       commander: 8.3.0
-      glob: 7.2.0
+      glob: 7.2.2
       postcss: 8.4.13
       postcss-selector-parser: 6.0.10
     dev: true
@@ -4519,7 +4461,7 @@ packages:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
     hasBin: true
     dependencies:
-      glob: 7.2.0
+      glob: 7.2.2
     dev: true
 
   /rimraf/3.0.2:
@@ -4545,14 +4487,6 @@ packages:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
     dependencies:
       estree-walker: 0.6.1
-    dev: true
-
-  /rollup/2.72.1:
-    resolution: {integrity: sha512-NTc5UGy/NWFGpSqF1lFY8z9Adri6uhyMLI6LvPAXdBKoPRFhIIiBUpt+Qg2awixqO3xvzSijjhnb4+QEZwJmxA==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /rollup/2.73.0:
@@ -5226,7 +5160,7 @@ packages:
       esbuild: 0.14.39
       postcss: 8.4.13
       resolve: 1.22.0
-      rollup: 2.72.1
+      rollup: 2.73.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
