@@ -1,22 +1,5 @@
 <script lang="ts" context="module">
   export function load(): LoadOutput {
-    const schema = buildClientSchema(
-      schemaJson as unknown as IntrospectionQuery,
-    )
-
-    const title = templates.APP_TITLE.vite.getOrDefault(
-      import.meta.env,
-      'Magidoc',
-    )
-
-    const pages = formatPages(
-      base,
-      templates.PAGES.vite.getOrDefault(
-        import.meta.env,
-        getDefaultPages(title),
-      ),
-    )
-
     const logo = templates.APP_LOGO.vite.getOrDefault(
       import.meta.env,
       DEFAULT_LOGO,
@@ -24,7 +7,7 @@
 
     return {
       stuff: {
-        homeUrl: getHomePageUrl(base, pages, schema),
+        homeUrl: homePageUrl,
         schema,
         content: pages,
       },
@@ -33,7 +16,7 @@
         content: pages,
         meta: generateMeta(
           {
-            appTitle: title,
+            appTitle: appTitle,
             appIcon: logo,
           },
           templates.SITE_META.vite.get(import.meta.env) || {},
@@ -46,26 +29,19 @@
 <script lang="ts">
   import '../app.css'
 
-  import {
-    buildClientSchema,
-    GraphQLSchema,
-    type IntrospectionQuery,
-  } from 'graphql'
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
-  import schemaJson from '../_schema.json'
   import { templates } from '@magidoc/plugin-starter-variables'
-  import { formatPages, getDefaultPages, getHomePageUrl } from '$lib/pages'
+  import { appTitle, homePageUrl, pages } from '$lib/pages'
   import type { CustomContent } from 'src/app'
-  import { base } from '$app/paths'
   import { generateMeta, type Meta } from '$lib/meta'
   import { DEFAULT_LOGO } from '$lib/logo'
+  import { schema } from '$lib/model'
 
   let isSideNavOpen: boolean
 
-  export let schema: GraphQLSchema
   export let content: CustomContent[]
   export let meta: Meta[]
 </script>

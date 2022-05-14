@@ -1,12 +1,31 @@
-import type { Page } from '@magidoc/plugin-starter-variables'
+import { templates, type Page } from '@magidoc/plugin-starter-variables'
 import type { GraphQLSchema } from 'graphql'
 import _ from 'lodash'
 import type { CustomContent, CustomPage } from 'src/app'
+import { base } from '$app/paths'
+import { schema } from './model'
+
+export const appTitle = templates.APP_TITLE.vite.getOrDefault(
+  import.meta.env,
+  'Magidoc',
+)
+
+export const pages: ReadonlyArray<CustomContent> = Object.freeze(
+  formatPages(
+    base,
+    templates.PAGES.vite.getOrDefault(
+      import.meta.env,
+      getDefaultPages(appTitle),
+    ),
+  ),
+)
+
+export const homePageUrl = getHomePageUrl(base, pages, schema)
 
 export function formatPages(
   base: string,
   pages: (Page | undefined)[],
-): CustomContent[] {
+): ReadonlyArray<CustomContent> {
   return pages
     .filter((page): page is Page => !!page)
     .map((item) => asCustomContent(base, [], item))
@@ -24,7 +43,7 @@ export function joinUrlPaths(...paths: string[]): string {
 
 export function getHomePageUrl(
   base: string,
-  pages: CustomContent[],
+  pages: ReadonlyArray<CustomContent>,
   schema: GraphQLSchema,
 ): string {
   const firstPage = findFirstPage(pages)
@@ -52,7 +71,9 @@ export function getHomePageUrl(
   )
 }
 
-export function findFirstPage(pages: CustomContent[]): CustomPage | null {
+export function findFirstPage(
+  pages: ReadonlyArray<CustomContent>,
+): CustomPage | null {
   return firstPageBy(pages, () => true)
 }
 
@@ -64,7 +85,7 @@ export function findPageByHref(
 }
 
 function firstPageBy(
-  pages: CustomContent[],
+  pages: ReadonlyArray<CustomContent>,
   matcher: (page: CustomPage) => boolean,
 ): CustomPage | null {
   for (const page of pages) {

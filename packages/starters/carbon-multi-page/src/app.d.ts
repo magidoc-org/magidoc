@@ -27,7 +27,7 @@ declare global {
 
       readonly schema: GraphQLSchema
 
-      readonly content: CustomContent[]
+      readonly content: ReadonlyArray<CustomContent>
     }
   }
 }
