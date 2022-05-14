@@ -56,7 +56,7 @@ describe('parsing the magidoc config', () => {
         query: 'custom-query',
         method: 'GET',
         headers: {
-          Authorization: 'Bearer lol',
+          Test: 'some-header',
         },
       }
 

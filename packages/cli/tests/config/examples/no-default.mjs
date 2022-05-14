@@ -6,7 +6,7 @@ const config = {
     type: 'url',
     url: 'https://potato.com/graphql',
     headers: {
-      Authorization: 'something',
+      Test: 'something',
     },
   },
   website: {
