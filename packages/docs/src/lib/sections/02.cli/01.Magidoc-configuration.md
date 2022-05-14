@@ -197,8 +197,6 @@ export default {
        */
       siteMeta: {
         description: 'This is your website description',
-        'og:description':
-          'This is also your website description but for open graph',
         keywords: 'svelte,docs,magidoc,cool',
       },
 
