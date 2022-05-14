@@ -163,9 +163,16 @@ export default {
       /**
        * Your application logo. For now, only URLs are supported.
        *
-       * @default magidoc logo
+       * @default (magidoc logo)
        */
       appLogo: 'https://website.com/logo.png',
+
+      /**
+       * Your application's favicon. For now, only URLs are supported.
+       * 
+       * @default (magidoc logo)
+       */ 
+      appFavicon: 'https://website.com/favicon.ico',
 
       /**
        * The a root path where your website will be served from.
@@ -177,6 +184,23 @@ export default {
        * @default undefined
        */
       siteRoot: '/docs',
+
+      /**
+       * Customizes the website meta tags in the header of the HTML pages.
+       * Any meta tags with the following format are supported:
+       *
+       * <meta name={key} content={value} />
+       *
+       * A list of common tags can be found here: https://gist.github.com/whitingx/3840905
+       * 
+       * @default (arbitrary title, description and image are generated from \`appTitle\` and \`appLogo\`)
+       */
+      siteMeta: {
+        description: 'This is your website description',
+        'og:description':
+          'This is also your website description but for open graph',
+        keywords: 'svelte,docs,magidoc,cool',
+      },
 
       /**
        * Customize pages and their content. Each of these pages will be presented before the graphQL documentation.

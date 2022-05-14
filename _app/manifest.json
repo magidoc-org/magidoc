@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-30b1ad68.js",
+    "file": "start-7eb04e49.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -16,7 +16,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-e50d309c.js",
+    "file": "pages/__layout.svelte-bae3308b.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -109,7 +109,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/02.cli/01.Magidoc-configuration.md": {
-    "file": "chunks/01.Magidoc-configuration-596e3dcc.js",
+    "file": "chunks/01.Magidoc-configuration-fb2979d5.js",
     "src": "src/lib/sections/02.cli/01.Magidoc-configuration.md",
     "isDynamicEntry": true
   },
@@ -129,7 +129,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/03.templates/02.Carbon-multi-page.md": {
-    "file": "chunks/02.Carbon-multi-page-06ef83c9.js",
+    "file": "chunks/02.Carbon-multi-page-a6449c10.js",
     "src": "src/lib/sections/03.templates/02.Carbon-multi-page.md",
     "isDynamicEntry": true
   },

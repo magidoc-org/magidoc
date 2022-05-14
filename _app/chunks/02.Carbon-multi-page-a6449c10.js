@@ -1,4 +1,4 @@
-var e=`---
+var n=`---
 title: Template - Carbon Multi-Page
 since: 1.0.0
 tags: ['svelte', 'svelte-kit']
@@ -25,7 +25,11 @@ export default {
     options: {
       appTitle: 'Magidoc',
       appLogo: 'https://some-website/my-image.png',
+      appFavicon: 'https://website.com/favicon.ico',
       siteRoot: '/docs',
+      siteMeta: {
+        description: 'My carbon template',
+      },
       pages: [
         {
           title: 'Content',
@@ -44,4 +48,4 @@ export default {
   },
 }
 \`\`\`
-`;export{e as default};
+`;export{n as default};
