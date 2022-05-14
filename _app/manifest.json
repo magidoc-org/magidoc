@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-7eb04e49.js",
+    "file": "start-312d33c2.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -16,7 +16,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-bae3308b.js",
+    "file": "pages/__layout.svelte-7944902c.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -24,7 +24,7 @@
       "_preload-helper-4330dcf9.js",
       "_index-7b8ef155.js",
       "_paths-6bae2c62.js",
-      "_pages-76f61113.js"
+      "_pages-a9337456.js"
     ],
     "dynamicImports": [
       "src/lib/sections/01.introduction/01.Welcome.md",
@@ -55,13 +55,13 @@
     ]
   },
   "src/routes/[...page].svelte": {
-    "file": "pages/_...page_.svelte-1706d5af.js",
+    "file": "pages/_...page_.svelte-b88027c6.js",
     "src": "src/routes/[...page].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-7b8ef155.js",
-      "_pages-76f61113.js",
+      "_pages-a9337456.js",
       "_paths-6bae2c62.js"
     ],
     "css": [
@@ -89,8 +89,8 @@
   "_preload-helper-4330dcf9.js": {
     "file": "chunks/preload-helper-4330dcf9.js"
   },
-  "_pages-76f61113.js": {
-    "file": "chunks/pages-76f61113.js",
+  "_pages-a9337456.js": {
+    "file": "chunks/pages-a9337456.js",
     "imports": [
       "_index-7b8ef155.js"
     ],
