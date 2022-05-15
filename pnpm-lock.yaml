@@ -123,6 +123,7 @@ importers:
     specifiers:
       '@types/jest': ^27.5.1
       '@types/lodash': ^4.14.182
+      '@types/node': ^17.0.33
       '@types/prettier': ^2.6.1
       graphql: ^16.5.0
       graphql-query-compress: ^1.2.4
@@ -140,9 +141,10 @@ importers:
     devDependencies:
       '@types/jest': 27.5.1
       '@types/lodash': 4.14.182
+      '@types/node': 17.0.33
       '@types/prettier': 2.6.1
       graphql-query-compress: 1.2.4
-      jest: 28.1.0
+      jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
@@ -151,6 +153,7 @@ importers:
   packages/plugins/reverse-schema-mapper:
     specifiers:
       '@types/jest': ^27.5.1
+      '@types/node': ^17.0.33
       graphql: ^16.5.0
       jest: ^28.1.0
       jest-extended: ^2.0.0
@@ -161,7 +164,8 @@ importers:
       graphql: 16.5.0
     devDependencies:
       '@types/jest': 27.5.1
-      jest: 28.1.0
+      '@types/node': 17.0.33
+      jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
@@ -3356,7 +3360,7 @@ packages:
     peerDependencies:
       jest: '>=27.2.5'
     dependencies:
-      jest: 28.1.0
+      jest: 28.1.0_@types+node@17.0.33
       jest-diff: 27.5.1
       jest-get-type: 27.5.1
     dev: true
@@ -5038,7 +5042,7 @@ packages:
       '@types/jest': 27.5.1
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 28.1.0
+      jest: 28.1.0_@types+node@17.0.33
       jest-util: 28.1.0
       json5: 2.2.1
       lodash.memoize: 4.1.2

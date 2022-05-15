@@ -76,7 +76,7 @@ function findFirstPage(pages: ReadonlyArray<CustomContent>): CustomPage | null {
 }
 
 export function findPageByHref(
-  pages: CustomContent[],
+  pages: ReadonlyArray<CustomContent>,
   href: string,
 ): CustomPage | null {
   return firstPageBy(pages, (page) => page.href === href)
