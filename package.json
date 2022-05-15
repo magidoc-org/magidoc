@@ -11,7 +11,7 @@
     "prepare": "husky install",
     "build-ci": "pnpm -r --filter './packages/plugins/**' build && pnpm -r install --ignore-scripts --frozen-lockfile --strict-peer-dependencies && pnpm -r --filter '!./packages/plugins/**' build",
     "test": "run-p test:*",
-    "test-ci": "run-s test:unit test:prettier",
+    "test-ci": "run-s test:*",
     "test:lint": "eslint '**/src/**/*.{ts,svelte}'",
     "test:prettier": "prettier --check '**/*.ts' '**/*.svelte'",
     "test:unit": "pnpm -r run test",
