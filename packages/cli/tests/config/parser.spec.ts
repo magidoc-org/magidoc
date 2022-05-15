@@ -354,13 +354,14 @@ function shouldParse(
 
 function shouldFailParsing(input: unknown, errors: string[]) {
   try {
-    expect(parseConfiguration(input))
+    parseConfiguration(input)
+    throw 'should-not-get-here'
   } catch (error) {
     expect(error).toBeInstanceOf(Error)
 
     const castedError = error as Error
 
-    const lines = castedError.message.split('\n').map(removeColors)
+    const lines = castedError.message.split('\n').map(removeAnsiColors)
 
     // First line's message
     expect(lines[0]).toMatch(
@@ -371,7 +372,7 @@ function shouldFailParsing(input: unknown, errors: string[]) {
     expect(lines).toHaveLength(errors.length + 1)
 
     // All error messages are included
-    expect(lines.slice(1)).toSatisfyAny((line: string) =>
+    expect(lines.slice(1)).toSatisfyAll((line: string) =>
       errors.some((expected) => line.includes(expected)),
     )
 
@@ -395,12 +396,4 @@ function countIndent(input: string): number {
 
 function getBulletChar(input: string): string {
   return input.trim()[0] ?? ''
-}
-
-function removeColors(input: string): string {
-  return input
-    .replaceAll('\u001b[31m', '')
-    .replaceAll('\u001b[36m', '')
-    .replaceAll('\u001b[33m', '')
-    .replaceAll('\u001b[0m', '')
 }

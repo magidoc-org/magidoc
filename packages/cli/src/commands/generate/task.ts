@@ -13,8 +13,9 @@ export type GenerateTaskContext = {
 }
 
 export type TemplateConfiguration = {
-  supportedOptions: Variable<unknown>[]
+  supportedOptions: ReadonlyArray<Variable<unknown>>
   schemaTargetLocation: string
+  staticAssetsLocation: string
 }
 
 export function newTask(params: TaskParams<GenerateTaskContext>): GenerateTask {
