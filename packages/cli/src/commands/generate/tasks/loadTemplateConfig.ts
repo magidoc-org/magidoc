@@ -22,8 +22,14 @@ export function loadTemplateConfigurationTask(): GenerateTask {
 
       ctx.templateConfiguration = {
         supportedOptions: config.SUPPORTED_OPTIONS,
-        schemaTargetLocation: config.SCHEMA_TARGET_LOCATION,
-        staticAssetsLocation: config.STATIC_ASSETS_LOCATION,
+        schemaTargetLocation: path.join(
+          ctx.tmpDirectory.path,
+          config.SCHEMA_TARGET_LOCATION,
+        ),
+        staticAssetsLocation: path.join(
+          ctx.tmpDirectory.path,
+          config.STATIC_ASSETS_LOCATION,
+        ),
       }
     },
   })
