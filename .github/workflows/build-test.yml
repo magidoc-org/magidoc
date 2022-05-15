@@ -31,7 +31,11 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - run: pnpm -r install --ignore-scripts --frozen-lockfile --strict-peer-dependencies
-      - run: pnpm build-ci
+      - run: pnpm build
         env: 
           NODE_OPTIONS: "--max_old_space_size=4096"
       - run: pnpm test-ci
+      - name: Codecov
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          fail_ci_if_error: true
