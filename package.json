@@ -14,7 +14,7 @@
     "test-ci": "run-s test:unit test:prettier",
     "test:lint": "eslint '**/src/**/*.{ts,svelte}'",
     "test:prettier": "prettier --check '**/*.ts' '**/*.svelte'",
-    "test:unit": "pnpm --filter {packages} -r run test",
+    "test:unit": "pnpm -r run test",
     "fix": "run-p fix:*",
     "fix:prettier": "prettier --write '**/*.ts' '**/*.svelte'",
     "fix:lint": "eslint --config .eslintrc.cjs --fix '**/src/**/*.{ts,svelte}'",
