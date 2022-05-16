@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-312d33c2.js",
+    "file": "start-c698ca50.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -16,7 +16,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-7944902c.js",
+    "file": "pages/__layout.svelte-01b70bab.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -109,7 +109,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/02.cli/01.Magidoc-configuration.md": {
-    "file": "chunks/01.Magidoc-configuration-fb2979d5.js",
+    "file": "chunks/01.Magidoc-configuration-cc7e80fa.js",
     "src": "src/lib/sections/02.cli/01.Magidoc-configuration.md",
     "isDynamicEntry": true
   },
