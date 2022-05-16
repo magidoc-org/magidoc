@@ -71,5 +71,5 @@ You can modify Prism code sections style simply by importing a stylesheet. Prism
 <\/script>
 \`\`\`
 
-> Info: This website uses the PrismJS plugin to display code. If you like the theme used, it is a slightly modified version of the OneDark theme and is available [here](https://github.com/pelletier197/magidoc/blob/main/packages/docs/src/lib/components/common/markdown/prism-theme.css).
+> Info: This website uses the PrismJS plugin to display code. If you like the theme used, it is a slightly modified version of the OneDark theme and is available [here](https://github.com/magidoc-org/magidoc/blob/main/packages/plugins/svelte-carbon-commons/src/lib/markdown/prism-theme.css).
 `;export{e as default};
