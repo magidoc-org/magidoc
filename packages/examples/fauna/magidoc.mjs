@@ -9,6 +9,8 @@ function markdown(string) {
     .join('\n')
 }
 
+
+
 export default {
   introspection: {
     type: 'url',
@@ -23,8 +25,9 @@ export default {
     template: 'carbon-multi-page',
     options: {
       appTitle: 'FaunaDB',
-      appLogo: 'https://dbdb.io/media/logos/fauna2020.png.280x250_q85.png',
+      appLogo: '/logo.png',
       appFavicon: 'https://docs.fauna.com/_/img/favicon.png',
+      staticAssets: './assets',
       siteMeta: {
         description: "Magidoc demo for FaunaDB's GraphQL API.",
         'og:description': "Magidoc demo for FaunaDB's GraphQL API.",
