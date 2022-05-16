@@ -31,7 +31,7 @@ export default {
     options: {
       appTitle: 'FaunaDB',
       appLogo: '/logo.png',
-      appFavicon: 'https://docs.fauna.com/_/img/favicon.png',
+      appFavicon: '/favicon.png',
       staticAssets: relativePath('./assets'),
       siteMeta: {
         description: "Magidoc demo for FaunaDB's GraphQL API.",
