@@ -1,4 +1,4 @@
-import { filePathToURL, fileURLToPath } from 'url'
+import { fileURLToPath } from 'url'
 import path from 'path'
 
 function markdown(string) {
