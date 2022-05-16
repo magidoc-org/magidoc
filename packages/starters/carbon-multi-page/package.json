@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "0.16.1",
+  "version": "0.17.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -19,11 +19,11 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@magidoc/plugin-query-generator": "workspace:^0.16.1",
-    "@magidoc/plugin-starter-variables": "workspace:^0.16.1",
-    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.16.1",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.16.1",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.16.1",
+    "@magidoc/plugin-query-generator": "workspace:^0.17.0",
+    "@magidoc/plugin-starter-variables": "workspace:^0.17.0",
+    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.17.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^0.17.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.17.0",
     "@sveltejs/adapter-static": "1.0.0-next.30",
     "@sveltejs/kit": "1.0.0-next.327",
     "@types/lodash": "^4.14.182",

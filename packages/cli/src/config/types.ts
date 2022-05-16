@@ -34,6 +34,7 @@ export const ZWebsiteConfiguration = z.object({
   template: z.enum(AVAILABLE_TEMPLATES),
   templateVersion: z.string().nonempty().default(getVersion()),
   output: ZPath.default(path.resolve('./docs')),
+  staticAssets: ZPath.optional(),
   options: z.record(z.string().nonempty(), z.unknown()).default({}),
 })
 

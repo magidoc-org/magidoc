@@ -2,7 +2,8 @@ import { MagidocConfiguration, ZMagidocConfiguration } from './types'
 import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
 import z, { ZodIssue, ZodType } from 'zod'
-import { cyan, red } from '../commands/utils/outputColors'
+import { red } from '../commands/utils/outputColors'
+import { formatZodIssues } from './zod'
 
 export function parseConfiguration(content: unknown): MagidocConfiguration {
   const result = ZMagidocConfiguration.safeParse(content)
@@ -51,7 +52,7 @@ function validateOptions(options: Record<string, unknown>): void | never {
 }
 
 function throwConfigurationError(issues: ZodIssue[]): never {
-  const formattedIssues = convertZodIssues(issues)
+  const formattedIssues = formatZodIssues(issues)
   const pluralIssue = issues.length > 1 ? 'issues' : 'issue'
   const issuesText = red(`${issues.length} ${pluralIssue}`)
   throw new Error(
@@ -59,33 +60,4 @@ function throwConfigurationError(issues: ZodIssue[]): never {
       '\n',
     )}`,
   )
-}
-
-function formatErrorPath(path: (string | number)[]): string {
-  const result = path.reduce((previous: string, current: string | number) => {
-    if (typeof current === 'number') return previous + `[${current}]`
-    if (previous === '') return String(current)
-    return `${previous}.${String(current)}`
-  }, '')
-
-  return `${cyan(result)}`
-}
-
-function convertZodIssues(issues: ZodIssue[]): string[] {
-  return issues.map((issue) => {
-    const path = formatErrorPath(issue.path)
-    switch (issue.code) {
-      case 'invalid_type':
-        return `  ‣ Expected: '${issue.expected}' but received '${issue.received}' at path '${path}'`
-      case 'invalid_union':
-        const formattedErrors = issue.unionErrors
-          .flatMap((current) =>
-            current.issues.map((issue) => `    - ${issue.message}`),
-          )
-          .join('\n')
-        return `  ‣ ${issue.message} at path '${path}':\n${formattedErrors}`
-      default:
-        return `  ‣ ${issue.message} at path '${path}'`
-    }
-  })
 }

@@ -30,13 +30,14 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^0.16.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.16.1
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^0.16.1
+      '@magidoc/plugin-starter-variables': workspace:^0.17.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.17.0
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^0.17.0
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.5.1
       '@types/lodash': ^4.14.182
+      '@types/node': ^17.0.33
       axios: ^0.27.2
       commander: ^9.2.0
       extract-zip: ^2.0.1
@@ -69,7 +70,8 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/jest': 27.5.1
       '@types/lodash': 4.14.182
-      jest: 28.1.0
+      '@types/node': 17.0.33
+      jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       rollup: 2.73.0
       rollup-plugin-preserve-shebang: 1.0.1
@@ -79,8 +81,8 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.16.1
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
+      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.17.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.0
       '@sveltejs/adapter-static': 1.0.0-next.30
       '@sveltejs/kit': 1.0.0-next.327
       carbon-components-svelte: ^0.63.8
@@ -123,6 +125,7 @@ importers:
     specifiers:
       '@types/jest': ^27.5.1
       '@types/lodash': ^4.14.182
+      '@types/node': ^17.0.33
       '@types/prettier': ^2.6.1
       graphql: ^16.5.0
       graphql-query-compress: ^1.2.4
@@ -140,9 +143,10 @@ importers:
     devDependencies:
       '@types/jest': 27.5.1
       '@types/lodash': 4.14.182
+      '@types/node': 17.0.33
       '@types/prettier': 2.6.1
       graphql-query-compress: 1.2.4
-      jest: 28.1.0
+      jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
@@ -151,6 +155,7 @@ importers:
   packages/plugins/reverse-schema-mapper:
     specifiers:
       '@types/jest': ^27.5.1
+      '@types/node': ^17.0.33
       graphql: ^16.5.0
       jest: ^28.1.0
       jest-extended: ^2.0.0
@@ -161,7 +166,8 @@ importers:
       graphql: 16.5.0
     devDependencies:
       '@types/jest': 27.5.1
-      jest: 28.1.0
+      '@types/node': 17.0.33
+      jest: 28.1.0_@types+node@17.0.33
       jest-extended: 2.0.0_jest@28.1.0
       rollup: 2.73.0
       ts-jest: 28.0.2_qy5m32hwmbz5mebulkdtchzcz4
@@ -242,7 +248,7 @@ importers:
 
   packages/plugins/svelte-carbon-commons:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.0
       '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
@@ -272,7 +278,7 @@ importers:
 
   packages/plugins/svelte-carbon-commons/package:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.0
       '@sveltejs/adapter-auto': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.327
       '@types/prismjs': ^1.26.0
@@ -350,11 +356,11 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^0.16.1
-      '@magidoc/plugin-starter-variables': workspace:^0.16.1
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.16.1
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.16.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.16.1
+      '@magidoc/plugin-query-generator': workspace:^0.17.0
+      '@magidoc/plugin-starter-variables': workspace:^0.17.0
+      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.17.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.17.0
       '@sveltejs/adapter-static': 1.0.0-next.30
       '@sveltejs/kit': 1.0.0-next.327
       '@types/lodash': ^4.14.182
@@ -3356,7 +3362,7 @@ packages:
     peerDependencies:
       jest: '>=27.2.5'
     dependencies:
-      jest: 28.1.0
+      jest: 28.1.0_@types+node@17.0.33
       jest-diff: 27.5.1
       jest-get-type: 27.5.1
     dev: true
@@ -5038,7 +5044,7 @@ packages:
       '@types/jest': 27.5.1
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 28.1.0
+      jest: 28.1.0_@types+node@17.0.33
       jest-util: 28.1.0
       json5: 2.2.1
       lodash.memoize: 4.1.2
