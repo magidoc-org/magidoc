@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: "./.github/workflows/install"
+      - uses: "./.github/actions/install"
 
       - run: pnpm build
         env:
