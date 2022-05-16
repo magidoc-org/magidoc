@@ -1,6 +1,6 @@
 import { newTask, GenerateTask } from '../task'
 import path from 'path'
-import type { Variable } from '@magidoc/plugin-starter-variables'
+import { parseTemplateConfig } from '../../../template/config'
 
 export function templateConfigurationFile(templateDirectory: string): string {
   return path.join(templateDirectory, 'magidoc.config.js')
@@ -11,26 +11,25 @@ export function loadTemplateConfigurationTask(): GenerateTask {
     title: `Load template configuration`,
     executor: async (ctx, task) => {
       const configPath = templateConfigurationFile(ctx.tmpDirectory.path)
+      const rawConfig = (await import(configPath)) as unknown
 
-      const config = (await import(configPath)) as {
-        SUPPORTED_OPTIONS?: Variable<unknown>[]
-        SCHEMA_TARGET_LOCATION?: string
-      }
+      const config = parseTemplateConfig(rawConfig)
 
-      const supportedOptions = config.SUPPORTED_OPTIONS || []
-      const schemaTargetLocation = path.join(
-        ctx.tmpDirectory.path,
-        config.SCHEMA_TARGET_LOCATION || '',
-      )
-
-      let output = `Found ${supportedOptions.length} supported keys\n`
-      output += `Target schema location: ${schemaTargetLocation}`
+      let output = `Found ${config.SUPPORTED_OPTIONS.length} supported keys\n`
+      output += `Target schema location: ${config.SCHEMA_TARGET_LOCATION}`
 
       task.output = output
 
       ctx.templateConfiguration = {
-        supportedOptions,
-        schemaTargetLocation,
+        supportedOptions: config.SUPPORTED_OPTIONS,
+        schemaTargetLocation: path.join(
+          ctx.tmpDirectory.path,
+          config.SCHEMA_TARGET_LOCATION,
+        ),
+        staticAssetsLocation: path.join(
+          ctx.tmpDirectory.path,
+          config.STATIC_ASSETS_LOCATION,
+        ),
       }
     },
   })

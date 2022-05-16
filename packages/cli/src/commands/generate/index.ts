@@ -11,6 +11,7 @@ import { warnVersionTask } from './tasks/warnVersion'
 import { loadTemplateConfigurationTask } from './tasks/loadTemplateConfig'
 import { loadGraphQLSchemaTask } from './tasks/loadGraphqlSchema'
 import { executeAllTasks } from '../../tasks'
+import { copyStaticAssetsTask } from './tasks/copyStaticAssets'
 
 export default async function generate(config: GenerationConfig) {
   await executeAllTasks([
@@ -23,6 +24,7 @@ export default async function generate(config: GenerationConfig) {
     installDependenciesTask(),
     loadTemplateConfigurationTask(),
     loadGraphQLSchemaTask(config),
+    copyStaticAssetsTask(config),
     buildTemplateTask(config),
     moveOutputTask(config),
   ])
