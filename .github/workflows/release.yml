@@ -7,7 +7,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: "./composite/install.yml"
+      - uses: "./.github/workflows/composite/install.yml"
 
       - name: Set version
         id: version
