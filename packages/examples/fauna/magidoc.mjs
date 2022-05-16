@@ -1,3 +1,6 @@
+import { filePathToURL, fileURLToPath } from 'url'
+import path from 'path'
+
 function markdown(string) {
   // Takes the first indent and trims that length from everywhere.
   // Markdown templates don't like the extra space at the begining.
@@ -9,7 +12,9 @@ function markdown(string) {
     .join('\n')
 }
 
-
+function relativePath(target) {
+  return path.join(path.dirname(fileURLToPath(import.meta.url)), target)
+}
 
 export default {
   introspection: {
@@ -27,7 +32,7 @@ export default {
       appTitle: 'FaunaDB',
       appLogo: '/logo.png',
       appFavicon: 'https://docs.fauna.com/_/img/favicon.png',
-      staticAssets: './assets',
+      staticAssets: relativePath('./assets'),
       siteMeta: {
         description: "Magidoc demo for FaunaDB's GraphQL API.",
         'og:description': "Magidoc demo for FaunaDB's GraphQL API.",
