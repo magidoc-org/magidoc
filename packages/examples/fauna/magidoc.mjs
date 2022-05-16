@@ -28,11 +28,11 @@ export default {
   },
   website: {
     template: 'carbon-multi-page',
+    staticAssets: relativePath('./assets'),
     options: {
       appTitle: 'FaunaDB',
       appLogo: '/logo.png',
       appFavicon: '/favicon.png',
-      staticAssets: relativePath('./assets'),
       siteMeta: {
         description: "Magidoc demo for FaunaDB's GraphQL API.",
         'og:description': "Magidoc demo for FaunaDB's GraphQL API.",
