@@ -3,7 +3,7 @@
   "description": "A Svelte component library providing an easy to use component to display PrismJS code blocks",
   "type": "module",
   "license": "MIT",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "svelte": "index.js",
   "private": false,
   "keywords": [
@@ -14,6 +14,12 @@
     "magidoc",
     "browser"
   ],
+  "homepage": "https://magidoc-org.github.io/magidoc/svelte-plugins/prismjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magidoc-org/magidoc.git",
+    "directory": "packages/plugins/svelte-prismjs"
+  },
   "scripts": {
     "build": "pnpm package",
     "test": "pnpm check",

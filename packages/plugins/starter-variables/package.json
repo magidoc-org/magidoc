@@ -2,15 +2,21 @@
   "name": "@magidoc/plugin-starter-variables",
   "description": "A shared library that contains common Magidoc starter environment variables keys.",
   "private": false,
-  "version": "0.17.0",
+  "version": "0.17.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "keywords": [
     "node",
-    "magidoc"
+    "magidoc",
+    "internal"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magidoc-org/magidoc.git",
+    "directory": "packages/plugins/starter-variables"
+  },
   "scripts": {
     "start": "pnpm build:rollup && node build/index.js",
     "build": "run-p build:*",

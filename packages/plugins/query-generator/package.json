@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-query-generator",
   "description": "A browser and nodeJS compatible plugin that allows to generate GraphQL Queries and Variables",
   "private": false,
-  "version": "0.17.0",
+  "version": "0.17.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -14,6 +14,12 @@
     "node",
     "browser"
   ],
+  "homepage": "https://magidoc-org.github.io/magidoc/plugins/graphql-query-generator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magidoc-org/magidoc.git",
+    "directory": "packages/plugins/query-generator"
+  },
   "scripts": {
     "build": "run-p build:*",
     "build:rollup": "rollup -c",
