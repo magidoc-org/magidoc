@@ -1,0 +1,26 @@
+name: Build and tests
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: "./.github/actions/install"
+
+      - run: pnpm build
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+
+      - run: pnpm test-ci
+
+      - name: Codecov
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          fail_ci_if_error: true

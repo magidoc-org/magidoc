@@ -1,0 +1,34 @@
+name: Deploy Demo
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Release]
+    types:
+      - completed
+
+jobs:
+  deploy-demo:
+    name: Deploy-demo
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Generate Examples
+        run: |
+          cd packages/examples/fauna
+          npx @magidoc/cli@latest generate
+
+      - name: Publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir=packages/examples/fauna/docs
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.CARBON_MULTI_PAGE_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
