@@ -1,6 +1,7 @@
 import { newTask, GenerateTask } from '../task'
 import path from 'path'
 import { parseTemplateConfig } from '../../../template/config'
+import { pathToFileURL } from 'url'
 
 export function templateConfigurationFile(templateDirectory: string): string {
   return path.join(templateDirectory, 'magidoc.config.js')
@@ -11,7 +12,9 @@ export function loadTemplateConfigurationTask(): GenerateTask {
     title: `Load template configuration`,
     executor: async (ctx, task) => {
       const configPath = templateConfigurationFile(ctx.tmpDirectory.path)
-      const rawConfig = (await import(configPath)) as unknown
+      const rawConfig = (await import(
+        pathToFileURL(configPath).toString()
+      )) as unknown
 
       const config = parseTemplateConfig(rawConfig)
 
