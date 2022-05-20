@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "0.17.2",
+  "version": "0.17.3",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -25,7 +25,7 @@
     "@magidoc/plugin-svelte-prismjs": "workspace:^0.17.2",
     "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^0.17.2",
     "@sveltejs/adapter-static": "1.0.0-next.31",
-    "@sveltejs/kit": "1.0.0-next.336",
+    "@sveltejs/kit": "1.0.0-next.338",
     "@types/lodash": "^4.14.182",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.25.0",

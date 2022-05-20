@@ -52,7 +52,7 @@ importers:
       ts-jest: ^28.0.2
       tslib: ^2.4.0
       typescript: ^4.6.4
-      zod: ^3.16.0
+      zod: ^3.16.1
     dependencies:
       '@magidoc/plugin-starter-variables': link:../plugins/starter-variables
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../plugins/rollup-fetch-gql-schema
@@ -64,7 +64,7 @@ importers:
       listr2: 4.0.5
       lodash: 4.17.21
       sirv: 2.0.2
-      zod: 3.16.0
+      zod: 3.16.1
     devDependencies:
       '@rollup/plugin-typescript': 8.3.2_ewnwotriipvq7wps276zlnnxuy
       '@types/fs-extra': 9.0.13
@@ -84,7 +84,7 @@ importers:
       '@magidoc/plugin-svelte-carbon-commons': workspace:^0.17.2
       '@magidoc/plugin-svelte-prismjs': workspace:^0.17.2
       '@sveltejs/adapter-static': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.336
+      '@sveltejs/kit': 1.0.0-next.338
       carbon-components-svelte: ^0.64.0
       carbon-icons-svelte: ^11.0.1
       carbon-preprocess-svelte: ^0.9.0
@@ -104,7 +104,7 @@ importers:
       '@magidoc/plugin-svelte-carbon-commons': link:../plugins/svelte-carbon-commons/package
       '@magidoc/plugin-svelte-prismjs': link:../plugins/svelte-prismjs/package
       '@sveltejs/adapter-static': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.336_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       carbon-components-svelte: 0.64.0
       carbon-icons-svelte: 11.0.1
       carbon-preprocess-svelte: 0.9.0_svelte@3.48.0
@@ -234,9 +234,9 @@ importers:
       ts-jest: ^28.0.2
       tslib: ^2.4.0
       typescript: ^4.6.4
-      zod: ^3.16.0
+      zod: ^3.16.1
     optionalDependencies:
-      zod: 3.16.0
+      zod: 3.16.1
     devDependencies:
       '@rollup/plugin-typescript': 8.3.2_ewnwotriipvq7wps276zlnnxuy
       '@types/jest': 27.5.1
@@ -250,7 +250,7 @@ importers:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.17.2
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336
+      '@sveltejs/kit': 1.0.0-next.338
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.64.0
       prismjs: ^1.28.0
@@ -264,7 +264,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.64.0
       prismjs: 1.28.0
@@ -280,7 +280,7 @@ importers:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.17.2
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336
+      '@sveltejs/kit': 1.0.0-next.338
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.64.0
       prismjs: ^1.28.0
@@ -294,7 +294,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.64.0
       prismjs: 1.28.0
@@ -309,7 +309,7 @@ importers:
   packages/plugins/svelte-prismjs:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336
+      '@sveltejs/kit': 1.0.0-next.338
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.48.0
@@ -320,7 +320,7 @@ importers:
       typescript: ~4.6.4
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
       svelte: 3.48.0
@@ -333,7 +333,7 @@ importers:
   packages/plugins/svelte-prismjs/package:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336
+      '@sveltejs/kit': 1.0.0-next.338
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.48.0
@@ -344,7 +344,7 @@ importers:
       typescript: ~4.6.4
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.43
-      '@sveltejs/kit': 1.0.0-next.336_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       '@types/prismjs': 1.26.0
       prismjs: 1.28.0
       svelte: 3.48.0
@@ -362,7 +362,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.17.2
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.17.2
       '@sveltejs/adapter-static': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.336
+      '@sveltejs/kit': 1.0.0-next.338
       '@types/lodash': ^4.14.182
       '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.25.0
@@ -388,7 +388,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-static': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.336_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       '@types/lodash': 4.14.182
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.25.0_qo2hgs5jt7x2a3p77h2rutcdae
@@ -574,7 +574,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.17.10
+      '@babel/types': 7.18.0
     dev: true
 
   /@babel/plugin-syntax-async-generators/7.8.4_@babel+core@7.18.0:
@@ -723,14 +723,6 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/types/7.17.10:
-    resolution: {integrity: sha512-9O26jG0mBYfGkUYCYZRnBwbVLd1UZOICEr2Em6InB6jVfsAv1GKgwXHmrSg+WFWDmeKTA6vyTZiN8tCSM5Oo3A==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.16.7
-      to-fast-properties: 2.0.0
-    dev: true
-
   /@babel/types/7.18.0:
     resolution: {integrity: sha512-vhAmLPAiC8j9K2GnsnLPCIH5wCrPpYIVBCWRBFDCB7Y/BXLqi/O+1RSTTM2bsmg6U/551+FCf9PNPxjABmxHTw==}
     engines: {node: '>=6.9.0'}
@@ -743,8 +735,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@eslint/eslintrc/1.2.3:
-    resolution: {integrity: sha512-uGo44hIwoLGNyduRpjdEpovcbMdd+Nv7amtmJxnKmI8xj6yd5LncmSwDa5NgX/41lIFJtkjD6YdVfgEzPfJ5UA==}
+  /@eslint/eslintrc/1.3.0:
+    resolution: {integrity: sha512-UWW0TMTmk2d7hLcWD1/e2g5HDM/HQ3csaLSqXCfqwh4uNDuNqlaKWXmEsL4Cs41Z0KnILNvwbHAah3C2yt06kw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
@@ -1154,8 +1146,8 @@ packages:
       esbuild: 0.14.39
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.336_svelte@3.48.0:
-    resolution: {integrity: sha512-DfERqclfwI8Gdx8/p5qIU3vwEOQfWqC8+BXR12bNykbXFM1k8koDplRDpmGzcsXyhslf83j+RmchnkifbNLjsw==}
+  /@sveltejs/kit/1.0.0-next.338_svelte@3.48.0:
+    resolution: {integrity: sha512-tqzSHB9ONjmUS8qsYUkypI1eg+FuyKVN5t0wEfIufv7X6ECK1xIRwU1A0igmNLPhqhTqAt3QNmFn2An0/8LbnQ==}
     engines: {node: '>=16'}
     hasBin: true
     peerDependencies:
@@ -2415,7 +2407,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      '@eslint/eslintrc': 1.2.3
+      '@eslint/eslintrc': 1.3.0
       '@humanwhocodes/config-array': 0.9.5
       ajv: 6.12.6
       chalk: 4.1.2
@@ -5305,6 +5297,6 @@ packages:
       readable-stream: 3.6.0
     dev: true
 
-  /zod/3.16.0:
-    resolution: {integrity: sha512-szrIkryADbTM+xBt2a1KoS2CJQXec4f9xG78bj5MJeEH/XqmmHpnO+fG3IE115AKBJak+2HrbxLZkc9mhdbDKA==}
+  /zod/3.16.1:
+    resolution: {integrity: sha512-IQXNNUWzINE6lz068lmEn3SPWNZWunQYEqakpw8DNVhfiYlU/rOgkUv4oGMXpK1xvcs6Q3o1GNanS+5n7lr0yg==}
     dev: false

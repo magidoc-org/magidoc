@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "0.17.2",
+  "version": "0.17.3",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -20,7 +20,7 @@
     "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.17.2",
     "@magidoc/plugin-svelte-prismjs": "workspace:^0.17.2",
     "@sveltejs/adapter-static": "1.0.0-next.31",
-    "@sveltejs/kit": "1.0.0-next.336",
+    "@sveltejs/kit": "1.0.0-next.338",
     "carbon-components-svelte": "^0.64.0",
     "carbon-icons-svelte": "^11.0.1",
     "carbon-preprocess-svelte": "^0.9.0",
