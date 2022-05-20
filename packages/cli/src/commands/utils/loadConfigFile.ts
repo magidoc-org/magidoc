@@ -4,7 +4,7 @@ import path from 'path'
 
 export async function loadFileConfiguration(
   configPath: string,
-  showStacktrace: boolean
+  showStacktrace: boolean,
 ): Promise<MagidocConfiguration | null> {
   try {
     return await readConfiguration(path.resolve(configPath))

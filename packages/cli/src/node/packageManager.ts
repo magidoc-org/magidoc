@@ -93,9 +93,16 @@ async function runNodeCommand(
     child.stderr.on('data', (chunk) => (output += String(chunk)))
 
     child.on('error', (error) => {
-      reject(new Error(`Failed to lunach command '${command}' with args '${args.toString()}' and config '${JSON.stringify(config)}': ${error.message}`, {
-        cause: error
-      }))
+      reject(
+        new Error(
+          `Failed to lunach command '${command}' with args '${args.toString()}' and config '${JSON.stringify(
+            config,
+          )}': ${error.message}`,
+          {
+            cause: error,
+          },
+        ),
+      )
     })
 
     child.on('exit', (code) => {
