@@ -15,7 +15,7 @@ runs:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          ${{ runner.os }}-pnpm-store-
 
     - name: Setup Node
       uses: actions/setup-node@v3
