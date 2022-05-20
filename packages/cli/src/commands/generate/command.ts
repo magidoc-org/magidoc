@@ -55,7 +55,7 @@ export default function buildGenerateCommand(program: Command) {
         stacktrace,
         clean,
       }: GenerateCommandOptions) => {
-        const fileConfiguration = await loadFileConfiguration(file)
+        const fileConfiguration = await loadFileConfiguration(file, stacktrace)
         if (!fileConfiguration) {
           process.exitCode = 1
           return

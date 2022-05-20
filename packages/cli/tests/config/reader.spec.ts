@@ -49,9 +49,14 @@ async function readExample(name: string) {
 }
 
 function getExample(name: string) {
-  return path.join(
+  console.log(path.resolve(path.join(
     path.dirname(fileURLToPath(import.meta.url)),
     'examples',
     name,
-  )
+  )))
+  return path.resolve(path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    'examples',
+    name,
+  ))
 }

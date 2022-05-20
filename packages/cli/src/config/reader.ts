@@ -1,6 +1,7 @@
 import { existsSync } from 'fs'
 import type { MagidocConfiguration } from './types'
 import path from 'path'
+import {pathToFileURL} from 'url'
 import { parseConfiguration } from './parser'
 
 const allowedExtensions = ['.js', '.cjs', '.mjs']
@@ -21,7 +22,7 @@ export async function readConfiguration(
     )
   }
 
-  const config = ((await import(configPath)) as { default?: unknown }).default
+  const config = ((await import(pathToFileURL(configPath).toString())) as { default?: unknown }).default
   if (!config) {
     throw new Error(`File ${configPath} has no default export`)
   }

@@ -81,6 +81,7 @@ async function runNodeCommand(
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
       cwd: config.cwd,
+      shell: true,
       env: {
         ...process.env,
         ...config.env,
@@ -90,6 +91,12 @@ async function runNodeCommand(
     let output = ''
     child.stdout.on('data', (chunk) => (output += String(chunk)))
     child.stderr.on('data', (chunk) => (output += String(chunk)))
+
+    child.on('error', (error) => {
+      reject(new Error(`Failed to lunach command '${command}' with args '${args}' and config '${JSON.stringify(config)}': ${error}`, {
+        cause: error
+      }))
+    })
 
     child.on('exit', (code) => {
       if (code === 0) {
