@@ -38,3 +38,8 @@
     {/each}
   </StructuredListBody>
 </StructuredList>
+
+<!-- Hack to stop warnings from printing -->
+{#if false}
+  <slot />
+{/if}

@@ -8,8 +8,8 @@
   }
 
   export let token: marked.Tokens.Heading
-  export const options: MarkdownOptions = undefined
-  export const renderers: Renderers = undefined
+  export let options: MarkdownOptions = undefined
+  export let renderers: Renderers = undefined
 
   let id: string
   $: id = generateHeaderId(token.text)

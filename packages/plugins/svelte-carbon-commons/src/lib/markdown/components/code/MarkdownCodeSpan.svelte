@@ -3,11 +3,16 @@
   import type { marked } from 'marked'
 
   export let token: marked.Tokens.Codespan
-  export const options: MarkdownOptions = undefined
-  export const renderers: Renderers = undefined
+  export let options: MarkdownOptions = undefined
+  export let renderers: Renderers = undefined
 </script>
 
 <code class="code-span">{token.text}</code>
+
+<!-- Hack to stop warnings from printing -->
+{#if false}
+  <slot />
+{/if}
 
 <style>
   .code-span {

@@ -8,8 +8,8 @@
   export let showLineNumbers = true
 
   export let token: marked.Tokens.Code
-  export const options: MarkdownOptions = undefined
-  export const renderers: Renderers = undefined
+  export let options: MarkdownOptions = undefined
+  export let renderers: Renderers = undefined
 </script>
 
 <Prism
@@ -18,3 +18,8 @@
   {showCopyButton}
   {showLineNumbers}
 />
+
+<!-- Hack to stop warnings from printing -->
+{#if false}
+  <slot />
+{/if}

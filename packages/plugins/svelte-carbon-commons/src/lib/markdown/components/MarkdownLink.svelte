@@ -6,7 +6,7 @@
 
   export let token: marked.Tokens.Link
   export let options: MarkdownOptions
-  export const renderers: Renderers = undefined
+  export let renderers: Renderers = undefined
 </script>
 
 <Link href={joinUrlPaths(options.baseUrl, token.href)}>

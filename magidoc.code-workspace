@@ -9,10 +9,6 @@
       "**/build": true,
       "**/package": true
     },
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true,
-      "source.organizeImports": true
-    },
     "jest.jestCommandLine": "pnpm jest",
     "jest.autoRun": { "watch": false, "onSave": "test-src-file" },
     "jest.disabledWorkspaceFolders": ["ROOT"],
