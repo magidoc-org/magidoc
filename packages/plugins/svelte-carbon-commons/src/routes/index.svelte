@@ -51,7 +51,7 @@ Your can show error, warning, info and success blockquotes.
 Tables are supported as well.
 
 
-| **Animal** | **Emoji** | **Sound** |
+| Animal | Emoji | Sound |
 | ---------- | --------- | --------- |
 | Dog        | 🐶        | Woof!     |
 | Cat        | 🐱        | Meow!     |

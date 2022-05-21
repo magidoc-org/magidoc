@@ -1,9 +1,41 @@
 <script lang="ts">
-  import { StructuredList } from 'carbon-components-svelte'
+  import MarkdownTokens from '$lib/markdown/MarkdownTokens.svelte'
+  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
+  import {
+    StructuredList,
+    StructuredListBody,
+    StructuredListCell,
+    StructuredListHead,
+    StructuredListRow,
+  } from 'carbon-components-svelte'
+  import type { marked } from 'marked'
+
+  export let rows: marked.Tokens.Table['rows']
+  export let header: marked.Tokens.Table['header']
+  export let options: MarkdownOptions
+  export let renderers: Renderers
 </script>
 
-{JSON.stringify($$props)}
-
 <StructuredList>
-  <slot />
+  <StructuredListHead>
+    <StructuredListRow head>
+      {#each header as item}
+        <StructuredListCell head>
+          <MarkdownTokens tokens={item.tokens} {options} {renderers} />
+        </StructuredListCell>
+      {/each}
+    </StructuredListRow>
+  </StructuredListHead>
+
+  <StructuredListBody>
+    {#each rows as row}
+      <StructuredListRow>
+        {#each row as col}
+          <StructuredListCell>
+            <MarkdownTokens tokens={col.tokens} {options} {renderers} />
+          </StructuredListCell>
+        {/each}
+      </StructuredListRow>
+    {/each}
+  </StructuredListBody>
 </StructuredList>

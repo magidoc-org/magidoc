@@ -4,10 +4,6 @@ import MarkdownCode from './markdown/components/code/MarkdownCode.svelte'
 import MarkdownLink from './markdown/components/MarkdownLink.svelte'
 import MarkdownParagraph from './markdown/components/MarkdownParagraph.svelte'
 import MarkdownTable from './markdown/components/table/MarkdownTable.svelte'
-import MarkdownTableHead from './markdown/components/table/MarkdownTableHead.svelte'
-import MarkdownTableBody from './markdown/components/table/MarkdownTableBody.svelte'
-import MarkdownTableRow from './markdown/components/table/MarkdownTableRow.svelte'
-import MarkdownTableCell from './markdown/components/table/MarkdownTableCell.svelte'
 import MarkdownHeading from './markdown/components/MarkdownHeading.svelte'
 import MarkdownList from './markdown/components/list/MarkdownList.svelte'
 import MarkdownListItem from './markdown/components/list/MarkdownListItem.svelte'
@@ -38,10 +34,6 @@ export {
   MarkdownListItem,
   MarkdownParagraph,
   MarkdownTable,
-  MarkdownTableBody,
-  MarkdownTableCell,
-  MarkdownTableHead,
-  MarkdownTableRow,
   MarkdownBr,
   MarkdownHtml,
   MarkdownText,

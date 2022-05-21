@@ -29,5 +29,4 @@
   $: actualOptions = { ...defaultOptions, ...options }
 </script>
 
-{JSON.stringify(tokens)}
 <MarkdownTokens {tokens} renderers={actualRenderers} options={actualOptions} />

@@ -1,298 +1,85 @@
-[
-  { "type": "space", "raw": "\n" },
-  {
-    "type": "heading",
-    "raw": "# 👋 Hi\n\n",
-    "depth": 1,
-    "text": "👋 Hi",
-    "tokens": [{ "type": "text", "raw": "👋 Hi", "text": "👋 Hi" }]
-  },
-  {
-    "type": "paragraph",
-    "raw": "Welcome to [FaunaDB](https://fauna.com/blog/try-faunadbs-graphql-api)'s GraphQL documentation\ngenerated with [Magidoc](https://github.com/magidoc-org/magidoc), a free open source software designed to build customizable static GraphQL documentation websites with little effort.",
-    "text": "Welcome to [FaunaDB](https://fauna.com/blog/try-faunadbs-graphql-api)'s GraphQL documentation\ngenerated with [Magidoc](https://github.com/magidoc-org/magidoc), a free open source software designed to build customizable static GraphQL documentation websites with little effort.",
-    "tokens": [
-      { "type": "text", "raw": "Welcome to ", "text": "Welcome to " },
+{
+  "type": "table",
+  "header": [
+    {
+      "text": "**Animal**",
+      "tokens": [
+        {
+          "type": "strong",
+          "raw": "**Animal**",
+          "text": "Animal",
+          "tokens": [{ "type": "text", "raw": "Animal", "text": "Animal" }]
+        }
+      ]
+    },
+    {
+      "text": "**Emoji**",
+      "tokens": [
+        {
+          "type": "strong",
+          "raw": "**Emoji**",
+          "text": "Emoji",
+          "tokens": [{ "type": "text", "raw": "Emoji", "text": "Emoji" }]
+        }
+      ]
+    },
+    {
+      "text": "**Sound**",
+      "tokens": [
+        {
+          "type": "strong",
+          "raw": "**Sound**",
+          "text": "Sound",
+          "tokens": [{ "type": "text", "raw": "Sound", "text": "Sound" }]
+        }
+      ]
+    }
+  ],
+  "align": [null, null, null],
+  "rows": [
+    [
       {
-        "type": "link",
-        "raw": "[FaunaDB](https://fauna.com/blog/try-faunadbs-graphql-api)",
-        "href": "https://fauna.com/blog/try-faunadbs-graphql-api",
-        "title": null,
-        "text": "FaunaDB",
-        "tokens": [{ "type": "text", "raw": "FaunaDB", "text": "FaunaDB" }]
+        "text": "Dog",
+        "tokens": [{ "type": "text", "raw": "Dog", "text": "Dog" }]
       },
       {
-        "type": "text",
-        "raw": "'s GraphQL documentation\ngenerated with ",
-        "text": "&#39;s GraphQL documentation\ngenerated with "
+        "text": "🐶",
+        "tokens": [{ "type": "text", "raw": "🐶", "text": "🐶" }]
       },
       {
-        "type": "link",
-        "raw": "[Magidoc](https://github.com/magidoc-org/magidoc)",
-        "href": "https://github.com/magidoc-org/magidoc",
-        "title": null,
-        "text": "Magidoc",
-        "tokens": [{ "type": "text", "raw": "Magidoc", "text": "Magidoc" }]
-      },
-      {
-        "type": "text",
-        "raw": ", a free open source software designed to build customizable static GraphQL documentation websites with little effort.",
-        "text": ", a free open source software designed to build customizable static GraphQL documentation websites with little effort."
-      }
-    ]
-  },
-  { "type": "space", "raw": "\n\n" },
-  {
-    "type": "paragraph",
-    "raw": "You wonder how easy it was to build this website? Have a look at the [configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs).",
-    "text": "You wonder how easy it was to build this website? Have a look at the [configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs).",
-    "tokens": [
-      {
-        "type": "text",
-        "raw": "You wonder how easy it was to build this website? Have a look at the ",
-        "text": "You wonder how easy it was to build this website? Have a look at the "
-      },
-      {
-        "type": "link",
-        "raw": "[configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs)",
-        "href": "https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs",
-        "title": null,
-        "text": "configuration file",
-        "tokens": [
-          {
-            "type": "text",
-            "raw": "configuration file",
-            "text": "configuration file"
-          }
-        ]
-      },
-      { "type": "text", "raw": ".", "text": "." }
-    ]
-  },
-  { "type": "space", "raw": "\n\n" },
-  {
-    "type": "heading",
-    "raw": "## Wanna learn more?\n\n",
-    "depth": 2,
-    "text": "Wanna learn more?",
-    "tokens": [
-      {
-        "type": "text",
-        "raw": "Wanna learn more?",
-        "text": "Wanna learn more?"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "raw": "Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!",
-    "text": "Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!",
-    "tokens": [
-      { "type": "text", "raw": "Head to the ", "text": "Head to the " },
-      {
-        "type": "link",
-        "raw": "[docs](https://magidoc-org.github.io/magidoc/introduction/welcome)",
-        "href": "https://magidoc-org.github.io/magidoc/introduction/welcome",
-        "title": null,
-        "text": "docs",
-        "tokens": [{ "type": "text", "raw": "docs", "text": "docs" }]
-      },
-      { "type": "text", "raw": "!", "text": "!" }
-    ]
-  },
-  { "type": "space", "raw": "\n\n" },
-  {
-    "type": "heading",
-    "raw": "# 💻 Code blocks\n\n",
-    "depth": 1,
-    "text": "💻 Code blocks",
-    "tokens": [
-      { "type": "text", "raw": "💻 Code blocks", "text": "💻 Code blocks" }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "raw": "You can input code blocks directly in your custom pages, and they will be rendered using PrismJS.",
-    "text": "You can input code blocks directly in your custom pages, and they will be rendered using PrismJS.",
-    "tokens": [
-      {
-        "type": "text",
-        "raw": "You can input code blocks directly in your custom pages, and they will be rendered using PrismJS.",
-        "text": "You can input code blocks directly in your custom pages, and they will be rendered using PrismJS."
-      }
-    ]
-  },
-  { "type": "space", "raw": "\n\n" },
-  {
-    "type": "code",
-    "raw": "~~~graphql\nquery {\n look(at: \"this\") {\n thing\n }\n}\n~~~",
-    "lang": "graphql",
-    "text": "query {\n look(at: \"this\") {\n thing\n }\n}"
-  },
-  { "type": "space", "raw": "\n\n" },
-  {
-    "type": "heading",
-    "raw": "# ⚠️ Blockquotes\n\n",
-    "depth": 1,
-    "text": "⚠️ Blockquotes",
-    "tokens": [
-      { "type": "text", "raw": "⚠️ Blockquotes", "text": "⚠️ Blockquotes" }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "raw": "Your can show error, warning, info and success blockquotes.",
-    "text": "Your can show error, warning, info and success blockquotes.",
-    "tokens": [
-      {
-        "type": "text",
-        "raw": "Your can show error, warning, info and success blockquotes.",
-        "text": "Your can show error, warning, info and success blockquotes."
-      }
-    ]
-  },
-  { "type": "space", "raw": "\n\n" },
-  {
-    "type": "blockquote",
-    "raw": "> Success: Good job!\n\n",
-    "tokens": [
-      {
-        "type": "paragraph",
-        "raw": "Success: Good job!\n",
-        "text": "Success: Good job!",
-        "tokens": [
-          {
-            "type": "text",
-            "raw": "Success: Good job!",
-            "text": "Success: Good job!"
-          }
-        ]
+        "text": "Woof!",
+        "tokens": [{ "type": "text", "raw": "Woof!", "text": "Woof!" }]
       }
     ],
-    "text": "Success: Good job!\n"
-  },
-  {
-    "type": "blockquote",
-    "raw": "> Info: You like info? There you go. **They support inner markdown**!\n\n",
-    "tokens": [
+    [
       {
-        "type": "paragraph",
-        "raw": "Info: You like info? There you go. **They support inner markdown**!\n",
-        "text": "Info: You like info? There you go. **They support inner markdown**!",
-        "tokens": [
-          {
-            "type": "text",
-            "raw": "Info: You like info? There you go. ",
-            "text": "Info: You like info? There you go. "
-          },
-          {
-            "type": "strong",
-            "raw": "**They support inner markdown**",
-            "text": "They support inner markdown",
-            "tokens": [
-              {
-                "type": "text",
-                "raw": "They support inner markdown",
-                "text": "They support inner markdown"
-              }
-            ]
-          },
-          { "type": "text", "raw": "!", "text": "!" }
-        ]
+        "text": "Cat",
+        "tokens": [{ "type": "text", "raw": "Cat", "text": "Cat" }]
+      },
+      {
+        "text": "🐱",
+        "tokens": [{ "type": "text", "raw": "🐱", "text": "🐱" }]
+      },
+      {
+        "text": "Meow!",
+        "tokens": [{ "type": "text", "raw": "Meow!", "text": "Meow!" }]
       }
     ],
-    "text": "Info: You like info? There you go. **They support inner markdown**!\n"
-  },
-  {
-    "type": "blockquote",
-    "raw": "> Warning: You like warnings too? Well here's one.\n\n",
-    "tokens": [
+    [
       {
-        "type": "paragraph",
-        "raw": "Warning: You like warnings too? Well here's one.\n",
-        "text": "Warning: You like warnings too? Well here's one.",
-        "tokens": [
-          {
-            "type": "text",
-            "raw": "Warning: You like warnings too? Well here's one.",
-            "text": "Warning: You like warnings too? Well here&#39;s one."
-          }
-        ]
-      }
-    ],
-    "text": "Warning: You like warnings too? Well here's one.\n"
-  },
-  {
-    "type": "blockquote",
-    "raw": "> Error: Oops, something happened? 🤷\n\n",
-    "tokens": [
+        "text": "Cow",
+        "tokens": [{ "type": "text", "raw": "Cow", "text": "Cow" }]
+      },
       {
-        "type": "paragraph",
-        "raw": "Error: Oops, something happened? 🤷\n",
-        "text": "Error: Oops, something happened? 🤷",
-        "tokens": [
-          {
-            "type": "text",
-            "raw": "Error: Oops, something happened? 🤷",
-            "text": "Error: Oops, something happened? 🤷"
-          }
-        ]
-      }
-    ],
-    "text": "Error: Oops, something happened? 🤷\n"
-  },
-  {
-    "type": "heading",
-    "raw": "# 📚 Tables\n\n",
-    "depth": 1,
-    "text": "📚 Tables",
-    "tokens": [{ "type": "text", "raw": "📚 Tables", "text": "📚 Tables" }]
-  },
-  {
-    "type": "paragraph",
-    "raw": "Tables are supported as well.",
-    "text": "Tables are supported as well.",
-    "tokens": [
+        "text": "🐄",
+        "tokens": [{ "type": "text", "raw": "🐄", "text": "🐄" }]
+      },
       {
-        "type": "text",
-        "raw": "Tables are supported as well.",
-        "text": "Tables are supported as well."
+        "text": "Moo",
+        "tokens": [{ "type": "text", "raw": "Moo", "text": "Moo" }]
       }
     ]
-  },
-  { "type": "space", "raw": "\n\n\n" },
-  {
-    "type": "paragraph",
-    "raw": "| **Animal** | **Emoji** | **Sound** |\n| ---------- | --------- | --------- |\n| Dog | 🐶 | Woof! |\n| Cat | 🐱 | Meow! |\n| Cow | 🐄 | Moo |",
-    "text": "| **Animal** | **Emoji** | **Sound** |\n| ---------- | --------- | --------- |\n| Dog | 🐶 | Woof! |\n| Cat | 🐱 | Meow! |\n| Cow | 🐄 | Moo |",
-    "tokens": [
-      { "type": "text", "raw": "| ", "text": "| " },
-      {
-        "type": "strong",
-        "raw": "**Animal**",
-        "text": "Animal",
-        "tokens": [{ "type": "text", "raw": "Animal", "text": "Animal" }]
-      },
-      { "type": "text", "raw": " | ", "text": " | " },
-      {
-        "type": "strong",
-        "raw": "**Emoji**",
-        "text": "Emoji",
-        "tokens": [{ "type": "text", "raw": "Emoji", "text": "Emoji" }]
-      },
-      { "type": "text", "raw": " | ", "text": " | " },
-      {
-        "type": "strong",
-        "raw": "**Sound**",
-        "text": "Sound",
-        "tokens": [{ "type": "text", "raw": "Sound", "text": "Sound" }]
-      },
-      {
-        "type": "text",
-        "raw": " |\n| ---------- | --------- | --------- |\n| Dog | 🐶 | Woof! |\n| Cat | 🐱 | Meow! |\n| Cow | 🐄 | Moo |",
-        "text": " |\n| ---------- | --------- | --------- |\n| Dog | 🐶 | Woof! |\n| Cat | 🐱 | Meow! |\n| Cow | 🐄 | Moo |"
-      }
-    ]
-  },
-  { "type": "space", "raw": "\n\n" }
-]
+  ],
+  "raw": "| **Animal** | **Emoji** | **Sound** |\n| ---------- | --------- | --------- |\n| Dog | 🐶 | Woof! |\n| Cat | 🐱 | Meow! |\n| Cow | 🐄 | Moo |\n\n",
+  "options": { "baseUrl": "/docs" }
+}
