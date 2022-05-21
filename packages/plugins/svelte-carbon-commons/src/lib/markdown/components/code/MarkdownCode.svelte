@@ -1,12 +1,20 @@
 <script lang="ts">
-  import './prism-theme.css'
+  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
   import Prism from '@magidoc/plugin-svelte-prismjs'
-
-  export let lang: string
-  export let text: string
+  import type { marked } from 'marked'
+  import './prism-theme.css'
 
   export let showCopyButton = true
   export let showLineNumbers = true
+
+  export let token: marked.Tokens.Code
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
-<Prism language={lang} source={text} {showCopyButton} {showLineNumbers} />
+<Prism
+  language={token.lang}
+  source={token.text}
+  {showCopyButton}
+  {showLineNumbers}
+/>

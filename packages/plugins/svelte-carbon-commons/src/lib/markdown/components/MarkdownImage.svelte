@@ -1,10 +1,18 @@
 <script lang="ts">
-  export let href: string
-  export let title: string | undefined
-  export let text: string | undefined
+  import type { marked } from 'marked'
+  import type { MarkdownOptions, Renderers } from '../marked'
+
+  export let token: marked.Tokens.Image
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
-<img src={href} {title} alt={text} class="markdown-image" />
+<img
+  src={token.href}
+  title={token.title}
+  alt={token.text}
+  class="markdown-image"
+/>
 
 <style>
   .markdown-image {

@@ -10,8 +10,7 @@
   } from 'carbon-components-svelte'
   import type { marked } from 'marked'
 
-  export let rows: marked.Tokens.Table['rows']
-  export let header: marked.Tokens.Table['header']
+  export let token: marked.Tokens.Table
   export let options: MarkdownOptions
   export let renderers: Renderers
 </script>
@@ -19,7 +18,7 @@
 <StructuredList>
   <StructuredListHead>
     <StructuredListRow head>
-      {#each header as item}
+      {#each token.header as item}
         <StructuredListCell head>
           <MarkdownTokens tokens={item.tokens} {options} {renderers} />
         </StructuredListCell>
@@ -28,7 +27,7 @@
   </StructuredListHead>
 
   <StructuredListBody>
-    {#each rows as row}
+    {#each token.rows as row}
       <StructuredListRow>
         {#each row as col}
           <StructuredListCell>

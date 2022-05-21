@@ -1,55 +1,20 @@
 <script lang="ts">
-  import MarkdownHeadingAnchor from './MarkdownHeadingAnchor.svelte'
+  import AnchorHeader from '$lib/text/AnchorHeader.svelte'
+  import { marked } from 'marked'
+  import type { MarkdownOptions, Renderers } from '../marked'
 
   function generateHeaderId(value: string): string {
-    // https://github.com/markedjs/marked/blob/master/src/Slugger.js
-    return (
-      value
-        .toLowerCase()
-        .trim()
-        // remove html tags
-        .replace(/<[!\/a-z].*?>/gi, '')
-        // remove unwanted chars
-        .replace(
-          /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g,
-          '',
-        )
-        .replace(/\s/g, '-')
-    )
+    return new marked.Slugger().slug(value)
   }
 
-  export let text: string
-  export let depth: number
-  export let showAnchor = false
-
-  let visible = false
+  export let token: marked.Tokens.Heading
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 
   let id: string
-  $: id = generateHeaderId(text)
+  $: id = generateHeaderId(token.text)
 </script>
 
-<svelte:element
-  this={`h${depth}`}
-  {id}
-  class="header"
-  on:mouseenter={() => (visible = true)}
-  on:mouseleave={() => (visible = false)}
->
-  <span>{text}</span>
-  {#if depth > 1 && showAnchor}
-    <MarkdownHeadingAnchor {id} {visible} />
-  {/if}
-</svelte:element>
-
-<style>
-  .header {
-    display: flex;
-    align-items: center;
-
-    /*
-    * Trick to have headers at the right place when scrolling to the header
-    */
-    padding-top: 3.2rem;
-    margin-top: -2.8rem !important;
-  }
-</style>
+<AnchorHeader {id} depth={token.depth}>
+  <slot />
+</AnchorHeader>

@@ -1,8 +1,13 @@
 <script lang="ts">
-  export let text: string
+  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
+  import type { marked } from 'marked'
+
+  export let token: marked.Tokens.Codespan
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
-<code class="code-span">{text}</code>
+<code class="code-span">{token.text}</code>
 
 <style>
   .code-span {

@@ -1,6 +1,6 @@
 <script>
-  import 'carbon-components-svelte/css/g10.css'
   import CarbonMarkdown from '$lib/markdown/CarbonMarkdown.svelte'
+  import 'carbon-components-svelte/css/g10.css'
   import 'prismjs/components/prism-graphql.js'
 </script>
 
@@ -33,6 +33,8 @@ query {
   }
 }
 ~~~
+
+## Another subtitle
 
 # ⚠️ Blockquotes
 

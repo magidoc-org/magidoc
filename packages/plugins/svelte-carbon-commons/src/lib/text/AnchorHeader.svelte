@@ -1,33 +1,20 @@
 <script lang="ts">
-  import marked from 'marked'
-
-  import HeadingAnchor from './HeadingAnchor.svelte'
-
-  function generateHeaderId(value: string): string {
-    const slugger = new marked.Slugger()
-    return slugger.slug(value)
-  }
-
-  export let text: string
+  export let id: string
   export let depth: number
-  export let showAnchor = true
 
-  let visible = false
-
-  let id: string
-  $: id = generateHeaderId(text)
+  let anchorVisible = false
 </script>
 
 <svelte:element
   this={`h${depth}`}
   {id}
   class="header"
-  on:mouseenter={() => (visible = true)}
-  on:mouseleave={() => (visible = false)}
+  on:mouseenter={() => (anchorVisible = true)}
+  on:mouseleave={() => (anchorVisible = false)}
 >
-  <span>{text}</span>
-  {#if depth > 1 && showAnchor}
-    <HeadingAnchor {id} {visible} />
+  <slot />
+  {#if depth > 1 && anchorVisible}
+    <span class="hashtag"><a href={`#${id}`}>#</a></span>
   {/if}
 </svelte:element>
 
@@ -41,5 +28,21 @@
       */
     padding-top: 3.2rem;
     margin-top: -2.8rem !important;
+  }
+
+  .hashtag {
+    font-size: 70%;
+    height: 100%;
+    padding-left: 0.5rem;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .hashtag a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .hashtag:hover {
+    color: #ff9900;
   }
 </style>

@@ -1,10 +1,14 @@
 <script lang="ts">
+  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
   import { OrderedList, UnorderedList } from 'carbon-components-svelte'
+  import type { marked } from 'marked'
 
-  export let ordered: boolean
+  export let token: marked.Tokens.List
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
-{#if ordered}
+{#if token.ordered}
   <OrderedList nested expressive>
     <slot />
   </OrderedList>

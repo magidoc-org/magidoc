@@ -1,5 +1,10 @@
 <script lang="ts">
-  export let text: string
+  import type { marked } from 'marked'
+  import type { MarkdownOptions, Renderers } from '../marked'
+
+  export let token: marked.Tokens.HTML
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
-{@html text}
+{@html token.text}
