@@ -1,22 +1,12 @@
 <script lang="ts">
-  // import SvelteMarkdown from 'svelte-markdown'
-  // import type { Renderers } from 'svelte-markdown'
-  // import MarkdownBloquote from './MarkdownBloquote.svelte'
-  // import MarkdownCode from './MarkdownCode.svelte'
-  // import MarkdownLink from './MarkdownLink.svelte'
-  // import MarkdownParagraph from './MarkdownParagraph.svelte'
-  // import MarkdownTable from './table/MarkdownTable.svelte'
-  // import MarkdownTableHead from './table/MarkdownTableHead.svelte'
-  // import MarkdownTableBody from './table/MarkdownTableBody.svelte'
-  // import MarkdownTableRow from './table/MarkdownTableRow.svelte'
-  // import MarkdownTableCell from './table/MarkdownTableCell.svelte'
-  // import MarkdownHeading from './MarkdownHeading.svelte'
-  // import MarkdownList from './list/MarkdownList.svelte'
-  // import MarkdownListItem from './list/MarkdownListItem.svelte'
-  // import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
-
   import MarkdownTokens from './MarkdownTokens.svelte'
-  import { defaultRenderers, parse, type Renderers } from './marked'
+  import {
+    defaultOptions,
+    defaultRenderers,
+    parse,
+    type MarkdownOptions,
+    type Renderers,
+  } from './marked'
 
   /**
    * The markdown source
@@ -24,47 +14,20 @@
   export let source: string
 
   /**
-   * The base path to your application.
-   * This is required when the application does not run in root context to generate the links properly.
+   * Options passed to markdown renderers
    */
-  export let base: string | undefined = undefined
+  export let options: Partial<MarkdownOptions> = {}
 
   /**
    * Optional renderers that can overwrite the default ones.
    */
   export let renderers: Partial<Renderers> = {}
 
-  $: tokens = parse(source, {
-    baseUrl: base,
-  })
+  $: tokens = parse(source)
 
   $: actualRenderers = { ...defaultRenderers, ...renderers }
+  $: actualOptions = { ...defaultOptions, ...options }
 </script>
 
 {JSON.stringify(tokens)}
-
-<MarkdownTokens {tokens} renderers={actualRenderers} />
-<!-- 
-<SvelteMarkdown
-  {source}
-  options={{
-    baseUrl: base,
-  }}
-  renderers={{
-    link: MarkdownLink,
-    code: MarkdownCode,
-    blockquote: MarkdownBloquote,
-    paragraph: MarkdownParagraph,
-    table: MarkdownTable,
-    tablehead: MarkdownTableHead,
-    tablebody: MarkdownTableBody,
-    tablerow: MarkdownTableRow,
-    tablecell: MarkdownTableCell,
-    heading: MarkdownHeading,
-    list: MarkdownList,
-    listitem: MarkdownListItem,
-    codespan: MarkdownCodeSpan,
-    ...renderers,
-  }}
-  on:parsed={(tokens) => console.log(tokens)}
-/> -->
+<MarkdownTokens {tokens} renderers={actualRenderers} options={actualOptions} />

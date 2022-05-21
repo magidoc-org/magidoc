@@ -1,12 +1,14 @@
 <script>
   import 'carbon-components-svelte/css/g10.css'
-  import 'prismjs/components/prism-graphql.js'
   import CarbonMarkdown from '$lib/markdown/CarbonMarkdown.svelte'
+  import 'prismjs/components/prism-graphql.js'
 </script>
 
 <body style="padding: 3rem">
   <CarbonMarkdown
-    base={'/docs/'}
+    options={{
+      baseUrl: '/docs',
+    }}
     source={`
 # 👋 Hi
 
@@ -15,6 +17,7 @@ generated with [Magidoc](https://github.com/magidoc-org/magidoc), a free open so
 
 You wonder how easy it was to build this website? Have a look at the [configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs).
 
+Here is a [relative URL](/test)
 ## Wanna learn more?
 
 Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!
@@ -30,6 +33,30 @@ query {
   }
 }
 ~~~
+
+# ⚠️ Blockquotes
+
+Your can show error, warning, info and success blockquotes.
+
+> Success: Good job!
+
+> Info: You like info? There you go. **They support inner markdown**!
+
+> Warning: You like warnings too? Well here's one.
+
+> Error: Oops, something happened? 🤷
+
+# 📚 Tables
+
+Tables are supported as well.
+
+
+| **Animal** | **Emoji** | **Sound** |
+| ---------- | --------- | --------- |
+| Dog        | 🐶        | Woof!     |
+| Cat        | 🐱        | Meow!     |
+| Cow        | 🐄        | Moo       |
+
 `}
   />
 </body>

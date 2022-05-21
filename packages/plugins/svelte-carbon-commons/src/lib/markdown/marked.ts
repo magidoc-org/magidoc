@@ -23,17 +23,24 @@ import { marked } from 'marked'
 import type { SvelteComponentTyped } from 'svelte'
 
 export type MarkdownOptions = {
-  baseUrl: string
+  /**
+   * The base path to your application.
+   * This is required when the application does not run in root context to generate the links properly.
+   */
+  baseUrl: `/${string}`
 }
 
-export function parse(
-  src: string,
-  options: MarkdownOptions,
-): marked.TokensList {
-  marked.setOptions({
-    ...options,
+export function parse(src: string): marked.TokensList {
+  const lexer = new marked.Lexer({
+    gfm: true,
+    headerIds: true,
+    mangle: true,
+    breaks: false,
+    sanitize: false,
+    silent: true,
+    smartLists: true,
+    smartypants: false,
   })
-  const lexer = new marked.Lexer(options)
   return lexer.lex(src)
 }
 
@@ -62,4 +69,8 @@ export const defaultRenderers: Renderers = {
   image: MarkdownImage,
   space: MarkdownSpace,
   escape: MarkdownSpace,
+}
+
+export const defaultOptions: MarkdownOptions = {
+  baseUrl: '/',
 }
