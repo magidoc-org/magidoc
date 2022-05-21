@@ -13,6 +13,7 @@ import {
   MarkdownLink,
   MarkdownList,
   MarkdownListItem,
+  MarkdownNotification,
   MarkdownParagraph,
   MarkdownSpace,
   MarkdownStrong,
@@ -21,6 +22,9 @@ import {
 } from '$lib'
 import { marked } from 'marked'
 import type { SvelteComponentTyped } from 'svelte'
+import containerExtension, {
+  type NotificationToken,
+} from './extensions/container'
 
 export type MarkdownOptions = {
   /**
@@ -30,21 +34,25 @@ export type MarkdownOptions = {
   baseUrl: `/${string}`
 }
 
+marked.use({ extensions: [containerExtension()] })
+marked.use({
+  gfm: true,
+  headerIds: true,
+  mangle: true,
+  breaks: false,
+  sanitize: false,
+  silent: true,
+  smartLists: true,
+  smartypants: false,
+})
+
+const lexer = new marked.Lexer()
+
 export function parse(src: string): marked.TokensList {
-  const lexer = new marked.Lexer({
-    gfm: true,
-    headerIds: true,
-    mangle: true,
-    breaks: false,
-    sanitize: false,
-    silent: true,
-    smartLists: true,
-    smartypants: false,
-  })
   return lexer.lex(src)
 }
 
-export type RendererType = marked.Token['type']
+export type RendererType = marked.Token['type'] & NotificationToken['type']
 
 export type Renderers = Record<RendererType, SvelteComponentTyped>
 
@@ -69,6 +77,7 @@ export const defaultRenderers: Renderers = {
   image: MarkdownImage,
   space: MarkdownSpace,
   escape: MarkdownSpace,
+  notification: MarkdownNotification,
 }
 
 export const defaultOptions: MarkdownOptions = {

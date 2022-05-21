@@ -18,6 +18,7 @@ import MarkdownHr from './markdown/components/MarkdownHr.svelte'
 import MarkdownStrong from './markdown/components/MarkdownStrong.svelte'
 import MarkdownImage from './markdown/components/MarkdownImage.svelte'
 import MarkdownSpace from './markdown/components/MarkdownSpace.svelte'
+import MarkdownNotification from './markdown/components/containers/MarkdownNotification.svelte'
 
 import SelectableNavMenuItem from './layout/nav/SelectableNavMenuItem.svelte'
 
@@ -44,6 +45,7 @@ export {
   MarkdownStrong,
   MarkdownImage,
   MarkdownSpace,
+  MarkdownNotification,
   SelectableNavMenuItem,
   DeprecationNotice,
 }

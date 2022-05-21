@@ -20,6 +20,10 @@ You wonder how easy it was to build this website? Have a look at the [configurat
 Here is a [relative URL](/test)
 ## Wanna learn more?
 
+:::notification
+test
+:::
+
 Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!
 
 # 💻 Code blocks
@@ -58,6 +62,8 @@ Tables are supported as well.
 | Dog        | 🐶        | Woof!     |
 | Cat        | 🐱        | Meow!     |
 | Cow        | 🐄        | Moo       |
+
+
 
 `}
   />
