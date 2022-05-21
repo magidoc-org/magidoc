@@ -251,8 +251,10 @@ importers:
       '@magidoc/plugin-svelte-prismjs': workspace:^0.17.4
       '@sveltejs/adapter-auto': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.338
+      '@types/marked': ^4.0.3
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.64.0
+      marked: ^4.0.16
       prismjs: ^1.28.0
       svelte: ^3.48.0
       svelte-check: ^2.7.1
@@ -265,8 +267,10 @@ importers:
       '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
+      '@types/marked': 4.0.3
       '@types/prismjs': 1.26.0
       carbon-components-svelte: 0.64.0
+      marked: 4.0.16
       prismjs: 1.28.0
       svelte: 3.48.0
       svelte-check: 2.7.1_svelte@3.48.0
@@ -3880,6 +3884,7 @@ packages:
   /marked/4.0.16:
     resolution: {integrity: sha512-wahonIQ5Jnyatt2fn8KqF/nIqZM8mh3oRu2+l5EANGMhu6RFjiSG52QNE2eWzFMI94HqYSgN184NurgNG6CztA==}
     engines: {node: '>= 12'}
+    hasBin: true
     dev: true
 
   /memorystream/0.3.1:

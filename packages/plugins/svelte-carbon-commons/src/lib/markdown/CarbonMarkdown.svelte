@@ -14,7 +14,6 @@
   import MarkdownList from './list/MarkdownList.svelte'
   import MarkdownListItem from './list/MarkdownListItem.svelte'
   import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
-  import { baseVar } from './stores'
 
   /**
    * The markdown source
@@ -31,8 +30,6 @@
    * Optional renderers that can overwrite the default ones.
    */
   export let renderers: Partial<Renderers> = {}
-
-  $: baseVar.update(() => base)
 </script>
 
 <SvelteMarkdown
@@ -52,5 +49,8 @@
     listitem: MarkdownListItem,
     codespan: MarkdownCodeSpan,
     ...renderers,
+  }}
+  options={{
+    baseUrl: base,
   }}
 />
