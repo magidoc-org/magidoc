@@ -1,19 +1,22 @@
 <script lang="ts">
-  import SvelteMarkdown from 'svelte-markdown'
-  import type { Renderers } from 'svelte-markdown'
-  import MarkdownBloquote from './MarkdownBloquote.svelte'
-  import MarkdownCode from './MarkdownCode.svelte'
-  import MarkdownLink from './MarkdownLink.svelte'
-  import MarkdownParagraph from './MarkdownParagraph.svelte'
-  import MarkdownTable from './table/MarkdownTable.svelte'
-  import MarkdownTableHead from './table/MarkdownTableHead.svelte'
-  import MarkdownTableBody from './table/MarkdownTableBody.svelte'
-  import MarkdownTableRow from './table/MarkdownTableRow.svelte'
-  import MarkdownTableCell from './table/MarkdownTableCell.svelte'
-  import MarkdownHeading from './MarkdownHeading.svelte'
-  import MarkdownList from './list/MarkdownList.svelte'
-  import MarkdownListItem from './list/MarkdownListItem.svelte'
-  import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
+  // import SvelteMarkdown from 'svelte-markdown'
+  // import type { Renderers } from 'svelte-markdown'
+  // import MarkdownBloquote from './MarkdownBloquote.svelte'
+  // import MarkdownCode from './MarkdownCode.svelte'
+  // import MarkdownLink from './MarkdownLink.svelte'
+  // import MarkdownParagraph from './MarkdownParagraph.svelte'
+  // import MarkdownTable from './table/MarkdownTable.svelte'
+  // import MarkdownTableHead from './table/MarkdownTableHead.svelte'
+  // import MarkdownTableBody from './table/MarkdownTableBody.svelte'
+  // import MarkdownTableRow from './table/MarkdownTableRow.svelte'
+  // import MarkdownTableCell from './table/MarkdownTableCell.svelte'
+  // import MarkdownHeading from './MarkdownHeading.svelte'
+  // import MarkdownList from './list/MarkdownList.svelte'
+  // import MarkdownListItem from './list/MarkdownListItem.svelte'
+  // import MarkdownCodeSpan from './MarkdownCodeSpan.svelte'
+
+  import MarkdownTokens from './MarkdownTokens.svelte'
+  import { defaultRenderers, parse, type Renderers } from './marked'
 
   /**
    * The markdown source
@@ -24,16 +27,29 @@
    * The base path to your application.
    * This is required when the application does not run in root context to generate the links properly.
    */
-  export let base: `/${string}`
+  export let base: string | undefined = undefined
 
   /**
    * Optional renderers that can overwrite the default ones.
    */
   export let renderers: Partial<Renderers> = {}
+
+  $: tokens = parse(source, {
+    baseUrl: base,
+  })
+
+  $: actualRenderers = { ...defaultRenderers, ...renderers }
 </script>
 
+{JSON.stringify(tokens)}
+
+<MarkdownTokens {tokens} renderers={actualRenderers} />
+<!-- 
 <SvelteMarkdown
   {source}
+  options={{
+    baseUrl: base,
+  }}
   renderers={{
     link: MarkdownLink,
     code: MarkdownCode,
@@ -50,7 +66,5 @@
     codespan: MarkdownCodeSpan,
     ...renderers,
   }}
-  options={{
-    baseUrl: base,
-  }}
-/>
+  on:parsed={(tokens) => console.log(tokens)}
+/> -->

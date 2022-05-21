@@ -15,7 +15,7 @@ const config = {
       default: true,
     },
     paths: {
-      base: templates.SITE_ROOT.vite.get(process.env) ?? '',
+      base: templates.SITE_ROOT.vite.get(process.env) ?? '/docs',
     },
     vite: {
       plugins: [

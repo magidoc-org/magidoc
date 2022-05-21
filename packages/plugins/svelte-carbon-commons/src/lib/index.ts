@@ -1,17 +1,27 @@
 import CarbonMarkdown from './markdown/CarbonMarkdown.svelte'
-import MarkdownBloquote from './markdown/MarkdownBloquote.svelte'
-import MarkdownCode from './markdown/MarkdownCode.svelte'
-import MarkdownLink from './markdown/MarkdownLink.svelte'
-import MarkdownParagraph from './markdown/MarkdownParagraph.svelte'
-import MarkdownTable from './markdown/table/MarkdownTable.svelte'
-import MarkdownTableHead from './markdown/table/MarkdownTableHead.svelte'
-import MarkdownTableBody from './markdown/table/MarkdownTableBody.svelte'
-import MarkdownTableRow from './markdown/table/MarkdownTableRow.svelte'
-import MarkdownTableCell from './markdown/table/MarkdownTableCell.svelte'
-import MarkdownHeading from './markdown/MarkdownHeading.svelte'
-import MarkdownList from './markdown/list/MarkdownList.svelte'
-import MarkdownListItem from './markdown/list/MarkdownListItem.svelte'
-import MarkdownCodeSpan from './markdown/MarkdownCodeSpan.svelte'
+import MarkdownBloquote from './markdown/components/MarkdownBloquote.svelte'
+import MarkdownCode from './markdown/components/code/MarkdownCode.svelte'
+import MarkdownLink from './markdown/components/MarkdownLink.svelte'
+import MarkdownParagraph from './markdown/components/MarkdownParagraph.svelte'
+import MarkdownTable from './markdown/components/table/MarkdownTable.svelte'
+import MarkdownTableHead from './markdown/components/table/MarkdownTableHead.svelte'
+import MarkdownTableBody from './markdown/components/table/MarkdownTableBody.svelte'
+import MarkdownTableRow from './markdown/components/table/MarkdownTableRow.svelte'
+import MarkdownTableCell from './markdown/components/table/MarkdownTableCell.svelte'
+import MarkdownHeading from './markdown/components/MarkdownHeading.svelte'
+import MarkdownList from './markdown/components/list/MarkdownList.svelte'
+import MarkdownListItem from './markdown/components/list/MarkdownListItem.svelte'
+import MarkdownCodeSpan from './markdown/components/code/MarkdownCodeSpan.svelte'
+import MarkdownHtml from './markdown/components/MarkdownHtml.svelte'
+import MarkdownBr from './markdown/components/MarkdownBr.svelte'
+import MarkdownText from './markdown/components/MarkdownText.svelte'
+import MarkdownDfn from './markdown/components/MarkdownDfn.svelte'
+import MarkdownDel from './markdown/components/MarkdownDel.svelte'
+import MarkdownEm from './markdown/components/MarkdownEm.svelte'
+import MarkdownHr from './markdown/components/MarkdownHr.svelte'
+import MarkdownStrong from './markdown/components/MarkdownStrong.svelte'
+import MarkdownImage from './markdown/components/MarkdownImage.svelte'
+import MarkdownSpace from './markdown/components/MarkdownSpace.svelte'
 
 import SelectableNavMenuItem from './layout/nav/SelectableNavMenuItem.svelte'
 
@@ -32,6 +42,16 @@ export {
   MarkdownTableCell,
   MarkdownTableHead,
   MarkdownTableRow,
+  MarkdownBr,
+  MarkdownHtml,
+  MarkdownText,
+  MarkdownDfn,
+  MarkdownDel,
+  MarkdownEm,
+  MarkdownHr,
+  MarkdownStrong,
+  MarkdownImage,
+  MarkdownSpace,
   SelectableNavMenuItem,
   DeprecationNotice,
 }

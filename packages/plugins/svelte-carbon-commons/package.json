@@ -39,14 +39,9 @@
     "prismjs": "^1.28.0",
     "svelte": "^3.48.0",
     "svelte-check": "^2.7.1",
-    "svelte-markdown": "^0.2.2",
     "svelte-preprocess": "^4.10.6",
     "svelte2tsx": "^0.5.10",
     "tslib": "^2.4.0",
     "typescript": "~4.6.4"
-  },
-  "peerDependencies": {
-    "carbon-components-svelte": "^0.64.0",
-    "prismjs": "^1.28.0"
   }
 }
