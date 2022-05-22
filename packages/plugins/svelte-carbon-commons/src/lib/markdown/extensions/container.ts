@@ -17,11 +17,11 @@ export default function (): marked.TokenizerExtension {
     name: 'container',
     level: 'block',
     start(src: string) {
-      return src.match(/^:::[^:\n\s]/)?.index
+      return src.match(/:::[^:\n\s]/)?.index
     },
     tokenizer(src: string): marked.Tokens.Generic {
       const rule =
-        /^:::(?<type>notification)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
+        /^:::(?<type>[a-z0-9-])(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
 
       const match = rule.exec(findRawContainer(src))
       if (!match || !match.groups) return null
@@ -41,11 +41,7 @@ export default function (): marked.TokenizerExtension {
           break
       }
 
-      if (!result) {
-        return null
-      }
-
-      if (result.tokens) {
+      if (result && result.tokens) {
         this.lexer.blockTokens(content, result.tokens)
       }
 
@@ -64,12 +60,9 @@ function findRawContainer(src: string): string | undefined {
     const line = lines[lineNumber]
     if (line.startsWith(':::')) {
       if (/:::[^:\n\s]/.test(line)) {
-        console.log(line)
         open++
-        console.log('open', open)
       } else if (/^:::(\n|$)/.test(line)) {
         open -= 1
-        console.log('close', open)
       }
     }
 
