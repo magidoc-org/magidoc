@@ -1,16 +1,8 @@
 import type { marked } from 'marked'
+import { parseNotification } from './components/Notification'
+import { parseTags } from './components/Tags'
 
-const notificationStyles = ['error', 'success', 'info', 'warning'] as const
-export type NotificationStyle = typeof notificationStyles[number]
-
-export type NotificationToken = marked.Tokens.Generic & {
-  type: 'notification'
-  style: NotificationStyle
-  raw: string
-  tokens: marked.Token[]
-}
-
-type ContainerOptions = Record<string, boolean | string>
+export type ContainerOptions = Record<string, boolean | string>
 
 export default function (): marked.TokenizerExtension {
   return {
@@ -35,6 +27,9 @@ export default function (): marked.TokenizerExtension {
       switch (type) {
         case 'notification':
           result = parseNotification(match[0], options)
+          break
+        case 'tags':
+          result = parseTags(match[0], content, options)
           break
         default:
           result = null
@@ -72,25 +67,6 @@ function findRawContainer(src: string): string | undefined {
   }
 
   return lines.slice(0, lineNumber + 1).join('\n')
-}
-
-function parseNotification(
-  raw: string,
-  options: ContainerOptions,
-): NotificationToken {
-  const typeOption = options['type']?.toString()?.toLocaleLowerCase()
-  const style: NotificationStyle = notificationStyles.some(
-    (it) => it === typeOption,
-  )
-    ? (typeOption as NotificationStyle)
-    : 'info'
-
-  return {
-    type: 'notification',
-    raw: raw,
-    style: style,
-    tokens: [],
-  }
 }
 
 function parseOptions(options: string): ContainerOptions {

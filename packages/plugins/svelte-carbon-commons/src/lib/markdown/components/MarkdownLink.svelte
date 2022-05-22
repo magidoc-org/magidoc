@@ -17,6 +17,7 @@
   href={isRelative(token.href)
     ? joinUrlPaths(options.baseUrl, token.href)
     : token.href}
+  title={token.title}
 >
   <slot />
 </Link>

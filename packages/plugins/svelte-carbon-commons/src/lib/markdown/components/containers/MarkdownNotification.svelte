@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { NotificationToken } from '../../extensions/container'
+  import type { NotificationToken } from '../../extensions/components/Notification'
   import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
 
   import { InlineNotification } from 'carbon-components-svelte'

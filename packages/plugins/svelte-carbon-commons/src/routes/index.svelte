@@ -10,44 +10,67 @@
       baseUrl: '/docs',
     }}
     source={`
-# 👋 Hi
+# Markdown Tester
+## Text
+------
+### Ordered list
+1. Here is a [relative URL](/test "with a title") that should point to \`/docs/test\`
+2. *Italic text* followed by **bold text**
+3. test@email.com that should render as a link
 
-Welcome to [FaunaDB](https://fauna.com/blog/try-faunadbs-graphql-api)'s GraphQL documentation
-generated with [Magidoc](https://github.com/magidoc-org/magidoc), a free open source software designed to build customizable static GraphQL documentation websites with little effort.
+### Unordered list
+- This [with](/test) a link
+- Test
 
-You wonder how easy it was to build this website? Have a look at the [configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs).
+### Nested lists
+- A 
+    - A.1
+    - A.2
+- B
+    1. B.1
+    2. B.2
 
-Here is a [relative URL](/test)
-## Wanna learn more?
 
-- here 
-- is a 
-- list *with markdown* **in it**
 
-1. and 
-2. here 
-3. is another one
+
+## Notifications
+------
 
 :::notification type="error" test="lol"
 **test** this
 
 :::notification type="info"
-You can next them
+You can nest them
 :::
 
+And add text below too!
 :::
 
-# again
+> Just a normal bloquote
 
-:::notification type="lol"
-not again
+
+## Tags 
+------
+**No colors**
+
+:::tags
+test,Test 3 with spaces
 :::
 
-Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!
+**Valid colors**
 
-# 💻 Code blocks
+:::tags colors="PURPLE, green, blue"
+test,test1,TEST2, Test 3 with spaces
+:::
 
-You can input code blocks directly in your custom pages, and they will be rendered using PrismJS.
+**Invalid colors**
+
+:::tags colors="aaa"
+test,test1
+:::
+
+## Code blocks
+------
 
 ~~~graphql
 query {
@@ -57,37 +80,15 @@ query {
 }
 ~~~
 
-## Another subtitle
+## Html 
+------
 
-# ⚠️ Blockquotes
-
-Your can show error, warning, info and success blockquotes.
-
-:::notification type="info"
-You like info? There you go. **They support inner markdown**!
-:::
-
-:::notification type="success"
-Good job!
-:::
-
-:::notification type="warning"
-You like warnings too? Well here's one.
-:::
-
-:::notification type="error"
-Oops, something happened? 🤷
-:::
-
-# Html 
-
-<p align="center">
-Some centered text  
+<p align="center" style="padding: 1.0rem; border: solid 1px;">
+  Some centered text that should be centered with a border
 </p>
 
-# 📚 Tables
-
-Tables are supported as well.
+## Tables
+------
 
 
 | Animal | Emoji | Sound |
@@ -97,7 +98,10 @@ Tables are supported as well.
 | Cow        | 🐄        | Moo       |
 
 
+## Images 
+------
 
+![Some image](https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_horizontal.png)
 `}
   />
 </body>

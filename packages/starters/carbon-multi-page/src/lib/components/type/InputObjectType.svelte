@@ -1,4 +1,6 @@
 <script type="ts">
+  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
+
   import type { GraphQLInputObjectType } from 'graphql'
   import _ from 'lodash'
   import AppMarkdown from '../common/AppMarkdown.svelte'
@@ -10,14 +12,11 @@
 
 <section>
   <h1>{type.name} <TypeTag {type} /></h1>
-  <br />
 
   <AppMarkdown source={type.description} />
 
-  <br />
-
   {#if Object.keys(type.getFields()).length > 0}
-    <h2>Fields</h2>
+    <AnchorHeader id={'fields'} depth={2}>Fields</AnchorHeader>
     <InputFieldsTable data={_.map(type.getFields(), (item) => item)} />
   {/if}
 </section>

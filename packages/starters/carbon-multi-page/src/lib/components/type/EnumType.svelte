@@ -1,4 +1,6 @@
 <script type="ts">
+  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
+
   import {
     StructuredList,
     StructuredListBody,
@@ -16,13 +18,10 @@
 
 <section>
   <h1>{type.name} <TypeTag {type} /></h1>
-  <br />
 
   <AppMarkdown source={type.description} />
 
-  <br />
-
-  <h2>Possible Values</h2>
+  <AnchorHeader id={'possible-values'} depth={2}>Possible Values</AnchorHeader>
 
   <StructuredList condensed>
     <StructuredListBody>

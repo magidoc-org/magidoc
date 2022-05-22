@@ -15,6 +15,7 @@ import MarkdownImage from './MarkdownImage.svelte'
 import MarkdownSpace from './MarkdownSpace.svelte'
 
 import MarkdownNotification from './containers/MarkdownNotification.svelte'
+import MarkdownTags from './containers/MarkdownTags.svelte'
 
 import MarkdownCodeSpan from './code/MarkdownCodeSpan.svelte'
 import MarkdownCode from './code/MarkdownCode.svelte'
@@ -38,6 +39,7 @@ export {
   MarkdownList,
   MarkdownListItem,
   MarkdownNotification,
+  MarkdownTags,
   MarkdownParagraph,
   MarkdownSpace,
   MarkdownStrong,
