@@ -6,4 +6,9 @@
   export let source: string
 </script>
 
-<CarbonMarkdown {source} {base} />
+<CarbonMarkdown
+  {source}
+  options={{
+    baseUrl: base,
+  }}
+/>
