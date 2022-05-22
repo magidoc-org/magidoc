@@ -15,7 +15,7 @@ const config = {
       default: true,
     },
     paths: {
-      base: templates.SITE_ROOT.vite.get(process.env) ?? '/docs',
+      base: templates.SITE_ROOT.vite.get(process.env) ?? '',
     },
     vite: {
       plugins: [
@@ -28,7 +28,9 @@ const config = {
       ],
       ssr: {
         noExternal:
-          process.env.NODE_ENV == 'development' ? [] : ['prettier', 'prismjs'],
+          process.env.NODE_ENV == 'development'
+            ? []
+            : ['prettier', 'prismjs', 'marked'],
       },
     },
   },

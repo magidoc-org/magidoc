@@ -15,5 +15,10 @@
 </script>
 
 {#if source}
-  <CarbonMarkdown {source} {base} />
+  <CarbonMarkdown
+    {source}
+    options={{
+      baseUrl: base,
+    }}
+  />
 {/if}

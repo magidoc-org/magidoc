@@ -1,32 +1,20 @@
 <script lang="ts">
-  import { InlineNotification } from 'carbon-components-svelte'
+  import MarkdownNotification from './containers/MarkdownNotification.svelte'
   import type { marked } from 'marked'
   import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
-  export const token: marked.Tokens.Blockquote = undefined
+  export let token: marked.Tokens.Blockquote
   export const options: MarkdownOptions = undefined
   export const renderers: Renderers = undefined
 </script>
 
-<InlineNotification
-  kind={'info'}
-  lowContrast
-  hideCloseButton
-  iconDescription={'info'}
+<MarkdownNotification
+  token={{
+    type: 'notification',
+    raw: token.raw,
+    style: 'info',
+    tokens: token.tokens,
+  }}
 >
   <slot />
-</InlineNotification>
-
-<style>
-  :global(.bx--inline-notification) {
-    max-width: inherit !important;
-  }
-
-  :global(.bx--inline-notification__text-wrapper) {
-    padding: 0.7rem 0 !important;
-  }
-
-  :global(.bx--inline-notification__text-wrapper .md-paragraph) {
-    margin: 0 !important;
-  }
-</style>
+</MarkdownNotification>

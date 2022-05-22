@@ -68,17 +68,22 @@ You like info? There you go. **They support inner markdown**!
 :::
 
 :::notification type="success"
-> Success: Good job!
+Good job!
 :::
 
 :::notification type="warning"
 You like warnings too? Well here's one.
 :::
-> 
 
 :::notification type="error"
 Oops, something happened? 🤷
 :::
+
+# Html 
+
+<p align="center">
+Some centered text  
+</p>
 
 # 📚 Tables
 
