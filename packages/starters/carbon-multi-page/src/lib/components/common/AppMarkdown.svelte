@@ -3,6 +3,11 @@
   import 'prismjs/components/prism-graphql.js'
   import 'prismjs/components/prism-json.js'
   import 'prismjs/components/prism-javascript.js'
+  import 'prismjs/components/prism-typescript.js'
+  import 'prismjs/components/prism-python.js'
+  import 'prismjs/components/prism-php.js'
+  import 'prismjs/components/prism-yaml.js'
+  import 'prismjs/components/prism-bash.js'
 
   import { base } from '$app/paths'
 
@@ -10,5 +15,10 @@
 </script>
 
 {#if source}
-  <CarbonMarkdown {source} {base} />
+  <CarbonMarkdown
+    {source}
+    options={{
+      baseUrl: base,
+    }}
+  />
 {/if}

@@ -79,13 +79,21 @@ export default {
 
                 Your can show error, warning, info and success blockquotes.
 
-                > Success: Good job!
+                :::notification type="info"
+                You like info? There you go. **They support inner markdown**!
+                :::
 
-                > Info: You like info? There you go. **They support inner markdown**!
+                :::notification type="success"
+                Success: Good job!
+                :::
 
-                > Warning: You like warnings too? Well here's one.
+                :::notification type="warning"
+                You like warnings too? Well here's one.
+                :::
 
-                > Error: Oops, something happened? 🤷
+                :::notification type="error"
+                Oops, something happened? 🤷
+                :::
               `,
             },
             {

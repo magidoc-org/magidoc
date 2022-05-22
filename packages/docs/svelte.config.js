@@ -48,6 +48,7 @@ export default {
         noExternal: [
           '@magidoc/plugin-svelte-carbon-commons',
           '@magidoc/plugin-svelte-prismjs',
+          'marked',
           'prismjs',
           'prism-svelte',
         ],

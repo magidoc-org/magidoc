@@ -28,7 +28,9 @@ const config = {
       ],
       ssr: {
         noExternal:
-          process.env.NODE_ENV == 'development' ? [] : ['prettier', 'prismjs'],
+          process.env.NODE_ENV == 'development'
+            ? []
+            : ['prettier', 'prismjs', 'marked'],
       },
     },
   },
