@@ -7,11 +7,37 @@
   import 'prismjs/plugins/toolbar/prism-toolbar.css'
   import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard'
 
+  /**
+   * The target language to use. This language must be imported manually from prism to be activated.
+   */
   export let language: string | undefined
+
+  /**
+   * The source code to highlight.
+   */
   export let source: string
 
+  /**
+   * Either to show the line numbers or not.
+   */
   export let showLineNumbers = false
+
+  /**
+   * Either to show the copy button or not.
+   */
   export let showCopyButton = false
+
+  /**
+   * A minimum height the code container should have.
+   * By default, code section will fit the content's height..
+   */
+  export let minHeight: string | undefined = undefined
+
+  /**
+   * A maximum height to restrict the code view into. In case of overflow, scrolling will be enabled.
+   * By default, this is unrestricted.
+   */
+  export let maxHeight: string | undefined = undefined
 
   let root: HTMLElement
 
@@ -42,21 +68,21 @@
 </script>
 
 <div
-  class={`${
-    showCopyButton ? 'prism--show-copy-button' : 'prism--hide-copy-button'
-  }`}
+  class:prism--show-copy-button={showCopyButton}
+  class:prism--hide-copy-button={!showCopyButton}
 >
-  <pre class={`${showLineNumbers ? 'line-numbers' : ''}`}><code
-      bind:this={root}
-    /></pre>
+  <pre
+    class:line-numbers={showLineNumbers}
+    style:min-height={minHeight}
+    style:max-height={maxHeight}><code bind:this={root} /></pre>
 </div>
 
-<style global>
-  .prism--show-copy-button .copy-to-clipboard-button {
+<style>
+  :global(.prism--show-copy-button .copy-to-clipboard-button) {
     display: block;
   }
 
-  .prism--hide-copy-button .copy-to-clipboard-button {
+  :global(.prism--hide-copy-button .copy-to-clipboard-button) {
     display: none;
   }
 </style>
