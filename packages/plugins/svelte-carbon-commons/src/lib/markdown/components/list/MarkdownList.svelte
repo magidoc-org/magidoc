@@ -4,8 +4,8 @@
   import type { marked } from 'marked'
 
   export let token: marked.Tokens.List
-  export let options: MarkdownOptions = undefined
-  export let renderers: Renderers = undefined
+  export let options: MarkdownOptions
+  export let renderers: Renderers
 </script>
 
 {#if token.ordered}

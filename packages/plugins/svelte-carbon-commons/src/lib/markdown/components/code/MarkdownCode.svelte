@@ -8,8 +8,8 @@
   export let showLineNumbers = true
 
   export let token: marked.Tokens.Code
-  export let options: MarkdownOptions = undefined
-  export let renderers: Renderers = undefined
+  export let options: MarkdownOptions
+  export let renderers: Renderers
 </script>
 
 <Prism

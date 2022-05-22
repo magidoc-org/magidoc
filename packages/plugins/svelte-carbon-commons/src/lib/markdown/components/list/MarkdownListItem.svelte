@@ -4,9 +4,9 @@
   import { ListItem } from 'carbon-components-svelte'
   import type { marked } from 'marked'
 
-  export let token: marked.Tokens.ListItem = undefined
-  export let options: MarkdownOptions = undefined
-  export let renderers: Renderers = undefined
+  export let token: marked.Tokens.ListItem
+  export let options: MarkdownOptions
+  export let renderers: Renderers
 </script>
 
 <ListItem class="list-item">

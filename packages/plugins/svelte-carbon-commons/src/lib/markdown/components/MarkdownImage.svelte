@@ -3,8 +3,8 @@
   import type { MarkdownOptions, Renderers } from '../marked'
 
   export let token: marked.Tokens.Image
-  export let options: MarkdownOptions = undefined
-  export let renderers: Renderers = undefined
+  export let options: MarkdownOptions
+  export let renderers: Renderers
 </script>
 
 <img

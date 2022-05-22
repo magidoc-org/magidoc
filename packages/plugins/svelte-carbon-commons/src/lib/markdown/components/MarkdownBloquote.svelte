@@ -3,9 +3,9 @@
   import type { marked } from 'marked'
   import type { MarkdownOptions, Renderers } from '../marked'
 
-  export let token: marked.Tokens.Blockquote = undefined
-  export let options: MarkdownOptions = undefined
-  export let renderers: Renderers = undefined
+  export let token: marked.Tokens.Blockquote
+  export let options: MarkdownOptions
+  export let renderers: Renderers
 </script>
 
 <InlineNotification
