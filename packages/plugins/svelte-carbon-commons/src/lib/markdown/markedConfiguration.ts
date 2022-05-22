@@ -23,10 +23,9 @@ import {
 } from './components'
 import { marked } from 'marked'
 import type { SvelteComponentTyped } from 'svelte'
-import containerExtension, {
-  type NotificationToken,
-} from './extensions/container'
+import containerExtension from './extensions/container'
 import type { TagsToken } from './extensions/components/Tags'
+import type { NotificationToken } from './extensions/components/Notification'
 
 export type MarkdownOptions = {
   /**
