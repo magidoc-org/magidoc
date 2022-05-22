@@ -7,7 +7,7 @@
   import 'prismjs/components/prism-python.js'
   import 'prismjs/components/prism-php.js'
   import 'prismjs/components/prism-yaml.js'
-  import 'prismjs/components/prism-shell-session.js'
+  import 'prismjs/components/prism-bash.js'
 
   import { base } from '$app/paths'
 

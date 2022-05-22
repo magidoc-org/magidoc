@@ -6,7 +6,8 @@
     parse,
     type MarkdownOptions,
     type Renderers,
-  } from './marked'
+  } from './markedConfiguration'
+  import { suppressWarnings } from './suppressWarnings'
 
   /**
    * The markdown source
@@ -27,6 +28,8 @@
 
   $: actualRenderers = { ...defaultRenderers, ...renderers }
   $: actualOptions = { ...defaultOptions, ...options }
+
+  suppressWarnings()
 </script>
 
 <MarkdownTokens {tokens} renderers={actualRenderers} options={actualOptions} />

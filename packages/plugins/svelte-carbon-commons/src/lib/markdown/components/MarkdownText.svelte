@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { marked } from 'marked'
-  import type { MarkdownOptions, Renderers } from '../marked'
+  import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
-  export let token: marked.Tokens.Text
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const token: marked.Tokens.Text = undefined
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
 <slot />

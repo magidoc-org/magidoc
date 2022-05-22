@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { NotificationToken } from '$lib/markdown/extensions/container'
-  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
+  import type { NotificationToken } from '../../extensions/container'
+  import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
 
   import { InlineNotification } from 'carbon-components-svelte'
 
   export let token: NotificationToken
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
 <InlineNotification

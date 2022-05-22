@@ -1,18 +1,13 @@
 <script lang="ts">
-  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
+  import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
   import type { marked } from 'marked'
 
   export let token: marked.Tokens.Codespan
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
 <code class="code-span">{token.text}</code>
-
-<!-- Hack to stop warnings from printing -->
-{#if false}
-  <slot />
-{/if}
 
 <style>
   .code-span {

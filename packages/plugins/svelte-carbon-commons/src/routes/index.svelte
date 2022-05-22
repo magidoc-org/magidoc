@@ -1,5 +1,5 @@
 <script>
-  import CarbonMarkdown from '$lib/markdown/CarbonMarkdown.svelte'
+  import CarbonMarkdown from '../lib/markdown/CarbonMarkdown.svelte'
   import 'carbon-components-svelte/css/g10.css'
   import 'prismjs/components/prism-graphql.js'
 </script>
@@ -19,6 +19,14 @@ You wonder how easy it was to build this website? Have a look at the [configurat
 
 Here is a [relative URL](/test)
 ## Wanna learn more?
+
+- here 
+- is a 
+- list *with markdown* **in it**
+
+1. and 
+2. here 
+3. is another one
 
 :::notification type="error" test="lol"
 **test** this
@@ -55,13 +63,22 @@ query {
 
 Your can show error, warning, info and success blockquotes.
 
+:::notification type="info"
+You like info? There you go. **They support inner markdown**!
+:::
+
+:::notification type="success"
 > Success: Good job!
+:::
 
-> Info: You like info? There you go. **They support inner markdown**!
+:::notification type="warning"
+You like warnings too? Well here's one.
+:::
+> 
 
-> Warning: You like warnings too? Well here's one.
-
-> Error: Oops, something happened? 🤷
+:::notification type="error"
+Oops, something happened? 🤷
+:::
 
 # 📚 Tables
 

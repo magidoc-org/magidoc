@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CarbonMarkdown from '$lib/markdown/CarbonMarkdown.svelte'
+  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
   import { InlineNotification } from 'carbon-components-svelte'
 
   export let deprecationReason: string | undefined | null

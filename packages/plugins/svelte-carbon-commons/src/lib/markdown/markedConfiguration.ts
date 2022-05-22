@@ -19,7 +19,7 @@ import {
   MarkdownStrong,
   MarkdownTable,
   MarkdownText,
-} from '$lib'
+} from './components'
 import { marked } from 'marked'
 import type { SvelteComponentTyped } from 'svelte'
 import containerExtension, {

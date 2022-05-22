@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { marked } from 'marked'
-  import type { MarkdownOptions, Renderers } from '../marked'
+  import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
-  export let token: marked.Tokens.Paragraph
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const token: marked.Tokens.Paragraph = undefined
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
 <p class="md-paragraph">

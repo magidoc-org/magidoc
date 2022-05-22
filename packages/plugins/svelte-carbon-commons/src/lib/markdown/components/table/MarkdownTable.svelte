@@ -1,6 +1,6 @@
 <script lang="ts">
-  import MarkdownTokens from '$lib/markdown/MarkdownTokens.svelte'
-  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
+  import MarkdownTokens from '../../MarkdownTokens.svelte'
+  import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
   import {
     StructuredList,
     StructuredListBody,
@@ -38,8 +38,3 @@
     {/each}
   </StructuredListBody>
 </StructuredList>
-
-<!-- Hack to stop warnings from printing -->
-{#if false}
-  <slot />
-{/if}

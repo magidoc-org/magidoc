@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
+  import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
   import Prism from '@magidoc/plugin-svelte-prismjs'
   import type { marked } from 'marked'
   import './prism-theme.css'
@@ -8,8 +8,8 @@
   export let showLineNumbers = true
 
   export let token: marked.Tokens.Code
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
 <Prism
@@ -18,8 +18,3 @@
   {showCopyButton}
   {showLineNumbers}
 />
-
-<!-- Hack to stop warnings from printing -->
-{#if false}
-  <slot />
-{/if}

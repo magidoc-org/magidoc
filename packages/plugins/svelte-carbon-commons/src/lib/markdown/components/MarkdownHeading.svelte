@@ -1,15 +1,15 @@
 <script lang="ts">
-  import AnchorHeader from '$lib/text/AnchorHeader.svelte'
+  import AnchorHeader from '../../text/AnchorHeader.svelte'
   import { marked } from 'marked'
-  import type { MarkdownOptions, Renderers } from '../marked'
+  import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
   function generateHeaderId(value: string): string {
     return new marked.Slugger().slug(value)
   }
 
   export let token: marked.Tokens.Heading
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 
   let id: string
   $: id = generateHeaderId(token.text)

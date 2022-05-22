@@ -1,15 +1,10 @@
 <script lang="ts">
   import type { marked } from 'marked'
-  import type { MarkdownOptions, Renderers } from '../marked'
+  import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
   export let token: marked.Tokens.HTML
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
 {@html token.text}
-
-<!-- Hack to stop warnings from printing -->
-{#if false}
-  <slot />
-{/if}

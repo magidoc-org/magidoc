@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { MarkdownOptions, Renderers } from '$lib/markdown/marked'
+  import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
 
   import { ListItem } from 'carbon-components-svelte'
   import type { marked } from 'marked'
 
-  export let token: marked.Tokens.ListItem
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+  export const token: marked.Tokens.ListItem = undefined
+  export const options: MarkdownOptions = undefined
+  export const renderers: Renderers = undefined
 </script>
 
 <ListItem class="list-item">
