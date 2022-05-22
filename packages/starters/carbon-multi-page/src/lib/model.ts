@@ -1,10 +1,72 @@
 import {
   buildClientSchema,
+  GraphQLObjectType,
+  type GraphQLField,
+  type GraphQLNamedType,
   type GraphQLSchema,
   type IntrospectionQuery,
 } from 'graphql'
+import _ from 'lodash'
+import type { WebsiteContent } from 'src/app'
 import schemaJson from '../_schema.json'
+import type { Maybe } from 'graphql/jsutils/Maybe'
+import { joinUrlPaths } from './pages'
+import { base } from '$app/paths'
 
 export const schema: GraphQLSchema = buildClientSchema(
   schemaJson as unknown as IntrospectionQuery,
 )
+
+export function createModelContent(): ReadonlyArray<WebsiteContent> {
+  return [
+    createWebsiteContent('Queries', schema.getQueryType()),
+    createWebsiteContent('Mutations', schema.getQueryType()),
+    createWebsiteContent('Subscriptions', schema.getQueryType()),
+    createTypesWebsiteContent(),
+  ].filter((content): content is WebsiteContent => !!content)
+}
+
+function createWebsiteContent(
+  title: string,
+  type: Maybe<GraphQLObjectType<unknown, unknown>>,
+): WebsiteContent | null {
+  return createWebsiteContentFromFields(title, getSortedRootFields(type))
+}
+
+function getSortedRootFields(type: Maybe<GraphQLObjectType<unknown, unknown>>) {
+  return _.sortBy(type?.getFields() || {}, (item) => item.name)
+}
+
+function createWebsiteContentFromFields(
+  title: string,
+  fields: GraphQLField<unknown, unknown, unknown>[],
+): WebsiteContent | null {
+  if (fields.length === 0) return null
+  return {
+    type: 'menu',
+    title: title,
+    children: fields.map((field) => ({
+      type: 'page',
+      title: field.name,
+      deprecated: !!field.deprecationReason,
+      href: joinUrlPaths(base, title.toLocaleLowerCase(), field.name),
+    })),
+  }
+}
+
+function createTypesWebsiteContent(): WebsiteContent | null {
+  const types: GraphQLNamedType[] = _.sortBy(
+    _.map(schema.getTypeMap()),
+    (type) => type.name,
+  )
+  if (types.length === 0) return null
+  return {
+    type: 'menu',
+    title: 'Types',
+    children: types.map((type) => ({
+      type: 'page',
+      title: type.name,
+      href: joinUrlPaths(base, 'types', type.name),
+    })),
+  }
+}

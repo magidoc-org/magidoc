@@ -2,10 +2,9 @@
   import { findPageByHref } from '$lib/pages'
 
   import type { LoadInput, LoadOutput } from '@sveltejs/kit'
-  import type { CustomPage } from 'src/app'
 
-  export function load({ url, stuff }: LoadInput): LoadOutput {
-    const page = findPageByHref(stuff.content || [], url.pathname)
+  export function load({ url }: LoadInput): LoadOutput {
+    const page = findPageByHref(url.pathname)
     if (!page) {
       return {
         status: 404,
@@ -24,8 +23,9 @@
 
 <script lang="ts">
   import AppMarkdown from '$lib/components/common/AppMarkdown.svelte'
+  import type { WebsitePage } from 'src/app'
 
-  export let page: CustomPage
+  export let page: WebsitePage
 </script>
 
 <AppMarkdown source={page.content} />
