@@ -29,7 +29,7 @@
 
 <div class="wrapper">
   <div class="code-section">
-    <Prism source={code} {language} />
+    <Prism source={code} {language} maxHeight={'20rem'} />
   </div>
   <div class="button-bar">
     <Button
