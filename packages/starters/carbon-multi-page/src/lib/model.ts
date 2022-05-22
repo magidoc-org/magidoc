@@ -58,7 +58,7 @@ function createTypesWebsiteContent(): WebsiteContent | null {
   const types: GraphQLNamedType[] = _.sortBy(
     _.map(schema.getTypeMap()),
     (type) => type.name,
-  )
+  ).filter((type) => !type.name.startsWith('__'))
   if (types.length === 0) return null
   return {
     type: 'menu',
