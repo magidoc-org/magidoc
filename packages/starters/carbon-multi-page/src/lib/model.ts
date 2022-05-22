@@ -10,8 +10,8 @@ import _ from 'lodash'
 import type { WebsiteContent } from 'src/app'
 import schemaJson from '../_schema.json'
 import type { Maybe } from 'graphql/jsutils/Maybe'
-import { joinUrlPaths } from './pages'
 import { base } from '$app/paths'
+import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
 
 export const schema: GraphQLSchema = buildClientSchema(
   schemaJson as unknown as IntrospectionQuery,
@@ -20,8 +20,8 @@ export const schema: GraphQLSchema = buildClientSchema(
 export function createModelContent(): ReadonlyArray<WebsiteContent> {
   return [
     createWebsiteContent('Queries', schema.getQueryType()),
-    createWebsiteContent('Mutations', schema.getQueryType()),
-    createWebsiteContent('Subscriptions', schema.getQueryType()),
+    createWebsiteContent('Mutations', schema.getMutationType()),
+    createWebsiteContent('Subscriptions', schema.getSubscriptionType()),
     createTypesWebsiteContent(),
   ].filter((content): content is WebsiteContent => !!content)
 }

@@ -5,6 +5,10 @@ import SelectableNavMenuItem from './layout/nav/SelectableNavMenuItem.svelte'
 import DeprecationNotice from './notice/DeprecationNotice.svelte'
 import AnchorHeader from './text/AnchorHeader.svelte'
 
+import { joinUrlPaths } from './utils/url'
+
 export { SelectableNavMenuItem, DeprecationNotice, AnchorHeader }
 
 export { CarbonMarkdown, MarkdownComponents }
+
+export { joinUrlPaths }

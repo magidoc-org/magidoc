@@ -1,10 +1,7 @@
 <script lang="ts">
   import { base } from '$app/paths'
-
-  import { joinUrlPaths } from '$lib/pages'
-
   import { Link } from 'carbon-components-svelte'
-
+  import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
   import {
     type GraphQLType,
     isListType,

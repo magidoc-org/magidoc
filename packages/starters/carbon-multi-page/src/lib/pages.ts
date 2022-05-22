@@ -2,6 +2,7 @@ import { templates, type Page } from '@magidoc/plugin-starter-variables'
 import type { WebsitePage, WebsiteContent } from 'src/app'
 import { base } from '$app/paths'
 import { createModelContent } from './model'
+import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
 
 export const appTitle = templates.APP_TITLE.vite.getOrDefault(
   import.meta.env,
@@ -19,16 +20,6 @@ export const pages: ReadonlyArray<WebsiteContent> = Object.freeze(
 )
 
 export const homePageUrl = getHomePageUrl()
-
-export function joinUrlPaths(...paths: string[]): string {
-  return (
-    '/' +
-    paths
-      .flatMap((path) => path.split('/'))
-      .filter((path) => !!path)
-      .join('/')
-  )
-}
 
 function formatPages(
   base: string,
