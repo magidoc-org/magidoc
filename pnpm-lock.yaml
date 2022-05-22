@@ -262,15 +262,16 @@ importers:
       svelte2tsx: ^0.5.10
       tslib: ^2.4.0
       typescript: ~4.6.4
+    dependencies:
+      carbon-components-svelte: 0.64.0
+      marked: 4.0.16
+      prismjs: 1.28.0
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       '@types/marked': 4.0.3
       '@types/prismjs': 1.26.0
-      carbon-components-svelte: 0.64.0
-      marked: 4.0.16
-      prismjs: 1.28.0
       svelte: 3.48.0
       svelte-check: 2.7.1_svelte@3.48.0
       svelte-preprocess: 4.10.6_wwvk7nlptlrqo2czohjtk6eiqm
@@ -294,15 +295,16 @@ importers:
       svelte2tsx: ^0.5.10
       tslib: ^2.4.0
       typescript: ~4.6.4
+    dependencies:
+      carbon-components-svelte: 0.64.0
+      marked: 4.0.16
+      prismjs: 1.28.0
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
       '@types/marked': 4.0.3
       '@types/prismjs': 1.26.0
-      carbon-components-svelte: 0.64.0
-      marked: 4.0.16
-      prismjs: 1.28.0
       svelte: 3.48.0
       svelte-check: 2.7.1_svelte@3.48.0
       svelte-preprocess: 4.10.6_wwvk7nlptlrqo2czohjtk6eiqm
@@ -1768,7 +1770,6 @@ packages:
     resolution: {integrity: sha512-VdKjfjK6jGMWSuq2vyr9dKaLRVuZdEDTSAAWXfNK0uoYk9f2wXKusBWPBFTejNIixs2SHc8AQ5ZolXOQGAqm3A==}
     dependencies:
       flatpickr: 4.6.9
-    dev: true
 
   /carbon-icons-svelte/11.0.1:
     resolution: {integrity: sha512-0CCJLmHW3yJ8T9DM2HNGQx304b2VLGY13Xeg6T1cJWeU2oTPIvBbTfveChIULBBI9FIFGLB9m8ZZgeYWEjAAew==}
@@ -2643,7 +2644,6 @@ packages:
 
   /flatpickr/4.6.9:
     resolution: {integrity: sha512-F0azNNi8foVWKSF+8X+ZJzz8r9sE1G4hl06RyceIaLvyltKvDl6vqk9Lm/6AUUCi5HWaIjiUbk7UpeE/fOXOpw==}
-    dev: true
 
   /flatted/3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
@@ -3905,7 +3905,6 @@ packages:
     resolution: {integrity: sha512-wahonIQ5Jnyatt2fn8KqF/nIqZM8mh3oRu2+l5EANGMhu6RFjiSG52QNE2eWzFMI94HqYSgN184NurgNG6CztA==}
     engines: {node: '>= 12'}
     hasBin: true
-    dev: true
 
   /memorystream/0.3.1:
     resolution: {integrity: sha1-htcJCzDORV1j+64S3aUaR93K+bI=}
@@ -4309,7 +4308,6 @@ packages:
   /prismjs/1.28.0:
     resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
     engines: {node: '>=6'}
-    dev: true
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
