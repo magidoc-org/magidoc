@@ -1,4 +1,4 @@
-import { marked } from 'marked'
+import type { marked } from 'marked'
 
 const notificationStyles = ['error', 'success', 'info', 'warning'] as const
 export type NotificationStyle = typeof notificationStyles[number]
@@ -17,13 +17,13 @@ export default function (): marked.TokenizerExtension {
     name: 'container',
     level: 'block',
     start(src: string) {
-      return src.match(/:::[^:\n]/)?.index
+      return src.match(/^:::[^:\n\s]/)?.index
     },
     tokenizer(src: string): marked.Tokens.Generic {
       const rule =
         /^:::(?<type>notification)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
 
-      const match = rule.exec(src)
+      const match = rule.exec(findRawContainer(src))
       if (!match || !match.groups) return null
 
       const type = match.groups.type.toLocaleLowerCase()
@@ -52,6 +52,35 @@ export default function (): marked.TokenizerExtension {
       return result
     },
   }
+}
+
+function findRawContainer(src: string): string | undefined {
+  if (!src.startsWith(':::')) return undefined
+  const lines = src.split('\n')
+  let open = 1
+  let lineNumber = 1
+
+  for (lineNumber = 1; lineNumber < lines.length; lineNumber++) {
+    const line = lines[lineNumber]
+    if (line.startsWith(':::')) {
+      if (/:::[^:\n\s]/.test(line)) {
+        console.log(line)
+        open++
+        console.log('open', open)
+      } else if (/^:::(\n|$)/.test(line)) {
+        open -= 1
+        console.log('close', open)
+      }
+    }
+
+    if (open === 0) {
+      break
+    }
+  }
+
+  // console.log(lines.slice(0, lineNumber + 1).join('\n'))
+  console.log('_---------')
+  return lines.slice(0, lineNumber + 1).join('\n')
 }
 
 function parseNotification(

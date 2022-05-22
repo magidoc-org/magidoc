@@ -22,6 +22,17 @@ Here is a [relative URL](/test)
 
 :::notification type="error" test="lol"
 **test** this
+
+:::notification type="info"
+You can next them
+:::
+
+:::
+
+# again
+
+:::notification type="lol"
+not again
 :::
 
 Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!
