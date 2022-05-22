@@ -46,9 +46,8 @@ marked.use({
   smartypants: false,
 })
 
-const lexer = new marked.Lexer()
-
 export function parse(src: string): marked.TokensList {
+  const lexer = new marked.Lexer()
   return lexer.lex(src)
 }
 

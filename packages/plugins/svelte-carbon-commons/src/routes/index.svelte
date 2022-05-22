@@ -20,8 +20,8 @@ You wonder how easy it was to build this website? Have a look at the [configurat
 Here is a [relative URL](/test)
 ## Wanna learn more?
 
-:::notification
-test
+:::notification type="error" test="lol"
+**test** this
 :::
 
 Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!

@@ -21,11 +21,10 @@ export default function (): marked.TokenizerExtension {
     },
     tokenizer(src: string): marked.Tokens.Generic {
       const rule =
-        /^^:::(?<type>notification)(?<options>.*)?\n(?<content>(.|\n)*)\n:::(?:\n|$)/i
+        /^:::(?<type>notification)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
 
-      console.log('YES')
       const match = rule.exec(src)
-      if (!match || match.groups) return null
+      if (!match || !match.groups) return null
 
       const type = match.groups.type.toLocaleLowerCase()
       const options = parseOptions(match.groups.options || '')
@@ -47,7 +46,7 @@ export default function (): marked.TokenizerExtension {
       }
 
       if (result.tokens) {
-        this.lexer.inline(content, result.tokens)
+        this.lexer.blockTokens(content, result.tokens)
       }
 
       return result
@@ -75,8 +74,24 @@ function parseNotification(
 }
 
 function parseOptions(options: string): ContainerOptions {
-  const matches = /(?<name>[a-z0-9]+)(?:="(?<value>(.*?)(?<!\\))")?/gi
   const output = {}
-  console.log(matches.exec(options))
+  let remaining = options
+
+  while (true) {
+    const regex = /(?<name>[a-z0-9]+)(?:="(?<value>(?:.*?)(?<!\\))")?/i
+    const match = regex.exec(remaining)
+    if (!match) break
+
+    const name = match?.groups?.name
+
+    console.log(match.groups.name)
+
+    if (name) {
+      output[name] = match?.groups?.value ?? true
+    }
+
+    remaining = remaining.slice(match.index + match[0].length)
+  }
+
   return output
 }
