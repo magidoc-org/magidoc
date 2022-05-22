@@ -8,7 +8,6 @@
 
 <section>
   <h1>{type.name} <TypeTag {type} /></h1>
-  <br />
 
   <AppMarkdown source={type.description} />
 </section>

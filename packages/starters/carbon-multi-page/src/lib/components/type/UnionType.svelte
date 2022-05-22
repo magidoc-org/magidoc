@@ -1,4 +1,6 @@
 <script type="ts">
+  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
+
   import type { GraphQLUnionType } from 'graphql'
 
   import AppMarkdown from '../common/AppMarkdown.svelte'
@@ -10,13 +12,12 @@
 
 <section>
   <h1>{type.name} <TypeTag {type} /></h1>
-  <br />
 
   <AppMarkdown source={type.description} />
 
-  <br />
+  <AnchorHeader id={'types'} depth={2}>Types</AnchorHeader>
 
-  <h2>Types</h2>
-  Union of types <TypeEnumeration types={type.getTypes()} />
-  <br />
+  <p>
+    Union of types <TypeEnumeration types={type.getTypes()} />
+  </p>
 </section>

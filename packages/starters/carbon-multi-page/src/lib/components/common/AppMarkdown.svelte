@@ -5,7 +5,6 @@
   import 'prismjs/components/prism-javascript.js'
   import 'prismjs/components/prism-typescript.js'
   import 'prismjs/components/prism-python.js'
-  import 'prismjs/components/prism-php.js'
   import 'prismjs/components/prism-yaml.js'
   import 'prismjs/components/prism-bash.js'
 

@@ -46,7 +46,8 @@
           icon={showArguments ? ArrowUp : ArrowDown}
           on:click={() => (showArguments = !showArguments)}
         >
-          {showArguments ? 'Hide Arguments' : 'Show Arguments'}
+          {(showArguments ? 'Hide Arguments' : 'Show Arguments') +
+            ` (${item.args.length})`}
         </Button>
       </div>
     {/if}
