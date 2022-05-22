@@ -28,7 +28,11 @@ export type TagsToken = marked.Tokens.Generic & {
   raw: string
 }
 
-export function parseTags(raw: string, options: ContainerOptions): TagsToken {
+export function parseTags(
+  raw: string,
+  content: string,
+  options: ContainerOptions,
+): TagsToken {
   const colorsOption = (options['colors'] ?? options['color'] ?? 'outline')
     .toString()
     .toLocaleLowerCase()
@@ -41,6 +45,7 @@ export function parseTags(raw: string, options: ContainerOptions): TagsToken {
   return {
     type: 'tags',
     raw: raw,
-    colors: colors,
+    tags: content.split(',').map((tag) => ({ name: tag })),
+    colors: colors.length === 0 ? ['outline'] : colors,
   }
 }

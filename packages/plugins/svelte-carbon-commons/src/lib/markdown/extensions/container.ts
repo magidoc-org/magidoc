@@ -29,7 +29,7 @@ export default function (): marked.TokenizerExtension {
           result = parseNotification(match[0], options)
           break
         case 'tags':
-          result = parseTags(match[0], options)
+          result = parseTags(match[0], content, options)
           break
         default:
           result = null

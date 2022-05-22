@@ -6,8 +6,9 @@ tags: ['standalone', 'plugin', 'rollup', 'vite']
 
 This rollup plugin fetches the GraphQL Schema required by Magidoc Plugins to build your website documentation. It performs a full [GraphQL Introspection Query](https://graphql.org/learn/introspection/) and stores the result on the file-system. This approach keeps your documentation independent from the actual API.
 
-> Info: This plugin is also compatible with [ViteJS](https://vitejs.dev/), which is used by SvelteKit.
-
+:::notification type="info"
+This plugin is also compatible with [ViteJS](https://vitejs.dev/), which is used by SvelteKit.
+:::
 ## Install
 
 First, add the module to your project.
