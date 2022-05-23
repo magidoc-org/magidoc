@@ -30,9 +30,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^0.17.4
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.17.4
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^0.17.4
+      '@magidoc/plugin-starter-variables': workspace:^1.0.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^1.0.0
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^1.0.0
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.5.1
@@ -81,8 +81,8 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.17.4
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.4
+      '@magidoc/plugin-svelte-carbon-commons': workspace:^1.0.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^1.0.0
       '@sveltejs/adapter-static': 1.0.0-next.31
       '@sveltejs/kit': 1.0.0-next.338
       carbon-components-svelte: ^0.64.0
@@ -236,7 +236,7 @@ importers:
       typescript: ^4.6.4
       zod: ^3.16.1
     optionalDependencies:
-      zod: 3.17.0
+      zod: 3.17.2
     devDependencies:
       '@rollup/plugin-typescript': 8.3.2_ewnwotriipvq7wps276zlnnxuy
       '@types/jest': 27.5.1
@@ -248,7 +248,7 @@ importers:
 
   packages/plugins/svelte-carbon-commons:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.4
+      '@magidoc/plugin-svelte-prismjs': workspace:^1.0.0
       '@sveltejs/adapter-auto': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.338
       '@types/marked': ^4.0.3
@@ -281,7 +281,7 @@ importers:
 
   packages/plugins/svelte-carbon-commons/package:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.4
+      '@magidoc/plugin-svelte-prismjs': workspace:^1.0.0
       '@sveltejs/adapter-auto': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.338
       '@types/marked': ^4.0.3
@@ -364,11 +364,11 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^0.17.4
-      '@magidoc/plugin-starter-variables': workspace:^0.17.4
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^0.17.4
-      '@magidoc/plugin-svelte-prismjs': workspace:^0.17.4
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^0.17.4
+      '@magidoc/plugin-query-generator': workspace:^1.0.0
+      '@magidoc/plugin-starter-variables': workspace:^1.0.0
+      '@magidoc/plugin-svelte-carbon-commons': workspace:^1.0.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^1.0.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^1.0.0
       '@sveltejs/adapter-static': 1.0.0-next.31
       '@sveltejs/kit': 1.0.0-next.338
       '@types/lodash': ^4.14.182
@@ -5295,3 +5295,8 @@ packages:
   /zod/3.17.0:
     resolution: {integrity: sha512-WZEwv0j0+dF0uNEBWkfMQsIaiahSQm60hAqXBJ0XYHRAZMUq8LyjMt7kD8NrfssxcqiRmmtxlipK+1PlwOXnBA==}
     dev: false
+
+  /zod/3.17.2:
+    resolution: {integrity: sha512-L8UPS2J/F3dIA8gsPTvGjd8wSRuwR1Td4AqR2Nw8r8BgcLIbZZ5/tCII7hbTLXTQDhxUnnsFdHwpETGajt5i3A==}
+    dev: false
+    optional: true

@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "0.17.4",
+  "version": "1.0.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -17,8 +17,8 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "@magidoc/plugin-svelte-carbon-commons": "workspace:^0.17.4",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^0.17.4",
+    "@magidoc/plugin-svelte-carbon-commons": "workspace:^1.0.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^1.0.0",
     "@sveltejs/adapter-static": "1.0.0-next.31",
     "@sveltejs/kit": "1.0.0-next.338",
     "carbon-components-svelte": "^0.64.0",
