@@ -6,7 +6,6 @@ import { fetchTemplateTask } from './tasks/fetchTemplate'
 import { unzipTemplateTask } from './tasks/unzipTemplate'
 import { verifyDestinationAvailableTask } from './tasks/verifyDestinationAvailable'
 import { installDependenciesTask } from './tasks/installDependencies'
-import { cleanAssetsTask } from './tasks/cleanAssets'
 
 export default async function init(config: InitConfig) {
   await executeAllTasks([
@@ -15,7 +14,6 @@ export default async function init(config: InitConfig) {
     verifyDestinationAvailableTask(config),
     fetchTemplateTask(config),
     unzipTemplateTask(config),
-    cleanAssetsTask(config),
     installDependenciesTask(config),
   ])
 }
