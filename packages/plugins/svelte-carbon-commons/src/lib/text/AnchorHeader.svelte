@@ -1,20 +1,13 @@
 <script lang="ts">
   export let id: string
   export let depth: number
-
-  let anchorVisible = false
 </script>
 
-<svelte:element
-  this={`h${depth}`}
-  {id}
-  class="header"
-  on:mouseenter={() => (anchorVisible = true)}
-  on:mouseleave={() => (anchorVisible = false)}
->
+<svelte:element this={`h${depth}`} {id} class="header">
   <slot />
-  {#if depth > 1 && anchorVisible}
-    <span class="hashtag"><a href={`#${id}`}>#</a></span>
+  {#if depth > 1}
+    <a href={`#${id}`} class="hashtag">#</a>
+    <span {id} class="anchor" />
   {/if}
 </svelte:element>
 
@@ -22,12 +15,11 @@
   .header {
     display: flex;
     align-items: center;
+    margin-top: 1.8rem;
+  }
 
-    /*
-      * Trick to have headers at the right place when scrolling to the header
-      */
-    padding-top: 3.2rem;
-    margin-top: -2.8rem !important;
+  .header:hover .hashtag {
+    opacity: 1;
   }
 
   .hashtag {
@@ -36,8 +28,7 @@
     padding-left: 0.5rem;
     vertical-align: middle;
     cursor: pointer;
-  }
-  .hashtag a {
+    opacity: 0;
     color: inherit;
     text-decoration: none;
   }
