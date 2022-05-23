@@ -1,9 +1,12 @@
 <script lang="ts" context="module">
-  export function load({ stuff, params }: LoadInput): LoadOutput {
+  export function load({ stuff, params, url }: LoadInput): LoadOutput {
     const type: GraphQLNamedType | undefined = stuff.schema?.getType(
       params.type,
     )
-    if (!type) {
+
+    const page = findPageByHref(url.pathname)
+
+    if (!type || !page) {
       return {
         status: 404,
         error: `Type ${params.type} not found`,
@@ -13,6 +16,7 @@
     return {
       props: {
         type,
+        page,
       },
     }
   }
@@ -36,8 +40,12 @@
   import InputObjectType from '$lib/components/type/InputObjectType.svelte'
   import type { LoadInput } from '@sveltejs/kit/types/internal'
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
+  import { findPageByHref } from '$lib/pages'
+  import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
+  import type { WebsitePage } from 'src/app'
 
   export let type: GraphQLNamedType
+  export let page: WebsitePage
 </script>
 
 <svelte:head>
@@ -57,3 +65,5 @@
 {:else if isInputObjectType(type)}
   <InputObjectType {type} />
 {/if}
+
+<PreviousNextPage {page} />

@@ -5,20 +5,28 @@ import type { GraphQLSchema } from 'graphql'
 // See https://kit.svelte.dev/docs/typescript
 // for information about these interfaces
 
-type CustomPage = {
+type WebsitePage = {
   type: 'page'
   title: string
+  deprecated?: boolean
   href: string
-  content: string
+  content?: string
+  previous?: WebsitePreviousOrNextPage
+  next?: WebsitePreviousOrNextPage
 }
 
-type CustomSubMenu = {
+type WebsitePreviousOrNextPage = {
+  title: string
+  href: string
+}
+
+type WebsiteSubMenu = {
   type: 'menu'
   title: string
-  children: CustomContent[]
+  children: WebsiteContent[]
 }
 
-type CustomContent = CustomPage | CustomSubMenu
+type WebsiteContent = WebsitePage | WebsiteSubMenu
 
 declare global {
   declare namespace App {
@@ -26,8 +34,6 @@ declare global {
       readonly homeUrl: string
 
       readonly schema: GraphQLSchema
-
-      readonly content: ReadonlyArray<CustomContent>
     }
   }
 }

@@ -1,33 +1,28 @@
 <script lang="ts">
-  import { SideNav, SideNavItems } from 'carbon-components-svelte'
-  import Mutations from './Mutations.svelte'
-  import Queries from './Queries.svelte'
-  import Subscriptions from './Subscriptions.svelte'
-  import Types from './Types.svelte'
-  import type { GraphQLSchema } from 'graphql'
-  import _ from 'lodash'
-  import type { CustomContent } from 'src/app'
-  import CustomContents from './CustomContents.svelte'
+  import { SideNav, SideNavItems, SideNavMenu } from 'carbon-components-svelte'
+  import type { WebsiteContent } from 'src/app'
+  import AppPageNavigation from './AppPageNavigation.svelte'
 
   export let isOpen = true
-  export let schema: GraphQLSchema
-  export let content: CustomContent[]
+  export let content: WebsiteContent[]
 </script>
 
 <SideNav {isOpen}>
   <SideNavItems>
-    <CustomContents {content} />
-    <Queries type={schema.getQueryType()} />
-    <Mutations type={schema.getMutationType()} />
-    <Subscriptions type={schema.getSubscriptionType()} />
-    <Types
-      types={_.map(schema.getTypeMap(), (type) => type).filter(
-        (type) =>
-          !type.name.startsWith('__') &&
-          type !== schema.getQueryType() &&
-          type !== schema.getMutationType() &&
-          type !== schema.getSubscriptionType(),
-      )}
-    />
+    {#each content as item}
+      {#if item.type === 'page'}
+        <AppPageNavigation {item} />
+      {:else}
+        <!-- Volontarily do not use recursion and go only a single level deep. 
+      Carbon does not support recursion in nav items -->
+        <SideNavMenu text={item.title} expanded>
+          {#each item.children as subItem}
+            {#if subItem.type === 'page'}
+              <AppPageNavigation item={subItem} />
+            {/if}
+          {/each}
+        </SideNavMenu>
+      {/if}
+    {/each}
   </SideNavItems>
 </SideNav>

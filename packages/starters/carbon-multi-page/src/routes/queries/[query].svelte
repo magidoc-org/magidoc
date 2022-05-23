@@ -1,18 +1,21 @@
 <script lang="ts" context="module">
-  export function load({ stuff, params }: LoadInput): LoadOutput {
+  export function load({ stuff, params, url }: LoadInput): LoadOutput {
     const field: GraphQLField<unknown, unknown, unknown> | undefined =
-      stuff.schema?.getSubscriptionType()?.getFields()[params.subscription]
+      stuff.schema?.getQueryType()?.getFields()[params.query]
 
-    if (!field) {
+    const page = findPageByHref(url.pathname)
+
+    if (!field || !page) {
       return {
         status: 404,
-        error: `Subscription ${params.subscription} not found`,
+        error: `Query ${params.query} not found`,
       }
     }
 
     return {
       props: {
         field,
+        page,
       },
     }
   }
@@ -23,12 +26,18 @@
   import type { GraphQLField } from 'graphql'
   import FieldDetails from '$lib/components/query/FieldDetails.svelte'
   import type { LoadInput, LoadOutput } from '@sveltejs/kit/types/internal'
+  import { findPageByHref } from '$lib/pages'
+  import type { WebsitePage } from 'src/app'
+  import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
 
   export let field: GraphQLField<unknown, unknown, unknown>
+  export let page: WebsitePage
 </script>
 
 <svelte:head>
-  <title>Subscription - {field.name}</title>
+  <title>Query - {field.name}</title>
 </svelte:head>
 
-<FieldDetails {field} type={QueryType.SUBSCRIPTION} />
+<FieldDetails {field} type={QueryType.QUERY} />
+
+<PreviousNextPage {page} />
