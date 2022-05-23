@@ -144,7 +144,7 @@ function getDefaultPages(title: string): Page[] {
       title: 'Introduction',
       content: [
         {
-          title: 'Welcome - test - again',
+          title: 'Welcome',
           content: `
         # Welcome
 
