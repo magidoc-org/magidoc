@@ -150,10 +150,6 @@ function generatePath(value: string): string {
 function getDefaultPages(title: string): Page[] {
   return [
     {
-      title: 'Hi again',
-      content: 'lol',
-    },
-    {
       title: 'Introduction',
       content: [
         {
