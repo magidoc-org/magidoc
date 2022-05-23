@@ -11,6 +11,13 @@ type WebsitePage = {
   deprecated?: boolean
   href: string
   content?: string
+  previous?: WebsitePreviousOrNextPage
+  next?: WebsitePreviousOrNextPage
+}
+
+type WebsitePreviousOrNextPage = {
+  title: string
+  href: string
 }
 
 type WebsiteSubMenu = {

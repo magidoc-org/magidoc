@@ -9,25 +9,21 @@ export const appTitle = templates.APP_TITLE.vite.getOrDefault(
   'Magidoc',
 )
 
-export const pages: ReadonlyArray<WebsiteContent> = Object.freeze(
-  formatPages(
-    base,
-    templates.PAGES.vite.getOrDefault(
-      import.meta.env,
-      getDefaultPages(appTitle),
-    ),
-  ).concat(createModelContent()),
-)
+const buildPages = parseCustomPages().concat(createModelContent())
+setPreviousAndNextPages(buildPages)
+export const pages: ReadonlyArray<WebsiteContent> = Object.freeze(buildPages)
 
 export const homePageUrl = getHomePageUrl()
 
-function formatPages(
-  base: string,
-  pages: (Page | undefined)[],
-): ReadonlyArray<WebsiteContent> {
+function parseCustomPages(): ReadonlyArray<WebsiteContent> {
+  const pages = templates.PAGES.vite.getOrDefault(
+    import.meta.env,
+    getDefaultPages(appTitle),
+  )
+
   return pages
     .filter((page): page is Page => !!page)
-    .map((item) => asCustomContent(base, [], item))
+    .map((item) => asCustomContent([], item))
 }
 
 function getHomePageUrl(): string {
@@ -37,6 +33,42 @@ function getHomePageUrl(): string {
   throw new Error(
     'No custom pages or query available to use as the root application URL. You need to provide at least one custom page or your schema should contain at least one query/mutation/subscription.',
   )
+}
+
+function setPreviousAndNextPages(pages: WebsiteContent[]) {
+  function iteratePages(
+    pages: ReadonlyArray<WebsiteContent>,
+    handler: (page: WebsitePage) => void,
+  ) {
+    for (const page of pages) {
+      if (page.type === 'page') {
+        handler(page)
+        continue
+      }
+
+      if (page.type === 'menu') {
+        iteratePages(page.children, handler)
+      }
+    }
+  }
+
+  let previous: WebsitePage | undefined = undefined
+
+  iteratePages(pages, (current) => {
+    if (previous) {
+      previous.next = {
+        title: current.title,
+        href: current.href,
+      }
+
+      current.previous = {
+        title: previous.title,
+        href: previous.href,
+      }
+    }
+
+    previous = current
+  })
 }
 
 function findFirstPage(): WebsitePage | null {
@@ -70,11 +102,7 @@ function firstPageBy(
   return iteratePages(pages)
 }
 
-function asCustomContent(
-  base: string,
-  path: string[],
-  page: Page,
-): WebsiteContent {
+function asCustomContent(path: string[], page: Page): WebsiteContent {
   if (typeof page.content === 'string') {
     return {
       type: 'page',
@@ -88,9 +116,7 @@ function asCustomContent(
   return {
     type: 'menu',
     title: page.title,
-    children: page.content.map((child) =>
-      asCustomContent(base, newPath, child),
-    ),
+    children: page.content.map((child) => asCustomContent(newPath, child)),
   }
 }
 
