@@ -19,7 +19,7 @@ export function tmpTemplateDirectory(name: string): TmpLocation {
   return tmpLocation(asTmpPath(name))
 }
 
-function tmpLocation(path: string): TmpLocation {
+export function tmpLocation(path: string): TmpLocation {
   return {
     path: path,
     exists: () => Promise.resolve(fs.existsSync(path)),

@@ -2,19 +2,20 @@ import z from 'zod'
 import { AVAILABLE_TEMPLATES } from '../template'
 import { getVersion } from '../version'
 import path from 'path'
+import { isDirectory } from '../commands/utils/fileUtils'
 
 const ZPath = z
   .string()
-  .nonempty()
+  .min(1)
   .transform((arg) => path.resolve(arg))
 
 export const ZIntrospectionConfiguration = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('url'),
     url: z.string().url(),
-    query: z.string().nonempty().optional(),
+    query: z.string().min(1).optional(),
     method: z.enum(['GET', 'POST', 'PUT', 'DELETE']).default('POST'),
-    headers: z.record(z.string().nonempty(), z.string()).optional(),
+    headers: z.record(z.string().min(1), z.string()).optional(),
   }),
   z.object({
     type: z.literal('sdl'),
@@ -26,16 +27,32 @@ export const ZIntrospectionConfiguration = z.discriminatedUnion('type', [
   }),
   z.object({
     type: z.literal('raw'),
-    content: z.string().nonempty(),
+    content: z.string().min(1),
   }),
 ])
 
 export const ZWebsiteConfiguration = z.object({
-  template: z.enum(AVAILABLE_TEMPLATES),
-  templateVersion: z.string().nonempty().default(getVersion()),
+  template: z
+    .string()
+    .min(1)
+    .refine(
+      (arg) => {
+        if (AVAILABLE_TEMPLATES.some((template) => template === arg)) {
+          return true
+        }
+
+        return isDirectory(arg)
+      },
+      {
+        message: `Template should be either a valid template name among [${AVAILABLE_TEMPLATES.join(
+          ', ',
+        )}] or a path to a Magidoc template directory`,
+      },
+    ),
+  templateVersion: z.string().min(1).default(getVersion()),
   output: ZPath.default(path.resolve('./docs')),
   staticAssets: ZPath.optional(),
-  options: z.record(z.string().nonempty(), z.unknown()).default({}),
+  options: z.record(z.string().min(1), z.unknown()).default({}),
 })
 
 export const ZMagidocConfiguration = z.object({
