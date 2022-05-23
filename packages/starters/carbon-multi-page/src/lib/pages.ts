@@ -134,6 +134,7 @@ function generatePath(value: string): string {
         '',
       )
       .replace(/\s/g, '-')
+      .replace(/--+/g, '-') // Replaces -- with -
   )
 }
 
@@ -143,7 +144,7 @@ function getDefaultPages(title: string): Page[] {
       title: 'Introduction',
       content: [
         {
-          title: 'Welcome',
+          title: 'Welcome - test - again',
           content: `
         # Welcome
 

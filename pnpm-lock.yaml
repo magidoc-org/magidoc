@@ -81,45 +81,9 @@ importers:
 
   packages/docs:
     specifiers:
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^1.0.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^1.0.0
-      '@sveltejs/adapter-static': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.338
-      carbon-components-svelte: ^0.64.0
-      carbon-icons-svelte: ^11.0.1
-      carbon-preprocess-svelte: ^0.9.0
-      front-matter: ^4.0.2
       gh-pages: ^4.0.0
-      prism-svelte: ^0.5.0
-      prismjs: ^1.28.0
-      rollup-plugin-string: ^3.0.0
-      svelte: ^3.48.0
-      svelte-check: ^2.7.1
-      svelte-markdown: ^0.2.2
-      svelte-preprocess: ^4.10.6
-      tslib: ^2.4.0
-      typescript: ^4.6.4
-      vite: ^2.9.9
     devDependencies:
-      '@magidoc/plugin-svelte-carbon-commons': link:../plugins/svelte-carbon-commons/package
-      '@magidoc/plugin-svelte-prismjs': link:../plugins/svelte-prismjs/package
-      '@sveltejs/adapter-static': 1.0.0-next.31
-      '@sveltejs/kit': 1.0.0-next.338_svelte@3.48.0
-      carbon-components-svelte: 0.64.0
-      carbon-icons-svelte: 11.0.1
-      carbon-preprocess-svelte: 0.9.0_svelte@3.48.0
-      front-matter: 4.0.2
       gh-pages: 4.0.0
-      prism-svelte: 0.5.0
-      prismjs: 1.28.0
-      rollup-plugin-string: 3.0.0
-      svelte: 3.48.0
-      svelte-check: 2.7.1_svelte@3.48.0
-      svelte-markdown: 0.2.2_svelte@3.48.0
-      svelte-preprocess: 4.10.6_wwvk7nlptlrqo2czohjtk6eiqm
-      tslib: 2.4.0
-      typescript: 4.6.4
-      vite: 2.9.9
 
   packages/plugins/query-generator:
     specifiers:
@@ -2491,10 +2455,6 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
-  /estree-walker/0.6.1:
-    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
-    dev: true
-
   /estree-walker/1.0.1:
     resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
     dev: true
@@ -2669,12 +2629,6 @@ packages:
       combined-stream: 1.0.8
       mime-types: 2.1.35
     dev: false
-
-  /front-matter/4.0.2:
-    resolution: {integrity: sha512-I8ZuJ/qG92NWX8i5x1Y8qyj3vizhXS31OxjKDu3LKP+7/qBgfIKValiZIEwoVoJKUHlhWtYrktkxV1XsX+pPlg==}
-    dependencies:
-      js-yaml: 3.14.1
-    dev: true
 
   /fs-constants/1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
@@ -4303,10 +4257,6 @@ packages:
       react-is: 18.1.0
     dev: true
 
-  /prism-svelte/0.5.0:
-    resolution: {integrity: sha512-db91Bf3pRGKDPz1lAqLFSJXeW13mulUJxhycysFpfXV5MIK7RgWWK2E5aPAa71s8TCzQUXxF5JOV42/iOs6QkA==}
-    dev: true
-
   /prismjs/1.28.0:
     resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
     engines: {node: '>=6'}
@@ -4491,18 +4441,6 @@ packages:
     resolution: {integrity: sha512-gk7ExGBqvUinhgrvldKHkAKXXwRkWMXMZymNkrtn50uBgHITlhRjhnKmbNGwAIc4Bzgl3yLv7/8Fhi/XeHhFKg==}
     dependencies:
       magic-string: 0.25.9
-    dev: true
-
-  /rollup-plugin-string/3.0.0:
-    resolution: {integrity: sha512-vqyzgn9QefAgeKi+Y4A7jETeIAU1zQmS6VotH6bzm/zmUQEnYkpIGRaOBPY41oiWYV4JyBoGAaBjYMYuv+6wVw==}
-    dependencies:
-      rollup-pluginutils: 2.8.2
-    dev: true
-
-  /rollup-pluginutils/2.8.2:
-    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
-    dependencies:
-      estree-walker: 0.6.1
     dev: true
 
   /rollup/2.74.1:
@@ -5298,5 +5236,6 @@ packages:
 
   /zod/3.17.2:
     resolution: {integrity: sha512-L8UPS2J/F3dIA8gsPTvGjd8wSRuwR1Td4AqR2Nw8r8BgcLIbZZ5/tCII7hbTLXTQDhxUnnsFdHwpETGajt5i3A==}
+    requiresBuild: true
     dev: false
     optional: true
