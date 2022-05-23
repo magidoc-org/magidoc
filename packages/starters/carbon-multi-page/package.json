@@ -37,6 +37,7 @@
     "eslint-plugin-svelte3": "^4.0.0",
     "graphql": "^16.5.0",
     "lodash": "^4.17.21",
+    "prism-svelte": "^0.5.0",
     "prismjs": "^1.28.0",
     "svelte": "^3.48.0",
     "svelte-check": "^2.7.1",

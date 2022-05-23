@@ -134,6 +134,7 @@ function generatePath(value: string): string {
         '',
       )
       .replace(/\s/g, '-')
+      .replace(/--+/g, '-') // Replaces -- with -
   )
 }
 

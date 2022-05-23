@@ -59,7 +59,9 @@ function createTypesWebsiteContent(): WebsiteContent | null {
     _.map(schema.getTypeMap()),
     (type) => type.name,
   ).filter((type) => !type.name.startsWith('__'))
-  if (types.length === 0) return null
+  // By default, String and Boolean are included,
+  // but there is no documentation to generate if there is only that in the schema
+  if (types.length <= 2) return null
   return {
     type: 'menu',
     title: 'Types',
