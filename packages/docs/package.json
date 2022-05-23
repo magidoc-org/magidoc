@@ -8,8 +8,8 @@
     "magidoc"
   ],
   "scripts": {
-    "build": "pnpm --filter @magidoc/cli start generate --file $(pwd)/magidoc.mjs",
-    "preview": "pnpm --filter @magidoc/cli start preview --file $(pwd)/magidoc.mjs",
+    "build": "pnpm --filter @magidoc/cli start generate --file $(pwd)/magidoc.mjs --stacktrace",
+    "preview": "pnpm --filter @magidoc/cli start preview --file $(pwd)/magidoc.mjs --stacktrace",
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
