@@ -9,6 +9,24 @@ const ZPath = z
   .min(1)
   .transform((arg) => path.resolve(arg))
 
+const ZTemplate = z
+  .string()
+  .min(1)
+  .refine(
+    (arg) => {
+      if (AVAILABLE_TEMPLATES.some((template) => template === arg)) {
+        return true
+      }
+
+      return isDirectory(arg)
+    },
+    {
+      message: `Template should be either a valid template name among [${AVAILABLE_TEMPLATES.join(
+        ', ',
+      )}] or a path to a Magidoc template directory`,
+    },
+  )
+
 export const ZIntrospectionConfiguration = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('url'),
@@ -32,23 +50,7 @@ export const ZIntrospectionConfiguration = z.discriminatedUnion('type', [
 ])
 
 export const ZWebsiteConfiguration = z.object({
-  template: z
-    .string()
-    .min(1)
-    .refine(
-      (arg) => {
-        if (AVAILABLE_TEMPLATES.some((template) => template === arg)) {
-          return true
-        }
-
-        return isDirectory(arg)
-      },
-      {
-        message: `Template should be either a valid template name among [${AVAILABLE_TEMPLATES.join(
-          ', ',
-        )}] or a path to a Magidoc template directory`,
-      },
-    ),
+  template: ZTemplate,
   templateVersion: z.string().min(1).default(getVersion()),
   output: ZPath.default(path.resolve('./docs')),
   staticAssets: ZPath.optional(),
