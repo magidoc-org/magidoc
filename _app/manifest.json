@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-df37ef8d.js",
+    "file": "start-fe2e8b7e.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -16,7 +16,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-16aebafd.js",
+    "file": "pages/__layout.svelte-0b4120cc.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -24,7 +24,7 @@
       "_preload-helper-4330dcf9.js",
       "_index-7b8ef155.js",
       "_paths-6bae2c62.js",
-      "_pages-9958777e.js"
+      "_pages-2ae95279.js"
     ],
     "dynamicImports": [
       "src/lib/sections/01.introduction/01.Welcome.md",
@@ -42,7 +42,7 @@
       "src/lib/sections/05.svelte-plugins/02.PrismJS.md"
     ],
     "css": [
-      "assets/pages/__layout.svelte-8dc4cd99.css"
+      "assets/pages/__layout.svelte-b5f936b9.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -55,13 +55,13 @@
     ]
   },
   "src/routes/[...page].svelte": {
-    "file": "pages/_...page_.svelte-3807cbff.js",
+    "file": "pages/_...page_.svelte-73575ef7.js",
     "src": "src/routes/[...page].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-7b8ef155.js",
-      "_pages-9958777e.js",
+      "_pages-2ae95279.js",
       "_paths-6bae2c62.js"
     ],
     "css": [
@@ -89,13 +89,14 @@
   "_preload-helper-4330dcf9.js": {
     "file": "chunks/preload-helper-4330dcf9.js"
   },
-  "_pages-9958777e.js": {
-    "file": "chunks/pages-9958777e.js",
+  "_pages-2ae95279.js": {
+    "file": "chunks/pages-2ae95279.js",
     "imports": [
-      "_index-7b8ef155.js"
+      "_index-7b8ef155.js",
+      "_paths-6bae2c62.js"
     ],
     "css": [
-      "assets/pages-ac997299.css"
+      "assets/pages-777e7cb6.css"
     ]
   },
   "src/lib/sections/01.introduction/01.Welcome.md": {
@@ -109,7 +110,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/02.cli/01.Magidoc-configuration.md": {
-    "file": "chunks/01.Magidoc-configuration-cc7e80fa.js",
+    "file": "chunks/01.Magidoc-configuration-0f74001f.js",
     "src": "src/lib/sections/02.cli/01.Magidoc-configuration.md",
     "isDynamicEntry": true
   },
@@ -119,7 +120,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/02.cli/03.Init.md": {
-    "file": "chunks/03.Init-0b89a09b.js",
+    "file": "chunks/03.Init-82f2a533.js",
     "src": "src/lib/sections/02.cli/03.Init.md",
     "isDynamicEntry": true
   },
@@ -144,12 +145,12 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md": {
-    "file": "chunks/03.Rollup-Fetch-GraphQL-Schema-5b99977c.js",
+    "file": "chunks/03.Rollup-Fetch-GraphQL-Schema-7b35c5e7.js",
     "src": "src/lib/sections/04.plugins/03.Rollup-Fetch-GraphQL-Schema.md",
     "isDynamicEntry": true
   },
   "src/lib/sections/04.plugins/04.Rollup-Parse-GraphQL-Schema.md": {
-    "file": "chunks/04.Rollup-Parse-GraphQL-Schema-4c0e9aff.js",
+    "file": "chunks/04.Rollup-Parse-GraphQL-Schema-b74fc265.js",
     "src": "src/lib/sections/04.plugins/04.Rollup-Parse-GraphQL-Schema.md",
     "isDynamicEntry": true
   },
@@ -159,7 +160,7 @@
     "isDynamicEntry": true
   },
   "src/lib/sections/05.svelte-plugins/02.PrismJS.md": {
-    "file": "chunks/02.PrismJS-c096c086.js",
+    "file": "chunks/02.PrismJS-5722d321.js",
     "src": "src/lib/sections/05.svelte-plugins/02.PrismJS.md",
     "isDynamicEntry": true
   }
