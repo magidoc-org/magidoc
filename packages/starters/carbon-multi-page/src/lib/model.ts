@@ -59,7 +59,7 @@ function createTypesWebsiteContent(): WebsiteContent | null {
     _.map(schema.getTypeMap()),
     (type) => type.name,
   ).filter((type) => !type.name.startsWith('__'))
-  if (types.length === 0) return null
+  if (types.length <= 2) return null
   return {
     type: 'menu',
     title: 'Types',

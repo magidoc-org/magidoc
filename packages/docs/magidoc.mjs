@@ -14,7 +14,7 @@ const config = {
   },
   website: {
     template: path.join(__dirname, '../starters/carbon-multi-page'),
-    output: path.join(__dirname, 'docs'),
+    output: path.join(__dirname, 'build'),
     staticAssets: path.join(__dirname, 'assets'),
     options: {
       appTitle: 'Magidoc',
