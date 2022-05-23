@@ -58,11 +58,13 @@ function setPreviousAndNextPages(pages: WebsiteContent[]) {
     if (previous) {
       previous.next = {
         title: current.title,
+        section: current.section,
         href: current.href,
       }
 
       current.previous = {
         title: previous.title,
+        section: previous.section,
         href: previous.href,
       }
     }
@@ -116,7 +118,10 @@ function asCustomContent(path: string[], page: Page): WebsiteContent {
   return {
     type: 'menu',
     title: page.title,
-    children: page.content.map((child) => asCustomContent(newPath, child)),
+    children: page.content.map((child) => ({
+      ...asCustomContent(newPath, child),
+      section: page.title,
+    })),
   }
 }
 

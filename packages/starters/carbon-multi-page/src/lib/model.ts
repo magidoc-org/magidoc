@@ -48,6 +48,7 @@ function createWebsiteContentFromFields(
     children: fields.map((field) => ({
       type: 'page',
       title: field.name,
+      section: title,
       deprecated: !!field.deprecationReason,
       href: joinUrlPaths(base, title.toLocaleLowerCase(), field.name),
     })),
@@ -68,6 +69,7 @@ function createTypesWebsiteContent(): WebsiteContent | null {
     children: types.map((type) => ({
       type: 'page',
       title: type.name,
+      section: 'Types',
       href: joinUrlPaths(base, 'types', type.name),
     })),
   }
