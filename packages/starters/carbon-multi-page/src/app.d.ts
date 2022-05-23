@@ -8,6 +8,7 @@ import type { GraphQLSchema } from 'graphql'
 type WebsitePage = {
   type: 'page'
   title: string
+  section?: string
   deprecated?: boolean
   href: string
   content?: string
@@ -17,6 +18,7 @@ type WebsitePage = {
 
 type WebsitePreviousOrNextPage = {
   title: string
+  section?: string
   href: string
 }
 

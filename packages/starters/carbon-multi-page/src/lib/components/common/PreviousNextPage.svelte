@@ -11,9 +11,17 @@
 <div class="wrapper">
   <div class="previous direction-wrapper">
     {#if page.previous}
-      <div class="direction"><strong>Previous</strong></div>
+      <div class="direction">
+        <strong>
+          Previous
+
+          {#if page.previous.section && page.previous.section !== page.section}
+            - {page.previous.section}
+          {/if}
+        </strong>
+      </div>
       <a href={page.previous.href} class="title">
-        <ArrowLeft class="previous-next-arrow" size={20} />
+        <span><ArrowLeft class="previous-next-arrow" size={20} /></span>
         <p>{page.previous.title}</p>
       </a>
     {/if}
@@ -21,7 +29,14 @@
 
   <div class="next direction-wrapper">
     {#if page.next}
-      <div class="direction"><strong>Next</strong></div>
+      <div class="direction">
+        <strong>
+          Next
+          {#if page.next.section && page.next.section !== page.section}
+            - {page.next.section}
+          {/if}
+        </strong>
+      </div>
       <a href={page.next.href} class="title">
         <p>{page.next.title}</p>
         <span><ArrowRight class="previous-next-arrow" size={20} /></span>
@@ -65,14 +80,10 @@
   }
 
   .previous {
-    justify-content: start;
-    text-align: start;
     align-items: flex-start;
   }
 
   .next {
-    justify-content: end;
-    text-align: end;
     align-items: flex-end;
   }
 

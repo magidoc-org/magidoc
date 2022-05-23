@@ -58,11 +58,13 @@ function setPreviousAndNextPages(pages: WebsiteContent[]) {
     if (previous) {
       previous.next = {
         title: current.title,
+        section: current.section,
         href: current.href,
       }
 
       current.previous = {
         title: previous.title,
+        section: previous.section,
         href: previous.href,
       }
     }
@@ -102,11 +104,16 @@ function firstPageBy(
   return iteratePages(pages)
 }
 
-function asCustomContent(path: string[], page: Page): WebsiteContent {
+function asCustomContent(
+  path: string[],
+  page: Page,
+  section: string | undefined = undefined,
+): WebsiteContent {
   if (typeof page.content === 'string') {
     return {
       type: 'page',
       title: page.title,
+      section: section,
       content: page.content,
       href: joinUrlPaths(base, ...path, generatePath(page.title)),
     }
@@ -116,7 +123,9 @@ function asCustomContent(path: string[], page: Page): WebsiteContent {
   return {
     type: 'menu',
     title: page.title,
-    children: page.content.map((child) => asCustomContent(newPath, child)),
+    children: page.content.map((child) =>
+      asCustomContent(newPath, child, page.title),
+    ),
   }
 }
 
@@ -140,6 +149,10 @@ function generatePath(value: string): string {
 
 function getDefaultPages(title: string): Page[] {
   return [
+    {
+      title: 'Hi again',
+      content: 'lol',
+    },
     {
       title: 'Introduction',
       content: [
