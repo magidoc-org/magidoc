@@ -1,4 +1,6 @@
 src/_schema.json
+static/*
+
 .DS_Store
 node_modules
 /build
@@ -9,4 +11,3 @@ node_modules
 !.env.example
 .vercel
 .output
-
