@@ -59,14 +59,7 @@ function createTypesWebsiteContent(): WebsiteContent | null {
   const types: GraphQLNamedType[] = _.sortBy(
     _.map(schema.getTypeMap()),
     (type) => type.name,
-  )
-    .filter((type) => !type.name.startsWith('__'))
-    .filter(
-      (type) =>
-        type !== schema.getQueryType() &&
-        type !== schema.getMutationType() &&
-        type !== schema.getSubscriptionType(),
-    )
+  ).filter((type) => !type.name.startsWith('__'))
   // By default, String and Boolean are included,
   // but there is no documentation to generate if there is only that in the schema
   if (types.length <= 2) return null
