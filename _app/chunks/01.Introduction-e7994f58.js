@@ -1,8 +1,0 @@
-var e=`---
-title: Introduction
----
-
-This section contains Svelte-specific plugins that can be used within any Svelte/SvelteKit applications. These plugins can also be used outside of the Magidoc ecosystem.
-
-Each of these plugins also include TypeScript definitions.
-`;export{e as default};
