@@ -20,7 +20,7 @@ export default async function generate(config: GenerationConfig) {
     cleanTask(config),
     selectPackageManagerTask(config),
     fetchTemplateTask(config),
-    unzipTemplateTask(),
+    unzipTemplateTask(config),
     installDependenciesTask(),
     loadTemplateConfigurationTask(),
     loadGraphQLSchemaTask(config),

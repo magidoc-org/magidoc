@@ -5,7 +5,8 @@ import type {
   IntrospectionConfiguration,
   WebsiteConfiguration,
 } from '../../src/config/types'
-import { resolve } from 'path'
+import path, { resolve } from 'path'
+import { fileURLToPath } from 'url'
 
 type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>
@@ -219,7 +220,49 @@ describe('parsing the magidoc config', () => {
             },
           },
           [
-            "Invalid enum value. Expected 'carbon-multi-page', received 'abc' at path 'website.template'",
+            "Template should be either a valid template name among [carbon-multi-page] or a path to a Magidoc template directory at path 'website.template'",
+          ],
+        )
+      })
+    })
+
+    describe('using a valid directory path as template', () => {
+      it('should parse properly', () => {
+        shouldParse(
+          {
+            ...minimalConfiguration,
+            website: {
+              template: getPath('template-directory'),
+            },
+          },
+          {
+            introspection: {
+              ...minimalConfiguration.introspection,
+              method: 'POST',
+            },
+            website: {
+              ...minimalConfiguration.website,
+              template: getPath('template-directory'),
+              templateVersion: expect.any(String) as string,
+              options: {},
+              output: resolve('./docs'),
+            },
+          },
+        )
+      })
+    })
+
+    describe('using an invalid directory path as template', () => {
+      it('should fail parsing too', () => {
+        shouldFailParsing(
+          {
+            ...minimalConfiguration,
+            website: {
+              template: getPath('template-file'),
+            },
+          },
+          [
+            "Template should be either a valid template name among [carbon-multi-page] or a path to a Magidoc template directory at path 'website.template'",
           ],
         )
       })
@@ -235,7 +278,7 @@ describe('parsing the magidoc config', () => {
             },
           },
           [
-            "Expected: ''carbon-multi-page'' but received 'number' at path 'website.template'",
+            "Expected: 'string' but received 'number' at path 'website.template'",
           ],
         )
       })
@@ -396,4 +439,12 @@ function countIndent(input: string): number {
 
 function getBulletChar(input: string): string {
   return input.trim()[0] ?? ''
+}
+
+function getPath(name: string): string {
+  return path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    'examples',
+    name,
+  )
 }
