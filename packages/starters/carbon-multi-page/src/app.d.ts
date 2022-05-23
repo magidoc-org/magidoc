@@ -34,8 +34,6 @@ declare global {
       readonly homeUrl: string
 
       readonly schema: GraphQLSchema
-
-      readonly website: ReadonlyArray<WebsiteContent>
     }
   }
 }

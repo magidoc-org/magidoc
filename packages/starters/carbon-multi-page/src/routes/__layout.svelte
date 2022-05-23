@@ -4,7 +4,6 @@
       stuff: {
         homeUrl: homePageUrl,
         schema,
-        content: pages,
       },
       props: {
         schema,
@@ -22,15 +21,15 @@
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
   import type { LoadOutput } from '@sveltejs/kit/types/internal'
-  import type { CustomContent } from 'src/app'
   import { schema } from '$lib/model'
   import { siteMeta, type Meta } from '$lib/meta'
   import { homePageUrl, pages } from '$lib/pages'
   import { templates } from '@magidoc/plugin-starter-variables'
+  import type { WebsiteContent } from 'src/app'
 
   let isSideNavOpen: boolean
 
-  export let content: CustomContent[]
+  export let content: WebsiteContent[]
   export let meta: ReadonlyArray<Meta>
 
   const favicon = templates.APP_FAVICON.vite.get(import.meta.env)
@@ -48,7 +47,7 @@
 
 <main>
   <AppHeader bind:isSideNavOpen />
-  <AppNavigation isOpen={isSideNavOpen} {schema} {content} />
+  <AppNavigation isOpen={isSideNavOpen} {content} />
 
   <Content>
     <Grid>
