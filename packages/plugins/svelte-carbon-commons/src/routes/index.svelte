@@ -80,6 +80,8 @@ query {
 }
 ~~~
 
+
+You can also insert \`inline\` code blocks like this: \`"this"\`
 ## Html 
 ------
 

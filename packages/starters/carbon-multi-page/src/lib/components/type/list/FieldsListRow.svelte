@@ -56,7 +56,7 @@
 
 <style>
   .arguments-list-wrapper {
-    border-left: 3px solid lightgrey;
+    border-left: 3px solid var(--cds-ui-03, #dcdbdb);
     padding-left: 10px;
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
