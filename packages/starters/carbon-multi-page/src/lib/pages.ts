@@ -104,16 +104,11 @@ function firstPageBy(
   return iteratePages(pages)
 }
 
-function asCustomContent(
-  path: string[],
-  page: Page,
-  section: string | undefined = undefined,
-): WebsiteContent {
+function asCustomContent(path: string[], page: Page): WebsiteContent {
   if (typeof page.content === 'string') {
     return {
       type: 'page',
       title: page.title,
-      section: section,
       content: page.content,
       href: joinUrlPaths(base, ...path, generatePath(page.title)),
     }
@@ -123,9 +118,10 @@ function asCustomContent(
   return {
     type: 'menu',
     title: page.title,
-    children: page.content.map((child) =>
-      asCustomContent(newPath, child, page.title),
-    ),
+    children: page.content.map((child) => ({
+      ...asCustomContent(newPath, child),
+      section: page.title,
+    })),
   }
 }
 
