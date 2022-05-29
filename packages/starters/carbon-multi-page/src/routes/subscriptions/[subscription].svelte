@@ -8,7 +8,7 @@
     if (!field || !page) {
       return {
         status: 404,
-        error: `Subscription ${params.subscription} not found`,
+        error: `Subscription ${params.subscription} not found.`,
       }
     }
 
