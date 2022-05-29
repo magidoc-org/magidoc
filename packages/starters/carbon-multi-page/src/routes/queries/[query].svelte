@@ -8,7 +8,7 @@
     if (!field || !page) {
       return {
         status: 404,
-        error: `Query ${params.query} not found`,
+        error: `Query ${params.query} not found.`,
       }
     }
 

@@ -9,7 +9,7 @@
     if (!type || !page) {
       return {
         status: 404,
-        error: `Type ${params.type} not found`,
+        error: `Type ${params.type} not found.`,
       }
     }
 

@@ -7,7 +7,7 @@
     if (!field || !page) {
       return {
         status: 404,
-        error: `Mutation ${params.mutation} not found`,
+        error: `Mutation ${params.mutation} not found.`,
       }
     }
 
