@@ -10,6 +10,7 @@
   import 'prismjs/components/prism-csharp.js'
   import 'prismjs/components/prism-kotlin.js'
   import 'prismjs/components/prism-java.js'
+  import 'prismjs/components/prism-markdown.js'
   import 'prism-svelte'
 
   import { base } from '$app/paths'
