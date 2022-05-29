@@ -2,10 +2,12 @@
   import type { LoadEvent } from '@sveltejs/kit'
 
   export function load({ error, status }: LoadEvent) {
+    const actualError =
+      error?.message?.trim() || 'An unexpected error occurred.'
     return {
       props: {
         status,
-        error: error?.message,
+        error: actualError.endsWith('.') ? actualError : `${actualError}.`,
       },
     }
   }
@@ -13,7 +15,7 @@
 
 <script lang="ts">
   export let status: number | undefined
-  export let error: string | undefined
+  export let error: string
 </script>
 
 <div class="wrapper">
@@ -21,11 +23,7 @@
     <h1>{status}</h1>
   {/if}
 
-  {#if error}
-    <p>{error}</p>
-  {:else}
-    <p>An unexpected error occurred.</p>
-  {/if}
+  <p>{error}</p>
 </div>
 
 <style>
