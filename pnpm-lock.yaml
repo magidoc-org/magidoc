@@ -30,9 +30,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^1.1.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^1.1.1
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^1.1.1
+      '@magidoc/plugin-starter-variables': workspace:^1.1.2
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^1.1.2
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^1.1.2
       '@rollup/plugin-typescript': ^8.3.2
       '@types/fs-extra': ^9.0.13
       '@types/jest': ^27.5.1
@@ -212,7 +212,7 @@ importers:
 
   packages/plugins/svelte-carbon-commons:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^1.1.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^1.1.2
       '@sveltejs/adapter-auto': 1.0.0-next.48
       '@sveltejs/kit': 1.0.0-next.345
       '@types/marked': ^4.0.3
@@ -245,7 +245,7 @@ importers:
 
   packages/plugins/svelte-carbon-commons/package:
     specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^1.1.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^1.1.2
       '@sveltejs/adapter-auto': 1.0.0-next.48
       '@sveltejs/kit': 1.0.0-next.345
       '@types/marked': ^4.0.3
@@ -328,11 +328,11 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^1.1.1
-      '@magidoc/plugin-starter-variables': workspace:^1.1.1
-      '@magidoc/plugin-svelte-carbon-commons': workspace:^1.1.1
-      '@magidoc/plugin-svelte-prismjs': workspace:^1.1.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^1.1.1
+      '@magidoc/plugin-query-generator': workspace:^1.1.2
+      '@magidoc/plugin-starter-variables': workspace:^1.1.2
+      '@magidoc/plugin-svelte-carbon-commons': workspace:^1.1.2
+      '@magidoc/plugin-svelte-prismjs': workspace:^1.1.2
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^1.1.2
       '@sveltejs/adapter-static': 1.0.0-next.32
       '@sveltejs/kit': 1.0.0-next.345
       '@types/lodash': ^4.14.182
