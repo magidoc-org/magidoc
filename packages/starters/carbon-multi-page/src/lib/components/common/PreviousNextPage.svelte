@@ -55,6 +55,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 3rem;
+    margin-bottom: 1rem;
   }
 
   .direction-wrapper {
