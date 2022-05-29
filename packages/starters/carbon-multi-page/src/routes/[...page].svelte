@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
   import { findPageByHref } from '$lib/pages'
 
-  import type { LoadInput, LoadOutput } from '@sveltejs/kit'
+  import type { LoadEvent, LoadOutput } from '@sveltejs/kit'
 
-  export function load({ url }: LoadInput): LoadOutput {
+  export function load({ url }: LoadEvent): LoadOutput {
     const page = findPageByHref(url.pathname)
     if (!page) {
       return {

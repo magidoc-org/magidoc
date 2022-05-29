@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  export function load({ stuff, params, url }: LoadInput): LoadOutput {
+  export function load({ stuff, params, url }: LoadEvent): LoadOutput {
     const field: GraphQLField<unknown, unknown, unknown> | undefined =
       stuff.schema?.getSubscriptionType()?.getFields()[params.subscription]
 
@@ -25,7 +25,7 @@
   import { QueryType } from '@magidoc/plugin-query-generator'
   import type { GraphQLField } from 'graphql'
   import FieldDetails from '$lib/components/query/FieldDetails.svelte'
-  import type { LoadInput, LoadOutput } from '@sveltejs/kit/types/internal'
+  import type { LoadEvent, LoadOutput } from '@sveltejs/kit'
   import { findPageByHref } from '$lib/pages'
   import type { WebsitePage } from 'src/app'
   import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
