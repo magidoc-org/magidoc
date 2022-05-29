@@ -20,7 +20,7 @@
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
-  import type { LoadOutput } from '@sveltejs/kit/types/internal'
+  import type { LoadOutput } from '@sveltejs/kit'
   import { schema } from '$lib/model'
   import { siteMeta, type Meta } from '$lib/meta'
   import { homePageUrl, pages } from '$lib/pages'

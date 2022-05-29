@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  export function load({ stuff, params, url }: LoadInput): LoadOutput {
+  export function load({ stuff, params, url }: LoadEvent): LoadOutput {
     const type: GraphQLNamedType | undefined = stuff.schema?.getType(
       params.type,
     )
@@ -38,8 +38,7 @@
   import ObjectType from '$lib/components/type/ObjectType.svelte'
   import UnionType from '$lib/components/type/UnionType.svelte'
   import InputObjectType from '$lib/components/type/InputObjectType.svelte'
-  import type { LoadInput } from '@sveltejs/kit/types/internal'
-  import type { LoadOutput } from '@sveltejs/kit/types/internal'
+  import type { LoadEvent, LoadOutput } from '@sveltejs/kit'
   import { findPageByHref } from '$lib/pages'
   import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
   import type { WebsitePage } from 'src/app'
