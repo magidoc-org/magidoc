@@ -74,7 +74,7 @@ function parseOptions(options: string): ContainerOptions {
   let remaining = options
 
   while (true) {
-    const regex = /(?<name>[a-z0-9]+)(?:="(?<value>(?:.*?)(?<!\\))")?/i
+    const regex = /(?<name>[a-z0-9]+)(?:="(?<value>(?:.*?))")?/i
     const match = regex.exec(remaining)
     if (!match) break
 

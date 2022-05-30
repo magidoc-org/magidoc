@@ -108,7 +108,6 @@
     transition-property: opacity;
     transition: cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
     opacity: 1;
-    width: 100%;
   }
 
   .title:hover {
@@ -119,22 +118,18 @@
   @-webkit-keyframes fadeIn {
     from {
       opacity: 0;
-      width: 0;
     }
     to {
       opacity: 1;
-      width: 100%;
     }
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-      width: 0;
     }
     to {
       opacity: 1;
-      width: 100%;
     }
   }
 </style>
