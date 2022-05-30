@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['svelte3', '@typescript-eslint'],
+  plugins: ['svelte3', '@typescript-eslint', 'es'],
   parserOptions: {
     project: ['packages/**/tsconfig.json'],
     extraFileExtensions: ['.svelte', '.cjs', '.mjs'],
@@ -32,5 +32,8 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/no-unused-vars': 'error',
+    'es/no-regexp-lookbehind-assertions': 'error', // This fails in Safari
+    'es/no-regexp-s-flag': 'error',
+    'es/no-regexp-unicode-property-escapes': 'error',
   },
 }
