@@ -2,26 +2,16 @@ import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-static'
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
-import { magidoc, templates } from '@magidoc/plugin-starter-variables'
+import {
+  magidoc,
+  templates,
+  readEnvFile,
+} from '@magidoc/plugin-starter-variables'
 import fs from 'fs'
-
-const envFile = fs
-  .readFileSync('./.env', 'utf8')
-  .toString()
-  .split('\n')
-  .map((line) => line.split('='))
-  .map((parts) => ({
-    key: parts[0],
-    value: parts.slice(1).join('='),
-  }))
-  .reduce(
-    (previous, current) => ({ ...previous, [current.key]: current.value }),
-    {},
-  )
 
 const env = {
   ...process.env,
-  ...envFile,
+  ...readEnvFile('./.env'),
 }
 
 /**

@@ -6,7 +6,11 @@ import type { Page } from '../src/index'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
-    expect(Object.keys(variables)).toEqual(['templates', 'magidoc'])
+    expect(Object.keys(variables)).toEqual([
+      'templates',
+      'magidoc',
+      'readEnvFile',
+    ])
   })
 
   describe('template variables', () => {
