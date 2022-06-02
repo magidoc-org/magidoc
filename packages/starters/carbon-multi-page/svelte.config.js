@@ -3,6 +3,26 @@ import adapter from '@sveltejs/adapter-static'
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
 import { magidoc, templates } from '@magidoc/plugin-starter-variables'
+import fs from 'fs'
+
+const envFile = fs
+  .readFileSync('./.env', 'utf8')
+  .toString()
+  .split('\n')
+  .map((line) => line.split('='))
+  .map((parts) => ({
+    key: parts[0],
+    value: parts.slice(1).join('='),
+  }))
+  .reduce(
+    (previous, current) => ({ ...previous, [current.key]: current.value }),
+    {},
+  )
+
+const env = {
+  ...process.env,
+  ...envFile,
+}
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -15,12 +35,12 @@ const config = {
       default: true,
     },
     paths: {
-      base: templates.SITE_ROOT.vite.get(process.env) ?? '',
+      base: templates.SITE_ROOT.vite.get(env) ?? '',
     },
     vite: {
       plugins: [
         // Skip this rollup plugin if we are in the context of magidoc generate command
-        !magidoc.MAGIDOC_GENERATE.vite.get(process.env)
+        !magidoc.MAGIDOC_GENERATE.vite.get(env)
           ? fetchGraphQLSchema({
               url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
             })
@@ -28,7 +48,7 @@ const config = {
       ],
       ssr: {
         noExternal:
-          process.env.NODE_ENV == 'development'
+          env.NODE_ENV == 'development'
             ? []
             : ['prettier', 'prismjs', 'marked'],
       },

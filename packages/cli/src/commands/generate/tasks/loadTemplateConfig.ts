@@ -33,6 +33,10 @@ export function loadTemplateConfigurationTask(): GenerateTask {
           ctx.tmpDirectory.path,
           config.STATIC_ASSETS_LOCATION,
         ),
+        envFileLocation: path.join(
+          ctx.tmpDirectory.path,
+          config.ENV_FILE_LOCATION,
+        ),
       }
     },
   })
