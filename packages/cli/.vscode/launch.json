@@ -12,8 +12,6 @@
         "cwd": "${workspaceFolder}",
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen",
-        "disableOptimisticBPs": true,
-        
       }
     ]
   }
