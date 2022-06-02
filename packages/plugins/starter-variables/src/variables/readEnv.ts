@@ -12,7 +12,7 @@ export function readEnvFile(path: string): Record<string, string> {
     .map((line) => line.split('='))
     .map((parts) => ({
       key: parts[0],
-      value: parts.slice(1).join('='),
+      value: parts.slice(1).join('=').replace('\\n', '\n'),
     }))
     .reduce(
       (previous, current) => ({

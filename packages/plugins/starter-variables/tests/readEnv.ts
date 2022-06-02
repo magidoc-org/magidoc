@@ -14,6 +14,8 @@ describe('reading an env file', () => {
       expect(readEnvFile(exampleFile('.env'))).toEqual({
         VITE_MAGIDOC_GENERATE: 'true',
         VITE_APP_LOGO: '/some-icon.png',
+        VITE_PAGES:
+          '[{"title": "Potato", content: "# Some content\n\nAnd some here too"}, {"title": "Potato", content: [{"title": "This is a test", content: "wow\nthe hell"}]}]',
       })
 
       it('is possible to use the variables to get a well typed value', () => {
@@ -21,6 +23,13 @@ describe('reading an env file', () => {
 
         expect(magidoc.MAGIDOC_GENERATE.vite.get(result)).toBe(true)
         expect(templates.APP_LOGO.vite.get(result)).toBe('/some-icon.png')
+        expect(templates.PAGES).toEqual([
+          { title: 'Potato', content: '# Some content\n\nAnd some here too' },
+          {
+            title: 'Potato',
+            content: [{ title: 'This is a test', content: 'wow\nthe hell' }],
+          },
+        ])
       })
     })
   })
