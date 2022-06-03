@@ -16,7 +16,7 @@ describe('reading an env file', () => {
         VITE_MAGIDOC_GENERATE: 'true',
         VITE_APP_LOGO: '/some-icon.png',
         VITE_PAGES:
-          '[{"title": "Potato", "content": "# Some content\\n\\nAnd some here too"}, {"title": "Potato", "content": [{"title": "This is a test", "content": "wow\\nthe hell"}]}]',
+          '[{"title":"Potato","content":"# Some content\\n\\nAnd some here too. `lol`"},{"title":"Potato","content":[{"title":"This is a test","content":"wow\\nthe hell"}]}]',
       })
     })
 
@@ -27,7 +27,10 @@ describe('reading an env file', () => {
       expect(magidoc.MAGIDOC_GENERATE.vite.get(result)).toBe(true)
       expect(templates.APP_LOGO.vite.get(result)).toBe('/some-icon.png')
       expect(templates.PAGES.vite.get(result)).toEqual([
-        { title: 'Potato', content: '# Some content\n\nAnd some here too' },
+        {
+          title: 'Potato',
+          content: '# Some content\n\nAnd some here too. `lol`',
+        },
         {
           title: 'Potato',
           content: [{ title: 'This is a test', content: 'wow\nthe hell' }],
