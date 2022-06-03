@@ -1,5 +1,6 @@
 ignore-workspace-root-check: true
 packages:
+  - "docs"
   - "packages/**"
   - "!packages/**/package/*"
   - "!packages/**/build/*"

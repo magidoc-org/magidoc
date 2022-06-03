@@ -17,7 +17,10 @@ export function writeEnvFile(config: GenerationConfig): GenerateTask {
 }
 
 function envAsString(env: Record<string, string>) {
-  return _.map(env, (value, key) => `${key}=${value}`).join('\n')
+  return _.map(
+    env,
+    (value, key) => `${key}="${value.replace('"', '\\"')}"`,
+  ).join('\n')
 }
 
 function buildEnv(

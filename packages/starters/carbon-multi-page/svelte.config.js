@@ -40,7 +40,7 @@ const config = {
         noExternal:
           env.NODE_ENV == 'development'
             ? []
-            : ['prettier', 'prismjs', 'marked'],
+            : ['prettier', 'prismjs', 'marked', 'dotenv'],
       },
     },
   },

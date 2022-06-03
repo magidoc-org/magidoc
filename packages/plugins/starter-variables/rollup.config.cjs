@@ -4,7 +4,7 @@ const typescript = require('@rollup/plugin-typescript')
 module.exports = defineConfig({
   input: ['src/index.ts'],
   plugins: [typescript()],
-  external: ['zod', 'fs'],
+  external: ['zod', 'fs', 'dotenv'],
   output: {
     dir: 'build',
     format: 'esm',

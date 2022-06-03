@@ -37,5 +37,8 @@
   },
   "optionalDependencies": {
     "zod": "^3.17.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1"
   }
 }
