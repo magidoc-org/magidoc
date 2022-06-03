@@ -6,8 +6,6 @@ import { magidoc, templates } from '@magidoc/plugin-starter-variables'
 import fs from 'fs'
 import FullReload from 'vite-plugin-full-reload'
 
-console.log('Reloaded')
-
 function getEnv() {
   return JSON.parse(fs.readFileSync('./magidoc-env.json', 'utf8').toString())
 }
@@ -29,19 +27,18 @@ const config = {
     },
     vite: {
       plugins: [
-        FullReload(['./magidoc-env.json']),
+        FullReload(['magidoc-env.json']),
         {
           name: 'test',
           config: ({ define }) => {
             const env = getEnv()
-            console.log()
             return {
               define: {
                 ...(define || {}),
                 ...Object.keys(env).reduce(
                   (acc, key) => ({
                     ...acc,
-                    [`import.meta.env.${key}`]: env[key],
+                    [`import.meta.env.${key}`]: JSON.stringify(env[key]),
                   }),
                   {},
                 ),
