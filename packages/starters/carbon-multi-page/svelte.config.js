@@ -2,17 +2,17 @@ import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-static'
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
-import {
-  magidoc,
-  templates,
-  readEnvFile,
-} from '@magidoc/plugin-starter-variables'
+import { magidoc, templates } from '@magidoc/plugin-starter-variables'
 import fs from 'fs'
+import FullReload from 'vite-plugin-full-reload'
 
-const env = {
-  ...process.env,
-  ...readEnvFile('./.env'),
+console.log('Reloaded')
+
+function getEnv() {
+  return JSON.parse(fs.readFileSync('./magidoc-env.json', 'utf8').toString())
 }
+
+const env = getEnv()
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -29,6 +29,26 @@ const config = {
     },
     vite: {
       plugins: [
+        FullReload(['./magidoc-env.json']),
+        {
+          name: 'test',
+          config: ({ define }) => {
+            const env = getEnv()
+            console.log()
+            return {
+              define: {
+                ...(define || {}),
+                ...Object.keys(env).reduce(
+                  (acc, key) => ({
+                    ...acc,
+                    [`import.meta.env.${key}`]: env[key],
+                  }),
+                  {},
+                ),
+              },
+            }
+          },
+        },
         // Skip this rollup plugin if we are in the context of magidoc generate command
         !magidoc.MAGIDOC_GENERATE.vite.get(env)
           ? fetchGraphQLSchema({
@@ -38,7 +58,7 @@ const config = {
       ],
       ssr: {
         noExternal:
-          env.NODE_ENV == 'development'
+          process.env.NODE_ENV == 'development'
             ? []
             : ['prettier', 'prismjs', 'marked', 'dotenv'],
       },
