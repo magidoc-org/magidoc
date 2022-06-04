@@ -1,13 +1,13 @@
 import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-static'
+import { loadEnv } from 'vite'
+
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
 import { magidoc, templates } from '@magidoc/plugin-starter-variables'
-import fs from 'fs'
-import FullReload from 'vite-plugin-full-reload'
 
 function getEnv() {
-  return JSON.parse(fs.readFileSync('./magidoc-env.json', 'utf8').toString())
+  return loadEnv('default', '.')
 }
 
 const env = getEnv()
@@ -27,18 +27,16 @@ const config = {
     },
     vite: {
       plugins: [
-        FullReload(['magidoc-env.json']),
         {
           name: 'test',
-          config: ({ define }) => {
-            const env = getEnv()
+          config: (config) => {
+            const newEnv = getEnv()
             return {
               define: {
-                ...(define || {}),
-                ...Object.keys(env).reduce(
+                ...Object.keys(newEnv).reduce(
                   (acc, key) => ({
                     ...acc,
-                    [`import.meta.env.${key}`]: JSON.stringify(env[key]),
+                    [`import.meta.env.${key}`]: JSON.stringify(newEnv[key].replace('\`')),
                   }),
                   {},
                 ),
