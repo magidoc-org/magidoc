@@ -1,3 +1,4 @@
+import { templates } from '@magidoc/plugin-starter-variables'
 import { executeAllTasks } from '../../tasks'
 import { cleanTask } from '../../tasks/all/clean'
 import { copyStaticAssetsTask } from '../../tasks/all/copyStaticAssets'
@@ -12,9 +13,11 @@ import { warnVersionTask } from '../../tasks/all/warnVersion'
 import { writeEnvFile } from '../../tasks/all/writeEnvFile'
 import type { GenerateTaskContext, GenerationConfig } from '../generate'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
+import { cyan } from '../utils/outputColors'
 import { watchFiles } from '../utils/watch'
 
 export type DevConfig = GenerationConfig & {
+  port: number
   stacktrace: boolean
   magidocConfigLocation: string
 }
@@ -36,8 +39,13 @@ export default async function runDevelopmentServer(config: DevConfig) {
     writeEnvFile(config),
   ])
 
+  // We don't have a choice to print this before.
+  printServerListening(config)
   await Promise.all([
-    ctx.packageManager.startDevServer({ cwd: ctx.tmpDirectory.path }),
+    ctx.packageManager.startDevServer({
+      cwd: ctx.tmpDirectory.path,
+      port: config.port,
+    }),
     watchFiles(
       [
         config.magidocConfigLocation,
@@ -57,9 +65,28 @@ export default async function runDevelopmentServer(config: DevConfig) {
 
         await executeAllTasks<DevTaskContext>(
           [copyStaticAssetsTask(newDevConfig), writeEnvFile(newDevConfig)],
-          ctx,
+          {
+            ctx,
+            silent: true,
+          },
         )
       },
     ),
   ])
+}
+
+// eslint-disable-next-line @typescript-eslint/require-await
+function printServerListening(config: DevConfig) {
+  setTimeout(() => {
+    const root = config.website.options[templates.SITE_ROOT.name]
+    console.log()
+    console.log('-----------')
+    console.log()
+
+    console.log(
+      `Server listening on ${cyan(
+        `http://localhost:${config.port}${String(root || '')}`,
+      )}`,
+    )
+  }, 500)
 }

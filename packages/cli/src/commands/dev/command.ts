@@ -1,4 +1,4 @@
-import type { Command } from 'commander'
+import { type Command, Option } from 'commander'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
 import runDevelopmentServer from '.'
@@ -12,6 +12,7 @@ import {
 
 type DevCommandOptions = {
   file: string
+  port: number
   packageManager?: PackageManagerType
   stacktrace: boolean
   clean: boolean
@@ -23,12 +24,19 @@ export default function buildDevCommand(program: Command) {
     .description(
       'Starts a development server with hot-reload as changes occur to watched files.',
     )
+    .addOption(
+      new Option(
+        '-p|--port [number]',
+        'The port on which to run the development server..',
+      ).default(3000),
+    )
     .addOption(CONFIG_FILE_OPTION())
     .addOption(CLEAN_OPTION())
     .addOption(STACKTRACE_OPTION())
     .action(
       async ({
         packageManager,
+        port,
         file,
         stacktrace,
         clean,
@@ -43,6 +51,7 @@ export default function buildDevCommand(program: Command) {
           await runDevelopmentServer({
             ...fileConfiguration,
             magidocConfigLocation: path.resolve(file),
+            port,
             stacktrace,
             packageManager,
             clean,
