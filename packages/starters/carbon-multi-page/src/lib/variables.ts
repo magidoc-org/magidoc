@@ -1,10 +1,10 @@
 import type { Variable } from '@magidoc/plugin-starter-variables'
-import * as variables from '../_variables.json'
+import _variables from '../_variables.json'
 
 export function get<T>(target: Variable<T>): T | null {
-  return target.vite.get(variables)
+  return target.get(_variables as Record<string, unknown>)
 }
 
 export function getOrDefault<T>(target: Variable<T>, def: T) {
-  return target.vite.getOrDefault(variables, def)
+  return target.getOrDefault(_variables as Record<string, unknown>, def)
 }

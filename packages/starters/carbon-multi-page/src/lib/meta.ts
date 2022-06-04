@@ -2,13 +2,14 @@ import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
 import { appLogo } from './logo'
 import { appTitle } from './pages'
+import { getOrDefault } from './variables'
 
 export const siteMeta: ReadonlyArray<Meta> = generateMeta(
   {
     appTitle: appTitle,
     appIcon: appLogo,
   },
-  templates.SITE_META.vite.get(import.meta.env) || {},
+  getOrDefault(templates.SITE_META, {}),
 )
 
 export type WebsiteData = {

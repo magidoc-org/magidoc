@@ -30,9 +30,9 @@ describe('creating a variables file ', () => {
     it('is possible to convert it back to the original object using variables', () => {
       const parsed = JSON.parse(result) as Record<string, string>
 
-      expect(magidoc.MAGIDOC_GENERATE.vite.get(parsed)).toBe(true)
-      expect(templates.APP_TITLE.vite.get(parsed)).toBe(initialObject.appTitle)
-      expect(templates.PAGES.vite.get(parsed)).toEqual(initialObject.pages)
+      expect(magidoc.MAGIDOC_GENERATE.get(parsed)).toBe(true)
+      expect(templates.APP_TITLE.get(parsed)).toBe(initialObject.appTitle)
+      expect(templates.PAGES.get(parsed)).toEqual(initialObject.pages)
     })
   })
 })

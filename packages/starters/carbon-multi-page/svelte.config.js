@@ -28,7 +28,7 @@ const config = {
       default: true,
     },
     paths: {
-      base: templates.SITE_ROOT.vite.get(variables) ?? '',
+      base: templates.SITE_ROOT.get(variables) ?? '',
     },
     vite: {
       plugins: [
@@ -60,18 +60,11 @@ const config = {
           },
         },
         // Skip this rollup plugin if we are in the context of magidoc generate command
-        !magidoc.MAGIDOC_GENERATE.vite.get(variables)
+        !magidoc.MAGIDOC_GENERATE.get(variables)
           ? fetchGraphQLSchema({
               url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
             })
           : null,
-      ],
-      optimizeDeps: [
-        'prismjs/plugins/line-numbers/prism-line-numbers',
-        'prismjs/plugins/toolbar/prism-toolbar',
-        'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard',
-        'marked',
-        'svelte/internal',
       ],
       ssr: {
         noExternal:

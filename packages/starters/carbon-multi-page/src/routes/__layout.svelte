@@ -26,17 +26,17 @@
   import { homePageUrl, pages } from '$lib/pages'
   import { templates } from '@magidoc/plugin-starter-variables'
   import type { WebsiteContent } from 'src/app'
+  import { get } from '$lib/variables'
 
   let isSideNavOpen: boolean
 
   export let content: WebsiteContent[]
   export let meta: ReadonlyArray<Meta>
 
-  const favicon = templates.APP_FAVICON.vite.get(import.meta.env)
+  const favicon = get(templates.APP_FAVICON)
 
   if (import.meta.hot) {
     import.meta.hot.on('variables-changed', () => {
-      console.log('AAAAAAAAAAAAAA')
       window.location.reload()
     })
   }

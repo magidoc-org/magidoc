@@ -1,60 +1,19 @@
-import { magidoc } from '@magidoc/plugin-starter-variables'
-import _ from 'lodash'
+import { toVariablesFile } from '@magidoc/plugin-starter-variables'
 import { writeFile } from 'fs/promises'
 import type { GenerationConfig } from '../config'
-import { newTask, GenerateTask, GenerateTaskContext } from '../task'
+import { newTask, GenerateTask } from '../task'
 
 export function writeEnvFile(config: GenerationConfig): GenerateTask {
   return newTask({
-    title: `Write environment file`,
+    title: `Write variables file`,
     executor: async (ctx) => {
       await writeFile(
         ctx.templateConfiguration.envFileLocation,
-        envAsString(buildEnv(ctx, config)),
+        toVariablesFile(
+          config.website.options,
+          ctx.templateConfiguration.supportedOptions,
+        ),
       )
     },
   })
-}
-
-function envAsString(env: Record<string, string>) {
-  return JSON.stringify(env)
-}
-
-function buildEnv(
-  ctx: GenerateTaskContext,
-  config: GenerationConfig,
-): Record<string, string> {
-  let newRecord: Record<string, string> = {}
-  const nonExistingOptions: string[] = []
-  _.forEach(config.website.options, (value, key) => {
-    const variable = ctx.templateConfiguration.supportedOptions.find(
-      (option) => option.name === key,
-    )
-    if (!variable) {
-      nonExistingOptions.push(key)
-      return
-    }
-
-    newRecord = {
-      ...newRecord,
-      ...variable.asEnv(value),
-    }
-  })
-
-  if (nonExistingOptions.length > 0) {
-    throw new Error(
-      `Options [${nonExistingOptions.toString()}] are not supported by template ${
-        config.website.template
-      }... Supported option names are [${ctx.templateConfiguration.supportedOptions
-        .map((value) => value.name)
-        .join(', ')}]`,
-    )
-  }
-
-  insertDefaultVariables(newRecord)
-  return newRecord
-}
-
-function insertDefaultVariables(newRecord: Record<string, string>) {
-  newRecord[magidoc.MAGIDOC_GENERATE.vite.key] = 'true'
 }
