@@ -17,4 +17,4 @@ export const SCHEMA_TARGET_LOCATION = './src/_schema.json'
 
 export const STATIC_ASSETS_LOCATION = './static'
 
-export const ENV_FILE_LOCATION = './magidoc-env.json'
+export const ENV_FILE_LOCATION = './src/_variables.json'

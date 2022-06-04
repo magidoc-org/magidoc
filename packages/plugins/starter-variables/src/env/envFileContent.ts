@@ -1,29 +1,16 @@
 import _ from 'lodash'
 import magidoc from '../variables/magidoc'
-import dotenv from 'dotenv'
 import type { Variable } from '../variables/variable'
 
-export function toEnv(
+export function toVariablesFile(
   options: Record<string, unknown>,
   supportedOptions: ReadonlyArray<Variable<unknown>>,
 ): string {
-  return envAsString(buildEnv(options, supportedOptions))
+  return asVariablesString(buildEnv(options, supportedOptions))
 }
 
-export function parseEnv(content: string): Record<string, string> {
-  return _.mapValues(dotenv.parse(content), unescapeEnv)
-}
-
-export function escapeEnv(value: string): string {
-  return value.replaceAll("'", "\\'")
-}
-
-export function unescapeEnv(value: string): string {
-  return value.replaceAll("\\'", "'")
-}
-
-function envAsString(env: Record<string, string>) {
-  return _.map(env, (value, key) => `${key}='${escapeEnv(value)}'`).join('\n')
+function asVariablesString(env: Record<string, string>) {
+  return JSON.stringify(env)
 }
 
 function buildEnv(
@@ -58,7 +45,7 @@ function buildEnv(
 }
 
 function insertDefaultVariables(newRecord: Record<string, string>) {
-  newRecord[magidoc.MAGIDOC_GENERATE.vite.key] = 'true'
+  newRecord[magidoc.MAGIDOC_GENERATE.key] = 'true'
 }
 
 export class UnsupportedOptionError extends Error {

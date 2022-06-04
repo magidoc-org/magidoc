@@ -1,21 +1,21 @@
 import preprocess from 'svelte-preprocess'
 import adapter from '@sveltejs/adapter-static'
-import { loadEnv } from 'vite'
-
+import { ENV_FILE_LOCATION } from './magidoc.config.js'
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
 import _ from 'lodash'
-import {
-  magidoc,
-  templates,
-  unescapeEnv,
-} from '@magidoc/plugin-starter-variables'
+import fs from 'fs'
+import { magidoc, templates } from '@magidoc/plugin-starter-variables'
 
-function getEnv() {
-  return _.mapValues(loadEnv('default', '.'), (value) => unescapeEnv(value))
+function loadVariables() {
+  if (!fs.existsSync(ENV_FILE_LOCATION)) {
+    return {}
+  }
+
+  return JSON.stringify(fs.readFileSync(ENV_FILE_LOCATION))
 }
 
-const env = getEnv()
+const variables = loadVariables()
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -28,34 +28,25 @@ const config = {
       default: true,
     },
     paths: {
-      base: templates.SITE_ROOT.vite.get(env) ?? '',
+      base: templates.SITE_ROOT.vite.get(variables) ?? '',
     },
     vite: {
       plugins: [
-        // {
-        //   name: 'test',
-        //   config: (config) => {
-        //     const newEnv = getEnv()
-        //     console.log(newEnv)
-        //     return {
-        //       define: {
-        //         ...Object.keys(newEnv).reduce(
-        //           (acc, key) => ({
-        //             ...acc,
-        //             [`import.meta.env.${key}`]: newEnv[key],
-        //           }),
-        //           {},
-        //         ),
-        //       },
-        //     }
-        //   },
-        // },
         {
+          name: 'init-variables',
+          buildStart: () => {
+            if (!fs.existsSync(ENV_FILE_LOCATION)) {
+              fs.writeFileSync(ENV_FILE_LOCATION, '{}')
+            }
+          },
+        },
+        {
+          name: 'variables-change-handler',
           handleHotUpdate(ctx) {
-            console.log('wow')
-            const isVariables = ctx.file.indexOf('/lib/variables/variables.ts') > 0
-            console.log(ctx.file)
-            console.log(isVariables)
+            const isVariables = ctx.file.includes(
+              ENV_FILE_LOCATION.replace('./', ''),
+            )
+
             if (isVariables) {
               ctx.server.ws.send({
                 type: 'custom',
@@ -69,7 +60,7 @@ const config = {
           },
         },
         // Skip this rollup plugin if we are in the context of magidoc generate command
-        !magidoc.MAGIDOC_GENERATE.vite.get(env)
+        !magidoc.MAGIDOC_GENERATE.vite.get(variables)
           ? fetchGraphQLSchema({
               url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
             })

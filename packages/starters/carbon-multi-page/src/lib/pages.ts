@@ -3,7 +3,7 @@ import type { WebsitePage, WebsiteContent } from 'src/app'
 import { base } from '$app/paths'
 import { createModelContent } from './model'
 import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
-import { getOrDefault } from './variables/getVariable'
+import { getOrDefault } from './variables'
 
 export const appTitle = getOrDefault(templates.APP_TITLE, 'Magidoc')
 

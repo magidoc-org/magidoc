@@ -1,17 +1,16 @@
 import type { ZodType, ZodTypeDef } from 'zod'
 
-/**
- * Copy of the ViteJS import meta interface
- */
 interface MetaEnv {
   [key: string]: unknown
 }
 
 export type Variable<T> = {
   name: string
+  key: string
   asEnv: (value: T) => Record<string, string>
+  get: (env: MetaEnv) => T | null
+  getOrDefault: (env: MetaEnv, def: T) => T
   zod: ZodVariable<T>
-  vite: ViteVariable<T>
 }
 
 export type ZodTypeProvider<T> = (
@@ -28,30 +27,21 @@ export type Converter<T> = {
   type: ZodTypeProvider<T>
 }
 
-export type ViteVariable<T> = {
-  key: string
-  get: (env: MetaEnv) => T | null
-  getOrDefault: (env: MetaEnv, def: T) => T
-}
-
 export function createVariable<T>(
   key: string,
   converter: Converter<T>,
 ): Variable<T> {
-  const viteKey = `VITE_${key.toUpperCase()}`
-  const viteGet = (env: MetaEnv) => converter.convert(env[viteKey])
+  const get = (env: MetaEnv) => converter.convert(env[key])
 
   return {
     name: toCamelCase(key),
-    asEnv: (value: T) => ({ [viteKey]: converter.asString(value) }),
+    key: key,
+    asEnv: (value: T) => ({ [key]: converter.asString(value) }),
     zod: {
       type: converter.type,
     },
-    vite: {
-      key: viteKey,
-      get: viteGet,
-      getOrDefault: (env, def) => viteGet(env) ?? def,
-    },
+    get: get,
+    getOrDefault: (env, def) => get(env) ?? def,
   }
 }
 

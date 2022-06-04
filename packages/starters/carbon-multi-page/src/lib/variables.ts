@@ -1,5 +1,5 @@
 import type { Variable } from '@magidoc/plugin-starter-variables'
-import * as variables from './variables'
+import * as variables from '../_variables.json'
 
 export function get<T>(target: Variable<T>): T | null {
   return target.vite.get(variables)
