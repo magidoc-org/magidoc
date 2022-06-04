@@ -4,9 +4,9 @@ import type { Variable } from '../variables/variable'
 
 export function toVariablesFile(
   options: Record<string, unknown>,
-  supportedOptions: ReadonlyArray<Variable<unknown>>,
+  supportedVariables: ReadonlyArray<Variable<unknown>>,
 ): string {
-  return asVariablesString(buildEnv(options, supportedOptions))
+  return asVariablesString(buildEnv(options, supportedVariables))
 }
 
 function asVariablesString(env: Record<string, string>) {
@@ -15,14 +15,14 @@ function asVariablesString(env: Record<string, string>) {
 
 function buildEnv(
   options: Record<string, unknown>,
-  supportedOptions: ReadonlyArray<Variable<unknown>>,
+  supportedVariables: ReadonlyArray<Variable<unknown>>,
 ): Record<string, string> {
   let newRecord: Record<string, string> = {}
-  const nonExistingOptions: string[] = []
+  const unsupportedVariables: string[] = []
   _.forEach(options, (value, key) => {
-    const variable = supportedOptions.find((option) => option.name === key)
+    const variable = supportedVariables.find((option) => option.name === key)
     if (!variable) {
-      nonExistingOptions.push(key)
+      unsupportedVariables.push(key)
       return
     }
 
@@ -32,11 +32,12 @@ function buildEnv(
     }
   })
 
-  if (nonExistingOptions.length > 0) {
-    throw new UnsupportedOptionError(
-      `Options [${nonExistingOptions.toString()}] are not supported... Supported option names are [${supportedOptions
+  if (unsupportedVariables.length > 0) {
+    throw new UnsupportedVariablesError(
+      `Options [${unsupportedVariables.toString()}] are not supported... Supported option names are [${supportedVariables
         .map((value) => value.name)
         .join(', ')}]`,
+      unsupportedVariables,
     )
   }
 
@@ -48,12 +49,12 @@ function insertDefaultVariables(newRecord: Record<string, string>) {
   newRecord[magidoc.MAGIDOC_GENERATE.key] = 'true'
 }
 
-export class UnsupportedOptionError extends Error {
-  public nonExistingOptions: string[]
+export class UnsupportedVariablesError extends Error {
+  public unsupportedVariables: string[]
 
-  constructor(message: string, nonExistingOptions: string[] = []) {
+  constructor(message: string, unsupportedVariables: string[]) {
     super(message)
-    this.nonExistingOptions = nonExistingOptions
-    this.name = 'UnsupportedOptionError'
+    this.unsupportedVariables = unsupportedVariables
+    this.name = 'UnsupportedVariableError'
   }
 }

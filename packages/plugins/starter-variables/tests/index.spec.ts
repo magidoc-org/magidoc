@@ -9,11 +9,8 @@ describe('variables', () => {
     expect(Object.keys(variables)).toEqual([
       'templates',
       'magidoc',
-      'toVariablesString',
-      'parseEnv',
-      'escapeEnv',
-      'unescapeEnv',
-      'UnsupportedOptionError',
+      'toVariablesFile',
+      'UnsupportedVariablesError',
     ])
   })
 
