@@ -23,10 +23,7 @@ export function unescapeEnv(value: string): string {
 }
 
 function envAsString(env: Record<string, string>) {
-  return _.map(
-    env,
-    (value, key) => `${key}='${JSON.stringify(escapeEnv(value))}'`,
-  ).join('\n')
+  return _.map(env, (value, key) => `${key}='${escapeEnv(value)}'`).join('\n')
 }
 
 function buildEnv(

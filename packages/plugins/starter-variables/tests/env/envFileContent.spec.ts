@@ -1,4 +1,4 @@
-import { toEnv, templates, Variable, parseEnv } from '../../src'
+import { toEnv, templates, Variable, parseEnv, magidoc } from '../../src'
 
 describe('writing an env ', () => {
   describe('all provided options are supported', () => {
@@ -26,7 +26,7 @@ describe('writing an env ', () => {
       VITE_MAGIDOC_GENERATE: 'true',
       VITE_APP_TITLE: 'My App',
       VITE_PAGES:
-        '[{"title":"My-page-title","content":"A raw markdown string containing stuff like \\"double quotes\\", `code`, and **bold**."},{"title":"My-page-title-2","content":[{"title":"This is another page, but this one contains \'single quotes\', ```much more code```,\n new lines \n\n # And a new header apparently"}]}]',
+        '[{"title":"My-page-title","content":"A raw markdown string containing stuff like \\"double quotes\\", `code`, and **bold**."},{"title":"My-page-title-2","content":[{"title":"This is another page, but this one contains \'single quotes\', ```much more code```,\\n new lines \\n\\n # And a new header apparently"}]}]',
     }
 
     const result = toEnv(initialObject, [
@@ -43,22 +43,12 @@ describe('writing an env ', () => {
       expect(parseEnv(result)).toEqual(expectedRecord)
     })
 
-    // it('is possible to convert it back to a record of strings', () => {
-    //   const result = readEnv(env)
+    it('is possible to convert it back to a record of strings', () => {
+      const parsed = parseEnv(result)
 
-    //   console.log(result)
-    //   expect(magidoc.MAGIDOC_GENERATE.vite.get(result)).toBe(true)
-    //   expect(templates.APP_LOGO.vite.get(result)).toBe('/some-icon.png')
-    //   expect(templates.PAGES.vite.get(result)).toEqual([
-    //     {
-    //       title: 'Potato',
-    //       content: '# Some content\n\nAnd some here too. `lol`',
-    //     },
-    //     {
-    //       title: 'Potato',
-    //       content: [{ title: 'This is a test', content: 'wow\nthe hell' }],
-    //     },
-    //   ])
-    // })
+      expect(magidoc.MAGIDOC_GENERATE.vite.get(parsed)).toBe(true)
+      expect(templates.APP_TITLE.vite.get(parsed)).toBe(initialObject.appTitle)
+      expect(templates.PAGES.vite.get(parsed)).toEqual(initialObject.pages)
+    })
   })
 })

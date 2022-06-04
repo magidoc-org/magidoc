@@ -33,6 +33,13 @@
   export let meta: ReadonlyArray<Meta>
 
   const favicon = templates.APP_FAVICON.vite.get(import.meta.env)
+
+  if (import.meta.hot) {
+    import.meta.hot.on('variables-changed', () => {
+      console.log('AAAAAAAAAAAAAA')
+      window.location.reload()
+    })
+  }
 </script>
 
 <svelte:head>
