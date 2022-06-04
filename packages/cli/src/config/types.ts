@@ -61,7 +61,7 @@ export const ZDevConfiguration = z
   .object({
     watch: z.array(ZPath).default([]),
   })
-  .default({ watch: [] })
+  .default({})
 
 export const ZMagidocConfiguration = z.object({
   introspection: ZIntrospectionConfiguration,

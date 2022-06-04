@@ -421,12 +421,12 @@ describe('parsing the magidoc config', () => {
     })
 
     describe('using valid configuration', () => {
-      const valid = {
+      const valid: RecursivePartial<MagidocConfiguration> = {
         ...minimalConfiguration,
         dev: {
           watch: ['./test', './test/**'],
         },
-      } as const
+      }
 
       it('should parse properly', () => {
         shouldParse(valid, {
@@ -437,10 +437,14 @@ describe('parsing the magidoc config', () => {
           website: {
             ...minimalConfiguration.website,
             templateVersion: expect.any(String) as string,
-            options: options,
+            options: {},
             output: resolve('./docs'),
           },
-          dev: devPart,
+          dev: {
+            watch: (valid.dev?.watch || []).map((target) =>
+              path.resolve(target || ''),
+            ),
+          },
         })
       })
     })
