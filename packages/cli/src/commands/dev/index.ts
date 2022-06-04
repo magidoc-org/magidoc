@@ -11,8 +11,13 @@ import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { warnVersionTask } from '../../tasks/all/warnVersion'
 import { writeEnvFile } from '../../tasks/all/writeEnvFile'
 import type { GenerateTaskContext, GenerationConfig } from '../generate'
+import { loadFileConfiguration } from '../utils/loadConfigFile'
+import { watchFiles } from '../utils/watch'
 
-export type DevConfig = GenerationConfig
+export type DevConfig = GenerationConfig & {
+  stacktrace: boolean
+  magidocConfigLocation: string
+}
 
 export type DevTaskContext = GenerateTaskContext
 
@@ -31,5 +36,30 @@ export default async function runDevelopmentServer(config: DevConfig) {
     writeEnvFile(config),
   ])
 
-  console.log(ctx)
+  await Promise.all([
+    ctx.packageManager.startDevServer({ cwd: ctx.tmpDirectory.path }),
+    watchFiles(
+      [
+        config.magidocConfigLocation,
+        config.website.staticAssets,
+        ...config.dev.watch,
+      ],
+      async () => {
+        const newMagidocConfig = await loadFileConfiguration(
+          config.magidocConfigLocation,
+          config.stacktrace,
+        )
+
+        const newDevConfig: DevConfig = {
+          ...config,
+          ...newMagidocConfig,
+        }
+
+        await executeAllTasks<DevTaskContext>(
+          [copyStaticAssetsTask(newDevConfig), writeEnvFile(newDevConfig)],
+          ctx,
+        )
+      },
+    ),
+  ])
 }

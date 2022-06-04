@@ -9,6 +9,7 @@ export type PackageManagerType = typeof PACKAGE_MANAGER_TYPES[number]
 
 export type CommandConfiguration = {
   cwd: string
+  pipeOutputToConsole?: boolean
   env?: Record<string, string>
 }
 
@@ -16,8 +17,8 @@ export type PackageManager = {
   type: PackageManagerType
 
   runInstall: (config: CommandConfiguration) => Promise<void>
-
   buildProject: (config: CommandConfiguration) => Promise<void>
+  startDevServer: (config: CommandConfiguration) => Promise<void>
 }
 
 export async function selectPackageManager(): Promise<PackageManager> {
@@ -70,6 +71,11 @@ function createRunner({
       runNodeCommand(type, ['install', ...(installArgs || [])], config),
     buildProject: (config: CommandConfiguration) =>
       runNodeCommand(type, ['run', 'build'], config),
+    startDevServer: (config: CommandConfiguration) =>
+      runNodeCommand(type, ['run', 'dev'], {
+        ...config,
+        pipeOutputToConsole: true,
+      }),
   }
 }
 
@@ -89,8 +95,15 @@ async function runNodeCommand(
     })
 
     let output = ''
-    child.stdout.on('data', (chunk) => (output += String(chunk)))
-    child.stderr.on('data', (chunk) => (output += String(chunk)))
+    const stdHandler = (chunk: Buffer) => {
+      if (config.pipeOutputToConsole) {
+        console.log(chunk.toString())
+      } else {
+        output += String(chunk)
+      }
+    }
+    child.stdout.on('data', stdHandler)
+    child.stderr.on('data', stdHandler)
 
     child.on('error', (error) => {
       reject(

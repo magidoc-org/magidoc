@@ -3,6 +3,7 @@ import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
 import runDevelopmentServer from '.'
 import type { PackageManagerType } from '../../node/packageManager'
+import path from 'path'
 
 type DevCommandOptions = {
   file: string
@@ -53,6 +54,8 @@ export default function buildDevCommand(program: Command) {
         await withStacktrace(stacktrace, async () => {
           await runDevelopmentServer({
             ...fileConfiguration,
+            magidocConfigLocation: path.resolve(file),
+            stacktrace,
             packageManager,
             clean,
           })
