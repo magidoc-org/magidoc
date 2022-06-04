@@ -67,9 +67,11 @@ export default function buildInitCommand(program: Command) {
       }: InitCommandOptions) => {
         await withStacktrace(stacktrace, async () => {
           await init({
-            packageManagerType: packageManager,
-            template,
-            templateVersion,
+            packageManager,
+            website: {
+              template,
+              templateVersion,
+            },
             destination: path.resolve(destination),
           })
 

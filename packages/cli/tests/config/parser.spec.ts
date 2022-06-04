@@ -1,6 +1,7 @@
 import type { MagidocConfiguration } from '../../src'
 import { parseConfiguration } from '../../src/config/parser'
 import type {
+  DevConfiguration,
   IntrospectionConfiguration,
   WebsiteConfiguration,
 } from '../../src/config/types'
@@ -37,6 +38,9 @@ describe('parsing the magidoc config', () => {
           options: {},
           output: resolve('./docs'),
         },
+        dev: {
+          watch: [],
+        },
       })
     })
   })
@@ -47,6 +51,10 @@ describe('parsing the magidoc config', () => {
       templateVersion: expect.any(String) as string,
       options: {},
       output: expect.any(String) as string,
+    }
+
+    const devPart: DevConfiguration = {
+      watch: [],
     }
 
     describe('using URL', () => {
@@ -69,6 +77,7 @@ describe('parsing the magidoc config', () => {
           {
             introspection: introspection,
             website: websitePart,
+            dev: devPart,
           },
         )
       })
@@ -94,6 +103,7 @@ describe('parsing the magidoc config', () => {
               ) as unknown as [string, ...string[]],
             },
             website: websitePart,
+            dev: devPart,
           },
         )
       })
@@ -134,6 +144,7 @@ describe('parsing the magidoc config', () => {
               location: resolve(introspection.location),
             },
             website: websitePart,
+            dev: devPart,
           },
         )
       })
@@ -171,6 +182,7 @@ describe('parsing the magidoc config', () => {
           {
             introspection,
             website: websitePart,
+            dev: devPart,
           },
         )
       })
@@ -209,6 +221,10 @@ describe('parsing the magidoc config', () => {
   })
 
   describe('using different website configurations', () => {
+    const devPart: DevConfiguration = {
+      watch: [],
+    }
+
     describe('using an invalid template', () => {
       it('should fail parsing', () => {
         shouldFailParsing(
@@ -246,6 +262,7 @@ describe('parsing the magidoc config', () => {
               options: {},
               output: resolve('./docs'),
             },
+            dev: devPart,
           },
         )
       })
@@ -330,6 +347,7 @@ describe('parsing the magidoc config', () => {
               options: options,
               output: resolve('./docs'),
             },
+            dev: devPart,
           },
         )
       })
@@ -381,6 +399,48 @@ describe('parsing the magidoc config', () => {
               '- Expected string, received number',
             ],
           )
+        })
+      })
+    })
+  })
+
+  describe('using different dev configurations', () => {
+    describe('using an invalid configuration', () => {
+      const invalidConfiguration = {
+        ...minimalConfiguration,
+        dev: {
+          watch: [123],
+        },
+      } as const
+
+      it('should fail parsing', () => {
+        shouldFailParsing(invalidConfiguration, [
+          "Expected: 'string' but received 'number' at path 'dev.watch[0]'",
+        ])
+      })
+    })
+
+    describe('using valid configuration', () => {
+      const valid = {
+        ...minimalConfiguration,
+        dev: {
+          watch: ['./test', './test/**'],
+        },
+      } as const
+
+      it('should parse properly', () => {
+        shouldParse(valid, {
+          introspection: {
+            ...minimalConfiguration.introspection,
+            method: 'POST',
+          },
+          website: {
+            ...minimalConfiguration.website,
+            templateVersion: expect.any(String) as string,
+            options: options,
+            output: resolve('./docs'),
+          },
+          dev: devPart,
         })
       })
     })

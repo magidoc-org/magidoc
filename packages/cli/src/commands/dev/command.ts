@@ -13,7 +13,7 @@ type DevCommandOptions = {
 
 export const DEFAULT_CONFIG_FILE = './magidoc.mjs'
 
-export default function buildGenerateCommand(program: Command) {
+export default function buildDevCommand(program: Command) {
   program
     .command('dev')
     .description(
