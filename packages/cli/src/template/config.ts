@@ -6,15 +6,13 @@ const ZMagidocTemplateConfig = z.object({
   SUPPORTED_OPTIONS: z.array(
     z.object({
       name: z.string().min(1),
+      key: z.string().min(1),
       asEnv: z.function(),
       zod: z.object({
         type: z.function(),
       }),
-      vite: z.object({
-        key: z.string().min(1),
-        get: z.function(),
-        getOrDefault: z.function(),
-      }),
+      get: z.function(),
+      getOrDefault: z.function(),
     }),
   ),
   SCHEMA_TARGET_LOCATION: z.string().min(1),

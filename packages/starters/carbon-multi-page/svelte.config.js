@@ -12,7 +12,7 @@ function loadVariables() {
     return {}
   }
 
-  return JSON.stringify(fs.readFileSync(ENV_FILE_LOCATION))
+  return JSON.parse(fs.readFileSync(ENV_FILE_LOCATION))
 }
 
 const variables = loadVariables()
