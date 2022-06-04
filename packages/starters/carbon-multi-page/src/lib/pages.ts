@@ -3,11 +3,9 @@ import type { WebsitePage, WebsiteContent } from 'src/app'
 import { base } from '$app/paths'
 import { createModelContent } from './model'
 import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
+import { getOrDefault } from './variables'
 
-export const appTitle = templates.APP_TITLE.vite.getOrDefault(
-  import.meta.env,
-  'Magidoc',
-)
+export const appTitle = getOrDefault(templates.APP_TITLE, 'Magidoc')
 
 const buildPages = parseCustomPages().concat(createModelContent())
 setPreviousAndNextPages(buildPages)
@@ -16,10 +14,7 @@ export const pages: ReadonlyArray<WebsiteContent> = Object.freeze(buildPages)
 export const homePageUrl = getHomePageUrl()
 
 function parseCustomPages(): ReadonlyArray<WebsiteContent> {
-  const pages = templates.PAGES.vite.getOrDefault(
-    import.meta.env,
-    getDefaultPages(appTitle),
-  )
+  const pages = getOrDefault(templates.PAGES, getDefaultPages(appTitle))
 
   return pages
     .filter((page): page is Page => !!page)

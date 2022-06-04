@@ -23,7 +23,7 @@
     },
     {
       "name": "Docs",
-      "path": "./packages/docs"
+      "path": "./docs"
     },
     {
       "name": "Examples",

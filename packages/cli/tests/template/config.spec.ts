@@ -10,6 +10,7 @@ describe('parsing a valid template configuration', () => {
       SUPPORTED_OPTIONS: expect.toBeArray() as unknown,
       SCHEMA_TARGET_LOCATION: './src/_schema.json',
       STATIC_ASSETS_LOCATION: './static',
+      ENV_FILE_LOCATION: './.env',
     })
   })
 })

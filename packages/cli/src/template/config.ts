@@ -5,26 +5,25 @@ import { formatZodIssues } from '../config/zod'
 const ZMagidocTemplateConfig = z.object({
   SUPPORTED_OPTIONS: z.array(
     z.object({
-      name: z.string().nonempty(),
+      name: z.string().min(1),
+      key: z.string().min(1),
       asEnv: z.function(),
       zod: z.object({
         type: z.function(),
       }),
-      vite: z.object({
-        key: z.string().nonempty(),
-        get: z.function(),
-        getOrDefault: z.function(),
-      }),
+      get: z.function(),
+      getOrDefault: z.function(),
     }),
   ),
-  SCHEMA_TARGET_LOCATION: z.string().nonempty(),
-  STATIC_ASSETS_LOCATION: z.string().nonempty(),
+  SCHEMA_TARGET_LOCATION: z.string().min(1),
+  STATIC_ASSETS_LOCATION: z.string().min(1),
 })
 
 export type MagidocTemplateConfig = {
   SUPPORTED_OPTIONS: ReadonlyArray<Variable<unknown>>
   SCHEMA_TARGET_LOCATION: string
   STATIC_ASSETS_LOCATION: string
+  ENV_FILE_LOCATION: string
 }
 
 export function parseTemplateConfig(content: unknown): MagidocTemplateConfig {

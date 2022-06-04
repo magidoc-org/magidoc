@@ -8,6 +8,7 @@ import { templates } from '@magidoc/plugin-starter-variables'
 import type { GraphQLQuery } from '@magidoc/plugin-query-generator'
 import type { GraphQLField } from 'graphql'
 import _ from 'lodash'
+import { get } from '$lib/variables'
 
 const MAX_DEPTH = 8
 const MIN_DEPTH = 2
@@ -34,7 +35,7 @@ const generateQuery = (expected: {
     factories: _.reduce(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      templates.QUERY_GENERATION_FACTORIES.vite.get(import.meta.env),
+      get(templates.QUERY_GENERATION_FACTORIES),
       // Merge the factories values provided by environment variable.
       (prev, curr, key) => ({
         ...prev,

@@ -1,12 +1,10 @@
 <script lang="ts">
   import { DEFAULT_LOGO } from '$lib/logo'
+  import { getOrDefault } from '$lib/variables'
 
   import { templates } from '@magidoc/plugin-starter-variables'
 
-  const logoPath = templates.APP_LOGO.vite.getOrDefault(
-    import.meta.env,
-    DEFAULT_LOGO,
-  )
+  const logoPath = getOrDefault(templates.APP_LOGO, DEFAULT_LOGO)
 </script>
 
 <img src={logoPath} alt="Magidoc" {...$$props} />

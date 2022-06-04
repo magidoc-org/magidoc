@@ -6,7 +6,12 @@ import type { Page } from '../src/index'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
-    expect(Object.keys(variables)).toEqual(['templates', 'magidoc'])
+    expect(Object.keys(variables)).toEqual([
+      'templates',
+      'magidoc',
+      'toVariablesFile',
+      'UnsupportedVariablesError',
+    ])
   })
 
   describe('template variables', () => {
@@ -25,7 +30,7 @@ describe('variables', () => {
     test('app title', () => {
       testStringVariable(
         variables.templates.APP_TITLE,
-        'VITE_APP_TITLE',
+        'APP_TITLE',
         z.string().optional(),
       )
     })
@@ -33,7 +38,7 @@ describe('variables', () => {
     test('app logo', () => {
       testStringVariable(
         variables.templates.APP_LOGO,
-        'VITE_APP_LOGO',
+        'APP_LOGO',
         z.string().optional(),
       )
     })
@@ -41,7 +46,7 @@ describe('variables', () => {
     test('app favicon', () => {
       testStringVariable(
         variables.templates.APP_FAVICON,
-        'VITE_APP_FAVICON',
+        'APP_FAVICON',
         z.string().optional(),
       )
     })
@@ -49,7 +54,7 @@ describe('variables', () => {
     test('site root', () => {
       testStringVariable(
         variables.templates.SITE_ROOT,
-        'VITE_SITE_ROOT',
+        'SITE_ROOT',
         z.string().optional(),
       )
     })
@@ -57,7 +62,7 @@ describe('variables', () => {
     test('site meta', () => {
       testRecordVariable(
         variables.templates.SITE_META,
-        'VITE_SITE_META',
+        'SITE_META',
         z.record(z.string().optional()).optional(),
       )
     })
@@ -65,7 +70,7 @@ describe('variables', () => {
     test('query generation factories', () => {
       testRecordVariable(
         variables.templates.QUERY_GENERATION_FACTORIES,
-        'VITE_QUERY_GENERATION_FACTORIES',
+        'QUERY_GENERATION_FACTORIES',
         z
           .record(
             z
@@ -92,7 +97,7 @@ describe('variables', () => {
 
       testArrayVariable(
         variables.templates.PAGES,
-        'VITE_PAGES',
+        'PAGES',
         z.array(pagesType).optional(),
       )
     })
@@ -106,7 +111,7 @@ describe('variables', () => {
     test('magidoc generate', () => {
       testBooleanVariable(
         variables.magidoc.MAGIDOC_GENERATE,
-        'VITE_MAGIDOC_GENERATE',
+        'MAGIDOC_GENERATE',
         z.boolean().optional(),
       )
     })
@@ -115,24 +120,20 @@ describe('variables', () => {
 
 function testStringVariable(
   target: Variable<string>,
-  viteKey: string,
+  key: string,
   expectedZod: ZodType<any>,
 ) {
-  expect(target.vite.key).toEqual(viteKey)
+  expect(target.key).toEqual(key)
 
-  expect(target.vite.get({ [viteKey]: 'Potato' })).toBe('Potato')
-  expect(target.vite.get({ [viteKey]: false })).toBe('false')
-  expect(target.vite.get({})).toBeNull()
+  expect(target.get({ [key]: 'Potato' })).toBe('Potato')
+  expect(target.get({ [key]: false })).toBe('false')
+  expect(target.get({})).toBeNull()
 
-  expect(target.vite.getOrDefault({ [viteKey]: 'Potato' }, 'Default')).toBe(
-    'Potato',
-  )
-  expect(target.vite.getOrDefault({ [viteKey]: false }, 'Default')).toBe(
-    'false',
-  )
-  expect(target.vite.getOrDefault({}, 'Default')).toBe('Default')
+  expect(target.getOrDefault({ [key]: 'Potato' }, 'Default')).toBe('Potato')
+  expect(target.getOrDefault({ [key]: false }, 'Default')).toBe('false')
+  expect(target.getOrDefault({}, 'Default')).toBe('Default')
 
-  expect(target.asEnv('Potato')).toEqual({ [viteKey]: 'Potato' })
+  expect(target.asEnv('Potato')).toEqual({ [key]: 'Potato' })
 
   ensureZodTypeEqual(target, expectedZod)
 }
@@ -142,27 +143,27 @@ function testBooleanVariable(
   viteKey: string,
   expectedZod: ZodType<any>,
 ) {
-  expect(target.vite.key).toEqual(viteKey)
+  expect(target.key).toEqual(viteKey)
 
-  expect(target.vite.get({ [viteKey]: true })).toBe(true)
-  expect(target.vite.get({ [viteKey]: 'true' })).toBe(true)
-  expect(target.vite.get({ [viteKey]: 't' })).toBe(true)
-  expect(target.vite.get({ [viteKey]: '1' })).toBe(true)
-  expect(target.vite.get({ [viteKey]: 12 })).toBe(true)
+  expect(target.get({ [viteKey]: true })).toBe(true)
+  expect(target.get({ [viteKey]: 'true' })).toBe(true)
+  expect(target.get({ [viteKey]: 't' })).toBe(true)
+  expect(target.get({ [viteKey]: '1' })).toBe(true)
+  expect(target.get({ [viteKey]: 12 })).toBe(true)
 
-  expect(target.vite.get({ [viteKey]: false })).toBe(false)
-  expect(target.vite.get({ [viteKey]: 'false' })).toBe(false)
-  expect(target.vite.get({ [viteKey]: 'wow' })).toBe(false)
-  expect(target.vite.get({ [viteKey]: 0 })).toBe(false)
+  expect(target.get({ [viteKey]: false })).toBe(false)
+  expect(target.get({ [viteKey]: 'false' })).toBe(false)
+  expect(target.get({ [viteKey]: 'wow' })).toBe(false)
+  expect(target.get({ [viteKey]: 0 })).toBe(false)
 
-  expect(target.vite.get({ [viteKey]: {} })).toBeNull()
-  expect(target.vite.get({ [viteKey]: null })).toBeNull()
-  expect(target.vite.get({ [viteKey]: undefined })).toBeNull()
-  expect(target.vite.get({})).toBeNull()
+  expect(target.get({ [viteKey]: {} })).toBeNull()
+  expect(target.get({ [viteKey]: null })).toBeNull()
+  expect(target.get({ [viteKey]: undefined })).toBeNull()
+  expect(target.get({})).toBeNull()
 
-  expect(target.vite.getOrDefault({ [viteKey]: false }, true)).toBe(false)
-  expect(target.vite.getOrDefault({ [viteKey]: {} }, true)).toBe(true)
-  expect(target.vite.getOrDefault({}, true)).toBe(true)
+  expect(target.getOrDefault({ [viteKey]: false }, true)).toBe(false)
+  expect(target.getOrDefault({ [viteKey]: {} }, true)).toBe(true)
+  expect(target.getOrDefault({}, true)).toBe(true)
 
   expect(target.asEnv(true)).toEqual({ [viteKey]: 'true' })
   expect(target.asEnv(false)).toEqual({ [viteKey]: 'false' })
@@ -172,76 +173,71 @@ function testBooleanVariable(
 
 function testRecordVariable(
   target: Variable<Record<string, any>>,
-  viteKey: string,
+  key: string,
   expectedZod: ZodType<any>,
 ) {
-  expect(target.vite.key).toEqual(viteKey)
+  expect(target.key).toEqual(key)
 
-  expect(target.vite.get({ [viteKey]: true })).toBeNull()
-  expect(target.vite.get({ [viteKey]: 'true' })).toBeNull()
-  expect(target.vite.get({ [viteKey]: '4234' })).toBeNull()
-  expect(target.vite.get({ [viteKey]: 4234 })).toBeNull()
+  expect(target.get({ [key]: true })).toBeNull()
+  expect(target.get({ [key]: 'true' })).toBeNull()
+  expect(target.get({ [key]: '4234' })).toBeNull()
+  expect(target.get({ [key]: 4234 })).toBeNull()
 
-  expect(target.vite.get({ [viteKey]: { abc: '123' } })).toEqual({ abc: '123' })
-  expect(
-    target.vite.get({ [viteKey]: JSON.stringify({ abc: '123' }) }),
-  ).toEqual({ abc: '123' })
+  expect(target.get({ [key]: { abc: '123' } })).toEqual({ abc: '123' })
+  expect(target.get({ [key]: JSON.stringify({ abc: '123' }) })).toEqual({
+    abc: '123',
+  })
 
-  expect(target.vite.getOrDefault({ [viteKey]: false }, { abc: 123 })).toEqual({
+  expect(target.getOrDefault({ [key]: false }, { abc: 123 })).toEqual({
     abc: 123,
   })
-  expect(target.vite.getOrDefault({ [viteKey]: {} }, { abc: 123 })).toEqual({})
-  expect(target.vite.getOrDefault({}, { abc: 123 })).toEqual({ abc: 123 })
+  expect(target.getOrDefault({ [key]: {} }, { abc: 123 })).toEqual({})
+  expect(target.getOrDefault({}, { abc: 123 })).toEqual({ abc: 123 })
 
   expect(target.asEnv({ abc: 123 })).toEqual({
-    [viteKey]: JSON.stringify({ abc: 123 }),
+    [key]: JSON.stringify({ abc: 123 }),
   })
-  expect(target.asEnv({})).toEqual({ [viteKey]: '{}' })
+  expect(target.asEnv({})).toEqual({ [key]: '{}' })
 
   ensureZodTypeEqual(target, expectedZod)
 }
 
 function testArrayVariable(
   target: Variable<Array<any>>,
-  viteKey: string,
+  key: string,
   expectedZod: ZodType<any>,
 ) {
-  expect(target.vite.key).toEqual(viteKey)
+  expect(target.key).toEqual(key)
 
-  expect(target.vite.get({ [viteKey]: true })).toBeNull()
-  expect(target.vite.get({ [viteKey]: 'true' })).toBeNull()
-  expect(target.vite.get({ [viteKey]: '4234' })).toBeNull()
-  expect(target.vite.get({ [viteKey]: 4234 })).toBeNull()
-  expect(target.vite.get({ [viteKey]: {} })).toBeNull()
+  expect(target.get({ [key]: true })).toBeNull()
+  expect(target.get({ [key]: 'true' })).toBeNull()
+  expect(target.get({ [key]: '4234' })).toBeNull()
+  expect(target.get({ [key]: 4234 })).toBeNull()
+  expect(target.get({ [key]: {} })).toBeNull()
 
-  expect(target.vite.get({ [viteKey]: [{ abc: '123' }] })).toEqual([
+  expect(target.get({ [key]: [{ abc: '123' }] })).toEqual([{ abc: '123' }])
+  expect(target.get({ [key]: JSON.stringify([{ abc: '123' }]) })).toEqual([
     { abc: '123' },
   ])
-  expect(
-    target.vite.get({ [viteKey]: JSON.stringify([{ abc: '123' }]) }),
-  ).toEqual([{ abc: '123' }])
 
-  expect(
-    target.vite.getOrDefault({ [viteKey]: false }, [{ abc: 123 }]),
-  ).toEqual([
+  expect(target.getOrDefault({ [key]: false }, [{ abc: 123 }])).toEqual([
     {
       abc: 123,
     },
   ])
-  expect(target.vite.getOrDefault({ [viteKey]: [] }, [{ abc: 123 }])).toEqual(
-    [],
-  )
-  expect(target.vite.getOrDefault({}, [{ abc: 123 }])).toEqual([{ abc: 123 }])
+  expect(target.getOrDefault({ [key]: [] }, [{ abc: 123 }])).toEqual([])
+  expect(target.getOrDefault({}, [{ abc: 123 }])).toEqual([{ abc: 123 }])
 
   expect(target.asEnv([{ abc: 123 }])).toEqual({
-    [viteKey]: JSON.stringify([{ abc: 123 }]),
+    [key]: JSON.stringify([{ abc: 123 }]),
   })
-  expect(target.asEnv([])).toEqual({ [viteKey]: '[]' })
+  expect(target.asEnv([])).toEqual({ [key]: '[]' })
 
   ensureZodTypeEqual(target, expectedZod)
 }
 
 function ensureZodTypeEqual(target: Variable<any>, expected: ZodType<any>) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // this does a good enough compare to make sure they have the same schema
   expect(JSON.parse(JSON.stringify(target.zod.type(z)))).toEqual(

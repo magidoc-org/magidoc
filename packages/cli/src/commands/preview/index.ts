@@ -16,6 +16,7 @@ export default function preview(config: PreviewConfig) {
   const assets = sirv(config.websiteLocation, {
     maxAge: 0, // 0
     immutable: true,
+    dotfiles: true,
   })
 
   const server = http.createServer((req, res) => {

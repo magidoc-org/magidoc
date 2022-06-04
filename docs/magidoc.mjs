@@ -13,7 +13,7 @@ const config = {
     location: path.join(__dirname, 'empty-schema.json'),
   },
   website: {
-    template: path.join(__dirname, '../starters/carbon-multi-page'),
+    template: path.join(__dirname, '../packages/starters/carbon-multi-page'),
     output: path.join(__dirname, 'build'),
     staticAssets: path.join(__dirname, 'assets'),
     options: {
