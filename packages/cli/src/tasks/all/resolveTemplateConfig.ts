@@ -1,15 +1,29 @@
-import { newTask, GenerateTask } from '../task'
 import path from 'path'
-import { parseTemplateConfig } from '../../../template/config'
 import { pathToFileURL } from 'url'
+import type { Variable } from '@magidoc/plugin-starter-variables'
+import { newTask, Task } from '..'
+import { parseTemplateConfig } from '../../template/config'
+import type { TmpLocation } from '../../template/tmp'
+
+type Ctx = {
+  tmpDirectory: TmpLocation
+  templateConfiguration: ResolvedMagidocTemplateConfig
+}
+
+export type ResolvedMagidocTemplateConfig = {
+  supportedOptions: ReadonlyArray<Variable<unknown>>
+  schemaTargetLocation: string
+  staticAssetsLocation: string
+  envFileLocation: string
+}
 
 export function templateConfigurationFile(templateDirectory: string): string {
   return path.join(templateDirectory, 'magidoc.config.js')
 }
 
-export function loadTemplateConfigurationTask(): GenerateTask {
+export function resolveTemplateConfigurationTask<T extends Ctx>(): Task<T> {
   return newTask({
-    title: `Load template configuration`,
+    title: `Resolving template configuration`,
     executor: async (ctx, task) => {
       const configPath = templateConfigurationFile(ctx.tmpDirectory.path)
       const rawConfig = (await import(

@@ -19,14 +19,16 @@ const ZMagidocTemplateConfig = z.object({
   STATIC_ASSETS_LOCATION: z.string().min(1),
 })
 
-export type MagidocTemplateConfig = {
+export type RawMagidocTemplateConfig = {
   SUPPORTED_OPTIONS: ReadonlyArray<Variable<unknown>>
   SCHEMA_TARGET_LOCATION: string
   STATIC_ASSETS_LOCATION: string
   ENV_FILE_LOCATION: string
 }
 
-export function parseTemplateConfig(content: unknown): MagidocTemplateConfig {
+export function parseTemplateConfig(
+  content: unknown,
+): RawMagidocTemplateConfig {
   const result = ZMagidocTemplateConfig.safeParse(content)
   if (!result.success) {
     const formattedIssues = formatZodIssues(result.error.issues)
@@ -42,6 +44,6 @@ export function parseTemplateConfig(content: unknown): MagidocTemplateConfig {
   // This is rather unsafe. We validate the object roughly and automatically
   // cast the content as a template config instead of using zod result
   // This is done just to have basic assertions on the template config to make sure it was not tempered accidentally
-  //  This is an attempt to protect against incomplete configuration, but it is not bulletproof
-  return content as MagidocTemplateConfig
+  // This is an attempt to protect against incomplete configuration, but it is not bulletproof
+  return content as RawMagidocTemplateConfig
 }

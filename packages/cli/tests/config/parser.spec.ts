@@ -1,4 +1,3 @@
-import { min } from 'lodash'
 import type { MagidocConfiguration } from '../../src'
 import { parseConfiguration } from '../../src/config/parser'
 import type {

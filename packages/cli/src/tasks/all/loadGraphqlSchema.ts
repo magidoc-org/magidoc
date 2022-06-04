@@ -1,10 +1,19 @@
-import type { GenerationConfig } from '../config'
 import { fetchSchema } from '@magidoc/rollup-plugin-fetch-gql-schema'
 import { parseSchema } from '@magidoc/rollup-plugin-parse-gql-schema'
-import { newTask, GenerateTask } from '../task'
 import fs from 'fs/promises'
+import { newTask, Task } from '..'
+import type { IntrospectionConfiguration } from '../../config/types'
+import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 
-export function loadGraphQLSchemaTask(config: GenerationConfig): GenerateTask {
+type Config = {
+  introspection: IntrospectionConfiguration
+}
+
+type Ctx = {
+  templateConfiguration: ResolvedMagidocTemplateConfig
+}
+
+export function loadGraphQLSchemaTask<T extends Ctx>(config: Config): Task<T> {
   return newTask({
     title: `Load GraphQL Schema`,
     executor: async (ctx) => {

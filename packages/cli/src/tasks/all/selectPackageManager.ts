@@ -1,13 +1,22 @@
-import { newTask, GenerateTask } from '../task'
+import { newTask, Task } from '..'
 import {
   getPackageManager,
+  PackageManager,
+  PackageManagerType,
   selectPackageManager,
-} from '../../../node/packageManager'
-import type { GenerationConfig } from '../config'
+} from '../../node/packageManager'
 
-export function selectPackageManagerTask(
-  config: GenerationConfig,
-): GenerateTask {
+type Ctx = {
+  packageManager: PackageManager
+}
+
+type Config = {
+  packageManager?: PackageManagerType
+}
+
+export function selectPackageManagerTask<T extends Ctx>(
+  config: Config,
+): Task<T> {
   return newTask({
     title: 'Select Package Manager',
     executor: async (ctx, task) => {
