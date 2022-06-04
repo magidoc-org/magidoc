@@ -1,9 +1,14 @@
-import { Command, Option } from 'commander'
+import type { Command } from 'commander'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
 import runDevelopmentServer from '.'
 import type { PackageManagerType } from '../../node/packageManager'
 import path from 'path'
+import {
+  CLEAN_OPTION,
+  CONFIG_FILE_OPTION,
+  STACKTRACE_OPTION,
+} from '../utils/commander'
 
 type DevCommandOptions = {
   file: string
@@ -12,32 +17,15 @@ type DevCommandOptions = {
   clean: boolean
 }
 
-export const DEFAULT_CONFIG_FILE = './magidoc.mjs'
-
 export default function buildDevCommand(program: Command) {
   program
     .command('dev')
     .description(
       'Starts a development server with hot-reload as changes occur to watched files.',
     )
-    .addOption(
-      new Option(
-        '-f|--file <file.js|file.mjs|file.cjs>',
-        'The magidoc configuration file location. By default, Magidoc looks for an ESModule Javascript file (mjs), but cjs is supported as well.',
-      ).default(DEFAULT_CONFIG_FILE),
-    )
-    .addOption(
-      new Option(
-        '-c|--clean',
-        'Clean install, so delete the local copy of the template if there is one and fetch it again.',
-      ).default(false),
-    )
-    .addOption(
-      new Option(
-        '-s|--stacktrace',
-        'Useful to debug errors. Will print the whole exception to the terminal in case the error message is not precise enough.',
-      ).default(false),
-    )
+    .addOption(CONFIG_FILE_OPTION())
+    .addOption(CLEAN_OPTION())
+    .addOption(STACKTRACE_OPTION())
     .action(
       async ({
         packageManager,

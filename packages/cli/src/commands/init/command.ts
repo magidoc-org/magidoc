@@ -17,6 +17,7 @@ type InitCommandOptions = {
   stacktrace: boolean
 }
 import { cyan } from '../utils/outputColors'
+import { STACKTRACE_OPTION } from '../utils/commander'
 
 export default function buildInitCommand(program: Command) {
   program
@@ -41,7 +42,7 @@ export default function buildInitCommand(program: Command) {
     .option(
       '-d|--destination <directory>',
       'Specifies the destination directory of the project',
-      './docs',
+      './template',
     )
     .addOption(
       new Option(
@@ -51,12 +52,7 @@ export default function buildInitCommand(program: Command) {
         .default('pnpm')
         .choices(PACKAGE_MANAGER_TYPES),
     )
-    .addOption(
-      new Option(
-        '-s|--stacktrace',
-        'Useful to debug errors. Will print the whole exception to the terminal in case the error message is not precise enough.',
-      ).default(false),
-    )
+    .addOption(STACKTRACE_OPTION())
     .action(
       async ({
         packageManager,
