@@ -22,6 +22,7 @@ describe('parsing an empty template configuration', () => {
       "Expected: 'array' but received 'undefined' at path 'SUPPORTED_OPTIONS'",
       "Expected: 'string' but received 'undefined' at path 'SCHEMA_TARGET_LOCATION'",
       "Expected: 'string' but received 'undefined' at path 'STATIC_ASSETS_LOCATION'",
+      "Expected: 'string' but received 'undefined' at path 'ENV_FILE_LOCATION'",
     ])
   })
 })
