@@ -2,9 +2,10 @@
   <img width="40%" src="./logo/logo_full.png">
 </p>
 
-<h2 align="center">Fast and highly customizable GraphQL documentation generator </h2>
 
-----
+<h3 align="center">Fast and highly customizable GraphQL documentation generator </h3>
+
+---
 
 Magidoc is an open source static GraphQL documentation auto-generator that offers the best developer experience, is infinitely customizable and produces better documentation than existing solutions.
 
