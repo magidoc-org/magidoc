@@ -75,6 +75,7 @@ export default function buildEjectCommand(program: Command) {
           console.log(
             `Template ${cyan(template)} created at ${cyan(destination)}`,
           )
+          console.log()
         })
       },
     )

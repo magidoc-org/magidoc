@@ -17,6 +17,7 @@ const ZMagidocTemplateConfig = z.object({
   ),
   SCHEMA_TARGET_LOCATION: z.string().min(1),
   STATIC_ASSETS_LOCATION: z.string().min(1),
+  ENV_FILE_LOCATION: z.string().min(1),
 })
 
 export type RawMagidocTemplateConfig = {
