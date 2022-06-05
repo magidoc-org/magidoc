@@ -10,10 +10,13 @@
   "scripts": {
     "build": "pnpm --filter @magidoc/cli start generate --file $(pwd)/magidoc.mjs --stacktrace",
     "dev": "pnpm --filter @magidoc/cli start dev --file $(pwd)/magidoc.mjs --stacktrace",
+    "test": "run-p test:*",
+    "test:spelling": "cspell pages/**/*",
     "preview": "pnpm --filter @magidoc/cli start preview --file $(pwd)/magidoc.mjs --stacktrace",
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
+    "cspell": "^6.1.1",
     "gh-pages": "^4.0.0"
   }
 }
