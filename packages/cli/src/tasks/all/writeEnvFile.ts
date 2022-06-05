@@ -1,9 +1,18 @@
 import { toVariablesFile } from '@magidoc/plugin-starter-variables'
 import { writeFile } from 'fs/promises'
-import type { GenerationConfig } from '../config'
-import { newTask, GenerateTask } from '../task'
+import { newTask, Task } from '..'
+import type { WebsiteConfiguration } from '../../config/types'
+import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 
-export function writeEnvFile(config: GenerationConfig): GenerateTask {
+type Config = {
+  website: WebsiteConfiguration
+}
+
+type Ctx = {
+  templateConfiguration: ResolvedMagidocTemplateConfig
+}
+
+export function writeEnvFile<T extends Ctx>(config: Config): Task<T> {
   return newTask({
     title: `Write variables file`,
     executor: async (ctx) => {

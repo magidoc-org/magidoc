@@ -6,9 +6,13 @@ import { parseConfiguration } from './parser'
 
 const allowedExtensions = ['.js', '.cjs', '.mjs']
 
+let timesLoaded = 0
+
 export async function readConfiguration(
   configPath: string,
 ): Promise<MagidocConfiguration> {
+  timesLoaded++
+
   const extension = path.extname(configPath)
   if (!isValidJsExtension(extension)) {
     throw new Error(
@@ -22,8 +26,12 @@ export async function readConfiguration(
     )
   }
 
+  // This is a hack to force NodeJS to ignore the cache
+  const realPath =
+    pathToFileURL(configPath).toString() + `?query=${timesLoaded}`
+
   const config = (
-    (await import(pathToFileURL(configPath).toString())) as {
+    (await import(realPath)) as {
       default?: unknown
     }
   ).default

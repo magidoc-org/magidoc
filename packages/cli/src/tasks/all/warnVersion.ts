@@ -1,9 +1,13 @@
-import { newTask, GenerateTask } from '../task'
-import type { GenerationConfig } from '../config'
-import { getVersion } from '../../../version'
-import { isTemplate } from '../../../template'
+import type { WebsiteConfiguration } from '../../config/types'
+import { newTask, Task } from '..'
+import { getVersion } from '../../version'
+import { isTemplate } from '../../template'
 
-export function warnVersionTask(config: GenerationConfig): GenerateTask {
+type Config = {
+  website: WebsiteConfiguration
+}
+
+export function warnVersionTask<T>(config: Config): Task<T> {
   return newTask({
     title: `Template version warning`,
     enabled:

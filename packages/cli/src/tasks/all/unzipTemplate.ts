@@ -1,9 +1,20 @@
-import { newTask, GenerateTask } from '../task'
-import { unzipTemplate } from '../../../template/unzip'
-import { isTemplate } from '../../../template'
-import type { GenerationConfig } from '../config'
+import { newTask, Task } from '..'
+import { isTemplate, Template } from '../../template'
+import type { TmpLocation } from '../../template/tmp'
+import { unzipTemplate } from '../../template/unzip'
 
-export function unzipTemplateTask(config: GenerationConfig): GenerateTask {
+type Config = {
+  website: {
+    template: Template | string
+  }
+}
+
+type Ctx = {
+  tmpDirectory: TmpLocation
+  tmpArchive: TmpLocation
+}
+
+export function unzipTemplateTask<T extends Ctx>(config: Config): Task<T> {
   return newTask({
     title: `Unzip template`,
     enabled: isTemplate(config.website.template),

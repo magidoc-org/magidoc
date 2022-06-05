@@ -34,14 +34,26 @@ export type TaskExecutor<T> = (
 
 export type Task<T> = ListrTask<T, ListrDefaultRenderer>
 
-export async function executeAllTasks<T>(tasks: Task<T>[]): Promise<T> {
+export type TasksConfig<T> = {
+  ctx: T | undefined
+  silent: boolean
+}
+
+export async function executeAllTasks<T>(
+  tasks: Task<T>[],
+  config: TasksConfig<T> = {
+    ctx: undefined,
+    silent: false,
+  },
+): Promise<T> {
   const listr = new Listr<T>(tasks, {
     exitOnError: true,
+    rendererSilent: config.silent,
     rendererOptions: {
       showTimer: true,
       formatOutput: 'wrap',
     },
   })
 
-  return await listr.run()
+  return await listr.run(config.ctx)
 }

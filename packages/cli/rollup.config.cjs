@@ -25,7 +25,8 @@ module.exports = defineConfig({
     'url',
     'sirv',
     'http',
-    'lodash'
+    'lodash',
+    'chokidar',
   ],
   output: {
     dir: 'build',

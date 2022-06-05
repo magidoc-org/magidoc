@@ -57,13 +57,21 @@ export const ZWebsiteConfiguration = z.object({
   options: z.record(z.string().min(1), z.unknown()).default({}),
 })
 
+export const ZDevConfiguration = z
+  .object({
+    watch: z.array(ZPath).default([]),
+  })
+  .default({})
+
 export const ZMagidocConfiguration = z.object({
   introspection: ZIntrospectionConfiguration,
   website: ZWebsiteConfiguration,
+  dev: ZDevConfiguration,
 })
 
 export type IntrospectionConfiguration = z.infer<
   typeof ZIntrospectionConfiguration
 >
+export type DevConfiguration = z.infer<typeof ZDevConfiguration>
 export type WebsiteConfiguration = z.infer<typeof ZWebsiteConfiguration>
 export type MagidocConfiguration = z.infer<typeof ZMagidocConfiguration>

@@ -1,9 +1,21 @@
-import { newTask, GenerateTask } from '../task'
-import fetchTemplate from '../../../template/fetch'
-import type { GenerationConfig } from '../config'
-import { isTemplate } from '../../../template'
+import { newTask, Task } from '..'
+import type { TmpLocation } from '../../template/tmp'
+import { isTemplate, Template } from '../../template'
+import fetchTemplate from '../../template/fetch'
 
-export function fetchTemplateTask(config: GenerationConfig): GenerateTask {
+type Config = {
+  website: {
+    template: Template | string
+    templateVersion: string
+  }
+}
+
+type Ctx = {
+  tmpArchive: TmpLocation
+  tmpDirectory: TmpLocation
+}
+
+export function fetchTemplateTask<T extends Ctx>(config: Config): Task<T> {
   return newTask({
     title: `Fetch template ${config.website.template}@${config.website.templateVersion}`,
     enabled: isTemplate(config.website.template),

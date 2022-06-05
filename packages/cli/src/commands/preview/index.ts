@@ -1,10 +1,15 @@
-import type { PreviewConfig } from './config'
 import http from 'http'
 import type { AddressInfo } from 'net'
 import sirv from 'sirv'
 import { cyan, red, yellow } from '../utils/outputColors'
 
 const DEFAULT_PORT = 4000
+
+export type PreviewConfig = {
+  websiteLocation: string
+  port?: number
+  siteRoot?: string
+}
 
 export default function preview(config: PreviewConfig) {
   console.log(
@@ -14,7 +19,7 @@ export default function preview(config: PreviewConfig) {
   )
 
   const assets = sirv(config.websiteLocation, {
-    maxAge: 0, // 0
+    maxAge: 0,
     immutable: true,
     dotfiles: true,
   })

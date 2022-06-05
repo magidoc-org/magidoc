@@ -12,12 +12,16 @@ export type CommandConfiguration = {
   env?: Record<string, string>
 }
 
+export type DevServerCommandConfiguration = CommandConfiguration & {
+  port: number
+}
+
 export type PackageManager = {
   type: PackageManagerType
 
   runInstall: (config: CommandConfiguration) => Promise<void>
-
   buildProject: (config: CommandConfiguration) => Promise<void>
+  startDevServer: (config: DevServerCommandConfiguration) => Promise<void>
 }
 
 export async function selectPackageManager(): Promise<PackageManager> {
@@ -70,6 +74,12 @@ function createRunner({
       runNodeCommand(type, ['install', ...(installArgs || [])], config),
     buildProject: (config: CommandConfiguration) =>
       runNodeCommand(type, ['run', 'build'], config),
+    startDevServer: (config: DevServerCommandConfiguration) =>
+      runNodeCommand(
+        type,
+        ['run', 'dev', '--port', config.port.toString()],
+        config,
+      ),
   }
 }
 
@@ -89,8 +99,11 @@ async function runNodeCommand(
     })
 
     let output = ''
-    child.stdout.on('data', (chunk) => (output += String(chunk)))
-    child.stderr.on('data', (chunk) => (output += String(chunk)))
+    const stdHandler = (chunk: Buffer) => {
+      output += String(chunk)
+    }
+    child.stdout.on('data', stdHandler)
+    child.stderr.on('data', stdHandler)
 
     child.on('error', (error) => {
       reject(

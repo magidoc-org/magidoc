@@ -1,7 +1,6 @@
 src/_schema.json
-static/*
-magidoc-env.json
 src/_variables.json
+static/*
 
 .DS_Store
 node_modules
