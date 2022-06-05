@@ -1,5 +1,5 @@
 import { Command, Option } from 'commander'
-import init from '.'
+import eject from '.'
 import { AVAILABLE_TEMPLATES, Template } from '../../template'
 import { getVersion } from '../../version'
 import path from 'path'
@@ -9,7 +9,7 @@ import {
   PACKAGE_MANAGER_TYPES,
 } from '../../node/packageManager'
 
-type InitCommandOptions = {
+type EjectCommandOptions = {
   template: Template
   templateVersion: string
   packageManager: PackageManagerType
@@ -19,17 +19,14 @@ type InitCommandOptions = {
 import { cyan } from '../utils/outputColors'
 import { STACKTRACE_OPTION } from '../utils/commander'
 
-export default function buildInitCommand(program: Command) {
+export default function buildEjectCommand(program: Command) {
   program
-    .command('init')
+    .command('eject')
     .description(
-      'Initializes a fresh documentation project using a template of your choice. You will then have the possibility to modify that template how you wish.\n',
+      'Ejects from Magidoc basic template configuration, to allow for full customization of the template. This will initialize a folder from a template of your choice, which can then be modified however you wish.\n',
     )
     .addOption(
-      new Option(
-        '-t|--template <template>',
-        'Specifies the template name to use.',
-      )
+      new Option('-t|--template <template>', 'The name of the template to use.')
         .choices(AVAILABLE_TEMPLATES)
         .makeOptionMandatory(),
     )
@@ -60,9 +57,9 @@ export default function buildInitCommand(program: Command) {
         templateVersion,
         destination,
         stacktrace,
-      }: InitCommandOptions) => {
+      }: EjectCommandOptions) => {
         await withStacktrace(stacktrace, async () => {
-          await init({
+          await eject({
             packageManager,
             website: {
               template,
@@ -75,12 +72,8 @@ export default function buildInitCommand(program: Command) {
           console.log('-----------')
           console.log()
 
-          console.log(`Template ${cyan(template)} created.`)
-          console.log()
           console.log(
-            `Run ${cyan(
-              `cd ${destination} && ${packageManager} run dev`,
-            )} and start editing!`,
+            `Template ${cyan(template)} created at ${cyan(destination)}`,
           )
           console.log()
         })

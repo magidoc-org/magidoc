@@ -25,7 +25,7 @@ export default function buildGenerateCommand(program: Command) {
   program
     .command('generate')
     .description(
-      "Generates a full static website using a template. Using this option doesn't give you the ability to customize the output website. If you wish to customize the website, use the init command to generate a fresh project.",
+      'Generates a full static website using a template. Using this command gives you access to a limited range of customization. If you wish to customize the website further than what is available, use the eject command.',
     )
     .addOption(CONFIG_FILE_OPTION())
     .addOption(PACKAGE_MANAGER_OPTION())

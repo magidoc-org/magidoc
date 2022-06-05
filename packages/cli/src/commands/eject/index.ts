@@ -12,7 +12,7 @@ import { verifyPackageManagerAvailableTask } from '../../tasks/all/verifyPackage
 import type { Template } from '../../template'
 import { TmpLocation, tmpLocation } from '../../template/tmp'
 
-export type InitConfig = {
+export type EjectConfig = {
   packageManager: PackageManagerType
   destination: string
   website: {
@@ -21,15 +21,15 @@ export type InitConfig = {
   }
 }
 
-export type InitTaskContext = {
+export type EjectTaskContext = {
   tmpArchive: TmpLocation
   tmpDirectory: TmpLocation
   packageManager: PackageManager
 }
 
-export default async function init(config: InitConfig) {
+export default async function eject(config: EjectConfig) {
   const destination = tmpLocation(config.destination)
-  await executeAllTasks<InitTaskContext>([
+  await executeAllTasks<EjectTaskContext>([
     determineTmpDirectoryTask({
       ...config,
       // Slight hack to set the tmp directory to the target location.
