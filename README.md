@@ -16,9 +16,9 @@ It can generate static documentation from a GraphQL endpoint using the introspec
 
 - ✏️ **Customizable** - Use pre-defined customizations or pick a template and make it your own.
 
-- 🔥 **Live hot-reload** - Magidoc offers a [dev command](/cli/command-dev) that updates a preview of your website in real time when you write your documentation.
+- 🔥 **Live hot-reload** - Magidoc offers a dev command that updates a preview of your website in real time when you write your documentation.
 
-- 📝 **Markdown support** - Markdown is supported everywhere, from the custom pages and sections you can create, to the [SDL comments](https://dgraph.io/docs/graphql/schema/documentation/) inside your schema.
+- 📝 **Advanced markdown support** - Markdown is supported everywhere, from the custom pages and sections you can create, to the [SDL comments](https://dgraph.io/docs/graphql/schema/documentation/) inside your GraphQL schema.
 
 - 📦 **Fully typed** - Every plugin and template ships with TypeScript definitions out of the box.
 
