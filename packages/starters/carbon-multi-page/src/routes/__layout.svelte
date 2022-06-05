@@ -16,6 +16,7 @@
 
 <script lang="ts">
   import '../app.css'
+  import '../prism-theme.css'
 
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
