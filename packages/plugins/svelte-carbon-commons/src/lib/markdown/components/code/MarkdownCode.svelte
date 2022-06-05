@@ -2,7 +2,6 @@
   import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
   import Prism from '@magidoc/plugin-svelte-prismjs'
   import type { marked } from 'marked'
-  import './prism-theme.css'
 
   export let showCopyButton = true
   export let showLineNumbers = true
