@@ -2,7 +2,7 @@
 
 import { Command } from 'commander'
 import buildGenerateCommand from './commands/generate/command'
-import buildInitCommand from './commands/init/command'
+import buildEjectCommand from './commands/eject/command'
 import buildPreviewCommand from './commands/preview/command'
 import { getVersion } from './version'
 import type { MagidocConfiguration } from './config/types'
@@ -19,7 +19,7 @@ const program = new Command()
 buildGenerateCommand(program)
 buildPreviewCommand(program)
 buildDevCommand(program)
-buildInitCommand(program)
+buildEjectCommand(program)
 
 program.parse()
 
