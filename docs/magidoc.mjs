@@ -1,6 +1,7 @@
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
-import pages from './pages.mjs'
+
+const pages = (await import(`./pages.mjs?id=${Math.random()}`)).default
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -34,5 +35,12 @@ const config = {
       },
     },
   },
+  dev: {
+    watch: [
+      path.join(__dirname, './pages'),
+      path.join(__dirname, './pages.mjs'),
+    ],
+  },
 }
+
 export default config

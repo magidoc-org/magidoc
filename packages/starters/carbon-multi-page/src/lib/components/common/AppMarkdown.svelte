@@ -2,6 +2,7 @@
   import { CarbonMarkdown } from '@magidoc/plugin-svelte-carbon-commons'
   import 'prismjs/components/prism-graphql.js'
   import 'prismjs/components/prism-json.js'
+  import 'prismjs/components/prism-shell-session.js'
   import 'prismjs/components/prism-javascript.js'
   import 'prismjs/components/prism-typescript.js'
   import 'prismjs/components/prism-python.js'
