@@ -80,7 +80,7 @@ function generateInput(
       // This is slightly unsafe, because with recursion,
       // it's possible we end up doing a stack-overflow if recursive fields point to each other deeply.
       // However, an infinitely recursive input field would result in an invalid GraphQL schema
-      // and an error would be thrown when GraphQL.js when parsing the schema.
+      // and an error would be thrown by GraphQL.js when parsing the schema.
       context.generatedInputObjects.add(unwrappedType.name)
     }
   }
