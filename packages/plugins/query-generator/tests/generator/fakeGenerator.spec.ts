@@ -339,6 +339,29 @@ describe('generating fakes for a GraphQL input argument', () => {
       })
     })
   })
+
+  describe('using a recursive query', () => {
+    const schema = getRecursiveTestSchema()
+    const recursiveField = getMandatoryField(schema.getQueryType(), 'inputs')
+
+    describe('with never null generation strategy', () => {
+      const config: GeneratorConfig = {
+        ...baseConfig,
+        nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+      }
+
+      it('should generate the field properly without throwing', () => {
+        expect(() =>
+          generateArgsForField(recursiveField, config, context),
+        ).not.toThrow()
+      })
+
+      it('should generate a non-empty field', () => {
+        const result = generateArgsForField(recursiveField, config, context)
+        expect(result).not.toBeEmpty()
+      })
+    })
+  })
 })
 
 function paramByName(

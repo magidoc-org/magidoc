@@ -6,10 +6,12 @@ import {
   IntrospectionQuery,
 } from 'graphql'
 import type { Maybe } from 'graphql/jsutils/Maybe'
-import schema from './_schema.json'
+import schema from './schema/_schema.json'
+import recursiveSchema from './schema/_recursive_schema.json'
 
 declare global {
   function getTestSchema(): GraphQLSchema
+  function getRecursiveTestSchema(): GraphQLSchema
 
   function getMandatoryField(
     type: Maybe<GraphQLObjectType>,
@@ -17,8 +19,13 @@ declare global {
   ): GraphQLField<unknown, unknown, unknown>
 }
 
-global.getTestSchema = () =>
-  buildClientSchema(schema as unknown as IntrospectionQuery)
+global.getTestSchema = () => {
+  return buildClientSchema(schema as unknown as IntrospectionQuery)
+}
+
+global.getRecursiveTestSchema = () => {
+  return buildClientSchema(recursiveSchema as unknown as IntrospectionQuery)
+}
 
 global.getMandatoryField = (type: Maybe<GraphQLObjectType>, name: string) => {
   const result = type?.getFields()[name]

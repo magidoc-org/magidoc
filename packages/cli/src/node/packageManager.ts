@@ -108,7 +108,7 @@ async function runNodeCommand(
     child.on('error', (error) => {
       reject(
         new Error(
-          `Failed to lunach command '${command}' with args '${args.toString()}' and config '${JSON.stringify(
+          `Failed to launch command '${command}' with args '${args.toString()}' and config '${JSON.stringify(
             config,
           )}': ${error.message}`,
           {

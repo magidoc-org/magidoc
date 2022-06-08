@@ -12,6 +12,10 @@ export async function withStacktrace(
       console.log('------- Stacktrace -------')
       console.log(error)
     } else {
+      if (error instanceof Error) {
+        console.log(error.message)
+      }
+
       console.log()
       console.log('For a more detailed output, run with --stacktrace')
     }
