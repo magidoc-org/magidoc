@@ -11,7 +11,10 @@
 </script>
 
 <section>
-  <h1>{type.name} <TypeTag {type} /></h1>
+  <AnchorHeader id={'title'} depth={1}>
+    {type.name}
+    <TypeTag {type} />
+  </AnchorHeader>
 
   <AppMarkdown source={type.description} />
 

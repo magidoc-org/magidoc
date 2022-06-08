@@ -1,4 +1,6 @@
 <script type="ts">
+  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
+
   import type { GraphQLScalarType } from 'graphql'
   import AppMarkdown from '../common/AppMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
@@ -7,7 +9,10 @@
 </script>
 
 <section>
-  <h1>{type.name} <TypeTag {type} /></h1>
+  <AnchorHeader id={'title'} depth={1}>
+    {type.name}
+    <TypeTag {type} />
+  </AnchorHeader>
 
   <AppMarkdown source={type.description} />
 </section>

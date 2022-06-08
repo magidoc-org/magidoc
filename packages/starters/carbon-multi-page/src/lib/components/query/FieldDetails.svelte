@@ -18,7 +18,9 @@
 <section>
   <DeprecationNotice deprecationReason={field.deprecationReason} />
 
-  <h1>{field.name}<QueryTypeTag {type} /></h1>
+  <AnchorHeader id={'title'} depth={1}>
+    {field.name}<QueryTypeTag {type} />
+  </AnchorHeader>
 
   <AppMarkdown source={field.description} />
 

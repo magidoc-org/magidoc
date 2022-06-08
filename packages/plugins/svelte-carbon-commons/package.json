@@ -3,7 +3,7 @@
   "description": "A component library shared between Carbon templates.",
   "type": "module",
   "license": "MIT",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "svelte": "index.js",
   "private": false,
   "keywords": [
