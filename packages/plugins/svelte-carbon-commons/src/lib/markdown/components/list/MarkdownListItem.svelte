@@ -9,12 +9,12 @@
   export const renderers: Renderers = undefined
 </script>
 
-<ListItem class="list-item">
+<ListItem class="markdown-list-item">
   <slot />
 </ListItem>
 
 <style>
-  :global(.list-item) {
+  :global(.markdown-list-item) {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }

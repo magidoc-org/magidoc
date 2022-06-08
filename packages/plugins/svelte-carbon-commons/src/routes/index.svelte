@@ -15,6 +15,7 @@
 ------
 ### Ordered list
 1. Here is a [relative URL](/test "with a title") that should point to \`/docs/test\`
+    1. With nesting!
 2. *Italic text* followed by **bold text**
 3. test@email.com that should render as a link
 
