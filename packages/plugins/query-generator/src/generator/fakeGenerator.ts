@@ -6,7 +6,7 @@ import {
   GraphQLFactory,
   NullGenerationStrategy,
 } from './config'
-import { GraphQLGenerationError } from './error'
+import { MissingCustomScalarException } from './error'
 
 import { DEFAULT_FACTORIES } from './defaultFactories'
 import { typeToString, unwrapType } from './extractor'
@@ -71,14 +71,16 @@ function generateInput(
     : undefined
 
   if (isInputObjectType(unwrappedType)) {
-    if (context.generatedInputObjects.has(unwrappedType.name)) {
-      if (!isNullableType(input)) {
-        throw new Error(
-          'Fatal error: A recursive input with a non-nullable circular reference was detected, which makes it impossible to generate a query. If you ever see this error, it means that your GraphQL uses an invalid schema.',
-        )
-      }
+    if (
+      context.generatedInputObjects.has(unwrappedType.name) &&
+      isNullableType(input)
+    ) {
       return null
     } else {
+      // This is slightly unsafe, because with recursion,
+      // it's possible we end up doing a stack-overflow if recursive fields point to each other deeply.
+      // However, an infinitely recursive input field would result in an invalid GraphQL schema
+      // and an error would be thrown when GraphQL.js when parsing the schema.
       context.generatedInputObjects.add(unwrappedType.name)
     }
   }
@@ -179,14 +181,15 @@ function randomFactory(
     const defaultFactory = DEFAULT_FACTORIES[argumentType.name]
 
     if (defaultFactory === undefined) {
-      throw new GraphQLGenerationError(
+      throw new MissingCustomScalarException(
+        argumentType,
         `
 Cannot generate a random value for scalar '${argumentType.name}'. 
 The random generator is not able to randomly generate a value for non-standard GraphQL scalars. 
 You have to provide a custom factory by providing this in your config:
 {
   '${argumentType.name}': () => generateRandomCustomScalar()
-}`.trimStart(),
+}`,
       )
     }
 

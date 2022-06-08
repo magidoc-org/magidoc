@@ -8,7 +8,10 @@ export {
   type GraphQLFactoryContextDefault,
 } from './generator/config'
 
-export { GraphQLGenerationError } from './generator/error'
+export {
+  GraphQLGenerationError,
+  MissingCustomScalarException,
+} from './generator/error'
 
 export { QueryType } from './generator/queryBuilder'
 export {

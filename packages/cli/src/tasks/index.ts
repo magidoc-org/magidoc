@@ -50,6 +50,7 @@ export async function executeAllTasks<T>(
     exitOnError: true,
     rendererSilent: config.silent,
     rendererOptions: {
+      showErrorMessage: false,
       showTimer: true,
       formatOutput: 'wrap',
     },
