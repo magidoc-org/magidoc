@@ -12,8 +12,14 @@
   $: component = token.ordered ? OrderedList : UnorderedList
 </script>
 
-<svelte:component this={component} nested expressive>
+<svelte:component this={component} class="markdown-list-style">
   {#each token.items as item}
-    <MarkdownToken token={item} {options} {renderers} />
+    <MarkdownToken token={{ ...item }} {options} {renderers} />
   {/each}
 </svelte:component>
+
+<style>
+  :global(.markdown-list-style) {
+    padding: revert !important;
+  }
+</style>
