@@ -4,14 +4,19 @@
   import 'prismjs/components/prism-graphql.js'
 </script>
 
-<body style="padding: 3rem">
+<body>
   <CarbonMarkdown
     options={{
       baseUrl: '/docs',
     }}
     source={`
+# someReallyLongTitleInOneline
+## someOther ReallyLongTitle
+
 # Markdown Tester
 ## Text
+
+
 ------
 ### Ordered list
 1. Here is a [relative URL](/test "with a title") that should point to \`/docs/test\`
