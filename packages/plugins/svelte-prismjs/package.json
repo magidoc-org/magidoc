@@ -3,7 +3,7 @@
   "description": "A Svelte component library providing an easy to use component to display PrismJS code blocks",
   "type": "module",
   "license": "MIT",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "svelte": "index.js",
   "private": false,
   "keywords": [

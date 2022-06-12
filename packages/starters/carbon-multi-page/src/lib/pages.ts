@@ -73,7 +73,9 @@ function findFirstPage(): WebsitePage | null {
 }
 
 export function findPageByHref(href: string): WebsitePage | null {
-  return firstPageBy((page) => page.href === href)
+  return firstPageBy(
+    (page) => page.href.toLocaleLowerCase() === href.toLocaleLowerCase(),
+  )
 }
 
 function firstPageBy(
