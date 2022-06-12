@@ -1,9 +1,17 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css'
 
-  import { Header } from 'carbon-components-svelte'
+  import {
+    Header,
+    HeaderAction,
+    HeaderGlobalAction,
+    HeaderPanelLink,
+    HeaderPanelLinks,
+    HeaderUtilities,
+  } from 'carbon-components-svelte'
   import AppIcon from '$lib/components/common/AppIcon.svelte'
   import { base } from '$app/paths'
+  import { Launch, LogoDiscord, LogoGithub } from 'carbon-icons-svelte'
 
   export let isSideNavOpen = true
 </script>
@@ -12,6 +20,16 @@
   <div slot="platform" class="header-logo-wrapper">
     <AppIcon class="header-logo" />
   </div>
+  <HeaderUtilities>
+    <HeaderGlobalAction aria-label={'Github'} icon={LogoGithub} />
+    <HeaderAction>
+      <HeaderPanelLinks>
+        <HeaderPanelLink><LogoGithub /> Github</HeaderPanelLink>
+        <HeaderPanelLink><LogoDiscord /> Discord</HeaderPanelLink>
+        <HeaderPanelLink><Launch /> Switcher item 2</HeaderPanelLink>
+      </HeaderPanelLinks>
+    </HeaderAction>
+  </HeaderUtilities>
 </Header>
 
 <style>
