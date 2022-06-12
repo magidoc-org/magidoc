@@ -9,9 +9,10 @@
       content="https://github.com/magidoc-org/magidoc"
     />
     
-    <meta http-equiv="content-security-policy" content=""><meta name="keywords" content="Svelte,Svelte-Kit,PrismJS,GraphQL,Documentation,Static" data-svelte="svelte-1iai202"><meta name="description" content="Fast and highly customizable GraphQL documentation generator" data-svelte="svelte-1iai202"><meta name="og:title" content="Magidoc" data-svelte="svelte-1iai202"><meta name="og:type" content="article" data-svelte="svelte-1iai202"><meta name="og:image" content="https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png" data-svelte="svelte-1iai202"><meta name="og:site_name" content="Magidoc" data-svelte="svelte-1iai202"><meta name="og:description" content="Fast and highly customizable GraphQL documentation generator" data-svelte="svelte-1iai202"><meta name="author" content="Magidoc-org" data-svelte="svelte-1iai202">
+    <meta http-equiv="content-security-policy" content=""><title>Query - id</title><meta name="keywords" content="Svelte,Svelte-Kit,PrismJS,GraphQL,Documentation,Static" data-svelte="svelte-1iai202"><meta name="description" content="Fast and highly customizable GraphQL documentation generator" data-svelte="svelte-1iai202"><meta name="og:title" content="Magidoc" data-svelte="svelte-1iai202"><meta name="og:type" content="article" data-svelte="svelte-1iai202"><meta name="og:image" content="https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png" data-svelte="svelte-1iai202"><meta name="og:site_name" content="Magidoc" data-svelte="svelte-1iai202"><meta name="og:description" content="Fast and highly customizable GraphQL documentation generator" data-svelte="svelte-1iai202"><meta name="author" content="Magidoc-org" data-svelte="svelte-1iai202">
 	<link rel="stylesheet" href="/magidoc/_app/immutable/assets/pages/__layout.svelte-4bad4869.css">
 	<link rel="stylesheet" href="/magidoc/_app/immutable/assets/pages-6b66fa2a.css">
+	<link rel="stylesheet" href="/magidoc/_app/immutable/assets/FieldDetails-077d5dc0.css">
 	<link rel="stylesheet" href="/magidoc/_app/immutable/assets/PreviousNextPage-00e2b760.css">
 	<link rel="modulepreload" href="/magidoc/_app/immutable/start-a9724321.js">
 	<link rel="modulepreload" href="/magidoc/_app/immutable/chunks/index-27f5421e.js">
@@ -19,8 +20,10 @@
 	<link rel="modulepreload" href="/magidoc/_app/immutable/pages/__layout.svelte-b19197f0.js">
 	<link rel="modulepreload" href="/magidoc/_app/immutable/chunks/pages-8ccb229e.js">
 	<link rel="modulepreload" href="/magidoc/_app/immutable/chunks/ChevronDown-8842b9b0.js">
-	<link rel="modulepreload" href="/magidoc/_app/immutable/pages/_...page_.svelte-44fea378.js">
+	<link rel="modulepreload" href="/magidoc/_app/immutable/pages/queries/_query_.svelte-b5c0db04.js">
+	<link rel="modulepreload" href="/magidoc/_app/immutable/chunks/FieldDetails-c5b5dce7.js">
 	<link rel="modulepreload" href="/magidoc/_app/immutable/chunks/PreviousNextPage-80c21356.js">
+	<link rel="modulepreload" href="/magidoc/_app/immutable/chunks/ArgsList-70b4c7d7.js">
   </head>
   <body>
 
@@ -43,7 +46,7 @@
         <li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Introduction</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a aria-current="page" href="/magidoc/introduction/welcome" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Welcome</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/introduction/quickstart" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Quickstart</span></a></li>
+  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/introduction/welcome" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Welcome</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/introduction/quickstart" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Quickstart</span></a></li>
         </ul></li>
         <li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Cli</span>
@@ -68,7 +71,7 @@
         <li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Queries</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" role="img" focusable tabindex="0"><title>Open Menu</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/deferrable" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">deferrable</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/deprecatedField" class="deprecated bx--side-nav__link"><span class="bx--side-nav__link-text">deprecatedField</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/hasArgs" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">hasArgs</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/id" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">id</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/image" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">image</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/isTest" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">isTest</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/longDescriptionType" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">longDescriptionType</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/person" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">person</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/streamable" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">streamable</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/test" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">test</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/union" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">union</span></a></li>
+  <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/deferrable" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">deferrable</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/deprecatedField" class="deprecated bx--side-nav__link"><span class="bx--side-nav__link-text">deprecatedField</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/hasArgs" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">hasArgs</span></a></li><li class="bx--side-nav__menu-item"><a aria-current="page" href="/magidoc/queries/id" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">id</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/image" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">image</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/isTest" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">isTest</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/longDescriptionType" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">longDescriptionType</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/person" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">person</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/streamable" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">streamable</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/test" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">test</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/queries/union" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">union</span></a></li>
         </ul></li>
         <li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Mutations</span>
@@ -86,46 +89,73 @@
   <ul role="menu" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Boolean" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Boolean</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Deferrable" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Deferrable</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/First" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">First</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Float" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Float</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Greeting" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Greeting</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/ID" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">ID</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Int" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Int</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/MutationType" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">MutationType</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Person" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Person</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Second" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Second</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/String" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">String</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/SubscriptionType" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">SubscriptionType</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/Test" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Test</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/TestEnum" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">TestEnum</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/TestInput" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">TestInput</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/TestInterface" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">TestInterface</span></a></li><li class="bx--side-nav__menu-item"><a href="/magidoc/types/TestUnion" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">TestUnion</span></a></li>
         </ul></li></ul></nav>
 
-<main id="main-content" class="bx--content"><div class="bx--grid"><div class="bx--row"><div class="bx--col"><div class="parent svelte-1ltydza"><h1 id="welcome" class="header header-base svelte-1ltydza">Welcome</h1>
+<main id="main-content" class="bx--content"><div class="bx--grid"><div class="bx--row"><div class="bx--col">
+
+<section>
+
+  <div class="parent svelte-1ltydza"><h1 id="title" class="header header-base svelte-1ltydza">id
+<div id="ccs-0.x8t3t0fn16m" class="bx--tag         bx--tag--green     ">
+    <span>Query</span></div></h1>
   
-</div><p class="md-paragraph svelte-uzcm98">Welcome to <strong>Magidoc</strong>! Magidoc a is a free open source tool to build static documentation websites for GraphQL APIs. It aims to provide a vast variety of templates and plugins, giving you access to a large range of customization options to fit your needs.
+</div>
+
+  <p class="md-paragraph svelte-uzcm98">id field from Test type.
 </p>
 
-<div class="parent svelte-1ltydza"><h2 id="why-magidoc" class="header header-base svelte-1ltydza">Why Magidoc?</h2>
-  <h2 class="header-base header-hashtag svelte-1ltydza"><a href="#why-magidoc" class="hashtag svelte-1ltydza">#</a></h2>
-</div><p class="md-paragraph svelte-uzcm98">In the GraphQL world, there are online web IDEs to play with GraphQL schemas. Namely, tools like 
-<a href="https://github.com/graphql/graphiql" class="bx--link     ">GraphiQL
-    </a> are great for developers to play with your API. However, even though some documentation is available in these tools, it is not easily searchable, discoverability is difficult, and most of all, it lacks of a way to present concepts, workflows, authentication mechanisms and examples.
-</p>
+  
 
-<p class="md-paragraph svelte-uzcm98">Magidoc helps you achieve this with minimal effort. Either choose between one of the 
-<a href="/magidoc/templates/introduction" class="bx--link     ">provided base templates
-    </a> with limited customization options, or generate a 
-<a href="/magidoc/cli/command-eject" class="bx--link     ">starter project
-    </a> and customize it however you want using technologies you may (or may not 😈) already know, like 
-<a href="https://www.typescriptlang.org/" class="bx--link     ">TypeScript
-    </a>, 
-<a href="https://svelte.dev/" class="bx--link     ">Svelte
-    </a> (using 
-<a href="https://kit.svelte.dev/" class="bx--link     ">Svelte-Kit
-    </a>), and many others.
-</p>
+  <div class="parent svelte-1ltydza"><h2 id="response" class="header header-base svelte-1ltydza">Response</h2>
+  <h2 class="header-base header-hashtag svelte-1ltydza"><a href="#response" class="hashtag svelte-1ltydza">#</a></h2>
+</div>
+    <p>Returns 
+<a href="/magidoc/types/ID" class="bx--link     ">ID
+    </a>.
+    </p>
+
+  <div class="parent svelte-1ltydza"><h4 id="example" class="header header-base svelte-1ltydza">Example</h4>
+  <h4 class="header-base header-hashtag svelte-1ltydza"><a href="#example" class="hashtag svelte-1ltydza">#</a></h4>
+</div>
+  <div role="navigation" class="bx--tabs "><div role="listbox" tabindex="0" aria-label="listbox" class="bx--tabs-trigger"><a tabindex="-1" href="#" class="bx--tabs-trigger-text"></a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" role="img"><title>Show menu options</title><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div>
+  <ul role="tablist" class="bx--tabs__nav bx--tabs__nav--hidden">
+<li tabindex="-1" role="presentation" class="bx--tabs__nav-item  "><a role="tab" tabindex="0" aria-selected="false" aria-disabled="false" id="ccs-0.rc4j82v9uac" href="#" style="width: auto" class="bx--tabs__nav-link">Query</a></li>
+  
+<li tabindex="-1" role="presentation" class="bx--tabs__nav-item  "><a role="tab" tabindex="0" aria-selected="false" aria-disabled="false" id="ccs-0.0vod4u4x42hm" href="#" style="width: auto" class="bx--tabs__nav-link">Variables</a></li></ul></div>
+<div role="tabpanel" aria-labelledby="ccs-0.rc4j82v9uac" aria-hidden id="ccs-0.l2jmg8esz3b" style="padding:0" class="bx--tab-content"><div class="wrapper svelte-1gk78cu"><div class="code-section svelte-1gk78cu"><div class="prism--hide-copy-button"><pre style="min-height: 12rem; max-height: 20rem;"><code></code></pre>
+</div></div>
+  <div class="button-bar svelte-1gk78cu">
+<button type="button" tabindex="0" aria-pressed="false" class="bx--btn bx--btn--sm bx--btn--sm bx--btn--ghost bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--btn--icon-only--left bx--tooltip--align-center"><span class="bx--assistive-text">Copy query</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" role="img" class="bx--btn__icon" aria-label="Copy query"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg></button>
+    
+<button type="button" tabindex="0" aria-pressed="false" class="bx--btn bx--btn--sm bx--btn--sm bx--btn--ghost bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--btn--icon-only--left bx--tooltip--align-center"><span class="bx--assistive-text">Increase query depth</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" role="img" class="bx--btn__icon" aria-label="Increase query depth"><path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path></svg></button>
+    <p style="text-align:center">3</p>
+    
+<button type="button" tabindex="0" aria-pressed="false" class="bx--btn bx--btn--sm bx--btn--sm bx--btn--ghost bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--btn--icon-only--left bx--tooltip--align-center"><span class="bx--assistive-text">Decrease query depth</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" role="img" class="bx--btn__icon" aria-label="Decrease query depth"><path d="M8 15H24V17H8z"></path></svg></button></div>
+</div></div>
+    <div role="tabpanel" aria-labelledby="ccs-0.0vod4u4x42hm" aria-hidden id="ccs-0.2a6p1b8z2bc" style="padding:0" class="bx--tab-content"></div>
+  </section>
 
 <hr class="footer-hr svelte-19tre3a">
 
-<div class="wrapper svelte-19tre3a"><div class="previous direction-wrapper svelte-19tre3a"></div>
+<div class="wrapper svelte-19tre3a"><div class="previous direction-wrapper svelte-19tre3a"><div class="direction svelte-19tre3a"><strong>Previous
+
+          </strong></div>
+      <a href="/magidoc/queries/hasArgs" class="title svelte-19tre3a"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" aria-hidden class="previous-next-arrow"><path d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"></path></svg></span>
+        <p>hasArgs</p></a></div>
 
   <div class="next direction-wrapper svelte-19tre3a"><div class="direction svelte-19tre3a"><strong>Next
           </strong></div>
-      <a href="/magidoc/introduction/quickstart" class="title svelte-19tre3a"><p>Quickstart</p>
+      <a href="/magidoc/queries/image" class="title svelte-19tre3a"><p>image</p>
         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" aria-hidden class="previous-next-arrow"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></span></a></div>
 </div></div></div></div></main>
 
 
-		<script type="module" data-sveltekit-hydrate="5wme36">
+		<script type="module" data-sveltekit-hydrate="6fh7tn">
 		import { start } from "/magidoc/_app/immutable/start-a9724321.js";
 		start({
-			target: document.querySelector('[data-sveltekit-hydrate="5wme36"]').parentNode,
+			target: document.querySelector('[data-sveltekit-hydrate="6fh7tn"]').parentNode,
 			paths: {"base":"/magidoc","assets":"/magidoc"},
 			session: {},
 			route: true,
@@ -134,9 +164,9 @@
 			hydrate: {
 				status: 200,
 				error: null,
-				nodes: [0, 2],
-				params: {page:"introduction\u002Fwelcome"},
-				routeId: "[...page]"
+				nodes: [0, 5],
+				params: {query:"id"},
+				routeId: "queries/[query]"
 			}
 		});
 	</script></body>
