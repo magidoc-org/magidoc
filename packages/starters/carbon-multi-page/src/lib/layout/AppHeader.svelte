@@ -8,7 +8,7 @@
   export let isSideNavOpen = true
 </script>
 
-<Header href={base || '/'} bind:isSideNavOpen>
+<Header href={base || '/'} bind:isSideNavOpen expandedByDefault>
   <div slot="platform" class="header-logo-wrapper">
     <AppIcon class="header-logo" />
   </div>

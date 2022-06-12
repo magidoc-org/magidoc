@@ -4,14 +4,19 @@
   import 'prismjs/components/prism-graphql.js'
 </script>
 
-<body style="padding: 3rem">
+<body style="padding:1rem">
   <CarbonMarkdown
     options={{
       baseUrl: '/docs',
     }}
     source={`
+# someReallyLongTitleInOneline
+## someOther ReallyLongTitle
+
 # Markdown Tester
 ## Text
+
+
 ------
 ### Ordered list
 1. Here is a [relative URL](/test "with a title") that should point to \`/docs/test\`
@@ -40,8 +45,8 @@
 :::notification type="error" test="lol"
 **test** this
 
-:::notification type="info"
-You can nest them
+:::tags
+You,can,nest,them
 :::
 
 And add text below too!
@@ -100,6 +105,13 @@ You can also insert \`inline\` code blocks like this: \`"this"\`
 | Cat        | 🐱        | Meow!     |
 | Cow        | 🐄        | Moo       |
 
+
+### Mobile friendliness
+| Animal | Emoji | Sound |
+| ---------- | --------- | --------- |
+| \`Someverylongunsecablestringthatshouldmakethetableoverflow\`        | 🐶        | Woof!     |
+| Cat        | 🐱        | Meow!     |
+| Cow        | 🐄        | Moo       |
 
 ## Images 
 ------

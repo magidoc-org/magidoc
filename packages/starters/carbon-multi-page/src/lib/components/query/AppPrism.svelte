@@ -33,27 +33,30 @@
   </div>
   <div class="button-bar">
     <Button
-      kind={'ghost'}
+      kind="ghost"
       icon={Copy}
       iconDescription={copyButtonText}
-      tooltipPosition={'left'}
+      tooltipPosition="left"
+      size="small"
       on:click={() => copy(code)}
     />
     <Button
-      kind={'ghost'}
+      kind="ghost"
       icon={Add}
-      iconDescription={'Increase query depth'}
-      tooltipPosition={'left'}
+      iconDescription="Increase query depth"
+      tooltipPosition="left"
+      size="small"
       on:click={() => graphqlQuery.increaseDepth()}
     />
     <p style="text-align:center">
       {$graphqlQuery.depth}
     </p>
     <Button
-      kind={'ghost'}
+      kind="ghost"
       icon={Subtract}
-      iconDescription={'Decrease query depth'}
-      tooltipPosition={'left'}
+      iconDescription="Decrease query depth"
+      tooltipPosition="left"
+      size="small"
       on:click={() => graphqlQuery.decreaseDepth()}
     />
   </div>

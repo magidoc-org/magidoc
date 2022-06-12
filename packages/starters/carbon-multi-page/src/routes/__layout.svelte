@@ -28,13 +28,25 @@
   import { templates } from '@magidoc/plugin-starter-variables'
   import type { WebsiteContent } from 'src/app'
   import { get } from '$lib/variables'
+  import { page } from '$app/stores'
+  import { onDestroy } from 'svelte'
 
-  let isSideNavOpen: boolean
+  let isSideNavOpen = false
+  let innerWidth = 2048
 
   export let content: WebsiteContent[]
   export let meta: ReadonlyArray<Meta>
 
   const favicon = get(templates.APP_FAVICON)
+
+  const unsubscribe = page.subscribe(() => {
+    // Mobile
+    if (innerWidth < 1056) {
+      isSideNavOpen = false
+    }
+  })
+
+  onDestroy(unsubscribe)
 
   if (import.meta.hot) {
     import.meta.hot.on('variables-changed', () => {
@@ -53,17 +65,17 @@
   {/if}
 </svelte:head>
 
-<main>
-  <AppHeader bind:isSideNavOpen />
-  <AppNavigation isOpen={isSideNavOpen} {content} />
+<svelte:window bind:innerWidth />
 
-  <Content>
-    <Grid>
-      <Row>
-        <Column>
-          <slot />
-        </Column>
-      </Row>
-    </Grid>
-  </Content>
-</main>
+<AppHeader bind:isSideNavOpen />
+<AppNavigation bind:isOpen={isSideNavOpen} {content} />
+
+<Content>
+  <Grid>
+    <Row>
+      <Column>
+        <slot />
+      </Column>
+    </Row>
+  </Grid>
+</Content>

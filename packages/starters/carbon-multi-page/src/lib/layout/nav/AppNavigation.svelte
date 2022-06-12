@@ -7,7 +7,7 @@
   export let content: WebsiteContent[]
 </script>
 
-<SideNav {isOpen}>
+<SideNav bind:isOpen>
   <SideNavItems>
     {#each content as item}
       {#if item.type === 'page'}

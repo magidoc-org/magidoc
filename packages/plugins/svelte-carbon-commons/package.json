@@ -29,7 +29,7 @@
     "release": "cd package && pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "carbon-components-svelte": "^0.65.0",
+    "carbon-components-svelte": "^0.65.1",
     "marked": "^4.0.16",
     "prismjs": "^1.28.0"
   },

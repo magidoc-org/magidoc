@@ -58,10 +58,6 @@ h6 {
   font-size: inherit !important;
 }
 
-.bx--structured-list {
-  margin-bottom: 0px !important;
-}
-
 .bx--structured-list-tbody .bx--structured-list-row:last-child {
   border-color: transparent !important;
 }
