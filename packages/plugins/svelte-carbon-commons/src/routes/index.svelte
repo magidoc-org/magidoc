@@ -4,7 +4,7 @@
   import 'prismjs/components/prism-graphql.js'
 </script>
 
-<body>
+<body style="padding:1rem">
   <CarbonMarkdown
     options={{
       baseUrl: '/docs',
@@ -45,8 +45,8 @@
 :::notification type="error" test="lol"
 **test** this
 
-:::notification type="info"
-You can nest them
+:::tags
+You,can,nest,them
 :::
 
 And add text below too!
@@ -105,6 +105,13 @@ You can also insert \`inline\` code blocks like this: \`"this"\`
 | Cat        | 🐱        | Meow!     |
 | Cow        | 🐄        | Moo       |
 
+
+### Mobile friendliness
+| Animal | Emoji | Sound |
+| ---------- | --------- | --------- |
+| \`Someverylongunsecablestringthatshouldmakethetableoverflow\`        | 🐶        | Woof!     |
+| Cat        | 🐱        | Meow!     |
+| Cow        | 🐄        | Moo       |
 
 ## Images 
 ------
