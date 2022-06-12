@@ -17,6 +17,19 @@ export const schema: GraphQLSchema = buildClientSchema(
   schemaJson as unknown as IntrospectionQuery,
 )
 
+const queriesByName = toIgnoreCase(schema.getQueryType()?.getFields())
+const mutationsByName = toIgnoreCase(schema.getMutationType()?.getFields())
+const subsciptionsByName = toIgnoreCase(
+  schema.getSubscriptionType()?.getFields(),
+)
+const typesByName = toIgnoreCase(schema.getTypeMap())
+
+function toIgnoreCase<T>(
+  target: Record<string, T> | undefined,
+): Record<string, T> {
+  return _.mapKeys(target || {}, (_, key) => key.toLocaleLowerCase())
+}
+
 export function createModelContent(): ReadonlyArray<WebsiteContent> {
   return [
     createWebsiteContent('Queries', schema.getQueryType()),
@@ -73,4 +86,26 @@ function createTypesWebsiteContent(): WebsiteContent | null {
       href: joinUrlPaths(base, 'types', type.name),
     })),
   }
+}
+
+export function getQueryByName(
+  name: string,
+): GraphQLField<unknown, unknown, unknown> | undefined {
+  return queriesByName[name.toLocaleLowerCase()]
+}
+
+export function getMutationByName(
+  name: string,
+): GraphQLField<unknown, unknown, unknown> | undefined {
+  return mutationsByName[name.toLocaleLowerCase()]
+}
+
+export function getSubscriptionByName(
+  name: string,
+): GraphQLField<unknown, unknown, unknown> | undefined {
+  return subsciptionsByName[name.toLocaleLowerCase()]
+}
+
+export function getTypeByName(name: string): GraphQLNamedType | undefined {
+  return typesByName[name.toLocaleLowerCase()]
 }

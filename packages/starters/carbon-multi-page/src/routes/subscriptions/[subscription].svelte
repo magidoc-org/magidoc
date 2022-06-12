@@ -1,8 +1,6 @@
 <script lang="ts" context="module">
-  export function load({ stuff, params, url }: LoadEvent): LoadOutput {
-    const field: GraphQLField<unknown, unknown, unknown> | undefined =
-      stuff.schema?.getSubscriptionType()?.getFields()[params.subscription]
-
+  export function load({ params, url }: LoadEvent): LoadOutput {
+    const field = getSubscriptionByName(params.subscription)
     const page = findPageByHref(url.pathname)
 
     if (!field || !page) {
@@ -29,6 +27,7 @@
   import { findPageByHref } from '$lib/pages'
   import type { WebsitePage } from 'src/app'
   import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
+  import { getSubscriptionByName } from '$lib/model'
 
   export let field: GraphQLField<unknown, unknown, unknown>
   export let page: WebsitePage
