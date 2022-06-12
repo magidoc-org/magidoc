@@ -55,7 +55,7 @@
 
 <main>
   <AppHeader bind:isSideNavOpen />
-  <AppNavigation isOpen={isSideNavOpen} {content} />
+  <AppNavigation bind:isOpen={isSideNavOpen} {content} />
 
   <Content>
     <Grid>
