@@ -152,7 +152,7 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
   {
     type: 'Int',
     names: ['age', 'ages'],
-    expected: 42,
+    expected: 36,
   },
   {
     type: 'Int',
@@ -234,27 +234,27 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
 describe('generating default values', () => {
   beforeAll(() => {
     // If this fails, make sure you add a test for the new types
-    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(45)
+    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(46)
   })
 
   ALL_SETS.forEach((set) => {
     describe(`input is '${set.type}'`, () => {
       test.each(set.names)(
-        `should generate '${set.type}' for input name %s`,
+        `should generate '${set.type}' for input name '%s'`,
         (input) => {
           expect(runFactory(set.type, input)).toEqual(set.expected)
         },
       )
 
       test.each(set.names.map((name) => name.toLocaleLowerCase()))(
-        `should generate '${set.type}' for input name %s`,
+        `should generate '${set.type}' for input name '%s'`,
         (input) => {
           expect(runFactory(set.type, input)).toEqual(set.expected)
         },
       )
 
       test.each(set.names.map((name) => name[0] + name.slice(1)))(
-        `should generate '${set.type}' for input name %s`,
+        `should generate '${set.type}' for input name '%s'`,
         (input) => {
           expect(runFactory(set.type, input)).toEqual(set.expected)
         },

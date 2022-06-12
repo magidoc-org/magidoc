@@ -44,30 +44,41 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = withVariants(
           return '2832 Sesame Street'
         case 'state':
         case 'states':
+        case 'province':
+        case 'provinces':
           return 'Quebec'
         case 'city':
         case 'cities':
+        case 'town':
+        case 'towns':
           return 'Montreal'
         case 'zipcode':
         case 'zipcodes':
           return 'G1G 43F'
         case 'company':
         case 'companies':
-          return 'Acme'
+          return 'Acme Inc'
         case 'department':
         case 'departments':
           return 'Engineering'
-        case 'date':
-        case 'dates':
         case 'datetime':
         case 'datetimes':
+        case 'timestamp':
+        case 'timestamps':
+        case 'timestampz':
         case 'instant':
+        case 'instants':
           return dateTime
+        case 'date':
+        case 'dates':
+          return date
         case 'price':
         case 'prices':
-          return '500$'
+          return '$1,234.56'
         case 'color':
         case 'colors':
+        case 'paint':
+        case 'paints':
           return '#e10098'
         case 'product':
         case 'products':
@@ -77,13 +88,23 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = withVariants(
           return 'Wood'
         case 'id':
         case 'ids':
+        case 'identifier':
+        case 'identifiers':
+        case 'uuid':
+        case 'uuids':
           return id
+        case 'size':
+        case 'sizes':
+          return 'Large'
+        case 'url':
+        case 'urls':
+          return url
         case 'name':
         case 'names':
-          return 'Some name'
+          return 'A name'
         case 'description':
         case 'descriptions':
-          return 'Some description'
+          return 'A description'
         default:
           return 'lorem ipsum'
       }
@@ -134,6 +155,7 @@ function withAliases(
   return {
     ...record,
     Instant: record['DateTime'],
+    Id: record['ID'],
     BigInteger: record['Int'],
     BigNumber: record['Int'],
     Long: record['Int'],
