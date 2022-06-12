@@ -71,10 +71,10 @@ describe('generating a query', () => {
         const result = generateGraphQLQuery(recursiveField, emptyConfig)
 
         expect(result?.variables).toEqual({
-          delay: 20,
-          delay2: 20,
-          delay3: 20,
-          delay4: 20,
+          delay: 42,
+          delay2: 42,
+          delay3: 42,
+          delay4: 42,
         })
       })
     })
@@ -109,8 +109,8 @@ describe('generating a query', () => {
           const result = generateGraphQLQuery(recursiveField, config)
 
           expect(result?.variables).toEqual({
-            delay: 20,
-            delay2: 20,
+            delay: 42,
+            delay2: 42,
           })
         })
       })
@@ -306,7 +306,7 @@ describe('generating a query', () => {
         const result = generateGraphQLQuery(deepNonRecursiveField, config)
 
         expect(result?.variables).toEqual({
-          delay: 20,
+          delay: 42,
         })
       })
     })
@@ -336,7 +336,7 @@ describe('generating a query', () => {
         const result = generateGraphQLQuery(deepNonRecursiveField, config)
 
         expect(result?.variables).toEqual({
-          delay: 20,
+          delay: 42,
         })
       })
     })
@@ -384,7 +384,7 @@ describe('generating a mutation', () => {
   it('generates the variables properly', () => {
     const result = generateGraphQLQuery(mutation, config)
     expect(result?.variables).toEqual({
-      value: 'abc',
+      value: 'lorem ipsum',
     })
   })
 })
@@ -410,7 +410,7 @@ describe('generating a subscription', () => {
   it('generates the variables properly', () => {
     const result = generateGraphQLQuery(subscription, config)
     expect(result?.variables).toEqual({
-      delay: 20,
+      delay: 42,
     })
   })
 })
