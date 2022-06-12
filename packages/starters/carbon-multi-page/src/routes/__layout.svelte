@@ -3,10 +3,8 @@
     return {
       stuff: {
         homeUrl: homePageUrl,
-        schema,
       },
       props: {
-        schema,
         content: pages,
         meta: siteMeta,
       },
@@ -22,7 +20,6 @@
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
   import type { LoadOutput } from '@sveltejs/kit'
-  import { schema } from '$lib/model'
   import { siteMeta, type Meta } from '$lib/meta'
   import { homePageUrl, pages } from '$lib/pages'
   import { templates } from '@magidoc/plugin-starter-variables'

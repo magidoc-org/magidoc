@@ -1,8 +1,6 @@
 <script lang="ts" context="module">
-  export function load({ stuff, params, url }: LoadEvent): LoadOutput {
-    const type: GraphQLNamedType | undefined = stuff.schema?.getType(
-      params.type,
-    )
+  export function load({ params, url }: LoadEvent): LoadOutput {
+    const type = getTypeByName(params.type)
 
     const page = findPageByHref(url.pathname)
 
@@ -42,6 +40,7 @@
   import { findPageByHref } from '$lib/pages'
   import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
   import type { WebsitePage } from 'src/app'
+  import { getTypeByName } from '$lib/model'
 
   export let type: GraphQLNamedType
   export let page: WebsitePage

@@ -1,7 +1,6 @@
 <script lang="ts" context="module">
-  export function load({ stuff, params, url }: LoadEvent): LoadOutput {
-    const field: GraphQLField<unknown, unknown, unknown> | undefined =
-      stuff.schema?.getMutationType()?.getFields()[params.mutation]
+  export function load({ params, url }: LoadEvent): LoadOutput {
+    const field = getMutationByName(params.mutation)
     const page = findPageByHref(url.pathname)
 
     if (!field || !page) {
@@ -28,6 +27,7 @@
   import { findPageByHref } from '$lib/pages'
   import type { WebsitePage } from 'src/app'
   import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
+  import { getMutationByName } from '$lib/model'
 
   export let field: GraphQLField<unknown, unknown, unknown>
   export let page: WebsitePage
