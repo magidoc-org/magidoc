@@ -52,66 +52,7 @@ export default {
 
             Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!
           `,
-        },
-        {
-          title: 'Custom pages',
-          content: [
-            {
-              title: 'Code',
-              content: markdown`
-                # 💻 Code blocks
-
-                You can input code blocks directly in your custom pages, and they will be rendered using PrismJS.
-
-                ~~~graphql
-                query {
-                  look(at: "this") {
-                    thing
-                  }
-                }
-                ~~~
-              `,
-            },
-            {
-              title: 'Blockquote',
-              content: markdown`
-                # ⚠️ Blockquotes
-
-                Your can show error, warning, info and success blockquotes.
-
-                :::notification type="info"
-                You like info? There you go. **They support inner markdown**!
-                :::
-
-                :::notification type="success"
-                Success: Good job!
-                :::
-
-                :::notification type="warning"
-                You like warnings too? Well here's one.
-                :::
-
-                :::notification type="error"
-                Oops, something happened? 🤷
-                :::
-              `,
-            },
-            {
-              title: 'Tables',
-              content: markdown`
-                # 📚 Tables
-
-                Tables are supported as well.
-
-                | **Animal** | **Emoji** | **Sound** |
-                | ---------- | --------- | --------- |
-                | Dog        | 🐶        | Woof!     |
-                | Cat        | 🐱        | Meow!     |
-                | Cow        | 🐄        | Moo       |
-              `,
-            },
-          ],
-        },
+        }
       ],
     },
   },
