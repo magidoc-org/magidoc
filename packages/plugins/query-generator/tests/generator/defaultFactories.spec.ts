@@ -160,7 +160,22 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
     expected: 42,
   },
   {
+    type: 'Numeric',
+    names: ['anythingelse', 'asd'],
+    expected: 42,
+  },
+  {
+    type: 'SmallInt',
+    names: ['anythingelse', 'asd'],
+    expected: 42,
+  },
+  {
     type: 'Float',
+    names: ['anythingelse', 'asd'],
+    expected: 30.7,
+  },
+  {
+    type: 'Float8',
     names: ['anythingelse', 'asd'],
     expected: 30.7,
   },
@@ -228,6 +243,11 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
     type: 'Url',
     names: ['anythingelse', 'asd'],
     expected: 'https://website.com',
+  },
+  {
+    type: 'JsonB',
+    names: ['anythingelse', 'asd'],
+    expected: {},
   },
 ]
 
