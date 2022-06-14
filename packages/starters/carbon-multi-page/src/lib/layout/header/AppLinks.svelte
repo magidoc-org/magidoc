@@ -9,7 +9,7 @@
 </script>
 
 <HeaderGlobalAction aria-label={'Github'} icon={LogoGithub} />
-<HeaderAction tra>
+<HeaderAction transition={false}>
   <HeaderPanelLinks>
     <HeaderPanelLink><LogoGithub /> Github</HeaderPanelLink>
     <HeaderPanelLink><LogoDiscord /> Discord</HeaderPanelLink>
