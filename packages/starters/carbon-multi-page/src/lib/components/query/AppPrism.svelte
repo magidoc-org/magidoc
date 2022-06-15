@@ -37,7 +37,7 @@
       icon={Copy}
       iconDescription={copyButtonText}
       tooltipPosition="left"
-      size="small"
+      size="field"
       on:click={() => copy(code)}
     />
     <Button
@@ -45,7 +45,7 @@
       icon={Add}
       iconDescription="Increase query depth"
       tooltipPosition="left"
-      size="small"
+      size="field"
       on:click={() => graphqlQuery.increaseDepth()}
     />
     <p style="text-align:center">
@@ -56,7 +56,7 @@
       icon={Subtract}
       iconDescription="Decrease query depth"
       tooltipPosition="left"
-      size="small"
+      size="field"
       on:click={() => graphqlQuery.decreaseDepth()}
     />
   </div>
