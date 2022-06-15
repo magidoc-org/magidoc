@@ -19,12 +19,30 @@ const config = {
     staticAssets: path.join(__dirname, 'assets'),
     options: {
       appTitle: 'Magidoc',
+      appFavicon: 'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
       pages: pages,
       siteRoot: '/magidoc',
       externalLinks: [
         {
           label: 'Github',
           href: 'https://github.com/magidoc-org/magidoc',
+        },
+        {
+          group: 'Demo',
+          label: 'Carbon-Multi-Page',
+          href: 'https://magidoc-carbon-multi-page.netlify.app/welcome',
+        },
+        {
+          group: 'Articles',
+          label: 'Medium tutorial',
+          kind: 'medium',
+          href: 'https://medium.com/@sunnypelletier01/autogenerate-graphql-documentation-with-magidoc-53235f5d6dec',
+        },
+        {
+          group: 'Articles',
+          label: 'Why static documentation?',
+          kind: 'article',
+          href: 'https://dev.to/pelletier197/why-you-need-static-documentation-for-your-graphql-api-19ol',
         },
       ],
       siteMeta: {

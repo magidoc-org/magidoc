@@ -2,6 +2,8 @@
   import type { ExternalLink } from '@magidoc/plugin-starter-variables'
   import { HeaderPanelLink } from 'carbon-components-svelte'
   import {
+    Blog,
+    Carbon,
     Launch,
     LogoDiscord,
     LogoFacebook,
@@ -42,9 +44,15 @@
       return LogoMedium
     } else if (lowerKind.includes('slack')) {
       return LogoSlack
+    } else if (lowerKind.includes('article') || lowerKind.includes('blog')) {
+      return Blog
+    } else if (lowerKind.includes('carbon')) {
+      return Carbon
     } else if (
       lowerKind.includes('playground') ||
-      lowerKind.includes('graphiql')
+      lowerKind.includes('graphiql') ||
+      lowerKind.includes('demo') ||
+      lowerKind.includes('demonstration')
     ) {
       return Play
     }

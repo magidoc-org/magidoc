@@ -15,10 +15,22 @@
 
   const links = getOrDefault(templates.EXTERNAL_LINKS, [])
 
-  const none = 'none'
-  let linkGroups: Record<string, ExternalLink[]> = _.groupBy(
-    links.filter((it): it is ExternalLink => !!it),
-    (item) => item.group || none,
+  const defaultGroups = links.filter(
+    (link): link is ExternalLink => !!(link && !link.group),
+  )
+
+  const otherGroups = _.map(
+    _.groupBy(
+      links.filter(
+        (link): link is ExternalLink & { group: string } =>
+          !!(link && link.group),
+      ),
+      (link) => link.group,
+    ),
+    (value, key) => ({
+      key,
+      value,
+    }),
   )
 </script>
 
@@ -26,18 +38,16 @@
   <HeaderAction transition={false}>
     <HeaderPanelLinks>
       <!-- Display all items without type first-->
-      {#each linkGroups[none] as item}
+      {#each defaultGroups as item}
         <AppLink link={item} />
       {/each}
 
       <!-- Display all items with type-->
-      {#each _.entries(linkGroups) as item}
-        {#if item[0] !== none}
-          <HeaderPanelDivider>{item[0]}</HeaderPanelDivider>
-          {#each item[1] as link}
-            <AppLink {link} />
-          {/each}
-        {/if}
+      {#each otherGroups as item}
+        <HeaderPanelDivider>{item.key}</HeaderPanelDivider>
+        {#each item.value as link}
+          <AppLink {link} />
+        {/each}
       {/each}
     </HeaderPanelLinks>
   </HeaderAction>
