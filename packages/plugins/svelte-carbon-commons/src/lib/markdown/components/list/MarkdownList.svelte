@@ -12,7 +12,11 @@
   $: component = token.ordered ? OrderedList : UnorderedList
 </script>
 
-<svelte:component this={component} class="markdown-list-style">
+<svelte:component
+  this={component}
+  class="markdown-list-style"
+  style={`counter-reset: item ${Number(token.start) - 1}`}
+>
   {#each token.items as item}
     <MarkdownToken token={{ ...item }} {options} {renderers} />
   {/each}

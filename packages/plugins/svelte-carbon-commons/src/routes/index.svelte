@@ -23,6 +23,11 @@
     1. With nesting!
 2. *Italic text* followed by **bold text**
 3. test@email.com that should render as a link
+ 
+And then is starts at 4
+
+4. Test
+5. Test 2
 
 ### Unordered list
 - This [with](/test) a link
