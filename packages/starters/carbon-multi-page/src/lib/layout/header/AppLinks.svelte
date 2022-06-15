@@ -18,7 +18,7 @@
   const none = 'none'
   let linkGroups: Record<string, ExternalLink[]> = _.groupBy(
     links.filter((it): it is ExternalLink => !!it),
-    (item) => item.type || none,
+    (item) => item.group || none,
   )
 </script>
 

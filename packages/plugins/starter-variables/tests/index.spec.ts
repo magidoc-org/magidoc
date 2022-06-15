@@ -112,7 +112,8 @@ describe('variables', () => {
             z.object({
               label: z.string().min(1),
               href: z.string().min(1),
-              type: z.string().min(1).optional(),
+              kind: z.string().min(1).optional(),
+              group: z.string().min(1).optional(),
             }),
           )
           .optional(),

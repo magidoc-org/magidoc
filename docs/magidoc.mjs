@@ -21,6 +21,12 @@ const config = {
       appTitle: 'Magidoc',
       pages: pages,
       siteRoot: '/magidoc',
+      externalLinks: [
+        {
+          label: 'Github',
+          href: 'https://github.com/magidoc-org/magidoc',
+        },
+      ],
       siteMeta: {
         description:
           'Fast and highly customizable GraphQL documentation generator',

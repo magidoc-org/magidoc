@@ -18,33 +18,33 @@
 
   export let link: ExternalLink
 
-  const lowerLabel = link.label.toLocaleLowerCase()
-
   function computeIcon() {
-    console.log(lowerLabel)
-    if (lowerLabel.includes('github')) {
+    const lowerKind =
+      link.kind?.toLocaleLowerCase() || link.label.toLocaleLowerCase()
+
+    if (lowerKind.includes('github')) {
       return LogoGithub
-    } else if (lowerLabel.includes('linkedin')) {
+    } else if (lowerKind.includes('linkedin')) {
       return LogoLinkedin
-    } else if (lowerLabel.includes('twitter')) {
+    } else if (lowerKind.includes('twitter')) {
       return LogoTwitter
-    } else if (lowerLabel.includes('tumblr')) {
+    } else if (lowerKind.includes('tumblr')) {
       return LogoTumblr
-    } else if (lowerLabel.includes('instagram')) {
+    } else if (lowerKind.includes('instagram')) {
       return LogoInstagram
-    } else if (lowerLabel.includes('facebook')) {
+    } else if (lowerKind.includes('facebook')) {
       return LogoFacebook
-    } else if (lowerLabel.includes('youtube')) {
+    } else if (lowerKind.includes('youtube')) {
       return LogoYoutube
-    } else if (lowerLabel.includes('discord')) {
+    } else if (lowerKind.includes('discord')) {
       return LogoDiscord
-    } else if (lowerLabel.includes('medium')) {
+    } else if (lowerKind.includes('medium')) {
       return LogoMedium
-    } else if (lowerLabel.includes('slack')) {
+    } else if (lowerKind.includes('slack')) {
       return LogoSlack
     } else if (
-      lowerLabel.includes('playground') ||
-      lowerLabel.includes('graphiql')
+      lowerKind.includes('playground') ||
+      lowerKind.includes('graphiql')
     ) {
       return Play
     }
