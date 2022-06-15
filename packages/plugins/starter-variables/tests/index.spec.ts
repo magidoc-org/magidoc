@@ -24,6 +24,7 @@ describe('variables', () => {
         'SITE_META',
         'QUERY_GENERATION_FACTORIES',
         'PAGES',
+        'EXTERNAL_LINKS',
       ])
     })
 
@@ -99,6 +100,23 @@ describe('variables', () => {
         variables.templates.PAGES,
         'PAGES',
         z.array(pagesType).optional(),
+      )
+    })
+
+    test('external links', () => {
+      testArrayVariable(
+        variables.templates.EXTERNAL_LINKS,
+        'EXTERNAL_LINKS',
+        z
+          .array(
+            z.object({
+              label: z.string().min(1),
+              href: z.string().min(1),
+              kind: z.string().min(1).optional(),
+              group: z.string().min(1).optional(),
+            }),
+          )
+          .optional(),
       )
     })
   })

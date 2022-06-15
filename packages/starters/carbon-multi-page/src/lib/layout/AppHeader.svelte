@@ -1,9 +1,10 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css'
 
-  import { Header } from 'carbon-components-svelte'
+  import { Header, HeaderUtilities } from 'carbon-components-svelte'
   import AppIcon from '$lib/components/common/AppIcon.svelte'
   import { base } from '$app/paths'
+  import AppLinks from './header/AppLinks.svelte'
 
   export let isSideNavOpen = true
 </script>
@@ -12,6 +13,9 @@
   <div slot="platform" class="header-logo-wrapper">
     <AppIcon class="header-logo" />
   </div>
+  <HeaderUtilities>
+    <AppLinks />
+  </HeaderUtilities>
 </Header>
 
 <style>
