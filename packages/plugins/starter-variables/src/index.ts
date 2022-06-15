@@ -5,9 +5,9 @@ import {
   UnsupportedVariablesError,
 } from './env/envFileContent'
 import type { Variable } from './variables/variable'
-import type { Page } from './variables/templates'
+import type { Page, ExternalLink } from './variables/templates'
 
+export type { Variable, Page, ExternalLink }
 export { templates }
 export { magidoc }
-export type { Variable, Page }
 export { toVariablesFile, UnsupportedVariablesError }

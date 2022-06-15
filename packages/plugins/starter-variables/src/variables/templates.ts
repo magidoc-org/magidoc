@@ -7,6 +7,12 @@ export type Page = {
   content: string | Page[]
 }
 
+export type ExternalLink = {
+  label: string
+  href: string
+  type?: string
+}
+
 export default {
   APP_LOGO: createVariable<string>('APP_LOGO', stringConverter()),
   APP_TITLE: createVariable<string>('APP_TITLE', stringConverter()),
@@ -38,11 +44,21 @@ export default {
     arrayConverter((zod) => {
       const type: ZodType<Page> = zod.lazy(() =>
         zod.object({
-          title: zod.string().nonempty(),
-          content: zod.union([zod.array(type), zod.string().nonempty()]),
+          title: zod.string().min(1),
+          content: zod.union([zod.array(type), zod.string().min(1)]),
         }),
       )
       return type
+    }),
+  ),
+  EXTERNAL_LINKS: createVariable<Array<ExternalLink | undefined>>(
+    'EXTERNAL_LINKS',
+    arrayConverter((zod) => {
+      return zod.object({
+        label: zod.string().min(1),
+        href: zod.string().min(1),
+        type: zod.string().min(1).optional(),
+      })
     }),
   ),
 }

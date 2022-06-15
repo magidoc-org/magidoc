@@ -11,6 +11,7 @@ export const SUPPORTED_OPTIONS = [
   templates.SITE_META,
   templates.QUERY_GENERATION_FACTORIES,
   templates.PAGES,
+  templates.EXTERNAL_LINKS,
 ]
 
 export const SCHEMA_TARGET_LOCATION = './src/_schema.json'
