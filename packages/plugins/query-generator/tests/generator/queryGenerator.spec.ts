@@ -15,7 +15,7 @@ import type { TypeGeneratorConfig } from '../../src/generator/config'
 const schema = getTestSchema()
 
 describe('generating a query', () => {
-  const emptyConfig: Partial<GeneratorConfig> = {}
+  const emptyConfig: Partial<QueryGeneratorConfig> = {}
 
   describe('for a field with no arguments', () => {
     const fieldWithNoArgs = getQueryField('id')
