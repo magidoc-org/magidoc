@@ -1,7 +1,11 @@
 import _ from 'lodash'
 
 import type { GraphQLQuery } from '../models/query'
-import { GeneratorConfig, NullGenerationStrategy } from './config'
+import {
+  QueryGeneratorConfig,
+  NullGenerationStrategy,
+  TypeGeneratorConfig,
+} from './config'
 import {
   GraphQLField,
   GraphQLType,
@@ -21,7 +25,7 @@ import {
   subSelectionBuilder,
 } from './queryBuilder'
 
-const DEFAULT_CONFIG: GeneratorConfig = {
+const DEFAULT_CONFIG: QueryGeneratorConfig = {
   queryType: QueryType.QUERY,
   queryName: undefined,
   maxDepth: 5,
@@ -36,7 +40,7 @@ export type GenerationContext = {
 
 export function generateGraphQLQuery(
   field: GraphQLField<unknown, unknown, unknown>,
-  config?: Partial<GeneratorConfig>,
+  config?: Partial<QueryGeneratorConfig>,
 ): GraphQLQuery | null {
   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
 
@@ -59,7 +63,7 @@ export function generateGraphQLQuery(
 
 export function generateGraphQLResponse(
   field: GraphQLField<unknown, unknown, unknown>,
-  config?: Partial<GeneratorConfig>,
+  config?: Partial<TypeGeneratorConfig>,
 ): unknown {
   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
   return {
@@ -73,7 +77,7 @@ export function generateGraphQLResponse(
 function buildField(
   builder: QueryBuilder,
   field: GraphQLField<unknown, unknown, unknown>,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: GenerationContext,
 ): QueryBuilder {
   const parameters: ReadonlyArray<Parameter> = generateArgsForField(
@@ -106,7 +110,7 @@ function buildField(
 
 function generateField(
   type: GraphQLType,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: GenerationContext,
 ): QueryBuilder | null {
   // Go no further

@@ -10,6 +10,7 @@ import {
 import minify from 'graphql-query-compress'
 import { gql, prettify } from '../../src/formatter/query'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
+import type { TypeGeneratorConfig } from '../../src/generator/config'
 
 const schema = getTestSchema()
 
@@ -419,7 +420,7 @@ describe('generating a subscription', () => {
 })
 
 describe('generating a response', () => {
-  const emptyConfig: Partial<GeneratorConfig> = {}
+  const emptyConfig: Partial<TypeGeneratorConfig> = {}
 
   describe('for a field with no arguments', () => {
     const fieldWithNoArgs = getQueryField('id')
@@ -451,95 +452,15 @@ describe('generating a response', () => {
       })
     })
 
-    describe('with custom config for max depth', () => {
-      describe('and max depth is high enough for the object', () => {
-        const config: Partial<GeneratorConfig> = {
-          maxDepth: 3,
-        }
-
-        it('generates the query up to the configured max depth', () => {
-          const result = generateGraphQLQuery(recursiveField, config)
-
-          assertQueryEqual(
-            result?.query,
-            gql`
-              query ($delay: Int, $delay2: Int) {
-                person {
-                  name
-                  age(delay: $delay)
-                  friends {
-                    name
-                    age(delay: $delay2)
-                  }
-                }
-              }
-            `,
-          )
-        })
-
-        it('provides values for all the variables', () => {
-          const result = generateGraphQLQuery(recursiveField, config)
-
-          expect(result?.variables).toEqual({
-            delay: 42,
-            delay2: 42,
-          })
-        })
-      })
-
-      describe('and the max depth is too low for the object', () => {
-        const config: Partial<GeneratorConfig> = {
-          maxDepth: 1,
-        }
-
-        it('returns a null query', () => {
-          expect(generateGraphQLQuery(recursiveField, config)).toBeNull()
-        })
-      })
-    })
-
     describe('with custom config for null generation', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<TypeGeneratorConfig> = {
         nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
       }
 
-      it('generates the query up to the configured max depth', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
+      it('generates the response properly', () => {
+        const result = generateGraphQLResponse(recursiveField, config)
 
-        assertQueryEqual(
-          result?.query,
-          gql`
-            query ($delay: Int, $delay2: Int, $delay3: Int, $delay4: Int) {
-              person {
-                name
-                age(delay: $delay)
-                friends {
-                  name
-                  age(delay: $delay2)
-                  friends {
-                    name
-                    age(delay: $delay3)
-                    friends {
-                      name
-                      age(delay: $delay4)
-                    }
-                  }
-                }
-              }
-            }
-          `,
-        )
-      })
-
-      it('provides values for all the variables', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
-
-        expect(result?.variables).toEqual({
-          delay: null,
-          delay2: null,
-          delay3: null,
-          delay4: null,
-        })
+        assertResponseEqual(result, { person: null })
       })
     })
 
@@ -552,42 +473,11 @@ describe('generating a response', () => {
         },
       }
 
-      it('generates the query properly', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
+      it('generates the response properly', () => {
+        const result = generateGraphQLResponse(recursiveField, config)
 
-        assertQueryEqual(
-          result?.query,
-          gql`
-            query ($delay: Int, $delay2: Int, $delay3: Int, $delay4: Int) {
-              person {
-                name
-                age(delay: $delay)
-                friends {
-                  name
-                  age(delay: $delay2)
-                  friends {
-                    name
-                    age(delay: $delay3)
-                    friends {
-                      name
-                      age(delay: $delay4)
-                    }
-                  }
-                }
-              }
-            }
-          `,
-        )
-      })
-
-      it('provides values for all the variables', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
-
-        expect(result?.variables).toEqual({
-          delay: 2,
-          delay2: 3,
-          delay3: 4,
-          delay4: 5,
+        assertResponseEqual(result, {
+          person: { age: 0, friends: null, name: 'A name' },
         })
       })
     })
@@ -595,7 +485,7 @@ describe('generating a response', () => {
 
   describe('for a union type field', () => {
     const unionTypeField = getQueryField('union')
-    it('generates the query properly', () => {
+    it('generates the response properly', () => {
       const result = generateGraphQLResponse(unionTypeField, emptyConfig)
       assertResponseEqual(result, {
         union: {

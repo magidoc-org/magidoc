@@ -16,30 +16,7 @@ export enum NullGenerationStrategy {
   SOMETIMES_NULL = 'sometimes',
 }
 
-export type GeneratorConfig = {
-  /**
-   * The type of the GraphQL Requests.
-   *
-   * @default QueryType.QUERY
-   */
-  readonly queryType: QueryType
-
-  /**
-   * The name of the query. By default, this will be undefined, which means the query is anonymous.
-   *
-   * @default undefined
-   */
-  readonly queryName?: string
-
-  /**
-   * The max depth at which we want to generate the query.
-   *
-   * If the query gets over that depth, all fields that are not leaves are discarded from the query.
-   *
-   * @default 5
-   */
-  readonly maxDepth: number
-
+export type TypeGeneratorConfig = {
   /**
    * For input values that allow for null values, the strategy here will define the default behavior for generating the null values.
    *
@@ -62,6 +39,31 @@ export type GeneratorConfig = {
    *             '*Filter' : () => null. The supported syntax is the one of `Micromatch` https://www.npmjs.com/package/micromatch
    */
   readonly factories: Record<string, GraphQLFactory>
+}
+
+export type QueryGeneratorConfig = TypeGeneratorConfig & {
+  /**
+   * The type of the GraphQL Requests.
+   *
+   * @default QueryType.QUERY
+   */
+  readonly queryType: QueryType
+
+  /**
+   * The name of the query. By default, this will be undefined, which means the query is anonymous.
+   *
+   * @default undefined
+   */
+  readonly queryName?: string
+
+  /**
+   * The max depth at which we want to generate the query.
+   *
+   * If the query gets over that depth, all fields that are not leaves are discarded from the query.
+   *
+   * @default 5
+   */
+  readonly maxDepth: number
 }
 
 export type GraphQLFactoryContext = {

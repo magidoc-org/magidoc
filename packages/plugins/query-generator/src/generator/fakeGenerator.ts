@@ -2,7 +2,7 @@ import _ from 'lodash'
 import globToRegExp from './utils/globToRegex'
 
 import {
-  GeneratorConfig,
+  QueryGeneratorConfig,
   GraphQLFactory,
   NullGenerationStrategy,
 } from './config'
@@ -36,7 +36,7 @@ type FakeGenerationContext = GenerationContext & {
 
 export function generateArgsForField(
   field: GraphQLField<unknown, unknown, unknown>,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {
   return field.args.map((argument) =>
@@ -46,7 +46,7 @@ export function generateArgsForField(
 
 export function generateResponse(
   field: GraphQLField<unknown, unknown, unknown>,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: GenerationContext,
 ): unknown {
   return generateType(field.type, config, {
@@ -60,7 +60,7 @@ export function generateResponse(
 
 function generateInputParameter(
   input: GraphQLArgument,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: GenerationContext,
 ): Parameter {
   return {
@@ -78,7 +78,7 @@ function generateInputParameter(
 
 function generateType(
   input: GraphQLType,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: FakeGenerationContext,
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
@@ -135,7 +135,7 @@ function generateType(
 
 function findMostSpecificFactory(
   argumentType: GraphQLType,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: FakeGenerationContext,
   nullable = true,
 ): GraphQLFactory {
@@ -187,7 +187,7 @@ function findMostSpecificFactory(
 
 function randomFactory(
   argumentType: GraphQLNamedType,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: FakeGenerationContext,
 ): GraphQLFactory {
   if (isEnumType(argumentType)) {
@@ -264,7 +264,7 @@ You have to provide a custom factory by providing this in your config:
 
 function findWildCardFactory(
   name: string,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
 ): GraphQLFactory | undefined {
   const matchingKey = Object.keys(config.factories).find((key) =>
     globToRegExp(key).test(name),
