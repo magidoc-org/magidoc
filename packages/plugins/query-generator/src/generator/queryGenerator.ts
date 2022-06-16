@@ -203,7 +203,17 @@ function generateResponse(
   if (isLeafType(type)) {
     // No more fields under
     return valueResponseBuilder(
-      generateLeafTypeValue(name, type, config, context),
+      generateLeafTypeValue(
+        name,
+        type,
+        {
+          ...config,
+          // We force the leaf type to not be null here,
+          // since null generation strategy is handled here for the responses
+          nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+        },
+        context,
+      ),
     )
   }
 

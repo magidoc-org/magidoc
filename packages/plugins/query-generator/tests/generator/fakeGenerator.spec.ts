@@ -2,7 +2,6 @@ import {
   GraphQLField,
   GraphQLNamedType,
   GraphQLScalarType,
-  GraphQLType,
   isNullableType,
 } from 'graphql'
 import _ from 'lodash'
@@ -395,7 +394,23 @@ describe('generating fake for a GraphQL leaf type value', () => {
 
     it('should generate the fake value', () => {
       expect(
-        generateLeafTypeValue(testField as GraphQLScalarType, config, context),
+        generateLeafTypeValue(
+          'id',
+          testField as GraphQLScalarType,
+          config,
+          context,
+        ),
+      ).toEqual('08a16b83-9094-4e89-8c05-2ccadd5c1c7e')
+    })
+
+    it('should generate the fake value using the name', () => {
+      expect(
+        generateLeafTypeValue(
+          'id',
+          getTypeByName('String') as GraphQLScalarType,
+          config,
+          context,
+        ),
       ).toEqual('08a16b83-9094-4e89-8c05-2ccadd5c1c7e')
     })
   })
@@ -408,7 +423,12 @@ describe('generating fake for a GraphQL leaf type value', () => {
 
     it('should generate a null fake', () => {
       expect(
-        generateLeafTypeValue(testField as GraphQLScalarType, config, context),
+        generateLeafTypeValue(
+          'id',
+          testField as GraphQLScalarType,
+          config,
+          context,
+        ),
       ).toBeNull()
     })
   })

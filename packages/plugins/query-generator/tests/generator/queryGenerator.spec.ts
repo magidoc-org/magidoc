@@ -10,7 +10,10 @@ import {
 import minify from 'graphql-query-compress'
 import { gql, prettify } from '../../src/formatter/query'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
-import type { FakeGenerationConfig } from '../../src/generator/config'
+import type {
+  FakeGenerationConfig,
+  ResponseGenerationConfig,
+} from '../../src/generator/config'
 
 const schema = getTestSchema()
 
@@ -464,6 +467,30 @@ describe('generating a response', () => {
                     name: 'A name',
                   },
                 ],
+                name: 'A name',
+              },
+            ],
+            name: 'A name',
+          },
+        })
+      })
+    })
+
+    describe('with a custom max depth', () => {
+      const maxDepthConfig: Partial<ResponseGenerationConfig> = {
+        ...emptyConfig,
+        maxDepth: 3,
+      }
+
+      it('generates the query up to the provided max depth', () => {
+        const result = generateGraphQLResponse(recursiveField, maxDepthConfig)
+
+        assertResponseEqual(result, {
+          person: {
+            age: 36,
+            friends: [
+              {
+                age: 36,
                 name: 'A name',
               },
             ],
