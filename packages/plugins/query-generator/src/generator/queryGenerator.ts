@@ -1,7 +1,11 @@
 import _ from 'lodash'
 
 import type { GraphQLQuery } from '../models/query'
-import { QueryGeneratorConfig, NullGenerationStrategy } from './config'
+import {
+  QueryGeneratorConfig,
+  NullGenerationStrategy,
+  ResponseGenerationConfig,
+} from './config'
 import {
   GraphQLField,
   GraphQLType,
@@ -10,16 +14,26 @@ import {
   isUnionType,
   isObjectType,
   isInterfaceType,
+  isNonNullType,
+  isListType,
+  isNullableType,
 } from 'graphql'
 import { unwrapType } from './extractor'
-import { generateArgsForField } from './fakeGenerator'
+import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
 import {
   Parameter,
   QueryBuilder,
   queryBuilder,
   QueryType,
   subSelectionBuilder,
-} from './queryBuilder'
+} from './builder/queryBuilder'
+import {
+  fieldResponseBuilder,
+  subObjectResponseBuilder,
+  valueResponseBuilder,
+  ResponseFieldValueBuilder,
+  arrayResponseBuilder,
+} from './builder/responseBuilder'
 
 const DEFAULT_CONFIG: QueryGeneratorConfig = {
   queryType: QueryType.QUERY,
@@ -57,18 +71,22 @@ export function generateGraphQLQuery(
     .build()
 }
 
-// export function generateGraphQLResponse(
-//   field: GraphQLField<unknown, unknown, unknown>,
-//   config?: Partial<TypeGeneratorConfig>,
-// ): unknown {
-//   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
-//   return {
-//     [field.name]: generateResponse(field, mergedConfig, {
-//       depth: 0,
-//       path: '',
-//     }),
-//   }
-// }
+export function generateGraphQLResponse(
+  field: GraphQLField<unknown, unknown, unknown>,
+  config?: Partial<ResponseGenerationConfig>,
+): unknown | null {
+  const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
+  const response = generateResponse(field.name, field.type, mergedConfig, {
+    depth: 1,
+    path: field.name,
+  })
+
+  if (response === null) {
+    return null
+  }
+
+  return fieldResponseBuilder(field, response).build()
+}
 
 function buildField(
   builder: QueryBuilder,
@@ -162,6 +180,91 @@ function generateField(
     }
 
     return finalBuilderWithAllFields
+  }
+
+  throw new Error(
+    `this portion of the query generator should be unreachable... if you ever see this error, please open an issue: ${JSON.stringify(
+      type,
+    )}`,
+  )
+}
+
+function generateResponse(
+  name: string,
+  type: GraphQLType,
+  config: ResponseGenerationConfig,
+  context: GenerationContext,
+): ResponseFieldValueBuilder | null {
+  // Go no further
+  if (context.depth > config.maxDepth) {
+    return null
+  }
+
+  if (isLeafType(type)) {
+    // No more fields under
+    return valueResponseBuilder(
+      generateLeafTypeValue(name, type, config, context),
+    )
+  }
+
+  if (isNonNullType(type)) {
+    return generateResponse(name, type.ofType, config, context)
+  }
+
+  if (
+    isNullableType(type) &&
+    config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL
+  ) {
+    return valueResponseBuilder(null)
+  }
+
+  if (isListType(type)) {
+    const subResult = generateResponse(name, type.ofType, config, context)
+    if (!subResult) return null
+    return arrayResponseBuilder().withValue(subResult)
+  }
+
+  if (isUnionType(type) || isObjectType(type) || isInterfaceType(type)) {
+    let builder = subObjectResponseBuilder()
+    let target = type
+
+    if (isUnionType(target)) {
+      target = target.getTypes()[0]
+      builder = builder.withField(
+        '__typename',
+        valueResponseBuilder(target.name),
+      )
+    }
+
+    const resultBuilder = _.reduce(
+      target.getFields(),
+      (acc, current) => {
+        const subSelection = generateResponse(
+          current.name,
+          current.type,
+          config,
+          {
+            ...context,
+            path: `${context.path}.${current.name}`,
+            depth: context.depth + 1,
+          },
+        )
+
+        if (subSelection === null) {
+          return acc
+        }
+
+        return acc.withField(current.name, subSelection)
+      },
+      builder,
+    )
+
+    if (resultBuilder === builder) {
+      // Could not generate the sub selection, as we reached the max depth
+      return null
+    }
+
+    return resultBuilder
   }
 
   throw new Error(

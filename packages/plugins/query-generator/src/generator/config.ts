@@ -16,7 +16,7 @@ export enum NullGenerationStrategy {
   SOMETIMES_NULL = 'sometimes',
 }
 
-export type TypeGeneratorConfig = {
+export type FakeGenerationConfig = {
   /**
    * For input values that allow for null values, the strategy here will define the default behavior for generating the null values.
    *
@@ -41,7 +41,18 @@ export type TypeGeneratorConfig = {
   readonly factories: Record<string, GraphQLFactory>
 }
 
-export type QueryGeneratorConfig = TypeGeneratorConfig & {
+export type ResponseGenerationConfig = FakeGenerationConfig & {
+  /**
+   * The max depth at which we want to generate the query.
+   *
+   * If the query gets over that depth, all fields that are not leaves are discarded from the query.
+   *
+   * @default 5
+   */
+  readonly maxDepth: number
+}
+
+export type QueryGeneratorConfig = ResponseGenerationConfig & {
   /**
    * The type of the GraphQL Requests.
    *
@@ -55,15 +66,6 @@ export type QueryGeneratorConfig = TypeGeneratorConfig & {
    * @default undefined
    */
   readonly queryName?: string
-
-  /**
-   * The max depth at which we want to generate the query.
-   *
-   * If the query gets over that depth, all fields that are not leaves are discarded from the query.
-   *
-   * @default 5
-   */
-  readonly maxDepth: number
 }
 
 export type GraphQLFactoryContext = {

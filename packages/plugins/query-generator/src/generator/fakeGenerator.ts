@@ -5,6 +5,7 @@ import {
   QueryGeneratorConfig,
   GraphQLFactory,
   NullGenerationStrategy,
+  FakeGenerationConfig,
 } from './config'
 import { MissingCustomScalarException } from './error'
 
@@ -21,9 +22,10 @@ import {
   isScalarType,
   isListType,
   isNullableType,
+  GraphQLLeafType,
 } from 'graphql'
 import type { GenerationContext } from './queryGenerator'
-import type { Parameter } from './queryBuilder'
+import type { Parameter } from './builder/queryBuilder'
 
 type FakeGenerationContext = GenerationContext & {
   readonly targetName: string
@@ -39,6 +41,24 @@ export function generateArgsForField(
   return field.args.map((argument) =>
     generateInputParameter(argument, config, context),
   )
+}
+
+export function generateLeafTypeValue(
+  targetName: string,
+  value: GraphQLLeafType,
+  config: FakeGenerationConfig,
+  context: GenerationContext,
+): unknown {
+  return findMostSpecificFactory(value, config, {
+    ...context,
+    defaultValue: null,
+    generatedInputObjects: new Set(),
+    targetName: targetName,
+  })({
+    ...context,
+    targetName: targetName,
+    path: context.path,
+  })
 }
 
 function generateInputParameter(
@@ -61,7 +81,7 @@ function generateInputParameter(
 
 function generateInput(
   input: GraphQLInputType,
-  config: QueryGeneratorConfig,
+  config: FakeGenerationConfig,
   context: FakeGenerationContext,
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
@@ -118,7 +138,7 @@ function generateInput(
 
 function findMostSpecificFactory(
   argumentType: GraphQLInputType,
-  config: QueryGeneratorConfig,
+  config: FakeGenerationConfig,
   context: FakeGenerationContext,
   nullable = true,
 ): GraphQLFactory {
@@ -170,7 +190,7 @@ function findMostSpecificFactory(
 
 function randomFactory(
   argumentType: GraphQLNamedType,
-  config: QueryGeneratorConfig,
+  config: FakeGenerationConfig,
   context: FakeGenerationContext,
 ): GraphQLFactory {
   if (isEnumType(argumentType)) {
@@ -217,7 +237,7 @@ You have to provide a custom factory by providing this in your config:
 }
 function findWildCardFactory(
   name: string,
-  config: QueryGeneratorConfig,
+  config: FakeGenerationConfig,
 ): GraphQLFactory | undefined {
   const matchingKey = Object.keys(config.factories).find((key) =>
     globToRegExp(key).test(name),

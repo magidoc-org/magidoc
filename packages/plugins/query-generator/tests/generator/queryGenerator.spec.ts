@@ -10,7 +10,7 @@ import {
 import minify from 'graphql-query-compress'
 import { gql, prettify } from '../../src/formatter/query'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
-import type { TypeGeneratorConfig } from '../../src/generator/config'
+import type { FakeGenerationConfig } from '../../src/generator/config'
 
 const schema = getTestSchema()
 
@@ -420,7 +420,7 @@ describe('generating a subscription', () => {
 })
 
 describe('generating a response', () => {
-  const emptyConfig: Partial<TypeGeneratorConfig> = {}
+  const emptyConfig: Partial<FakeGenerationConfig> = {}
 
   describe('for a field with no arguments', () => {
     const fieldWithNoArgs = getQueryField('id')
@@ -447,13 +447,34 @@ describe('generating a response', () => {
         const result = generateGraphQLResponse(recursiveField, emptyConfig)
 
         assertResponseEqual(result, {
-          person: { age: 36, friends: null, name: 'A name' },
+          person: {
+            age: 36,
+            friends: [
+              {
+                age: 36,
+                friends: [
+                  {
+                    age: 36,
+                    friends: [
+                      {
+                        age: 36,
+                        name: 'A name',
+                      },
+                    ],
+                    name: 'A name',
+                  },
+                ],
+                name: 'A name',
+              },
+            ],
+            name: 'A name',
+          },
         })
       })
     })
 
     describe('with custom config for null generation', () => {
-      const config: Partial<TypeGeneratorConfig> = {
+      const config: Partial<FakeGenerationConfig> = {
         nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
       }
 
@@ -477,7 +498,28 @@ describe('generating a response', () => {
         const result = generateGraphQLResponse(recursiveField, config)
 
         assertResponseEqual(result, {
-          person: { age: 0, friends: null, name: 'A name' },
+          person: {
+            age: 2,
+            friends: [
+              {
+                age: 3,
+                friends: [
+                  {
+                    age: 4,
+                    friends: [
+                      {
+                        age: 5,
+                        name: 'A name',
+                      },
+                    ],
+                    name: 'A name',
+                  },
+                ],
+                name: 'A name',
+              },
+            ],
+            name: 'A name',
+          },
         })
       })
     })

@@ -1,7 +1,7 @@
 export {
   NullGenerationStrategy,
   type QueryGeneratorConfig,
-  type TypeGeneratorConfig,
+  type FakeGenerationConfig as TypeGeneratorConfig,
   type GraphQLFactory,
   type GraphQLFactoryContext,
   type GraphQLFactoryContextDefault,
@@ -12,7 +12,7 @@ export {
   MissingCustomScalarException,
 } from './generator/error'
 
-export { QueryType } from './generator/queryBuilder'
+export { QueryType } from './generator/builder/queryBuilder'
 export {
   generateGraphQLQuery,
   generateGraphQLResponse,

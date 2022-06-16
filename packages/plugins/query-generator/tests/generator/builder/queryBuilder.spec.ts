@@ -4,7 +4,7 @@ import {
   mutationBuilder,
   queryBuilder,
   subSelectionBuilder,
-} from '../../src/generator/queryBuilder'
+} from '../../src/generator/builder/queryBuilder'
 
 describe('building a query', () => {
   const underTest = queryBuilder()

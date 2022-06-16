@@ -1,4 +1,10 @@
-import { GraphQLField, isNullableType } from 'graphql'
+import {
+  GraphQLField,
+  GraphQLNamedType,
+  GraphQLScalarType,
+  GraphQLType,
+  isNullableType,
+} from 'graphql'
 import _ from 'lodash'
 import {
   GenerationContext,
@@ -10,9 +16,10 @@ import {
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 import {
   generateArgsForField,
-  generateResponse,
+  generateLeafTypeValue,
 } from '../../src/generator/fakeGenerator'
-import type { Parameter } from '../../src/generator/queryBuilder'
+import type { Parameter } from '../../src/generator/builder/queryBuilder'
+import type { FakeGenerationConfig } from '../../src/generator/config'
 
 const schema = getTestSchema()
 
@@ -367,13 +374,11 @@ describe('generating fakes for a GraphQL input argument', () => {
   })
 })
 
-describe('generating fake for a GraphQL response type', () => {
-  const testResponse = getQueryField('test')
+describe('generating fake for a GraphQL leaf type value', () => {
+  const testField = getTypeByName('ID')
 
-  const baseConfig: QueryGeneratorConfig = {
-    queryType: QueryType.QUERY,
+  const baseConfig: FakeGenerationConfig = {
     factories: {},
-    maxDepth: 5,
     nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
   }
 
@@ -383,15 +388,28 @@ describe('generating fake for a GraphQL response type', () => {
   }
 
   describe('with never null generation strategy', () => {
-    const config: QueryGeneratorConfig = {
+    const config: FakeGenerationConfig = {
       ...baseConfig,
       nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
     }
 
-    it('should generate the response without throwing', () => {
-      expect(() =>
-        generateResponse(testResponse, config, context),
-      ).not.toThrow()
+    it('should generate the fake value', () => {
+      expect(
+        generateLeafTypeValue(testField as GraphQLScalarType, config, context),
+      ).toEqual('08a16b83-9094-4e89-8c05-2ccadd5c1c7e')
+    })
+  })
+
+  describe('with always null generation strategy', () => {
+    const config: FakeGenerationConfig = {
+      ...baseConfig,
+      nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
+    }
+
+    it('should generate a null fake', () => {
+      expect(
+        generateLeafTypeValue(testField as GraphQLScalarType, config, context),
+      ).toBeNull()
     })
   })
 })
@@ -414,6 +432,14 @@ function paramByType(
   const result = _.find(parameters, (item) => item.type === type)
   if (!result) {
     fail(`Expected a parameter with type '${type}' in ${parameters.toString()}`)
+  }
+  return result
+}
+
+function getTypeByName(type: string): GraphQLNamedType {
+  const result = schema.getTypeMap()[type]
+  if (!result) {
+    fail(`Expected a parameter type '${type}' in schema`)
   }
   return result
 }
