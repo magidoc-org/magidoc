@@ -215,8 +215,14 @@ You have to provide a custom factory by providing this in your config:
 
   if (isUnionType(argumentType)) {
     const target = argumentType.getTypes()[0]
-    console.log('Target union', target)
-    return randomFactory(target, config, context)
+    const factory = randomFactory(target, config, context)
+    return (context) => {
+      const result = factory(context) as Record<string, unknown>
+      return {
+        __typename: target.name,
+        ...result,
+      }
+    }
   }
 
   if (isObjectType(argumentType) || isInterfaceType(argumentType)) {

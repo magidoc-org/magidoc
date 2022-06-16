@@ -12,7 +12,7 @@ import {
   isInterfaceType,
 } from 'graphql'
 import { unwrapType } from './extractor'
-import { generateArgsForField } from './fakeGenerator'
+import { generateArgsForField, generateResponse } from './fakeGenerator'
 import {
   Parameter,
   QueryBuilder,
@@ -55,6 +55,19 @@ export function generateGraphQLQuery(
     .withType(mergedConfig.queryType)
     .withName(mergedConfig.queryName)
     .build()
+}
+
+export function generateGraphQLResponse(
+  field: GraphQLField<unknown, unknown, unknown>,
+  config?: Partial<GeneratorConfig>,
+): unknown {
+  const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
+  return {
+    [field.name]: generateResponse(field, mergedConfig, {
+      depth: 0,
+      path: '',
+    }),
+  }
 }
 
 function buildField(

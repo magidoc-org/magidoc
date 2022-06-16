@@ -1,6 +1,8 @@
 import { writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
-import generateGraphQLQuery, {
+import {
+  generateGraphQLQuery,
+  generateGraphQLResponse,
   MissingCustomScalarException,
   NullGenerationStrategy,
   QueryType,
@@ -17,6 +19,7 @@ const DEFAULT_DEPTH = 3
 
 export type GeneratedGraphQLQuery = {
   value: GraphQLQuery | null
+  response: unknown
   type: QueryType
   field: GraphQLField<unknown, unknown, unknown>
   depth: number
@@ -29,24 +32,28 @@ const generateQuery = (expected: {
   type: QueryType
   depth: number
 }): GeneratedGraphQLQuery => {
+  const context = {
+    queryType: expected.type,
+    maxDepth: expected.depth,
+    nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+    factories: _.reduce(
+      get(templates.QUERY_GENERATION_FACTORIES),
+      // Merge the factories values provided by environment variable.
+      (prev, curr, key) => ({
+        ...prev,
+        [key]: () => curr,
+      }),
+      {},
+    ),
+  }
+
   try {
-    const result = generateGraphQLQuery(expected.field, {
-      queryType: expected.type,
-      maxDepth: expected.depth,
-      nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
-      factories: _.reduce(
-        get(templates.QUERY_GENERATION_FACTORIES),
-        // Merge the factories values provided by environment variable.
-        (prev, curr, key) => ({
-          ...prev,
-          [key]: () => curr,
-        }),
-        {},
-      ),
-    })
+    const request = generateGraphQLQuery(expected.field, context)
+    const response = generateGraphQLResponse(expected.field, context)
 
     return {
-      value: result ?? null,
+      value: request ?? null,
+      response: response,
       depth: expected.depth,
       field: expected.field,
       type: expected.type,
