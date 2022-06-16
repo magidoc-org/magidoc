@@ -1,11 +1,7 @@
 import _ from 'lodash'
 
 import type { GraphQLQuery } from '../models/query'
-import {
-  QueryGeneratorConfig,
-  NullGenerationStrategy,
-  TypeGeneratorConfig,
-} from './config'
+import { QueryGeneratorConfig, NullGenerationStrategy } from './config'
 import {
   GraphQLField,
   GraphQLType,
@@ -16,7 +12,7 @@ import {
   isInterfaceType,
 } from 'graphql'
 import { unwrapType } from './extractor'
-import { generateArgsForField, generateResponse } from './fakeGenerator'
+import { generateArgsForField } from './fakeGenerator'
 import {
   Parameter,
   QueryBuilder,
@@ -61,18 +57,18 @@ export function generateGraphQLQuery(
     .build()
 }
 
-export function generateGraphQLResponse(
-  field: GraphQLField<unknown, unknown, unknown>,
-  config?: Partial<TypeGeneratorConfig>,
-): unknown {
-  const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
-  return {
-    [field.name]: generateResponse(field, mergedConfig, {
-      depth: 0,
-      path: '',
-    }),
-  }
-}
+// export function generateGraphQLResponse(
+//   field: GraphQLField<unknown, unknown, unknown>,
+//   config?: Partial<TypeGeneratorConfig>,
+// ): unknown {
+//   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
+//   return {
+//     [field.name]: generateResponse(field, mergedConfig, {
+//       depth: 0,
+//       path: '',
+//     }),
+//   }
+// }
 
 function buildField(
   builder: QueryBuilder,
