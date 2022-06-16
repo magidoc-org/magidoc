@@ -1,6 +1,7 @@
 export {
   NullGenerationStrategy,
-  type QueryGeneratorConfig as GeneratorConfig,
+  type QueryGeneratorConfig,
+  type TypeGeneratorConfig,
   type GraphQLFactory,
   type GraphQLFactoryContext,
   type GraphQLFactoryContextDefault,

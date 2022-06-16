@@ -2,7 +2,7 @@ import type { GraphQLField } from 'graphql'
 import {
   generateGraphQLQuery,
   generateGraphQLResponse,
-  GeneratorConfig,
+  QueryGeneratorConfig,
   GraphQLFactoryContext,
   NullGenerationStrategy,
   QueryType,
@@ -85,7 +85,7 @@ describe('generating a query', () => {
 
     describe('with custom config for max depth', () => {
       describe('and max depth is high enough for the object', () => {
-        const config: Partial<GeneratorConfig> = {
+        const config: Partial<QueryGeneratorConfig> = {
           maxDepth: 3,
         }
 
@@ -120,7 +120,7 @@ describe('generating a query', () => {
       })
 
       describe('and the max depth is too low for the object', () => {
-        const config: Partial<GeneratorConfig> = {
+        const config: Partial<QueryGeneratorConfig> = {
           maxDepth: 1,
         }
 
@@ -131,7 +131,7 @@ describe('generating a query', () => {
     })
 
     describe('with custom config for null generation', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
       }
 
@@ -176,7 +176,7 @@ describe('generating a query', () => {
     })
 
     describe('with a custom factory', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         factories: {
           Int: (context) => {
             return context.depth
@@ -281,7 +281,7 @@ describe('generating a query', () => {
     const deepNonRecursiveField = getQueryField('deferrable')
 
     describe('and max depth is larger than the field', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         maxDepth: 10,
       }
 
@@ -316,7 +316,7 @@ describe('generating a query', () => {
     })
 
     describe('and max depth is too low to return the field', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         maxDepth: 3,
       }
 
@@ -348,7 +348,7 @@ describe('generating a query', () => {
 
   describe('with a custom query name', () => {
     const fieldWithNoArgs = getQueryField('id')
-    const config: Partial<GeneratorConfig> = {
+    const config: Partial<QueryGeneratorConfig> = {
       queryName: 'GetId',
     }
 
@@ -369,7 +369,7 @@ describe('generating a query', () => {
 
 describe('generating a mutation', () => {
   const mutation = getMutationField('setString')
-  const config: Partial<GeneratorConfig> = {
+  const config: Partial<QueryGeneratorConfig> = {
     queryType: QueryType.MUTATION,
   }
 
@@ -395,7 +395,7 @@ describe('generating a mutation', () => {
 
 describe('generating a subscription', () => {
   const subscription = getSubscriptionField('message')
-  const config: Partial<GeneratorConfig> = {
+  const config: Partial<QueryGeneratorConfig> = {
     queryType: QueryType.SUBSCRIPTION,
   }
 
@@ -465,7 +465,7 @@ describe('generating a response', () => {
     })
 
     describe('with a custom factory', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         factories: {
           Int: (context) => {
             return context.depth

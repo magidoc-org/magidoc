@@ -2,9 +2,9 @@ import { GraphQLField, isNullableType } from 'graphql'
 import _ from 'lodash'
 import {
   GenerationContext,
-  GeneratorConfig,
   GraphQLFactoryContext,
   NullGenerationStrategy,
+  QueryGeneratorConfig,
   QueryType,
 } from '../../src'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
@@ -19,7 +19,7 @@ const schema = getTestSchema()
 describe('generating fakes for a GraphQL input argument', () => {
   const fieldWithArgs = getQueryField('hasArgs')
 
-  const baseConfig: GeneratorConfig = {
+  const baseConfig: QueryGeneratorConfig = {
     queryType: QueryType.QUERY,
     factories: {},
     maxDepth: 5,
@@ -39,7 +39,7 @@ describe('generating fakes for a GraphQL input argument', () => {
   })
 
   describe('with never null generation strategy', () => {
-    const config: GeneratorConfig = {
+    const config: QueryGeneratorConfig = {
       ...baseConfig,
       nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
     }
@@ -89,7 +89,7 @@ describe('generating fakes for a GraphQL input argument', () => {
   })
 
   describe('with always null generation strategy', () => {
-    const config: GeneratorConfig = {
+    const config: QueryGeneratorConfig = {
       ...baseConfig,
       nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
     }
@@ -122,7 +122,7 @@ describe('generating fakes for a GraphQL input argument', () => {
   })
 
   describe('with sometimes null generation strategy', () => {
-    const config: GeneratorConfig = {
+    const config: QueryGeneratorConfig = {
       ...baseConfig,
       nullGenerationStrategy: NullGenerationStrategy.SOMETIMES_NULL,
     }
@@ -266,7 +266,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       const output =
         'This is some dope test string that is clearly not hardcoded somewhere else'
 
-      const config: GeneratorConfig = {
+      const config: QueryGeneratorConfig = {
         ...baseConfig,
         factories: {
           String: () => output,
@@ -318,7 +318,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       const outputFloat = 45.4
       const outputEnum = 'RED'
 
-      const config: GeneratorConfig = {
+      const config: QueryGeneratorConfig = {
         ...baseConfig,
         factories: {
           'Str*': () => outputString,
@@ -348,7 +348,7 @@ describe('generating fakes for a GraphQL input argument', () => {
     const recursiveField = getMandatoryField(schema.getQueryType(), 'inputs')
 
     describe('with never null generation strategy', () => {
-      const config: GeneratorConfig = {
+      const config: QueryGeneratorConfig = {
         ...baseConfig,
         nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
       }
@@ -370,7 +370,7 @@ describe('generating fakes for a GraphQL input argument', () => {
 describe('generating fake for a GraphQL response type', () => {
   const testResponse = getQueryField('test')
 
-  const baseConfig: GeneratorConfig = {
+  const baseConfig: QueryGeneratorConfig = {
     queryType: QueryType.QUERY,
     factories: {},
     maxDepth: 5,
@@ -383,7 +383,7 @@ describe('generating fake for a GraphQL response type', () => {
   }
 
   describe('with never null generation strategy', () => {
-    const config: GeneratorConfig = {
+    const config: QueryGeneratorConfig = {
       ...baseConfig,
       nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
     }
