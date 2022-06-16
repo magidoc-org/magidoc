@@ -2,7 +2,7 @@ import _ from 'lodash'
 import globToRegExp from './utils/globToRegex'
 
 import {
-  GeneratorConfig,
+  QueryGeneratorConfig,
   GraphQLFactory,
   NullGenerationStrategy,
 } from './config'
@@ -13,7 +13,6 @@ import { typeToString, unwrapType } from './extractor'
 import {
   GraphQLField,
   GraphQLArgument,
-  GraphQLInputType,
   GraphQLNamedType,
   isNonNullType,
   isInputObjectType,
@@ -21,6 +20,10 @@ import {
   isScalarType,
   isListType,
   isNullableType,
+  GraphQLType,
+  isObjectType,
+  isUnionType,
+  isInterfaceType,
 } from 'graphql'
 import type { GenerationContext } from './queryGenerator'
 import type { Parameter } from './queryBuilder'
@@ -33,7 +36,7 @@ type FakeGenerationContext = GenerationContext & {
 
 export function generateArgsForField(
   field: GraphQLField<unknown, unknown, unknown>,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {
   return field.args.map((argument) =>
@@ -41,15 +44,29 @@ export function generateArgsForField(
   )
 }
 
+export function generateResponse(
+  field: GraphQLField<unknown, unknown, unknown>,
+  config: QueryGeneratorConfig,
+  context: GenerationContext,
+): unknown {
+  return generateType(field.type, config, {
+    ...context,
+    generatedInputObjects: new Set(),
+    path: `${context.path}@`,
+    defaultValue: null,
+    targetName: field.name,
+  })
+}
+
 function generateInputParameter(
   input: GraphQLArgument,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: GenerationContext,
 ): Parameter {
   return {
     name: input.name,
     type: typeToString(input.type),
-    value: generateInput(input.type, config, {
+    value: generateType(input.type, config, {
       ...context,
       generatedInputObjects: new Set(),
       path: `${context.path}$`,
@@ -59,9 +76,9 @@ function generateInputParameter(
   }
 }
 
-function generateInput(
-  input: GraphQLInputType,
-  config: GeneratorConfig,
+function generateType(
+  input: GraphQLType,
+  config: QueryGeneratorConfig,
   context: FakeGenerationContext,
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
@@ -70,7 +87,7 @@ function generateInput(
     ? DEFAULT_FACTORIES[unwrappedType.name]
     : undefined
 
-  if (isInputObjectType(unwrappedType)) {
+  if (isObjectType(unwrappedType) || isInputObjectType(unwrappedType)) {
     if (
       context.generatedInputObjects.has(unwrappedType.name) &&
       isNullableType(input)
@@ -117,8 +134,8 @@ function generateInput(
 }
 
 function findMostSpecificFactory(
-  argumentType: GraphQLInputType,
-  config: GeneratorConfig,
+  argumentType: GraphQLType,
+  config: QueryGeneratorConfig,
   context: FakeGenerationContext,
   nullable = true,
 ): GraphQLFactory {
@@ -170,7 +187,7 @@ function findMostSpecificFactory(
 
 function randomFactory(
   argumentType: GraphQLNamedType,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
   context: FakeGenerationContext,
 ): GraphQLFactory {
   if (isEnumType(argumentType)) {
@@ -196,13 +213,40 @@ You have to provide a custom factory by providing this in your config:
     return defaultFactory
   }
 
+  if (isUnionType(argumentType)) {
+    const target = argumentType.getTypes()[0]
+    const factory = randomFactory(target, config, context)
+    return (context) => {
+      const result = factory(context) as Record<string, unknown>
+      return {
+        __typename: target.name,
+        ...result,
+      }
+    }
+  }
+
+  if (isObjectType(argumentType) || isInterfaceType(argumentType)) {
+    const fields = argumentType.getFields() || {}
+
+    // Generates a random object the required fields in the object
+    return () => {
+      return _.mapValues(fields, (input) => {
+        return generateType(input.type, config, {
+          ...context,
+          targetName: input.name,
+          defaultValue: null,
+        })
+      })
+    }
+  }
+
   if (isInputObjectType(argumentType)) {
     const fields = argumentType.getFields() || {}
 
     // Generates a random object the required fields in the object
     return () => {
       return _.mapValues(fields, (input) => {
-        return generateInput(input.type, config, {
+        return generateType(input.type, config, {
           ...context,
           targetName: input.name,
           defaultValue: input.defaultValue,
@@ -212,12 +256,15 @@ You have to provide a custom factory by providing this in your config:
   }
 
   throw new Error(
-    `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${argumentType.toJSON()}`,
+    `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${String(
+      argumentType,
+    )}`,
   )
 }
+
 function findWildCardFactory(
   name: string,
-  config: GeneratorConfig,
+  config: QueryGeneratorConfig,
 ): GraphQLFactory | undefined {
   const matchingKey = Object.keys(config.factories).find((key) =>
     globToRegExp(key).test(name),

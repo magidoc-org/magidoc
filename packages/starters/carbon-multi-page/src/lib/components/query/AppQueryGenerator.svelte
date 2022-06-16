@@ -18,6 +18,7 @@
 <Tabs bind:selected={selectedTab} autoWidth>
   <Tab label="Query" />
   <Tab label="Variables" />
+  <Tab label="Response" />
   <svelte:fragment slot="content">
     <TabContent style="padding:0">
       {#if selectedTab === 0}
@@ -33,6 +34,16 @@
         <AppPrism
           code={$graphqlQuery.value?.variables
             ? JSON.stringify($graphqlQuery.value?.variables || {}, null, 2)
+            : ''}
+          language={'json'}
+        />
+      {/if}
+    </TabContent>
+    <TabContent style="padding:0">
+      {#if selectedTab === 2}
+        <AppPrism
+          code={$graphqlQuery.response
+            ? JSON.stringify($graphqlQuery.response || {}, null, 2)
             : ''}
           language={'json'}
         />

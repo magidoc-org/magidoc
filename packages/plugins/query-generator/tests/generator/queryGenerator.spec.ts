@@ -1,17 +1,21 @@
 import type { GraphQLField } from 'graphql'
 import {
   generateGraphQLQuery,
-  GeneratorConfig,
+  generateGraphQLResponse,
+  QueryGeneratorConfig,
+  GraphQLFactoryContext,
   NullGenerationStrategy,
   QueryType,
 } from '../../src'
 import minify from 'graphql-query-compress'
 import { gql, prettify } from '../../src/formatter/query'
+import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
+import type { TypeGeneratorConfig } from '../../src/generator/config'
 
 const schema = getTestSchema()
 
 describe('generating a query', () => {
-  const emptyConfig: Partial<GeneratorConfig> = {}
+  const emptyConfig: Partial<QueryGeneratorConfig> = {}
 
   describe('for a field with no arguments', () => {
     const fieldWithNoArgs = getQueryField('id')
@@ -81,7 +85,7 @@ describe('generating a query', () => {
 
     describe('with custom config for max depth', () => {
       describe('and max depth is high enough for the object', () => {
-        const config: Partial<GeneratorConfig> = {
+        const config: Partial<QueryGeneratorConfig> = {
           maxDepth: 3,
         }
 
@@ -116,7 +120,7 @@ describe('generating a query', () => {
       })
 
       describe('and the max depth is too low for the object', () => {
-        const config: Partial<GeneratorConfig> = {
+        const config: Partial<QueryGeneratorConfig> = {
           maxDepth: 1,
         }
 
@@ -127,7 +131,7 @@ describe('generating a query', () => {
     })
 
     describe('with custom config for null generation', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
       }
 
@@ -172,7 +176,7 @@ describe('generating a query', () => {
     })
 
     describe('with a custom factory', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         factories: {
           Int: (context) => {
             return context.depth
@@ -277,7 +281,7 @@ describe('generating a query', () => {
     const deepNonRecursiveField = getQueryField('deferrable')
 
     describe('and max depth is larger than the field', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         maxDepth: 10,
       }
 
@@ -312,7 +316,7 @@ describe('generating a query', () => {
     })
 
     describe('and max depth is too low to return the field', () => {
-      const config: Partial<GeneratorConfig> = {
+      const config: Partial<QueryGeneratorConfig> = {
         maxDepth: 3,
       }
 
@@ -344,7 +348,7 @@ describe('generating a query', () => {
 
   describe('with a custom query name', () => {
     const fieldWithNoArgs = getQueryField('id')
-    const config: Partial<GeneratorConfig> = {
+    const config: Partial<QueryGeneratorConfig> = {
       queryName: 'GetId',
     }
 
@@ -365,7 +369,7 @@ describe('generating a query', () => {
 
 describe('generating a mutation', () => {
   const mutation = getMutationField('setString')
-  const config: Partial<GeneratorConfig> = {
+  const config: Partial<QueryGeneratorConfig> = {
     queryType: QueryType.MUTATION,
   }
 
@@ -391,7 +395,7 @@ describe('generating a mutation', () => {
 
 describe('generating a subscription', () => {
   const subscription = getSubscriptionField('message')
-  const config: Partial<GeneratorConfig> = {
+  const config: Partial<QueryGeneratorConfig> = {
     queryType: QueryType.SUBSCRIPTION,
   }
 
@@ -415,11 +419,95 @@ describe('generating a subscription', () => {
   })
 })
 
+describe('generating a response', () => {
+  const emptyConfig: Partial<TypeGeneratorConfig> = {}
+
+  describe('for a field with no arguments', () => {
+    const fieldWithNoArgs = getQueryField('id')
+    const anyFactoryContext: GraphQLFactoryContext = {
+      depth: 0,
+      path: '',
+      targetName: '',
+    }
+
+    it('generates the right response', () => {
+      const result = generateGraphQLResponse(fieldWithNoArgs, emptyConfig)
+
+      assertResponseEqual(result, {
+        id: DEFAULT_FACTORIES['ID'](anyFactoryContext),
+      })
+    })
+  })
+
+  describe('for a recursive field', () => {
+    const recursiveField = getQueryField('person')
+
+    describe('with default config', () => {
+      it('generates the query up to the max default depth', () => {
+        const result = generateGraphQLResponse(recursiveField, emptyConfig)
+
+        assertResponseEqual(result, {
+          person: { age: 36, friends: null, name: 'A name' },
+        })
+      })
+    })
+
+    describe('with custom config for null generation', () => {
+      const config: Partial<TypeGeneratorConfig> = {
+        nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
+      }
+
+      it('generates the response properly', () => {
+        const result = generateGraphQLResponse(recursiveField, config)
+
+        assertResponseEqual(result, { person: null })
+      })
+    })
+
+    describe('with a custom factory', () => {
+      const config: Partial<QueryGeneratorConfig> = {
+        factories: {
+          Int: (context) => {
+            return context.depth
+          },
+        },
+      }
+
+      it('generates the response properly', () => {
+        const result = generateGraphQLResponse(recursiveField, config)
+
+        assertResponseEqual(result, {
+          person: { age: 0, friends: null, name: 'A name' },
+        })
+      })
+    })
+  })
+
+  describe('for a union type field', () => {
+    const unionTypeField = getQueryField('union')
+    it('generates the response properly', () => {
+      const result = generateGraphQLResponse(unionTypeField, emptyConfig)
+      assertResponseEqual(result, {
+        union: {
+          __typename: 'First',
+          first: [{ name: 'A name' }],
+          name: 'A name',
+        },
+      })
+    })
+  })
+})
+
 function assertQueryEqual(actual?: string, expected?: string) {
   expect(prettify(minify(actual ?? ''))).toEqual(
     prettify(minify(expected ?? '')),
   )
 }
+
+function assertResponseEqual(actual: unknown, expected: unknown) {
+  expect(actual).toEqual(expected)
+}
+
 function getQueryField(name: string): GraphQLField<unknown, unknown, unknown> {
   return getMandatoryField(schema.getQueryType(), name)
 }
