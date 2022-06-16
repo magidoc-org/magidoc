@@ -8,7 +8,10 @@ import {
   QueryType,
 } from '../../src'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
-import { generateArgsForField } from '../../src/generator/fakeGenerator'
+import {
+  generateArgsForField,
+  generateResponse,
+} from '../../src/generator/fakeGenerator'
 import type { Parameter } from '../../src/generator/queryBuilder'
 
 const schema = getTestSchema()
@@ -360,6 +363,35 @@ describe('generating fakes for a GraphQL input argument', () => {
         const result = generateArgsForField(recursiveField, config, context)
         expect(result).not.toBeEmpty()
       })
+    })
+  })
+})
+
+describe('generating fake for a GraphQL response type', () => {
+  const testResponse = getQueryField('test')
+
+  const baseConfig: GeneratorConfig = {
+    queryType: QueryType.QUERY,
+    factories: {},
+    maxDepth: 5,
+    nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+  }
+
+  const context: GenerationContext = {
+    depth: 3,
+    path: 'some.query.path',
+  }
+
+  describe('with never null generation strategy', () => {
+    const config: GeneratorConfig = {
+      ...baseConfig,
+      nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+    }
+
+    it('should generate the response without throwing', () => {
+      expect(() =>
+        generateResponse(testResponse, config, context),
+      ).not.toThrow()
     })
   })
 })

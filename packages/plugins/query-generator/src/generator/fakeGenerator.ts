@@ -13,7 +13,6 @@ import { typeToString, unwrapType } from './extractor'
 import {
   GraphQLField,
   GraphQLArgument,
-  GraphQLInputType,
   GraphQLNamedType,
   isNonNullType,
   isInputObjectType,
@@ -21,6 +20,10 @@ import {
   isScalarType,
   isListType,
   isNullableType,
+  GraphQLType,
+  isObjectType,
+  isUnionType,
+  isInterfaceType,
 } from 'graphql'
 import type { GenerationContext } from './queryGenerator'
 import type { Parameter } from './queryBuilder'
@@ -41,6 +44,20 @@ export function generateArgsForField(
   )
 }
 
+export function generateResponse(
+  field: GraphQLField<unknown, unknown, unknown>,
+  config: GeneratorConfig,
+  context: GenerationContext,
+): unknown {
+  return generateType(field.type, config, {
+    ...context,
+    generatedInputObjects: new Set(),
+    path: `${context.path}@`,
+    defaultValue: null,
+    targetName: field.name,
+  })
+}
+
 function generateInputParameter(
   input: GraphQLArgument,
   config: GeneratorConfig,
@@ -49,7 +66,7 @@ function generateInputParameter(
   return {
     name: input.name,
     type: typeToString(input.type),
-    value: generateInput(input.type, config, {
+    value: generateType(input.type, config, {
       ...context,
       generatedInputObjects: new Set(),
       path: `${context.path}$`,
@@ -59,8 +76,8 @@ function generateInputParameter(
   }
 }
 
-function generateInput(
-  input: GraphQLInputType,
+function generateType(
+  input: GraphQLType,
   config: GeneratorConfig,
   context: FakeGenerationContext,
 ): unknown {
@@ -70,7 +87,7 @@ function generateInput(
     ? DEFAULT_FACTORIES[unwrappedType.name]
     : undefined
 
-  if (isInputObjectType(unwrappedType)) {
+  if (isObjectType(unwrappedType) || isInputObjectType(unwrappedType)) {
     if (
       context.generatedInputObjects.has(unwrappedType.name) &&
       isNullableType(input)
@@ -117,7 +134,7 @@ function generateInput(
 }
 
 function findMostSpecificFactory(
-  argumentType: GraphQLInputType,
+  argumentType: GraphQLType,
   config: GeneratorConfig,
   context: FakeGenerationContext,
   nullable = true,
@@ -196,13 +213,34 @@ You have to provide a custom factory by providing this in your config:
     return defaultFactory
   }
 
+  if (isUnionType(argumentType)) {
+    const target = argumentType.getTypes()[0]
+    console.log('Target union', target)
+    return randomFactory(target, config, context)
+  }
+
+  if (isObjectType(argumentType) || isInterfaceType(argumentType)) {
+    const fields = argumentType.getFields() || {}
+
+    // Generates a random object the required fields in the object
+    return () => {
+      return _.mapValues(fields, (input) => {
+        return generateType(input.type, config, {
+          ...context,
+          targetName: input.name,
+          defaultValue: null,
+        })
+      })
+    }
+  }
+
   if (isInputObjectType(argumentType)) {
     const fields = argumentType.getFields() || {}
 
     // Generates a random object the required fields in the object
     return () => {
       return _.mapValues(fields, (input) => {
-        return generateInput(input.type, config, {
+        return generateType(input.type, config, {
           ...context,
           targetName: input.name,
           defaultValue: input.defaultValue,
@@ -212,9 +250,12 @@ You have to provide a custom factory by providing this in your config:
   }
 
   throw new Error(
-    `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${argumentType.toJSON()}`,
+    `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${String(
+      argumentType,
+    )}`,
   )
 }
+
 function findWildCardFactory(
   name: string,
   config: GeneratorConfig,
