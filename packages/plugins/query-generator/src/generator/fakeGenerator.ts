@@ -5,6 +5,7 @@ import {
   QueryGeneratorConfig,
   GraphQLFactory,
   NullGenerationStrategy,
+  FakeGenerationConfig,
 } from './config'
 import { MissingCustomScalarException } from './error'
 
@@ -13,6 +14,7 @@ import { typeToString, unwrapType } from './extractor'
 import {
   GraphQLField,
   GraphQLArgument,
+  GraphQLInputType,
   GraphQLNamedType,
   isNonNullType,
   isInputObjectType,
@@ -20,13 +22,10 @@ import {
   isScalarType,
   isListType,
   isNullableType,
-  GraphQLType,
-  isObjectType,
-  isUnionType,
-  isInterfaceType,
+  GraphQLLeafType,
 } from 'graphql'
 import type { GenerationContext } from './queryGenerator'
-import type { Parameter } from './queryBuilder'
+import type { Parameter } from './builder/queryBuilder'
 
 type FakeGenerationContext = GenerationContext & {
   readonly targetName: string
@@ -44,17 +43,21 @@ export function generateArgsForField(
   )
 }
 
-export function generateResponse(
-  field: GraphQLField<unknown, unknown, unknown>,
-  config: QueryGeneratorConfig,
+export function generateLeafTypeValue(
+  targetName: string,
+  value: GraphQLLeafType,
+  config: FakeGenerationConfig,
   context: GenerationContext,
 ): unknown {
-  return generateType(field.type, config, {
+  return findMostSpecificFactory(value, config, {
     ...context,
-    generatedInputObjects: new Set(),
-    path: `${context.path}@`,
     defaultValue: null,
-    targetName: field.name,
+    generatedInputObjects: new Set(),
+    targetName: targetName,
+  })({
+    ...context,
+    targetName: targetName,
+    path: context.path,
   })
 }
 
@@ -66,7 +69,7 @@ function generateInputParameter(
   return {
     name: input.name,
     type: typeToString(input.type),
-    value: generateType(input.type, config, {
+    value: generateInput(input.type, config, {
       ...context,
       generatedInputObjects: new Set(),
       path: `${context.path}$`,
@@ -76,18 +79,16 @@ function generateInputParameter(
   }
 }
 
-function generateType(
-  input: GraphQLType,
-  config: QueryGeneratorConfig,
+function generateInput(
+  input: GraphQLInputType,
+  config: FakeGenerationConfig,
   context: FakeGenerationContext,
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
   const unwrappedType = unwrapType(input)
-  const defaultFactory = unwrappedType.name
-    ? DEFAULT_FACTORIES[unwrappedType.name]
-    : undefined
+  const defaultFactory = DEFAULT_FACTORIES[unwrappedType.name]
 
-  if (isObjectType(unwrappedType) || isInputObjectType(unwrappedType)) {
+  if (isInputObjectType(unwrappedType)) {
     if (
       context.generatedInputObjects.has(unwrappedType.name) &&
       isNullableType(input)
@@ -112,11 +113,10 @@ function generateType(
     depth: context.depth,
   }
 
-  const factory = findMostSpecificFactory(
-    input,
-    config,
-    context,
-  )({
+  const factory = findMostSpecificFactory(input, config, {
+    ...context,
+    path: path,
+  })({
     ...factoryContext,
     defaultFactory: defaultFactory
       ? {
@@ -134,13 +134,18 @@ function generateType(
 }
 
 function findMostSpecificFactory(
-  argumentType: GraphQLType,
-  config: QueryGeneratorConfig,
+  argumentType: GraphQLInputType,
+  config: FakeGenerationConfig,
   context: FakeGenerationContext,
   nullable = true,
 ): GraphQLFactory {
+  console.log(context.path)
   // Did the user provide a factory for this exact type?
-  const factoryDirectType = config.factories[typeToString(argumentType)]
+  const factoryDirectType =
+    config.factories[context.path] ??
+    config.factories[context.targetName] ??
+    config.factories[typeToString(argumentType)]
+
   if (factoryDirectType) {
     return factoryDirectType
   }
@@ -187,7 +192,7 @@ function findMostSpecificFactory(
 
 function randomFactory(
   argumentType: GraphQLNamedType,
-  config: QueryGeneratorConfig,
+  config: FakeGenerationConfig,
   context: FakeGenerationContext,
 ): GraphQLFactory {
   if (isEnumType(argumentType)) {
@@ -213,40 +218,13 @@ You have to provide a custom factory by providing this in your config:
     return defaultFactory
   }
 
-  if (isUnionType(argumentType)) {
-    const target = argumentType.getTypes()[0]
-    const factory = randomFactory(target, config, context)
-    return (context) => {
-      const result = factory(context) as Record<string, unknown>
-      return {
-        __typename: target.name,
-        ...result,
-      }
-    }
-  }
-
-  if (isObjectType(argumentType) || isInterfaceType(argumentType)) {
-    const fields = argumentType.getFields() || {}
-
-    // Generates a random object the required fields in the object
-    return () => {
-      return _.mapValues(fields, (input) => {
-        return generateType(input.type, config, {
-          ...context,
-          targetName: input.name,
-          defaultValue: null,
-        })
-      })
-    }
-  }
-
   if (isInputObjectType(argumentType)) {
     const fields = argumentType.getFields() || {}
 
     // Generates a random object the required fields in the object
     return () => {
       return _.mapValues(fields, (input) => {
-        return generateType(input.type, config, {
+        return generateInput(input.type, config, {
           ...context,
           targetName: input.name,
           defaultValue: input.defaultValue,
@@ -256,15 +234,12 @@ You have to provide a custom factory by providing this in your config:
   }
 
   throw new Error(
-    `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${String(
-      argumentType,
-    )}`,
+    `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${argumentType.toJSON()}`,
   )
 }
-
 function findWildCardFactory(
   name: string,
-  config: QueryGeneratorConfig,
+  config: FakeGenerationConfig,
 ): GraphQLFactory | undefined {
   const matchingKey = Object.keys(config.factories).find((key) =>
     globToRegExp(key).test(name),

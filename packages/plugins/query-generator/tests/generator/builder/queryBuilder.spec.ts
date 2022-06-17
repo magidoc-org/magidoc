@@ -1,10 +1,10 @@
 import minify from 'graphql-query-compress'
-import { gql, prettify } from '../../src/formatter/query'
+import { gql, prettify } from '../../../src/formatter/query'
 import {
   mutationBuilder,
   queryBuilder,
   subSelectionBuilder,
-} from '../../src/generator/queryBuilder'
+} from '../../../src/generator/builder/queryBuilder'
 
 describe('building a query', () => {
   const underTest = queryBuilder()

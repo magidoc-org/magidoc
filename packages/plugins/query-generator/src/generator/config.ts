@@ -16,7 +16,7 @@ export enum NullGenerationStrategy {
   SOMETIMES_NULL = 'sometimes',
 }
 
-export type TypeGeneratorConfig = {
+export type FakeGenerationConfig = {
   /**
    * For input values that allow for null values, the strategy here will define the default behavior for generating the null values.
    *
@@ -28,7 +28,14 @@ export type TypeGeneratorConfig = {
    * Custom factories. Custom factories are used when generating random input values to pass as arguments to your API.
    *
    * The supported syntax in order of priority for the factory key is the following:
-   *  - '[Type]' : In highest priority is the list matcher. If you need to provide a custom list for a specific type.
+   *  - 'path'   : A specific path for an argument, in the format `a.field.path$argument.path`. You can customize a specific argument inside a request using this.
+   *               For instance, you may have a factory at path `people$first` set to `10`,
+   *               so that an argument passed to the argument `first` of the field `people` gets set to 10.
+   *
+   *  - 'argName': In second highest priority is a matcher on the argument name directly. For instance,
+   *               if you have an argument named `email` in your API, then you can use `email` as a factory key.
+   *
+   *  - '[Type]' : Then comes the list matcher. If you need to provide a custom list for a specific type.
    *               If you don't need anything specific in the list, you can u#se the second matcher.
    *
    *  - 'Type' : Your type directly. If there is a direct match for this key, it will be used first.
@@ -41,7 +48,18 @@ export type TypeGeneratorConfig = {
   readonly factories: Record<string, GraphQLFactory>
 }
 
-export type QueryGeneratorConfig = TypeGeneratorConfig & {
+export type ResponseGenerationConfig = FakeGenerationConfig & {
+  /**
+   * The max depth at which we want to generate the query.
+   *
+   * If the query gets over that depth, all fields that are not leaves are discarded from the query.
+   *
+   * @default 5
+   */
+  readonly maxDepth: number
+}
+
+export type QueryGeneratorConfig = ResponseGenerationConfig & {
   /**
    * The type of the GraphQL Requests.
    *
@@ -55,15 +73,6 @@ export type QueryGeneratorConfig = TypeGeneratorConfig & {
    * @default undefined
    */
   readonly queryName?: string
-
-  /**
-   * The max depth at which we want to generate the query.
-   *
-   * If the query gets over that depth, all fields that are not leaves are discarded from the query.
-   *
-   * @default 5
-   */
-  readonly maxDepth: number
 }
 
 export type GraphQLFactoryContext = {

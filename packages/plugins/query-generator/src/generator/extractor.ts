@@ -1,7 +1,6 @@
 import {
   GraphQLType,
   GraphQLNamedType,
-  isWrappingType,
   getNamedType,
   isNonNullType,
   isListType,
@@ -9,14 +8,6 @@ import {
 
 export function unwrapType(type: GraphQLType): GraphQLNamedType {
   return getNamedType(type)
-}
-
-export function unwrapOne(type: unknown): GraphQLType | null {
-  if (isWrappingType(type)) {
-    return type.ofType
-  }
-
-  return null
 }
 
 export function typeToString(type: GraphQLType): string {
