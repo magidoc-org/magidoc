@@ -139,7 +139,6 @@ function findMostSpecificFactory(
   context: FakeGenerationContext,
   nullable = true,
 ): GraphQLFactory {
-  console.log(context.path)
   // Did the user provide a factory for this exact type?
   const factoryDirectType =
     config.factories[context.path] ??
