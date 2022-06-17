@@ -113,11 +113,10 @@ function generateInput(
     depth: context.depth,
   }
 
-  const factory = findMostSpecificFactory(
-    input,
-    config,
-    context,
-  )({
+  const factory = findMostSpecificFactory(input, config, {
+    ...context,
+    path: path,
+  })({
     ...factoryContext,
     defaultFactory: defaultFactory
       ? {
@@ -140,8 +139,10 @@ function findMostSpecificFactory(
   context: FakeGenerationContext,
   nullable = true,
 ): GraphQLFactory {
+  console.log(context.path)
   // Did the user provide a factory for this exact type?
   const factoryDirectType =
+    config.factories[context.path] ??
     config.factories[context.targetName] ??
     config.factories[typeToString(argumentType)]
 

@@ -305,6 +305,30 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(paramByType('String', result).value).toEqual(output)
       })
 
+      it('should work for field path', () => {
+        const targetParam = fieldWithArgs.args.find(
+          (item) => item.type === getTypeByName('String'),
+        )
+        if (!targetParam) {
+          fail('expected to find a String argument')
+        }
+
+        const result = generateArgsForField(
+          fieldWithArgs,
+          {
+            ...config,
+            factories: {
+              hasArgs$string: () => output,
+            },
+          },
+          {
+            ...context,
+            path: 'hasArgs',
+          },
+        )
+        expect(paramByType('String', result).value).toEqual(output)
+      })
+
       it('should work for lists', () => {
         const result = generateArgsForField(fieldWithArgs, config, context)
         expect(paramByType('[String]', result).value).toEqual([output])
