@@ -28,7 +28,10 @@ export type FakeGenerationConfig = {
    * Custom factories. Custom factories are used when generating random input values to pass as arguments to your API.
    *
    * The supported syntax in order of priority for the factory key is the following:
-   *  - '[Type]' : In highest priority is the list matcher. If you need to provide a custom list for a specific type.
+   *  - 'argName': In highest priority is a matcher on the argument name directly. For instance,
+   *               if you have an argument named `email` in your API, then you can use `email` as a factory key.
+   *
+   *  - '[Type]' : In second highest priority is the list matcher. If you need to provide a custom list for a specific type.
    *               If you don't need anything specific in the list, you can u#se the second matcher.
    *
    *  - 'Type' : Your type directly. If there is a direct match for this key, it will be used first.

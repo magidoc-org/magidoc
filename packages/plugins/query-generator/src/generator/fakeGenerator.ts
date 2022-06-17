@@ -142,8 +142,8 @@ function findMostSpecificFactory(
 ): GraphQLFactory {
   // Did the user provide a factory for this exact type?
   const factoryDirectType =
-    config.factories[typeToString(argumentType)] ??
-    config.factories[context.targetName]
+    config.factories[context.targetName] ??
+    config.factories[typeToString(argumentType)]
 
   if (factoryDirectType) {
     return factoryDirectType
