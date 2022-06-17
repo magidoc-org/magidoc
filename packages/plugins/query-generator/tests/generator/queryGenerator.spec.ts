@@ -498,6 +498,21 @@ describe('generating a response', () => {
           },
         })
       })
+
+      describe('max depth is too low to generate the target response', () => {
+        const tooLowMaxDepthConfig: Partial<ResponseGenerationConfig> = {
+          ...emptyConfig,
+          maxDepth: 1,
+        }
+
+        it('returns no result', () => {
+          const result = generateGraphQLResponse(
+            recursiveField,
+            tooLowMaxDepthConfig,
+          )
+          expect(result).toBeNull()
+        })
+      })
     })
 
     describe('with custom config for null generation', () => {

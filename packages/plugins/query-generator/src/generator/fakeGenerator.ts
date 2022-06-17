@@ -86,9 +86,7 @@ function generateInput(
 ): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
   const unwrappedType = unwrapType(input)
-  const defaultFactory = unwrappedType.name
-    ? DEFAULT_FACTORIES[unwrappedType.name]
-    : undefined
+  const defaultFactory = DEFAULT_FACTORIES[unwrappedType.name]
 
   if (isInputObjectType(unwrappedType)) {
     if (
@@ -143,7 +141,10 @@ function findMostSpecificFactory(
   nullable = true,
 ): GraphQLFactory {
   // Did the user provide a factory for this exact type?
-  const factoryDirectType = config.factories[typeToString(argumentType)]
+  const factoryDirectType =
+    config.factories[typeToString(argumentType)] ??
+    config.factories[context.targetName]
+
   if (factoryDirectType) {
     return factoryDirectType
   }
