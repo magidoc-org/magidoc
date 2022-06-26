@@ -1,7 +1,9 @@
 <script type="ts">
+  import { schema } from '$lib/model'
+
   import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
 
-  import type { GraphQLInterfaceType } from 'graphql'
+  import type { GraphQLInterfaceType, GraphQLObjectType } from 'graphql'
   import _ from 'lodash'
   import AppMarkdown from '../common/AppMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
@@ -9,6 +11,8 @@
   import TypeEnumeration from './list/TypeEnumeration.svelte'
 
   export let type: GraphQLInterfaceType
+  let implementations: ReadonlyArray<GraphQLObjectType>
+  $: implementations = schema.getPossibleTypes(type)
 </script>
 
 <section>
@@ -23,10 +27,17 @@
     <FiedsTable data={_.map(type.getFields(), (arg) => arg)} />
   {/if}
 
+  {#if implementations.length > 0}
+    <AnchorHeader id={'implementations'} depth={2}>
+      Implementations
+    </AnchorHeader>
+    Implemented by <TypeEnumeration types={implementations} />.
+  {/if}
+
   {#if type.getInterfaces().length > 0}
     <AnchorHeader id={'interfaces'} depth={2}>Interfaces</AnchorHeader>
     <p>
-      Also implements <TypeEnumeration types={type.getInterfaces()} />
+      Also implements <TypeEnumeration types={type.getInterfaces()} />.
     </p>
   {/if}
 </section>
