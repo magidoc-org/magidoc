@@ -65,7 +65,7 @@ const config = {
               url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
             })
           : null,
-      ],
+      ].filter((plugin) => !!plugin),
       ssr: {
         noExternal:
           process.env.NODE_ENV == 'development'
