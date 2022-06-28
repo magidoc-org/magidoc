@@ -28,7 +28,7 @@
     <AnchorHeader id={'interfaces'} depth={2}>Interfaces</AnchorHeader>
 
     <p>
-      Also implements <InterfaceList types={type.getInterfaces()} />
+      Also implements <InterfaceList types={type.getInterfaces()} />.
     </p>
   {/if}
 </section>

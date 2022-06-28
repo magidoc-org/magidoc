@@ -21,6 +21,6 @@
   <AnchorHeader id={'types'} depth={2}>Types</AnchorHeader>
 
   <p>
-    Union of types <TypeEnumeration types={type.getTypes()} />
+    Union of types <TypeEnumeration types={type.getTypes()} />.
   </p>
 </section>
