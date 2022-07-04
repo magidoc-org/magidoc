@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { GraphQLField } from 'graphql'
   import type { QueryType } from '@magidoc/plugin-query-generator'
-  import AppQueryGenerator from './AppQueryGenerator.svelte'
+  import AppQueryGenerator from './AppQueryTabs.svelte'
   import AppMarkdown from '../common/AppMarkdown.svelte'
   import ArgsList from './list/ArgsList.svelte'
   import QueryTypeTag from '../tags/QueryTypeTag.svelte'

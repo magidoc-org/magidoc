@@ -1,53 +1,96 @@
-<script lang="ts">
+<script type="ts">
+  import Prism from '@magidoc/plugin-svelte-prismjs'
+  import 'prismjs/components/prism-graphql.js'
+  import 'prismjs/components/prism-json.js'
+
+  import { Button } from 'carbon-components-svelte'
+  import Add from 'carbon-icons-svelte/lib/Add.svelte'
+  import Copy from 'carbon-icons-svelte/lib/Copy.svelte'
+  import Subtract from 'carbon-icons-svelte/lib/Subtract.svelte'
   import { graphqlQuery } from './stores'
-  import { Tab, TabContent, Tabs } from 'carbon-components-svelte'
-  import type { GraphQLField } from 'graphql'
-  import AppPrism from './AppPrism.svelte'
-  import type { QueryType } from '@magidoc/plugin-query-generator'
+  import { NullGenerationStrategy } from '@magidoc/plugin-query-generator'
+  import { Rule, RuleFilled } from 'carbon-icons-svelte'
 
-  export let type: QueryType
-  export let field: GraphQLField<unknown, unknown, unknown>
+  export let code: string
+  export let language: 'graphql' | 'json'
 
-  let selectedTab = 0
+  let copyButtonText = 'Copy query'
 
-  $: {
-    graphqlQuery.setField(field, type)
+  export let copy = async (text: string) => {
+    try {
+      copyButtonText = 'Copied!'
+      await navigator.clipboard.writeText(text)
+      setTimeout(() => {
+        copyButtonText = 'Copy query'
+      }, 1500)
+    } catch (e) {
+      console.log(e)
+    }
   }
 </script>
 
-<Tabs bind:selected={selectedTab} autoWidth>
-  <Tab label="Query" />
-  <Tab label="Variables" />
-  <Tab label="Response" />
-  <svelte:fragment slot="content">
-    <TabContent style="padding:0">
-      {#if selectedTab === 0}
-        <AppPrism
-          code={$graphqlQuery.value?.query ??
-            '# No query generated. Try increasing the depth'}
-          language={'graphql'}
-        />
-      {/if}
-    </TabContent>
-    <TabContent style="padding:0">
-      {#if selectedTab === 1}
-        <AppPrism
-          code={$graphqlQuery.value?.variables
-            ? JSON.stringify($graphqlQuery.value?.variables || {}, null, 2)
-            : ''}
-          language={'json'}
-        />
-      {/if}
-    </TabContent>
-    <TabContent style="padding:0">
-      {#if selectedTab === 2}
-        <AppPrism
-          code={$graphqlQuery.response
-            ? JSON.stringify($graphqlQuery.response || {}, null, 2)
-            : ''}
-          language={'json'}
-        />
-      {/if}
-    </TabContent>
-  </svelte:fragment>
-</Tabs>
+<div class="wrapper">
+  <div class="code-section">
+    <Prism source={code} {language} maxHeight={'20rem'} minHeight={'12rem'} />
+  </div>
+  <div class="button-bar">
+    <Button
+      kind="ghost"
+      icon={Copy}
+      iconDescription={copyButtonText}
+      tooltipPosition="left"
+      size="field"
+      on:click={() => copy(code)}
+    />
+    <Button
+      kind="ghost"
+      icon={$graphqlQuery.nullGenerationStrategy ===
+      NullGenerationStrategy.NEVER_NULL
+        ? RuleFilled
+        : Rule}
+      iconDescription={$graphqlQuery.nullGenerationStrategy ===
+      NullGenerationStrategy.NEVER_NULL
+        ? 'Never null fields'
+        : 'Always null fields'}
+      tooltipPosition="left"
+      size="field"
+      on:click={() => graphqlQuery.toggleNullGenerationStrategy()}
+    />
+    <Button
+      kind="ghost"
+      icon={Add}
+      iconDescription="Increase query depth"
+      tooltipPosition="left"
+      size="field"
+      on:click={() => graphqlQuery.increaseDepth()}
+    />
+    <p style="text-align:center">
+      {$graphqlQuery.depth}
+    </p>
+    <Button
+      kind="ghost"
+      icon={Subtract}
+      iconDescription="Decrease query depth"
+      tooltipPosition="left"
+      size="field"
+      on:click={() => graphqlQuery.decreaseDepth()}
+    />
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .code-section {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .button-bar {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
