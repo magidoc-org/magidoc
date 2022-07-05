@@ -4,12 +4,9 @@
   import 'prismjs/components/prism-json.js'
 
   import { Button } from 'carbon-components-svelte'
-  import Add from 'carbon-icons-svelte/lib/Add.svelte'
-  import Copy from 'carbon-icons-svelte/lib/Copy.svelte'
-  import Subtract from 'carbon-icons-svelte/lib/Subtract.svelte'
   import { graphqlQuery } from './stores'
   import { NullGenerationStrategy } from '@magidoc/plugin-query-generator'
-  import { Rule, RuleFilled } from 'carbon-icons-svelte'
+  import { Rule, RuleFilled, Add, Copy, Subtract } from 'carbon-icons-svelte'
 
   export let code: string
   export let language: 'graphql' | 'json'
