@@ -44,6 +44,12 @@ const config = {
           kind: 'article',
           href: 'https://dev.to/pelletier197/why-you-need-static-documentation-for-your-graphql-api-19ol',
         },
+        {
+          group: 'Others',
+          label: 'Product Hunt',
+          kind: 'article',
+          href: 'https://www.producthunt.com/posts/magidoc',
+        },
       ],
       siteMeta: {
         description:
