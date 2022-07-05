@@ -522,8 +522,19 @@ describe('generating a response', () => {
 
       it('generates the response properly', () => {
         const result = generateGraphQLResponse(recursiveField, config)
-
         assertResponseEqual(result, { person: null })
+      })
+
+      it('generates the response properly for a single-level field', () => {
+        const singleLevelField = getQueryField('id')
+        const result = generateGraphQLResponse(singleLevelField, config)
+        assertResponseEqual(result, { id: null })
+      })
+
+      it('generates the response properly for a non-null field', () => {
+        const nonNullField = getQueryField('nonNullResponse')
+        const result = generateGraphQLResponse(nonNullField, config)
+        assertResponseEqual(result, { nonNullResponse: ['lorem ipsum'] })
       })
     })
 

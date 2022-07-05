@@ -23,6 +23,7 @@ export type GeneratedGraphQLQuery = {
   type: QueryType
   field: GraphQLField<unknown, unknown, unknown>
   depth: number
+  nullGenerationStrategy: NullGenerationStrategy
 }
 
 const currentQuery: Writable<GeneratedGraphQLQuery> = writable()
@@ -31,11 +32,12 @@ const generateQuery = (expected: {
   field: GraphQLField<unknown, unknown, unknown>
   type: QueryType
   depth: number
+  nullGenerationStrategy: NullGenerationStrategy
 }): GeneratedGraphQLQuery => {
   const context = {
     queryType: expected.type,
     maxDepth: expected.depth,
-    nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+    nullGenerationStrategy: expected.nullGenerationStrategy,
     factories: _.reduce(
       get(templates.QUERY_GENERATION_FACTORIES),
       // Merge the factories values provided by environment variable.
@@ -57,6 +59,7 @@ const generateQuery = (expected: {
       depth: expected.depth,
       field: expected.field,
       type: expected.type,
+      nullGenerationStrategy: expected.nullGenerationStrategy,
     }
   } catch (error) {
     if (error instanceof MissingCustomScalarException) {
@@ -99,8 +102,24 @@ export const graphqlQuery = {
 
       return current
     }),
+  toggleNullGenerationStrategy: () =>
+    currentQuery.update((current) => {
+      return generateQuery({
+        ...current,
+        nullGenerationStrategy:
+          current.nullGenerationStrategy === NullGenerationStrategy.NEVER_NULL
+            ? NullGenerationStrategy.ALWAYS_NULL
+            : NullGenerationStrategy.NEVER_NULL,
+      })
+    }),
   setField: (field: GraphQLField<unknown, unknown, unknown>, type: QueryType) =>
-    currentQuery.update(() =>
-      generateQuery({ field, type, depth: DEFAULT_DEPTH }),
+    currentQuery.update((current) =>
+      generateQuery({
+        field,
+        type,
+        depth: DEFAULT_DEPTH,
+        nullGenerationStrategy:
+          current?.nullGenerationStrategy ?? NullGenerationStrategy.NEVER_NULL,
+      }),
     ),
 }

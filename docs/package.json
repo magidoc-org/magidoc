@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -16,7 +16,7 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "cspell": "^6.1.2",
+    "cspell": "^6.2.2",
     "gh-pages": "^4.0.0"
   }
 }

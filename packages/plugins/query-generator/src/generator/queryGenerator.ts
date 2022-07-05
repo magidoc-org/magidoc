@@ -200,6 +200,17 @@ function generateResponse(
     return null
   }
 
+  if (
+    isNullableType(type) &&
+    config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL
+  ) {
+    return valueResponseBuilder(null)
+  }
+
+  if (isNonNullType(type)) {
+    type = type.ofType
+  }
+
   if (isLeafType(type)) {
     // No more fields under
     return valueResponseBuilder(
@@ -215,17 +226,6 @@ function generateResponse(
         context,
       ),
     )
-  }
-
-  if (isNonNullType(type)) {
-    return generateResponse(name, type.ofType, config, context)
-  }
-
-  if (
-    isNullableType(type) &&
-    config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL
-  ) {
-    return valueResponseBuilder(null)
   }
 
   if (isListType(type)) {
