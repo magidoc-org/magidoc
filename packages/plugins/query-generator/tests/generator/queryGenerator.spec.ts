@@ -530,6 +530,12 @@ describe('generating a response', () => {
         const result = generateGraphQLResponse(singleLevelField, config)
         assertResponseEqual(result, { id: null })
       })
+
+      it('generates the response properly for a non-null field', () => {
+        const nonNullField = getQueryField('nonNullResponse')
+        const result = generateGraphQLResponse(nonNullField, config)
+        assertResponseEqual(result, { nonNullResponse: ['lorem ipsum'] })
+      })
     })
 
     describe('with a custom factory', () => {

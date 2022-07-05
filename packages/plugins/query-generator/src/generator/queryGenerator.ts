@@ -207,6 +207,10 @@ function generateResponse(
     return valueResponseBuilder(null)
   }
 
+  if (isNonNullType(type)) {
+    type = type.ofType
+  }
+
   if (isLeafType(type)) {
     // No more fields under
     return valueResponseBuilder(
@@ -222,10 +226,6 @@ function generateResponse(
         context,
       ),
     )
-  }
-
-  if (isNonNullType(type)) {
-    return generateResponse(name, type.ofType, config, context)
   }
 
   if (isListType(type)) {
