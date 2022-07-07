@@ -11,15 +11,17 @@ Magidoc is an open source static GraphQL documentation auto-generator that offer
 
 ## Features
 
-- 🏁 **Simple** - Build your first website in seconds.
+- 🏁 **Simple**: Build your first website in seconds.
 
-- ✏️ **Customizable** - Use pre-defined customizations or pick a template and make it your own.
+- 🌍 **Powerful**: Automatically generate pages for each of your Queries, Mutations, Subscriptions and Types of your API by default. It also auto-generate queries and responses to help your users understand how your API works.
 
-- 🔥 **Live hot-reload** - Magidoc offers a dev command that updates a preview of your website in real time when you write your documentation.
+- ✏️ **Customizable**: Use pre-defined customizations or pick a template and make it your own.
 
-- 📝 **Advanced markdown support** - Markdown is supported everywhere, from the custom pages and sections you can create, to the [SDL comments](https://dgraph.io/docs/graphql/schema/documentation/) inside your GraphQL schema.
+- 🔥 **Live hot-reload**: Preview your documentation website while you develop.
 
-- 📦 **Fully typed** - Every plugin and template ships with TypeScript definitions out of the box.
+- 📝 **Advanced markdown support**: Markdown is supported everywhere, from the custom pages and sections you can create, to the [SDL comments](https://dgraph.io/docs/graphql/schema/documentation/) inside your GraphQL schema.
+
+- 📦 **Fully typed** Every plugin and template ships with TypeScript definitions out of the box.
 
 ## 👀 Demo
 
