@@ -13,7 +13,7 @@ Magidoc is an open source static GraphQL documentation auto-generator that offer
 
 - 🏁 **Simple**: Build your first website in seconds.
 
-- 🌍 **Powerful**: Automatically generate pages for each of your Queries, Mutations, Subscriptions and Types of your API by default. It also auto-generate queries and responses to help your users understand how your API works.
+- 🌍 **Powerful**: Automatically generate pages for each Query, Mutation, Subscription and Type of your API by default. It also auto-generate queries and responses to help your users understand how your API works.
 
 - ✏️ **Customizable**: Use pre-defined customizations or pick a template and make it your own.
 
