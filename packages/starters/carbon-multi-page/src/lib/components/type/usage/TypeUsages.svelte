@@ -24,9 +24,8 @@
       {:else if item.kind === ReferenceKind.FIELD}
         Field <em>{item.by.name}</em> from <TypeLink type={item.parent} />
       {:else if item.kind === ReferenceKind.ARGUMENT}
-        Argument <em>{item.by.name}</em> of field {item.field.name} from type <TypeLink
-          type={item.type}
-        />
+        Argument <em>{item.by.name}</em> of field <em>{item.field.name}</em>
+        from type <TypeLink type={item.type} />
       {/if}
     </ListItem>
   </UnorderedList>
