@@ -34,7 +34,8 @@ export function createReverseMapping(
           const target = getOrCreate(mapping, argumentType)
           target.references.push({
             kind: ReferenceKind.ARGUMENT,
-            parent: field,
+            field: field,
+            type: type,
             by: argument,
           })
         })
@@ -60,7 +61,9 @@ function iterateTypes(
   callback: (type: GraphQLType) => void,
 ) {
   Object.entries(schema.getTypeMap()).forEach(([, type]) => {
-    callback(type)
+    if (!type.name.startsWith('__')) {
+      callback(type)
+    }
   })
 }
 

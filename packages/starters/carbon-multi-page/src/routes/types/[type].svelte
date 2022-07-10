@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   export function load({ params, url }: LoadEvent): LoadOutput {
     const type = getTypeByName(params.type)
+    const usages = getTypeUsages(type)
 
     const page = findPageByHref(url.pathname)
 
@@ -14,6 +15,7 @@
     return {
       props: {
         type,
+        usages,
         page,
       },
     }
@@ -40,9 +42,12 @@
   import { findPageByHref } from '$lib/pages'
   import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
   import type { WebsitePage } from 'src/app'
-  import { getTypeByName } from '$lib/model'
+  import { getTypeByName, getTypeUsages } from '$lib/model'
+  import type { TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
+  import TypeUsages from '$lib/components/type/usage/TypeUsages.svelte'
 
   export let type: GraphQLNamedType
+  export let usages: TypeReverseMapping | undefined
   export let page: WebsitePage
 </script>
 
@@ -62,6 +67,10 @@
   <ObjectType {type} />
 {:else if isInputObjectType(type)}
   <InputObjectType {type} />
+{/if}
+
+{#if usages}
+  <TypeUsages {usages} />
 {/if}
 
 <PreviousNextPage {page} />

@@ -33,12 +33,12 @@
   },
   "devDependencies": {
     "@types/jest": "^28.1.4",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.0.3",
     "@types/prettier": "^2.6.3",
     "jest": "^28.1.2",
-    "jest-extended": "^2.0.0",
+    "jest-extended": "^3.0.0",
     "nock": "^13.2.8",
-    "rollup": "^2.75.7",
+    "rollup": "^2.76.0",
     "ts-jest": "^28.0.5",
     "typescript": "^4.7.4"
   }
