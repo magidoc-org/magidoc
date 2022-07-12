@@ -21,7 +21,7 @@ Magidoc is an open source static GraphQL documentation auto-generator that offer
 
 - 📝 **Advanced markdown support**: Markdown is supported everywhere, from the custom pages and sections you can create, to the [SDL comments](https://dgraph.io/docs/graphql/schema/documentation/) inside your GraphQL schema.
 
-- 📦 **Fully typed** Every plugin and template ships with TypeScript definitions out of the box.
+- 📦 **Fully typed**: Every plugin and template ships with TypeScript definitions out of the box.
 
 ## 👀 Demo
 
