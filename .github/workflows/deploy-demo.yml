@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -22,7 +27,8 @@ jobs:
       - name: Generate Examples
         run: |
           cd packages/examples/fauna
-          npx @magidoc/cli@latest generate
+          pnpm install --global @magidoc/cli@latest 
+          magidoc generate
 
       - name: Publish
         uses: netlify/actions/cli@master
