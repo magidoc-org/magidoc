@@ -44,15 +44,14 @@ const config = {
       },
     },
   ].filter((plugin) => !!plugin),
-  //   ssr: {
-  //     noExternal: [
-  //       'prettier',
-  //       'prismjs',
-  //       'marked',
-  //       'dotenv',
-  //       'svelte-carbon-commons',
-  //     ],
-  //   },
+    ssr: {
+      noExternal: [
+        'prettier',
+        'prismjs',
+        'marked',
+        'svelte-carbon-commons',
+      ],
+    },
 }
 
 export default config

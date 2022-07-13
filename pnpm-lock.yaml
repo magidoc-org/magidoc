@@ -243,9 +243,8 @@ importers:
       carbon-components-svelte: 0.67.1
       marked: 4.0.18
       prismjs: 1.28.0
-      vite: 2.9.14
     devDependencies:
-      '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs
+      '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs/package
       '@sveltejs/adapter-auto': 1.0.0-next.57
       '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
       '@types/marked': 4.0.3
@@ -256,6 +255,42 @@ importers:
       svelte2tsx: 0.5.11_uslzfc62di2n2otc2tvfklnwji
       tslib: 2.4.0
       typescript: 4.7.4
+      vite: 2.9.14
+
+  packages/plugins/svelte-carbon-commons/package:
+    specifiers:
+      '@magidoc/plugin-svelte-prismjs': workspace:^2.5.2
+      '@sveltejs/adapter-auto': 1.0.0-next.57
+      '@sveltejs/kit': 1.0.0-next.372
+      '@types/marked': ^4.0.3
+      '@types/prismjs': ^1.26.0
+      carbon-components-svelte: ^0.67.1
+      marked: ^4.0.18
+      prismjs: ^1.28.0
+      svelte: ^3.49.0
+      svelte-check: ^2.8.0
+      svelte-preprocess: ^4.10.7
+      svelte2tsx: ^0.5.11
+      tslib: ^2.4.0
+      typescript: ~4.7.4
+      vite: ^2.9.14
+    dependencies:
+      carbon-components-svelte: 0.67.1
+      marked: 4.0.18
+      prismjs: 1.28.0
+    devDependencies:
+      '@magidoc/plugin-svelte-prismjs': link:../../svelte-prismjs/package
+      '@sveltejs/adapter-auto': 1.0.0-next.57
+      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
+      '@types/marked': 4.0.3
+      '@types/prismjs': 1.26.0
+      svelte: 3.49.0
+      svelte-check: 2.8.0_svelte@3.49.0
+      svelte-preprocess: 4.10.7_uslzfc62di2n2otc2tvfklnwji
+      svelte2tsx: 0.5.11_uslzfc62di2n2otc2tvfklnwji
+      tslib: 2.4.0
+      typescript: 4.7.4
+      vite: 2.9.14
 
   packages/plugins/svelte-prismjs:
     specifiers:
@@ -272,7 +307,6 @@ importers:
       vite: ^2.9.14
     dependencies:
       prismjs: 1.28.0
-      vite: 2.9.14
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.57
       '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
@@ -283,6 +317,34 @@ importers:
       svelte2tsx: 0.5.11_uslzfc62di2n2otc2tvfklnwji
       tslib: 2.4.0
       typescript: 4.7.4
+      vite: 2.9.14
+
+  packages/plugins/svelte-prismjs/package:
+    specifiers:
+      '@sveltejs/adapter-auto': 1.0.0-next.57
+      '@sveltejs/kit': 1.0.0-next.372
+      '@types/prismjs': ^1.26.0
+      prismjs: ^1.28.0
+      svelte: ^3.49.0
+      svelte-check: ^2.8.0
+      svelte-preprocess: ^4.10.7
+      svelte2tsx: ^0.5.11
+      tslib: ^2.4.0
+      typescript: ~4.7.4
+      vite: ^2.9.14
+    dependencies:
+      prismjs: 1.28.0
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0-next.57
+      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
+      '@types/prismjs': 1.26.0
+      svelte: 3.49.0
+      svelte-check: 2.8.0_svelte@3.49.0
+      svelte-preprocess: 4.10.7_uslzfc62di2n2otc2tvfklnwji
+      svelte2tsx: 0.5.11_uslzfc62di2n2otc2tvfklnwji
+      tslib: 2.4.0
+      typescript: 4.7.4
+      vite: 2.9.14
 
   packages/starters/carbon-multi-page:
     specifiers:
@@ -316,8 +378,8 @@ importers:
     devDependencies:
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
-      '@magidoc/plugin-svelte-carbon-commons': link:../../plugins/svelte-carbon-commons
-      '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs
+      '@magidoc/plugin-svelte-carbon-commons': link:../../plugins/svelte-carbon-commons/package
+      '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-static': 1.0.0-next.35
       '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
@@ -2550,6 +2612,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-android-arm64/0.14.49:
@@ -2558,6 +2621,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-64/0.14.49:
@@ -2566,6 +2630,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-arm64/0.14.49:
@@ -2574,6 +2639,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-64/0.14.49:
@@ -2582,6 +2648,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-arm64/0.14.49:
@@ -2590,6 +2657,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-32/0.14.49:
@@ -2598,6 +2666,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-64/0.14.49:
@@ -2606,6 +2675,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm/0.14.49:
@@ -2614,6 +2684,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm64/0.14.49:
@@ -2622,6 +2693,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-mips64le/0.14.49:
@@ -2630,6 +2702,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-ppc64le/0.14.49:
@@ -2638,6 +2711,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-riscv64/0.14.49:
@@ -2646,6 +2720,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-s390x/0.14.49:
@@ -2654,6 +2729,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-netbsd-64/0.14.49:
@@ -2662,6 +2738,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-openbsd-64/0.14.49:
@@ -2670,6 +2747,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-sunos-64/0.14.49:
@@ -2678,6 +2756,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-32/0.14.49:
@@ -2686,6 +2765,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-64/0.14.49:
@@ -2694,6 +2774,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-arm64/0.14.49:
@@ -2702,6 +2783,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild/0.14.49:
@@ -2730,6 +2812,7 @@ packages:
       esbuild-windows-32: 0.14.49
       esbuild-windows-64: 0.14.49
       esbuild-windows-arm64: 0.14.49
+    dev: true
 
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -3148,6 +3231,7 @@ packages:
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
+    dev: true
 
   /function.prototype.name/1.1.5:
     resolution: {integrity: sha512-uN7m/BzVKQnCUF/iW8jYea67v++2u7m5UgENbHRtdDVclOUP+FMPlCNdmk0h/ysGyo2tavMJEDqJAkJdRa1vMA==}
@@ -3393,6 +3477,7 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+    dev: true
 
   /hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -3516,6 +3601,7 @@ packages:
     resolution: {integrity: sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A==}
     dependencies:
       has: 1.0.3
+    dev: true
 
   /is-date-object/1.0.5:
     resolution: {integrity: sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==}
@@ -4408,6 +4494,7 @@ packages:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: true
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
@@ -4662,6 +4749,7 @@ packages:
 
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
+    dev: true
 
   /path-type/3.0.0:
     resolution: {integrity: sha512-T2ZUsdZFHgA3u4e5PfPbjd7HDDpxPnQb5jN0SrDsjNSuVXHJqtwTnWqG0B1jZrgmJ/7lj1EmVIByWt1gxGkWvg==}
@@ -4681,6 +4769,7 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+    dev: true
 
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
@@ -4741,6 +4830,7 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: true
 
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
@@ -4933,6 +5023,7 @@ packages:
       is-core-module: 2.9.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    dev: true
 
   /restore-cursor/3.1.0:
     resolution: {integrity: sha512-l+sSefzHpj5qimhFSE5a8nufZYAM3sBSVMAPtYkmC+4EH2anSGaEMXSD0izRQbu9nfyQ9y5JrVmp7E8oZrUjvA==}
@@ -4982,6 +5073,7 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
 
   /run-parallel/1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -5132,6 +5224,7 @@ packages:
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /source-map-support/0.5.13:
     resolution: {integrity: sha512-SHSKFHadjVA5oR4PPqhtAVdcBWwRYVd6g6cAXnIbRiIwc2EhPrTuKUBdSLvlEKyIP3GCf89fltvcZiP9MMFA1w==}
@@ -5307,6 +5400,7 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
 
   /svelte-check/2.8.0_svelte@3.49.0:
     resolution: {integrity: sha512-HRL66BxffMAZusqe5I5k26mRWQ+BobGd9Rxm3onh7ZVu0nTk8YTKJ9vu3LVPjUGLU9IX7zS+jmwPVhJYdXJ8vg==}
@@ -5681,6 +5775,7 @@ packages:
       rollup: 2.76.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
 
   /vscode-languageserver-textdocument/1.0.5:
     resolution: {integrity: sha512-1ah7zyQjKBudnMiHbZmxz5bYNM9KKZYz+5VQLj+yr8l+9w3g+WAhCkUkWbhMEdC5u0ub4Ndiye/fDyS8ghIKQg==}
