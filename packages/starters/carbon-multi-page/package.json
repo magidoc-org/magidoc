@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -10,27 +10,27 @@
     "magidoc"
   ],
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "preview": "svelte-kit preview",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint 'src/**/*.{ts,svelte}'",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@magidoc/plugin-query-generator": "workspace:^2.5.0",
-    "@magidoc/plugin-starter-variables": "workspace:^2.5.0",
-    "@magidoc/plugin-svelte-carbon-commons": "workspace:^2.5.0",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^2.5.0",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.5.0",
-    "@sveltejs/adapter-static": "1.0.0-next.34",
-    "@sveltejs/kit": "1.0.0-next.357",
+    "@magidoc/plugin-query-generator": "workspace:^2.5.1",
+    "@magidoc/plugin-starter-variables": "workspace:^2.5.1",
+    "@magidoc/plugin-svelte-carbon-commons": "workspace:^2.5.1",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^2.5.1",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.5.1",
+    "@sveltejs/adapter-static": "1.0.0-next.35",
+    "@sveltejs/kit": "1.0.0-next.371",
     "@types/lodash": "^4.14.182",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "carbon-components-svelte": "^0.67.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "carbon-components-svelte": "^0.67.1",
     "carbon-icons-svelte": "^11.1.0",
     "carbon-preprocess-svelte": "^0.9.1",
     "eslint": "^8.19.0",
@@ -39,12 +39,13 @@
     "lodash": "^4.17.21",
     "prism-svelte": "^0.5.0",
     "prismjs": "^1.28.0",
-    "svelte": "^3.48.0",
+    "svelte": "^3.49.0",
     "svelte-check": "^2.8.0",
     "svelte-markdown": "^0.2.2",
     "svelte-preprocess": "^4.10.7",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vite": "^3.0.0"
   },
   "engines": {
     "node": ">=16.7"

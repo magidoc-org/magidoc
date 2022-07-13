@@ -6,11 +6,6 @@ const config = {
   preprocess: preprocess(),
   kit: {
     adapter: adapter(),
-    vite: {
-      build: {
-        ssr: true,
-      },
-    },
   },
 }
 
