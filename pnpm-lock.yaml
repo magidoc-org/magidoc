@@ -226,7 +226,7 @@ importers:
     specifiers:
       '@magidoc/plugin-svelte-prismjs': workspace:^2.5.2
       '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.371
+      '@sveltejs/kit': 1.0.0-next.372
       '@types/marked': ^4.0.3
       '@types/prismjs': ^1.26.0
       carbon-components-svelte: ^0.67.1
@@ -247,7 +247,7 @@ importers:
     devDependencies:
       '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs
       '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.371_svelte@3.49.0+vite@2.9.14
+      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
       '@types/marked': 4.0.3
       '@types/prismjs': 1.26.0
       svelte: 3.49.0
@@ -260,7 +260,7 @@ importers:
   packages/plugins/svelte-prismjs:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.371
+      '@sveltejs/kit': 1.0.0-next.372
       '@types/prismjs': ^1.26.0
       prismjs: ^1.28.0
       svelte: ^3.49.0
@@ -275,7 +275,7 @@ importers:
       vite: 2.9.14
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.371_svelte@3.49.0+vite@2.9.14
+      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
       '@types/prismjs': 1.26.0
       svelte: 3.49.0
       svelte-check: 2.8.0_svelte@3.49.0
@@ -292,7 +292,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': workspace:^2.5.2
       '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.5.2
       '@sveltejs/adapter-static': 1.0.0-next.35
-      '@sveltejs/kit': 1.0.0-next.371
+      '@sveltejs/kit': 1.0.0-next.372
       '@types/lodash': ^4.14.182
       '@types/prismjs': ^1.26.0
       '@typescript-eslint/eslint-plugin': ^5.30.6
@@ -320,7 +320,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs
       '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
       '@sveltejs/adapter-static': 1.0.0-next.35
-      '@sveltejs/kit': 1.0.0-next.371_svelte@3.49.0+vite@2.9.14
+      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
       '@types/lodash': 4.14.182
       '@types/prismjs': 1.26.0
       '@typescript-eslint/eslint-plugin': 5.30.6_2vt5mtrqleafs33qg2bhpmbaqm
@@ -1334,8 +1334,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.371_svelte@3.49.0+vite@2.9.14:
-    resolution: {integrity: sha512-2MXNb0M97lsEbJx167YNb6ofGRNuNEBUJM9ntIce6usWaurh+2mMg185sA4p0Kl7gl9xSM2D9GXGT7mlaEmJGA==}
+  /@sveltejs/kit/1.0.0-next.372_svelte@3.49.0+vite@2.9.14:
+    resolution: {integrity: sha512-pcnDfV8YQwj7d/SCaKWT7yPBrmgkPH9Dc4UIeX8yTLXDu8IPzI5kukEOy4xf6LjyJsuSGPy1Ch91ULugtVIdAQ==}
     engines: {node: '>=16.9'}
     hasBin: true
     peerDependencies:
