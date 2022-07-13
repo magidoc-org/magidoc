@@ -1,4 +1,5 @@
 import { templates } from '@magidoc/plugin-starter-variables'
+import fs from 'fs'
 
 /**
  * These configurations are useful for the CLI to generate websites using user-defined configuration.
@@ -19,3 +20,11 @@ export const SCHEMA_TARGET_LOCATION = './src/_schema.json'
 export const STATIC_ASSETS_LOCATION = './static'
 
 export const ENV_FILE_LOCATION = './src/_variables.json'
+
+export function loadVariables() {
+  if (!fs.existsSync(ENV_FILE_LOCATION)) {
+    return {}
+  }
+
+  return JSON.parse(fs.readFileSync(ENV_FILE_LOCATION))
+}
