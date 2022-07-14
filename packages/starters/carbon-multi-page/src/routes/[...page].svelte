@@ -29,6 +29,10 @@
   export let page: WebsitePage
 </script>
 
+<svelte:head>
+  <title>{page.title}</title>
+</svelte:head>
+
 <AppMarkdown source={page.content} />
 
 <PreviousNextPage {page} />

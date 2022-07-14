@@ -18,6 +18,10 @@
   export let error: string
 </script>
 
+<svelte:head>
+  <title>Error {status ? ` - ${status}` : ''}</title>
+</svelte:head>
+
 <div class="wrapper">
   {#if status}
     <h1>{status}</h1>
