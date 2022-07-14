@@ -19,11 +19,11 @@ Magidoc is an open source static GraphQL documentation auto-generator that offer
 
 - 🔥 **Live hot-reload**: Preview your documentation website while you develop.
 
-- 📝 **Advanced markdown support**: Markdown is supported everywhere, from the custom pages and sections you can create, to the [SDL comments](https://dgraph.io/docs/graphql/schema/documentation/) inside your GraphQL schema.
+- 📝 **Advanced markdown support**: Markdown is supported everywhere, from the custom pages and sections you can create, to the SDL comments inside your GraphQL schema.
 
 - 📦 **Fully typed**: Every plugin and template ships with TypeScript definitions out of the box.
 
-## 👀 Demo
+## Demo
 
 <p align="center">
   <img width="70%" src="./logo/cli.gif">
@@ -31,6 +31,12 @@ Magidoc is an open source static GraphQL documentation auto-generator that offer
 
 👉 See the [live demo](https://magidoc-carbon-multi-page.netlify.app) using FaunaDB's example GraphQL API.
 
-## 📄 Documentation
+## Documentation
 
 [Read the docs!](https://magidoc-org.github.io/magidoc/introduction/welcome)
+
+## Contribution
+See the [contribution guide](./CONTRIBUTING.md).
+
+## License
+[MIT](./LICENSE)
