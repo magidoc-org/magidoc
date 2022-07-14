@@ -40,7 +40,7 @@ root
 4. **starters**: Starters are the various website templates that Magidoc provides out of the box. You may create your own template with a different UI library, a different layout, different structure, etc. The goal is to provide a wide variety of easy-to-swap templates.
 
 ## Opening a merge request
-Pull requests by the community are highly encouraged and appreciated. However, there are a few guidelines to follow when opening a PR. 
+Pull requests by the community are encouraged and highly appreciated. However, there are a few guidelines to follow when opening a PR. 
 
 **Adding a feature**
 If you wish to add a feature, you should ideally open an issue first and have it approved before you start working on it. 
