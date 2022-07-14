@@ -16,7 +16,7 @@
   
 ---
 
-Magidoc is an open source static GraphQL documentation auto-generator that offers the best developer experience, is infinitely customizable and produces better documentation than existing solutions.
+Magidoc is a JavaScript library that auto-generates static documentation websites from any GraphQL schema.
 
 ## Features
 
@@ -28,9 +28,7 @@ Magidoc is an open source static GraphQL documentation auto-generator that offer
 
 - 🔥 **Live hot-reload**: Preview your documentation website while you develop.
 
-- 📝 **Advanced markdown support**: Markdown is supported everywhere, from the custom pages and sections you can create, to the SDL comments inside your GraphQL schema.
-
-- 📦 **Fully typed**: Every plugin and template ships with TypeScript definitions out of the box.
+- 📝 **Advanced markdown support**: Markdown is supported everywhere, from custom pages to schema comments.
 
 ## Demo
 
