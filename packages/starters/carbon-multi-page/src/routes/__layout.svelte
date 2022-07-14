@@ -21,7 +21,7 @@
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
   import type { LoadOutput } from '@sveltejs/kit'
   import { siteMeta, type Meta } from '$lib/meta'
-  import { appTitle, homePageUrl, pages } from '$lib/pages'
+  import { homePageUrl, pages } from '$lib/pages'
   import { templates } from '@magidoc/plugin-starter-variables'
   import type { WebsiteContent } from 'src/app'
   import { get } from '$lib/variables'
@@ -53,8 +53,6 @@
 </script>
 
 <svelte:head>
-  <title>{appTitle}</title>
-
   {#each meta as item}
     <meta name={item.name} content={item.content} />
   {/each}
