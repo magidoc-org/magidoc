@@ -1,0 +1,53 @@
+name: "🐛 Bug report"
+description: Report an issue with Magidoc
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! **Before you start, make sure you have the latest versions of the packages you're using, the recommended node version (16+)**
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A full description of your issue. If you intend to open a PR for this issue, tell us in the description!
+      placeholder: Bug description
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: How can we reproduce this bug? If possible, provide an example of `_schema.json`, `_variables.json`. Otherwise, give all the necessary details to reproduce the bug.
+      placeholder: Reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: "Copy and paste the logs of the CLI or browser. Please try not to insert an image but copy paste the log text."
+      render: shell
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: Output of `npx envinfo --system --binaries --browsers --npmPackages "{@magidoc/*}"`
+      render: shell
+      placeholder: System, Binaries, Browsers
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - annoyance
+        - serious, but I can work around it
+        - blocking an upgrade
+        - blocking all usage of Magidoc
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
