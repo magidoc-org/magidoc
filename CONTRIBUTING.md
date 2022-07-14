@@ -1,5 +1,5 @@
 # Magidoc contributing guide
-👋 Hi! We are excited that you decided to contribute to Magidoc. Before you submit your contribution, make sure you read through the follwing guide.
+👋 Hi! We are excited that you decided to contribute to Magidoc. Before you submit your contribution, make sure you read through the following guide.
 
 ## Repo setup
 Magidoc is a mono-repository using pnpm workspaces. The package manager that must be installed to work on this repository is [pnpm](https://pnpm.io/).
