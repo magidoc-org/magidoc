@@ -16,13 +16,11 @@
   
 ---
 
-Magidoc is a JavaScript library that auto-generates static documentation websites from any GraphQL schema.
-
+Magidoc is a JavaScript library that auto-generates static documentation websites from any GraphQL schema. By default, Magidoc automatically generate pages for each Query, Mutation, Subscription and Type of your API. It also auto-generate queries, variables and responses to help your users understand how your API works.
+ 
 ## Features
 
-- 🏁 **Simple**: Build your first website in seconds.
-
-- 🌍 **Powerful**: Automatically generate pages for each Query, Mutation, Subscription and Type of your API by default. It also auto-generate queries and responses to help your users understand how your API works.
+- 🏁 **Simple**: Build your first website in a few minutes.
 
 - ✏️ **Customizable**: Use pre-defined customizations or pick a template and make it your own.
 
@@ -32,11 +30,7 @@ Magidoc is a JavaScript library that auto-generates static documentation website
 
 ## Demo
 
-<p align="center">
-  <img width="70%" src="./logo/cli.gif">
-</p>
-
-👉 See the [live demo](https://magidoc-carbon-multi-page.netlify.app) using FaunaDB's example GraphQL API.
+👉 See the [demo website](https://magidoc-carbon-multi-page.netlify.app) generated from FaunaDB's example GraphQL API.
 
 ## Documentation
 
