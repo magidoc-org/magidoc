@@ -21,11 +21,8 @@ Magidoc is a JavaScript library that auto-generates static documentation from an
 ## Features
 
 - 🏁 **Simple**: Build your first website in a few minutes.
-
 - ✏️ **Customizable**: Use pre-defined customizations or pick a template and make it your own.
-
 - 🔥 **Live hot-reload**: Preview your documentation website while you develop.
-
 - 📝 **Advanced markdown support**: Markdown is supported everywhere, from custom pages to schema comments.
 
 ## Demo
