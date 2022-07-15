@@ -16,7 +16,7 @@
   
 ---
 
-Magidoc is a JavaScript library that auto-generates static documentation websites from any GraphQL schema. By default, Magidoc automatically generates documentation for each query, mutation, subscription and type of your API. 
+Magidoc is a JavaScript library that auto-generates static documentation from any GraphQL schema. By default, Magidoc automatically generates documentation for each query, mutation, subscription and type of your API. 
 
 ## Features
 
