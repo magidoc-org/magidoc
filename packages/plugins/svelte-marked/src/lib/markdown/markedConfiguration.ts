@@ -20,7 +20,6 @@ import {
   MarkdownText,
 } from './components'
 import { marked } from 'marked'
-import type { SvelteComponentTyped } from 'svelte'
 
 export type MarkdownOptions = {
   /**
@@ -48,7 +47,7 @@ export function parse(src: string): marked.TokensList {
 
 export type RendererType = marked.Token['type']
 
-export type Renderers = Record<RendererType & string, SvelteComponentTyped>
+export type Renderers = Record<RendererType & string, unknown>
 
 export const defaultRenderers: Renderers = {
   blockquote: MarkdownBloquote,
