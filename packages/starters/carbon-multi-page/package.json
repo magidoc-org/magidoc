@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@magidoc/plugin-query-generator": "workspace:^2.5.2",
+    "@magidoc/plugin-reverse-schema-mapper": "workspace:^2.5.2",
     "@magidoc/plugin-starter-variables": "workspace:^2.5.2",
     "@magidoc/plugin-svelte-carbon-commons": "workspace:^2.5.2",
     "@magidoc/plugin-svelte-prismjs": "workspace:^2.5.2",

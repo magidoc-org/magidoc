@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AppExpandButton from '$lib/components/common/AppExpandButton.svelte'
   import AppMarkdown from '$lib/components/common/AppMarkdown.svelte'
 
   import ArgsList from '$lib/components/query/list/ArgsList.svelte'
@@ -8,12 +9,9 @@
   import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 
   import {
-    Button,
     StructuredListCell,
     StructuredListRow,
   } from 'carbon-components-svelte'
-  import ArrowDown from 'carbon-icons-svelte/lib/ArrowDown.svelte'
-  import ArrowUp from 'carbon-icons-svelte/lib/ArrowUp.svelte'
   import type { GraphQLField } from 'graphql'
 
   export let item: GraphQLField<unknown, unknown, unknown>
@@ -38,18 +36,12 @@
           <ArgsList data={item.args} />
         </div>
       {/if}
-      <div class="button-wrapper">
-        <Button
-          kind="ghost"
-          size="small"
-          style="border-radius: 20px"
-          icon={showArguments ? ArrowUp : ArrowDown}
-          on:click={() => (showArguments = !showArguments)}
-        >
-          {(showArguments ? 'Hide Arguments' : 'Show Arguments') +
-            ` (${item.args.length})`}
-        </Button>
-      </div>
+      <AppExpandButton
+        totalItems={item.args.length}
+        collapsedText="Show arguments"
+        expandedText="Hide arguments"
+        bind:expanded={showArguments}
+      />
     {/if}
   </StructuredListCell>
 </StructuredListRow>
@@ -60,12 +52,5 @@
     padding-left: 10px;
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
-  }
-
-  .button-wrapper {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    padding: 0.5rem;
   }
 </style>

@@ -12,6 +12,10 @@ import schemaJson from '../_schema.json'
 import type { Maybe } from 'graphql/jsutils/Maybe'
 import { base } from '$app/paths'
 import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
+import {
+  createReverseMapping,
+  type TypeReverseMapping,
+} from '@magidoc/plugin-reverse-schema-mapper'
 
 export const schema: GraphQLSchema = buildClientSchema(
   schemaJson as unknown as IntrospectionQuery,
@@ -23,6 +27,7 @@ const subsciptionsByName = toIgnoreCase(
   schema.getSubscriptionType()?.getFields(),
 )
 const typesByName = toIgnoreCase(schema.getTypeMap())
+const reverseMapping = createReverseMapping(schema)
 
 function toIgnoreCase<T>(
   target: Record<string, T> | undefined,
@@ -108,4 +113,11 @@ export function getSubscriptionByName(
 
 export function getTypeByName(name: string): GraphQLNamedType | undefined {
   return typesByName[name.toLocaleLowerCase()]
+}
+
+export function getTypeUsages(
+  type: GraphQLNamedType | undefined,
+): TypeReverseMapping | undefined {
+  if (!type) return undefined
+  return reverseMapping.getFor(type)
 }

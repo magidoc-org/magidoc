@@ -1,6 +1,7 @@
 import {
   GraphQLArgument,
   GraphQLField,
+  GraphQLNamedType,
   GraphQLObjectType,
   GraphQLUnionType,
 } from 'graphql'
@@ -46,9 +47,13 @@ export type ArgumentReference = {
    */
   kind: ReferenceKind.ARGUMENT
   /**
-   * The parent field that uses this argument.
+   * The field that uses this argument.
    */
-  parent: GraphQLField<unknown, unknown, unknown>
+  field: GraphQLField<unknown, unknown, unknown>
+  /**
+   * The type that has the field that uses this argument.
+   */
+  type: GraphQLNamedType
   /**
    * The argument that references this type.
    */

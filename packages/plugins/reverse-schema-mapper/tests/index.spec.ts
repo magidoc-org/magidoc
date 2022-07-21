@@ -8,11 +8,11 @@ const reverse = createReverseMapping(schema)
 describe('given schema', () => {
   it('should create a reverse mapping for default types', () => {
     expect(reverse.getFor(getMandatoryType('String'))?.references).toHaveLength(
-      33,
+      17,
     )
     expect(
       reverse.getFor(getMandatoryType('Boolean'))?.references,
-    ).toHaveLength(12)
+    ).toHaveLength(3)
   })
 
   it('should generate field references', () => {
@@ -42,7 +42,8 @@ describe('given schema', () => {
     expect(argResult).toEqual({
       kind: ReferenceKind.ARGUMENT,
       by: targetField.args.find((arg) => arg.name === 'nonStandardScalar'),
-      parent: targetField,
+      field: targetField,
+      type: schema.getQueryType(),
     })
   })
 
@@ -57,6 +58,10 @@ describe('given schema', () => {
       kind: ReferenceKind.UNION,
       by: getMandatoryType('TestUnion'),
     })
+  })
+
+  it('should not generate meta type references', () => {
+    expect(reverse.getFor(getMandatoryType('__Type'))).toBeUndefined()
   })
 })
 
