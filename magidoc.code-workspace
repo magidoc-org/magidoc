@@ -59,6 +59,10 @@
       "path": "./packages/plugins/svelte-prismjs"
     },
     {
+      "name": "Plugins/Svelte-Marked",
+      "path": "./packages/plugins/svelte-marked"
+    },
+    {
       "name": "Plugins/Svelte-Carbon-Commons",
       "path": "./packages/plugins/svelte-carbon-commons"
     },
