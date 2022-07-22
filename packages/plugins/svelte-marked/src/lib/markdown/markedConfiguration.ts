@@ -45,9 +45,9 @@ export function parse(src: string): marked.TokensList {
   return lexer.lex(src)
 }
 
-export type RendererType = marked.Token['type']
+export type RendererType = marked.Token['type'] & string
 
-export type Renderers = Record<RendererType & string, unknown>
+export type Renderers = Record<RendererType, unknown>
 
 export const defaultRenderers: Renderers = {
   blockquote: MarkdownBloquote,

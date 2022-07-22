@@ -1,6 +1,6 @@
 # Magidoc - Svelte Marked
 
-Svelte-Marked is a fully typed markdown parser that renders into Svelte components. Each component renderer can be customized at will.
+Svelte-Marked is a fully typed markdown parser that renders into Svelte components. Each component renderer can be customized, and custom extensions can be registered to provide custom components.
 
 > This plugin can be used in any Svelte or SvelteKit application.
 
