@@ -1,4 +1,6 @@
 <script lang="ts">
+  import AppList from '$lib/components/common/list/AppList.svelte'
+
   import {
     MarkdownToken,
     type MarkdownOptions,
@@ -16,18 +18,8 @@
   $: component = token.ordered ? OrderedList : UnorderedList
 </script>
 
-<svelte:component
-  this={component}
-  class="markdown-list-style"
-  style={`counter-reset: item ${Number(token.start) - 1}`}
->
+<AppList ordered={token.ordered} start={token.start || 1}>
   {#each token.items as item}
     <MarkdownToken token={{ ...item }} {options} {renderers} />
   {/each}
-</svelte:component>
-
-<style>
-  :global(.markdown-list-style) {
-    padding: revert !important;
-  }
-</style>
+</AppList>
