@@ -10,7 +10,7 @@
 
 {#if renderers[token.type]}
   <svelte:component this={renderers[token.type]} {token} {options} {renderers}>
-    {#if token['tokens']}
+    {#if 'tokens' in token && token['tokens']}
       <MarkdownTokens tokens={token['tokens']} {renderers} {options} />
     {:else}
       {token.raw}

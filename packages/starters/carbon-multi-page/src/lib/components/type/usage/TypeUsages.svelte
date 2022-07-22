@@ -1,9 +1,10 @@
 <script lang="ts">
+import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte';
+
   import {
     type TypeReverseMapping,
     ReferenceKind,
   } from '@magidoc/plugin-reverse-schema-mapper'
-  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
   import { ListItem, UnorderedList } from 'carbon-components-svelte'
   import TypeLink from '../TypeLink.svelte'
   import TypeUsagePreview from './TypeUsagePreview.svelte'

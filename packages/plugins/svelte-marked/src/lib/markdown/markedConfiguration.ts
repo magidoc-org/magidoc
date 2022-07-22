@@ -1,24 +1,25 @@
 import {
+  MarkdownHeading,
   MarkdownBloquote,
+  MarkdownList,
+  MarkdownListItem,
   MarkdownBr,
   MarkdownCode,
   MarkdownCodeSpan,
-  MarkdownDel,
-  MarkdownDfn,
-  MarkdownEm,
-  MarkdownHeading,
-  MarkdownHr,
-  MarkdownHtml,
-  MarkdownImage,
-  MarkdownLink,
-  MarkdownList,
-  MarkdownListItem,
-  MarkdownParagraph,
-  MarkdownSpace,
-  MarkdownStrong,
   MarkdownTable,
+  MarkdownHtml,
+  MarkdownParagraph,
+  MarkdownLink,
   MarkdownText,
+  MarkdownDfn,
+  MarkdownDel,
+  MarkdownEm,
+  MarkdownHr,
+  MarkdownStrong,
+  MarkdownImage,
+  MarkdownSpace,
 } from './components'
+
 import { marked } from 'marked'
 
 export type MarkdownOptions = {
@@ -45,11 +46,12 @@ export function parse(src: string): marked.TokensList {
   return lexer.lex(src)
 }
 
-export type RendererType = marked.Token['type'] & string
+export type RendererType = marked.Token['type'] | string
 
 export type Renderers = Record<RendererType, unknown>
 
 export const defaultRenderers: Renderers = {
+  heading: MarkdownHeading,
   blockquote: MarkdownBloquote,
   list: MarkdownList,
   list_item: MarkdownListItem,
@@ -57,7 +59,6 @@ export const defaultRenderers: Renderers = {
   code: MarkdownCode,
   codespan: MarkdownCodeSpan,
   table: MarkdownTable,
-  heading: MarkdownHeading,
   html: MarkdownHtml,
   paragraph: MarkdownParagraph,
   link: MarkdownLink,

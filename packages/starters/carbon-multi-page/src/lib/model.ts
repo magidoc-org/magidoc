@@ -11,7 +11,7 @@ import type { WebsiteContent } from 'src/app'
 import schemaJson from '../_schema.json'
 import type { Maybe } from 'graphql/jsutils/Maybe'
 import { base } from '$app/paths'
-import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
+import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import {
   createReverseMapping,
   type TypeReverseMapping,
@@ -68,7 +68,7 @@ function createWebsiteContentFromFields(
       title: field.name,
       section: title,
       deprecated: !!field.deprecationReason,
-      href: joinUrlPaths(base, title.toLocaleLowerCase(), field.name),
+      href: urlUtils.joinUrlPaths(base, title.toLocaleLowerCase(), field.name),
     })),
   }
 }
@@ -88,7 +88,7 @@ function createTypesWebsiteContent(): WebsiteContent | null {
       type: 'page',
       title: type.name,
       section: 'Types',
-      href: joinUrlPaths(base, 'types', type.name),
+      href: urlUtils.joinUrlPaths(base, 'types', type.name),
     })),
   }
 }

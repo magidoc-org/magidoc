@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { SelectableNavMenuItem } from '@magidoc/plugin-svelte-carbon-commons'
   import { page } from '$app/stores'
+  import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
 
   import type { WebsitePage } from 'src/app'
 

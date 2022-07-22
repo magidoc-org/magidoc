@@ -1,5 +1,8 @@
 import type { marked } from 'marked'
-import type { ContainerOptions } from '@magidoc/plugin-svelte-marked'
+import type {
+  ContainerOptions,
+  TokenExtractionParameters,
+} from '@magidoc/plugin-svelte-marked'
 
 const tagColors = [
   'red',
@@ -28,11 +31,11 @@ export type TagsToken = marked.Tokens.Generic & {
   raw: string
 }
 
-export function parseTags(
-  raw: string,
-  content: string,
-  options: ContainerOptions,
-): TagsToken {
+export function parseTags({
+  options,
+  raw,
+  content,
+}: TokenExtractionParameters): TagsToken {
   const colorsOption = (options['colors'] ?? options['color'] ?? 'outline')
     .toString()
     .toLocaleLowerCase()
