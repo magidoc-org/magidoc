@@ -7,12 +7,12 @@
   export let options: MarkdownOptions
   export let renderers: Renderers
 
-  let component: unknown
-  $: component = token.ordered ? 'ol' : 'li'
+  let component: 'ol' | 'ul'
+  $: component = token.ordered ? 'ol' : 'ul'
 </script>
 
-<svelte:component this={component}>
+<svelte:element this={component} start={token.start || 1}>
   {#each token.items as item}
     <MarkdownToken token={{ ...item }} {options} {renderers} />
   {/each}
-</svelte:component>
+</svelte:element>

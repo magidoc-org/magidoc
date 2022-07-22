@@ -5,7 +5,7 @@
     type MarkdownOptions,
     type Renderers,
   } from '../markedConfiguration'
-  import { getContext } from 'svelte/types/runtime/internal/lifecycle'
+  import { getContext } from 'svelte'
   import type { Slugger } from 'marked'
 
   export let token: marked.Tokens.Heading
@@ -18,4 +18,6 @@
   $: id = slug.slug(token.text)
 </script>
 
-<svelte:element this={`h${token.depth}`} {id} />
+<svelte:element this={`h${token.depth}`} {id}>
+  <slot />
+</svelte:element>
