@@ -234,76 +234,6 @@ importers:
       tslib: 2.4.0
       typescript: 4.7.4
 
-  packages/plugins/svelte-carbon-commons:
-    specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^2.5.2
-      '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.372
-      '@types/marked': ^4.0.3
-      '@types/prismjs': ^1.26.0
-      carbon-components-svelte: ^0.67.1
-      marked: ^4.0.18
-      prismjs: ^1.28.0
-      svelte: ^3.49.0
-      svelte-check: ^2.8.0
-      svelte-preprocess: ^4.10.7
-      svelte2tsx: ^0.5.11
-      tslib: ^2.4.0
-      typescript: ~4.7.4
-      vite: ^2.9.14
-    dependencies:
-      carbon-components-svelte: 0.67.1
-      marked: 4.0.18
-      prismjs: 1.28.0
-    devDependencies:
-      '@magidoc/plugin-svelte-prismjs': link:../svelte-prismjs/package
-      '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
-      '@types/marked': 4.0.3
-      '@types/prismjs': 1.26.0
-      svelte: 3.49.0
-      svelte-check: 2.8.0_svelte@3.49.0
-      svelte-preprocess: 4.10.7_uslzfc62di2n2otc2tvfklnwji
-      svelte2tsx: 0.5.11_uslzfc62di2n2otc2tvfklnwji
-      tslib: 2.4.0
-      typescript: 4.7.4
-      vite: 2.9.14
-
-  packages/plugins/svelte-carbon-commons/package:
-    specifiers:
-      '@magidoc/plugin-svelte-prismjs': workspace:^2.5.2
-      '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.372
-      '@types/marked': ^4.0.3
-      '@types/prismjs': ^1.26.0
-      carbon-components-svelte: ^0.67.1
-      marked: ^4.0.18
-      prismjs: ^1.28.0
-      svelte: ^3.49.0
-      svelte-check: ^2.8.0
-      svelte-preprocess: ^4.10.7
-      svelte2tsx: ^0.5.11
-      tslib: ^2.4.0
-      typescript: ~4.7.4
-      vite: ^2.9.14
-    dependencies:
-      carbon-components-svelte: 0.67.1
-      marked: 4.0.18
-      prismjs: 1.28.0
-    devDependencies:
-      '@magidoc/plugin-svelte-prismjs': link:../../svelte-prismjs/package
-      '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
-      '@types/marked': 4.0.3
-      '@types/prismjs': 1.26.0
-      svelte: 3.49.0
-      svelte-check: 2.8.0_svelte@3.49.0
-      svelte-preprocess: 4.10.7_uslzfc62di2n2otc2tvfklnwji
-      svelte2tsx: 0.5.11_uslzfc62di2n2otc2tvfklnwji
-      tslib: 2.4.0
-      typescript: 4.7.4
-      vite: 2.9.14
-
   packages/plugins/svelte-marked:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.0-next.57
@@ -2155,6 +2085,7 @@ packages:
     resolution: {integrity: sha512-Xof9AItLnt6UTu/6GFM0HGCokaoVmivElcMainzy26KiaDCgLRP0AOuI0hpbUQAgUcLqiy2y+dBhQylMSvNn6g==}
     dependencies:
       flatpickr: 4.6.9
+    dev: true
 
   /carbon-icons-svelte/11.1.0:
     resolution: {integrity: sha512-yDA1aqgRCuDaY1moxYywKnkGak7rFc5U2n8/hrs8irmIpq9ebKmimLdMCVqZgV4kiZf2Udj/lkKOs/IzHixrnQ==}
@@ -3233,6 +3164,7 @@ packages:
 
   /flatpickr/4.6.9:
     resolution: {integrity: sha512-F0azNNi8foVWKSF+8X+ZJzz8r9sE1G4hl06RyceIaLvyltKvDl6vqk9Lm/6AUUCi5HWaIjiUbk7UpeE/fOXOpw==}
+    dev: true
 
   /flatted/3.2.6:
     resolution: {integrity: sha512-0sQoMh9s0BYsm+12Huy/rkKxVu4R1+r96YX5cG44rHV0pQ6iC3Q+mkoMFaGWObMFYQxCVT+ssG1ksneA2MI9KQ==}

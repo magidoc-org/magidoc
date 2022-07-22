@@ -50,7 +50,7 @@ export type RendererType = marked.Token['type'] | string
 
 export type Renderers = Record<RendererType, unknown>
 
-export const defaultRenderers: Renderers = {
+export const defaultRenderers = (): Renderers => ({
   heading: MarkdownHeading,
   blockquote: MarkdownBloquote,
   list: MarkdownList,
@@ -71,10 +71,10 @@ export const defaultRenderers: Renderers = {
   image: MarkdownImage,
   space: MarkdownSpace,
   escape: MarkdownSpace,
-}
+})
 
-export const defaultOptions: MarkdownOptions = {
+export const defaultOptions = (): MarkdownOptions => ({
   baseUrl: '/',
-}
+})
 
 export const contextKey = 'MARKED_CONTEXT_KEY'

@@ -34,8 +34,8 @@
 
   $: tokens = parse(source)
 
-  $: actualRenderers = { ...defaultRenderers, ...renderers }
-  $: actualOptions = { ...defaultOptions, ...options }
+  $: actualRenderers = { ...defaultRenderers(), ...renderers }
+  $: actualOptions = { ...defaultOptions(), ...options }
 
   suppressWarnings()
 </script>

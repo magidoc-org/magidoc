@@ -6,7 +6,7 @@ import { marked } from 'marked'
 import { parseNotification } from './containers/notification/Notification'
 import { parseTags } from './containers/tags/Tags'
 
-const initialized = false
+let initialized = false
 
 export function setupMarkedExtensions() {
   if (!initialized) {
