@@ -1,6 +1,6 @@
 import * as MarkdownComponents from './markdown/components'
 import { extensions } from './markdown/extensions'
-import { isRelative, joinUrlPaths } from './utils/url'
+import { generatePathSegment, isRelative, joinUrlPaths } from './utils/url'
 import Markdown from './markdown/Markdown.svelte'
 import MarkdownToken from './markdown/MarkdownToken.svelte'
 import MarkdownTokens from './markdown/MarkdownTokens.svelte'
@@ -31,6 +31,7 @@ export type {
 const urlUtils = {
   joinUrlPaths,
   isRelative,
+  generatePathSegment,
 }
 
 export { urlUtils }

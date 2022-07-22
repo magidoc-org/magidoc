@@ -124,7 +124,7 @@ function asCustomContent(path: string[], page: Page): WebsiteContent {
 }
 
 function generatePath(value: string): string {
-  return new Slugger().slug(value)
+  return urlUtils.generatePathSegment(value, new Slugger())
 }
 
 function getDefaultPages(): Page[] {
