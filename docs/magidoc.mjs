@@ -19,7 +19,8 @@ const config = {
     staticAssets: path.join(__dirname, 'assets'),
     options: {
       appTitle: 'Magidoc',
-      appFavicon: 'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
+      appFavicon:
+        'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
       pages: pages,
       siteRoot: '/magidoc',
       externalLinks: [
@@ -56,7 +57,8 @@ const config = {
           'Fast and highly customizable GraphQL documentation generator',
         'og:description':
           'Fast and highly customizable GraphQL documentation generator',
-        keywords: 'Svelte,Svelte-Kit,PrismJS,GraphQL,Documentation,Static',
+        keywords:
+          'svelte,sveltekit,svelte-kit,prismjs,markedjs,marked,graphql,documentation,docs,static,javascript,nodejs',
         author: 'Magidoc-org',
         'og:title': 'Magidoc',
         'og:type': 'article',
