@@ -1,11 +1,15 @@
 <script>
   import Markdown from '$lib/markdown/Markdown.svelte'
+  import CustomHr from './CustomHr.svelte'
 </script>
 
 <body style="padding:1rem">
   <Markdown
     options={{
       baseUrl: '/docs',
+    }}
+    renderers={{
+      hr: CustomHr,
     }}
     source={`
 # someReallyLongTitleInOneline--test unique indexes

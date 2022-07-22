@@ -2,8 +2,9 @@ import { templates, type Page } from '@magidoc/plugin-starter-variables'
 import type { WebsitePage, WebsiteContent } from 'src/app'
 import { base } from '$app/paths'
 import { createModelContent } from './model'
-import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
 import { getOrDefault } from './variables'
+import { urlUtils } from '@magidoc/plugin-svelte-marked'
+import { Slugger } from 'marked'
 
 export const appTitle = getOrDefault(templates.APP_TITLE, 'Magidoc')
 
@@ -107,7 +108,7 @@ function asCustomContent(path: string[], page: Page): WebsiteContent {
       type: 'page',
       title: page.title,
       content: page.content,
-      href: joinUrlPaths(base, ...path, generatePath(page.title)),
+      href: urlUtils.joinUrlPaths(base, ...path, generatePath(page.title)),
     }
   }
 
@@ -123,21 +124,7 @@ function asCustomContent(path: string[], page: Page): WebsiteContent {
 }
 
 function generatePath(value: string): string {
-  // https://github.com/markedjs/marked/blob/master/src/Slugger.js
-  return (
-    value
-      .toLowerCase()
-      .trim()
-      // remove html tags
-      .replace(/<[!\/a-z].*?>/gi, '')
-      // remove unwanted chars
-      .replace(
-        /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g,
-        '',
-      )
-      .replace(/\s/g, '-')
-      .replace(/--+/g, '-') // Replaces -- with -
-  )
+  return urlUtils.generatePathSegment(value, new Slugger())
 }
 
 function getDefaultPages(): Page[] {

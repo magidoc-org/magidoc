@@ -9,7 +9,7 @@
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
   import _ from 'lodash'
-  import DefaultValueDisplay from '$lib/components/common/DefaultValueDisplay.svelte'
+  import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
   import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 
   export let data: ReadonlyArray<GraphQLInputField>

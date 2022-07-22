@@ -22,9 +22,9 @@
 </script>
 
 <script lang="ts">
-  import AppMarkdown from '$lib/components/common/AppMarkdown.svelte'
+  import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
   import type { WebsitePage } from 'src/app'
-  import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
+  import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
 
   export let page: WebsitePage
 </script>
@@ -33,6 +33,6 @@
   <title>{page.title}</title>
 </svelte:head>
 
-<AppMarkdown source={page.content} />
+<CarbonMarkdown source={page.content} />
 
 <PreviousNextPage {page} />

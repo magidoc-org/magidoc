@@ -2,14 +2,12 @@
   import type { GraphQLField } from 'graphql'
   import type { QueryType } from '@magidoc/plugin-query-generator'
   import AppQueryGenerator from './AppQueryTabs.svelte'
-  import AppMarkdown from '../common/AppMarkdown.svelte'
   import ArgsList from './list/ArgsList.svelte'
   import QueryTypeTag from '../tags/QueryTypeTag.svelte'
   import TypeLink from '../type/TypeLink.svelte'
-  import {
-    DeprecationNotice,
-    AnchorHeader,
-  } from '@magidoc/plugin-svelte-carbon-commons'
+  import DeprecationNotice from '../common/text/DeprecationNotice.svelte'
+  import AnchorHeader from '../common/text/AnchorHeader.svelte'
+  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -22,7 +20,7 @@
     {field.name}<QueryTypeTag {type} />
   </AnchorHeader>
 
-  <AppMarkdown source={field.description} />
+  <CarbonMarkdown source={field.description} />
 
   {#if field.args.length > 0}
     <AnchorHeader id={'arguments'} depth={2}>Arguments</AnchorHeader>

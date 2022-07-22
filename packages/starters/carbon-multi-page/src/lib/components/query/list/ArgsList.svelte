@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DefaultValueDisplay from '$lib/components/common/DefaultValueDisplay.svelte'
+  import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
 
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'

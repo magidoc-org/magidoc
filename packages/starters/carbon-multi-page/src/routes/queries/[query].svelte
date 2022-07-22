@@ -26,7 +26,7 @@
   import type { LoadEvent, LoadOutput } from '@sveltejs/kit'
   import { findPageByHref } from '$lib/pages'
   import type { WebsitePage } from 'src/app'
-  import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
+  import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
   import { getQueryByName } from '$lib/model'
 
   export let field: GraphQLField<unknown, unknown, unknown>

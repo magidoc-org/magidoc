@@ -1,9 +1,8 @@
 <script type="ts">
-  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
-
   import type { GraphQLUnionType } from 'graphql'
+  import AnchorHeader from '../common/text/AnchorHeader.svelte'
+  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
 
-  import AppMarkdown from '../common/AppMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
   import TypeEnumeration from './list/TypeEnumeration.svelte'
 
@@ -16,7 +15,7 @@
     <TypeTag {type} />
   </AnchorHeader>
 
-  <AppMarkdown source={type.description} />
+  <CarbonMarkdown source={type.description} />
 
   <AnchorHeader id={'types'} depth={2}>Types</AnchorHeader>
 

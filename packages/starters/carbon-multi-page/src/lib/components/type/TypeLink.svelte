@@ -1,7 +1,7 @@
 <script lang="ts">
   import { base } from '$app/paths'
   import { Link } from 'carbon-components-svelte'
-  import { joinUrlPaths } from '@magidoc/plugin-svelte-carbon-commons'
+  import { urlUtils } from '@magidoc/plugin-svelte-marked'
   import {
     type GraphQLType,
     isListType,
@@ -10,7 +10,6 @@
   } from 'graphql'
 
   export let type: GraphQLType
-  /* eslint-disable @typescript-eslint/restrict-template-expressions */
 </script>
 
 {#if isListType(type)}
@@ -18,5 +17,7 @@
 {:else if isNonNullType(type)}
   <svelte:self type={type.ofType} />!
 {:else if isNamedType(type)}
-  <Link href={joinUrlPaths(base, `/types/${type.name}`)}>{type.name}</Link>
+  <Link href={urlUtils.joinUrlPaths(base, `/types/${String(type.name)}`)}
+    >{type.name}</Link
+  >
 {/if}

@@ -1,6 +1,4 @@
 <script type="ts">
-  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
-
   import {
     StructuredList,
     StructuredListBody,
@@ -9,7 +7,8 @@
   } from 'carbon-components-svelte'
 
   import type { GraphQLEnumType } from 'graphql'
-  import AppMarkdown from '../common/AppMarkdown.svelte'
+  import AnchorHeader from '../common/text/AnchorHeader.svelte'
+  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
   import DeprecatedTag from '../tags/DeprecatedTag.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
 
@@ -22,7 +21,7 @@
     <TypeTag {type} />
   </AnchorHeader>
 
-  <AppMarkdown source={type.description} />
+  <CarbonMarkdown source={type.description} />
 
   <AnchorHeader id={'possible-values'} depth={2}>Possible Values</AnchorHeader>
 

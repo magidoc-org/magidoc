@@ -1,6 +1,6 @@
 <script lang="ts">
   import AppExpandButton from '$lib/components/common/AppExpandButton.svelte'
-  import AppMarkdown from '$lib/components/common/AppMarkdown.svelte'
+  import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
 
   import ArgsList from '$lib/components/query/list/ArgsList.svelte'
 
@@ -28,7 +28,7 @@
       <NullableTag type={item.type} />
     </p>
 
-    <AppMarkdown source={item.description} />
+    <CarbonMarkdown source={item.description} />
 
     {#if item.args.length > 0}
       {#if showArguments}

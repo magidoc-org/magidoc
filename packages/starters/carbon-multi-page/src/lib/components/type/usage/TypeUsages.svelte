@@ -1,10 +1,13 @@
 <script lang="ts">
+  import AppList from '$lib/components/common/list/AppList.svelte'
+  import AppListItem from '$lib/components/common/list/AppListItem.svelte'
+
+  import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte'
+
   import {
     type TypeReverseMapping,
     ReferenceKind,
   } from '@magidoc/plugin-reverse-schema-mapper'
-  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
-  import { ListItem, UnorderedList } from 'carbon-components-svelte'
   import TypeLink from '../TypeLink.svelte'
   import TypeUsagePreview from './TypeUsagePreview.svelte'
 
@@ -16,9 +19,9 @@
 <AnchorHeader id={'usages'} depth={2}>Usages</AnchorHeader>
 <AnchorHeader id={'references'} depth={4}>References</AnchorHeader>
 <TypeUsagePreview items={usages.references} let:index>
-  <UnorderedList>
+  <AppList>
     {@const item = usages.references[index]}
-    <ListItem>
+    <AppListItem>
       {#if item.kind === ReferenceKind.UNION && item.by}
         Part of union <TypeLink type={item.by} />
       {:else if item.kind === ReferenceKind.FIELD}
@@ -27,6 +30,6 @@
         Argument <em>{item.by.name}</em> of field <em>{item.field.name}</em>
         from type <TypeLink type={item.type} />
       {/if}
-    </ListItem>
-  </UnorderedList>
+    </AppListItem>
+  </AppList>
 </TypeUsagePreview>

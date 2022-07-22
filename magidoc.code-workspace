@@ -63,10 +63,6 @@
       "path": "./packages/plugins/svelte-marked"
     },
     {
-      "name": "Plugins/Svelte-Carbon-Commons",
-      "path": "./packages/plugins/svelte-carbon-commons"
-    },
-    {
       "name": "Starters/Carbon-Multi-Page",
       "path": "./packages/starters/carbon-multi-page"
     }

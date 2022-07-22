@@ -1,9 +1,8 @@
 <script type="ts">
-  import { AnchorHeader } from '@magidoc/plugin-svelte-carbon-commons'
-
   import type { GraphQLObjectType } from 'graphql'
   import _ from 'lodash'
-  import AppMarkdown from '../common/AppMarkdown.svelte'
+  import AnchorHeader from '../common/text/AnchorHeader.svelte'
+  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
   import FiedsTable from './list/FiedsList.svelte'
   import InterfaceList from './list/TypeEnumeration.svelte'
@@ -16,7 +15,8 @@
     {type.name}
     <TypeTag {type} />
   </AnchorHeader>
-  <AppMarkdown source={type.description} />
+
+  <CarbonMarkdown source={type.description} />
 
   {#if Object.keys(type.getFields()).length > 0}
     <AnchorHeader id={'fields'} depth={2}>Fields</AnchorHeader>
