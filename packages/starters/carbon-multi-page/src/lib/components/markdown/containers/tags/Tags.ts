@@ -1,8 +1,5 @@
 import type { marked } from 'marked'
-import type {
-  ContainerOptions,
-  TokenExtractionParameters,
-} from '@magidoc/plugin-svelte-marked'
+import type { TokenExtractionParameters } from '@magidoc/plugin-svelte-marked'
 
 const tagColors = [
   'red',

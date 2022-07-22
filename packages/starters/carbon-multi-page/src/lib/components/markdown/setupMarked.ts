@@ -6,25 +6,24 @@ import { marked } from 'marked'
 import { parseNotification } from './containers/notification/Notification'
 import { parseTags } from './containers/tags/Tags'
 
-let initialized = false
+const initialized = false
 
 export function setupMarkedExtensions() {
-  // if (!initialized) {
-  //   initialized = true
-
-  //   marked.use({
-  //     extensions: [
-  //       extensions.containerExtension((params: TokenExtractionParameters) => {
-  //         switch (params.type) {
-  //           case 'notification':
-  //             return parseNotification(params)
-  //           case 'tags':
-  //             return parseTags(params)
-  //           default:
-  //             return null
-  //         }
-  //       }),
-  //     ],
-  //   })
-  // }
+  if (!initialized) {
+    initialized = true
+    marked.use({
+      extensions: [
+        extensions.containerExtension((params: TokenExtractionParameters) => {
+          switch (params.type) {
+            case 'notification':
+              return parseNotification(params)
+            case 'tags':
+              return parseTags(params)
+            default:
+              return null
+          }
+        }),
+      ],
+    })
+  }
 }

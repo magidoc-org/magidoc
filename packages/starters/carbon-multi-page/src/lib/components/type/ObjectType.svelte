@@ -15,7 +15,7 @@
     {type.name}
     <TypeTag {type} />
   </AnchorHeader>
-  
+
   <CarbonMarkdown source={type.description} />
 
   {#if Object.keys(type.getFields()).length > 0}

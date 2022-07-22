@@ -1,5 +1,5 @@
 <script lang="ts">
-import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte';
+  import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte'
 
   import {
     type TypeReverseMapping,
