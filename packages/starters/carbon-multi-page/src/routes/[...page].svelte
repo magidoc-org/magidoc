@@ -24,7 +24,7 @@
 <script lang="ts">
   import AppMarkdown from '$lib/components/common/AppMarkdown.svelte'
   import type { WebsitePage } from 'src/app'
-  import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
+  import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
 
   export let page: WebsitePage
 </script>

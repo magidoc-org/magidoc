@@ -40,7 +40,7 @@
   import InputObjectType from '$lib/components/type/InputObjectType.svelte'
   import type { LoadEvent, LoadOutput } from '@sveltejs/kit'
   import { findPageByHref } from '$lib/pages'
-  import PreviousNextPage from '$lib/components/common/PreviousNextPage.svelte'
+  import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
   import type { WebsitePage } from 'src/app'
   import { getTypeByName, getTypeUsages } from '$lib/model'
   import type { TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
