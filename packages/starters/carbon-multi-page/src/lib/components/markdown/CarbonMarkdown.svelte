@@ -1,12 +1,20 @@
 <script lang="ts">
   import Markdown from '@magidoc/plugin-svelte-marked'
-
-  export let source: string
+  import { base } from '$app/paths'
+  import MarkdownCode from './code/MarkdownCode.svelte'
+  import MarkdownCodeSpan from './code/MarkdownCodeSpan.svelte'
+  export let source: string | undefined
 </script>
 
-<Markdown
-  {source}
-  renderers={{
-    code: MarkdownCode,
-  }}
-/>
+{#if source}
+  <Markdown
+    {source}
+    renderers={{
+      code: MarkdownCode,
+      codespan: MarkdownCodeSpan,
+    }}
+    options={{
+      baseUrl: base,
+    }}
+  />
+{/if}
