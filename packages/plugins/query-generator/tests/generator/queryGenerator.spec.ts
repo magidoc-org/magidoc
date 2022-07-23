@@ -14,6 +14,7 @@ import type {
   FakeGenerationConfig,
   ResponseGenerationConfig,
 } from '../../src/generator/config'
+import { describe, it, expect } from 'vitest'
 
 const schema = getTestSchema()
 

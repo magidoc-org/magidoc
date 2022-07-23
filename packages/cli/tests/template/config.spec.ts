@@ -1,13 +1,14 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
 import { parseTemplateConfig } from '../../src/template/config'
+import { describe, it, expect } from 'vitest'
 
 describe('parsing a valid template configuration', () => {
   it('returns the parsed config', async () => {
     const validConfig = await importConfig('valid.js')
     const parsed = parseTemplateConfig(validConfig)
     expect(parsed).toMatchObject({
-      SUPPORTED_OPTIONS: expect.toBeArray() as unknown,
+      SUPPORTED_OPTIONS: expect.any(Array) as unknown,
       SCHEMA_TARGET_LOCATION: './src/_schema.json',
       STATIC_ASSETS_LOCATION: './static',
       ENV_FILE_LOCATION: './.env',
@@ -56,8 +57,10 @@ function shouldFailParsing(config: unknown, errors: string[]) {
     expect(lines).toHaveLength(errors.length + 4)
 
     // All error messages are included
-    expect(lines.slice(2, lines.length - 2)).toSatisfyAll((line: string) => {
-      return errors.some((expected) => line.includes(expected))
+    lines.slice(2, lines.length - 2).forEach((line: string) => {
+      expect(line).toSatisfy(() => {
+        return errors.some((expected) => line.includes(expected))
+      })
     })
   }
 }

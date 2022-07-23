@@ -9,13 +9,13 @@
       "**/build": true,
       "**/package": true
     },
-    "jest.jestCommandLine": "pnpm jest",
-    "jest.autoRun": { "watch": false, "onSave": "test-src-file" },
-    "jest.disabledWorkspaceFolders": ["ROOT"],
     "eslint.probe": ["javascript", "typescript", "html", "markdown", "svelte"],
     "eslint.validate": ["typescript", "svelte"],
     "eslint.packageManager": "pnpm",
-    "cSpell.words": ["magidoc"]
+    "cSpell.words": [
+      "magidoc"
+    ],
+    "testing.automaticallyOpenPeekView": "never"
   },
   "folders": [
     {
@@ -73,7 +73,7 @@
       "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
       "svelte.svelte-vscode",
-      "Orta.vscode-jest"
+      "ZixuanChen.vitest-explorer"
     ]
   }
 }

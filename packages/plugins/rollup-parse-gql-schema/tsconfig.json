@@ -16,6 +16,7 @@
     "lib": ["esnext"]
   },
   "include": [
+    "vitest.config.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "tests/**/*.ts"

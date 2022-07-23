@@ -7,6 +7,7 @@ import type {
 } from '../../src/config/types'
 import path, { resolve } from 'path'
 import { fileURLToPath } from 'url'
+import { describe, it, expect } from 'vitest'
 
 type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>
@@ -206,17 +207,19 @@ describe('parsing the magidoc config', () => {
     })
 
     describe('using an invalid type', () => {
-      shouldFailParsing(
-        {
-          ...minimalConfiguration,
-          introspection: {
-            type: 'hmm',
+      it('should fail parsing', () => {
+        shouldFailParsing(
+          {
+            ...minimalConfiguration,
+            introspection: {
+              type: 'hmm',
+            },
           },
-        },
-        [
-          "Invalid discriminator value. Expected 'url' | 'sdl' | 'file' | 'raw' at path 'introspection.type'",
-        ],
-      )
+          [
+            "Invalid discriminator value. Expected 'url' | 'sdl' | 'file' | 'raw' at path 'introspection.type'",
+          ],
+        )
+      })
     })
   })
 
@@ -478,18 +481,22 @@ function shouldFailParsing(input: unknown, errors: string[]) {
     expect(lines).toHaveLength(errors.length + 1)
 
     // All error messages are included
-    expect(lines.slice(1)).toSatisfyAll((line: string) =>
-      errors.some((expected) => line.includes(expected)),
-    )
+    lines.slice(1).forEach((line: string) => {
+      expect(line).toSatisfy(() =>
+        errors.some((expected) => line.includes(expected)),
+      )
+    })
 
     // Indentation is good and the bullet used by indentation is good
-    expect(lines.slice(1)).toSatisfyAll((line: string) => {
-      const indent = countIndent(line)
-      if (indent === 2) return getBulletChar(line) === '‣'
-      if (indent === 4) return getBulletChar(line) === '-'
+    lines.slice(1).forEach((line: string) => {
+      expect(line).toSatisfy(() => {
+        const indent = countIndent(line)
+        if (indent === 2) return getBulletChar(line) === '‣'
+        if (indent === 4) return getBulletChar(line) === '-'
 
-      console.error(`Invalid indent: ${indent} for line ${line}`)
-      return false
+        console.error(`Invalid indent: ${indent} for line ${line}`)
+        return false
+      })
     })
   }
 }

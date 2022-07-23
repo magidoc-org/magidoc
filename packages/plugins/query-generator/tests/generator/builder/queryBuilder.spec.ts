@@ -5,6 +5,7 @@ import {
   queryBuilder,
   subSelectionBuilder,
 } from '../../../src/generator/builder/queryBuilder'
+import { describe, it, expect } from 'vitest'
 
 describe('building a query', () => {
   const underTest = queryBuilder()

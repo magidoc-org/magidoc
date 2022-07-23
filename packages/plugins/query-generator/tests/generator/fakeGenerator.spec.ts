@@ -19,6 +19,7 @@ import {
 } from '../../src/generator/fakeGenerator'
 import type { Parameter } from '../../src/generator/builder/queryBuilder'
 import type { FakeGenerationConfig } from '../../src/generator/config'
+import { describe, test, expect, beforeAll, it, vi } from 'vitest'
 
 const schema = getTestSchema()
 
@@ -146,16 +147,16 @@ describe('generating fakes for a GraphQL input argument', () => {
       }
 
       if (isNullableType(argument.type)) {
-        expect(parameters).toSatisfyAny(
-          (item: Parameter) => item.value === null,
-        )
-        expect(parameters).toSatisfyAny(
-          (item: Parameter) => item.value !== null,
-        )
+        expect(
+          parameters.filter((it) => it.value === null).length,
+        ).toBeGreaterThan(0)
+        expect(
+          parameters.filter((it) => it.value !== null).length,
+        ).toBeGreaterThan(0)
       } else {
-        expect(parameters).toSatisfyAll(
-          (item: Parameter) => item.value !== null,
-        )
+        expect(
+          parameters.filter((it) => it.value !== null).length,
+        ).toBeGreaterThan(0)
       }
     }
 
@@ -226,7 +227,7 @@ describe('generating fakes for a GraphQL input argument', () => {
     it('should call the custom factory with the right parameters', () => {
       const output = 'testString'
       const outerContext = context
-      const factory = jest.fn((context: GraphQLFactoryContext) => {
+      const factory = vi.fn((context: GraphQLFactoryContext) => {
         expect(context.defaultFactory).toBeDefined()
         expect(context.defaultFactory?.provide()).toBeDefined()
 
@@ -243,7 +244,7 @@ describe('generating fakes for a GraphQL input argument', () => {
 
         expect(context.depth).toBe(outerContext.depth)
 
-        expect(context.path).toStartWith(`${outerContext.path}$`)
+        expect(context.path.startsWith(`${outerContext.path}$`)).toBe(true)
         expect(context.path).toSatisfy(
           (path: string) =>
             path.endsWith(`$${context.targetName}`) ||
@@ -339,7 +340,7 @@ describe('generating fakes for a GraphQL input argument', () => {
         const testInput = paramByType('TestInput', result)
 
         const value = testInput.value
-        expect(value).toBeObject()
+        expect(value).toBeInstanceOf(Object)
 
         const record = value as Record<string, unknown>
         expect(record['string']).toEqual(output)
@@ -412,7 +413,7 @@ describe('generating fakes for a GraphQL input argument', () => {
 
       it('should generate a non-empty field', () => {
         const result = generateArgsForField(recursiveField, config, context)
-        expect(result).not.toBeEmpty()
+        expect(result).not.toHaveLength(0)
       })
     })
   })

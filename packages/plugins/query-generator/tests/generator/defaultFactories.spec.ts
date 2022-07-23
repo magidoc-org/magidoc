@@ -1,3 +1,4 @@
+import { describe, test, expect, beforeAll } from 'vitest'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 
 export type TestSet<T> = {

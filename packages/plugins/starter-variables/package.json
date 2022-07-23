@@ -22,21 +22,20 @@
     "build": "run-p build:*",
     "build:rollup": "rollup -c",
     "build:tsc": "tsc --build tsconfig.build.json",
-    "test": "jest",
+    "test": "vitest run --coverage",
     "release": "pnpm publish --no-git-checks --access public"
   },
   "devDependencies": {
-    "@jest/types": "^28.1.3",
     "@rollup/plugin-typescript": "^8.3.3",
-    "@types/jest": "^28.1.6",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.0.6",
-    "jest": "^28.1.3",
+    "c8": "^7.12.0",
     "lodash": "^4.17.21",
     "rollup": "^2.77.0",
-    "ts-jest": "^28.0.7",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vite": "^3.0.2",
+    "vitest": "^0.18.1"
   },
   "optionalDependencies": {
     "zod": "^3.17.10"

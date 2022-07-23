@@ -24,7 +24,9 @@ global.getMandatoryField = (type: Maybe<GraphQLObjectType>, name: string) => {
   const result = type?.getFields()[name]
 
   if (!result) {
-    fail(`field ${name} should not be null... did you modify the test schema?`)
+    throw new Error(
+      `field ${name} should not be null... did you modify the test schema?`,
+    )
   }
 
   return result
