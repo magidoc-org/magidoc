@@ -14,9 +14,14 @@
     "outDir": "build",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,    
+    "skipLibCheck": true,
     "lib": ["esnext"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts"],
+  "include": [
+    "vitest.config.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "tests/**/*.ts"
+  ],
   "exclude": ["build", "node_modules"]
 }

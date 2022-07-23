@@ -12,7 +12,7 @@ const config = {
     // Skip this rollup plugin if we are in the context of magidoc generate command
     !magidoc.MAGIDOC_GENERATE.get(variables)
       ? fetchGraphQLSchema({
-          url: 'https://graphiql-test.netlify.app/.netlify/functions/schema-demo',
+          url: 'https://beta.pokeapi.co/graphql/v1beta',
         })
       : null,
     {

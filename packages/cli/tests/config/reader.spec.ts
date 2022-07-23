@@ -1,6 +1,7 @@
 import path from 'path'
 import { readConfiguration } from '../../src/config/reader'
 import { fileURLToPath } from 'url'
+import { describe, it, expect } from 'vitest'
 
 describe('reading an esm configuration', () => {
   it('should read the configuration properly', async () => {
