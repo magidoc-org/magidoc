@@ -4,6 +4,6 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "svelte.svelte-vscode",
-    "Orta.vscode-jest"
+    "ZixuanChen.vitest-explorer"
   ]
 }

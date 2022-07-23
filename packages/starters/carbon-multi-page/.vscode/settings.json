@@ -8,8 +8,6 @@
     "**/build": true,
     "**/package": true
   },
-  "jest.jestCommandLine": "pnpm jest",
-  "jest.autoRun": { "watch": false, "onSave": "test-src-file" },
   "eslint.probe": [
     "javascript",
     "typescript",
