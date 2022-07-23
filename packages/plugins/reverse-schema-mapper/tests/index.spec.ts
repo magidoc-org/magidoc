@@ -1,6 +1,7 @@
 import { GraphQLNamedType, GraphQLObjectType } from 'graphql'
 import { createReverseMapping } from '../src'
 import { ReferenceKind } from '../src/reverseUsage'
+import { describe, it, expect } from 'vitest'
 
 const schema = getTestSchema()
 const reverse = createReverseMapping(schema)

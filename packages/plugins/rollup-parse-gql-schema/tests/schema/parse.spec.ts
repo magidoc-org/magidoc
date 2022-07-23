@@ -2,6 +2,7 @@ import { buildClientSchema, IntrospectionQuery } from 'graphql'
 import path from 'path'
 import { parseGraphqlSchema } from '../../src/schema/parse'
 import expected from './samples/expected-introspection.json'
+import { describe, it, expect } from 'vitest'
 
 describe('when parsing a single file', () => {
   const file = relativeToAbsolute('./samples/single-file.graphqls')

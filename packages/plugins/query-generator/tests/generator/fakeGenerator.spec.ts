@@ -19,6 +19,7 @@ import {
 } from '../../src/generator/fakeGenerator'
 import type { Parameter } from '../../src/generator/builder/queryBuilder'
 import type { FakeGenerationConfig } from '../../src/generator/config'
+import { describe, test, expect, beforeAll, it, vi } from 'vitest'
 
 const schema = getTestSchema()
 
@@ -146,16 +147,10 @@ describe('generating fakes for a GraphQL input argument', () => {
       }
 
       if (isNullableType(argument.type)) {
-        expect(parameters).toSatisfyAny(
-          (item: Parameter) => item.value === null,
-        )
-        expect(parameters).toSatisfyAny(
-          (item: Parameter) => item.value !== null,
-        )
+        expect(parameters).toSatisfy((item: Parameter) => item.value === null)
+        expect(parameters).toSatisfy((item: Parameter) => item.value !== null)
       } else {
-        expect(parameters).toSatisfyAll(
-          (item: Parameter) => item.value !== null,
-        )
+        expect(parameters).toSatisfy((item: Parameter) => item.value !== null)
       }
     }
 
@@ -226,7 +221,7 @@ describe('generating fakes for a GraphQL input argument', () => {
     it('should call the custom factory with the right parameters', () => {
       const output = 'testString'
       const outerContext = context
-      const factory = jest.fn((context: GraphQLFactoryContext) => {
+      const factory = vi.fn((context: GraphQLFactoryContext) => {
         expect(context.defaultFactory).toBeDefined()
         expect(context.defaultFactory?.provide()).toBeDefined()
 

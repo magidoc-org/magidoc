@@ -1,6 +1,7 @@
 import queryGraphQLSchema from '../../src/schema/query'
 import nock from 'nock'
 import { getIntrospectionQuery } from 'graphql'
+import { describe, beforeEach, it, expect } from 'vitest'
 
 const basePath = 'https://what-the-test.com'
 const path = '/not-a-site'
@@ -45,11 +46,9 @@ describe('fetching the graphql schema', () => {
       })
 
       it('throws an error', async () => {
-        ;(
-          await expect(async () => {
-            await queryGraphQLSchema(fullPath, {})
-          })
-        ).rejects.toThrowError('Request failed with status code 401')
+        await expect(queryGraphQLSchema(fullPath, {})).rejects.toThrowError(
+          'Request failed with status code 401',
+        )
       })
     })
   })

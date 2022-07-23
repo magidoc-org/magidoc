@@ -3,6 +3,7 @@ import * as variables from '../src/index'
 import type { Variable } from '../src/variables/variable'
 import z from 'zod'
 import type { Page } from '../src/index'
+import { describe, expect, it, test } from 'vitest'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
