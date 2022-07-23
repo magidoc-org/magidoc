@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
-		"importsNotUsedAsValues": "error",
+    "importsNotUsedAsValues": "error",
     "isolatedModules": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -16,6 +16,11 @@
     "skipLibCheck": true,
     "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts"],
+  "include": [
+    "vitest.config.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "tests/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
