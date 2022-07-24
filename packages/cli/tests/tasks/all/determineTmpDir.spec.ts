@@ -56,7 +56,7 @@ describe('determine tmp directory task', () => {
         }
 
         expect(
-          determineTmpDirectoryTask(defaultConfig).executor(
+          determineTmpDirectoryTask(noTargetPaths).executor(
             ctx,
             taskWrapperMock(),
           ),
@@ -64,8 +64,14 @@ describe('determine tmp directory task', () => {
 
         expect(ctx.tmpArchive).not.toBe(initialArchive)
         expect(ctx.tmpArchive).not.toBeUndefined()
+        expect(ctx.tmpArchive.path).toContain(
+          `${defaultConfig.website.template}@${defaultConfig.website.templateVersion}`,
+        )
         expect(ctx.tmpDirectory).not.toBe(initialDirectory)
         expect(ctx.tmpDirectory).not.toBeUndefined()
+        expect(ctx.tmpDirectory.path).toContain(
+          `${defaultConfig.website.template}@${defaultConfig.website.templateVersion}`,
+        )
       })
     })
   })
