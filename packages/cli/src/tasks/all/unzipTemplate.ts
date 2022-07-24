@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import { isTemplate, Template } from '../../template'
 import type { TmpLocation } from '../../template/tmp'
 import { unzipTemplate } from '../../template/unzip'
@@ -15,7 +15,7 @@ type Ctx = {
 }
 
 export function unzipTemplateTask<T extends Ctx>(config: Config): Task<T> {
-  return newTask({
+  return {
     title: `Unzip template`,
     enabled: isTemplate(config.website.template),
     executor: async (ctx, task) => {
@@ -31,5 +31,5 @@ export function unzipTemplateTask<T extends Ctx>(config: Config): Task<T> {
       // Cleanup the zip archive, we don't need it anymore.
       await ctx.tmpArchive.delete()
     },
-  })
+  }
 }

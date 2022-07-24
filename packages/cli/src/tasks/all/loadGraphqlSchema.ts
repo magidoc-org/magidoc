@@ -1,7 +1,7 @@
 import { fetchSchema } from '@magidoc/rollup-plugin-fetch-gql-schema'
 import { parseSchema } from '@magidoc/rollup-plugin-parse-gql-schema'
 import fs from 'fs/promises'
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import type { IntrospectionConfiguration } from '../../config/types'
 import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 
@@ -14,7 +14,7 @@ type Ctx = {
 }
 
 export function loadGraphQLSchemaTask<T extends Ctx>(config: Config): Task<T> {
-  return newTask({
+  return {
     title: `Load GraphQL Schema`,
     executor: async (ctx) => {
       switch (config.introspection.type) {
@@ -46,5 +46,5 @@ export function loadGraphQLSchemaTask<T extends Ctx>(config: Config): Task<T> {
           )
       }
     },
-  })
+  }
 }

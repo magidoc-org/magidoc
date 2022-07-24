@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import {
   getPackageManager,
   isPackageManagerAvailable,
@@ -17,7 +17,7 @@ export type Ctx = {
 export function verifyPackageManagerAvailableTask<T extends Ctx>(
   config: Config,
 ): Task<T> {
-  return newTask({
+  return {
     title: 'Verify Package Manager is available',
     executor: async (ctx) => {
       if (await isPackageManagerAvailable(config.packageManager)) {
@@ -28,5 +28,5 @@ export function verifyPackageManagerAvailableTask<T extends Ctx>(
         )
       }
     },
-  })
+  }
 }

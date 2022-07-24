@@ -1,5 +1,5 @@
 import path from 'path'
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import type { WebsiteConfiguration } from '../../config/types'
 import { moveOutputBuild } from '../../template/output'
 import type { TmpLocation } from '../../template/tmp'
@@ -13,14 +13,14 @@ type Config = {
 }
 
 export function moveOutputTask<T extends Ctx>(config: Config): Task<T> {
-  return newTask({
+  return {
     title: `Move output`,
     executor: async (ctx, task) => {
       await moveOutputBuild(
         path.join(ctx.tmpDirectory.path, 'build'),
         config.website.output,
       )
-      task.output = `Moved output at ${config.website.output}`
+      task.output(`Moved output at ${config.website.output}`)
     },
-  })
+  }
 }

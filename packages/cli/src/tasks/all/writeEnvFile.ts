@@ -1,6 +1,6 @@
 import { toVariablesFile } from '@magidoc/plugin-starter-variables'
 import { writeFile } from 'fs/promises'
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import type { WebsiteConfiguration } from '../../config/types'
 import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 
@@ -13,7 +13,7 @@ type Ctx = {
 }
 
 export function writeEnvFile<T extends Ctx>(config: Config): Task<T> {
-  return newTask({
+  return {
     title: `Write variables file`,
     executor: async (ctx) => {
       await writeFile(
@@ -24,5 +24,5 @@ export function writeEnvFile<T extends Ctx>(config: Config): Task<T> {
         ),
       )
     },
-  })
+  }
 }

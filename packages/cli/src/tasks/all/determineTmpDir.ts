@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import { isTemplate, Template } from '../../template'
 import {
   tmpLocation,
@@ -24,7 +24,7 @@ type Ctx = {
 export function determineTmpDirectoryTask<T extends Ctx>(
   config: Config,
 ): Task<T> {
-  return newTask({
+  return {
     title: 'Determine tmp directories',
     executor: (ctx) => {
       if (isTemplate(config.website.template)) {
@@ -37,5 +37,5 @@ export function determineTmpDirectoryTask<T extends Ctx>(
         ctx.tmpDirectory = tmpLocation(config.website.template)
       }
     },
-  })
+  }
 }

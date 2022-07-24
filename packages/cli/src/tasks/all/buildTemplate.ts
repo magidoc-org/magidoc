@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import type { PackageManager } from '../../node/packageManager'
 import type { TmpLocation } from '../../template/tmp'
 
@@ -8,12 +8,12 @@ type Ctx = {
 }
 
 export function buildTemplateTask<T extends Ctx>(): Task<T> {
-  return newTask({
+  return {
     title: `Build template`,
     executor: async (ctx) => {
       await ctx.packageManager.buildProject({
         cwd: ctx.tmpDirectory.path,
       })
     },
-  })
+  }
 }

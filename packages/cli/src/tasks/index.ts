@@ -1,38 +1,20 @@
-import {
-  Listr,
-  ListrContext,
-  ListrDefaultRenderer,
-  ListrTask,
-  ListrTaskWrapper,
-} from 'listr2'
+import { Listr } from 'listr2'
 
-export type TaskParams<T> = {
+export type Task<T> = {
   title: string
   enabled?: boolean
   executor: TaskExecutor<T>
 }
 
-export function newTask<T>({
-  title,
-  enabled,
-  executor,
-}: TaskParams<T>): Task<T> {
-  return {
-    title: title,
-    enabled: enabled,
-    options: {
-      persistentOutput: true,
-    },
-    task: executor,
-  }
+export type TaskWrapper = {
+  skip: (message: string) => void
+  output: (message: string) => void
 }
 
 export type TaskExecutor<T> = (
   ctx: T,
-  task: ListrTaskWrapper<ListrContext, ListrDefaultRenderer>,
+  task: TaskWrapper,
 ) => Promise<void> | void
-
-export type Task<T> = ListrTask<T, ListrDefaultRenderer>
 
 export type TasksConfig<T> = {
   ctx: T | undefined
@@ -46,15 +28,29 @@ export async function executeAllTasks<T>(
     silent: false,
   },
 ): Promise<T> {
-  const listr = new Listr<T>(tasks, {
-    exitOnError: true,
-    rendererSilent: config.silent,
-    rendererOptions: {
-      showErrorMessage: false,
-      showTimer: true,
-      formatOutput: 'wrap',
+  const listr = new Listr<T>(
+    tasks.map((task) => ({
+      title: task.title,
+      enabled: task.enabled,
+      options: {
+        persistentOutput: true,
+      },
+      task: (ctx, wrapper) =>
+        task.executor(ctx, {
+          output: (message) => (wrapper.output = message),
+          skip: (message) => wrapper.skip(message),
+        }),
+    })),
+    {
+      exitOnError: true,
+      rendererSilent: config.silent,
+      rendererOptions: {
+        showErrorMessage: false,
+        showTimer: true,
+        formatOutput: 'wrap',
+      },
     },
-  })
+  )
 
   return await listr.run(config.ctx)
 }

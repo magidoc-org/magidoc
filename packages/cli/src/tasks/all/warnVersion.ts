@@ -1,5 +1,5 @@
 import type { WebsiteConfiguration } from '../../config/types'
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import { getVersion } from '../../version'
 import { isTemplate } from '../../template'
 
@@ -8,14 +8,15 @@ type Config = {
 }
 
 export function warnVersionTask<T>(config: Config): Task<T> {
-  return newTask({
+  return {
     title: `Template version warning`,
     enabled:
       config.website.templateVersion !== getVersion() &&
       isTemplate(config.website.template),
     executor: (_, task) => {
-      task.output =
-        '⚠️ Template version has been set to a different version that the current CLI version.\n⚠️ This may result in unexpected results.'
+      task.output(
+        '⚠️ Template version has been set to a different version that the current CLI version.\n⚠️ This may result in unexpected results.',
+      )
     },
-  })
+  }
 }
