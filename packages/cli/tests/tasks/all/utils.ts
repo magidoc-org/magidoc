@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import { Mock, vi } from 'vitest'
-import type { PackageManager } from '../../../src/node/packageManager'
 
 export function taskWrapperMock(): {
   skip: Mock<[string], void>
@@ -26,7 +25,7 @@ export function packageManagerMock(): {
   }
 }
 
-export function tmpDirectoryMock(): {
+export function tmpLocationMock(): {
   path: string
   exists: Mock<[], Promise<boolean>>
   delete: Mock<[], Promise<void>>

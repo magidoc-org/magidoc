@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { cleanTask } from '../../../src/tasks/all/clean'
-import { taskWrapperMock, tmpDirectoryMock } from './utils'
+import { taskWrapperMock, tmpLocationMock } from './utils'
 
 describe('clean task', () => {
   const defaultConfig = {
@@ -40,8 +40,8 @@ describe('clean task', () => {
 
   describe('task is enabled', () => {
     const ctx = {
-      tmpArchive: tmpDirectoryMock(),
-      tmpDirectory: tmpDirectoryMock(),
+      tmpArchive: tmpLocationMock(),
+      tmpDirectory: tmpLocationMock(),
     }
 
     it('should clean', () => {

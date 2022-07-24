@@ -4,7 +4,7 @@ import { buildTemplateTask } from '../../../src/tasks/all/buildTemplate'
 import {
   packageManagerMock,
   taskWrapperMock,
-  tmpDirectoryMock as tmpLocationMock,
+  tmpLocationMock as tmpLocationMock,
 } from './utils'
 
 describe('building template task', () => {
