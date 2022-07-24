@@ -1,4 +1,6 @@
+import _ from 'lodash'
 import { Mock, vi } from 'vitest'
+import type { PackageManager } from '../../../src/node/packageManager'
 
 export function taskWrapperMock(): {
   skip: Mock<[string], void>
@@ -7,5 +9,31 @@ export function taskWrapperMock(): {
   return {
     skip: vi.fn(),
     output: vi.fn(),
+  }
+}
+
+export function packageManagerMock(): {
+  type: 'pnpm'
+  buildProject: Mock<[], Promise<void>>
+  runInstall: Mock<[], Promise<void>>
+  startDevServer: Mock<[], Promise<void>>
+} {
+  return {
+    type: 'pnpm',
+    buildProject: vi.fn(),
+    runInstall: vi.fn(),
+    startDevServer: vi.fn(),
+  }
+}
+
+export function tmpDirectoryMock(): {
+  path: string
+  exists: Mock<[], Promise<boolean>>
+  delete: Mock<[], Promise<void>>
+} {
+  return {
+    path: Math.random().toString(36).substring(2, 7),
+    exists: vi.fn(),
+    delete: vi.fn(),
   }
 }

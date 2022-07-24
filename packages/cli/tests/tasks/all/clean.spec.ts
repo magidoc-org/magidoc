@@ -1,13 +1,6 @@
-import {
-  Listr,
-  ListrDefaultRenderer,
-  ListrRenderer,
-  ListrTaskObject,
-  ListrTaskWrapper,
-} from 'listr2'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { cleanTask } from '../../../src/tasks/all/clean'
-import { taskWrapperMock } from './utils'
+import { taskWrapperMock, tmpDirectoryMock } from './utils'
 
 describe('clean task', () => {
   const defaultConfig = {
@@ -47,16 +40,8 @@ describe('clean task', () => {
 
   describe('task is enabled', () => {
     const ctx = {
-      tmpArchive: {
-        path: 'potato',
-        exists: vi.fn(),
-        delete: vi.fn(),
-      },
-      tmpDirectory: {
-        path: 'patato',
-        exists: vi.fn(),
-        delete: vi.fn(),
-      },
+      tmpArchive: tmpDirectoryMock(),
+      tmpDirectory: tmpDirectoryMock(),
     }
 
     it('should clean', () => {
