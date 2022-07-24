@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import type { TmpLocation } from '../../template/tmp'
 import { isTemplate, Template } from '../../template'
 import fetchTemplate from '../../template/fetch'
@@ -16,7 +16,7 @@ type Ctx = {
 }
 
 export function fetchTemplateTask<T extends Ctx>(config: Config): Task<T> {
-  return newTask({
+  return {
     title: `Fetch template ${config.website.template}@${config.website.templateVersion}`,
     enabled: isTemplate(config.website.template),
     executor: async (ctx, task) => {
@@ -36,5 +36,5 @@ export function fetchTemplateTask<T extends Ctx>(config: Config): Task<T> {
         })
       }
     },
-  })
+  }
 }

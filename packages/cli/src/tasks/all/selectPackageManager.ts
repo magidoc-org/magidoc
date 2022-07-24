@@ -1,4 +1,4 @@
-import { newTask, Task } from '..'
+import type { Task } from '..'
 import {
   getPackageManager,
   PackageManager,
@@ -17,7 +17,7 @@ type Config = {
 export function selectPackageManagerTask<T extends Ctx>(
   config: Config,
 ): Task<T> {
-  return newTask({
+  return {
     title: 'Select Package Manager',
     executor: async (ctx, task) => {
       if (config.packageManager) {
@@ -26,7 +26,7 @@ export function selectPackageManagerTask<T extends Ctx>(
         ctx.packageManager = await selectPackageManager()
       }
 
-      task.output = `Selected ${ctx.packageManager.type}`
+      task.output(`Selected ${ctx.packageManager.type}`)
     },
-  })
+  }
 }

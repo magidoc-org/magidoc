@@ -1,12 +1,12 @@
 import { existsSync } from 'fs'
-import { newTask, Task } from '..'
+import type { Task } from '..'
 
 type Config = {
   destination: string
 }
 
 export function verifyDestinationAvailableTask<T>(config: Config): Task<T> {
-  return newTask({
+  return {
     title: `Verifying destination directory`,
     executor: () => {
       if (existsSync(config.destination)) {
@@ -15,5 +15,5 @@ export function verifyDestinationAvailableTask<T>(config: Config): Task<T> {
         )
       }
     },
-  })
+  }
 }
