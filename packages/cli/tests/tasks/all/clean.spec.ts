@@ -7,6 +7,7 @@ import {
 } from 'listr2'
 import { describe, expect, it, vi } from 'vitest'
 import { cleanTask } from '../../../src/tasks/all/clean'
+import { taskWrapperMock } from './utils'
 
 describe('clean task', () => {
   const defaultConfig = {
@@ -64,12 +65,14 @@ describe('clean task', () => {
 
     it('should delete the archive file', async () => {
       const task = cleanTask(defaultConfig)
-      await task.executor(ctx, {
-        
-      })
+      await task.executor(ctx, taskWrapperMock())
       expect(ctx.tmpArchive.delete).toHaveBeenCalledOnce()
     })
 
-    it('should delete the output directory', () => {})
+    it('should delete the output directory', async () => {
+      const task = cleanTask(defaultConfig)
+      await task.executor(ctx, taskWrapperMock())
+      expect(ctx.tmpDirectory.delete).toHaveBeenCalledOnce()
+    })
   })
 })
