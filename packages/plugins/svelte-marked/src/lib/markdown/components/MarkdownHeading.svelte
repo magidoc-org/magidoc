@@ -1,21 +1,15 @@
 <script lang="ts">
+  import { generatePathSegment } from '$lib/utils/url'
+
   import type { marked } from 'marked'
-  import {
-    contextKey,
-    type MarkdownOptions,
-    type Renderers,
-  } from '../markedConfiguration'
-  import { getContext } from 'svelte'
-  import type { Slugger } from 'marked'
+  import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
   export let token: marked.Tokens.Heading
-  export const options: MarkdownOptions = undefined
+  export let options: MarkdownOptions
   export const renderers: Renderers = undefined
 
-  const { slug } = getContext<{ slug: Slugger }>(contextKey)
-
-  let id: string
-  $: id = slug.slug(token.text)
+  let id: string | undefined
+  $: id = generatePathSegment(token.text, options.slugger)
 </script>
 
 <svelte:element this={`h${token.depth}`} {id}>

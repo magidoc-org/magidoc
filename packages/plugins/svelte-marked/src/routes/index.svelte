@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Markdown from '$lib/markdown/Markdown.svelte'
   import CustomHr from './CustomHr.svelte'
 </script>

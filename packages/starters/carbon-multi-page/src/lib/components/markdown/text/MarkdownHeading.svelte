@@ -1,16 +1,13 @@
 <script lang="ts">
   import type { marked } from 'marked'
-  import { getContext } from 'svelte'
-  import type { Slugger } from 'marked'
-  import { contextKey } from '@magidoc/plugin-svelte-marked/markdown/markedConfiguration'
   import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte'
+  import { urlUtils, type MarkdownOptions } from '@magidoc/plugin-svelte-marked'
 
   export let token: marked.Tokens.Heading
-
-  const { slug } = getContext<{ slug: Slugger }>(contextKey)
+  export let options: MarkdownOptions
 
   let id: string
-  $: id = slug.slug(token.text)
+  $: id = urlUtils.generatePathSegment(token.text, options.slugger)
 </script>
 
 <AnchorHeader {id} depth={token.depth}>
