@@ -12,120 +12,153 @@
       hr: CustomHr,
     }}
     source={`
-# someReallyLongTitleInOneline--test unique indexes
-# someReallyLongTitleInOneline--test unique indexes
-# someReallyLongTitleInOneline--test unique indexes
-## someOther ReallyLongTitle
+# Learn GraphQL
 
-# Markdown Tester
-## Text
+GraphQL is a tool you can use to work with the information you can access through the Qostodian API.
 
+## GraphQL vs REST protocol
 
-------
-### Ordered list
-1. Here is a [relative URL](/test "with a title") that should point to \`/docs/test\`
-    1. With nesting!
-2. *Italic text* followed by **bold text**
-3. test@email.com that should render as a link
- 
-And then is starts at 4
+GraphQL is an open-source data query and manipulation language for APIs that works with the **REST protocol** you may already be familiar
+with. GraphQL improves the query process. Unlike REST, which queries multiple routes, GraphQL uses **a single endpoint** to which you provide a query in a JSON-like format.
 
-4. Test
-5. Test 2
+## Queries
 
-### Unordered list
-- This [with](/test) a link
-- Test
+> To test these queries as you read through this tutorial, have a look at the [Playground's documentation](/basics/primes-playground).
 
-### Nested lists
-- A 
-    - A.1
-    - A.2
-- B
-    1. B.1
-    2. B.2
+With GraphQL you can query **exactly what you need**. Nothing more, nothing less. You just need to specify what that exact info is that you need. 
 
+### Example
 
+In the following query, you tell the API that you want to query the \`people\`, and in the resulting list, you want the fields \`id\`, \`email\` and \`fullName\`. 
 
+The queries can also have names, to make them easier to find inside your application. Here, the query is named \`GetPeople\`.
 
-## Notifications
-------
-
-:::notification type="error" test="lol"
-**test** this
-
-:::tags
-You,can,nest,them
-:::
-
-And add text below too!
-:::
-
-> Just a normal bloquote
-
-
-## Tags 
-------
-**No colors**
-
-:::tags
-test,Test 3 with spaces
-:::
-
-**Valid colors**
-
-:::tags colors="PURPLE, green, blue"
-test,test1,TEST2, Test 3 with spaces
-:::
-
-**Invalid colors**
-
-:::tags colors="aaa"
-test,test1
-:::
-
-## Code blocks
-------
-
-~~~graphql
-query {
-  look(at: "this") {
-    thing
+\`\`\`graphql
+query GetPeople {
+  people {
+    results {
+      id
+      email
+      fullName
+    }
   }
 }
-~~~
+\`\`\`
 
+Prime's API returns a JSON for each request you make. Here, you get a response for \`id\`, \`email\` and \`fullName\` that would look something like this.
 
-You can also insert \`inline\` code blocks like this: \`"this"\`
-## Html 
-------
+\`\`\`json
+{
+  "data": {
+    "people": {
+      "results": [
+        {
+          "id": "002fa636-d09b-4d24-9b69-43eba140ddb9",
+          "email": "john.doe@acme.com",
+          "fullName": "John Doe"
+        }
+      ]
+    }
+  }
+}
+\`\`\`
 
-<p align="center" style="padding: 1.0rem; border: solid 1px;">
-  Some centered text that should be centered with a border
-</p>
+## Mutations
 
-## Tables
-------
+Mutations are similar to queries. The difference is that their purpose is to **modify data**, rather than
+fetch it. Queries can be distinguished from mutations with the \`mutation\` prefix. For instance, to create a new
+person
+with the email \`jane.doe@acme.com\` and the full name \`Jane Doe\`, you could run the following query. Mutations also have
+return values, to which you select the fields you want (\`id\`, \`email\` and \`fullName\`).
 
+\`\`\`graphql
+mutation {
+  people {
+    create(person: { email: "jane.doe@adme.com", fullName: "Jane Doe" }) {
+      id
+      email
+      fullName
+    }
+  }
+}
+\`\`\`
 
-| Animal | Emoji | Sound |
-| ---------- | --------- | --------- |
-| Dog        | 🐶        | Woof!     |
-| Cat        | 🐱        | Meow!     |
-| Cow        | 🐄        | Moo       |
+## Arguments
 
+In GraphQL, every **field** can also receive **arguments**. In the Qostodian Prime API, you can use arguments to provide \`Paging\`
+, \`Sorting\`, \`Filters\`, etc. 
 
-### Mobile friendliness
-| Animal | Emoji | Sound |
-| ---------- | --------- | --------- |
-| \`Someverylongunsecablestringthatshouldmakethetableoverflow\`        | 🐶        | Woof!     |
-| Cat        | 🐱        | Meow!     |
-| Cow        | 🐄        | Moo       |
+### Example  
 
-## Images 
-------
+Entering the following query returns the first 20 people who are sorted by \`fullName\` in ascending (alphabetical order).
 
-![Some image](https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_horizontal.png)
+\`\`\`graphql
+query GetPeopleSorted {
+  people {
+    results(
+      paging: { first: 20, skip: 0 }
+      sorting: [{ field: "person.fullName", order: ASC }]
+    ) {
+      id
+      email
+      fullName
+    }
+  }
+}
+\`\`\`
+
+## Variables
+
+You can provide arguments inline like you did above, or through **query variables**. This becomes useful when you query the API from an application. 
+
+### Example  
+
+The query above could be transformed into the following.
+
+> When using the playground, the **VARIABLES** panel found at the bottom left of the screen allows you to provide query variables.
+
+**Query**
+
+\`\`\`graphql
+query GetPeopleSortedWithVariables($paging: Paging!, $sorting: [Sorting!]!) {
+  people {
+    results(paging: $paging, sorting: $sorting) {
+      id
+      email
+      fullName
+    }
+  }
+}
+\`\`\`
+
+**Variables**
+
+\`\`\`json
+{
+  "paging": {
+    "first": 20,
+    "skip": 0
+  },
+  "sorting": [
+    {
+      "field": "person.fullName",
+      "order": "ASC"
+    }
+  ]
+}
+\`\`\`
+
+## Learn more
+
+These examples can help get you started using the Qostodian Prime API. To learn a lot more about GraphQL, have a look at the [graphql.org](https://graphql.org/learn/) tutorials.
+
+If you build an application that interacts with Prime, you will most likely want to use one of the many implementations of [GraphQL clients](https://graphql.org/graphql-js/graphql-clients/) available on the web,
+which will simplify the interaction with the API. 
+
+You can also achieve this using any [REST client](https://graphql.org/graphql-js/graphql-clients/) if you prefer.
+
+You can also find a list of nearly all resources available for GraphQL [here](https://github.com/chentsulin/awesome-graphql).
+
 `}
   />
 </body>
