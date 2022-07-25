@@ -40,6 +40,15 @@ describe('selecting package manager', () => {
         await task.executor(ctx, taskWrapperMock())
         expect(ctx.packageManager).toBe(availablePackageManager)
       })
+
+      it('should output the selected package manager', async () => {
+        const wrapper = taskWrapperMock()
+        const task = selectPackageManagerTask(noPackageManager)
+        await task.executor(ctx, wrapper)
+        expect(wrapper.output).toHaveBeenCalledWith(
+          `Selected ${availablePackageManager.type}`,
+        )
+      })
     })
 
     describe('a package manager is specific', () => {
@@ -63,8 +72,13 @@ describe('selecting package manager', () => {
         )
       })
 
-      it('should output the selected package manager', () => {
-        
+      it('should output the selected package manager', async () => {
+        const wrapper = taskWrapperMock()
+        const task = selectPackageManagerTask(withPackageManager)
+        await task.executor(ctx, wrapper)
+        expect(wrapper.output).toHaveBeenCalledWith(
+          `Selected ${packageManager.type}`,
+        )
       })
     })
   })
