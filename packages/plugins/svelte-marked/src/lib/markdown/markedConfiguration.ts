@@ -20,7 +20,7 @@ import {
   MarkdownSpace,
 } from './components'
 
-import { marked } from 'marked'
+import { marked, Slugger } from 'marked'
 
 export type MarkdownOptions = {
   /**
@@ -28,6 +28,13 @@ export type MarkdownOptions = {
    * This is required when the application does not run in root context to generate the links properly.
    */
   baseUrl: `/${string}`
+
+  /**
+   * The slugger used to generate header IDs in marked.
+   *
+   * It is discouraged to set this option, because the slugger needs to be re-created when the source is changed.
+   */
+  slugger: Slugger
 }
 
 marked.use({
@@ -75,6 +82,5 @@ export const defaultRenderers = (): Renderers => ({
 
 export const defaultOptions = (): MarkdownOptions => ({
   baseUrl: '/',
+  slugger: new Slugger(),
 })
-
-export const contextKey = 'MARKED_CONTEXT_KEY'

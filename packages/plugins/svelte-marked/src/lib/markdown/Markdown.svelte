@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { Slugger } from 'marked'
+  import type { marked } from 'marked'
 
-  import { setContext } from 'svelte'
   import MarkdownTokens from './MarkdownTokens.svelte'
   import {
-    contextKey,
     defaultOptions,
     defaultRenderers,
     parse,
@@ -28,14 +26,17 @@
    */
   export let renderers: Partial<Renderers> = {}
 
-  setContext(contextKey, {
-    slug: new Slugger(),
-  })
+  let tokens: marked.TokensList
+  let actualRenderers: Renderers
+  let actualOptions: MarkdownOptions
 
-  $: tokens = parse(source)
-
-  $: actualRenderers = { ...defaultRenderers(), ...renderers }
-  $: actualOptions = { ...defaultOptions(), ...options }
+  $: {
+    // Only a single reactive block is needed here, so that changing the source
+    // Will also re-create the options and renderers, so that a new Slugger is created
+    tokens = parse(source)
+    actualRenderers = { ...defaultRenderers(), ...renderers }
+    actualOptions = { ...defaultOptions(), ...options }
+  }
 
   suppressWarnings()
 </script>
