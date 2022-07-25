@@ -1,8 +1,7 @@
 import path from 'path'
-import { pathToFileURL } from 'url'
 import type { Variable } from '@magidoc/plugin-starter-variables'
 import type { Task } from '..'
-import { parseTemplateConfig } from '../../template/config'
+import { loadTemplateConfig } from '../../template/config'
 import type { TmpLocation } from '../../template/tmp'
 
 type Ctx = {
@@ -26,11 +25,7 @@ export function resolveTemplateConfigurationTask<T extends Ctx>(): Task<T> {
     title: `Resolving template configuration`,
     executor: async (ctx, task) => {
       const configPath = templateConfigurationFile(ctx.tmpDirectory.path)
-      const rawConfig = (await import(
-        pathToFileURL(configPath).toString()
-      )) as unknown
-
-      const config = parseTemplateConfig(rawConfig)
+      const config = await loadTemplateConfig(configPath)
 
       let output = `Found ${config.SUPPORTED_OPTIONS.length} supported keys\n`
       output += `Target schema location: ${config.SCHEMA_TARGET_LOCATION}`

@@ -21,7 +21,8 @@
     "vitest.config.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "tests/**/*.ts"
+    "tests/**/*.ts",
+    "tests/**/*.d.ts"
   ],
   "exclude": ["build", "node_modules"]
 }
