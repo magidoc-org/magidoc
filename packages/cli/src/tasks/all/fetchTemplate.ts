@@ -1,4 +1,4 @@
-import type { Task } from '..'
+import type { Task } from '../runner'
 import type { TmpLocation } from '../../template/tmp'
 import { isTemplate, Template } from '../../template'
 import fetchTemplate from '../../template/fetch'

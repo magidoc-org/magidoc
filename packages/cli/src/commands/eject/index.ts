@@ -2,7 +2,7 @@ import type {
   PackageManager,
   PackageManagerType,
 } from '../../node/packageManager'
-import { executeAllTasks } from '../../tasks'
+import { executeAllTasks } from '../../tasks/runner'
 import { determineTmpDirectoryTask } from '../../tasks/all/determineTmpDir'
 import { fetchTemplateTask } from '../../tasks/all/fetchTemplate'
 import { installDependenciesTask } from '../../tasks/all/installDependencies'

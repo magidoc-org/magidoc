@@ -1,6 +1,6 @@
 import path from 'path'
 import type { Variable } from '@magidoc/plugin-starter-variables'
-import type { Task } from '..'
+import type { Task } from '../runner'
 import { loadTemplateConfig } from '../../template/config'
 import type { TmpLocation } from '../../template/tmp'
 

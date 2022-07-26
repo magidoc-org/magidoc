@@ -3,7 +3,7 @@ import type {
   PackageManager,
   PackageManagerType,
 } from '../../node/packageManager'
-import { executeAllTasks } from '../../tasks'
+import { executeAllTasks } from '../../tasks/runner'
 import { buildTemplateTask } from '../../tasks/all/buildTemplate'
 import { cleanTask } from '../../tasks/all/clean'
 import { copyStaticAssetsTask } from '../../tasks/all/copyStaticAssets'

@@ -1,7 +1,7 @@
 import { fetchSchema } from '@magidoc/rollup-plugin-fetch-gql-schema'
 import { parseSchema } from '@magidoc/rollup-plugin-parse-gql-schema'
 import fs from 'fs/promises'
-import type { Task } from '..'
+import type { Task } from '../runner'
 import type { IntrospectionConfiguration } from '../../config/types'
 import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 

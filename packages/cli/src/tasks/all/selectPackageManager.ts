@@ -1,4 +1,4 @@
-import type { Task } from '..'
+import type { Task } from '../runner'
 import {
   getPackageManager,
   PackageManager,

@@ -1,6 +1,6 @@
 import { toVariablesFile } from '@magidoc/plugin-starter-variables'
 import { writeFile } from 'fs/promises'
-import type { Task } from '..'
+import type { Task } from '../runner'
 import type { WebsiteConfiguration } from '../../config/types'
 import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 

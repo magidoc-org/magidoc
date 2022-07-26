@@ -1,5 +1,5 @@
 import path from 'path'
-import type { Task } from '..'
+import type { Task } from '../runner'
 import type { WebsiteConfiguration } from '../../config/types'
 import { moveOutputBuild } from '../../template/output'
 import type { TmpLocation } from '../../template/tmp'
