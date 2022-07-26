@@ -1,5 +1,5 @@
 import { existsSync } from 'fs'
-import type { Task } from '..'
+import type { Task } from '../runner'
 
 type Config = {
   destination: string

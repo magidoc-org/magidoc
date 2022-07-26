@@ -1,5 +1,5 @@
 import { copyStaticAssets } from '../../template/assets'
-import type { Task } from '..'
+import type { Task } from '../runner'
 import type { WebsiteConfiguration } from '../../config/types'
 import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 

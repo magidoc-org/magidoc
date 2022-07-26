@@ -1,12 +1,14 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { parseTemplateConfig } from '../../src/template/config'
+import {
+  loadTemplateConfig,
+  RawMagidocTemplateConfig,
+} from '../../src/template/config'
 import { describe, it, expect } from 'vitest'
 
 describe('parsing a valid template configuration', () => {
   it('returns the parsed config', async () => {
-    const validConfig = await importConfig('valid.js')
-    const parsed = parseTemplateConfig(validConfig)
+    const parsed = await execute('valid.js')
     expect(parsed).toMatchObject({
       SUPPORTED_OPTIONS: expect.any(Array) as unknown,
       SCHEMA_TARGET_LOCATION: './src/_schema.json',
@@ -18,8 +20,7 @@ describe('parsing a valid template configuration', () => {
 
 describe('parsing an empty template configuration', () => {
   it('raises an error', async () => {
-    const emptyConfig = await importConfig('empty.js')
-    shouldFailParsing(emptyConfig, [
+    await shouldFailParsing('empty.js', [
       "Expected: 'array' but received 'undefined' at path 'SUPPORTED_OPTIONS'",
       "Expected: 'string' but received 'undefined' at path 'SCHEMA_TARGET_LOCATION'",
       "Expected: 'string' but received 'undefined' at path 'STATIC_ASSETS_LOCATION'",
@@ -30,8 +31,7 @@ describe('parsing an empty template configuration', () => {
 
 describe('parsing an invalid template configuration', () => {
   it('raises an error', async () => {
-    const invalidConfig = await importConfig('invalid.js')
-    shouldFailParsing(invalidConfig, [
+    await shouldFailParsing('invalid.js', [
       "Expected: 'object' but received 'string' at path 'SUPPORTED_OPTIONS[0]'",
       "Expected: 'string' but received 'number' at path 'SCHEMA_TARGET_LOCATION'",
       "Expected: 'string' but received 'boolean' at path 'STATIC_ASSETS_LOCATION'",
@@ -39,9 +39,9 @@ describe('parsing an invalid template configuration', () => {
   })
 })
 
-function shouldFailParsing(config: unknown, errors: string[]) {
+async function shouldFailParsing(name: string, errors: string[]) {
   try {
-    parseTemplateConfig(config)
+    await execute(name)
     throw 'should-not-get-here'
   } catch (error) {
     expect(error).toBeInstanceOf(Error)
@@ -65,12 +65,12 @@ function shouldFailParsing(config: unknown, errors: string[]) {
   }
 }
 
-async function importConfig(name: string): Promise<unknown> {
-  return (await import(
+function execute(name: string): Promise<RawMagidocTemplateConfig> {
+  return loadTemplateConfig(
     path.join(
       path.dirname(fileURLToPath(import.meta.url)),
       'config-examples',
       name,
-    )
-  )) as unknown
+    ),
+  )
 }

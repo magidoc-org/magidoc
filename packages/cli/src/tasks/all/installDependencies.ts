@@ -1,4 +1,4 @@
-import type { Task } from '..'
+import type { Task } from '../runner'
 import type { PackageManager } from '../../node/packageManager'
 import type { TmpLocation } from '../../template/tmp'
 

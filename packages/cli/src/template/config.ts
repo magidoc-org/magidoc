@@ -1,4 +1,5 @@
 import type { Variable } from '@magidoc/plugin-starter-variables'
+import { pathToFileURL } from 'url'
 import z from 'zod'
 import { formatZodIssues } from '../config/zod'
 
@@ -25,6 +26,14 @@ export type RawMagidocTemplateConfig = {
   SCHEMA_TARGET_LOCATION: string
   STATIC_ASSETS_LOCATION: string
   ENV_FILE_LOCATION: string
+}
+
+export async function loadTemplateConfig(
+  path: string,
+): Promise<RawMagidocTemplateConfig> {
+  return parseTemplateConfig(
+    (await import(pathToFileURL(path).toString())) as unknown,
+  )
 }
 
 export function parseTemplateConfig(

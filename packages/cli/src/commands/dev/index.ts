@@ -1,5 +1,5 @@
 import { templates } from '@magidoc/plugin-starter-variables'
-import { executeAllTasks } from '../../tasks'
+import { executeAllTasks } from '../../tasks/runner'
 import { cleanTask } from '../../tasks/all/clean'
 import { copyStaticAssetsTask } from '../../tasks/all/copyStaticAssets'
 import { determineTmpDirectoryTask } from '../../tasks/all/determineTmpDir'

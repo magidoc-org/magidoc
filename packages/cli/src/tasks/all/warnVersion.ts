@@ -1,5 +1,5 @@
 import type { WebsiteConfiguration } from '../../config/types'
-import type { Task } from '..'
+import type { Task } from '../runner'
 import { getVersion } from '../../version'
 import { isTemplate } from '../../template'
 
