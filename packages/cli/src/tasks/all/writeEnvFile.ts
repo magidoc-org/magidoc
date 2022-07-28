@@ -9,7 +9,10 @@ type Config = {
 }
 
 type Ctx = {
-  templateConfiguration: ResolvedMagidocTemplateConfig
+  templateConfiguration: Pick<
+    ResolvedMagidocTemplateConfig,
+    'envFileLocation' | 'supportedOptions'
+  >
 }
 
 export function writeEnvFile<T extends Ctx>(config: Config): Task<T> {
