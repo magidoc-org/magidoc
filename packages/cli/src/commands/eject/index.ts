@@ -8,7 +8,7 @@ import { fetchTemplateTask } from '../../tasks/all/fetchTemplate'
 import { installDependenciesTask } from '../../tasks/all/installDependencies'
 import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { verifyDestinationAvailableTask } from '../../tasks/all/verifyDestinationAvailable'
-import { verifyPackageManagerAvailableTask } from '../../tasks/all/verifyPackageManagerAvailable'
+import { resolvePackageManagerTask } from '../../tasks/all/resolvePackageManager'
 import type { Template } from '../../template'
 import { TmpLocation, tmpLocation } from '../../template/tmp'
 
@@ -36,7 +36,7 @@ export default async function eject(config: EjectConfig) {
       // This speeds up the installation
       tmpDirectory: destination,
     }),
-    verifyPackageManagerAvailableTask(config),
+    resolvePackageManagerTask(config),
     verifyDestinationAvailableTask(config),
     fetchTemplateTask(config),
     unzipTemplateTask(config),
