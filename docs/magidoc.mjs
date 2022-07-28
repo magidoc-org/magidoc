@@ -22,6 +22,7 @@ const config = {
       appFavicon:
         'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
       pages: pages,
+      siteRoot: '/magidoc',
       externalLinks: [
         {
           label: 'Github',
