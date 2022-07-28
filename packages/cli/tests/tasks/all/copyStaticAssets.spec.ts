@@ -10,11 +10,7 @@ vi.mock('../.././../src/template/assets', () => ({
 describe('copy static assets task', () => {
   const defaultConfig = {
     website: {
-      template: 'carbon-multi-page',
-      templateVersion: '2.4.0',
-      output: 'whatever',
       staticAssets: 'whatever/**/*',
-      options: {},
     },
   }
 

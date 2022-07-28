@@ -4,7 +4,7 @@ import type { WebsiteConfiguration } from '../../config/types'
 import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 
 type Config = {
-  website: WebsiteConfiguration
+  website: Pick<WebsiteConfiguration, 'staticAssets'>
 }
 
 type Ctx = {

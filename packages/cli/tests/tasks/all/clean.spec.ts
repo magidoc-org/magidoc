@@ -7,9 +7,6 @@ describe('clean task', () => {
     clean: true,
     website: {
       template: 'carbon-multi-page',
-      templateVersion: '2.4.0',
-      output: 'whatever',
-      options: {},
     },
   }
 

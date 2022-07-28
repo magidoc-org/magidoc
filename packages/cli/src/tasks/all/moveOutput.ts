@@ -9,7 +9,7 @@ type Ctx = {
 }
 
 type Config = {
-  website: WebsiteConfiguration
+  website: Pick<WebsiteConfiguration, 'output'>
 }
 
 export function moveOutputTask<T extends Ctx>(config: Config): Task<T> {
