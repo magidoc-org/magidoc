@@ -1,12 +1,11 @@
 import type { Task } from '../runner'
-import { isTemplate, Template } from '../../template'
+import { isTemplate } from '../../template'
 import type { TmpLocation } from '../../template/tmp'
 import { unzipTemplate } from '../../template/unzip'
+import type { WebsiteConfiguration } from '../../config/types'
 
 type Config = {
-  website: {
-    template: Template | string
-  }
+  website: Pick<WebsiteConfiguration, 'template'>
 }
 
 type Ctx = {

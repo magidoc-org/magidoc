@@ -5,7 +5,7 @@ import type { TmpLocation } from '../../template/tmp'
 
 type Config = {
   clean: boolean
-  website: WebsiteConfiguration
+  website: Pick<WebsiteConfiguration, 'template'>
 }
 
 type Ctx = {

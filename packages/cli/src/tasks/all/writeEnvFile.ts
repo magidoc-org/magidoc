@@ -5,14 +5,17 @@ import type { WebsiteConfiguration } from '../../config/types'
 import type { ResolvedMagidocTemplateConfig } from './resolveTemplateConfig'
 
 type Config = {
-  website: WebsiteConfiguration
+  website: Pick<WebsiteConfiguration, 'options'>
 }
 
 type Ctx = {
-  templateConfiguration: ResolvedMagidocTemplateConfig
+  templateConfiguration: Pick<
+    ResolvedMagidocTemplateConfig,
+    'envFileLocation' | 'supportedOptions'
+  >
 }
 
-export function writeEnvFile<T extends Ctx>(config: Config): Task<T> {
+export function writeEnvFileTask<T extends Ctx>(config: Config): Task<T> {
   return {
     title: `Write variables file`,
     executor: async (ctx) => {

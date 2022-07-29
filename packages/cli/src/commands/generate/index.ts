@@ -19,7 +19,7 @@ import {
 import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'
 import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { warnVersionTask } from '../../tasks/all/warnVersion'
-import { writeEnvFile } from '../../tasks/all/writeEnvFile'
+import { writeEnvFileTask } from '../../tasks/all/writeEnvFile'
 import type { TmpLocation } from '../../template/tmp'
 
 export type GenerationConfig = MagidocConfiguration & {
@@ -46,7 +46,7 @@ export default async function generate(config: GenerationConfig) {
     resolveTemplateConfigurationTask(),
     loadGraphQLSchemaTask(config),
     copyStaticAssetsTask(config),
-    writeEnvFile(config),
+    writeEnvFileTask(config),
     buildTemplateTask(),
     moveOutputTask(config),
   ])

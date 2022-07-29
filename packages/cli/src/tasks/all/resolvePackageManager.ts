@@ -14,7 +14,7 @@ export type Ctx = {
   packageManager: PackageManager
 }
 
-export function verifyPackageManagerAvailableTask<T extends Ctx>(
+export function resolvePackageManagerTask<T extends Ctx>(
   config: Config,
 ): Task<T> {
   return {

@@ -10,10 +10,7 @@ vi.mock('../../../src/template/output', () => ({
 describe('move output', () => {
   const defaultConfig = {
     website: {
-      template: 'carbon-multi-page',
-      templateVersion: '2.4.0',
       output: 'whatever',
-      options: {},
     },
   }
 
