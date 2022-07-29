@@ -10,7 +10,7 @@ import { resolveTemplateConfigurationTask } from '../../tasks/all/resolveTemplat
 import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'
 import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { warnVersionTask } from '../../tasks/all/warnVersion'
-import { writeEnvFile } from '../../tasks/all/writeEnvFile'
+import { writeEnvFileTask } from '../../tasks/all/writeEnvFile'
 import type { GenerateTaskContext, GenerationConfig } from '../generate'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { cyan } from '../utils/outputColors'
@@ -36,7 +36,7 @@ export default async function runDevelopmentServer(config: DevConfig) {
     resolveTemplateConfigurationTask(),
     loadGraphQLSchemaTask(config),
     copyStaticAssetsTask(config),
-    writeEnvFile(config),
+    writeEnvFileTask(config),
   ])
 
   // We don't have a choice to print this before.
@@ -64,7 +64,7 @@ export default async function runDevelopmentServer(config: DevConfig) {
         }
 
         await executeAllTasks<DevTaskContext>(
-          [copyStaticAssetsTask(newDevConfig), writeEnvFile(newDevConfig)],
+          [copyStaticAssetsTask(newDevConfig), writeEnvFileTask(newDevConfig)],
           {
             ctx,
             silent: true,

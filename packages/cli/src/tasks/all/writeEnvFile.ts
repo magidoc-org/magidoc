@@ -15,7 +15,7 @@ type Ctx = {
   >
 }
 
-export function writeEnvFile<T extends Ctx>(config: Config): Task<T> {
+export function writeEnvFileTask<T extends Ctx>(config: Config): Task<T> {
   return {
     title: `Write variables file`,
     executor: async (ctx) => {
