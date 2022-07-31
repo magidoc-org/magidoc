@@ -2,7 +2,7 @@
 
 Svelte-Marked is a fully typed markdown parser inspired by [Svelte Markdown](https://github.com/pablo-abc/svelte-markdown) that renders markdown into Svelte components. 
 
-Each component renderer can be overwritten with custom Svelte components, and extensions can be registered to provide custom markdown syntax. 
+Each component renderer can be overwritten with custom Svelte components, and extensions can be registered to support custom markdown syntax. 
 
 > This library can be used in any Svelte or SvelteKit application.
 
