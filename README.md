@@ -8,6 +8,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/npm/v/@magidoc/cli" />
+  <img src="https://img.shields.io/npm/dw/@magidoc/cli" />
   <img src="https://img.shields.io/github/workflow/status/magidoc-org/magidoc/Build%20and%20tests/main" />
   <img src="https://img.shields.io/github/license/magidoc-org/magidoc" />
   <img src="https://img.shields.io/node/v/@magidoc/cli" />
