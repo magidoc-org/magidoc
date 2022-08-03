@@ -32,7 +32,7 @@ Magidoc is a JavaScript library that auto-generates static documentation from an
 
 ## Documentation
 
-[Read the docs!](https://magidoc-org.github.io/magidoc/introduction/welcome)
+[Read the docs!](https://magidoc.js.org)
 
 ## Contribution
 See the [contribution guide](./CONTRIBUTING.md).
