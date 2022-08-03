@@ -33,6 +33,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
   rules: {
+    'no-console': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     'es/no-regexp-lookbehind-assertions': 'error', // This fails in Safari
     'es/no-regexp-s-flag': 'error',

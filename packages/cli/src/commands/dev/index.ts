@@ -15,6 +15,7 @@ import type { GenerateTaskContext, GenerationConfig } from '../generate'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { cyan } from '../utils/outputColors'
 import { watchFiles } from '../utils/watch'
+import { printInfo, printSeparator } from '../utils/log'
 
 export type DevConfig = GenerationConfig & {
   port: number
@@ -79,11 +80,9 @@ export default async function runDevelopmentServer(config: DevConfig) {
 function printServerListening(config: DevConfig) {
   setTimeout(() => {
     const root = config.website.options[templates.SITE_ROOT.name]
-    console.log()
-    console.log('-----------')
-    console.log()
 
-    console.log(
+    printSeparator()
+    printInfo(
       `Server listening on ${cyan(
         `http://localhost:${config.port}${String(root || '')}`,
       )}`,

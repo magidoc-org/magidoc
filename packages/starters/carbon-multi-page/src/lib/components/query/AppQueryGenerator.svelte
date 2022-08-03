@@ -21,7 +21,8 @@
         copyButtonText = 'Copy query'
       }, 1500)
     } catch (e) {
-      console.log(e)
+      // eslint-disable-next-line no-console
+      console.error(e)
     }
   }
 </script>

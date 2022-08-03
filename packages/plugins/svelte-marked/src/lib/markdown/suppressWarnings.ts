@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { onMount } from 'svelte'
 
 export function suppressWarnings() {

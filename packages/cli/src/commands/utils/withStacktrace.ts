@@ -1,3 +1,5 @@
+import { printError, printInfo, printLine, printStacktrace } from './log'
+
 export async function withStacktrace(
   stacktrace: boolean,
   handler: () => Promise<void> | void,
@@ -8,16 +10,14 @@ export async function withStacktrace(
     process.exitCode = 2
 
     if (stacktrace) {
-      console.log()
-      console.log('------- Stacktrace -------')
-      console.log(error)
+      printStacktrace(error)
     } else {
       if (error instanceof Error) {
-        console.log(error.message)
+        printError(error)
       }
 
-      console.log()
-      console.log('For a more detailed output, run with --stacktrace')
+      printLine()
+      printInfo('For a more detailed output, run with --stacktrace')
     }
   }
 }

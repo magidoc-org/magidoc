@@ -1,6 +1,7 @@
 import http from 'http'
 import type { AddressInfo } from 'net'
 import sirv from 'sirv'
+import { printError, printInfo, printLine, printWarning } from '../utils/log'
 import { cyan, red, yellow } from '../utils/outputColors'
 
 const DEFAULT_PORT = 4000
@@ -12,7 +13,7 @@ export type PreviewConfig = {
 }
 
 export default function preview(config: PreviewConfig) {
-  console.log(
+  printWarning(
     `⚠️ ${yellow(
       'Preview command is not meant to be used for static file serving in production.',
     )}`,
@@ -46,12 +47,13 @@ export default function preview(config: PreviewConfig) {
         )
       } else {
         // Use a random port since the default hardcoded port isn't free
-        console.log()
-        console.log(
+        printLine()
+        printWarning(
           `Port ${cyan(
             DEFAULT_PORT,
           )} is occupied. Falling back to random port.`,
         )
+
         server.close()
         server.listen(0, 'localhost')
       }
@@ -68,15 +70,13 @@ export default function preview(config: PreviewConfig) {
 }
 
 function logError(message: string) {
-  console.log(`${red('Error: ')} ${message}`)
+  printError(`${red('Error: ')} ${message}`)
 }
 function startApp(server: http.Server, port: number) {
   server.listen(port, 'localhost', () => {
     const address = server.address() as AddressInfo
-    console.log()
 
-    console.log(
-      `Server listening on ${cyan(`http://localhost:${address.port}`)}`,
-    )
+    printLine()
+    printInfo(`Server listening on ${cyan(`http://localhost:${address.port}`)}`)
   })
 }
