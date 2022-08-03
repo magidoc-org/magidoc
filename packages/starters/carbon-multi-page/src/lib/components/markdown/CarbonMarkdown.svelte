@@ -10,6 +10,7 @@
   import MarkdownList from './list/MarkdownList.svelte'
   import MarkdownListItem from './list/MarkdownListItem.svelte'
   import MarkdownNotification from './containers/notification/MarkdownNotification.svelte'
+  import MarkdownTabs from './containers/tabs/MarkdownTabs.svelte'
   import MarkdownTags from './containers/tags/MarkdownTags.svelte'
   import MarkdownHeading from './text/MarkdownHeading.svelte'
   import Markdown from '@magidoc/plugin-svelte-marked'
@@ -32,6 +33,7 @@
       table: MarkdownTable,
       list: MarkdownList,
       list_item: MarkdownListItem,
+      tabs: MarkdownTabs,
       notification: MarkdownNotification,
       tags: MarkdownTags,
     }}
