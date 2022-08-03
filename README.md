@@ -27,7 +27,7 @@ Magidoc is a JavaScript library that auto-generates static documentation from an
 - 📝 **Advanced markdown support**: Markdown is supported everywhere, from custom pages to schema comments.
 
 ## Get started
-See the [Quickstart guide](https://magidoc.js.org/introduction/quickstart).
+See the [quickstart guide](https://magidoc.js.org/introduction/quickstart).
 
 ## Demo
 
