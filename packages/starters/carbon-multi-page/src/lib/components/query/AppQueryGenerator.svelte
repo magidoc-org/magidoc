@@ -20,9 +20,7 @@
       setTimeout(() => {
         copyButtonText = 'Copy query'
       }, 1500)
-    } catch (e) {
-      console.log(e)
-    }
+    } catch (e) {}
   }
 </script>
 

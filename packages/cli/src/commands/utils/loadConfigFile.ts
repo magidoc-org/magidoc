@@ -1,6 +1,7 @@
 import { readConfiguration } from '../../config/reader'
 import type { MagidocConfiguration } from '../../config/types'
 import path from 'path'
+import { printError, printStacktrace } from './log'
 
 export async function loadFileConfiguration(
   configPath: string,
@@ -10,9 +11,9 @@ export async function loadFileConfiguration(
     return await readConfiguration(path.resolve(configPath))
   } catch (error) {
     if (error instanceof Error && !showStacktrace) {
-      console.log(error.message)
+      printError(error)
     } else {
-      console.log(error)
+      printStacktrace(error)
     }
 
     return null

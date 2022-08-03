@@ -18,6 +18,7 @@ type EjectCommandOptions = {
 }
 import { cyan } from '../utils/outputColors'
 import { STACKTRACE_OPTION } from '../utils/commander'
+import { printInfo, printLine, printSeparator } from '../utils/log'
 
 export default function buildEjectCommand(program: Command) {
   program
@@ -68,14 +69,12 @@ export default function buildEjectCommand(program: Command) {
             destination: path.resolve(destination),
           })
 
-          console.log()
-          console.log('-----------')
-          console.log()
+          printSeparator()
 
-          console.log(
+          printInfo(
             `Template ${cyan(template)} created at ${cyan(destination)}`,
           )
-          console.log()
+          printLine()
         })
       },
     )

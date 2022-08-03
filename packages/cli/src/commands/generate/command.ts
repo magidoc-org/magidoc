@@ -11,6 +11,7 @@ import {
   PACKAGE_MANAGER_OPTION,
   STACKTRACE_OPTION,
 } from '../utils/commander'
+import { printInfo, printLine, printSeparator } from '../utils/log'
 
 type GenerateCommandOptions = {
   file: string
@@ -61,21 +62,19 @@ function printPostExecution(
   configFile: string,
   fileConfiguration: MagidocConfiguration,
 ) {
-  console.log()
-  console.log('-----------')
-  console.log()
-  console.log(`Website generated at ${cyan(fileConfiguration.website.output)}`)
-  console.log()
+  printSeparator()
+  printInfo(`Website generated at ${cyan(fileConfiguration.website.output)}`)
+  printLine()
 
   if (configFile === DEFAULT_CONFIG_FILE) {
-    console.log(`Run ${cyan('magidoc preview')} to preview you build locally.`)
+    printInfo(`Run ${cyan('magidoc preview')} to preview you build locally.`)
   } else {
-    console.log(
+    printInfo(
       `Run ${cyan(
         `magidoc preview --file ${configFile}`,
       )} to preview your build locally.`,
     )
   }
 
-  console.log()
+  printLine()
 }
