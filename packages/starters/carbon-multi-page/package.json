@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -10,7 +10,7 @@
     "magidoc"
   ],
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --strictPort",
     "build": "vite build",
     "preview": "vite preview",
     "test": "svelte-check --tsconfig ./tsconfig.json",
@@ -19,12 +19,12 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@magidoc/plugin-query-generator": "workspace:^2.6.2",
-    "@magidoc/plugin-reverse-schema-mapper": "workspace:^2.6.2",
-    "@magidoc/plugin-starter-variables": "workspace:^2.6.2",
-    "@magidoc/plugin-svelte-marked": "workspace:^2.6.2",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^2.6.2",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.6.2",
+    "@magidoc/plugin-query-generator": "workspace:^2.7.0",
+    "@magidoc/plugin-reverse-schema-mapper": "workspace:^2.7.0",
+    "@magidoc/plugin-starter-variables": "workspace:^2.7.0",
+    "@magidoc/plugin-svelte-marked": "workspace:^2.7.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^2.7.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.7.0",
     "@sveltejs/adapter-static": "1.0.0-next.38",
     "@sveltejs/kit": "1.0.0-next.393",
     "@types/lodash": "^4.14.182",

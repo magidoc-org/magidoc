@@ -19,6 +19,10 @@ export type TokenExtractionParameters = {
    * The options of the container
    */
   options: ContainerOptions
+  /**
+   * The lexer that can be used to render nested tokens if needed
+   */
+  lexer: marked.Lexer
 }
 
 export type TokenExtractor = (
@@ -71,6 +75,7 @@ export default function (
         content: content,
         raw: match[0],
         options: options,
+        lexer: this.lexer,
       })
 
       if (result && result.tokens) {

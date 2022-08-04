@@ -84,7 +84,7 @@ function printServerListening(config: DevConfig) {
     printSeparator()
     printInfo(
       `Server listening on ${cyan(
-        `http://localhost:${config.port}${String(root || '')}`,
+        `http://127.0.0.1:${config.port}${String(root || '')}`,
       )}`,
     )
   }, 500)
