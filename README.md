@@ -3,7 +3,7 @@
 </p>
 
 
-<h3 align="center">Fast and highly customizable GraphQL documentation generator </h3>
+<h3 align="center">Fast and customizable GraphQL documentation generator </h3>
 
 
 <p align="center">
