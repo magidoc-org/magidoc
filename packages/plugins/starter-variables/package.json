@@ -26,16 +26,16 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.3",
+    "@rollup/plugin-typescript": "^8.3.4",
     "@types/lodash": "^4.14.182",
-    "@types/node": "^18.6.1",
+    "@types/node": "^18.6.4",
     "c8": "^7.12.0",
     "lodash": "^4.17.21",
-    "rollup": "^2.77.0",
+    "rollup": "^2.77.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.3",
-    "vitest": "^0.19.1"
+    "vite": "^3.0.4",
+    "vitest": "^0.21.0"
   },
   "optionalDependencies": {
     "zod": "^3.17.10"
