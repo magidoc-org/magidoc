@@ -26,16 +26,16 @@
     "@magidoc/plugin-svelte-prismjs": "workspace:^2.7.0",
     "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.7.0",
     "@sveltejs/adapter-static": "1.0.0-next.38",
-    "@sveltejs/kit": "1.0.0-next.393",
+    "@sveltejs/kit": "1.0.0-next.403",
     "@types/lodash": "^4.14.182",
     "@types/marked": "^4.0.3",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
-    "carbon-components-svelte": "^0.67.2",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "carbon-components-svelte": "^0.67.6",
     "carbon-icons-svelte": "^11.2.0",
     "carbon-preprocess-svelte": "^0.9.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "graphql": "^16.5.0",
     "lodash": "^4.17.21",
@@ -48,7 +48,7 @@
     "svelte-preprocess": "^4.10.7",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.3"
+    "vite": "^3.0.4"
   },
   "engines": {
     "node": ">=16.7"
