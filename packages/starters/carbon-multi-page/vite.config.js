@@ -44,9 +44,6 @@ const config = {
       },
     },
   ].filter((plugin) => !!plugin),
-  ssr: {
-    noExternal: ['prettier', 'prismjs', 'marked'],
-  },
 }
 
 export default config

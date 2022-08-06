@@ -16,8 +16,10 @@ import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { cyan } from '../utils/outputColors'
 import { watchFiles } from '../utils/watch'
 import { printInfo, printSeparator } from '../utils/log'
+import { getPortAvailability } from '../utils/port'
 
 export type DevConfig = GenerationConfig & {
+  host: string
   port: number
   stacktrace: boolean
   magidocConfigLocation: string
@@ -40,11 +42,22 @@ export default async function runDevelopmentServer(config: DevConfig) {
     writeEnvFileTask(config),
   ])
 
+  const availability = await getPortAvailability(config.host, config.port)
+  if (!availability.available) {
+    throw new Error(
+      `Port ${config.port} is not available: ${availability.reason} ${
+        availability.code ? `(${availability.code})` : ''
+      }`,
+    )
+  }
+
   // We don't have a choice to print this before.
   printServerListening(config)
+
   await Promise.all([
     ctx.packageManager.startDevServer({
       cwd: ctx.tmpDirectory.path,
+      host: config.host,
       port: config.port,
     }),
     watchFiles(
@@ -76,7 +89,6 @@ export default async function runDevelopmentServer(config: DevConfig) {
   ])
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
 function printServerListening(config: DevConfig) {
   setTimeout(() => {
     const root = config.website.options[templates.SITE_ROOT.name]
@@ -84,7 +96,7 @@ function printServerListening(config: DevConfig) {
     printSeparator()
     printInfo(
       `Server listening on ${cyan(
-        `http://127.0.0.1:${config.port}${String(root || '')}`,
+        `http://${config.host}:${config.port}${String(root || '')}`,
       )}`,
     )
   }, 500)
