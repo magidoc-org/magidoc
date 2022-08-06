@@ -26,10 +26,10 @@
     "get-version": "echo $npm_package_version"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "archiver": "^5.3.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
     "eslint-plugin-es": "^4.1.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "husky": "^8.0.1",
