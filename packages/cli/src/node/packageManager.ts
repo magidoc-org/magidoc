@@ -13,6 +13,7 @@ export type CommandConfiguration = {
 }
 
 export type DevServerCommandConfiguration = CommandConfiguration & {
+  host: string
   port: number
 }
 
@@ -77,7 +78,7 @@ function createRunner({
     startDevServer: (config: DevServerCommandConfiguration) =>
       runNodeCommand(
         type,
-        ['run', 'dev', '--port', config.port.toString()],
+        ['run', 'dev', '--host', config.host, '--port', config.port.toString()],
         config,
       ),
   }

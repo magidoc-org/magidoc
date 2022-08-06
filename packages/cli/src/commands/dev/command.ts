@@ -12,6 +12,7 @@ import {
 
 type DevCommandOptions = {
   file: string
+  host: string
   port: number
   packageManager?: PackageManagerType
   stacktrace: boolean
@@ -26,6 +27,12 @@ export default function buildDevCommand(program: Command) {
     )
     .addOption(
       new Option(
+        '-h|--host [host]',
+        'The host to bind the development server to.',
+      ).default('localhost'),
+    )
+    .addOption(
+      new Option(
         '-p|--port [number]',
         'The port on which to run the development server..',
       ).default(3000),
@@ -36,6 +43,7 @@ export default function buildDevCommand(program: Command) {
     .action(
       async ({
         packageManager,
+        host,
         port,
         file,
         stacktrace,
@@ -51,6 +59,7 @@ export default function buildDevCommand(program: Command) {
           await runDevelopmentServer({
             ...fileConfiguration,
             magidocConfigLocation: path.resolve(file),
+            host,
             port,
             stacktrace,
             packageManager,

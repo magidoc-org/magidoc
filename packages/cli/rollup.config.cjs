@@ -27,6 +27,7 @@ module.exports = defineConfig({
     'http',
     'lodash',
     'chokidar',
+    'net',
   ],
   output: {
     dir: 'build',
