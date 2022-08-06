@@ -35,6 +35,6 @@ export function getPortAvailability(
       })
     })
 
-    server.listen(port)
+    server.listen(port, host)
   })
 }
