@@ -42,6 +42,36 @@ describe('running the dev command', () => {
     })
   })
 
+  describe('with custom options', () => {
+    it('should run the development server with the custom options', async () => {
+      await program.parseAsync(
+        [
+          'dev',
+          '--host',
+          '127.0.0.1',
+          '--port',
+          '4323',
+          '--clean',
+          '--stacktrace',
+          '--package-manager',
+          'pnpm',
+          '--file',
+          './magidoc.second.mjs',
+        ],
+        { from: 'user' },
+      )
+      expect(runDevelopmentServer).toHaveBeenCalledOnce()
+      expect(runDevelopmentServer).toHaveBeenCalledWith({
+        ...config,
+        host: '127.0.0.1',
+        magidocConfigLocation: path.resolve('./magidoc.second.mjs'),
+        packageManager: 'pnpm',
+        clean: true,
+        stacktrace: true,
+        port: 4323,
+      })
+    })
+  })
   //   describe('with a custom options', () => {})
 
   //   describe('with invalid options', () => {})

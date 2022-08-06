@@ -7,6 +7,7 @@ import path from 'path'
 import {
   CLEAN_OPTION,
   CONFIG_FILE_OPTION,
+  PACKAGE_MANAGER_OPTION,
   STACKTRACE_OPTION,
 } from '../utils/commander'
 
@@ -27,16 +28,19 @@ export default function buildDevCommand(program: Command) {
     )
     .addOption(
       new Option(
-        '-h|--host [host]',
+        '-h|--host <host>',
         'The host to bind the development server to.',
       ).default('localhost'),
     )
     .addOption(
       new Option(
-        '-p|--port [number]',
+        '-p|--port <number>',
         'The port on which to run the development server..',
-      ).default(3000),
+      )
+        .default(3000)
+        .argParser((value) => parseInt(value, 10)),
     )
+    .addOption(PACKAGE_MANAGER_OPTION())
     .addOption(CONFIG_FILE_OPTION())
     .addOption(CLEAN_OPTION())
     .addOption(STACKTRACE_OPTION())
