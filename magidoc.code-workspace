@@ -14,8 +14,7 @@
     "eslint.packageManager": "pnpm",
     "cSpell.words": [
       "magidoc"
-    ],
-    "testing.automaticallyOpenPeekView": "never"
+    ]
   },
   "folders": [
     {
