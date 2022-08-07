@@ -22,53 +22,74 @@ describe('running the dev command', () => {
   const config = testMagidocConfiguration()
 
   beforeEach(() => {
-    mockLoadFileConfiguration(config)
     buildDevCommand(program)
   })
 
-  describe('with default options', () => {
-    it('should run the development server with default options', async () => {
+  describe('loading the configuration fails', () => {
+    beforeEach(() => {
+      mockLoadFileConfiguration(null)
+    })
+
+    it('should not run the development server', async () => {
       await program.parseAsync(['dev'], { from: 'user' })
-      expect(runDevelopmentServer).toHaveBeenCalledOnce()
-      expect(runDevelopmentServer).toHaveBeenCalledWith({
-        ...config,
-        host: 'localhost',
-        magidocConfigLocation: path.resolve('./magidoc.mjs'),
-        packageManager: undefined,
-        clean: false,
-        stacktrace: false,
-        port: 3000,
-      })
+      expect(runDevelopmentServer).not.toHaveBeenCalled()
+    })
+
+    it('should set the process exit code', async () => {
+      await program.parseAsync(['dev'], { from: 'user' })
+      expect(process.exitCode).toBe(1)
     })
   })
 
-  describe('with custom options', () => {
-    it('should run the development server with the custom options', async () => {
-      await program.parseAsync(
-        [
-          'dev',
-          '--host',
-          '127.0.0.1',
-          '--port',
-          '4323',
-          '--clean',
-          '--stacktrace',
-          '--package-manager',
-          'pnpm',
-          '--file',
-          './magidoc.second.mjs',
-        ],
-        { from: 'user' },
-      )
-      expect(runDevelopmentServer).toHaveBeenCalledOnce()
-      expect(runDevelopmentServer).toHaveBeenCalledWith({
-        ...config,
-        host: '127.0.0.1',
-        magidocConfigLocation: path.resolve('./magidoc.second.mjs'),
-        packageManager: 'pnpm',
-        clean: true,
-        stacktrace: true,
-        port: 4323,
+  describe('loading the configuration succeeds', () => {
+    beforeEach(() => {
+      mockLoadFileConfiguration(config)
+    })
+
+    describe('with default options', () => {
+      it('should run the development server with default options', async () => {
+        await program.parseAsync(['dev'], { from: 'user' })
+        expect(runDevelopmentServer).toHaveBeenCalledOnce()
+        expect(runDevelopmentServer).toHaveBeenCalledWith({
+          ...config,
+          host: 'localhost',
+          magidocConfigLocation: path.resolve('./magidoc.mjs'),
+          packageManager: undefined,
+          clean: false,
+          stacktrace: false,
+          port: 3000,
+        })
+      })
+    })
+
+    describe('with custom options', () => {
+      it('should run the development server with the custom options', async () => {
+        await program.parseAsync(
+          [
+            'dev',
+            '--host',
+            '127.0.0.1',
+            '--port',
+            '4323',
+            '--clean',
+            '--stacktrace',
+            '--package-manager',
+            'pnpm',
+            '--file',
+            './magidoc.second.mjs',
+          ],
+          { from: 'user' },
+        )
+        expect(runDevelopmentServer).toHaveBeenCalledOnce()
+        expect(runDevelopmentServer).toHaveBeenCalledWith({
+          ...config,
+          host: '127.0.0.1',
+          magidocConfigLocation: path.resolve('./magidoc.second.mjs'),
+          packageManager: 'pnpm',
+          clean: true,
+          stacktrace: true,
+          port: 4323,
+        })
       })
     })
   })

@@ -7,6 +7,7 @@ export function mockLoadFileConfiguration(config: MagidocConfiguration | null) {
     [string, boolean],
     Promise<MagidocConfiguration | null>
   >
+  mockObject.mockClear()
   mockObject.mockReturnValueOnce(Promise.resolve(config))
 }
 
