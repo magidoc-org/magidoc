@@ -12,6 +12,17 @@ describe('when parsing a single file', () => {
   })
 })
 
+describe('when parsing a file with backslashes', () => {
+  const file = relativeToAbsolute('./samples/single-file.graphqls').replaceAll(
+    '/',
+    '\\',
+  )
+
+  it('should create the introspection result properly', async () => {
+    verifyEqualExpected(await run([file]))
+  })
+})
+
 describe('when parsing glob files', () => {
   describe('with a single glob path', () => {
     const glob = relativeToAbsolute('./samples/multi-file/**/*.graphqls')
