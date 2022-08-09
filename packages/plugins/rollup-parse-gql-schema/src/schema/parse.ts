@@ -52,5 +52,6 @@ async function readFullSchema(globPaths: string[]): Promise<string> {
 }
 
 async function readGlobPaths(globPath: string): Promise<string[]> {
-  return await glob(globPath, { dot: true })
+  // Backslashes in windows paths are not supported by fast-glob
+  return await glob(globPath.replaceAll('\\', '/'), { dot: true })
 }
