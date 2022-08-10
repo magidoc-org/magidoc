@@ -8,7 +8,7 @@
     type TypeReverseMapping,
     ReferenceKind,
   } from '@magidoc/plugin-reverse-schema-mapper'
-  import TypeLink from '../TypeLink.svelte'
+  import TypeLink from '../../common/text/TypeLink.svelte'
   import TypeUsagePreview from './TypeUsagePreview.svelte'
 
   export let usages: TypeReverseMapping

@@ -1,6 +1,8 @@
 import {
   buildClientSchema,
+  GraphQLInterfaceType,
   GraphQLObjectType,
+  isObjectType,
   type GraphQLField,
   type GraphQLNamedType,
   type GraphQLSchema,
@@ -23,11 +25,21 @@ export const schema: GraphQLSchema = buildClientSchema(
 
 const queriesByName = toIgnoreCase(schema.getQueryType()?.getFields())
 const mutationsByName = toIgnoreCase(schema.getMutationType()?.getFields())
-const subsciptionsByName = toIgnoreCase(
+const subscriptionsByName = toIgnoreCase(
   schema.getSubscriptionType()?.getFields(),
 )
 const typesByName = toIgnoreCase(schema.getTypeMap())
 const reverseMapping = createReverseMapping(schema)
+
+export type FieldWithPossibleDescription = {
+  field: GraphQLField<unknown, unknown, unknown>
+  possibleDescriptions: PossibleDescription[]
+}
+
+export type PossibleDescription = {
+  description: string
+  from: GraphQLObjectType | GraphQLInterfaceType
+}
 
 function toIgnoreCase<T>(
   target: Record<string, T> | undefined,
@@ -108,7 +120,7 @@ export function getMutationByName(
 export function getSubscriptionByName(
   name: string,
 ): GraphQLField<unknown, unknown, unknown> | undefined {
-  return subsciptionsByName[name.toLocaleLowerCase()]
+  return subscriptionsByName[name.toLocaleLowerCase()]
 }
 
 export function getTypeByName(name: string): GraphQLNamedType | undefined {
@@ -120,4 +132,54 @@ export function getTypeUsages(
 ): TypeReverseMapping | undefined {
   if (!type) return undefined
   return reverseMapping.getFor(type)
+}
+
+export function getTypePossibleDescriptions(
+  type: GraphQLObjectType | GraphQLInterfaceType,
+): ReadonlyArray<PossibleDescription> {
+  type InterfaceWithDescription = GraphQLInterfaceType & { description: string }
+  if (type.description) return [{ description: type.description, from: type }]
+  const interfaces = type.getInterfaces()
+  const withDescription: InterfaceWithDescription[] = interfaces.filter(
+    (current): current is InterfaceWithDescription => !!current.description,
+  )
+  if (withDescription.length > 0) {
+    return withDescription.map((current) => ({
+      description: current.description,
+      from: current,
+    }))
+  }
+
+  return interfaces.flatMap((current) => getTypePossibleDescriptions(current))
+}
+
+export function getFieldsPossibleDescriptions(
+  type: GraphQLObjectType | GraphQLInterfaceType,
+): ReadonlyArray<FieldWithPossibleDescription> {
+  return _.flatMap(type.getFields(), (field) => ({
+    field,
+    possibleDescriptions: getFieldPossibleDescriptions(field, type),
+  }))
+}
+
+function getFieldPossibleDescriptions(
+  field: GraphQLField<unknown, unknown, unknown> | undefined,
+  owner: GraphQLObjectType | GraphQLInterfaceType,
+): PossibleDescription[] {
+  if (!field) return []
+  if (field.description)
+    return [{ description: field.description, from: owner }]
+
+  if (!isObjectType(owner)) {
+    return []
+  }
+
+  return owner
+    .getInterfaces()
+    .flatMap((interfaceType) =>
+      getFieldPossibleDescriptions(
+        interfaceType.getFields()[field.name],
+        interfaceType,
+      ),
+    )
 }

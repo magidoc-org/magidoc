@@ -7,14 +7,14 @@
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
   import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
+  import type { FieldWithPossibleDescription } from '$lib/model'
 
   import {
     StructuredListCell,
     StructuredListRow,
   } from 'carbon-components-svelte'
-  import type { GraphQLField } from 'graphql'
 
-  export let item: GraphQLField<unknown, unknown, unknown>
+  export let item: FieldWithPossibleDescription
 
   var showArguments = false
 </script>
@@ -22,22 +22,29 @@
 <StructuredListRow>
   <StructuredListCell>
     <p>
-      <span style="font-weight: bold">{item.name}</span>
-      <TypeLinkTag type={item.type} />
-      <DeprecatedTag reason={item.deprecationReason} />
-      <NullableTag type={item.type} />
+      <span style="font-weight: bold">{item.field.name}</span>
+      <TypeLinkTag type={item.field.type} />
+      <DeprecatedTag reason={item.field.deprecationReason} />
+      <NullableTag type={item.field.type} />
     </p>
 
-    <CarbonMarkdown source={item.description} />
+    {#if item.possibleDescriptions.length === 1}
+      <CarbonMarkdown source={item.possibleDescriptions[0].description} />
+    {:else if item.possibleDescriptions.length > 1}
+      {#each item.possibleDescriptions as current}
+        By <em>{current.from.name}</em>
+        <CarbonMarkdown source={current.description} />
+      {/each}
+    {/if}
 
-    {#if item.args.length > 0}
+    {#if item.field.args.length > 0}
       {#if showArguments}
         <div class="arguments-list-wrapper">
-          <ArgsList data={item.args} />
+          <ArgsList data={item.field.args} />
         </div>
       {/if}
       <AppExpandButton
-        totalItems={item.args.length}
+        totalItems={item.field.args.length}
         collapsedText="Show arguments"
         expandedText="Hide arguments"
         bind:expanded={showArguments}
