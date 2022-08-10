@@ -1,6 +1,6 @@
 {
   "name": "magidoc",
-  "version": "2.7.1",
+  "version": "2.8.0",
   "description": "MagiDoc is a documentation website generator for GraphQL based on Svelte and that allows for infinite customization through plugins.",
   "repository": "git@github.com:magidoc-org/magidoc.git",
   "author": "Sunny Pelletier",
