@@ -148,8 +148,10 @@ function getFieldPossibleDescriptions(
   owner: GraphQLObjectType | GraphQLInterfaceType,
 ): PossibleDescription[] {
   if (!field) return []
-  if (field.description)
+
+  if (field.description) {
     return [{ description: field.description, from: owner }]
+  }
 
   if (!isObjectType(owner)) {
     return []
