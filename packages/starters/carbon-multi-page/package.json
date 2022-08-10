@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "2.7.1",
+  "version": "2.8.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -19,20 +19,20 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@magidoc/plugin-query-generator": "workspace:^2.7.1",
-    "@magidoc/plugin-reverse-schema-mapper": "workspace:^2.7.1",
-    "@magidoc/plugin-starter-variables": "workspace:^2.7.1",
-    "@magidoc/plugin-svelte-marked": "workspace:^2.7.1",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^2.7.1",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.7.1",
-    "@sveltejs/adapter-static": "1.0.0-next.38",
-    "@sveltejs/kit": "1.0.0-next.403",
+    "@magidoc/plugin-query-generator": "workspace:^2.8.0",
+    "@magidoc/plugin-reverse-schema-mapper": "workspace:^2.8.0",
+    "@magidoc/plugin-starter-variables": "workspace:^2.8.0",
+    "@magidoc/plugin-svelte-marked": "workspace:^2.8.0",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^2.8.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.8.0",
+    "@sveltejs/adapter-static": "1.0.0-next.39",
+    "@sveltejs/kit": "1.0.0-next.405",
     "@types/lodash": "^4.14.182",
     "@types/marked": "^4.0.3",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
-    "carbon-components-svelte": "^0.67.6",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "carbon-components-svelte": "^0.67.7",
     "carbon-icons-svelte": "^11.2.0",
     "carbon-preprocess-svelte": "^0.9.1",
     "eslint": "^8.21.0",
@@ -48,7 +48,7 @@
     "svelte-preprocess": "^4.10.7",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.4"
+    "vite": "^3.0.5"
   },
   "engines": {
     "node": ">=16.9"

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TypeLink from '$lib/components/type/TypeLink.svelte'
+  import TypeLink from '$lib/components/common/text/TypeLink.svelte'
 
   import type { GraphQLType } from 'graphql'
 

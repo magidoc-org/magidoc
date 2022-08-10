@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-reverse-schema-mapper",
   "description": "A library that provides the ability to do a reverse lookup on GraphQL types.",
   "private": false,
-  "version": "2.7.1",
+  "version": "2.8.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -30,12 +30,12 @@
     "graphql": "^16.5.0"
   },
   "devDependencies": {
-    "@types/node": "^18.6.4",
+    "@types/node": "^18.6.5",
     "c8": "^7.12.0",
     "rollup": "^2.77.2",
     "typescript": "^4.7.4",
-    "vite": "^3.0.4",
-    "vitest": "^0.21.0"
+    "vite": "^3.0.5",
+    "vitest": "^0.21.1"
   },
   "peerDependencies": {
     "graphql": "^16.5.0"

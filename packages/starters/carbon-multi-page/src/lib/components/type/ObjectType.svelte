@@ -1,6 +1,10 @@
 <script type="ts">
+  import {
+    getFieldsPossibleDescriptions,
+    type FieldWithPossibleDescriptions,
+  } from '$lib/model'
+
   import type { GraphQLObjectType } from 'graphql'
-  import _ from 'lodash'
   import AnchorHeader from '../common/text/AnchorHeader.svelte'
   import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
@@ -8,6 +12,9 @@
   import InterfaceList from './list/TypeEnumeration.svelte'
 
   export let type: GraphQLObjectType
+
+  let fields: ReadonlyArray<FieldWithPossibleDescriptions>
+  $: fields = getFieldsPossibleDescriptions(type)
 </script>
 
 <section>
@@ -18,10 +25,10 @@
 
   <CarbonMarkdown source={type.description} />
 
-  {#if Object.keys(type.getFields()).length > 0}
+  {#if fields.length > 0}
     <AnchorHeader id={'fields'} depth={2}>Fields</AnchorHeader>
 
-    <FiedsTable data={_.map(type.getFields(), (item) => item)} />
+    <FiedsTable data={fields} />
   {/if}
 
   {#if type.getInterfaces().length > 0}
