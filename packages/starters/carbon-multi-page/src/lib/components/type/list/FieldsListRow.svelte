@@ -13,6 +13,7 @@
     StructuredListCell,
     StructuredListRow,
   } from 'carbon-components-svelte'
+  import LocationSpecificDescription from './LocationSpecificDescription.svelte'
 
   export let item: FieldWithPossibleDescription
 
@@ -32,8 +33,7 @@
       <CarbonMarkdown source={item.possibleDescriptions[0].description} />
     {:else if item.possibleDescriptions.length > 1}
       {#each item.possibleDescriptions as current}
-        By <em>{current.from.name}</em>
-        <CarbonMarkdown source={current.description} />
+        <LocationSpecificDescription item={current} />
       {/each}
     {/if}
 

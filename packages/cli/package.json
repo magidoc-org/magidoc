@@ -41,20 +41,20 @@
     "listr2": "^5.0.2",
     "lodash": "^4.17.21",
     "sirv": "^2.0.2",
-    "zod": "^3.17.10"
+    "zod": "^3.18.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.4",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.182",
-    "@types/node": "^18.6.4",
+    "@types/node": "^18.6.5",
     "c8": "^7.12.0",
     "rollup": "^2.77.2",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.4",
-    "vitest": "^0.21.0"
+    "vite": "^3.0.5",
+    "vitest": "^0.21.1"
   },
   "engines": {
     "node": ">=16.9"

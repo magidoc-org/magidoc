@@ -16,7 +16,7 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "cspell": "^6.5.0",
+    "cspell": "^6.6.0",
     "gh-pages": "^4.0.0"
   }
 }

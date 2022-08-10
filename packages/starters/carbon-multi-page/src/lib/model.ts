@@ -134,25 +134,6 @@ export function getTypeUsages(
   return reverseMapping.getFor(type)
 }
 
-export function getTypePossibleDescriptions(
-  type: GraphQLObjectType | GraphQLInterfaceType,
-): ReadonlyArray<PossibleDescription> {
-  type InterfaceWithDescription = GraphQLInterfaceType & { description: string }
-  if (type.description) return [{ description: type.description, from: type }]
-  const interfaces = type.getInterfaces()
-  const withDescription: InterfaceWithDescription[] = interfaces.filter(
-    (current): current is InterfaceWithDescription => !!current.description,
-  )
-  if (withDescription.length > 0) {
-    return withDescription.map((current) => ({
-      description: current.description,
-      from: current,
-    }))
-  }
-
-  return interfaces.flatMap((current) => getTypePossibleDescriptions(current))
-}
-
 export function getFieldsPossibleDescriptions(
   type: GraphQLObjectType | GraphQLInterfaceType,
 ): ReadonlyArray<FieldWithPossibleDescription> {
