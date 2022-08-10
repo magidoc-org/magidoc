@@ -2,7 +2,7 @@
   import {
     getFieldsPossibleDescriptions,
     schema,
-    type FieldWithPossibleDescription,
+    type FieldWithPossibleDescriptions,
   } from '$lib/model'
 
   import type { GraphQLInterfaceType, GraphQLObjectType } from 'graphql'
@@ -17,7 +17,7 @@
   let implementations: ReadonlyArray<GraphQLObjectType>
   $: implementations = schema.getPossibleTypes(type)
 
-  let fields: ReadonlyArray<FieldWithPossibleDescription>
+  let fields: ReadonlyArray<FieldWithPossibleDescriptions>
   $: fields = getFieldsPossibleDescriptions(type)
 </script>
 

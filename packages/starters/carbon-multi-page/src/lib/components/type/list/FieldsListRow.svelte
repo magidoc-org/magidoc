@@ -7,7 +7,7 @@
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
   import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
-  import type { FieldWithPossibleDescription } from '$lib/model'
+  import type { FieldWithPossibleDescriptions } from '$lib/model'
 
   import {
     StructuredListCell,
@@ -15,7 +15,7 @@
   } from 'carbon-components-svelte'
   import LocationSpecificDescription from './LocationSpecificDescription.svelte'
 
-  export let item: FieldWithPossibleDescription
+  export let item: FieldWithPossibleDescriptions
 
   var showArguments = false
 </script>

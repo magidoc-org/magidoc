@@ -31,7 +31,7 @@ const subscriptionsByName = toIgnoreCase(
 const typesByName = toIgnoreCase(schema.getTypeMap())
 const reverseMapping = createReverseMapping(schema)
 
-export type FieldWithPossibleDescription = {
+export type FieldWithPossibleDescriptions = {
   field: GraphQLField<unknown, unknown, unknown>
   possibleDescriptions: PossibleDescription[]
 }
@@ -136,7 +136,7 @@ export function getTypeUsages(
 
 export function getFieldsPossibleDescriptions(
   type: GraphQLObjectType | GraphQLInterfaceType,
-): ReadonlyArray<FieldWithPossibleDescription> {
+): ReadonlyArray<FieldWithPossibleDescriptions> {
   return _.flatMap(type.getFields(), (field) => ({
     field,
     possibleDescriptions: getFieldPossibleDescriptions(field, type),

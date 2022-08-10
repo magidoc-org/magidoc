@@ -1,7 +1,7 @@
 <script type="ts">
   import {
     getFieldsPossibleDescriptions,
-    type FieldWithPossibleDescription,
+    type FieldWithPossibleDescriptions,
   } from '$lib/model'
 
   import type { GraphQLObjectType } from 'graphql'
@@ -13,7 +13,7 @@
 
   export let type: GraphQLObjectType
 
-  let fields: ReadonlyArray<FieldWithPossibleDescription>
+  let fields: ReadonlyArray<FieldWithPossibleDescriptions>
   $: fields = getFieldsPossibleDescriptions(type)
 </script>
 
