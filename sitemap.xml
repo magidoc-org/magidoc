@@ -17,6 +17,12 @@
     <loc>https://magidoc.js.org/cli/magidoc-configuration</loc>
   </url>
   <url>
+    <loc>https://magidoc.js.org/introduction/quickstart</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/introduction/welcome</loc>
+  </url>
+  <url>
     <loc>https://magidoc.js.org/plugins/graphql-query-generator</loc>
   </url>
   <url>
@@ -27,12 +33,6 @@
   </url>
   <url>
     <loc>https://magidoc.js.org/plugins/rollup-parse-graphql-schema</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/introduction/quickstart</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/introduction/welcome</loc>
   </url>
   <url>
     <loc>https://magidoc.js.org/svelte-plugins/introduction</loc>
