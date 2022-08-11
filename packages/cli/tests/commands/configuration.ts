@@ -3,12 +3,19 @@ import type { MagidocConfiguration } from '../../src'
 import { loadFileConfiguration } from '../../src/commands/utils/loadConfigFile'
 
 export function mockLoadFileConfiguration(config: MagidocConfiguration | null) {
-  const mockObject = loadFileConfiguration as Mock<
+  const mockObject = loadConfigFileMock()
+  mockObject.mockClear()
+  mockObject.mockReturnValueOnce(Promise.resolve(config))
+}
+
+export function loadConfigFileMock(): Mock<
+  [string, boolean],
+  Promise<MagidocConfiguration | null>
+> {
+  return loadFileConfiguration as Mock<
     [string, boolean],
     Promise<MagidocConfiguration | null>
   >
-  mockObject.mockClear()
-  mockObject.mockReturnValueOnce(Promise.resolve(config))
 }
 
 export function testMagidocConfiguration(): MagidocConfiguration {

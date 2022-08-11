@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import generate from '../../../src/commands/generate/index'
 import {
+  loadConfigFileMock,
   mockLoadFileConfiguration,
   testMagidocConfiguration,
 } from '../configuration'
@@ -45,6 +46,7 @@ describe('running the generate command', () => {
     beforeEach(() => {
       mockLoadFileConfiguration(config)
     })
+
     describe('with default options', () => {
       it('should generate the website', async () => {
         await program.parseAsync(['generate'], { from: 'user' })
@@ -54,6 +56,15 @@ describe('running the generate command', () => {
           packageManager: undefined,
           clean: false,
         })
+      })
+
+      it('should load the configuration file from the right location', async () => {
+        await program.parseAsync(['generate'], { from: 'user' })
+
+        expect(loadConfigFileMock()).toHaveBeenCalledWith(
+          './magidoc.mjs',
+          false,
+        )
       })
     })
 
