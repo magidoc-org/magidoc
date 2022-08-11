@@ -62,7 +62,7 @@ describe('running the generate command', () => {
         await program.parseAsync(['generate'], { from: 'user' })
 
         expect(loadConfigFileMock()).toHaveBeenCalledWith(
-          path.resolve('./magidoc.mjs'),
+          './magidoc.mjs',
           false,
         )
       })
