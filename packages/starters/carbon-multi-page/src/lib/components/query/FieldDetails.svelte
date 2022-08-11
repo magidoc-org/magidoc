@@ -4,7 +4,7 @@
   import AppQueryGenerator from './AppQueryTabs.svelte'
   import ArgsList from './list/ArgsList.svelte'
   import QueryTypeTag from '../tags/QueryTypeTag.svelte'
-  import TypeLink from '../type/TypeLink.svelte'
+  import TypeLink from '../common/text/TypeLink.svelte'
   import DeprecationNotice from '../common/text/DeprecationNotice.svelte'
   import AnchorHeader from '../common/text/AnchorHeader.svelte'
   import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'

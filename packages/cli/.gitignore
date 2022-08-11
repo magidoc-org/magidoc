@@ -2,3 +2,4 @@ docs/
 /assets
 /schema
 /magidoc*.mjs
+/schema.graphqls
