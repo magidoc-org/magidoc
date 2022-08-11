@@ -8,7 +8,9 @@
     "magidoc"
   ],
   "scripts": {
-    "build": "pnpm --filter @magidoc/cli start generate --file $(pwd)/magidoc.mjs --stacktrace",
+    "build": "run-s build:docs build:sitemap",
+    "build:docs": "pnpm --filter @magidoc/cli start generate --file $(pwd)/magidoc.mjs --stacktrace && pnpm build:sitemap",
+    "build:sitemap": "svelte-sitemap --domain https://magidoc.js.org --out-dir build --ignore google*.html",
     "dev": "pnpm --filter @magidoc/cli start dev --file $(pwd)/magidoc.mjs --stacktrace",
     "test": "run-p test:*",
     "test:spelling": "cspell pages/**/*",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "cspell": "^6.6.0",
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "svelte-sitemap": "^2.5.1"
   }
 }
