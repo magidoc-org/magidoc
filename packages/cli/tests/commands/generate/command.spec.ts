@@ -6,7 +6,6 @@ import {
   testMagidocConfiguration,
 } from '../configuration'
 import { makeTestProgram } from '../program'
-import path from 'path'
 import buildGenerateCommand from '../../../src/commands/generate/command'
 
 vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
