@@ -1,6 +1,6 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import fs from 'fs'
 import http from 'http'
 import preview from '../../../src/commands/preview'
@@ -63,6 +63,28 @@ describe('running a preview server', () => {
 
     it('should return the other assets even nested in a directory', async () => {
       expect(await getAsset('/docs/directory/asset.css')).toBe(expectedAsset())
+    })
+  })
+
+  describe('and port is already used', () => {
+    beforeAll(() => {
+      server = preview({
+        websiteLocation: fakeOutputLocation(),
+        port: port,
+      })
+    })
+
+    afterAll(() => {
+      server.close()
+    })
+
+    it('should not open the second server', () => {
+      const newServer = preview({
+        websiteLocation: fakeOutputLocation(),
+        port: port,
+      })
+      expect(server.listening)
+      expect(newServer.listening)
     })
   })
 })
