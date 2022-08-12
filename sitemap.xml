@@ -17,6 +17,18 @@
     <loc>https://magidoc.js.org/cli/magidoc-configuration</loc>
   </url>
   <url>
+    <loc>https://magidoc.js.org/deployment/apache</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/deployment/github-pages</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/deployment/google-indexing</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/deployment/others</loc>
+  </url>
+  <url>
     <loc>https://magidoc.js.org/introduction/quickstart</loc>
   </url>
   <url>
