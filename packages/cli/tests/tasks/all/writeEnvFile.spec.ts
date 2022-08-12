@@ -7,13 +7,8 @@ import { writeEnvFileTask } from '../../../src/tasks/all/writeEnvFile'
 
 const variable = templates.APP_FAVICON
 
-vi.mock('fs/promises', () => ({
-  writeFile: vi.fn(),
-}))
-
-vi.mock('@magidoc/plugin-starter-variables', () => ({
-  toVariablesFile: vi.fn(),
-}))
+vi.mock('fs/promises')
+vi.mock('@magidoc/plugin-starter-variables')
 
 describe('writing environment file', () => {
   describe('task is enabled', () => {
@@ -36,12 +31,7 @@ describe('writing environment file', () => {
     const serializedVariables = '{"MAGIDOC_GENERATE":true}'
 
     beforeEach(() => {
-      ;(
-        toVariablesFile as Mock<
-          [Record<string, unknown>, ReadonlyArray<Variable<unknown>>],
-          string
-        >
-      ).mockReturnValue(serializedVariables)
+      vi.mocked(toVariablesFile).mockReturnValue(serializedVariables)
     })
 
     it('write the variables to the target file', async () => {

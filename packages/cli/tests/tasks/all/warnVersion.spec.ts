@@ -1,11 +1,9 @@
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { warnVersionTask } from '../../../src/tasks/all/warnVersion'
 import { getVersion } from '../../../src/version'
 import { taskWrapperMock } from './utils'
 
-vi.mock('../../../src/version', () => ({
-  getVersion: vi.fn(),
-}))
+vi.mock('../../../src/version')
 
 describe('installing dependencies', () => {
   const config = {
@@ -30,9 +28,7 @@ describe('installing dependencies', () => {
 
   describe('target version is equal to the current CLI version', () => {
     beforeEach(() => {
-      ;(getVersion as Mock<[], string>).mockReturnValueOnce(
-        config.website.templateVersion,
-      )
+      vi.mocked(getVersion).mockReturnValueOnce(config.website.templateVersion)
     })
 
     it('should not be enabled', () => {
@@ -42,7 +38,7 @@ describe('installing dependencies', () => {
 
   describe('task is enabled', () => {
     beforeEach(() => {
-      ;(getVersion as Mock<[], string>).mockReturnValueOnce('123.231.123')
+      vi.mocked(getVersion).mockReturnValueOnce('123.231.123')
     })
 
     it('should be enabled', () => {

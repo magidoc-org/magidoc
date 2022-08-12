@@ -3,9 +3,7 @@ import { beforeEach, describe, expect, it, Mock, vi } from 'vitest'
 import { verifyDestinationAvailableTask } from '../../../src/tasks/all/verifyDestinationAvailable'
 import { taskWrapperMock } from './utils'
 
-vi.mock('fs', () => ({
-  existsSync: vi.fn(),
-}))
+vi.mock('fs')
 
 describe('verifying destination folder is available', () => {
   describe('task is enabled', () => {
@@ -15,7 +13,7 @@ describe('verifying destination folder is available', () => {
 
     describe('destination already exists', () => {
       beforeEach(() => {
-        ;(existsSync as Mock<[string], boolean>).mockReturnValueOnce(true)
+        vi.mocked(existsSync).mockReturnValueOnce(true)
       })
 
       it('should raise an error', () => {
@@ -27,7 +25,7 @@ describe('verifying destination folder is available', () => {
 
     describe('destination does not exist', () => {
       beforeEach(() => {
-        ;(existsSync as Mock<[string], boolean>).mockReturnValueOnce(false)
+        vi.mocked(existsSync).mockReturnValueOnce(false)
       })
 
       it('should not raise an error', () => {

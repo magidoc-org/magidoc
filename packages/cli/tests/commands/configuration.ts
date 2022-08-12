@@ -1,21 +1,11 @@
-import type { Mock } from 'vitest'
+import { Mock, vi } from 'vitest'
 import type { MagidocConfiguration } from '../../src'
 import { loadFileConfiguration } from '../../src/commands/utils/loadConfigFile'
 
 export function mockLoadFileConfiguration(config: MagidocConfiguration | null) {
-  const mockObject = loadConfigFileMock()
+  const mockObject = vi.mocked(loadFileConfiguration)
   mockObject.mockReset()
   mockObject.mockReturnValueOnce(Promise.resolve(config))
-}
-
-export function loadConfigFileMock(): Mock<
-  [string, boolean],
-  Promise<MagidocConfiguration | null>
-> {
-  return loadFileConfiguration as Mock<
-    [string, boolean],
-    Promise<MagidocConfiguration | null>
-  >
 }
 
 export function testMagidocConfiguration(): MagidocConfiguration {

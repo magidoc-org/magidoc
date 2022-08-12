@@ -8,9 +8,7 @@ import {
 import { taskWrapperMock, tmpLocationMock } from './utils'
 import path from 'path'
 
-vi.mock('../../../src/template/config', () => ({
-  loadTemplateConfig: vi.fn(),
-}))
+vi.mock('../../../src/template/config')
 
 describe('resolving template config', () => {
   const ctx = {
@@ -34,9 +32,9 @@ describe('resolving template config', () => {
   }
 
   beforeEach(() => {
-    ;(
-      loadTemplateConfig as Mock<[string], Promise<RawMagidocTemplateConfig>>
-    ).mockReturnValueOnce(Promise.resolve(templateConfig))
+    vi.mocked(loadTemplateConfig).mockReturnValueOnce(
+      Promise.resolve(templateConfig),
+    )
   })
 
   describe('task is enabled', () => {

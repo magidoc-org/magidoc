@@ -7,13 +7,11 @@ import type { Command } from 'commander'
 
 const version = '1.2.3'
 
-vi.mock('../../../src/version')
-
-vi.mock('../../../src/commands/utils/loadConfigFile')
-
-vi.mock('../../../src/commands/eject', () => ({
-  default: vi.fn(),
+vi.mock('../../../src/version', () => ({
+  getVersion: () => version,
 }))
+vi.mock('../../../src/commands/utils/loadConfigFile')
+vi.mock('../../../src/commands/eject')
 
 let program: Command
 

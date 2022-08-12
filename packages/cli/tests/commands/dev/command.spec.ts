@@ -9,13 +9,8 @@ import { makeTestProgram } from '../program'
 import path from 'path'
 import type { Command } from 'commander'
 
-vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
-  loadFileConfiguration: vi.fn(),
-}))
-
-vi.mock('../../../src/commands/dev', () => ({
-  default: vi.fn(),
-}))
+vi.mock('../../../src/commands/utils/loadConfigFile')
+vi.mock('../../../src/commands/dev')
 
 let program: Command
 
