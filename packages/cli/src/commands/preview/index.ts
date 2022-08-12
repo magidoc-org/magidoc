@@ -10,7 +10,7 @@ export type PreviewConfig = {
   siteRoot?: string
 }
 
-export default function preview(config: PreviewConfig) {
+export default function preview(config: PreviewConfig): http.Server {
   printWarning(
     `⚠️ ${yellow(
       'Preview command is not meant to be used for static file serving in production.',
@@ -54,6 +54,8 @@ export default function preview(config: PreviewConfig) {
   } else {
     startApp(server, 4000)
   }
+
+  return server
 }
 
 function logError(message: string) {
