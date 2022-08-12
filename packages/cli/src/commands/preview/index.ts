@@ -1,5 +1,4 @@
 import http from 'http'
-import type { AddressInfo } from 'net'
 import sirv from 'sirv'
 import { printError, printInfo, printLine, printWarning } from '../utils/log'
 import { cyan, red, yellow } from '../utils/outputColors'
@@ -49,11 +48,7 @@ export default function preview(config: PreviewConfig): http.Server {
     }
   })
 
-  if (config.port) {
-    startApp(server, config.port)
-  } else {
-    startApp(server, 4000)
-  }
+  startApp(server, config.port)
 
   return server
 }
@@ -61,11 +56,10 @@ export default function preview(config: PreviewConfig): http.Server {
 function logError(message: string) {
   printError(`${red('Error: ')} ${message}`)
 }
+
 function startApp(server: http.Server, port: number) {
   server.listen(port, 'localhost', () => {
-    const address = server.address() as AddressInfo
-
     printLine()
-    printInfo(`Server listening on ${cyan(`http://localhost:${address.port}`)}`)
+    printInfo(`Server listening on ${cyan(`http://localhost:${port}`)}`)
   })
 }
