@@ -6,6 +6,8 @@
     "pnpm",
     "quickstart",
     "discoverability",
-    "graphi"
+    "graphi",
+    "heroku",
+    "nojekyll"
   ]
 }
