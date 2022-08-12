@@ -91,6 +91,29 @@ importers:
       vite: 3.0.5
       vitest: 0.21.1_c8@7.12.0
 
+  packages/plugins/fuse-markdown:
+    specifiers:
+      '@types/marked': ^4.0.3
+      '@types/node': ^18.6.5
+      '@types/prettier': ^2.7.0
+      c8: ^7.12.0
+      marked: ^4.0.18
+      rollup: ^2.77.2
+      typescript: ^4.7.4
+      vite: ^3.0.5
+      vitest: ^0.21.1
+    dependencies:
+      marked: 4.0.18
+    devDependencies:
+      '@types/marked': 4.0.3
+      '@types/node': 18.6.5
+      '@types/prettier': 2.7.0
+      c8: 7.12.0
+      rollup: 2.77.2
+      typescript: 4.7.4
+      vite: 3.0.5
+      vitest: 0.21.1_c8@7.12.0
+
   packages/plugins/query-generator:
     specifiers:
       '@types/lodash': ^4.14.182
