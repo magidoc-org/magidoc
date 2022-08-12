@@ -20,6 +20,12 @@ describe('extracting markdown into sections', () => {
     }
   })
 
+  describe('empty markdown', () => {
+    it('should return empty parts', () => {
+      expect(extract('', options)).toEqual([])
+    })
+  })
+
   describe('using headers', () => {
     describe('using a single header', () => {
       it('should extract the header', () => {
@@ -106,6 +112,72 @@ describe('extracting markdown into sections', () => {
           },
         ])
       })
+    })
+  })
+
+  describe('using text', () => {
+    describe('with a header', () => {
+      it('should return both parts', () => {
+        expect(
+          extract(
+            unindent(`
+                # Header
+                Text
+            `),
+            options,
+          ),
+        ).toEqual([
+          {
+            id: 'header',
+            type: IndexableMarkdownType.HEADER,
+            path: [{ depth: 1, text: 'Header' }],
+            title: 'Header',
+          },
+          {
+            type: IndexableMarkdownType.SECTION,
+            content: 'Text',
+            headers: [{ depth: 1, text: 'Header' }],
+          },
+        ])
+      })
+    })
+
+    describe('without a header', () => {
+      it('should return the text only', () => {
+        expect(
+          extract(
+            unindent(`
+                    Text
+                `),
+            options,
+          ),
+        ).toEqual([
+          {
+            type: IndexableMarkdownType.SECTION,
+            content: 'Text',
+            headers: [],
+          },
+        ])
+      })
+    })
+  })
+
+  describe('using a paragraph', () => {
+    it('should return the paragraph text', () => {
+      expect(
+        extract(
+          unindent(`
+                Paragraph with [link](http://example.com) inside it and other **inner markdown**.
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: 'Paragraph with link inside it and other inner markdown.',
+          headers: [],
+        },
+      ])
     })
   })
 })
