@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import runDevelopmentServer from '../../../src/commands/dev/index'
+import runDevelopmentServer from '../../../src/commands/dev'
 import buildDevCommand from '../../../src/commands/dev/command'
 import {
   mockLoadFileConfiguration,
@@ -13,7 +13,7 @@ vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
   loadFileConfiguration: vi.fn(),
 }))
 
-vi.mock('../../../src/commands/dev/index', () => ({
+vi.mock('../../../src/commands/dev', () => ({
   default: vi.fn(),
 }))
 

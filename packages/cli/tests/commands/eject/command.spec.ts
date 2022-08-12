@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import eject from '../../../src/commands/eject/index'
+import eject from '../../../src/commands/eject'
 import { makeTestProgram } from '../program'
 import buildEjectCommand from '../../../src/commands/eject/command'
 import path from 'path'
@@ -15,7 +15,7 @@ vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
   loadFileConfiguration: vi.fn(),
 }))
 
-vi.mock('../../../src/commands/eject/index', () => ({
+vi.mock('../../../src/commands/eject', () => ({
   default: vi.fn(),
 }))
 

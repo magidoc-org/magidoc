@@ -37,6 +37,16 @@ export type IntOptionParameters = {
   max?: number
 }
 
+export function newPortOption(
+  description: string,
+  defaultValue: number,
+): Option {
+  return newIntOption('-p|--port <port>', description, {
+    min: 1,
+    max: 65535,
+  }).default(defaultValue)
+}
+
 export function newIntOption(
   flags: string,
   description?: string,

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import generate from '../../../src/commands/generate/index'
+import generate from '../../../src/commands/generate'
 import {
   loadConfigFileMock,
   mockLoadFileConfiguration,
@@ -13,7 +13,7 @@ vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
   loadFileConfiguration: vi.fn(),
 }))
 
-vi.mock('../../../src/commands/generate/index', () => ({
+vi.mock('../../../src/commands/generate', () => ({
   default: vi.fn(),
 }))
 
