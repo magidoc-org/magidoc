@@ -4,7 +4,7 @@ import { loadFileConfiguration } from '../../src/commands/utils/loadConfigFile'
 
 export function mockLoadFileConfiguration(config: MagidocConfiguration | null) {
   const mockObject = loadConfigFileMock()
-  mockObject.mockClear()
+  mockObject.mockReset()
   mockObject.mockReturnValueOnce(Promise.resolve(config))
 }
 

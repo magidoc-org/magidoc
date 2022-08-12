@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import runDevelopmentServer from '../../../src/commands/dev/index'
+import runDevelopmentServer from '../../../src/commands/dev'
 import buildDevCommand from '../../../src/commands/dev/command'
 import {
   mockLoadFileConfiguration,
@@ -7,21 +7,23 @@ import {
 } from '../configuration'
 import { makeTestProgram } from '../program'
 import path from 'path'
+import type { Command } from 'commander'
 
 vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
   loadFileConfiguration: vi.fn(),
 }))
 
-vi.mock('../../../src/commands/dev/index', () => ({
+vi.mock('../../../src/commands/dev', () => ({
   default: vi.fn(),
 }))
 
-const program = makeTestProgram()
+let program: Command
 
 describe('running the dev command', () => {
   const config = testMagidocConfiguration()
 
   beforeEach(() => {
+    program = makeTestProgram()
     buildDevCommand(program)
   })
 

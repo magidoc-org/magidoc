@@ -1,28 +1,29 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import generate from '../../../src/commands/generate/index'
+import generate from '../../../src/commands/generate'
 import {
   loadConfigFileMock,
   mockLoadFileConfiguration,
   testMagidocConfiguration,
 } from '../configuration'
 import { makeTestProgram } from '../program'
-import path from 'path'
 import buildGenerateCommand from '../../../src/commands/generate/command'
+import type { Command } from 'commander'
 
 vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
   loadFileConfiguration: vi.fn(),
 }))
 
-vi.mock('../../../src/commands/generate/index', () => ({
+vi.mock('../../../src/commands/generate', () => ({
   default: vi.fn(),
 }))
 
-const program = makeTestProgram()
+let program: Command
 
 describe('running the generate command', () => {
   const config = testMagidocConfiguration()
 
   beforeEach(() => {
+    program = makeTestProgram()
     buildGenerateCommand(program)
   })
 

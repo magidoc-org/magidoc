@@ -1,18 +1,15 @@
 import http from 'http'
-import type { AddressInfo } from 'net'
 import sirv from 'sirv'
 import { printError, printInfo, printLine, printWarning } from '../utils/log'
 import { cyan, red, yellow } from '../utils/outputColors'
 
-const DEFAULT_PORT = 4000
-
 export type PreviewConfig = {
   websiteLocation: string
-  port?: number
+  port: number
   siteRoot?: string
 }
 
-export default function preview(config: PreviewConfig) {
+export default function preview(config: PreviewConfig): http.Server {
   printWarning(
     `⚠️ ${yellow(
       'Preview command is not meant to be used for static file serving in production.',
@@ -41,42 +38,28 @@ export default function preview(config: PreviewConfig) {
 
   server.on('error', (error) => {
     if (error.message.includes('EADDRINUSE')) {
-      if (config.port) {
-        logError(
-          `Could not start server... port ${cyan(config.port)} already in use.`,
-        )
-      } else {
-        // Use a random port since the default hardcoded port isn't free
-        printLine()
-        printWarning(
-          `Port ${cyan(
-            DEFAULT_PORT,
-          )} is occupied. Falling back to random port.`,
-        )
-
-        server.close()
-        server.listen(0, 'localhost')
-      }
+      logError(
+        `Could not start preview server... port ${cyan(
+          config.port,
+        )} already in use.`,
+      )
     } else {
-      logError(`Could not start server... ${error.message}`)
+      logError(`Could not preview start server... ${error.message}`)
     }
   })
 
-  if (config.port) {
-    startApp(server, config.port)
-  } else {
-    startApp(server, 4000)
-  }
+  startApp(server, config.port)
+
+  return server
 }
 
 function logError(message: string) {
   printError(`${red('Error: ')} ${message}`)
 }
+
 function startApp(server: http.Server, port: number) {
   server.listen(port, 'localhost', () => {
-    const address = server.address() as AddressInfo
-
     printLine()
-    printInfo(`Server listening on ${cyan(`http://localhost:${address.port}`)}`)
+    printInfo(`Server listening on ${cyan(`http://localhost:${port}`)}`)
   })
 }
