@@ -7,6 +7,7 @@ import {
 } from '../configuration'
 import { makeTestProgram } from '../program'
 import buildGenerateCommand from '../../../src/commands/generate/command'
+import type { Command } from 'commander'
 
 vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
   loadFileConfiguration: vi.fn(),
@@ -16,12 +17,13 @@ vi.mock('../../../src/commands/generate/index', () => ({
   default: vi.fn(),
 }))
 
-const program = makeTestProgram()
+let program: Command
 
 describe('running the generate command', () => {
   const config = testMagidocConfiguration()
 
   beforeEach(() => {
+    program = makeTestProgram()
     buildGenerateCommand(program)
   })
 

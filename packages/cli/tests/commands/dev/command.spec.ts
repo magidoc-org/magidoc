@@ -7,6 +7,7 @@ import {
 } from '../configuration'
 import { makeTestProgram } from '../program'
 import path from 'path'
+import type { Command } from 'commander'
 
 vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
   loadFileConfiguration: vi.fn(),
@@ -16,12 +17,13 @@ vi.mock('../../../src/commands/dev/index', () => ({
   default: vi.fn(),
 }))
 
-const program = makeTestProgram()
+let program: Command
 
 describe('running the dev command', () => {
   const config = testMagidocConfiguration()
 
   beforeEach(() => {
+    program = makeTestProgram()
     buildDevCommand(program)
   })
 
