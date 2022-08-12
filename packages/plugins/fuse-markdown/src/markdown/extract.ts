@@ -36,6 +36,10 @@ export type IndexableMarkdownSection = {
 export type IndexableMarkdownHeader = {
   type: IndexableMarkdownType.HEADER
   /**
+   * The unique ID that would be used for this header if it was assigned one by marked.
+   */
+  id: string
+  /**
    * The path that leads to this header.
    */
   path: MarkdownHeader[]
@@ -57,6 +61,10 @@ export type TextExtractor = (
 export type TextExtractors = Record<marked.Token['type'], TextExtractor>
 
 export type Options = {
+  /**
+   * The marked slugger to be used for extracting header IDs.
+   */
+  slugger: marked.Slugger
   /**
    * The extractors responsible to convert a token into text. This must aggregate all the content inside it, like code blocks,
    */
@@ -100,7 +108,7 @@ export function extractTokens(
         } else if (token.depth <= lastHeader.depth) {
           newCurrentSection.headers = [
             ...currentSection.headers.filter(
-              (header) => header.depth >= token.depth,
+              (header) => header.depth < token.depth,
             ),
             header,
           ]
@@ -109,8 +117,12 @@ export function extractTokens(
         newCurrentSection.headers.push(header)
       }
 
-      parts.push(currentSection)
+      if (currentSection.content.trim().length > 0) {
+        parts.push(currentSection)
+      }
+
       parts.push({
+        id: options.slugger.slug(token.text),
         type: IndexableMarkdownType.HEADER,
         path: newCurrentSection.headers,
         title: token.text,
@@ -127,6 +139,9 @@ export function extractTokens(
     }
   })
 
-  parts.push(currentSection)
+  if (currentSection.content.trim().length > 0) {
+    parts.push(currentSection)
+  }
+
   return parts
 }
