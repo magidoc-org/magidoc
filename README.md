@@ -31,7 +31,7 @@ See the [quickstart guide](https://magidoc.js.org/introduction/quickstart).
 
 ## Demo
 
-👉 See the [demo website](https://magidoc-carbon-multi-page.netlify.app) generated from [FaunaDB's example GraphQL API](https://fauna.com/blog/try-faunadbs-graphql-api).
+👉 See the [demo website](https://magidoc-carbon-multi-page.netlify.app) generated from FaunaDB's example [GraphQL API](https://fauna.com/blog/try-faunadbs-graphql-api).
 
 ## Documentation
 
