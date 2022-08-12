@@ -1,21 +1,16 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import generate from '../../../src/commands/generate'
 import {
-  loadConfigFileMock,
   mockLoadFileConfiguration,
   testMagidocConfiguration,
 } from '../configuration'
 import { makeTestProgram } from '../program'
 import buildGenerateCommand from '../../../src/commands/generate/command'
 import type { Command } from 'commander'
+import { loadFileConfiguration } from '../../../src/commands/utils/loadConfigFile'
 
-vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
-  loadFileConfiguration: vi.fn(),
-}))
-
-vi.mock('../../../src/commands/generate', () => ({
-  default: vi.fn(),
-}))
+vi.mock('../../../src/commands/utils/loadConfigFile')
+vi.mock('../../../src/commands/generate')
 
 let program: Command
 
@@ -62,7 +57,7 @@ describe('running the generate command', () => {
       it('should load the configuration file from the right location', async () => {
         await program.parseAsync(['generate'], { from: 'user' })
 
-        expect(loadConfigFileMock()).toHaveBeenCalledWith(
+        expect(loadFileConfiguration).toHaveBeenCalledWith(
           './magidoc.mjs',
           false,
         )

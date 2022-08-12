@@ -1,18 +1,13 @@
-import { existsSync } from 'fs'
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   getPackageManager,
   isPackageManagerAvailable,
-  PackageManager,
 } from '../../../src/node/packageManager'
 import { resolvePackageManagerTask } from '../../../src/tasks/all/resolvePackageManager'
 
 import { packageManagerMock, taskWrapperMock } from './utils'
 
-vi.mock('../../../src/node/packageManager', () => ({
-  getPackageManager: vi.fn(),
-  isPackageManagerAvailable: vi.fn(),
-}))
+vi.mock('../../../src/node/packageManager')
 
 describe('verifying if target package manager is available', () => {
   describe('task is enabled', () => {
@@ -27,9 +22,9 @@ describe('verifying if target package manager is available', () => {
 
     describe('package manager is not available', () => {
       beforeEach(() => {
-        ;(
-          isPackageManagerAvailable as Mock<[string], Promise<boolean>>
-        ).mockReturnValueOnce(Promise.resolve(false))
+        vi.mocked(isPackageManagerAvailable).mockReturnValueOnce(
+          Promise.resolve(false),
+        )
       })
 
       it('should raise an error', async () => {
@@ -43,12 +38,10 @@ describe('verifying if target package manager is available', () => {
       const packageManager = packageManagerMock()
 
       beforeEach(() => {
-        ;(
-          isPackageManagerAvailable as Mock<[string], Promise<boolean>>
-        ).mockReturnValueOnce(Promise.resolve(true))
-        ;(
-          getPackageManager as Mock<[string], PackageManager>
-        ).mockReturnValueOnce(packageManager)
+        vi.mocked(isPackageManagerAvailable).mockReturnValueOnce(
+          Promise.resolve(true),
+        )
+        vi.mocked(getPackageManager).mockReturnValueOnce(packageManager)
       })
 
       it('set the target package manager', async () => {

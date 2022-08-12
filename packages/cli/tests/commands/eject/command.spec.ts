@@ -10,14 +10,8 @@ const version = '1.2.3'
 vi.mock('../../../src/version', () => ({
   getVersion: () => version,
 }))
-
-vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
-  loadFileConfiguration: vi.fn(),
-}))
-
-vi.mock('../../../src/commands/eject', () => ({
-  default: vi.fn(),
-}))
+vi.mock('../../../src/commands/utils/loadConfigFile')
+vi.mock('../../../src/commands/eject')
 
 let program: Command
 
@@ -86,6 +80,21 @@ describe('running the eject command', () => {
           "error: required option '-t|--template <template>' not specified",
         )
       })
+    })
+  })
+
+  describe('command fails', () => {
+    const error = new Error('Something went wrong')
+
+    beforeEach(() => {
+      vi.mocked(eject).mockRejectedValue(error)
+    })
+
+    it('should set exit code', async () => {
+      await program.parseAsync(['eject', '--template', 'carbon-multi-page'], {
+        from: 'user',
+      })
+      expect(process.exitCode).toBe(2)
     })
   })
 })

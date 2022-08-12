@@ -3,9 +3,7 @@ import { fetchTemplateTask } from '../../../src/tasks/all/fetchTemplate'
 import fetchTemplate from '../../../src/template/fetch'
 import { taskWrapperMock, tmpLocationMock } from './utils'
 
-vi.mock('../.././../src/template/fetch', () => ({
-  default: vi.fn(),
-}))
+vi.mock('../.././../src/template/fetch')
 
 describe('fetch template', () => {
   const defaultConfig = {

@@ -3,9 +3,7 @@ import { copyStaticAssetsTask } from '../../../src/tasks/all/copyStaticAssets'
 import { copyStaticAssets } from '../../../src/template/assets'
 import { taskWrapperMock } from './utils'
 
-vi.mock('../.././../src/template/assets', () => ({
-  copyStaticAssets: vi.fn(),
-}))
+vi.mock('../.././../src/template/assets')
 
 describe('copy static assets task', () => {
   const defaultConfig = {

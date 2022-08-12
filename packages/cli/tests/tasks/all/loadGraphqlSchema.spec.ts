@@ -5,20 +5,9 @@ import { loadGraphQLSchemaTask } from '../../../src/tasks/all/loadGraphqlSchema'
 import { taskWrapperMock } from './utils'
 import fs from 'fs/promises'
 
-vi.mock('@magidoc/rollup-plugin-fetch-gql-schema', () => ({
-  fetchSchema: vi.fn(),
-}))
-
-vi.mock('@magidoc/rollup-plugin-parse-gql-schema', () => ({
-  parseSchema: vi.fn(),
-}))
-
-vi.mock('fs/promises', () => ({
-  default: {
-    copyFile: vi.fn(),
-    writeFile: vi.fn(),
-  },
-}))
+vi.mock('@magidoc/rollup-plugin-fetch-gql-schema')
+vi.mock('@magidoc/rollup-plugin-parse-gql-schema')
+vi.mock('fs/promises')
 
 describe('loading graphql schema', () => {
   const defaultConfig = {}

@@ -3,9 +3,7 @@ import { unzipTemplateTask } from '../../../src/tasks/all/unzipTemplate'
 import { unzipTemplate } from '../../../src/template/unzip'
 import { taskWrapperMock, tmpLocationMock } from './utils'
 
-vi.mock('../../../src/template/unzip', () => ({
-  unzipTemplate: vi.fn(),
-}))
+vi.mock('../../../src/template/unzip')
 
 describe('unzipping template', () => {
   const defaultConfig = {

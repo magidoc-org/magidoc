@@ -3,9 +3,7 @@ import { moveOutputTask } from '../../../src/tasks/all/moveOutput'
 import { moveOutputBuild } from '../../../src/template/output'
 import { taskWrapperMock, tmpLocationMock } from './utils'
 
-vi.mock('../../../src/template/output', () => ({
-  moveOutputBuild: vi.fn(),
-}))
+vi.mock('../../../src/template/output')
 
 describe('move output', () => {
   const defaultConfig = {

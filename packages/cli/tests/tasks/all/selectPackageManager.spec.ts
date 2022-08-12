@@ -6,10 +6,7 @@ import {
 import { selectPackageManagerTask } from '../../../src/tasks/all/selectPackageManager'
 import { packageManagerMock, taskWrapperMock } from './utils'
 
-vi.mock('../../../src/node/packageManager', () => ({
-  selectPackageManager: vi.fn(),
-  getPackageManager: vi.fn(),
-}))
+vi.mock('../../../src/node/packageManager')
 
 describe('selecting package manager', () => {
   const defaultConfig = {

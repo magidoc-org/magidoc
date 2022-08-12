@@ -10,13 +10,8 @@ import type { Command } from 'commander'
 import buildPreviewCommand from '../../../src/commands/preview/command'
 import type { MagidocConfiguration } from '../../../src'
 
-vi.mock('../../../src/commands/utils/loadConfigFile', () => ({
-  loadFileConfiguration: vi.fn(),
-}))
-
-vi.mock('../../../src/commands/preview', () => ({
-  default: vi.fn(),
-}))
+vi.mock('../../../src/commands/utils/loadConfigFile')
+vi.mock('../../../src/commands/preview')
 
 let program: Command
 
