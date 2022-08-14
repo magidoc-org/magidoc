@@ -55,10 +55,15 @@ export type IndexableMarkdownPart =
 
 export type TextExtractor = (
   token: marked.Tokens.Generic,
-  extractors: TextExtractors,
+  extract: ExtractFunction,
 ) => string
 
-export type TextExtractors = Record<marked.Token['type'], TextExtractor>
+export type ExtractFunction = (tokens: marked.Tokens.Generic[]) => string
+
+export type TextExtractors = Record<
+  marked.Token['type'] | string,
+  TextExtractor
+>
 
 export type Options = {
   /**
@@ -83,6 +88,7 @@ export function extractTokens(
   tokens: marked.TokensList,
   options: Options,
 ): IndexableMarkdownPart[] {
+  const extract = extractFunction(options.extractors)
   const parts: IndexableMarkdownPart[] = []
   let currentSection: IndexableMarkdownSection = {
     type: IndexableMarkdownType.SECTION,
@@ -130,12 +136,7 @@ export function extractTokens(
 
       currentSection = newCurrentSection
     } else {
-      const extractor = options.extractors[token.type]
-      if (!extractor) {
-        throw new Error(`No extractor found for token type: ${token.type}`)
-      }
-
-      currentSection.content += extractor(token, options.extractors)
+      currentSection.content += extract([token])
     }
   })
 
@@ -144,4 +145,17 @@ export function extractTokens(
   }
 
   return parts
+}
+
+export function extractFunction(extractors: TextExtractors): ExtractFunction {
+  return (tokens) => {
+    return tokens.reduce((acc, token) => {
+      const extractor = extractors[token.type]
+      if (!extractor) {
+        throw new Error(`No extractor found for token type: ${token.type}`)
+      }
+
+      return acc + extractor(token, extractFunction(extractors))
+    }, '')
+  }
 }

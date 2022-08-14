@@ -1,4 +1,4 @@
-import type { TextExtractor, TextExtractors } from './extract'
+import type { ExtractFunction, TextExtractor } from './extract'
 import type { marked } from 'marked'
 
 export function defaultExtractors(): Record<
@@ -16,14 +16,14 @@ export function defaultExtractors(): Record<
     strong: baseExtractor,
     text: baseExtractor,
     link: baseExtractor,
-    list: (token, extractors) => {
+    list: (token, extract) => {
       return (token as marked.Tokens.List).items.reduce(
-        (acc, item) => `${acc}\n${baseExtractor(item, extractors)}`,
+        (acc, item) => `${acc}\n${baseExtractor(item, extract)}`,
         '',
       )
     },
     list_item: baseExtractor,
-    table: (token, extractors) => {
+    table: (token, extract) => {
       return (token as marked.Tokens.Table).rows.reduce(
         (acc, row) =>
           `${acc}\n${row
@@ -34,7 +34,7 @@ export function defaultExtractors(): Record<
                   type: 'table_cell',
                   raw: '',
                 },
-                extractors,
+                extract,
               ),
             )
             .join(' ')}`,
@@ -52,10 +52,7 @@ export function defaultExtractors(): Record<
   }
 }
 
-function baseExtractor(
-  token: marked.Tokens.Generic,
-  extractors: TextExtractors,
-) {
+function baseExtractor(token: marked.Tokens.Generic, extract: ExtractFunction) {
   if (token.type === 'text') {
     return (token as marked.Tokens.Text).text
   }
@@ -65,13 +62,7 @@ function baseExtractor(
   }
 
   if (token.tokens) {
-    return token.tokens.reduce((acc, token) => {
-      const extractor = extractors[token.type]
-      if (!extractor) {
-        throw new Error(`No extractor for token type ${token.type}`)
-      }
-      return `${acc}${extractor(token, extractors)}`
-    }, '')
+    return extract(token.tokens)
   }
 
   throw new Error(`Could not extract text for ${token.type}`)
