@@ -179,6 +179,162 @@ describe('extracting markdown into sections', () => {
         },
       ])
     })
+
+    it('should separate two paragraphs', () => {
+      expect(
+        extract(
+          unindent(`
+                    Paragraph 1
+
+                    Paragraph 2
+                `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: 'Paragraph 1\nParagraph 2',
+          headers: [],
+        },
+      ])
+    })
+  })
+
+  describe('using a link alone', () => {
+    it('should return the link text', () => {
+      expect(
+        extract(
+          unindent(`
+                [some link](http://example.com)
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: 'some link',
+          headers: [],
+        },
+      ])
+    })
+  })
+
+  describe('using bold text', () => {
+    it('should return the text', () => {
+      expect(
+        extract(
+          unindent(`
+                **Bold text**
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: 'Bold text',
+          headers: [],
+        },
+      ])
+    })
+  })
+
+  describe('using italic text', () => {
+    it('should return the text', () => {
+      expect(
+        extract(
+          unindent(`
+                *Italic text*
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: 'Italic text',
+          headers: [],
+        },
+      ])
+    })
+  })
+
+  describe('using a code span', () => {
+    it('should return the text', () => {
+      expect(
+        extract(
+          unindent(`
+                \`this is a codespan\`
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: 'this is a codespan',
+          headers: [],
+        },
+      ])
+    })
+  })
+
+  describe('using a blockquote', () => {
+    it('should return the text', () => {
+      expect(
+        extract(
+          unindent(`
+                > This is **what** I have [inside](http://example.com)
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: 'This is what I have inside',
+          headers: [],
+        },
+      ])
+    })
+  })
+
+  describe('using a list', () => {
+    it('should return the text', () => {
+      expect(
+        extract(
+          unindent(`
+                - Item 1
+                - Item 2
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: '\nItem 1\nItem 2',
+          headers: [],
+        },
+      ])
+    })
+  })
+
+  describe('using a table', () => {
+    it('should return only the content of the rows', () => {
+      expect(
+        extract(
+          unindent(`
+                | Header 1 | Header 2 |
+                | -------- | -------- |
+                | Item 1   | Item 2   |
+                | Item 3   | Item 4   |
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: '\nItem 1 Item 2\nItem 3 Item 4',
+          headers: [],
+        },
+      ])
+    })
   })
 })
 

@@ -15,31 +15,32 @@ export function defaultExtractors(): Record<
     paragraph: baseExtractor,
     strong: baseExtractor,
     text: baseExtractor,
-    escape: baseExtractor,
     link: baseExtractor,
-    list: (token, extractors) =>
-      (token as marked.Tokens.List).items.reduce(
-        (acc, item) => `${acc} ${baseExtractor(item, extractors)}`,
+    list: (token, extractors) => {
+      return (token as marked.Tokens.List).items.reduce(
+        (acc, item) => `${acc}\n${baseExtractor(item, extractors)}`,
         '',
-      ),
+      )
+    },
     list_item: baseExtractor,
-    table: (token, extractors) =>
-      (token as marked.Tokens.Table).rows.reduce(
+    table: (token, extractors) => {
+      return (token as marked.Tokens.Table).rows.reduce(
         (acc, row) =>
-          `${acc} ${row.reduce(
-            (acc, cell) =>
-              `${acc} ${baseExtractor(
+          `${acc}\n${row
+            .map((cell) =>
+              baseExtractor(
                 {
                   ...cell,
                   type: 'table_cell',
                   raw: '',
                 },
                 extractors,
-              )}`,
-            '',
-          )}`,
+              ),
+            )
+            .join(' ')}`,
         '',
-      ),
+      )
+    },
     // These return no text because there is no value in extracting them.
     code: () => '',
     image: () => '',
@@ -47,6 +48,7 @@ export function defaultExtractors(): Record<
     def: () => '',
     html: () => '',
     space: () => ' ',
+    escape: () => '',
   }
 }
 
@@ -56,6 +58,10 @@ function baseExtractor(
 ) {
   if (token.type === 'text') {
     return (token as marked.Tokens.Text).text
+  }
+
+  if (token.type === 'codespan') {
+    return (token as marked.Tokens.Codespan).text
   }
 
   if (token.tokens) {
