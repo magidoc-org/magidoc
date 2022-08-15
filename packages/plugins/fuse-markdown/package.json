@@ -29,6 +29,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
+    "fuse.js": "^6.6.2",
     "marked": "^4.0.18"
   },
   "devDependencies": {
