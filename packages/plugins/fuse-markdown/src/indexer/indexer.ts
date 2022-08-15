@@ -11,6 +11,4 @@ export type IndexingOptions<T> = {
 export function index<T>(
   documents: MarkdownDocument<T>[],
   options: IndexingOptions<T>,
-) {
-  
-}
+) {}
