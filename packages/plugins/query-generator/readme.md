@@ -4,4 +4,4 @@ This library generates GraphQL Queries from a GraphQL Schema and a root field. I
 > This plugin can be used in any Javascript application, wether it is browser or NodeJS based.
 
 ## Documentation
-For more details on how to use this library, see the [documentation](https://magidoc-org.github.io/magidoc/plugins/graphql-query-generator)
+For more details on how to use this library, see the [documentation](https://magidoc.js.org/plugins/graphql-query-generator)
