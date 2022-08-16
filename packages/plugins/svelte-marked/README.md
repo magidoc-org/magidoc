@@ -7,4 +7,4 @@ Each component renderer can be overwritten to customize its style and [extension
 > This library can be used in any Svelte or SvelteKit application.
 
 ## Documentation
-For more details on how to use this library, see the [documentation](https://magidoc-org.github.io/magidoc/svelte-plugins/marked)
+For more details on how to use this library, see the [documentation](https://magidoc.js.org/svelte-plugins/marked)

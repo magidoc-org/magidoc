@@ -50,7 +50,7 @@ export default {
 
             ## Wanna learn more?
 
-            Head to the [docs](https://magidoc-org.github.io/magidoc/introduction/welcome)!
+            Head to the [docs](https://magidoc.js.org/introduction/welcome)!
           `,
         }
       ],

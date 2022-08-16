@@ -77,7 +77,7 @@ You have to provide a custom factory by providing this in your magidoc config:
   }
 }
 
-To learn more about how to generate a custom scalar value, see: https://magidoc-org.github.io/magidoc/cli/magidoc-configuration#querygenerationfactories
+To learn more about how to generate a custom scalar value, see: https://magidoc.js.org/cli/magidoc-configuration#querygenerationfactories
 `)
     }
     throw error

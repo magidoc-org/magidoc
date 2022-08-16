@@ -14,7 +14,7 @@
     "graphql-schema",
     "magidoc"
   ],
-  "homepage": "https://magidoc-org.github.io/magidoc/plugins/rollup-parse-graphql-schema",
+  "homepage": "https://magidoc.js.org/plugins/rollup-parse-graphql-schema",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",

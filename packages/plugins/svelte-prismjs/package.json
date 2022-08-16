@@ -14,7 +14,7 @@
     "magidoc",
     "browser"
   ],
-  "homepage": "https://magidoc-org.github.io/magidoc/svelte-plugins/prismjs",
+  "homepage": "https://magidoc.js.org/svelte-plugins/prismjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",
