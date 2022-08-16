@@ -35,7 +35,7 @@ See the [quickstart guide](https://magidoc.js.org/introduction/quickstart).
 
 ## Documentation
 
-Full documentation and options are available at [magidoc.js.org](https://magidoc.js.org).
+Full documentation and options are available at [magidoc.js.org](https://magidoc.js.org/introduction/welcome).
 
 ## Contribution
 See the [contribution guide](./CONTRIBUTING.md).

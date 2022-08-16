@@ -14,7 +14,7 @@
     "node",
     "browser"
   ],
-  "homepage": "https://magidoc-org.github.io/magidoc/plugins/graphql-query-generator",
+  "homepage": "https://magidoc.js.org/plugins/graphql-query-generator",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",

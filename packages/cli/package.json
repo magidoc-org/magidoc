@@ -12,7 +12,7 @@
     "node",
     "magidoc"
   ],
-  "homepage": "https://magidoc-org.github.io/magidoc",
+  "homepage": "https://magidoc.js.org/introduction/welcome",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",

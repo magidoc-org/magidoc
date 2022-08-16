@@ -13,7 +13,7 @@
     "node",
     "browser"
   ],
-  "homepage": "https://magidoc-org.github.io/magidoc/plugins/reverse-schema-mapper",
+  "homepage": "https://magidoc.js.org/plugins/reverse-schema-mapper",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",
