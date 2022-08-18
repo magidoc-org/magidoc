@@ -1,8 +1,9 @@
 import { getTypeByName, getTypeUsages } from '$lib/model'
 import { findPageByHref } from '$lib/pages'
-import { error, type LoadEvent } from '@sveltejs/kit'
+import { error } from '@sveltejs/kit'
+import type { PageLoad } from './$types'
 
-export function load({ params, url }: LoadEvent): PageLoadOutput {
+export const load: PageLoad = ({ params, url }) => {
   const type = getTypeByName(params.type)
   const usages = getTypeUsages(type)
 

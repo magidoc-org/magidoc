@@ -1,8 +1,9 @@
 import { getQueryByName } from '$lib/model'
 import { findPageByHref } from '$lib/pages'
-import { error, type LoadEvent } from '@sveltejs/kit'
+import { error } from '@sveltejs/kit'
+import type { PageLoad } from './$types'
 
-export function load({ params, url }: LoadEvent): PageLoadOutput {
+export const load: PageLoad = ({ params, url }) => {
   const field = getQueryByName(params.query)
   const page = findPageByHref(url.pathname)
 

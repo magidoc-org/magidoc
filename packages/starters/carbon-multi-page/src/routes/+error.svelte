@@ -3,8 +3,8 @@
 
   let error: string
   $: {
-    const message =
-      $page.error?.message?.trim() || 'An unexpected error occurred.'
+    const message: string =
+      ($page.error as Error)?.message || 'An unexpected error occurred.'
     error = message.endsWith('.') ? message : `${message}.`
   }
 </script>
