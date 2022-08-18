@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
-  throw new Error("@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)");
+  throw new Error(
+    '@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)',
+  )
 
   // import type { LoadEvent } from '@sveltejs/kit'
 
@@ -16,18 +18,22 @@
 </script>
 
 <script lang="ts">
-  export let status: number | undefined
-  export let error: string
+  import { page } from '$app/stores'
+
+  let error: string
+  $: {
+    const message =
+      $page.error?.message?.trim() || 'An unexpected error occurred.'
+    error = message.endsWith('.') ? message : `${message}.`
+  }
 </script>
 
 <svelte:head>
-  <title>Error {status ? ` - ${status}` : ''}</title>
+  <title>Error - {$page.status}</title>
 </svelte:head>
 
 <div class="wrapper">
-  {#if status}
-    <h1>{status}</h1>
-  {/if}
+  <h1>{$page.status}</h1>
 
   <p>{error}</p>
 </div>
