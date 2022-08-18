@@ -106,25 +106,25 @@ function createTypesWebsiteContent(): WebsiteContent | null {
 }
 
 export function getQueryByName(
-  name: string,
+  name: string | undefined,
 ): GraphQLField<unknown, unknown, unknown> | undefined {
-  return queriesByName[name.toLocaleLowerCase()]
+  return name ? queriesByName[name.toLocaleLowerCase()] : undefined
 }
 
 export function getMutationByName(
-  name: string,
+  name: string | undefined,
 ): GraphQLField<unknown, unknown, unknown> | undefined {
-  return mutationsByName[name.toLocaleLowerCase()]
+  return name ? mutationsByName[name.toLocaleLowerCase()] : undefined
 }
 
 export function getSubscriptionByName(
-  name: string,
+  name: string | undefined,
 ): GraphQLField<unknown, unknown, unknown> | undefined {
-  return subscriptionsByName[name.toLocaleLowerCase()]
+  return name ? subscriptionsByName[name.toLocaleLowerCase()] : undefined
 }
 
-export function getTypeByName(name: string): GraphQLNamedType | undefined {
-  return typesByName[name.toLocaleLowerCase()]
+export function getTypeByName(name: string | undefined): GraphQLNamedType | undefined {
+  return name ? typesByName[name.toLocaleLowerCase()] : undefined
 }
 
 export function getTypeUsages(

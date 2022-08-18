@@ -1,8 +1,4 @@
 <script lang="ts">
-  throw new Error(
-    '@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)',
-  )
-
   import {
     isEnumType,
     isInputObjectType,
@@ -18,17 +14,14 @@
   import ObjectType from '$lib/components/type/ObjectType.svelte'
   import UnionType from '$lib/components/type/UnionType.svelte'
   import InputObjectType from '$lib/components/type/InputObjectType.svelte'
-  import type { LoadEvent, LoadOutput } from '@sveltejs/kit'
-  import { findPageByHref } from '$lib/pages'
-  import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
-  import type { WebsitePage } from 'src/app'
-  import { getTypeByName, getTypeUsages } from '$lib/model'
-  import type { TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
   import TypeUsages from '$lib/components/type/usage/TypeUsages.svelte'
+  import type { PageData } from './$types'
+  import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
 
-  export let type: GraphQLNamedType
-  export let usages: TypeReverseMapping | undefined
-  export let page: WebsitePage
+  export let data: PageData
+
+  let type: GraphQLNamedType
+  $: type = data.type
 </script>
 
 <svelte:head>
@@ -49,8 +42,8 @@
   <InputObjectType {type} />
 {/if}
 
-{#if usages}
-  <TypeUsages {usages} />
+{#if data.usages}
+  <TypeUsages usages={data.usages} />
 {/if}
 
-<PreviousNextPage {page} />
+<PreviousNextPage page={data.page} />

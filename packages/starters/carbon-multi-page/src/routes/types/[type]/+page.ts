@@ -1,4 +1,6 @@
-import { error } from '@sveltejs/kit'
+import { getTypeByName, getTypeUsages } from '$lib/model'
+import { findPageByHref } from '$lib/pages'
+import { error, type LoadEvent } from '@sveltejs/kit'
 
 export function load({ params, url }: LoadEvent): PageLoadOutput {
   const type = getTypeByName(params.type)

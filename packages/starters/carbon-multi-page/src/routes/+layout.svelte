@@ -1,8 +1,4 @@
 <script lang="ts">
-  throw new Error(
-    '@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)',
-  )
-
   import '../app.css'
   import '../prism-theme.css'
   import '@magidoc/plugin-svelte-prismjs'
@@ -23,20 +19,15 @@
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
   import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
-  import type { LoadOutput } from '@sveltejs/kit'
-  import { siteMeta, type Meta } from '$lib/meta'
-  import { homePageUrl, pages } from '$lib/pages'
   import { templates } from '@magidoc/plugin-starter-variables'
-  import type { WebsiteContent } from 'src/app'
   import { get } from '$lib/variables'
   import { page } from '$app/stores'
   import { onDestroy } from 'svelte'
+  import { siteMeta } from '$lib/meta'
+  import { pages } from '$lib/pages'
 
   let isSideNavOpen = false
   let innerWidth = 2048
-
-  export let content: WebsiteContent[]
-  export let meta: ReadonlyArray<Meta>
 
   const favicon = get(templates.APP_FAVICON)
 
@@ -57,7 +48,7 @@
 </script>
 
 <svelte:head>
-  {#each meta as item}
+  {#each siteMeta as item}
     <meta name={item.name} content={item.content} />
   {/each}
 
@@ -69,7 +60,7 @@
 <svelte:window bind:innerWidth />
 
 <AppHeader bind:isSideNavOpen />
-<AppNavigation bind:isOpen={isSideNavOpen} {content} />
+<AppNavigation bind:isOpen={isSideNavOpen} content={pages} />
 
 <Content>
   <Grid>
