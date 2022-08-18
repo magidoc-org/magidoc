@@ -49,8 +49,8 @@ importers:
       '@types/fs-extra': ^9.0.13
       '@types/lodash': ^4.14.183
       '@types/node': ^18.7.6
+      '@vitest/coverage-c8': ^0.22.1
       axios: ^0.27.2
-      c8: ^7.12.0
       chokidar: ^3.5.3
       commander: ^9.4.0
       extract-zip: ^2.0.1
@@ -83,7 +83,7 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.183
       '@types/node': 18.7.6
-      c8: 7.12.0
+      '@vitest/coverage-c8': 0.22.1
       rollup: 2.78.0
       rollup-plugin-preserve-shebang: 1.0.1
       tslib: 2.4.0
@@ -96,7 +96,7 @@ importers:
       '@types/lodash': ^4.14.183
       '@types/node': ^18.7.6
       '@types/prettier': ^2.7.0
-      c8: ^7.12.0
+      '@vitest/coverage-c8': ^0.22.1
       graphql: ^16.6.0
       graphql-query-compress: ^1.2.4
       lodash: ^4.17.21
@@ -113,7 +113,7 @@ importers:
       '@types/lodash': 4.14.183
       '@types/node': 18.7.6
       '@types/prettier': 2.7.0
-      c8: 7.12.0
+      '@vitest/coverage-c8': 0.22.1
       graphql-query-compress: 1.2.4
       rollup: 2.78.0
       typescript: 4.7.4
@@ -123,7 +123,7 @@ importers:
   packages/plugins/reverse-schema-mapper:
     specifiers:
       '@types/node': ^18.7.6
-      c8: ^7.12.0
+      '@vitest/coverage-c8': ^0.22.1
       graphql: ^16.6.0
       rollup: ^2.78.0
       typescript: ^4.7.4
@@ -133,7 +133,7 @@ importers:
       graphql: 16.6.0
     devDependencies:
       '@types/node': 18.7.6
-      c8: 7.12.0
+      '@vitest/coverage-c8': 0.22.1
       rollup: 2.78.0
       typescript: 4.7.4
       vite: 3.0.8
@@ -143,8 +143,8 @@ importers:
     specifiers:
       '@types/node': ^18.7.6
       '@types/prettier': ^2.7.0
+      '@vitest/coverage-c8': ^0.22.1
       axios: ^0.27.2
-      c8: ^7.12.0
       graphql: ^16.6.0
       nock: ^13.2.9
       rollup: ^2.78.0
@@ -157,7 +157,7 @@ importers:
     devDependencies:
       '@types/node': 18.7.6
       '@types/prettier': 2.7.0
-      c8: 7.12.0
+      '@vitest/coverage-c8': 0.22.1
       nock: 13.2.9
       rollup: 2.78.0
       typescript: 4.7.4
@@ -168,7 +168,7 @@ importers:
     specifiers:
       '@types/node': ^18.7.6
       '@types/prettier': ^2.7.0
-      c8: ^7.12.0
+      '@vitest/coverage-c8': ^0.22.1
       fast-glob: ^3.2.11
       graphql: ^16.6.0
       rollup: ^2.78.0
@@ -181,7 +181,7 @@ importers:
     devDependencies:
       '@types/node': 18.7.6
       '@types/prettier': 2.7.0
-      c8: 7.12.0
+      '@vitest/coverage-c8': 0.22.1
       rollup: 2.78.0
       typescript: 4.7.4
       vite: 3.0.8
@@ -192,7 +192,7 @@ importers:
       '@rollup/plugin-typescript': ^8.3.4
       '@types/lodash': ^4.14.183
       '@types/node': ^18.7.6
-      c8: ^7.12.0
+      '@vitest/coverage-c8': ^0.22.1
       lodash: ^4.17.21
       rollup: ^2.78.0
       tslib: ^2.4.0
@@ -206,7 +206,7 @@ importers:
       '@rollup/plugin-typescript': 8.3.4_ri53vstxz3knarnrxbs5keiw5y
       '@types/lodash': 4.14.183
       '@types/node': 18.7.6
-      c8: 7.12.0
+      '@vitest/coverage-c8': 0.22.1
       lodash: 4.17.21
       rollup: 2.78.0
       tslib: 2.4.0
@@ -1165,6 +1165,24 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: true
+
+  /@vitest/coverage-c8/0.22.1:
+    resolution: {integrity: sha512-KOOYpO7EGpaF+nD8GD+Y05D0JtZp12NUu6DdLXvBPqSOPo2HkZ7KNBtfR0rb6gOy3NLtGiWTYTzCwhajgb2HlA==}
+    dependencies:
+      c8: 7.12.0
+      vitest: 0.22.1
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - supports-color
+      - terser
     dev: true
 
   /abbrev/1.1.1:
