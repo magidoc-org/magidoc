@@ -42,9 +42,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^2.8.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.8.1
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.8.1
+      '@magidoc/plugin-starter-variables': workspace:^2.9.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.9.0
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.9.0
       '@rollup/plugin-typescript': ^8.3.4
       '@types/fs-extra': ^9.0.13
       '@types/lodash': ^4.14.183
@@ -328,12 +328,12 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-query-generator': workspace:^2.8.1
-      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.8.1
-      '@magidoc/plugin-starter-variables': workspace:^2.8.1
-      '@magidoc/plugin-svelte-marked': workspace:^2.8.1
-      '@magidoc/plugin-svelte-prismjs': workspace:^2.8.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.8.1
+      '@magidoc/plugin-query-generator': workspace:^2.9.0
+      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.9.0
+      '@magidoc/plugin-starter-variables': workspace:^2.9.0
+      '@magidoc/plugin-svelte-marked': workspace:^2.9.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^2.9.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.9.0
       '@sveltejs/adapter-static': 1.0.0-next.39
       '@sveltejs/kit': 1.0.0-next.423
       '@types/lodash': ^4.14.183
@@ -438,8 +438,8 @@ packages:
       '@cspell/dict-docker': 1.1.1
       '@cspell/dict-dotnet': 2.0.1
       '@cspell/dict-elixir': 2.0.1
-      '@cspell/dict-en_us': 2.3.1
       '@cspell/dict-en-gb': 1.1.33
+      '@cspell/dict-en_us': 2.3.1
       '@cspell/dict-filetypes': 2.1.1
       '@cspell/dict-fonts': 2.0.1
       '@cspell/dict-fullstack': 2.0.6
