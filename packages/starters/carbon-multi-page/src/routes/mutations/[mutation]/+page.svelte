@@ -1,25 +1,6 @@
-<script lang="ts" context="module">
-  export function load({ params, url }: LoadEvent): LoadOutput {
-    const field = getMutationByName(params.mutation)
-    const page = findPageByHref(url.pathname)
-
-    if (!field || !page) {
-      return {
-        status: 404,
-        error: `Mutation ${params.mutation} not found.`,
-      }
-    }
-
-    return {
-      props: {
-        field,
-        page,
-      },
-    }
-  }
-</script>
-
 <script lang="ts">
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
   import { QueryType } from '@magidoc/plugin-query-generator'
   import type { GraphQLField } from 'graphql'
   import FieldDetails from '$lib/components/query/FieldDetails.svelte'

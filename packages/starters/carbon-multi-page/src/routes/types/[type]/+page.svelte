@@ -1,28 +1,6 @@
-<script lang="ts" context="module">
-  export function load({ params, url }: LoadEvent): LoadOutput {
-    const type = getTypeByName(params.type)
-    const usages = getTypeUsages(type)
-
-    const page = findPageByHref(url.pathname)
-
-    if (!type || !page) {
-      return {
-        status: 404,
-        error: `Type ${params.type} not found.`,
-      }
-    }
-
-    return {
-      props: {
-        type,
-        usages,
-        page,
-      },
-    }
-  }
-</script>
-
 <script lang="ts">
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
   import {
     isEnumType,
     isInputObjectType,
