@@ -2,7 +2,7 @@
   "name": "@magidoc/cli",
   "description": "Magidoc CLI application responsible for generating GraphQL documentation websites.",
   "private": false,
-  "version": "2.8.1",
+  "version": "2.9.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -30,9 +30,9 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "@magidoc/plugin-starter-variables": "workspace:^2.8.1",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.8.1",
-    "@magidoc/rollup-plugin-parse-gql-schema": "workspace:^2.8.1",
+    "@magidoc/plugin-starter-variables": "workspace:^2.9.0",
+    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.9.0",
+    "@magidoc/rollup-plugin-parse-gql-schema": "workspace:^2.9.0",
     "axios": "^0.27.2",
     "chokidar": "^3.5.3",
     "commander": "^9.4.0",
@@ -46,15 +46,15 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.4",
     "@types/fs-extra": "^9.0.13",
-    "@types/lodash": "^4.14.182",
-    "@types/node": "^18.6.5",
-    "c8": "^7.12.0",
-    "rollup": "^2.77.2",
+    "@types/lodash": "^4.14.183",
+    "@types/node": "^18.7.6",
+    "@vitest/coverage-c8": "^0.22.1",
+    "rollup": "^2.78.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.5",
-    "vitest": "^0.21.1"
+    "vite": "^3.0.8",
+    "vitest": "^0.22.1"
   },
   "engines": {
     "node": ">=16.9"

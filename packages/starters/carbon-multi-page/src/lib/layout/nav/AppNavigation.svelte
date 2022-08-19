@@ -4,7 +4,7 @@
   import AppPageNavigation from './AppPageNavigation.svelte'
 
   export let isOpen = true
-  export let content: WebsiteContent[]
+  export let content: ReadonlyArray<WebsiteContent>
 </script>
 
 <SideNav bind:isOpen>
