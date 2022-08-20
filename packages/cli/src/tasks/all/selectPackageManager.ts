@@ -30,7 +30,7 @@ export function selectPackageManagerTask<T extends Ctx>(
       let output = `Selected ${ctx.packageManager.type}`
       if (ctx.packageManager.type !== 'pnpm') {
         output += yellow(
-          '⚠️ This package manager is not well supported yet.\n ⚠️ We recommend installing pnpm instead.',
+          '\n⚠️ This package manager is not well supported yet.\n⚠️ It is recommended to install pnpm instead.',
         )
       }
 

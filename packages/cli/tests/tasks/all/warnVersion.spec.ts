@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { yellow } from '../../../src/commands/utils/outputColors'
 import { warnVersionTask } from '../../../src/tasks/all/warnVersion'
 import { getVersion } from '../../../src/version'
 import { taskWrapperMock } from './utils'
@@ -49,7 +50,9 @@ describe('installing dependencies', () => {
       const wrapper = taskWrapperMock()
       await warnVersionTask(config).executor({}, wrapper)
       expect(wrapper.output).toHaveBeenCalledWith(
-        '⚠️ Template version has been set to a different version that the current CLI version.\n⚠️ This may result in unexpected results.',
+        yellow(
+          '⚠️ Template version has been set to a different version that the current CLI version.\n⚠️ This may result in unexpected results.',
+        ),
       )
     })
   })
