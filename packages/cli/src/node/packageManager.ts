@@ -30,12 +30,12 @@ export async function selectPackageManager(): Promise<PackageManager> {
     return createPnpn()
   }
 
-  if (await isPackageManagerAvailable('yarn')) {
-    return createYarn()
-  }
-
   if (await isPackageManagerAvailable('npm')) {
     return createNpm()
+  }
+
+  if (await isPackageManagerAvailable('yarn')) {
+    return createYarn()
   }
 
   throw new Error(

@@ -1,4 +1,5 @@
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { yellow } from '../../../src/commands/utils/outputColors'
 import {
   getPackageManager,
   selectPackageManager,
@@ -27,8 +28,8 @@ describe('selecting package manager', () => {
       const availablePackageManager = packageManagerMock()
 
       beforeEach(() => {
-        ;(selectPackageManager as Mock).mockReturnValueOnce(
-          availablePackageManager,
+        vi.mocked(selectPackageManager).mockReturnValueOnce(
+          Promise.resolve(availablePackageManager),
         )
       })
 
@@ -48,15 +49,15 @@ describe('selecting package manager', () => {
       })
     })
 
-    describe('a package manager is specific', () => {
+    describe('specifying pnpm as a package manager', () => {
       const packageManager = packageManagerMock()
       const withPackageManager = {
         ...defaultConfig,
-        packageManager: packageManager.type,
+        packageManager: 'pnpm' as const,
       }
 
       beforeEach(() => {
-        ;(getPackageManager as Mock).mockReturnValueOnce(packageManager)
+        vi.mocked(getPackageManager).mockReturnValueOnce(packageManager)
       })
 
       it('should select an available package manager', async () => {
@@ -75,6 +76,29 @@ describe('selecting package manager', () => {
         await task.executor(ctx, wrapper)
         expect(wrapper.output).toHaveBeenCalledWith(
           `Selected ${packageManager.type}`,
+        )
+      })
+    })
+
+    describe('package manager is not pnpm', () => {
+      beforeEach(() => {
+        vi.mocked(getPackageManager).mockReturnValueOnce({
+          ...packageManagerMock(),
+          type: 'yarn',
+        })
+      })
+
+      it('should output the selected package manager and a warning', async () => {
+        const wrapper = taskWrapperMock()
+        const task = selectPackageManagerTask({
+          ...defaultConfig,
+          packageManager: 'yarn' as const,
+        })
+        await task.executor(ctx, wrapper)
+        expect(wrapper.output).toHaveBeenCalledWith(
+          `Selected yarn${yellow(
+            '\n⚠️ This package manager is not well supported yet.\n⚠️ It is recommended to install pnpm instead.',
+          )}`,
         )
       })
     })

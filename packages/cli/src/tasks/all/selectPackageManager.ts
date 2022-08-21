@@ -5,6 +5,7 @@ import {
   PackageManagerType,
   selectPackageManager,
 } from '../../node/packageManager'
+import { yellow } from '../../commands/utils/outputColors'
 
 type Ctx = {
   packageManager: PackageManager
@@ -26,7 +27,14 @@ export function selectPackageManagerTask<T extends Ctx>(
         ctx.packageManager = await selectPackageManager()
       }
 
-      task.output(`Selected ${ctx.packageManager.type}`)
+      let output = `Selected ${ctx.packageManager.type}`
+      if (ctx.packageManager.type !== 'pnpm') {
+        output += yellow(
+          '\n⚠️ This package manager is not well supported yet.\n⚠️ It is recommended to install pnpm instead.',
+        )
+      }
+
+      task.output(output)
     },
   }
 }

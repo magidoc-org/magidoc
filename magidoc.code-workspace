@@ -14,7 +14,8 @@
     "eslint.packageManager": "pnpm",
     "cSpell.words": [
       "magidoc"
-    ]
+    ],
+    "testing.automaticallyOpenPeekView": "never"
   },
   "folders": [
     {
@@ -36,6 +37,10 @@
     {
       "name": "Plugins/Starter Variables",
       "path": "./packages/plugins/starter-variables"
+    },
+    {
+      "name": "Plugins/Fuse Markdown",
+      "path": "./packages/plugins/fuse-markdown"
     },
     {
       "name": "Plugins/Rollup Fetch GraphQL Schema",
