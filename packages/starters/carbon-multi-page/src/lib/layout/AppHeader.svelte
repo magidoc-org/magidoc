@@ -2,16 +2,15 @@
   import 'carbon-components-svelte/css/all.css'
 
   import {
-    Button,
     Header,
-    HeaderSearch,
+    HeaderGlobalAction,
     HeaderUtilities,
   } from 'carbon-components-svelte'
   import AppIcon from '$lib/components/common/AppIcon.svelte'
   import { base } from '$app/paths'
   import AppLinks from './header/AppLinks.svelte'
   import { Search } from 'carbon-icons-svelte'
-  import AppSearchResults from './header/AppSearchResults.svelte'
+  import AppSearchResults from './header/AppSearch.svelte'
 
   export let isSideNavOpen = true
   export let searchOpen = false
@@ -22,7 +21,11 @@
     <AppIcon class="header-logo" />
   </div>
   <HeaderUtilities>
-    <Button icon={Search} on:click={() => (searchOpen = true)} />
+    <HeaderGlobalAction
+      icon={Search}
+      label="Search"
+      on:click={() => (searchOpen = true)}
+    />
     <AppLinks />
   </HeaderUtilities>
 </Header>
