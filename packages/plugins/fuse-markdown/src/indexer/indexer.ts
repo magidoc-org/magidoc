@@ -20,9 +20,9 @@ export function defaultFuseOptions<T>(): Fuse.IFuseOptions<T> {
     ],
     includeScore: true,
     includeMatches: true,
-    threshold: 0.2,
+    threshold: 0.1,
     minMatchCharLength: 3,
-    distance: 1000,
+    ignoreLocation: true,
   }
 }
 

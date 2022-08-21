@@ -7,14 +7,14 @@ export function defaultExtractors(): Record<
 > {
   return {
     blockquote: baseExtractor,
-    codespan: (token) => (token as marked.Tokens.Codespan).text,
+    codespan: baseExtractor,
     del: baseExtractor,
     em: baseExtractor,
     heading: baseExtractor,
     br: () => '\n',
     paragraph: baseExtractor,
     strong: baseExtractor,
-    text: (token) => (token as marked.Tokens.Text).text,
+    text: baseExtractor,
     link: baseExtractor,
     list: (token, extract) => {
       return (token as marked.Tokens.List).items.reduce(
@@ -55,6 +55,14 @@ export function defaultExtractors(): Record<
 function baseExtractor(token: marked.Tokens.Generic, extract: ExtractFunction) {
   if (token.tokens) {
     return extract(token.tokens)
+  }
+
+  if (token.type === 'text') {
+    return (token as marked.Tokens.Text).text
+  }
+
+  if (token.type === 'codespan') {
+    return (token as marked.Tokens.Codespan).text
   }
 
   throw new Error(`Could not extract text for ${token.type}`)

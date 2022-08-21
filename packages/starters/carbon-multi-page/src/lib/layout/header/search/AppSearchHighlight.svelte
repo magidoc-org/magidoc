@@ -43,8 +43,6 @@
   }
 </script>
 
-{JSON.stringify(indexes)}
-{JSON.stringify(croppedIndexes)}
 {#if cropMinIndex > 0}...{/if}
 {@html croppedHtml}
 {#if cropMaxIndex < text.length}...{/if}

@@ -6,6 +6,8 @@ import type { NotificationToken } from './components/markdown/containers/notific
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
 import { setupMarkedExtensions } from './markdown'
 
+setupMarkedExtensions()
+
 export type MarkdownData = {
   type: 'markdown'
   url: string
@@ -18,8 +20,6 @@ export type MagidocSearchResult = {
   result: SearchResult<MarkdownData>
   indexes: ReadonlyArray<ResultRange>
 }
-
-setupMarkedExtensions()
 
 const pagesSearch: Fuse<SearchResult<MarkdownData>> = index(
   flatPages(pages).map((page) => ({
@@ -47,8 +47,33 @@ const pagesSearch: Fuse<SearchResult<MarkdownData>> = index(
 export function search(query: string): ReadonlyArray<MagidocSearchResult> {
   return pagesSearch.search(query).map((result) => ({
     result: result.item,
-    indexes: result.matches?.flatMap((match) => match.indices) || [],
+    indexes: collapseIndexes(
+      result.matches?.flatMap((match) => match.indices) || [],
+    ),
   }))
+}
+
+function collapseIndexes(
+  indexes: ReadonlyArray<ResultRange>,
+): ReadonlyArray<ResultRange> {
+  const result: ResultRange[] = []
+  let current: ResultRange = [0, 0]
+  const openings = new Set(indexes.map(([start]) => start))
+  const closings = new Set(indexes.map(([, end]) => end))
+  const min = Math.min(...indexes.map(([start]) => start))
+  const max = Math.max(...indexes.map(([, end]) => end))
+  let open = false
+  for (let i = min; i <= max; i++) {
+    if (openings.has(i) && !open) {
+      open = true
+      current = [i, 0]
+    } else if (closings.has(i) && open) {
+      open = false
+      current[1] = i
+      result.push(current)
+    }
+  }
+  return result
 }
 
 function flatPages(pages: ReadonlyArray<WebsiteContent>): WebsitePage[] {

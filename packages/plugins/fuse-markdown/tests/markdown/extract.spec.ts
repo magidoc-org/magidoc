@@ -308,6 +308,24 @@ describe('extracting markdown into sections', () => {
         },
       ])
     })
+
+    it('should return the text with inner markdown', () => {
+      expect(
+        extract(
+          unindent(`
+                - [Item 1](http://example.com)
+                - **Item 2**
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: '\nItem 1\nItem 2',
+          headers: [],
+        },
+      ])
+    })
   })
 
   describe('using a table', () => {
@@ -319,6 +337,26 @@ describe('extracting markdown into sections', () => {
                 | -------- | -------- |
                 | Item 1   | Item 2   |
                 | Item 3   | Item 4   |
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: '\nItem 1 Item 2\nItem 3 Item 4',
+          headers: [],
+        },
+      ])
+    })
+
+    it('should return only the content of the rows even with inner markdown', () => {
+      expect(
+        extract(
+          unindent(`
+                | Header 1                       | Header 2     |
+                | ------------------------------ | ------------ |
+                | [Item 1](https://google.com)   | Item 2       |
+                | Item 3                         | **Item 4**   |
             `),
           options,
         ),
