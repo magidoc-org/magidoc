@@ -1,5 +1,4 @@
 import type { marked } from 'marked'
-import { getLexer } from './lexer'
 
 /**
  * A markdown header
@@ -66,13 +65,8 @@ export type TextExtractors = Record<
 >
 
 export type Options = {
-  /**
-   * The marked slugger to be used for extracting header IDs.
-   */
   slugger: marked.Slugger
-  /**
-   * The extractors responsible to convert a token into text. This must aggregate all the content inside it, like code blocks,
-   */
+  lexer: marked.Lexer
   extractors: TextExtractors
 }
 
@@ -80,8 +74,7 @@ export function extract(
   source: string,
   options: Options,
 ): IndexableMarkdownPart[] {
-  const lexer = getLexer()
-  return extractTokens(lexer.lex(source), options)
+  return extractTokens(options.lexer.lex(source), options)
 }
 
 export function extractTokens(
