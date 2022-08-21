@@ -4,6 +4,7 @@ import type { marked } from 'marked'
  * A markdown header
  */
 export type MarkdownHeader = {
+  id: string
   depth: number
   text: string
 }
@@ -34,10 +35,6 @@ export type IndexableMarkdownSection = {
  */
 export type IndexableMarkdownHeader = {
   type: IndexableMarkdownType.HEADER
-  /**
-   * The unique ID that would be used for this header if it was assigned one by marked.
-   */
-  id: string
   /**
    * The path that leads to this header.
    */
@@ -91,7 +88,12 @@ export function extractTokens(
 
   tokens.forEach((token) => {
     if (token.type === 'heading') {
-      const header: MarkdownHeader = { depth: token.depth, text: token.text }
+      const id = options.slugger.slug(token.text)
+      const header: MarkdownHeader = {
+        id: id,
+        depth: token.depth,
+        text: token.text,
+      }
       const newCurrentSection: IndexableMarkdownSection = {
         type: IndexableMarkdownType.SECTION,
         content: '',
@@ -121,7 +123,6 @@ export function extractTokens(
       }
 
       parts.push({
-        id: options.slugger.slug(token.text),
         type: IndexableMarkdownType.HEADER,
         path: newCurrentSection.headers,
         title: token.text,

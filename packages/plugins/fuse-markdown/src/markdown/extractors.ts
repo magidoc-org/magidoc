@@ -53,16 +53,16 @@ export function defaultExtractors(): Record<
 }
 
 function baseExtractor(token: marked.Tokens.Generic, extract: ExtractFunction) {
+  if (token.tokens) {
+    return extract(token.tokens)
+  }
+
   if (token.type === 'text') {
     return (token as marked.Tokens.Text).text
   }
 
   if (token.type === 'codespan') {
     return (token as marked.Tokens.Codespan).text
-  }
-
-  if (token.tokens) {
-    return extract(token.tokens)
   }
 
   throw new Error(`Could not extract text for ${token.type}`)

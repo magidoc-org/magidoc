@@ -91,70 +91,6 @@ importers:
       vite: 3.0.8
       vitest: 0.22.1
 
-  packages/cli/template:
-    specifiers:
-      '@magidoc/plugin-query-generator': 2.9.0
-      '@magidoc/plugin-reverse-schema-mapper': 2.9.0
-      '@magidoc/plugin-starter-variables': 2.9.0
-      '@magidoc/plugin-svelte-marked': 2.9.0
-      '@magidoc/plugin-svelte-prismjs': 2.9.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': 2.9.0
-      '@sveltejs/adapter-static': 1.0.0-next.39
-      '@sveltejs/kit': 1.0.0-next.423
-      '@types/lodash': 4.14.183
-      '@types/marked': 4.0.5
-      '@types/prismjs': 1.26.0
-      '@typescript-eslint/eslint-plugin': 5.33.1
-      '@typescript-eslint/parser': 5.33.1
-      carbon-components-svelte: 0.70.0
-      carbon-icons-svelte: 11.2.0
-      carbon-preprocess-svelte: 0.9.1
-      eslint: 8.22.0
-      eslint-plugin-svelte3: 4.0.0
-      graphql: 16.6.0
-      lodash: 4.17.21
-      marked: 4.0.18
-      prism-svelte: 0.5.0
-      prismjs: 1.28.0
-      svelte: 3.49.0
-      svelte-check: 2.8.1
-      svelte-markdown: 0.2.3
-      svelte-preprocess: 4.10.7
-      tslib: 2.4.0
-      typescript: 4.7.4
-      vite: 3.0.8
-    devDependencies:
-      '@magidoc/plugin-query-generator': link:../../plugins/query-generator
-      '@magidoc/plugin-reverse-schema-mapper': link:../../plugins/reverse-schema-mapper
-      '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
-      '@magidoc/plugin-svelte-marked': link:../../plugins/svelte-marked/package
-      '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
-      '@magidoc/rollup-plugin-fetch-gql-schema': link:../../plugins/rollup-fetch-gql-schema
-      '@sveltejs/adapter-static': 1.0.0-next.39
-      '@sveltejs/kit': 1.0.0-next.423_svelte@3.49.0+vite@3.0.8
-      '@types/lodash': 4.14.183
-      '@types/marked': 4.0.5
-      '@types/prismjs': 1.26.0
-      '@typescript-eslint/eslint-plugin': 5.33.1_vsoshirnpb7xw6mr7xomgfas2i
-      '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
-      carbon-components-svelte: 0.70.0
-      carbon-icons-svelte: 11.2.0
-      carbon-preprocess-svelte: 0.9.1_svelte@3.49.0
-      eslint: 8.22.0
-      eslint-plugin-svelte3: 4.0.0_laaqauvsmoyypsiqkozwyi2fn4
-      graphql: 16.6.0
-      lodash: 4.17.21
-      marked: 4.0.18
-      prism-svelte: 0.5.0
-      prismjs: 1.28.0
-      svelte: 3.49.0
-      svelte-check: 2.8.1_svelte@3.49.0
-      svelte-markdown: 0.2.3_svelte@3.49.0
-      svelte-preprocess: 4.10.7_uslzfc62di2n2otc2tvfklnwji
-      tslib: 2.4.0
-      typescript: 4.7.4
-      vite: 3.0.8
-
   packages/plugins/fuse-markdown:
     specifiers:
       '@types/marked': ^4.0.3
@@ -425,6 +361,7 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
+      '@magidoc/fuse-markdown': workspace:^2.9.0
       '@magidoc/plugin-query-generator': workspace:^2.9.0
       '@magidoc/plugin-reverse-schema-mapper': workspace:^2.9.0
       '@magidoc/plugin-starter-variables': workspace:^2.9.0
@@ -443,6 +380,7 @@ importers:
       carbon-preprocess-svelte: ^0.9.1
       eslint: ^8.22.0
       eslint-plugin-svelte3: ^4.0.0
+      fuse.js: ^6.6.2
       graphql: ^16.6.0
       lodash: ^4.17.21
       marked: ^4.0.18
@@ -456,6 +394,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.0.8
     devDependencies:
+      '@magidoc/fuse-markdown': link:../../plugins/fuse-markdown
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/plugin-reverse-schema-mapper': link:../../plugins/reverse-schema-mapper
       '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
@@ -474,6 +413,7 @@ importers:
       carbon-preprocess-svelte: 0.9.1_svelte@3.49.0
       eslint: 8.22.0
       eslint-plugin-svelte3: 4.0.0_laaqauvsmoyypsiqkozwyi2fn4
+      fuse.js: 6.6.2
       graphql: 16.6.0
       lodash: 4.17.21
       marked: 4.0.18
@@ -2704,7 +2644,6 @@ packages:
   /fuse.js/6.6.2:
     resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
     engines: {node: '>=10'}
-    dev: false
 
   /gauge/3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}

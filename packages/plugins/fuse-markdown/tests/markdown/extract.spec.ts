@@ -34,9 +34,8 @@ describe('extracting markdown into sections', () => {
       it('should extract the header', () => {
         expect(extract('# Header', options)).toEqual([
           {
-            id: 'header',
             type: IndexableMarkdownType.HEADER,
-            path: [{ depth: 1, text: 'Header' }],
+            path: [{ id: 'header', depth: 1, text: 'Header' }],
             title: 'Header',
           },
         ])
@@ -59,57 +58,51 @@ describe('extracting markdown into sections', () => {
           ),
         ).toEqual([
           {
-            id: 'header-1',
             type: 'header',
-            path: [{ depth: 1, text: 'Header 1' }],
+            path: [{ id: 'header-1', depth: 1, text: 'Header 1' }],
             title: 'Header 1',
           },
           {
-            id: 'header-2',
             type: 'header',
             path: [
-              { depth: 1, text: 'Header 1' },
-              { depth: 2, text: 'Header 2' },
+              { id: 'header-1', depth: 1, text: 'Header 1' },
+              { id: 'header-2', depth: 2, text: 'Header 2' },
             ],
             title: 'Header 2',
           },
           {
-            id: 'header-3',
             type: 'header',
             path: [
-              { depth: 1, text: 'Header 1' },
-              { depth: 2, text: 'Header 2' },
-              { depth: 3, text: 'Header 3' },
+              { id: 'header-1', depth: 1, text: 'Header 1' },
+              { id: 'header-2', depth: 2, text: 'Header 2' },
+              { id: 'header-3', depth: 3, text: 'Header 3' },
             ],
             title: 'Header 3',
           },
           {
-            id: 'header-4',
             type: 'header',
             path: [
-              { depth: 1, text: 'Header 1' },
-              { depth: 2, text: 'Header 2' },
-              { depth: 3, text: 'Header 3' },
-              { depth: 4, text: 'Header 4' },
+              { id: 'header-1', depth: 1, text: 'Header 1' },
+              { id: 'header-2', depth: 2, text: 'Header 2' },
+              { id: 'header-3', depth: 3, text: 'Header 3' },
+              { id: 'header-4', depth: 4, text: 'Header 4' },
             ],
             title: 'Header 4',
           },
           {
-            id: 'header-2-1',
             type: 'header',
             path: [
-              { depth: 1, text: 'Header 1' },
-              { depth: 2, text: 'Header 2' },
+              { id: 'header-1', depth: 1, text: 'Header 1' },
+              { id: 'header-2-1', depth: 2, text: 'Header 2' },
             ],
             title: 'Header 2',
           },
           {
-            id: 'header-3-again',
             type: 'header',
             path: [
-              { depth: 1, text: 'Header 1' },
-              { depth: 2, text: 'Header 2' },
-              { depth: 3, text: 'Header 3 again' },
+              { id: 'header-1', depth: 1, text: 'Header 1' },
+              { id: 'header-2-1', depth: 2, text: 'Header 2' },
+              { id: 'header-3-again', depth: 3, text: 'Header 3 again' },
             ],
             title: 'Header 3 again',
           },
@@ -131,15 +124,14 @@ describe('extracting markdown into sections', () => {
           ),
         ).toEqual([
           {
-            id: 'header',
             type: IndexableMarkdownType.HEADER,
-            path: [{ depth: 1, text: 'Header' }],
+            path: [{ id: 'header', depth: 1, text: 'Header' }],
             title: 'Header',
           },
           {
             type: IndexableMarkdownType.SECTION,
             content: 'Text',
-            headers: [{ depth: 1, text: 'Header' }],
+            headers: [{ id: 'header', depth: 1, text: 'Header' }],
           },
         ])
       })
@@ -316,6 +308,24 @@ describe('extracting markdown into sections', () => {
         },
       ])
     })
+
+    it('should return the text with inner markdown', () => {
+      expect(
+        extract(
+          unindent(`
+                - [Item 1](http://example.com)
+                - **Item 2**
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: '\nItem 1\nItem 2',
+          headers: [],
+        },
+      ])
+    })
   })
 
   describe('using a table', () => {
@@ -327,6 +337,26 @@ describe('extracting markdown into sections', () => {
                 | -------- | -------- |
                 | Item 1   | Item 2   |
                 | Item 3   | Item 4   |
+            `),
+          options,
+        ),
+      ).toEqual([
+        {
+          type: IndexableMarkdownType.SECTION,
+          content: '\nItem 1 Item 2\nItem 3 Item 4',
+          headers: [],
+        },
+      ])
+    })
+
+    it('should return only the content of the rows even with inner markdown', () => {
+      expect(
+        extract(
+          unindent(`
+                | Header 1                       | Header 2     |
+                | ------------------------------ | ------------ |
+                | [Item 1](https://google.com)   | Item 2       |
+                | Item 3                         | **Item 4**   |
             `),
           options,
         ),

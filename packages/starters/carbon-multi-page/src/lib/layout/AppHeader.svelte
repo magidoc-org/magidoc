@@ -1,12 +1,19 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css'
 
-  import { Header, HeaderUtilities } from 'carbon-components-svelte'
+  import {
+    Header,
+    HeaderGlobalAction,
+    HeaderUtilities,
+  } from 'carbon-components-svelte'
   import AppIcon from '$lib/components/common/AppIcon.svelte'
   import { base } from '$app/paths'
   import AppLinks from './header/AppLinks.svelte'
+  import { Search } from 'carbon-icons-svelte'
+  import AppSearchResults from './header/AppSearch.svelte'
 
   export let isSideNavOpen = true
+  export let searchOpen = false
 </script>
 
 <Header href={base || '/'} bind:isSideNavOpen expandedByDefault>
@@ -14,9 +21,16 @@
     <AppIcon class="header-logo" />
   </div>
   <HeaderUtilities>
+    <HeaderGlobalAction
+      icon={Search}
+      label="Search"
+      on:click={() => (searchOpen = true)}
+    />
     <AppLinks />
   </HeaderUtilities>
 </Header>
+
+<AppSearchResults bind:open={searchOpen} />
 
 <style>
   .header-logo-wrapper {

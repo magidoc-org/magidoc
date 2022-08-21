@@ -19,6 +19,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
+    "@magidoc/fuse-markdown": "workspace:^2.9.0",
     "@magidoc/plugin-query-generator": "workspace:^2.9.0",
     "@magidoc/plugin-reverse-schema-mapper": "workspace:^2.9.0",
     "@magidoc/plugin-starter-variables": "workspace:^2.9.0",
@@ -37,6 +38,7 @@
     "carbon-preprocess-svelte": "^0.9.1",
     "eslint": "^8.22.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "fuse.js": "^6.6.2",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "marked": "^4.0.18",
