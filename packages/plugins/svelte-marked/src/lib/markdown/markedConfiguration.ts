@@ -37,17 +37,6 @@ export type MarkdownOptions = {
   slugger: Slugger
 }
 
-marked.use({
-  gfm: true,
-  headerIds: true,
-  mangle: false,
-  breaks: false,
-  sanitize: false,
-  silent: false,
-  smartLists: true,
-  smartypants: false,
-})
-
 export function parse(src: string): marked.TokensList {
   const lexer = new marked.Lexer()
   return lexer.lex(src)

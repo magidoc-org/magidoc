@@ -2,9 +2,9 @@ import { index, type SearchResult } from '@magidoc/fuse-markdown'
 import type Fuse from 'fuse.js'
 import { pages } from './pages'
 import type { WebsitePage, WebsiteContent } from 'src/app'
-import { setupMarkedExtensions } from './components/markdown/setupMarked'
 import type { NotificationToken } from './components/markdown/containers/notification/Notification'
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
+import { setupMarkedExtensions } from './markdown'
 
 export type MarkdownData = {
   type: 'markdown'
@@ -47,7 +47,7 @@ const pagesSearch: Fuse<SearchResult<MarkdownData>> = index(
 export function search(query: string): ReadonlyArray<MagidocSearchResult> {
   return pagesSearch.search(query).map((result) => ({
     result: result.item,
-    indexes: (result.matches || [])[0]?.indices,
+    indexes: result.matches?.flatMap((match) => match.indices) || [],
   }))
 }
 

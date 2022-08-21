@@ -7,14 +7,14 @@ export function defaultExtractors(): Record<
 > {
   return {
     blockquote: baseExtractor,
-    codespan: baseExtractor,
+    codespan: (token) => (token as marked.Tokens.Codespan).text,
     del: baseExtractor,
     em: baseExtractor,
     heading: baseExtractor,
     br: () => '\n',
     paragraph: baseExtractor,
     strong: baseExtractor,
-    text: baseExtractor,
+    text: (token) => (token as marked.Tokens.Text).text,
     link: baseExtractor,
     list: (token, extract) => {
       return (token as marked.Tokens.List).items.reduce(
@@ -53,14 +53,6 @@ export function defaultExtractors(): Record<
 }
 
 function baseExtractor(token: marked.Tokens.Generic, extract: ExtractFunction) {
-  if (token.type === 'text') {
-    return (token as marked.Tokens.Text).text
-  }
-
-  if (token.type === 'codespan') {
-    return (token as marked.Tokens.Codespan).text
-  }
-
   if (token.tokens) {
     return extract(token.tokens)
   }

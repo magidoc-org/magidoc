@@ -20,18 +20,31 @@
     ])
   }
   $: {
-    croppedHtml = croppedIndexes.reduceRight((acc, [start, end]) => {
-      return (
-        acc.substring(0, start) +
-        '<mark>' +
-        acc.substring(start, end + 1) +
-        '</mark>' +
-        acc.substring(end + 1)
-      )
-    }, croppedText)
+    const openings = new Set(croppedIndexes.map(([start]) => start))
+    const closings = new Set(croppedIndexes.map(([, end]) => end))
+
+    croppedHtml = ''
+    let open = false
+
+    for (let i = 0; i < croppedText.length; i++) {
+      const char = croppedText[i]
+      if (openings.has(i) && !open) {
+        open = true
+        croppedHtml += '<mark>'
+        croppedHtml += char
+      } else if (closings.has(i) && open) {
+        open = false
+        croppedHtml += char
+        croppedHtml += '</mark>'
+      } else {
+        croppedHtml += char
+      }
+    }
   }
 </script>
 
+{JSON.stringify(indexes)}
+{JSON.stringify(croppedIndexes)}
 {#if cropMinIndex > 0}...{/if}
 {@html croppedHtml}
 {#if cropMaxIndex < text.length}...{/if}

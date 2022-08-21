@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { setupMarkedExtensions } from '$lib/markdown'
   import '../app.css'
   import '../prism-theme.css'
   import '@magidoc/plugin-svelte-prismjs'
@@ -25,6 +26,8 @@
   import { onDestroy } from 'svelte'
   import { siteMeta } from '$lib/meta'
   import { pages } from '$lib/pages'
+
+  setupMarkedExtensions()
 
   let isSideNavOpen = false
   let innerWidth = 2048
