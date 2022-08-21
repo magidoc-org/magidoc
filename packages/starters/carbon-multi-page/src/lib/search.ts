@@ -22,14 +22,16 @@ export type MagidocSearchResult = {
 }
 
 const pagesSearch: Fuse<SearchResult<MarkdownData>> = index(
-  flatPages(pages).map((page) => ({
-    data: {
-      type: 'markdown',
-      url: page.href,
-      section: page.section,
-    },
-    content: page.content,
-  })),
+  flatPages(pages)
+    .map((page) => ({
+      data: {
+        type: 'markdown' as const,
+        url: page.href,
+        section: page.section,
+      },
+      content: page.content || '',
+    }))
+    .filter((page) => !!page.content.trim()),
   {
     markdown: {
       extractors: {

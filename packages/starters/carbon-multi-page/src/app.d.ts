@@ -7,8 +7,9 @@ export type WebsitePage = {
   type: 'page'
   title: string
   section?: string
+  deprecated?: boolean
   href: string
-  content: string
+  content?: string
   previous?: WebsitePreviousOrNextPage
   next?: WebsitePreviousOrNextPage
 }
