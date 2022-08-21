@@ -7,6 +7,8 @@ import {
 import { defaultExtractors } from '../../src/markdown/extractors'
 import { describe } from 'vitest'
 import { Slugger } from 'marked'
+import { unindent } from '../utils'
+import { defaultLexer } from '../../src/markdown/marked'
 
 describe('extracting markdown into sections', () => {
   let options: Options
@@ -14,6 +16,7 @@ describe('extracting markdown into sections', () => {
   beforeEach(() => {
     options = {
       slugger: new Slugger(),
+      lexer: defaultLexer(),
       extractors: {
         ...defaultExtractors(),
       },
@@ -337,7 +340,3 @@ describe('extracting markdown into sections', () => {
     })
   })
 })
-
-export function unindent(target: string): string {
-  return target.replace(/^\s+/gm, '')
-}

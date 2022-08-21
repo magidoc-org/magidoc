@@ -5,11 +5,11 @@
  */
 export type MarkdownDocument<T> = {
   /**
-   * A unique identifier for the document. This ID will be included in every search result for this markdown document.
-   */
-  id: string
-  /**
    * Arbitrary data of your choice that will be included in every search result for this markdown document.
+   *
+   * Use this to help you identify what content was found in the search result, like a page URL or ID, etc.
+   *
+   * This data will not be indexed in any way by default.
    */
   data: T
   /**

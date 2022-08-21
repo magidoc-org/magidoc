@@ -1,4 +1,4 @@
-import type Fuse from 'fuse.js'
+import Fuse from 'fuse.js'
 import type { Lexer, Slugger } from 'marked'
 import { extract, TextExtractors } from '../markdown/extract'
 import { defaultExtractors } from '../markdown/extractors'
@@ -6,11 +6,32 @@ import { defaultLexer, defaultSlugger } from '../markdown/marked'
 import type { MarkdownDocument } from './document'
 import type { SearchResult } from './result'
 
+export function defaultFuseOptions<T>(): Fuse.IFuseOptions<T> {
+  return {
+    keys: [
+      {
+        name: 'part.title',
+        weight: 2,
+      },
+      {
+        name: 'part.content',
+        weight: 1,
+      },
+    ],
+    includeScore: true,
+    includeMatches: true,
+    threshold: 0.3,
+    minMatchCharLength: 2,
+  }
+}
+
 export type IndexingOptions<T> = {
   /**
    * The fuse index to which the indexed markdown document parts will be added.
+   *
+   * You can use the `defaultFuseOptions` function to get a default options object.
    */
-  fuse: Fuse.FuseIndex<SearchResult<T>>
+  fuse?: Fuse<SearchResult<T>>
   /**
    * The markdown options that are used to extract the markdown parts.
    */
@@ -36,35 +57,38 @@ export type MarkdownOptions = {
 
 export function index<T>(
   documents: MarkdownDocument<T>[],
-  options: IndexingOptions<T>,
-) {
+  options?: IndexingOptions<T>,
+): Fuse<SearchResult<T>> {
+  const fuse =
+    options?.fuse ?? new Fuse<SearchResult<T>>([], defaultFuseOptions())
+
   documents.forEach((document) => {
-    indexDocument(document, options)
+    indexDocument(document, fuse, options?.markdown)
   })
+
+  return fuse
 }
 
 function indexDocument<T>(
   document: MarkdownDocument<T>,
-  options: IndexingOptions<T>,
+  fuse: Fuse<SearchResult<T>>,
+  options?: Partial<MarkdownOptions>,
 ) {
-  const sluggerFactory = options.markdown?.sluggerFactory ?? defaultSlugger
-  const lexerFactory = options.markdown?.lexerFactory ?? defaultLexer
+  const sluggerFactory = options?.sluggerFactory ?? defaultSlugger
+  const lexerFactory = options?.lexerFactory ?? defaultLexer
 
-  const fuse = options.fuse
   const parts = extract(document.content, {
     slugger: sluggerFactory(),
     lexer: lexerFactory(),
     extractors: {
       ...defaultExtractors(),
-      ...options.markdown?.extractors,
+      ...options?.extractors,
     },
   })
 
   parts.forEach((part) => {
     fuse.add({
-      id: document.id,
       data: document.data,
-      type: 'markdown',
       part: part,
     })
   })

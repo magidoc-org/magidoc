@@ -41,5 +41,8 @@
     "typescript": "^4.7.4",
     "vite": "^3.0.5",
     "vitest": "^0.21.1"
+  },
+  "peerDependencies": {
+    "fuse.js": "^6.6.2"
   }
 }
