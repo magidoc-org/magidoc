@@ -11,7 +11,7 @@ export function defaultFuseOptions<T>(): Fuse.IFuseOptions<T> {
     keys: [
       {
         name: 'part.title',
-        weight: 2,
+        weight: 1.5,
       },
       {
         name: 'part.content',
@@ -21,7 +21,8 @@ export function defaultFuseOptions<T>(): Fuse.IFuseOptions<T> {
     includeScore: true,
     includeMatches: true,
     threshold: 0.3,
-    minMatchCharLength: 2,
+    minMatchCharLength: 3,
+    distance: 500,
   }
 }
 
