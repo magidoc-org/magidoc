@@ -33,8 +33,7 @@ describe('indexing a markdown source', () => {
       expect(firstResult.item).toEqual({
         data: data,
         part: {
-          id: 'first-page',
-          path: [{ depth: 1, text: 'First Page' }],
+          path: [{ id: 'first-page', depth: 1, text: 'First Page' }],
           title: 'First Page',
           type: 'header',
         },
@@ -92,6 +91,7 @@ describe('indexing a markdown source', () => {
             'This is a sample page that contains some very important text. It is meant to be used as a test page in a unit test, making sure that the indexer is working properly. ',
           headers: [
             {
+              id: 'first-page',
               depth: 1,
               text: 'First page',
             },
@@ -111,13 +111,14 @@ describe('indexing a markdown source', () => {
         part: {
           type: 'header',
           title: 'Remaining features',
-          id: 'remaining-features',
           path: [
             {
+              id: 'second-page',
               depth: 1,
               text: 'Second page',
             },
             {
+              id: 'remaining-features',
               depth: 2,
               text: 'Remaining features',
             },

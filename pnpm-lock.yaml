@@ -425,6 +425,7 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
+      '@magidoc/fuse-markdown': workspace:^2.9.0
       '@magidoc/plugin-query-generator': workspace:^2.9.0
       '@magidoc/plugin-reverse-schema-mapper': workspace:^2.9.0
       '@magidoc/plugin-starter-variables': workspace:^2.9.0
@@ -443,6 +444,7 @@ importers:
       carbon-preprocess-svelte: ^0.9.1
       eslint: ^8.22.0
       eslint-plugin-svelte3: ^4.0.0
+      fuse.js: ^6.6.2
       graphql: ^16.6.0
       lodash: ^4.17.21
       marked: ^4.0.18
@@ -456,6 +458,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.0.8
     devDependencies:
+      '@magidoc/fuse-markdown': link:../../plugins/fuse-markdown
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/plugin-reverse-schema-mapper': link:../../plugins/reverse-schema-mapper
       '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
@@ -474,6 +477,7 @@ importers:
       carbon-preprocess-svelte: 0.9.1_svelte@3.49.0
       eslint: 8.22.0
       eslint-plugin-svelte3: 4.0.0_laaqauvsmoyypsiqkozwyi2fn4
+      fuse.js: 6.6.2
       graphql: 16.6.0
       lodash: 4.17.21
       marked: 4.0.18
@@ -2704,7 +2708,6 @@ packages:
   /fuse.js/6.6.2:
     resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
     engines: {node: '>=10'}
-    dev: false
 
   /gauge/3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
