@@ -102,7 +102,8 @@ describe('indexing a markdown source', () => {
 
     it('should index headers properly', () => {
       const result = fuse.search('Remaining features')
-      console.log(result.length)
+      expect(result.length).toBeGreaterThanOrEqual(1)
+      expect(result.length).toBeLessThanOrEqual(4)
       expect(result.map((it) => it.item)).toContainEqual({
         data: {
           name: 'second',
@@ -129,6 +130,26 @@ describe('indexing a markdown source', () => {
       const result = fuse.search('feature')
       expect(result.length).toBeGreaterThan(1) // At least 2
       expect(result.length).toBeLessThanOrEqual(4) // At most 4
+    })
+
+    it('should not index images', () => {
+      const result = fuse.search('This image right here')
+      expect(result).toHaveLength(0)
+    })
+
+    it('should not index images', () => {
+      const result = fuse.search('This image right here')
+      expect(result).toHaveLength(0)
+    })
+
+    it('should not index code blocks', () => {
+      const result = fuse.search('This code should not be indexed at all')
+      expect(result).toHaveLength(0)
+    })
+
+    it('should not index html', () => {
+      const result = fuse.search('it is not possible to index HTML')
+      expect(result).toHaveLength(0)
     })
   })
 })
