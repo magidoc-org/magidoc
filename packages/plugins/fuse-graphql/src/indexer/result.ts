@@ -14,12 +14,7 @@ export enum GraphQLType {
   INPUT_OBJECT = 'input_object',
 }
 
-type SearchResultBase<T> = {
-  /**
-   * Arbitrary data of your choice that will be included in every search result for this markdown document.
-   */
-  data: T
-
+type SearchResultBase = {
   /**
    * Either the name of the query, mutation, subscription or the type.
    */
@@ -31,11 +26,11 @@ type SearchResultBase<T> = {
   description?: string
 }
 
-export type TypeSearchResult<T> = SearchResultBase<T> & {
+export type TypeSearchResult = SearchResultBase & {
   type: SearchResultType.TYPE
 }
 
-export type EnumSearchResult<T> = TypeSearchResult<T> & {
+export type EnumSearchResult = TypeSearchResult & {
   /**
    * The GraphQL type of this result.
    */
@@ -59,14 +54,14 @@ export type EnumValue = {
   description?: string
 }
 
-export type ScalarSearchResult<T> = TypeSearchResult<T> & {
+export type ScalarSearchResult = TypeSearchResult & {
   /**
    * The GraphQL type of this result.
    */
   graphqlType: GraphQLType.SCALAR
 }
 
-export type InterfaceSearchResult<T> = TypeSearchResult<T> & {
+export type InterfaceSearchResult = TypeSearchResult & {
   graphqlType: GraphQLType.INTERFACE
 
   /**
@@ -75,16 +70,19 @@ export type InterfaceSearchResult<T> = TypeSearchResult<T> & {
   fields: ReadonlyArray<FieldSearchResult>
 }
 
-export type UnionSearchResult<T> = TypeSearchResult<T> & {
+export type UnionSearchResult = TypeSearchResult & {
   graphqlType: GraphQLType.UNION
 }
 
-export type ObjectSearchResult<T> = TypeSearchResult<T> &
-  InterfaceSearchResult<T> & {
-    graphqlType: GraphQLType.OBJECT
-  }
+export type ObjectSearchResult = TypeSearchResult & {
+  graphqlType: GraphQLType.OBJECT
+  /**
+   * The fields of this type.
+   */
+  fields: ReadonlyArray<FieldSearchResult>
+}
 
-export type InputObjectType<T> = TypeSearchResult<T> & {
+export type InputObjectSearchResult = TypeSearchResult & {
   graphqlType: GraphQLType.INPUT_OBJECT
 
   /**
@@ -93,7 +91,7 @@ export type InputObjectType<T> = TypeSearchResult<T> & {
   fields: ReadonlyArray<InputObjectFieldSearchResult>
 }
 
-export type QuerySearchResult<T> = SearchResultBase<T> & {
+export type QuerySearchResult = SearchResultBase & {
   type:
     | SearchResultType.QUERY
     | SearchResultType.MUTATION
@@ -142,4 +140,4 @@ export type InputObjectFieldSearchResult = {
   description?: string
 }
 
-export type SearchResult<T> = QuerySearchResult<T> | TypeSearchResult<T>
+export type SearchResult = QuerySearchResult | TypeSearchResult

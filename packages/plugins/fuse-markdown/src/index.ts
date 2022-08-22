@@ -8,4 +8,8 @@ export type {
   TextExtractor,
   TextExtractors,
 } from './markdown/extract'
-export { index, defaultFuseOptions } from './indexer/indexer'
+export {
+  index,
+  defaultFuseOptions,
+  mergeMarkdownOptions,
+} from './indexer/indexer'
