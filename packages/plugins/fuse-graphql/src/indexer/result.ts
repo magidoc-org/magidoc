@@ -141,3 +141,5 @@ export type InputObjectFieldSearchResult = {
    */
   description?: string
 }
+
+export type SearchResult<T> = QuerySearchResult<T> | TypeSearchResult<T>
