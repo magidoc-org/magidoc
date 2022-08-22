@@ -7,7 +7,9 @@
 </script>
 
 <svelte:head>
-  <title>{data.page.title}</title>
+  <title>
+    {data.page.section ? `${data.page.section} - ` : ''}{data.page.title}
+  </title>
 </svelte:head>
 
 <CarbonMarkdown source={data.page.content} />
