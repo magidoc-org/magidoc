@@ -53,9 +53,9 @@ const config = {
       ],
       siteMeta: {
         description:
-          'Fast and highly customizable GraphQL documentation generator',
+          'Fully featured, fast and highly customizable GraphQL static documentation website generator.',
         'og:description':
-          'Fast and highly customizable GraphQL documentation generator',
+          'Fully featured, fast and highly customizable GraphQL static documentation website generator.',
         keywords:
           'svelte,sveltekit,svelte-kit,prismjs,markedjs,marked,graphql,documentation,docs,static,javascript,nodejs',
         author: 'Magidoc-org',
