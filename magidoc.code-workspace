@@ -43,6 +43,10 @@
       "path": "./packages/plugins/fuse-markdown"
     },
     {
+      "name": "Plugins/Fuse GraphQL",
+      "path": "./packages/plugins/fuse-graphql"
+    },
+    {
       "name": "Plugins/Rollup Fetch GraphQL Schema",
       "path": "./packages/plugins/rollup-fetch-gql-schema"
     },

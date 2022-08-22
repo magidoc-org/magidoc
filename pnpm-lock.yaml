@@ -91,6 +91,35 @@ importers:
       vite: 3.0.9
       vitest: 0.22.1
 
+  packages/plugins/fuse-graphql:
+    specifiers:
+      '@magidoc/fuse-markdown': workspace:^2.9.0
+      '@types/marked': ^4.0.6
+      '@types/node': ^18.7.9
+      '@types/prettier': ^2.7.0
+      c8: ^7.12.0
+      fuse.js: ^6.6.2
+      graphql: ^16.6.0
+      marked: ^4.0.19
+      rollup: ^2.78.1
+      typescript: ^4.7.4
+      vite: ^3.0.9
+      vitest: ^0.22.1
+    dependencies:
+      '@magidoc/fuse-markdown': link:../fuse-markdown
+      fuse.js: 6.6.2
+      graphql: 16.6.0
+      marked: 4.0.19
+    devDependencies:
+      '@types/marked': 4.0.6
+      '@types/node': 18.7.9
+      '@types/prettier': 2.7.0
+      c8: 7.12.0
+      rollup: 2.78.1
+      typescript: 4.7.4
+      vite: 3.0.9
+      vitest: 0.22.1
+
   packages/plugins/fuse-markdown:
     specifiers:
       '@types/marked': ^4.0.6

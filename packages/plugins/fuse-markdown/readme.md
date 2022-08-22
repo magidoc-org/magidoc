@@ -6,4 +6,4 @@ This plugin is designed to index Markdown into a [FuseJS](https://github.com/kri
 
 ## Documentation
 
-For more details on how to use this plugin, see the [documentation](https://magidoc-org.github.io/magidoc/plugins/fuse-markdown).
+For more details on how to use this plugin, see the [documentation](https://magidoc.js.org/plugins/fuse-markdown).
