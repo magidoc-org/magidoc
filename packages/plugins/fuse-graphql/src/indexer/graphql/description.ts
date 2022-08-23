@@ -1,5 +1,5 @@
-import { extract, IndexableMarkdownType } from '@magidoc/fuse-markdown'
-import type { MarkdownOptions } from '@magidoc/fuse-markdown'
+import { extract, IndexableMarkdownType } from '@magidoc/plugin-fuse-markdown'
+import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 
 type AnythingWithADescription = {
   description: string | undefined | null

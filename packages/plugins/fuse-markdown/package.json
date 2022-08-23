@@ -1,5 +1,5 @@
 {
-  "name": "@magidoc/fuse-markdown",
+  "name": "@magidoc/plugin-fuse-markdown",
   "description": "A plugin used to index markdown text into a Fuse.js search engine.",
   "private": false,
   "version": "2.9.0",

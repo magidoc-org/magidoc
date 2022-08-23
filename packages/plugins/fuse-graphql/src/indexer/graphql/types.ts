@@ -1,4 +1,4 @@
-import type { MarkdownOptions } from '@magidoc/fuse-markdown'
+import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 import {
   GraphQLNamedType,
   isEnumType,

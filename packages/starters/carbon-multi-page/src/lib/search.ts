@@ -1,4 +1,4 @@
-import { index, type SearchResult } from '@magidoc/fuse-markdown'
+import { index, type SearchResult } from '@magidoc/plugin-fuse-markdown'
 import type Fuse from 'fuse.js'
 import { pages } from './pages'
 import type { WebsitePage, WebsiteContent } from 'src/app'

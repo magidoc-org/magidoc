@@ -3,7 +3,7 @@
   import {
     IndexableMarkdownType,
     type SearchResult,
-  } from '@magidoc/fuse-markdown'
+  } from '@magidoc/plugin-fuse-markdown'
   import { ClickableTile } from 'carbon-components-svelte'
   import AppSearchHighlight from './AppSearchHighlight.svelte'
   import HeaderCrumb from './HeaderCrumb.svelte'
