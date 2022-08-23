@@ -75,9 +75,9 @@ export function index<T>(
 ): Fuse<SearchResult<T>> {
   const fuse =
     options?.fuse ?? new Fuse<SearchResult<T>>([], defaultFuseOptions())
-  const mergedOptions = mergeMarkdownOptions(options)
+  const markdownOptions = mergeMarkdownOptions(options?.markdown)
   documents.forEach((document) => {
-    indexDocument(document, fuse, mergedOptions)
+    indexDocument(document, fuse, markdownOptions)
   })
 
   return fuse
