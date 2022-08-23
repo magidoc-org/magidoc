@@ -30,6 +30,15 @@ export function defaultFuseOptions(): Fuse.IFuseOptions<SearchResult> {
         name: 'description',
         weight: 1,
       },
+      // For queries
+      {
+        name: 'arguments.name',
+        weight: 1.2,
+      },
+      {
+        name: 'arguments.description',
+        weight: 1.0,
+      },
       // For enums
       {
         name: 'values.value',

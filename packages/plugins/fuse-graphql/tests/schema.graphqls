@@ -35,7 +35,7 @@ type Subscription {
 }
 
 """
-This is an indexed enum
+This is an indexed enum.
 """
 enum IndexedEnum {
   """
@@ -53,9 +53,9 @@ This is an indexed input arg.
 """
 input InputArg {
   """
-  This is an indexed input arg field
+  Input field description.
   """
-  field: String
+  inputField: String
 }
 
 """
@@ -63,13 +63,13 @@ This is an indexed output object.
 """
 type OutputObject {
   """
-  This is an indexed output object field.
+  Output field description.
   """
   outputObjectField(
     """
-    This is an indexed output object field arg.
+    Output field argument description.
     """
-    arg: InputArg
+    outputFieldArg: InputArg
   ): OutputObject
 }
 
@@ -91,13 +91,13 @@ This is an indexed interface type.
 """
 interface CustomInterface {
   """
-  This is an indexed interface field.
+  Interface field description.
   """
   interfaceField(
     """
-    This is an indexed interface field arg.
+    Interface field argument.
     """
-    arg: InputArg
+    interfaceArg: InputArg
   ): Boolean
 }
 
