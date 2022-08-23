@@ -58,7 +58,7 @@ export function defaultFuseOptions(): Fuse.IFuseOptions<SearchResult> {
       },
     ],
     distance: 100,
-    threshold: 0.3,
+    threshold: 0.2,
     includeMatches: true,
     includeScore: true,
   }
@@ -99,11 +99,19 @@ function indexAllTypes(
   markdownOptions: MarkdownOptions,
 ) {
   Object.values(schema.getTypeMap()).forEach((type) => {
+    if (
+      type === schema.getQueryType() ||
+      type === schema.getMutationType() ||
+      type === schema.getSubscriptionType()
+    ) {
+      return
+    }
+
     fuse.add(asTypeSearchResult(type, markdownOptions))
   })
 }
 
-export function indexAllFieldsOf(
+function indexAllFieldsOf(
   type: QuerySearchResult['type'],
   target: GraphQLObjectType | undefined | null,
   fuse: Fuse<SearchResult>,
