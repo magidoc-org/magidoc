@@ -11,18 +11,20 @@
   $: results = search(query)
 </script>
 
-<Modal
-  bind:open
-  modalHeading="Search"
-  passiveModal
-  selectorPrimaryFocus="#search-bar"
-  hasScrollingContent={false}
->
-  <Search id="search-bar" bind:value={query} />
+{#if open}
+  <Modal
+    bind:open
+    modalHeading="Search"
+    passiveModal
+    selectorPrimaryFocus="#search-bar"
+    hasScrollingContent={false}
+  >
+    <Search id="search-bar" bind:value={query} />
 
-  <div style="max-height: 90%; overflow-y: auto">
-    {#each results as item}
-      <AppSearchResult {item} on:click={() => (open = false)} />
-    {/each}
-  </div>
-</Modal>
+    <div style="max-height: 90%; overflow-y: auto">
+      {#each results as item}
+        <AppSearchResult {item} on:click={() => (open = false)} />
+      {/each}
+    </div>
+  </Modal>
+{/if}
