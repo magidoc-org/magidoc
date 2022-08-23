@@ -1,10 +1,10 @@
 type Query {
   """
-  This is an indexed query.
+  This is an indexed **query**.
   """
   query(
     """
-    This is an indexed query argument.
+    This is an indexed _query_ argument.
     """
     queryArg: InputArg
   ): OutputObject!
@@ -12,7 +12,7 @@ type Query {
 
 type Mutation {
   """
-  This is an indexed mutation.
+  This is an indexed **mutation**.
   """
   mutation(
     """
@@ -24,7 +24,7 @@ type Mutation {
 
 type Subscription {
   """
-  This is an indexed subscription.
+  This is an [indexed](https://google.com) subscription.
   """
   subscription(
     """
@@ -35,7 +35,7 @@ type Subscription {
 }
 
 """
-This is an indexed enum.
+This is an **indexed enum**.
 """
 enum IndexedEnum {
   """

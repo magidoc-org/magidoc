@@ -2,17 +2,13 @@ import { readFileSync } from 'fs'
 import { GraphQLSchema, buildSchema } from 'graphql'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { index, SearchResult } from '../../src'
 import type Fuse from 'fuse.js'
 
 describe('indexing graphql schema', () => {
   const schema = getSchema()
-  let fuse: Fuse<SearchResult>
-
-  beforeEach(() => {
-    fuse = index(schema)
-  })
+  const fuse: Fuse<SearchResult> = index(schema)
 
   it('should return indexes', () => {
     const results = fuse.search('This is an indexed query.')
@@ -362,7 +358,7 @@ describe('indexing graphql schema', () => {
       type: 'type',
       graphqlType: 'union',
       name: 'CustomUnion',
-      description: 'This is an indexed union.',
+      description: 'This is an indexed union type.',
     }
 
     it('should index scalar name', () => {
