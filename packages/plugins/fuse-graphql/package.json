@@ -1,6 +1,6 @@
 {
-  "name": "@magidoc/plugin-fuse-markdown",
-  "description": "A plugin used to index markdown text into a Fuse.js search engine.",
+  "name": "@magidoc/plugin-fuse-graphql",
+  "description": "A plugin used to index a GraphQL schema into a Fuse.js search engine.",
   "private": false,
   "version": "2.9.0",
   "type": "module",
@@ -13,11 +13,11 @@
     "fuse",
     "magidoc"
   ],
-  "homepage": "https://magidoc-org.github.io/magidoc/plugins/fuse-markdown",
+  "homepage": "https://magidoc-org.github.io/magidoc/plugins/fuse-graphql",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",
-    "directory": "packages/plugins/fuse-markdown"
+    "directory": "packages/plugins/fuse-graphql"
   },
   "scripts": {
     "build": "run-p build:*",
@@ -27,7 +27,9 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
+    "@magidoc/plugin-fuse-markdown": "workspace:^2.9.0",
     "fuse.js": "^6.6.2",
+    "graphql": "^16.6.0",
     "marked": "^4.0.19"
   },
   "devDependencies": {

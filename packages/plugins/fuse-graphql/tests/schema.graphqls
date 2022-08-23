@@ -1,0 +1,106 @@
+type Query {
+  """
+  This is an indexed **query**.
+  """
+  query(
+    """
+    This is an indexed _query_ argument.
+    """
+    queryArg: InputArg
+  ): OutputObject!
+}
+
+type Mutation {
+  """
+  This is an indexed **mutation**.
+  """
+  mutation(
+    """
+    This is an indexed mutation argument.
+    """
+    mutationArg: InputArg
+  ): OutputObject!
+}
+
+type Subscription {
+  """
+  This is an [indexed](https://google.com) subscription.
+  """
+  subscription(
+    """
+    This is an indexed subscription argument.
+    """
+    subscriptionArg: InputArg
+  ): OutputObject!
+}
+
+"""
+This is an **indexed enum**.
+"""
+enum IndexedEnum {
+  """
+  This is an indexed first enum value.
+  """
+  FIRST
+  """
+  This is an indexed second enum value.
+  """
+  SECOND
+}
+
+"""
+This is an indexed input arg.
+"""
+input InputArg {
+  """
+  Input field description.
+  """
+  inputField: String
+}
+
+"""
+This is an indexed output object.
+"""
+type OutputObject {
+  """
+  Output field description.
+  """
+  outputObjectField(
+    """
+    Output field argument description.
+    """
+    outputFieldArg: InputArg
+  ): OutputObject
+}
+
+"""
+This is an indexed scalar.
+"""
+scalar CustomScalar
+
+type FirstUnion
+type SecondUnion
+
+"""
+This is an indexed union type.
+"""
+union CustomUnion
+
+"""
+This is an indexed interface type.
+"""
+interface CustomInterface {
+  """
+  Interface field description.
+  """
+  interfaceField(
+    """
+    Interface field argument.
+    """
+    interfaceArg: InputArg
+  ): Boolean
+}
+
+type InterfaceImpl implements CustomInterface {
+  interfaceField(arg: InputArg): Boolean
+}

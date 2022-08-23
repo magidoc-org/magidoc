@@ -91,6 +91,35 @@ importers:
       vite: 3.0.9
       vitest: 0.22.1
 
+  packages/plugins/fuse-graphql:
+    specifiers:
+      '@magidoc/plugin-fuse-markdown': workspace:^2.9.0
+      '@types/marked': ^4.0.6
+      '@types/node': ^18.7.9
+      '@types/prettier': ^2.7.0
+      c8: ^7.12.0
+      fuse.js: ^6.6.2
+      graphql: ^16.6.0
+      marked: ^4.0.19
+      rollup: ^2.78.1
+      typescript: ^4.7.4
+      vite: ^3.0.9
+      vitest: ^0.22.1
+    dependencies:
+      '@magidoc/plugin-fuse-markdown': link:../fuse-markdown
+      fuse.js: 6.6.2
+      graphql: 16.6.0
+      marked: 4.0.19
+    devDependencies:
+      '@types/marked': 4.0.6
+      '@types/node': 18.7.9
+      '@types/prettier': 2.7.0
+      c8: 7.12.0
+      rollup: 2.78.1
+      typescript: 4.7.4
+      vite: 3.0.9
+      vitest: 0.22.1
+
   packages/plugins/fuse-markdown:
     specifiers:
       '@types/marked': ^4.0.6
@@ -361,7 +390,7 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/fuse-markdown': workspace:^2.9.0
+      '@magidoc/plugin-fuse-markdown': workspace:^2.9.0
       '@magidoc/plugin-query-generator': workspace:^2.9.0
       '@magidoc/plugin-reverse-schema-mapper': workspace:^2.9.0
       '@magidoc/plugin-starter-variables': workspace:^2.9.0
@@ -394,7 +423,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.0.9
     devDependencies:
-      '@magidoc/fuse-markdown': link:../../plugins/fuse-markdown
+      '@magidoc/plugin-fuse-markdown': link:../../plugins/fuse-markdown
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/plugin-reverse-schema-mapper': link:../../plugins/reverse-schema-mapper
       '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
