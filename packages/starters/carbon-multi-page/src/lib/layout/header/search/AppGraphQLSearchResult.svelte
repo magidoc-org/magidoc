@@ -44,7 +44,7 @@
   }
 </script>
 
-<ClickableTile {href} on:click on:mouseenter>
+<ClickableTile {href} on:click>
   <HeaderCrumb
     {section}
     headers={[{ id: item.result.name, depth: 1, text: item.result.name }]}

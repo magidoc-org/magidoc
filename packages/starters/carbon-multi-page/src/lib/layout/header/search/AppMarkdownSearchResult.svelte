@@ -27,7 +27,7 @@
   }
 </script>
 
-<ClickableTile {href} on:click on:mouseenter >
+<ClickableTile {href} on:click>
   <HeaderCrumb {headers} section={result.data.section} />
   <br />
   {#if result.part.type === IndexableMarkdownType.HEADER}

@@ -23,7 +23,7 @@
 
     <div style="max-height: 90%; overflow-y: auto">
       {#each results as item, index}
-        <AppSearchResult {item} on:click={() => (open = false)} on:mouseenter />
+        <AppSearchResult {item} on:click={() => (open = false)} />
       {/each}
     </div>
   </Modal>
