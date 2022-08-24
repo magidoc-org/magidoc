@@ -106,7 +106,7 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = withVariants(
         case 'descriptions':
           return 'A description'
         default:
-          return 'lorem ipsum'
+          return context.targetName
       }
     },
     ID: () => id,

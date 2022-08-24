@@ -392,7 +392,7 @@ describe('generating a mutation', () => {
   it('generates the variables properly', () => {
     const result = generateGraphQLQuery(mutation, config)
     expect(result?.variables).toEqual({
-      value: 'lorem ipsum',
+      value: 'value',
     })
   })
 })
@@ -535,7 +535,7 @@ describe('generating a response', () => {
       it('generates the response properly for a non-null field', () => {
         const nonNullField = getQueryField('nonNullResponse')
         const result = generateGraphQLResponse(nonNullField, config)
-        assertResponseEqual(result, { nonNullResponse: ['lorem ipsum'] })
+        assertResponseEqual(result, { nonNullResponse: ['nonNullResponse'] })
       })
     })
 
