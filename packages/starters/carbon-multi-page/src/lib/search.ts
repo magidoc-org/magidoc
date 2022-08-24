@@ -12,8 +12,7 @@ import type { WebsitePage, WebsiteContent } from 'src/app'
 import type { NotificationToken } from './components/markdown/containers/notification/Notification'
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
 import { setupMarkedExtensions } from './markdown'
-import { schema } from './model'
-import _ from 'lodash'
+import { isModelEmpty, schema } from './model'
 
 setupMarkedExtensions()
 
@@ -95,7 +94,7 @@ export function search(query: string): ReadonlyArray<MagidocSearchResult> {
 
   let schemaResult: ReadonlyArray<MagidocSearchResult> = []
 
-  if (_.size(schema.getTypeMap()) > 2) {
+  if (!isModelEmpty()) {
     schemaResult = schemaSearch.search(query).map((result) => ({
       type: 'graphql',
       score: result.score || 0,
