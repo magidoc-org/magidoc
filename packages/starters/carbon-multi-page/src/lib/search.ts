@@ -114,7 +114,8 @@ function mergeResults(
   first: ReadonlyArray<MagidocSearchResult>,
   second: ReadonlyArray<MagidocSearchResult>,
 ): ReadonlyArray<MagidocSearchResult> {
-  return [...first, ...second].sort((a, b) => b.score - a.score).slice(0, 10)
+  // Lower the score the better
+  return [...first, ...second].sort((a, b) => a.score - b.score).slice(0, 10)
 }
 
 function collapseIndexes(
