@@ -42,9 +42,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^2.9.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.9.0
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.9.0
+      '@magidoc/plugin-starter-variables': workspace:^2.10.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.10.0
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.10.0
       '@rollup/plugin-typescript': ^8.3.4
       '@types/fs-extra': ^9.0.13
       '@types/lodash': ^4.14.184
@@ -93,7 +93,7 @@ importers:
 
   packages/plugins/fuse-graphql:
     specifiers:
-      '@magidoc/plugin-fuse-markdown': workspace:^2.9.0
+      '@magidoc/plugin-fuse-markdown': workspace:^2.10.0
       '@types/marked': ^4.0.6
       '@types/node': ^18.7.9
       '@types/prettier': ^2.7.0
@@ -390,13 +390,14 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-fuse-markdown': workspace:^2.9.0
-      '@magidoc/plugin-query-generator': workspace:^2.9.0
-      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.9.0
-      '@magidoc/plugin-starter-variables': workspace:^2.9.0
-      '@magidoc/plugin-svelte-marked': workspace:^2.9.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^2.9.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.9.0
+      '@magidoc/plugin-fuse-graphql': workspace:^2.10.0
+      '@magidoc/plugin-fuse-markdown': workspace:^2.10.0
+      '@magidoc/plugin-query-generator': workspace:^2.10.0
+      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.10.0
+      '@magidoc/plugin-starter-variables': workspace:^2.10.0
+      '@magidoc/plugin-svelte-marked': workspace:^2.10.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^2.10.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.10.0
       '@sveltejs/adapter-static': 1.0.0-next.39
       '@sveltejs/kit': 1.0.0-next.428
       '@types/lodash': ^4.14.184
@@ -423,6 +424,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.0.9
     devDependencies:
+      '@magidoc/plugin-fuse-graphql': link:../../plugins/fuse-graphql
       '@magidoc/plugin-fuse-markdown': link:../../plugins/fuse-markdown
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/plugin-reverse-schema-mapper': link:../../plugins/reverse-schema-mapper

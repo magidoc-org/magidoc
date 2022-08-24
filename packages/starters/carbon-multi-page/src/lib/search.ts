@@ -1,10 +1,18 @@
-import { index, type SearchResult } from '@magidoc/plugin-fuse-markdown'
+import {
+  index as indexMarkdown,
+  type SearchResult as FuseMarkdownSearchResult,
+} from '@magidoc/plugin-fuse-markdown'
+import {
+  index as indexSchema,
+  type SearchResult as FuseGraphQLSearchResult,
+} from '@magidoc/plugin-fuse-graphql'
 import type Fuse from 'fuse.js'
 import { pages } from './pages'
 import type { WebsitePage, WebsiteContent } from 'src/app'
 import type { NotificationToken } from './components/markdown/containers/notification/Notification'
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
 import { setupMarkedExtensions } from './markdown'
+import { isModelEmpty, schema } from './model'
 
 setupMarkedExtensions()
 
@@ -14,14 +22,35 @@ export type MarkdownData = {
   section?: string
 }
 
-export type ResultRange = [number, number]
-
-export type MagidocSearchResult = {
-  result: SearchResult<MarkdownData>
-  indexes: ReadonlyArray<ResultRange>
+export type GraphQLData = {
+  type: 'graphql'
 }
 
-const pagesSearch: Fuse<SearchResult<MarkdownData>> = index(
+export type ResultRange = [number, number]
+
+export type Match = {
+  value: string
+  location: string
+  indices: ReadonlyArray<ResultRange>
+}
+
+export type MarkdownSearchResult = {
+  type: 'markdown'
+  score: number
+  result: FuseMarkdownSearchResult<MarkdownData>
+  matches: ReadonlyArray<Match>
+}
+
+export type GraphQLSearchResult = {
+  type: 'graphql'
+  score: number
+  result: FuseGraphQLSearchResult
+  matches: ReadonlyArray<Match>
+}
+
+export type MagidocSearchResult = MarkdownSearchResult | GraphQLSearchResult
+
+const pagesSearch: Fuse<FuseMarkdownSearchResult<MarkdownData>> = indexMarkdown(
   flatPages(pages)
     .map((page) => ({
       data: {
@@ -46,13 +75,46 @@ const pagesSearch: Fuse<SearchResult<MarkdownData>> = index(
     },
   },
 )
+
+const schemaSearch: Fuse<FuseGraphQLSearchResult> = indexSchema(schema)
+
 export function search(query: string): ReadonlyArray<MagidocSearchResult> {
-  return pagesSearch.search(query).map((result) => ({
-    result: result.item,
-    indexes: collapseIndexes(
-      result.matches?.flatMap((match) => match.indices) || [],
-    ),
-  }))
+  const pagesResult: ReadonlyArray<MagidocSearchResult> = pagesSearch
+    .search(query)
+    .map((result) => ({
+      type: 'markdown',
+      score: result.score || 0,
+      result: result.item,
+      matches: (result.matches || []).map((match) => ({
+        value: match.value || '',
+        location: match.key || '',
+        indices: collapseIndexes(match.indices),
+      })),
+    }))
+
+  let schemaResult: ReadonlyArray<MagidocSearchResult> = []
+
+  if (!isModelEmpty()) {
+    schemaResult = schemaSearch.search(query).map((result) => ({
+      type: 'graphql',
+      score: result.score || 0,
+      result: result.item,
+      matches: (result.matches || []).map((match) => ({
+        value: match.value || '',
+        location: match.key || '',
+        indices: match.indices,
+      })),
+    }))
+  }
+
+  return mergeResults(pagesResult, schemaResult)
+}
+
+function mergeResults(
+  first: ReadonlyArray<MagidocSearchResult>,
+  second: ReadonlyArray<MagidocSearchResult>,
+): ReadonlyArray<MagidocSearchResult> {
+  return [...first, ...second].sort((a, b) => b.score - a.score).slice(0, 10)
 }
 
 function collapseIndexes(

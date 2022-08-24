@@ -67,6 +67,7 @@ export function defaultFuseOptions(): Fuse.IFuseOptions<SearchResult> {
       },
     ],
     distance: 100,
+    minMatchCharLength: 3,
     threshold: 0.2,
     includeMatches: true,
     includeScore: true,
@@ -111,7 +112,8 @@ function indexAllTypes(
     if (
       type === schema.getQueryType() ||
       type === schema.getMutationType() ||
-      type === schema.getSubscriptionType()
+      type === schema.getSubscriptionType() ||
+      type.name.startsWith('__')
     ) {
       return
     }

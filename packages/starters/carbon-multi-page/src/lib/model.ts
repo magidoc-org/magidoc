@@ -47,6 +47,11 @@ function toIgnoreCase<T>(
   return _.mapKeys(target || {}, (_, key) => key.toLocaleLowerCase())
 }
 
+export function isModelEmpty(): boolean {
+  // By default graphql creates a few types that are not useful for the documentation.
+  return _.size(schema.getTypeMap()) <= 10
+}
+
 export function createModelContent(): ReadonlyArray<WebsiteContent> {
   return [
     createWebsiteContent('Queries', schema.getQueryType()),
@@ -86,13 +91,11 @@ function createWebsiteContentFromFields(
 }
 
 function createTypesWebsiteContent(): WebsiteContent | null {
+  if (isModelEmpty()) return null
   const types: GraphQLNamedType[] = _.sortBy(
     _.map(schema.getTypeMap()),
     (type) => type.name,
   ).filter((type) => !type.name.startsWith('__'))
-  // By default, String and Boolean are included,
-  // but there is no documentation to generate if there is only that in the schema
-  if (types.length <= 2) return null
   return {
     type: 'menu',
     title: 'Types',
