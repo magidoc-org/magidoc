@@ -369,6 +369,40 @@ describe('generating a query', () => {
       )
     })
   })
+
+  describe('for a field with two times the same input object', () => {
+    const fieldWithDuplicateInputArg = getQueryField('hasDuplicateInputArg')
+    const expectedInput = {
+      string: 'string',
+      int: 42,
+      float: 30.7,
+      boolean: true,
+      id: '08a16b83-9094-4e89-8c05-2ccadd5c1c7e',
+      enum: 'RED',
+      object: null,
+      defaultValueString: 'defaultValueString',
+      defaultValueBoolean: true,
+      defaultValueInt: 42,
+      listString: ['listString'],
+      listInt: [42],
+      listFloat: [30.7],
+      listBoolean: [true],
+      listID: ['08a16b83-9094-4e89-8c05-2ccadd5c1c7e'],
+      listEnum: ['RED'],
+      listObject: null,
+    }
+
+    it('provides values for all the variables', () => {
+      const result = generateGraphQLQuery(fieldWithDuplicateInputArg)
+
+      expect(result?.variables).toEqual({
+        arg: {
+          firstInput: expectedInput,
+          secondInput: expectedInput,
+        },
+      })
+    })
+  })
 })
 
 describe('generating a mutation', () => {

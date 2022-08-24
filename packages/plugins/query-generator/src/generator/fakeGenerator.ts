@@ -225,6 +225,7 @@ You have to provide a custom factory by providing this in your config:
       return _.mapValues(fields, (input) => {
         return generateInput(input.type, config, {
           ...context,
+          generatedInputObjects: new Set(context.generatedInputObjects),
           targetName: input.name,
           defaultValue: input.defaultValue,
         })
@@ -236,6 +237,7 @@ You have to provide a custom factory by providing this in your config:
     `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${argumentType.toJSON()}`,
   )
 }
+
 function findWildCardFactory(
   name: string,
   config: FakeGenerationConfig,
