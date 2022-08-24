@@ -7,7 +7,7 @@
 
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@magidoc/cli" target="_blank"><img src="https://img.shields.io/npm/v/@magidoc/cli" /></a>
+  <a href="https://www.npmjs.com/package/@magidoc/cli"><img src="https://img.shields.io/npm/v/@magidoc/cli" /></a>
   <a href="https://www.npmjs.com/package/@magidoc/cli"><img src="https://img.shields.io/npm/dw/@magidoc/cli" /></a>
   <a href="https://github.com/magidoc-org/magidoc/actions"><img src="https://img.shields.io/github/workflow/status/magidoc-org/magidoc/Build%20and%20tests/main" /></a>
   <a href="https://github.com/magidoc-org/magidoc/blob/main/LICENSE"><img src="https://img.shields.io/github/license/magidoc-org/magidoc" /></a>
