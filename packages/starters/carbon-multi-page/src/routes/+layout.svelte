@@ -29,14 +29,17 @@
 
   setupMarkedExtensions()
 
+  const mobileWidth = 1056
+
   let isSideNavOpen = false
   let innerWidth = 2048
+  let mobile = false
 
   const favicon = get(templates.APP_FAVICON)
 
   const unsubscribe = page.subscribe(() => {
     // Mobile
-    if (innerWidth < 1056) {
+    if (mobile) {
       isSideNavOpen = false
     }
   })
@@ -48,6 +51,8 @@
       window.location.reload()
     })
   }
+
+  $: mobile = innerWidth < mobileWidth
 </script>
 
 <svelte:head>
@@ -62,7 +67,7 @@
 
 <svelte:window bind:innerWidth />
 
-<AppHeader bind:isSideNavOpen />
+<AppHeader bind:isSideNavOpen {mobile} />
 <AppNavigation bind:isOpen={isSideNavOpen} content={pages} />
 
 <Content>

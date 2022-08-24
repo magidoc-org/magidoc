@@ -5,15 +5,19 @@
     Header,
     HeaderGlobalAction,
     HeaderUtilities,
+    Search as SearchBar,
   } from 'carbon-components-svelte'
   import AppIcon from '$lib/components/common/AppIcon.svelte'
   import { base } from '$app/paths'
   import AppLinks from './header/AppLinks.svelte'
-  import { Search } from 'carbon-icons-svelte'
   import AppSearchResults from './header/AppSearch.svelte'
+  import { appTitle } from '$lib/pages'
+  import { Search } from 'carbon-icons-svelte'
 
   export let isSideNavOpen = true
-  export let searchOpen = false
+  export let mobile = false
+
+  let searchOpen = false
 </script>
 
 <Header href={base || '/'} bind:isSideNavOpen expandedByDefault>
@@ -21,11 +25,22 @@
     <AppIcon class="header-logo" />
   </div>
   <HeaderUtilities>
-    <HeaderGlobalAction
-      icon={Search}
-      label="Search"
-      on:click={() => (searchOpen = true)}
-    />
+    {#if mobile}
+      <HeaderGlobalAction
+        icon={Search}
+        label="Search"
+        on:click={() => (searchOpen = true)}
+      />
+    {:else}
+      <div class="search-bar-wrapper">
+        <SearchBar
+          placeholder={`Search ${appTitle}...`}
+          autocomplete={'off'}
+          size="sm"
+          on:focus={() => (searchOpen = true)}
+        />
+      </div>
+    {/if}
     <AppLinks />
   </HeaderUtilities>
 </Header>
@@ -38,9 +53,19 @@
     align-items: center;
     height: 100%;
   }
-
   .header-logo-wrapper :global(.header-logo) {
     height: 100%;
     margin: 0.2rem 0.5rem 0.2rem 0rem;
+  }
+
+  .search-bar-wrapper {
+    width: 16rem;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+  }
+
+  .search-bar-wrapper :global(input) {
+    border-radius: 1rem;
   }
 </style>

@@ -6,7 +6,10 @@ import { getOrDefault } from './variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import { Slugger } from 'marked'
 
-export const appTitle = getOrDefault(templates.APP_TITLE, 'Magidoc')
+export const appTitle = getOrDefault(
+  templates.APP_TITLE,
+  'GraphQL Documentation',
+)
 
 const buildPages = parseCustomPages().concat(createModelContent())
 setPreviousAndNextPages(buildPages)
