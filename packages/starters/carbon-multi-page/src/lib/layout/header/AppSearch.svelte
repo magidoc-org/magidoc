@@ -22,8 +22,8 @@
     <Search id="search-bar" bind:value={query} />
 
     <div style="max-height: 90%; overflow-y: auto">
-      {#each results as item}
-        <AppSearchResult {item} on:click={() => (open = false)} />
+      {#each results as item, index}
+        <AppSearchResult {item} on:click={() => (open = false)} on:mouseenter />
       {/each}
     </div>
   </Modal>

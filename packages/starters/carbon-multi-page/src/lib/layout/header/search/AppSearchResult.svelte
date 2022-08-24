@@ -11,7 +11,8 @@
     result={item.result}
     indexes={item.matches[0].indices}
     on:click
+    on:mouseenter
   />
 {:else if item.type === 'graphql'}
-  <AppGraphQlSearchResult {item} on:click />
+  <AppGraphQlSearchResult {item} on:click on:mouseenter />
 {/if}
