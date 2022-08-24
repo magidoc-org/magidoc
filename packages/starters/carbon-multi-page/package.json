@@ -19,6 +19,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
+    "@magidoc/plugin-fuse-graphql": "workspace:^2.9.0",
     "@magidoc/plugin-fuse-markdown": "workspace:^2.9.0",
     "@magidoc/plugin-query-generator": "workspace:^2.9.0",
     "@magidoc/plugin-reverse-schema-mapper": "workspace:^2.9.0",
