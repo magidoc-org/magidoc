@@ -394,7 +394,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       })
     })
 
-    describe.only('for a type property', () => {
+    describe('for a type property', () => {
       const outputString = 'test string for type property'
       const outputListString = 'test list string in output'
       const config: QueryGeneratorConfig = {

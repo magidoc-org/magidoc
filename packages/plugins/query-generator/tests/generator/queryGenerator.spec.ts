@@ -574,16 +574,14 @@ describe('generating a response', () => {
     })
 
     describe('with a custom factory', () => {
-      const config: Partial<QueryGeneratorConfig> = {
-        factories: {
-          Int: (context) => {
-            return context.depth
-          },
-        },
-      }
-
       it('generates the response properly', () => {
-        const result = generateGraphQLResponse(recursiveField, config)
+        const result = generateGraphQLResponse(recursiveField, {
+          factories: {
+            Int: (context) => {
+              return context.depth
+            },
+          },
+        })
 
         assertResponseEqual(result, {
           person: {
@@ -607,6 +605,23 @@ describe('generating a response', () => {
               },
             ],
             name: 'A name',
+          },
+        })
+      })
+
+      it('works using type property', () => {
+        const result = generateGraphQLResponse(recursiveField, {
+          maxDepth: 3,
+          factories: {
+            'Person.name': () => 'John doe',
+          },
+        })
+
+        assertResponseEqual(result, {
+          person: {
+            name: 'John doe',
+            age: 36,
+            friends: [{ name: 'John doe', age: 36 }],
           },
         })
       })
