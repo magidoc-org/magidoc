@@ -1,5 +1,7 @@
 name: "📄 Documentation"
 description: Suggest improvements to the documentation
+labels: 
+  - documentation
 body:
   - type: markdown
     attributes:
