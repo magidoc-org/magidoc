@@ -1,0 +1,19 @@
+name: "📄 Documentation"
+description: Suggest improvements to the documentation
+body:
+  - type: markdown
+    attributes:
+      value: | 
+        Thanks for taking the time to suggest improvements to the documentation! 
+        Please provide a clear and concise description of the improvement you would like to see.
+
+        > Contributions to Magidoc to improve the documentation are very welcome. See the [contribution guide](https://github.com/magidoc-org/magidoc/blob/main/CONTRIBUTING.md). 
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe what is missing
+      description: Please provide a clear and concise description of what you would like to see in the documentation.
+      placeholder: I would like to document how...
+    validations:
+      required: true
+ 
