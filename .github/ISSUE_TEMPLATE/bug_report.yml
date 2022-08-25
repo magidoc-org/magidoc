@@ -41,13 +41,9 @@ body:
     attributes:
       label: Severity
       options:
-        - annoyance
-        - serious, but I can work around it
-        - blocking an upgrade
-        - blocking all usage of Magidoc
+        - Annoyance
+        - Serious, but I can work around it
+        - Blocking an upgrade
+        - Blocking all usage of Magidoc
     validations:
       required: true
-  - type: textarea
-    id: additional-context
-    attributes:
-      label: Additional Information
