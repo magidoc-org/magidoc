@@ -17,6 +17,7 @@ import {
   isNonNullType,
   isListType,
   isNullableType,
+  GraphQLNamedType,
 } from 'graphql'
 import { unwrapType } from './extractor'
 import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
@@ -45,6 +46,7 @@ const DEFAULT_CONFIG: QueryGeneratorConfig = {
 
 export type GenerationContext = {
   readonly path: string
+  readonly parentType?: GraphQLNamedType
   readonly depth: number
 }
 
@@ -255,6 +257,7 @@ function generateResponse(
           config,
           {
             ...context,
+            parentType: target,
             path: `${context.path}.${current.name}`,
             depth: context.depth + 1,
           },

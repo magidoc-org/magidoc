@@ -393,6 +393,36 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(paramByType('[TestEnum]', result).value).toEqual([outputEnum])
       })
     })
+
+    describe('for a type property', () => {
+      const outputString = 'test string for type property'
+      const outputListString = 'test list string in output'
+      const config: QueryGeneratorConfig = {
+        ...baseConfig,
+        factories: {
+          'TestInput.string': () => outputString,
+          'TestInput.listString': () => outputListString,
+        },
+      }
+
+      it('should work for direct type', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        expect(
+          (paramByType('TestInput', result).value as Record<string, unknown>)[
+            'string'
+          ],
+        ).toEqual(outputString)
+      })
+
+      it('should work for lists', () => {
+        const result = generateArgsForField(fieldWithArgs, config, context)
+        expect(
+          (paramByType('TestInput', result).value as Record<string, unknown>)[
+            'listString'
+          ],
+        ).toEqual([outputListString])
+      })
+    })
   })
 
   describe('using a recursive query', () => {

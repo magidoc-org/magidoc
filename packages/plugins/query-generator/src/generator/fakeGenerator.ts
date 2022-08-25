@@ -29,6 +29,7 @@ import type { Parameter } from './builder/queryBuilder'
 
 type FakeGenerationContext = GenerationContext & {
   readonly targetName: string
+  readonly parentType?: GraphQLNamedType
   readonly defaultValue: unknown
   readonly generatedInputObjects: Set<string>
 }
@@ -140,13 +141,22 @@ function findMostSpecificFactory(
   nullable = true,
 ): GraphQLFactory {
   // Did the user provide a factory for this exact type?
+  const { factories } = config
   const factoryDirectType =
-    config.factories[context.path] ??
-    config.factories[context.targetName] ??
-    config.factories[typeToString(argumentType)]
+    factories[context.path] ??
+    factories[`${context.parentType?.name || ''}.${context.targetName}`] ??
+    factories[context.targetName] ??
+    factories[typeToString(argumentType)]
 
   if (factoryDirectType) {
-    return factoryDirectType
+    return (factoryContext) => {
+      const result = factoryDirectType(factoryContext)
+      if (isListType(argumentType) && !Array.isArray(result)) {
+        return [result]
+      }
+
+      return result
+    }
   }
 
   // If not null, we must unwrap and go deeper
@@ -225,6 +235,8 @@ You have to provide a custom factory by providing this in your config:
       return _.mapValues(fields, (input) => {
         return generateInput(input.type, config, {
           ...context,
+          parentType: argumentType,
+          generatedInputObjects: new Set(context.generatedInputObjects),
           targetName: input.name,
           defaultValue: input.defaultValue,
         })
@@ -236,6 +248,7 @@ You have to provide a custom factory by providing this in your config:
     `this portion of the fake generator should be unreachable... if you ever see this error, please open an issue: ${argumentType.toJSON()}`,
   )
 }
+
 function findWildCardFactory(
   name: string,
   config: FakeGenerationConfig,

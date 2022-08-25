@@ -137,13 +137,18 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
   },
   {
     type: 'String',
-    names: ['everythingelse', 'somestuff'],
-    expected: 'lorem ipsum',
+    names: ['somestuff'],
+    expected: 'somestuff',
+  },
+  {
+    type: 'String',
+    names: ['everythingelse'],
+    expected: 'everythingelse',
   },
   {
     type: '_text',
-    names: ['everythingelse', 'somestuff'],
-    expected: 'lorem ipsum',
+    names: ['everythingelse'],
+    expected: 'everythingelse',
   },
   {
     type: 'Int',
