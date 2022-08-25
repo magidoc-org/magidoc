@@ -32,7 +32,7 @@
   const mobileWidth = 1056
 
   let isSideNavOpen = false
-  let innerWidth = 2048
+  let innerWidth = -1
   let mobile = false
 
   const favicon = get(templates.APP_FAVICON)
