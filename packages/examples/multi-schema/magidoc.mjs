@@ -54,7 +54,7 @@ export default {
       siteRoot: config.siteRoot,
       siteMeta: {
         description: `Magidoc demo for multi-schema website for ${config.appTitle}.`,
-        'og:description': `,Magidoc demo for multi-schema website for ${config.appTitle}.`,
+        'og:description': `Magidoc demo for multi-schema website for ${config.appTitle}.`,
       },
       externalLinks: otherLinks.map((current) => ({
         href: current.siteRoot,
