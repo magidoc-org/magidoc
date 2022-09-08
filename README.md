@@ -2,9 +2,7 @@
   <img width="40%" src="./logo/logo_full.png">
 </p>
 
-
 <h3 align="center">Fast and customizable GraphQL documentation generator </h3>
-
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@magidoc/cli"><img src="https://img.shields.io/npm/v/@magidoc/cli" /></a>
@@ -23,11 +21,12 @@ Magidoc is a JavaScript library that auto-generates static documentation from an
 
 - 🏁 **Simple**: Build your first website in a few minutes.
 - ✏️ **Customizable**: Use pre-defined customizations or pick a template and make it your own.
-- 🔎 **Searchability**: Fast fuzzy search through the documentation & native SEO support. 
+- 🔎 **Searchability**: Fast fuzzy search through the documentation & native SEO support.
 - 🔥 **Live hot-reload**: Preview your documentation website while you develop.
 - 📝 **Advanced markdown support**: Markdown is supported everywhere, from custom pages to schema comments.
 
 ## Get started
+
 See the [quickstart guide](https://magidoc.js.org/introduction/quickstart).
 
 ## Demo
@@ -38,8 +37,14 @@ See the [quickstart guide](https://magidoc.js.org/introduction/quickstart).
 
 Full documentation and options are available at [magidoc.js.org](https://magidoc.js.org/introduction/welcome).
 
+## Examples
+
+Examples to generate documentation simply for one or even for multiple schemas are available [right here](./packages/examples/).
+
 ## Contribution
+
 See the [contribution guide](./CONTRIBUTING.md).
 
 ## License
+
 [MIT](./LICENSE)

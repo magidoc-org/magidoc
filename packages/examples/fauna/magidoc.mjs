@@ -3,7 +3,7 @@ import path from 'path'
 
 function markdown(string) {
   // Takes the first indent and trims that length from everywhere.
-  // Markdown templates don't like the extra space at the begining.
+  // Markdown templates don't like the extra space at the beginning.
   const target = string[0]
   const trimSize = /^\s+/.exec(string)[0].length
   return target
