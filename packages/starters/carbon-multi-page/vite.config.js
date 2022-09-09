@@ -12,7 +12,7 @@ const config = {
     // Skip this rollup plugin if we are in the context of magidoc generate command
     !magidoc.MAGIDOC_GENERATE.get(variables)
       ? parseGraphQLSchema({
-          paths: ['../../test-schema.graphql'],
+          paths: ['../test-schema.graphql'],
         })
       : null,
     {
