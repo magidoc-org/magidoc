@@ -1,5 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite'
-import fetchGraphQLSchema from '@magidoc/rollup-plugin-fetch-gql-schema'
+import parseGraphQLSchema from '@magidoc/rollup-plugin-parse-gql-schema'
 import { magidoc } from '@magidoc/plugin-starter-variables'
 import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 import fs from 'fs'
@@ -11,8 +11,8 @@ const config = {
   plugins: [
     // Skip this rollup plugin if we are in the context of magidoc generate command
     !magidoc.MAGIDOC_GENERATE.get(variables)
-      ? fetchGraphQLSchema({
-          url: 'https://countries.trevorblades.com/',
+      ? parseGraphQLSchema({
+          paths: ['../test-schema.graphql'],
         })
       : null,
     {

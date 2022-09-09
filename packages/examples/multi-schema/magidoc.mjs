@@ -8,23 +8,13 @@ function relativePath(target) {
 function websiteConfig(website) {
   if (website === 'first') {
     return {
-      appTitle: 'AniList',
-      graphqlUrl: 'https://graphql.anilist.co/',
-      siteRoot: '/anilist',
-      factories: {
-        Json: {},
-        CountryCode: 'CA',
-        FuzzyDateInt: 1234567890,
-      },
+      appTitle: 'Films',
+      siteRoot: '/films',
     }
   } else if (website === 'second') {
     return {
-      appTitle: 'GraphiQL Demo',
-      graphqlUrl: 'https://countries.trevorblades.com/',
-      siteRoot: '/graphiql-demo',
-      factories: {
-        _Any: 'anything',
-      },
+      appTitle: 'People',
+      siteRoot: '/people',
     }
   } else {
     throw new Error(`Unknown website: ${WEBSITE}`)
@@ -35,7 +25,8 @@ export function allConfigs() {
   return [websiteConfig('first'), websiteConfig('second')]
 }
 
-const config = websiteConfig(process.env.WEBSITE || 'first')
+const target = process.env.WEBSITE || 'first'
+const config = websiteConfig(target)
 
 const otherLinks = allConfigs().filter(
   (current) => current.siteRoot !== config.siteRoot,
@@ -43,8 +34,8 @@ const otherLinks = allConfigs().filter(
 
 export default {
   introspection: {
-    type: 'url',
-    url: config.graphqlUrl,
+    type: 'sdl',
+    paths: [relativePath(`./schemas/${target}.graphqls`)],
   },
   website: {
     template: 'carbon-multi-page',
@@ -54,7 +45,6 @@ export default {
       siteRoot: config.siteRoot,
       siteMeta: {
         description: `Magidoc demo for multi-schema website for ${config.appTitle}.`,
-        'og:description': `Magidoc demo for multi-schema website for ${config.appTitle}.`,
       },
       externalLinks: otherLinks.map((current) => ({
         href: current.siteRoot,

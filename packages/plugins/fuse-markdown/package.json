@@ -28,17 +28,17 @@
   },
   "dependencies": {
     "fuse.js": "^6.6.2",
-    "marked": "^4.0.19"
+    "marked": "^4.1.0"
   },
   "devDependencies": {
-    "@types/marked": "^4.0.6",
-    "@types/node": "^18.7.13",
+    "@types/marked": "^4.0.7",
+    "@types/node": "^18.7.16",
     "@types/prettier": "^2.7.0",
     "c8": "^7.12.0",
-    "rollup": "^2.78.1",
-    "typescript": "^4.7.4",
-    "vite": "^3.0.9",
-    "vitest": "^0.22.1"
+    "rollup": "^2.79.0",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.0",
+    "vitest": "^0.23.1"
   },
   "peerDependencies": {
     "fuse.js": "^6.6.2"

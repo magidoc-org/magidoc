@@ -4,6 +4,7 @@ import { optimizeImports } from 'carbon-preprocess-svelte'
 import _ from 'lodash'
 import { templates } from '@magidoc/plugin-starter-variables'
 import { loadVariables } from './magidoc.config.js'
+import graphql from 'graphql'
 
 const variables = loadVariables()
 
@@ -14,9 +15,6 @@ const config = {
   preprocess: [preprocess(), optimizeImports()],
   kit: {
     adapter: adapter(),
-    prerender: {
-      default: true,
-    },
     paths: {
       base: templates.SITE_ROOT.get(variables) ?? '',
     },
