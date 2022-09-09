@@ -1,0 +1,19 @@
+type Query {
+  """
+  Get a list of all the people
+  """
+  people: [Person]
+}
+
+type Person {
+  id: ID!
+  name: String!
+  age: Int!
+  posts: [Post]
+}
+
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+}

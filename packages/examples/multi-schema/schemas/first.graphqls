@@ -1,0 +1,20 @@
+type Query {
+  """
+  Get a list of all the films.
+  """
+  films: [Film]
+}
+
+type Film {
+  id: ID!
+  title: String
+  director: String
+  year: Int
+  actors: [Actor]
+}
+
+type Actor {
+  id: ID!
+  name: String
+  films: [Film]
+}

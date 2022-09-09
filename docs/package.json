@@ -18,7 +18,7 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "cspell": "^6.8.0",
+    "cspell": "^6.8.1",
     "gh-pages": "^4.0.0",
     "svelte-sitemap": "^2.5.1"
   }
