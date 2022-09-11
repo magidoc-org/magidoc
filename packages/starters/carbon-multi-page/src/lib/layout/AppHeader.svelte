@@ -1,6 +1,5 @@
 <script lang="ts">
   import 'carbon-components-svelte/css/all.css'
-
   import {
     Header,
     HeaderGlobalAction,
@@ -13,11 +12,37 @@
   import AppSearchResults from './header/AppSearch.svelte'
   import { appTitle } from '$lib/pages'
   import { Search } from 'carbon-icons-svelte'
+  import { onDestroy, onMount } from 'svelte'
+  import { browser } from '$app/environment'
 
   export let isSideNavOpen = true
   export let mobile = false
 
   let searchOpen = false
+  let isMac = false
+
+  let handler: (e: KeyboardEvent) => void = (e) => {
+    if (e.metaKey || e.ctrlKey) {
+      if (e.key === 'k') {
+        e.preventDefault()
+        searchOpen = true
+      }
+    } else if (e.key === 'Escape') {
+      searchOpen = false
+    }
+  }
+  onMount(() => {
+    if (browser) {
+      isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0
+      window.addEventListener('keydown', handler)
+    }
+  })
+
+  onDestroy(() => {
+    if (browser) {
+      window.removeEventListener('keydown', handler)
+    }
+  })
 </script>
 
 <Header href={base || '/'} bind:isSideNavOpen expandedByDefault>
@@ -34,7 +59,7 @@
     {:else}
       <div class="search-bar-wrapper">
         <SearchBar
-          placeholder={`Search ${appTitle}...`}
+          placeholder={`Search ${appTitle}... (${isMac ? '⌘' : 'Ctrl'}+K)`}
           autocomplete={'off'}
           size="sm"
           on:focus={() => (searchOpen = true)}
