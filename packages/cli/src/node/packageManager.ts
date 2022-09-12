@@ -27,7 +27,7 @@ export type PackageManager = {
 
 export async function selectPackageManager(): Promise<PackageManager> {
   if (await isPackageManagerAvailable('pnpm')) {
-    return createPnpn()
+    return createPnpm()
   }
 
   if (await isPackageManagerAvailable('npm')) {
@@ -44,13 +44,13 @@ export async function selectPackageManager(): Promise<PackageManager> {
 }
 
 export function getPackageManager(type: PackageManagerType) {
-  if (type === 'pnpm') return createPnpn()
+  if (type === 'pnpm') return createPnpm()
   if (type === 'yarn') return createYarn()
   if (type === 'npm') return createNpm()
-  throw new Error(`Unknown NPM Runner ${type as string}.`)
+  throw new Error(`Unknown package manager ${type as string}.`)
 }
 
-function createPnpn(): PackageManager {
+function createPnpm(): PackageManager {
   return createRunner({ type: 'pnpm' })
 }
 
@@ -94,7 +94,7 @@ async function runNodeCommand(
       cwd: config.cwd,
       shell: true,
       env: {
-        ...process.env,
+        ...getCurrentEnvironment(),
         ...config.env,
       },
     })
@@ -146,4 +146,22 @@ export async function isPackageManagerAvailable(
   } catch (error) {
     return false
   }
+}
+
+function getCurrentEnvironment(): Record<string, string> {
+  return Object.keys(process.env).reduce((previous, key) => {
+    const lowerKey = key.toLowerCase()
+    if (
+      lowerKey.startsWith('vercel') ||
+      lowerKey.startsWith('netlify') ||
+      lowerKey.startsWith('cf_pages')
+    ) {
+      return previous
+    }
+
+    return {
+      ...previous,
+      [key]: process.env[key],
+    }
+  }, {})
 }

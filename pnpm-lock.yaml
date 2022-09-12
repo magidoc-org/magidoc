@@ -42,9 +42,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^2.13.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.13.0
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.13.0
+      '@magidoc/plugin-starter-variables': workspace:^2.13.1
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.13.1
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.13.1
       '@rollup/plugin-typescript': ^8.5.0
       '@types/fs-extra': ^9.0.13
       '@types/lodash': ^4.14.185
@@ -103,7 +103,7 @@ importers:
 
   packages/plugins/fuse-graphql:
     specifiers:
-      '@magidoc/plugin-fuse-markdown': workspace:^2.13.0
+      '@magidoc/plugin-fuse-markdown': workspace:^2.13.1
       '@types/marked': ^4.0.7
       '@types/node': ^18.7.16
       '@types/prettier': ^2.7.0
@@ -265,7 +265,7 @@ importers:
       vitest: ^0.23.2
       zod: ^3.19.0
     optionalDependencies:
-      zod: 3.19.0
+      zod: 3.19.1
     devDependencies:
       '@rollup/plugin-typescript': 8.5.0_tznp6w7csbjledp5nresoxoky4
       '@types/lodash': 4.14.185
@@ -400,14 +400,14 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-fuse-graphql': workspace:^2.13.0
-      '@magidoc/plugin-fuse-markdown': workspace:^2.13.0
-      '@magidoc/plugin-query-generator': workspace:^2.13.0
-      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.13.0
-      '@magidoc/plugin-starter-variables': workspace:^2.13.0
-      '@magidoc/plugin-svelte-marked': workspace:^2.13.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^2.13.0
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.13.0
+      '@magidoc/plugin-fuse-graphql': workspace:^2.13.1
+      '@magidoc/plugin-fuse-markdown': workspace:^2.13.1
+      '@magidoc/plugin-query-generator': workspace:^2.13.1
+      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.13.1
+      '@magidoc/plugin-starter-variables': workspace:^2.13.1
+      '@magidoc/plugin-svelte-marked': workspace:^2.13.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^2.13.1
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.13.1
       '@sveltejs/adapter-static': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.480
       '@types/lodash': ^4.14.185
@@ -819,9 +819,9 @@ packages:
     engines: {node: '>=16.9'}
     hasBin: true
     dependencies:
-      '@magidoc/plugin-starter-variables': 2.12.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': 2.12.1
-      '@magidoc/rollup-plugin-parse-gql-schema': 2.12.1
+      '@magidoc/plugin-starter-variables': 2.13.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': 2.13.0
+      '@magidoc/rollup-plugin-parse-gql-schema': 2.13.0
       axios: 0.27.2
       chokidar: 3.5.3
       commander: 9.4.0
@@ -837,14 +837,14 @@ packages:
       - supports-color
     dev: true
 
-  /@magidoc/plugin-starter-variables/2.12.1:
-    resolution: {integrity: sha512-2S6jWNBLuz94yWX3P3Jd2OMCxbkT8d2sxFnCpoiTc6JmjDDSjepy8Hf63ePa8PZLD+e7BuAPX7vXBD8gciOi2Q==}
+  /@magidoc/plugin-starter-variables/2.13.0:
+    resolution: {integrity: sha512-RL60M8pfeoiFkxV28tT7N+Xr81OieAeMKIy8iY1ARBeH35ggz9j1R/aiKMlHP6CRx7RL00NUhkmhSUJa/m7wUQ==}
     optionalDependencies:
       zod: 3.19.0
     dev: true
 
-  /@magidoc/rollup-plugin-fetch-gql-schema/2.12.1:
-    resolution: {integrity: sha512-TK9D380K6F5BCz6WRzf45/utFIplTBwT0B3cF9Gt8mR6Mv1OdlChSV4lMzaOIpWVuh41tNcUdu+mrMmIu6mQ2Q==}
+  /@magidoc/rollup-plugin-fetch-gql-schema/2.13.0:
+    resolution: {integrity: sha512-cHpXAq16uqBUVFga5IrZ351N+l2fIWbuw2rY2L4En+fVPdaTPwDhtRoQnrIMgZxigQ0Q8RKyBuoYn1TAwohJUw==}
     dependencies:
       axios: 0.27.2
       graphql: 16.6.0
@@ -852,8 +852,8 @@ packages:
       - debug
     dev: true
 
-  /@magidoc/rollup-plugin-parse-gql-schema/2.12.1:
-    resolution: {integrity: sha512-2kmRpeAqEERb0Ik92IuIiQlibpQhJYvARXB1vsmbB+l/Z2UNXsbRokxajzj1DnkZtgvPFxaHtiGDPM16qLjuhw==}
+  /@magidoc/rollup-plugin-parse-gql-schema/2.13.0:
+    resolution: {integrity: sha512-Jtc/TuN0XAnXBYPfhoUu4u44jv4EKEvaPSGbwQWKVJBFeJLN+IZAodiUsQEENJ4VATJPd55E/8QqsOShAiJMVA==}
     dependencies:
       fast-glob: 3.2.12
       graphql: 16.6.0
@@ -5420,3 +5420,8 @@ packages:
 
   /zod/3.19.0:
     resolution: {integrity: sha512-Yw0qvUsCNGBe5YacikdMt5gVYeUuaEFVDIHKMfElrGSaBhwR3CQK6vOzgfAJOjTdGIhEeoaj8GtT+NDZrepZbw==}
+
+  /zod/3.19.1:
+    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
+    dev: false
+    optional: true
