@@ -7,6 +7,7 @@ import buildPreviewCommand from './commands/preview/command'
 import { getVersion } from './version'
 import type { MagidocConfiguration } from './config/types'
 import buildDevCommand from './commands/dev/command'
+import { loadMarkdownPagesTree } from './utils/pages'
 
 const version = getVersion()
 const program = new Command()
@@ -24,4 +25,5 @@ buildEjectCommand(program)
 program.parse()
 
 export type { MagidocConfiguration }
-export { loadMarkdownPagesTree } from './utils/pages'
+
+export { loadMarkdownPagesTree }

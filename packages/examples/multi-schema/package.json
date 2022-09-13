@@ -1,6 +1,6 @@
 {
   "name": "multi-schema",
-  "version": "2.14.0",
+  "version": "2.14.1",
   "description": "This is an example of multi-schema documentation for Magidoc",
   "scripts": {
     "generate": "run-s generate:first generate:second",

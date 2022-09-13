@@ -42,9 +42,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^2.14.0
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.14.0
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.0
+      '@magidoc/plugin-starter-variables': workspace:^2.14.1
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.14.1
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.1
       '@rollup/plugin-typescript': ^8.5.0
       '@types/fs-extra': ^9.0.13
       '@types/lodash': ^4.14.185
@@ -103,7 +103,7 @@ importers:
 
   packages/plugins/fuse-graphql:
     specifiers:
-      '@magidoc/plugin-fuse-markdown': workspace:^2.14.0
+      '@magidoc/plugin-fuse-markdown': workspace:^2.14.1
       '@types/marked': ^4.0.7
       '@types/node': ^18.7.16
       '@types/prettier': ^2.7.0
@@ -400,14 +400,14 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-fuse-graphql': workspace:^2.14.0
-      '@magidoc/plugin-fuse-markdown': workspace:^2.14.0
-      '@magidoc/plugin-query-generator': workspace:^2.14.0
-      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.14.0
-      '@magidoc/plugin-starter-variables': workspace:^2.14.0
-      '@magidoc/plugin-svelte-marked': workspace:^2.14.0
-      '@magidoc/plugin-svelte-prismjs': workspace:^2.14.0
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.0
+      '@magidoc/plugin-fuse-graphql': workspace:^2.14.1
+      '@magidoc/plugin-fuse-markdown': workspace:^2.14.1
+      '@magidoc/plugin-query-generator': workspace:^2.14.1
+      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.14.1
+      '@magidoc/plugin-starter-variables': workspace:^2.14.1
+      '@magidoc/plugin-svelte-marked': workspace:^2.14.1
+      '@magidoc/plugin-svelte-prismjs': workspace:^2.14.1
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.1
       '@sveltejs/adapter-static': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.480
       '@types/lodash': ^4.14.185
@@ -819,9 +819,9 @@ packages:
     engines: {node: '>=16.9'}
     hasBin: true
     dependencies:
-      '@magidoc/plugin-starter-variables': 2.13.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': 2.13.1
-      '@magidoc/rollup-plugin-parse-gql-schema': 2.13.1
+      '@magidoc/plugin-starter-variables': 2.14.0
+      '@magidoc/rollup-plugin-fetch-gql-schema': 2.14.0
+      '@magidoc/rollup-plugin-parse-gql-schema': 2.14.0
       axios: 0.27.2
       chokidar: 3.5.3
       commander: 9.4.0
@@ -837,14 +837,14 @@ packages:
       - supports-color
     dev: true
 
-  /@magidoc/plugin-starter-variables/2.13.1:
-    resolution: {integrity: sha512-J0TQON0lgA1ypEfxQJccj+FK4wkeKNZSgsFlVk7Kz/xjJrAX9A5qsV38LAQKv8DqxNFToUpL2GstonUuarUv0w==}
+  /@magidoc/plugin-starter-variables/2.14.0:
+    resolution: {integrity: sha512-8jfd//4VFa+IBo6tALyazxqGyDj9dvQZ4T75L2n65/gEKjxBSWZ2NH8GZEAcu2rXk0rFnDyMIaHxwT2pL3zmwQ==}
     optionalDependencies:
       zod: 3.19.1
     dev: true
 
-  /@magidoc/rollup-plugin-fetch-gql-schema/2.13.1:
-    resolution: {integrity: sha512-8/yy5EWhJThhuSd4wI8nGl+TPBJ94PQQ2QwDChkW7l7BfyzSRwFFw9kmhaQ5XXT+zKeKnlGma3tTeysDSWFETg==}
+  /@magidoc/rollup-plugin-fetch-gql-schema/2.14.0:
+    resolution: {integrity: sha512-l8JVfDGmHNaxDOk3ZAL77FmSngN23teHmTRM0H0LLxM/n1WeNSb8GxrS1DDMxxl6cxMewe7fDSKQ337LBT9ehw==}
     dependencies:
       axios: 0.27.2
       graphql: 16.6.0
@@ -852,8 +852,8 @@ packages:
       - debug
     dev: true
 
-  /@magidoc/rollup-plugin-parse-gql-schema/2.13.1:
-    resolution: {integrity: sha512-2pJI8XKh48cSOQ6J7IYv3Epam/fMcu+BqEVKudIRBBGcwSbPmrXV1A8uexee39wYOB47MzywMVcBIbqQYlTSig==}
+  /@magidoc/rollup-plugin-parse-gql-schema/2.14.0:
+    resolution: {integrity: sha512-yMsrkm4QgZt+OPOez3l2xCVyPKPXOr5crW5KKTNW1BMuiAVZYQjJ2l6LitM9DE14ZcJbHo7dR6JT7Oos7+QLjQ==}
     dependencies:
       fast-glob: 3.2.12
       graphql: 16.6.0
