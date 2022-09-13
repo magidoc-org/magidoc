@@ -70,20 +70,14 @@ function asPage(item: File): NumberedMarkdownPage {
   }
 
   if (item.dir) {
-    if (parts.length !== 2) {
-      throw new Error(
-        `Invalid directory name: ${item.name}\nDirectories must follow the format: <number>.<title>`,
-      )
-    }
-
     return {
       number,
-      title: parts[1],
+      title: parts.slice(1).join('.'),
       content: sorted(getFiles(item.path).map((item) => asPage(item))),
     }
   }
 
-  if (parts.length !== 3 || parts[2] !== 'md') {
+  if (parts[parts.length - 1] !== 'md') {
     throw new Error(
       `Invalid file name: ${item.name}\nFiles must follow the format: <number>.<title>.md`,
     )
@@ -91,7 +85,7 @@ function asPage(item: File): NumberedMarkdownPage {
 
   return {
     number,
-    title: parts[1],
+    title: parts.slice(1, parts.length - 1).join('.'),
     content: fs.readFileSync(item.path).toString(),
   }
 }
