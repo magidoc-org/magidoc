@@ -93,11 +93,11 @@ importers:
 
   packages/examples/multi-schema:
     specifiers:
-      '@magidoc/cli': 2.12.1
+      '@magidoc/cli': 2.13.1
       npm-run-all: ^4.1.5
       serve: ^14.0.1
     devDependencies:
-      '@magidoc/cli': 2.12.1
+      '@magidoc/cli': 2.13.1
       npm-run-all: 4.1.5
       serve: 14.0.1
 
@@ -814,8 +814,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@magidoc/cli/2.12.1:
-    resolution: {integrity: sha512-b3Avr3VGy4865B+9O3SNktAc0hKI7wINvLJ2A/lmAU73tGJCmnHHSfkSg3APlUSLl8JLw4L4E56A6/PfltJnPw==}
+  /@magidoc/cli/2.13.1:
+    resolution: {integrity: sha512-QG0xNNOzQzN00F0/eKrM6yZedbSEAK6siKMXO7Mu83hTb00fepv4JbSgo8y7EiYOsb8oG0vt+1ZLlqmMvIIhZQ==}
     engines: {node: '>=16.9'}
     hasBin: true
     dependencies:
@@ -830,7 +830,7 @@ packages:
       listr2: 5.0.5
       lodash: 4.17.21
       sirv: 2.0.2
-      zod: 3.19.0
+      zod: 3.19.1
     transitivePeerDependencies:
       - debug
       - enquirer
@@ -840,7 +840,7 @@ packages:
   /@magidoc/plugin-starter-variables/2.13.1:
     resolution: {integrity: sha512-J0TQON0lgA1ypEfxQJccj+FK4wkeKNZSgsFlVk7Kz/xjJrAX9A5qsV38LAQKv8DqxNFToUpL2GstonUuarUv0w==}
     optionalDependencies:
-      zod: 3.19.0
+      zod: 3.19.1
     dev: true
 
   /@magidoc/rollup-plugin-fetch-gql-schema/2.13.1:
@@ -5420,8 +5420,7 @@ packages:
 
   /zod/3.19.0:
     resolution: {integrity: sha512-Yw0qvUsCNGBe5YacikdMt5gVYeUuaEFVDIHKMfElrGSaBhwR3CQK6vOzgfAJOjTdGIhEeoaj8GtT+NDZrepZbw==}
+    dev: false
 
   /zod/3.19.1:
     resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
-    dev: false
-    optional: true
