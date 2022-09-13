@@ -251,6 +251,11 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
     expected: 'https://website.com',
   },
   {
+    type: 'JSON',
+    names: ['anythingelse', 'asd'],
+    expected: {},
+  },
+  {
     type: 'JsonB',
     names: ['anythingelse', 'asd'],
     expected: {},

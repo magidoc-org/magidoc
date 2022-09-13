@@ -24,3 +24,4 @@ buildEjectCommand(program)
 program.parse()
 
 export type { MagidocConfiguration }
+export { loadMarkdownPagesTree } from './utils/pages'
