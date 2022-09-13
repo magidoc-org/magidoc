@@ -251,6 +251,11 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
     expected: 'https://website.com',
   },
   {
+    type: 'JSON',
+    names: ['anythingelse', 'asd'],
+    expected: {},
+  },
+  {
     type: 'JsonB',
     names: ['anythingelse', 'asd'],
     expected: {},
@@ -260,7 +265,7 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
 describe('generating default values', () => {
   beforeAll(() => {
     // If this fails, make sure you add a test for the new types
-    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(46)
+    expect(Object.keys(DEFAULT_FACTORIES)).toHaveLength(49)
   })
 
   ALL_SETS.forEach((set) => {

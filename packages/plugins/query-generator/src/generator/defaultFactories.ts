@@ -127,6 +127,7 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = withVariants(
     Date: () => date,
     DateTime: () => dateTime,
     URL: () => url,
+    JSON: () => ({}),
   }),
 )
 
@@ -168,6 +169,6 @@ function withAliases(
     SmallInt: record['Int'],
     Timestamp: record['DateTime'],
     Timestamptz: record['DateTime'],
-    JsonB: () => ({}),
+    JsonB: record['JSON'],
   }
 }
