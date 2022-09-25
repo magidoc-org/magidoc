@@ -27,17 +27,17 @@
     "@magidoc/plugin-svelte-marked": "workspace:^2.14.2",
     "@magidoc/plugin-svelte-prismjs": "workspace:^2.14.2",
     "@magidoc/rollup-plugin-parse-gql-schema": "workspace:^2.14.2",
-    "@sveltejs/adapter-static": "1.0.0-next.42",
-    "@sveltejs/kit": "1.0.0-next.480",
+    "@sveltejs/adapter-static": "1.0.0-next.43",
+    "@sveltejs/kit": "1.0.0-next.503",
     "@types/lodash": "^4.14.185",
     "@types/marked": "^4.0.7",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
-    "carbon-components-svelte": "^0.70.6",
-    "carbon-icons-svelte": "^11.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "carbon-components-svelte": "^0.70.9",
+    "carbon-icons-svelte": "^11.3.0",
     "carbon-preprocess-svelte": "^0.9.1",
-    "eslint": "^8.23.0",
+    "eslint": "^8.24.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "fuse.js": "^6.6.2",
     "graphql": "^16.6.0",
@@ -51,7 +51,7 @@
     "svelte-preprocess": "^4.10.7",
     "tslib": "^2.4.0",
     "typescript": "^4.8.3",
-    "vite": "^3.1.0"
+    "vite": "^3.1.3"
   },
   "engines": {
     "node": ">=16.14"
