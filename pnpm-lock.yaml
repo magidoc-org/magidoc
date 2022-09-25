@@ -42,9 +42,9 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^2.14.1
-      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.14.1
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.1
+      '@magidoc/plugin-starter-variables': workspace:^2.14.2
+      '@magidoc/rollup-plugin-fetch-gql-schema': workspace:^2.14.2
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.2
       '@rollup/plugin-typescript': ^8.5.0
       '@types/fs-extra': ^9.0.13
       '@types/lodash': ^4.14.185
@@ -93,7 +93,7 @@ importers:
 
   packages/plugins/fuse-graphql:
     specifiers:
-      '@magidoc/plugin-fuse-markdown': workspace:^2.14.1
+      '@magidoc/plugin-fuse-markdown': workspace:^2.14.2
       '@types/marked': ^4.0.7
       '@types/node': ^18.7.16
       '@types/prettier': ^2.7.0
@@ -330,14 +330,14 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-fuse-graphql': workspace:^2.14.1
-      '@magidoc/plugin-fuse-markdown': workspace:^2.14.1
-      '@magidoc/plugin-query-generator': workspace:^2.14.1
-      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.14.1
-      '@magidoc/plugin-starter-variables': workspace:^2.14.1
-      '@magidoc/plugin-svelte-marked': workspace:^2.14.1
-      '@magidoc/plugin-svelte-prismjs': workspace:^2.14.1
-      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.1
+      '@magidoc/plugin-fuse-graphql': workspace:^2.14.2
+      '@magidoc/plugin-fuse-markdown': workspace:^2.14.2
+      '@magidoc/plugin-query-generator': workspace:^2.14.2
+      '@magidoc/plugin-reverse-schema-mapper': workspace:^2.14.2
+      '@magidoc/plugin-starter-variables': workspace:^2.14.2
+      '@magidoc/plugin-svelte-marked': workspace:^2.14.2
+      '@magidoc/plugin-svelte-prismjs': workspace:^2.14.2
+      '@magidoc/rollup-plugin-parse-gql-schema': workspace:^2.14.2
       '@sveltejs/adapter-static': 1.0.0-next.42
       '@sveltejs/kit': 1.0.0-next.480
       '@types/lodash': ^4.14.185

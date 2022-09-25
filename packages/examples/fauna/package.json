@@ -1,0 +1,14 @@
+{
+  "name": "@magidoc/example-faundb",
+  "version": "1.0.0",
+  "description": "This is an example of documentation for a GraphQL schema.",
+  "scripts": {
+    "generate": "magidoc generate",
+    "preview": "magidoc preview"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@magidoc/cli": "latest"
+  }
+}
