@@ -4,3 +4,4 @@ packages:
   - "packages/**"
   - "!packages/**/package/*"
   - "!packages/**/build/*"
+  - "!packages/examples/**/*"
