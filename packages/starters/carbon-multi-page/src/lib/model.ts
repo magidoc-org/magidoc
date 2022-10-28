@@ -108,16 +108,28 @@ function createTypesWebsiteContent(): WebsiteContent | null {
   }
 }
 
+export function hasQueries(): boolean {
+  return !!schema.getQueryType()
+}
+
 export function getQueryByName(
   name: string,
 ): GraphQLField<unknown, unknown, unknown> | undefined {
   return queriesByName[name.toLocaleLowerCase()]
 }
 
+export function hasMutations(): boolean {
+  return !!schema.getMutationType()
+}
+
 export function getMutationByName(
   name: string,
 ): GraphQLField<unknown, unknown, unknown> | undefined {
   return mutationsByName[name.toLocaleLowerCase()]
+}
+
+export function hasSubscriptions(): boolean {
+  return !!schema.getSubscriptionType()
 }
 
 export function getSubscriptionByName(

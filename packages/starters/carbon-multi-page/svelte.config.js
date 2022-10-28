@@ -4,8 +4,12 @@ import { optimizeImports } from 'carbon-preprocess-svelte'
 import _ from 'lodash'
 import { templates } from '@magidoc/plugin-starter-variables'
 import { loadVariables } from './magidoc.config.js'
+import graphql from 'graphql'
+import fs from 'fs'
 
 const variables = loadVariables()
+
+const schema = graphql.buildClientSchema(JSON.parse(fs.readFileSync('./src/_schema.json').toString()))
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -13,9 +17,11 @@ const variables = loadVariables()
 const config = {
   preprocess: [preprocess(), optimizeImports()],
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      strict: false
+    }),
     paths: {
-      base: templates.SITE_ROOT.get(variables) ?? '',
+      base: templates.SITE_ROOT.getOrDefault(variables, ''),
     },
   },
 }
