@@ -1,7 +1,9 @@
-import { getTypeByName, getTypeUsages } from '$lib/model'
+import { getTypeByName, getTypeUsages, isModelEmpty } from '$lib/model'
 import { findPageByHref } from '$lib/pages'
 import { error } from '@sveltejs/kit'
 import type { PageLoad } from './$types'
+
+export const prerender = !isModelEmpty()
 
 export const load: PageLoad = ({ params, url }) => {
   const type = getTypeByName(params.type)

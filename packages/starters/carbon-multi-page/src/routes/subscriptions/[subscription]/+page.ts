@@ -1,7 +1,9 @@
-import { getSubscriptionByName } from '$lib/model'
+import { getSubscriptionByName, hasSubscriptions } from '$lib/model'
 import { findPageByHref } from '$lib/pages'
 import { error } from '@sveltejs/kit'
 import type { PageLoad } from './$types'
+
+export const prerender = hasSubscriptions()
 
 export const load: PageLoad = ({ params, url }) => {
   const field = getSubscriptionByName(params.subscription)
