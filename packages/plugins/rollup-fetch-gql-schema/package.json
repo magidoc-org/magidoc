@@ -2,7 +2,7 @@
   "name": "@magidoc/rollup-plugin-fetch-gql-schema",
   "description": "A Rollup and ViteJS plugin that allows to fetch a GraphQL Schema from a target URL and save it to a target output folder.",
   "private": false,
-  "version": "2.14.3",
+  "version": "2.14.4",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -32,13 +32,13 @@
     "graphql": "^16.6.0"
   },
   "devDependencies": {
-    "@types/node": "^18.11.7",
+    "@types/node": "^18.11.9",
     "@types/prettier": "^2.7.1",
-    "@vitest/coverage-c8": "^0.24.3",
+    "@vitest/coverage-c8": "^0.25.2",
     "nock": "^13.2.9",
-    "rollup": "^3.2.3",
-    "typescript": "^4.8.4",
-    "vite": "^3.2.0",
-    "vitest": "^0.24.3"
+    "rollup": "^3.3.0",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
+    "vitest": "^0.25.2"
   }
 }
