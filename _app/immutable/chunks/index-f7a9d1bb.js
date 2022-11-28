@@ -1,1 +1,0 @@
-import{H as n,R as o}from"./control-ac13d41e.js";function t(r,e){return new n(r,e)}function c(r,e){if(isNaN(r)||r<300||r>308)throw new Error("Invalid status code");return new o(r,e)}export{t as e,c as r};
