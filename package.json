@@ -26,16 +26,16 @@
     "get-version": "echo $npm_package_version"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
     "archiver": "^5.3.1",
-    "eslint": "^8.27.0",
+    "eslint": "^8.28.0",
     "eslint-plugin-es": "^4.1.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "husky": "^8.0.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.7.1",
-    "prettier-plugin-svelte": "^2.8.0",
+    "prettier": "^2.8.0",
+    "prettier-plugin-svelte": "^2.8.1",
     "svelte": "^3.53.1",
     "typescript": "^4.9.3"
   },
