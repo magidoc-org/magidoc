@@ -14,11 +14,11 @@
     "graphql-schema",
     "magidoc"
   ],
-  "homepage": "https://magidoc.js.org/plugins/rollup-fetch-graphql-schema",
+  "homepage": "https://magidoc.js.org/plugins/rollup-graphql-schema",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",
-    "directory": "packages/plugins/rollup-fetch-gql-schema"
+    "directory": "packages/plugins/rollup-plugin-gql-schema"
   },
   "scripts": {
     "build": "run-p build:*",

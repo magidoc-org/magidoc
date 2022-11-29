@@ -1,4 +1,5 @@
 import {
+  buildClientSchema,
   buildSchema,
   GraphQLInterfaceType,
   GraphQLObjectType,
@@ -6,6 +7,7 @@ import {
   type GraphQLField,
   type GraphQLNamedType,
   type GraphQLSchema,
+  type IntrospectionQuery,
 } from 'graphql'
 import _ from 'lodash'
 import type { WebsiteContent } from 'src/app'
@@ -18,7 +20,7 @@ import {
   type TypeReverseMapping,
 } from '@magidoc/plugin-reverse-schema-mapper'
 
-export const schema: GraphQLSchema = buildSchema(schemaRaw)
+export const schema: GraphQLSchema = parseSchema()
 
 const queriesByName = toIgnoreCase(schema.getQueryType()?.getFields())
 const mutationsByName = toIgnoreCase(schema.getMutationType()?.getFields())
@@ -177,4 +179,17 @@ function getFieldPossibleDescriptions(
         interfaceType,
       ),
     )
+}
+
+function parseSchema() {
+  if (schemaRaw.trim().length === 0) {
+    // Hack to generate an empty schema
+    return buildClientSchema(
+      JSON.parse(
+        JSON.stringify({ __schema: { types: [] } }),
+      ) as IntrospectionQuery,
+    )
+  }
+
+  return buildSchema(schemaRaw)
 }
