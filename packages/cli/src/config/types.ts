@@ -43,6 +43,9 @@ export const ZIntrospectionConfiguration = z.discriminatedUnion('type', [
     type: z.literal('raw'),
     content: z.string().min(1),
   }),
+  z.object({
+    type: z.literal('none'),
+  }),
 ])
 
 export const ZWebsiteConfiguration = z.object({

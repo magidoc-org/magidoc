@@ -66,25 +66,6 @@ describe('loading graphql schema', () => {
       })
     })
 
-    describe('introspection is of type file', () => {
-      const config = {
-        ...defaultConfig,
-        introspection: {
-          type: 'file' as const,
-          location: 'src/schema.graphql',
-        },
-      }
-
-      it('should copy the schema', async () => {
-        const task = loadGraphQLSchemaTask(config)
-        await task.executor(ctx, taskWrapperMock())
-        expect(fs.copyFile).toHaveBeenCalledWith(
-          config.introspection.location,
-          ctx.templateConfiguration.schemaTargetLocation,
-        )
-      })
-    })
-
     describe('introspection is of type raw', () => {
       const config = {
         ...defaultConfig,
@@ -100,6 +81,24 @@ describe('loading graphql schema', () => {
         expect(fs.writeFile).toHaveBeenCalledWith(
           ctx.templateConfiguration.schemaTargetLocation,
           config.introspection.content,
+        )
+      })
+    })
+
+    describe('introspection is of type none', () => {
+      const config = {
+        ...defaultConfig,
+        introspection: {
+          type: 'none' as const,
+        },
+      }
+
+      it('should write an empty schema', async () => {
+        const task = loadGraphQLSchemaTask(config)
+        await task.executor(ctx, taskWrapperMock())
+        expect(fs.writeFile).toHaveBeenCalledWith(
+          ctx.templateConfiguration.schemaTargetLocation,
+          '',
         )
       })
     })

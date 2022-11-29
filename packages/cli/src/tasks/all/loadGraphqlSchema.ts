@@ -40,6 +40,8 @@ export function loadGraphQLSchemaTask<T extends Ctx>(config: Config): Task<T> {
             ctx.templateConfiguration.schemaTargetLocation,
             config.introspection.content,
           )
+        case 'none':
+          await fs.writeFile(ctx.templateConfiguration.schemaTargetLocation, '')
       }
     },
   }
