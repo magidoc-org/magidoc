@@ -1,6 +1,7 @@
 import type { Plugin } from 'rollup'
 import { writeFileSync } from 'fs'
-import { parseGraphqlSchema } from './schema/parse'
+import { parseGraphqlSchema } from '../schema/parse'
+import { convert, OutputFormat } from '../schema/convert'
 
 export type PluginOptions = {
   /**
@@ -14,6 +15,13 @@ export type PluginOptions = {
    * @default src/_schema.json
    */
   target?: string
+
+  /**
+   * Wether the output format should be a GraphQL SDL file or an introspection JSON file.
+   *
+   * Defaults to introspection JSON.
+   */
+  format?: OutputFormat
 }
 
 export async function parseSchema(options: PluginOptions) {
@@ -21,15 +29,17 @@ export async function parseSchema(options: PluginOptions) {
     globPaths: options.paths,
   })
 
-  const output = options.target || 'src/_schema.json'
+  const format: OutputFormat = options.format ?? 'introspection'
+  const extension = format === 'sdl' ? 'graphqls' : 'json'
+  const output = options.target || `src/_schema.${extension}`
 
-  writeFileSync(output, JSON.stringify(schema), {
+  writeFileSync(output, convert(schema, format), {
     encoding: 'utf-8',
     flag: 'w',
   })
 }
 
-export default function fetchGraphQLSchema(options: PluginOptions): Plugin {
+export default function parseGraphQLSchema(options: PluginOptions): Plugin {
   return {
     name: 'parse-graphql-schema',
     buildStart: async function () {

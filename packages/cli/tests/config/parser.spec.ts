@@ -127,10 +127,9 @@ describe('parsing the magidoc config', () => {
       })
     })
 
-    describe('using a file', () => {
+    describe('using a none', () => {
       const introspection: IntrospectionConfiguration = {
-        type: 'file',
-        location: 'test/_schema.json',
+        type: 'none',
       }
 
       it('should parse', () => {
@@ -142,29 +141,11 @@ describe('parsing the magidoc config', () => {
           {
             introspection: {
               ...introspection,
-              location: resolve(introspection.location),
             },
             website: websitePart,
             dev: devPart,
           },
         )
-      })
-
-      describe('using an empty path', () => {
-        it('should fail parsing', () => {
-          shouldFailParsing(
-            {
-              ...minimalConfiguration,
-              introspection: {
-                ...introspection,
-                location: '',
-              },
-            },
-            [
-              "String must contain at least 1 character(s) at path 'introspection.location'",
-            ],
-          )
-        })
       })
     })
 
@@ -216,7 +197,7 @@ describe('parsing the magidoc config', () => {
             },
           },
           [
-            "Invalid discriminator value. Expected 'url' | 'sdl' | 'file' | 'raw' at path 'introspection.type'",
+            "Invalid discriminator value. Expected 'url' | 'sdl' | 'raw' | 'none' at path 'introspection.type'",
           ],
         )
       })

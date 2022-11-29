@@ -47,12 +47,8 @@
       "path": "./packages/plugins/fuse-graphql"
     },
     {
-      "name": "Plugins/Rollup Fetch GraphQL Schema",
-      "path": "./packages/plugins/rollup-fetch-gql-schema"
-    },
-    {
-      "name": "Plugins/Rollup Parse GraphQL Schema",
-      "path": "./packages/plugins/rollup-parse-gql-schema"
+      "name": "Plugins/Rollup GraphQL Schema",
+      "path": "./packages/plugins/rollup-plugin-gql-schema"
     },
     {
       "name": "Plugins/Reverse Schema Mapper",

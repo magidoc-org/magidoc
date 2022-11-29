@@ -1,6 +1,8 @@
 import {
+  buildClientSchema,
   getIntrospectionQuery,
   GraphQLError,
+  GraphQLSchema,
   IntrospectionQuery,
 } from 'graphql'
 import axios from 'axios'
@@ -21,7 +23,7 @@ export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 export default async function queryGraphQLSchema(
   url: string,
   parameters: Parameters,
-): Promise<IntrospectionQuery> {
+): Promise<GraphQLSchema> {
   const actualMethod: Method = parameters.method || 'POST'
   const body = JSON.stringify({
     operationName: 'IntrospectionQuery',
@@ -49,6 +51,6 @@ export default async function queryGraphQLSchema(
         )
       }
 
-      return res.data
+      return buildClientSchema(res.data)
     })
 }

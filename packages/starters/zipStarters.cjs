@@ -4,7 +4,7 @@ const archiver = require('archiver')
 
 const basePath = __dirname
 
-const excludedPatterns = ['.svelte-kit/**', 'build/**', 'node_modules/**', 'static/**', '**/_variables.json', '**/_schema.json']
+const excludedPatterns = ['.svelte-kit/**', 'build/**', 'node_modules/**', 'static/**', '**/_variables.json', '**/_schema.graphqls']
 
 function listStarterDirectories() {
   const files = fs.readdirSync(basePath)

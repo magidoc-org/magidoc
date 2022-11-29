@@ -10,8 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
  */
 const config = {
   introspection: {
-    type: 'file',
-    location: path.join(__dirname, 'empty-schema.json'),
+    type: 'none',
   },
   website: {
     template: path.join(__dirname, '../packages/starters/carbon-multi-page'),
