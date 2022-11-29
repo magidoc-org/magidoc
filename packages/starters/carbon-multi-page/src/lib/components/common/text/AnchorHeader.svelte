@@ -28,8 +28,7 @@
   }
 
   .header {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-all;
   }
 
   .parent:hover .hashtag {

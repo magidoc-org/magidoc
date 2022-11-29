@@ -72,10 +72,10 @@
 </script>
 
 {#if isValidDirective(directive)}
-  <Tag type="cool-gray">
+  <Tag type="blue">
     <div>
       <TooltipDefinition tooltipText={text} direction="top" align="center">
-        {directive.name.value}
+        @{directive.name.value}
       </TooltipDefinition>
     </div>
   </Tag>
