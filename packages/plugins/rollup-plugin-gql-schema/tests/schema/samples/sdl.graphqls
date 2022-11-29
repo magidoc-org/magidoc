@@ -1,3 +1,8 @@
+type Query {
+  todos: [Todo]
+  todo(todoId: ID): Todo
+}
+
 type Todo {
   id: ID
   name: String
@@ -8,11 +13,6 @@ input TodoInput {
   todoId: ID
   name: String
   complete: Boolean
-}
-
-type Query {
-  todos: [Todo]
-  todo(todoId: ID): Todo
 }
 
 type Mutation {

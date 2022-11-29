@@ -1,11 +1,13 @@
-import { buildClientSchema, IntrospectionQuery } from 'graphql'
+import { buildSchema, GraphQLSchema } from 'graphql'
 import path from 'path'
 import { parseGraphqlSchema } from '../../src/schema/parse'
-import expected from './samples/expected-introspection.json'
 import { describe, it, expect } from 'vitest'
+import { getSample } from './utils'
+
+const expected = buildSchema(getSample('sdl.graphqls'))
 
 describe('when parsing a single file', () => {
-  const file = relativeToAbsolute('./samples/single-file.graphqls')
+  const file = relativeToAbsolute('./samples/sdl.graphqls')
 
   it('should create the introspection result properly', async () => {
     verifyEqualExpected(await run([file]))
@@ -13,7 +15,7 @@ describe('when parsing a single file', () => {
 })
 
 describe('when parsing a file with backslashes', () => {
-  const file = relativeToAbsolute('./samples/single-file.graphqls').replaceAll(
+  const file = relativeToAbsolute('./samples/sdl.graphqls').replaceAll(
     '/',
     '\\',
   )
@@ -69,7 +71,7 @@ describe('providing non graphql files', () => {
   })
 })
 
-async function run(paths: string[]): Promise<IntrospectionQuery> {
+async function run(paths: string[]): Promise<GraphQLSchema> {
   return await parseGraphqlSchema({
     globPaths: paths,
   })
@@ -79,8 +81,6 @@ function relativeToAbsolute(target: string): string {
   return path.join(__dirname, target)
 }
 
-function verifyEqualExpected(first: IntrospectionQuery) {
-  expect(buildClientSchema(first)).toEqual(
-    buildClientSchema(expected as unknown as IntrospectionQuery),
-  )
+function verifyEqualExpected(first: GraphQLSchema) {
+  expect(first.astNode).toStrictEqual(expected.astNode)
 }

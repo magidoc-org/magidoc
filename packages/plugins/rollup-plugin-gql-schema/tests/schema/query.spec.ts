@@ -1,15 +1,21 @@
 import queryGraphQLSchema from '../../src/schema/query'
 import nock from 'nock'
-import { getIntrospectionQuery } from 'graphql'
+import {
+  buildClientSchema,
+  getIntrospectionQuery,
+  IntrospectionQuery,
+} from 'graphql'
 import { describe, beforeEach, it, expect } from 'vitest'
+import { getSample } from './utils'
 
 const basePath = 'https://what-the-test.com'
 const path = '/not-a-site'
 const fullPath = `${basePath}${path}`
 
 const introspectionResult = {
-  data: 'whatever',
+  data: JSON.parse(getSample('introspection.json')) as IntrospectionQuery,
 }
+const schema = buildClientSchema(introspectionResult.data)
 
 describe('fetching the graphql schema', () => {
   beforeEach(() => {
@@ -33,7 +39,7 @@ describe('fetching the graphql schema', () => {
 
       it('uses the returns the introspection query result', async () => {
         const result = await queryGraphQLSchema(fullPath, {})
-        expect(result).toBe(introspectionResult.data)
+        expect(result).toStrictEqual(schema)
       })
     })
 
@@ -69,7 +75,7 @@ describe('fetching the graphql schema', () => {
     it('uses the custom headers', async () => {
       const result = await queryGraphQLSchema(fullPath, { query: query })
 
-      expect(result).toBe(introspectionResult.data)
+      expect(result).toStrictEqual(schema)
     })
   })
 
@@ -83,7 +89,7 @@ describe('fetching the graphql schema', () => {
         method: 'GET',
       })
 
-      expect(result).toBe(introspectionResult.data)
+      expect(result).toStrictEqual(schema)
     })
   })
 
@@ -104,7 +110,7 @@ describe('fetching the graphql schema', () => {
         },
       })
 
-      expect(result).toBe(introspectionResult.data)
+      expect(result).toStrictEqual(schema)
     })
   })
 })

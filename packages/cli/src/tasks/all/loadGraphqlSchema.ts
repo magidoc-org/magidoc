@@ -1,5 +1,5 @@
-import { fetchSchema } from '@magidoc/rollup-plugin-fetch-gql-schema'
-import { parseSchema } from '@magidoc/rollup-plugin-parse-gql-schema'
+import { fetchSchema } from '@magidoc/rollup-plugin-gql-schema'
+import { parseSchema } from '@magidoc/rollup-plugin-gql-schema'
 import fs from 'fs/promises'
 import type { Task } from '../runner'
 import type { IntrospectionConfiguration } from '../../config/types'
@@ -25,12 +25,14 @@ export function loadGraphQLSchemaTask<T extends Ctx>(config: Config): Task<T> {
             query: config.introspection.query,
             headers: config.introspection.headers,
             target: ctx.templateConfiguration.schemaTargetLocation,
+            format: 'sdl',
           })
           break
         case 'sdl':
           await parseSchema({
             paths: config.introspection.paths,
             target: ctx.templateConfiguration.schemaTargetLocation,
+            format: 'sdl',
           })
           break
         case 'file':

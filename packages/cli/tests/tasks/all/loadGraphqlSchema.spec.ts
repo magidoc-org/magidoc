@@ -1,12 +1,11 @@
-import { fetchSchema } from '@magidoc/rollup-plugin-fetch-gql-schema'
-import { parseSchema } from '@magidoc/rollup-plugin-parse-gql-schema'
+import { fetchSchema } from '@magidoc/rollup-plugin-gql-schema'
+import { parseSchema } from '@magidoc/rollup-plugin-gql-schema'
 import { describe, expect, it, vi } from 'vitest'
 import { loadGraphQLSchemaTask } from '../../../src/tasks/all/loadGraphqlSchema'
 import { taskWrapperMock } from './utils'
 import fs from 'fs/promises'
 
-vi.mock('@magidoc/rollup-plugin-fetch-gql-schema')
-vi.mock('@magidoc/rollup-plugin-parse-gql-schema')
+vi.mock('@magidoc/rollup-plugin-gql-schema')
 vi.mock('fs/promises')
 
 describe('loading graphql schema', () => {
@@ -42,6 +41,7 @@ describe('loading graphql schema', () => {
           query: config.introspection.query,
           headers: config.introspection.headers,
           target: ctx.templateConfiguration.schemaTargetLocation,
+          format: 'sdl',
         })
       })
     })
@@ -61,6 +61,7 @@ describe('loading graphql schema', () => {
         expect(parseSchema).toHaveBeenCalledWith({
           paths: config.introspection.paths,
           target: ctx.templateConfiguration.schemaTargetLocation,
+          format: 'sdl',
         })
       })
     })

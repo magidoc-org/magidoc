@@ -1,9 +1,5 @@
 import glob from 'fast-glob'
-import {
-  buildSchema,
-  introspectionFromSchema,
-  IntrospectionQuery,
-} from 'graphql'
+import { buildSchema, GraphQLSchema } from 'graphql'
 import { readFile } from 'fs/promises'
 
 export type Parameters = {
@@ -12,11 +8,11 @@ export type Parameters = {
 
 export async function parseGraphqlSchema(
   options: Parameters,
-): Promise<IntrospectionQuery> {
+): Promise<GraphQLSchema> {
   const rawSchema = await readFullSchema(options.globPaths)
+
   try {
-    const schema = buildSchema(rawSchema)
-    return introspectionFromSchema(schema)
+    return buildSchema(rawSchema)
   } catch (error) {
     throw new Error(
       `Unable to extract a GraphQL introspection from provided schema: ${String(
@@ -53,5 +49,5 @@ async function readFullSchema(globPaths: string[]): Promise<string> {
 
 async function readGlobPaths(globPath: string): Promise<string[]> {
   // Backslashes in windows paths are not supported by fast-glob
-  return await glob(globPath.replaceAll('\\', '/'), { dot: true })
+  return [...new Set(await glob(globPath.replaceAll('\\', '/'), { dot: true }))]
 }

@@ -1,7 +1,7 @@
 import type { Plugin } from 'rollup'
-import queryGraphQLSchema, { Method } from './schema/query.js'
+import queryGraphQLSchema, { Method } from '../schema/query.js'
 import { writeFileSync } from 'fs'
-import { convert, IntrospectionFormat } from './schema/convert.js'
+import { convert, OutputFormat } from '../schema/convert.js'
 
 export type { Method }
 
@@ -23,7 +23,7 @@ export type PluginOptions = {
    *
    * Defaults to introspection JSON.
    */
-  format?: IntrospectionFormat
+  format?: OutputFormat
 
   /**
    * The HTTP method used to call the GraphQL API.
@@ -54,7 +54,7 @@ export async function fetchSchema(options: PluginOptions) {
     headers: options.headers,
   })
 
-  const format = options.format ?? 'introspection'
+  const format: OutputFormat = options.format ?? 'introspection'
   const extension = format === 'sdl' ? 'graphql' : 'json'
   const output = options.target || `src/_schema.${extension}`
 

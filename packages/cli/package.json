@@ -31,8 +31,7 @@
   },
   "dependencies": {
     "@magidoc/plugin-starter-variables": "workspace:^2.14.5",
-    "@magidoc/rollup-plugin-fetch-gql-schema": "workspace:^2.14.5",
-    "@magidoc/rollup-plugin-parse-gql-schema": "workspace:^2.14.5",
+    "@magidoc/rollup-plugin-gql-schema": "workspace:^2.14.5",
     "axios": "^1.2.0",
     "chokidar": "^3.5.3",
     "commander": "^9.4.1",
