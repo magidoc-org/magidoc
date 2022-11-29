@@ -9,5 +9,6 @@ When fetching the schema, configuration is available to set custom headers, url,
 
 ## Parsing
 When parsing the schema, it is possible to aggregate multiple schema parts into one file using glob patterns and/or custom file paths.
+
 ## Documentation
 For more details on how to use this plugin, see the [documentation](https://magidoc.js.org/plugins/rollup-graphql-schema).
