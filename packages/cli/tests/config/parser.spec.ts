@@ -130,7 +130,7 @@ describe('parsing the magidoc config', () => {
     describe('using a file', () => {
       const introspection: IntrospectionConfiguration = {
         type: 'file',
-        location: 'test/_schema.json',
+        location: 'test/_schema.graphqls',
       }
 
       it('should parse', () => {

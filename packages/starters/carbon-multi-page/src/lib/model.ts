@@ -1,16 +1,15 @@
 import {
-  buildClientSchema,
+  buildSchema,
   GraphQLInterfaceType,
   GraphQLObjectType,
   isObjectType,
   type GraphQLField,
   type GraphQLNamedType,
   type GraphQLSchema,
-  type IntrospectionQuery,
 } from 'graphql'
 import _ from 'lodash'
 import type { WebsiteContent } from 'src/app'
-import schemaJson from '../_schema.json'
+import schemaRaw from '../_schema.graphqls?raw'
 import type { Maybe } from 'graphql/jsutils/Maybe'
 import { base } from '$app/paths'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
@@ -19,9 +18,7 @@ import {
   type TypeReverseMapping,
 } from '@magidoc/plugin-reverse-schema-mapper'
 
-export const schema: GraphQLSchema = buildClientSchema(
-  schemaJson as unknown as IntrospectionQuery,
-)
+export const schema: GraphQLSchema = buildSchema(schemaRaw)
 
 const queriesByName = toIgnoreCase(schema.getQueryType()?.getFields())
 const mutationsByName = toIgnoreCase(schema.getMutationType()?.getFields())

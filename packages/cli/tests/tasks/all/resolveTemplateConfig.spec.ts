@@ -24,7 +24,7 @@ describe('resolving template config', () => {
   const templateConfig: RawMagidocTemplateConfig = {
     STATIC_ASSETS_LOCATION: './static',
     ENV_FILE_LOCATION: './src/_variables.json',
-    SCHEMA_TARGET_LOCATION: './src/_schema.json',
+    SCHEMA_TARGET_LOCATION: './src/_schema.graphqls',
     SUPPORTED_OPTIONS: [
       templates.APP_FAVICON,
       templates.PAGES,
@@ -44,7 +44,7 @@ describe('resolving template config', () => {
       await task.executor(ctx, wrapper)
       expect(wrapper.output).toHaveBeenCalledOnce()
       expect(wrapper.output).toHaveBeenCalledWith(
-        'Found 2 supported keys\nTarget schema location: ./src/_schema.json',
+        'Found 2 supported keys\nTarget schema location: ./src/_schema.graphqls',
       )
     })
 

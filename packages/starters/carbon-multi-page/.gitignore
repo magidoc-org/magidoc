@@ -1,4 +1,4 @@
-src/_schema.json
+src/_schema.graphqls
 src/_variables.json
 static/*
 
