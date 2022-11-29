@@ -23,6 +23,11 @@ type Test {
   person: Person
 
   """
+  Some field with directives on it
+  """
+  withDirective: String! @test
+
+  """
   The `longDescriptionType` field on the `Test` type has a long, verbose, description to test inline field docs.
 
   > We want to test several `markdown` styles!
@@ -234,3 +239,7 @@ type SubscriptionType {
     delay: Int = 600
   ): String
 }
+
+directive @test(
+  reason: String = "No longer supported"
+) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE
