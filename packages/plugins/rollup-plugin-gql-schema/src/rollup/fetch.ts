@@ -55,7 +55,7 @@ export async function fetchSchema(options: PluginOptions) {
   })
 
   const format: OutputFormat = options.format ?? 'introspection'
-  const extension = format === 'sdl' ? 'graphql' : 'json'
+  const extension = format === 'sdl' ? 'graphqls' : 'json'
   const output = options.target || `src/_schema.${extension}`
 
   writeFileSync(output, convert(schema, format), {

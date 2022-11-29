@@ -15,7 +15,7 @@ export const SUPPORTED_OPTIONS = [
   templates.EXTERNAL_LINKS,
 ]
 
-export const SCHEMA_TARGET_LOCATION = './src/_schema.json'
+export const SCHEMA_TARGET_LOCATION = './src/_schema.graphqls'
 
 export const STATIC_ASSETS_LOCATION = './static'
 

@@ -1,5 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite'
-import parseGraphQLSchema from '@magidoc/rollup-plugin-parse-gql-schema'
+import parseGraphQLSchema from '@magidoc/rollup-plugin-gql-schema'
 import { magidoc } from '@magidoc/plugin-starter-variables'
 import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 import fs from 'fs'
@@ -13,6 +13,7 @@ const config = {
     !magidoc.MAGIDOC_GENERATE.get(variables)
       ? parseGraphQLSchema({
           paths: ['../test-schema.graphql'],
+          format: 'sdl',
         })
       : null,
     {
