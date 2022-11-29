@@ -11,7 +11,7 @@ describe('parsing a valid template configuration', () => {
     const parsed = await execute('valid.js')
     expect(parsed).toMatchObject({
       SUPPORTED_OPTIONS: expect.any(Array) as unknown,
-      SCHEMA_TARGET_LOCATION: './src/_schema.json',
+      SCHEMA_TARGET_LOCATION: './src/_schema.graphqls',
       STATIC_ASSETS_LOCATION: './static',
       ENV_FILE_LOCATION: './.env',
     })
