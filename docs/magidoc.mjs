@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
  */
 const config = {
   introspection: {
-    type: 'file',
+    type: 'raw',
     location: path.join(__dirname, 'empty-schema.json'),
   },
   website: {

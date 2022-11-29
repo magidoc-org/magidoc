@@ -40,10 +40,6 @@ export const ZIntrospectionConfiguration = z.discriminatedUnion('type', [
     paths: z.array(ZPath).nonempty(),
   }),
   z.object({
-    type: z.literal('file'),
-    location: ZPath,
-  }),
-  z.object({
     type: z.literal('raw'),
     content: z.string().min(1),
   }),

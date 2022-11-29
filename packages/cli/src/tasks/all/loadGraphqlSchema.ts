@@ -35,12 +35,6 @@ export function loadGraphQLSchemaTask<T extends Ctx>(config: Config): Task<T> {
             format: 'sdl',
           })
           break
-        case 'file':
-          await fs.copyFile(
-            config.introspection.location,
-            ctx.templateConfiguration.schemaTargetLocation,
-          )
-          break
         case 'raw':
           await fs.writeFile(
             ctx.templateConfiguration.schemaTargetLocation,
