@@ -8,6 +8,7 @@
   import DeprecationNotice from '../common/text/DeprecationNotice.svelte'
   import AnchorHeader from '../common/text/AnchorHeader.svelte'
   import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+  import DirectiveTag from '../tags/DirectiveTag.svelte'
 
   export let type: QueryType
   export let field: GraphQLField<unknown, unknown, unknown>
@@ -18,6 +19,12 @@
 
   <AnchorHeader id={'title'} depth={1}>
     {field.name}<QueryTypeTag {type} />
+
+    {#if field.astNode?.directives}
+      {#each field.astNode.directives as item}
+        <DirectiveTag directive={item} />
+      {/each}
+    {/if}
   </AnchorHeader>
 
   <CarbonMarkdown source={field.description} />

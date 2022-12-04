@@ -5,6 +5,7 @@
   import ArgsList from '$lib/components/query/list/ArgsList.svelte'
 
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
+  import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
   import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
   import type { FieldWithPossibleDescriptions } from '$lib/model'
@@ -27,6 +28,11 @@
       <TypeLinkTag type={item.field.type} />
       <DeprecatedTag reason={item.field.deprecationReason} />
       <NullableTag type={item.field.type} />
+      {#if item.field.astNode?.directives}
+        {#each item.field.astNode.directives as directive}
+          <DirectiveTag {directive} />
+        {/each}
+      {/if}
     </p>
 
     {#if item.possibleDescriptions.length === 1}

@@ -47,7 +47,7 @@
 
 <Header href={base || '/'} bind:isSideNavOpen expandedByDefault>
   <div slot="platform" class="header-logo-wrapper">
-    <AppIcon class="header-logo" />
+    <AppIcon />
   </div>
   <HeaderUtilities>
     {#if mobile}
@@ -78,7 +78,7 @@
     align-items: center;
     height: 100%;
   }
-  .header-logo-wrapper :global(.header-logo) {
+  .header-logo-wrapper :global(img) {
     height: 100%;
     margin: 0.2rem 0.5rem 0.2rem 0rem;
   }
