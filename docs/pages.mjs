@@ -3,9 +3,8 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 /**
- * Scans the directory for files and collects them
- * @param {import("node:fs").PathLike} dir The directory to scan the files from
- * @returns {Promise<Array<{ dir: boolean; name: string; path: string; }>>} The files in the directory
+ * @param {import("node:fs").PathLike} dir
+ * @returns {Promise<Array<{ dir: boolean; name: string; path: string; }>>}
  */
 async function getFiles(dir) {
   /**
@@ -32,9 +31,8 @@ async function getFiles(dir) {
 }
 
 /**
- * Get all items as page objects
- * @param {{ dir: boolean; name: string; path: string; }} item The item to parse
- * @returns {{ title: string; content: any }} Returns the item as a Page
+ * @param {{ dir: boolean; name: string; path: string; }} item
+ * @returns {{ title: string; content: any }}
  */
 async function asPage(item) {
   // 01.Introduction -> Introduction
