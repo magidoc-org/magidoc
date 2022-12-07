@@ -39,5 +39,8 @@
   },
   "optionalDependencies": {
     "zod": "^3.19.1"
-  }
+  },
+  "files": [
+    "build"
+  ]
 }

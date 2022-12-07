@@ -45,5 +45,8 @@
   },
   "peerDependencies": {
     "graphql": "^16.6.0"
-  }
+  },
+  "files": [
+    "build"
+  ]
 }
