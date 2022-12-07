@@ -46,5 +46,8 @@
   },
   "peerDependencies": {
     "prismjs": "^1.29.0"
-  }
+  },
+  "files": [
+    "package"
+  ]
 }
