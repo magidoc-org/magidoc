@@ -1,9 +1,6 @@
-import path, { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 
-const pages = (await import(`./pages.mjs?id=${Math.random()}`)).default
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const { pages } = await import(`./pages.mjs?id=${Math.random()}`)
 
 /**
  * @type {import("@magidoc/cli").MagidocConfiguration}
@@ -13,9 +10,11 @@ const config = {
     type: 'none',
   },
   website: {
-    template: path.join(__dirname, '../packages/starters/carbon-multi-page'),
-    output: path.join(__dirname, 'build'),
-    staticAssets: path.join(__dirname, 'assets'),
+    template: fileURLToPath(
+      new URL('../packages/starters/carbon-multi-page', import.meta.url),
+    ),
+    output: fileURLToPath(new URL('./build', import.meta.url)),
+    staticAssets: fileURLToPath(new URL('./assets', import.meta.url)),
     options: {
       appTitle: 'Magidoc',
       appFavicon:
@@ -67,8 +66,8 @@ const config = {
   },
   dev: {
     watch: [
-      path.join(__dirname, './pages'),
-      path.join(__dirname, './pages.mjs'),
+      fileURLToPath(new URL('./pages', import.meta.url)),
+      fileURLToPath(new URL('./pages.mjs', import.meta.url)),
     ],
   },
 }
