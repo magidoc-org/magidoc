@@ -44,7 +44,7 @@ const allowedArgumentsByDirectiveName: Record<
   ReadonlyArray<GraphQLArgument>
 > = _.mapValues(directivesByName, (directive) => {
   const found: AllowedDirective | undefined = allowedDirectives.find(
-    (item) => item?.name === directive.name,
+    (item) => item?.name === directive.name || item?.name === '*',
   )
   if (!found) return []
   if (found.args.some((item) => item === '*')) return directive.args
