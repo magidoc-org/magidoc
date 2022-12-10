@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-starter-variables",
   "description": "A shared library that contains common Magidoc starter environment variables keys.",
   "private": false,
-  "version": "3.0.2",
+  "version": "3.0.3",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -28,14 +28,14 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^10.0.1",
     "@types/lodash": "^4.14.191",
-    "@types/node": "^18.11.10",
-    "@vitest/coverage-c8": "^0.25.3",
+    "@types/node": "^18.11.12",
+    "@vitest/coverage-c8": "^0.25.6",
     "lodash": "^4.17.21",
-    "rollup": "^3.5.1",
+    "rollup": "^3.7.2",
     "tslib": "^2.4.1",
-    "typescript": "^4.9.3",
-    "vite": "^3.2.4",
-    "vitest": "^0.25.3"
+    "typescript": "^4.9.4",
+    "vite": "^4.0.0",
+    "vitest": "^0.25.6"
   },
   "optionalDependencies": {
     "zod": "^3.19.1"

@@ -176,6 +176,10 @@ export function isAllowedDirective(directive: GraphQLDirective): boolean {
   return getDirectiveByName(directive.name) !== undefined
 }
 
+export function hasAllowedDirectives(): boolean {
+  return _.size(directivesByName) > 0
+}
+
 export function getAllowedArgumentsByDirective(
   directive: GraphQLDirective,
 ): ReadonlyArray<GraphQLArgument> {
