@@ -1,9 +1,11 @@
 import {
   buildClientSchema,
   buildSchema,
+  GraphQLDirective,
   GraphQLInterfaceType,
   GraphQLObjectType,
   isObjectType,
+  type GraphQLArgument,
   type GraphQLField,
   type GraphQLNamedType,
   type GraphQLSchema,
@@ -19,14 +21,38 @@ import {
   createReverseMapping,
   type TypeReverseMapping,
 } from '@magidoc/plugin-reverse-schema-mapper'
+import { getOrDefault } from './variables'
+import {
+  templates,
+  type AllowedDirective,
+} from '@magidoc/plugin-starter-variables'
 
 export const schema: GraphQLSchema = parseSchema()
 
+const allowedDirectives = getOrDefault(templates.DIRECTIVES, [])
 const queriesByName = toIgnoreCase(schema.getQueryType()?.getFields())
 const mutationsByName = toIgnoreCase(schema.getMutationType()?.getFields())
 const subscriptionsByName = toIgnoreCase(
   schema.getSubscriptionType()?.getFields(),
 )
+const directivesByName = _.keyBy(getAllowedDirectives(), (item) =>
+  item.name.toLocaleLowerCase(),
+)
+
+const allowedArgumentsByDirectiveName: Record<
+  string,
+  ReadonlyArray<GraphQLArgument>
+> = _.mapValues(directivesByName, (directive) => {
+  const found: AllowedDirective | undefined = allowedDirectives.find(
+    (item) => item?.name === directive.name,
+  )
+  if (!found) return []
+  if (found.properties.some((item) => item === '*')) return directive.args
+  return found.properties
+    .map((item) => directive.args.find((arg) => arg.name === item))
+    .filter((item): item is GraphQLArgument => !!item)
+})
+
 const typesByName = toIgnoreCase(schema.getTypeMap())
 const reverseMapping = createReverseMapping(schema)
 
@@ -56,6 +82,7 @@ export function createModelContent(): ReadonlyArray<WebsiteContent> {
     createWebsiteContent('Queries', schema.getQueryType()),
     createWebsiteContent('Mutations', schema.getMutationType()),
     createWebsiteContent('Subscriptions', schema.getSubscriptionType()),
+    createDirectiveWebsiteContent(),
     createTypesWebsiteContent(),
   ].filter((content): content is WebsiteContent => !!content)
 }
@@ -141,6 +168,20 @@ export function getTypeByName(name: string): GraphQLNamedType | undefined {
   return typesByName[name.toLocaleLowerCase()]
 }
 
+export function getDirectiveByName(name: string): GraphQLDirective | undefined {
+  return directivesByName[name.toLocaleLowerCase()]
+}
+
+export function isAllowedDirective(directive: GraphQLDirective): boolean {
+  return getDirectiveByName(directive.name) !== undefined
+}
+
+export function getAllowedArgumentsByDirective(
+  directive: GraphQLDirective,
+): ReadonlyArray<GraphQLArgument> {
+  return allowedArgumentsByDirectiveName[directive.name.toLocaleLowerCase()]
+}
+
 export function getTypeUsages(
   type: GraphQLNamedType | undefined,
 ): TypeReverseMapping | undefined {
@@ -181,6 +222,17 @@ function getFieldPossibleDescriptions(
     )
 }
 
+export function getAllowedDirectives() {
+  if (allowedDirectives.some((directive) => directive?.name === '*')) {
+    return schema.getDirectives()
+  }
+
+  return allowedDirectives
+    .filter((directive): directive is AllowedDirective => !!directive?.name)
+    .map(({ name }) => (name ? getDirectiveByName(name) : null))
+    .filter((directive): directive is GraphQLDirective => !!directive)
+}
+
 function parseSchema() {
   if (schemaRaw.trim().length === 0) {
     // Hack to generate an empty schema
@@ -192,4 +244,19 @@ function parseSchema() {
   }
 
   return buildSchema(schemaRaw)
+}
+
+function createDirectiveWebsiteContent(): WebsiteContent | undefined {
+  const allowed = getAllowedDirectives()
+  if (allowed.length === 0) return undefined
+  return {
+    type: 'menu',
+    title: 'Directives',
+    children: allowed.map((directive) => ({
+      type: 'page',
+      title: directive.name,
+      href: urlUtils.joinUrlPaths(base, 'types', directive.name),
+      section: 'Directives',
+    })),
+  }
 }

@@ -14,6 +14,11 @@ export type ExternalLink = {
   group?: string
 }
 
+export type AllowedDirective = {
+  name: string
+  properties: string[]
+}
+
 export default {
   APP_LOGO: createVariable<string>('APP_LOGO', stringConverter()),
   APP_TITLE: createVariable<string>('APP_TITLE', stringConverter()),
@@ -60,6 +65,15 @@ export default {
         href: zod.string().min(1),
         kind: zod.string().min(1).optional(),
         group: zod.string().min(1).optional(),
+      })
+    }),
+  ),
+  DIRECTIVES: createVariable<Array<AllowedDirective | undefined>>(
+    'DIRECTIVES',
+    arrayConverter((zod) => {
+      return zod.object({
+        name: zod.string().min(1),
+        properties: zod.array(zod.string()),
       })
     }),
   ),

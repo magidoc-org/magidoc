@@ -13,6 +13,7 @@ export const SUPPORTED_OPTIONS = [
   templates.QUERY_GENERATION_FACTORIES,
   templates.PAGES,
   templates.EXTERNAL_LINKS,
+  templates.
 ]
 
 export const SCHEMA_TARGET_LOCATION = './src/_schema.graphqls'

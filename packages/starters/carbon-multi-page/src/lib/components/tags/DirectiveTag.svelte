@@ -1,8 +1,15 @@
 <script lang="ts">
-  import { schema } from '$lib/model'
+  import { base } from '$app/paths'
+  import {
+    getAllowedArgumentsByDirective,
+    isAllowedDirective,
+    schema,
+  } from '$lib/model'
+  import { joinUrlPaths } from '@magidoc/plugin-svelte-marked/utils/url'
   import { Tag, TooltipDefinition } from 'carbon-components-svelte'
 
   import {
+    GraphQLDirective,
     Kind,
     type ConstArgumentNode,
     type ConstDirectiveNode,
@@ -11,6 +18,10 @@
   } from 'graphql'
 
   export let directive: ConstDirectiveNode
+
+  let directiveDefinition: GraphQLDirective | undefined | null
+
+  $: directiveDefinition = schema.getDirective(directive.name.value)
 
   let text: string
 
@@ -37,8 +48,12 @@
     }
   }
 
-  function isValidDirective(value: ConstDirectiveNode): boolean {
-    return value.name.value !== 'deprecated'
+  function shouldShowDirective(): boolean {
+    return (
+      !!directiveDefinition &&
+      directiveDefinition.name !== 'deprecated' &&
+      isAllowedDirective(directiveDefinition)
+    )
   }
 
   function getArgumentValue(
@@ -57,10 +72,14 @@
   }
 
   $: {
-    const directiveDefinition = schema.getDirective(directive.name.value)
     let definition = `@${directive.name.value}`
-    if ((directiveDefinition?.args?.length || 0) > 0) {
-      definition += `(${(directiveDefinition?.args || [])
+
+    const allowedArguments = directiveDefinition
+      ? getAllowedArgumentsByDirective(directiveDefinition)
+      : []
+
+    if (allowedArguments.length > 0) {
+      definition += `(${allowedArguments
         .map(
           (arg) =>
             `${arg.name}: ${getArgumentValue(arg, directive.arguments || [])}`,
@@ -71,12 +90,12 @@
   }
 </script>
 
-{#if isValidDirective(directive)}
+{#if shouldShowDirective()}
   <Tag type="blue">
-    <div>
+    <a href={joinUrlPaths(base, `/directives/${directive.name.value}`)}>
       <TooltipDefinition tooltipText={text} direction="top" align="center">
         @{directive.name.value}
       </TooltipDefinition>
-    </div>
+    </a>
   </Tag>
 {/if}
