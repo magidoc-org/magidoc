@@ -2,7 +2,6 @@ import { convert } from '../../src/schema/convert'
 import { describe, expect, it } from 'vitest'
 import { buildClientSchema, buildSchema, IntrospectionQuery } from 'graphql'
 import { getSample } from './utils'
-import fs from 'fs'
 
 const sdl = getSample('sdl.graphqls')
 const introspection = getSample('introspection.json')
@@ -38,11 +37,6 @@ describe('converting a schema', () => {
     expect(converted).toContain('extend type Query')
     expect(converted).toContain('test: String!')
     expect(converted).toContain('@Auth(scopes: ["test"])')
-  })
-
-  it('test-quick', () => {
-    const schema = buildSchema(getSample('test-quick.graphqls'))
-    fs.writeFileSync('test-quick-out.graphqls', convert(schema, 'sdl'))
   })
 })
 
