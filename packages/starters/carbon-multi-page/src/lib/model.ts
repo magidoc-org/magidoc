@@ -229,7 +229,7 @@ export function getAllowedDirectives() {
 
   return allowedDirectives
     .filter((directive): directive is AllowedDirective => !!directive?.name)
-    .map(({ name }) => (name ? getDirectiveByName(name) : null))
+    .map(({ name }) => (name ? schema.getDirective(name) : undefined))
     .filter((directive): directive is GraphQLDirective => !!directive)
 }
 
@@ -255,7 +255,7 @@ function createDirectiveWebsiteContent(): WebsiteContent | undefined {
     children: allowed.map((directive) => ({
       type: 'page',
       title: directive.name,
-      href: urlUtils.joinUrlPaths(base, 'types', directive.name),
+      href: urlUtils.joinUrlPaths(base, 'directives', directive.name),
       section: 'Directives',
     })),
   }
