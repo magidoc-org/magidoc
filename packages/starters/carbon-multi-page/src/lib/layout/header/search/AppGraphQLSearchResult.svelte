@@ -5,7 +5,7 @@
   import AppSearchHighlight from './AppSearchHighlight.svelte'
   import HeaderCrumb from './HeaderCrumb.svelte'
   import { base } from '$app/paths'
-  import { joinUrlPaths } from '@magidoc/plugin-svelte-marked/utils/url'
+  import { urlUtils } from '@magidoc/plugin-svelte-marked'
 
   export let item: GraphQLSearchResult
 
@@ -15,16 +15,16 @@
 
   $: {
     if (item.result.type === SearchResultType.QUERY) {
-      href = joinUrlPaths(base, `/queries/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(base, `/queries/${item.result.name}`)
       section = 'Queries'
     } else if (item.result.type === SearchResultType.MUTATION) {
-      href = joinUrlPaths(base, `/mutations/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(base, `/mutations/${item.result.name}`)
       section = 'Mutations'
     } else if (item.result.type === SearchResultType.SUBSCRIPTION) {
-      href = joinUrlPaths(base, `/subscriptions/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(base, `/subscriptions/${item.result.name}`)
       section = 'Subscriptions'
     } else if (item.result.type === SearchResultType.TYPE) {
-      href = joinUrlPaths(base, `/types/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(base, `/types/${item.result.name}`)
       section = 'Types'
     }
   }

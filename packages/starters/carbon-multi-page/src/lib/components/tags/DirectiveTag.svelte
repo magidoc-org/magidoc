@@ -5,7 +5,7 @@
     isAllowedDirective,
     schema,
   } from '$lib/model'
-  import { joinUrlPaths } from '@magidoc/plugin-svelte-marked/utils/url'
+  import { urlUtils } from '@magidoc/plugin-svelte-marked'
   import { Tag, TooltipDefinition } from 'carbon-components-svelte'
 
   import {
@@ -88,7 +88,9 @@
 
 {#if shouldShowDirective()}
   <Tag type="blue">
-    <a href={joinUrlPaths(base, `/directives/${directive.name.value}`)}>
+    <a
+      href={urlUtils.joinUrlPaths(base, `/directives/${directive.name.value}`)}
+    >
       <TooltipDefinition tooltipText={text} direction="top" align="center">
         @{directive.name.value}
       </TooltipDefinition>
