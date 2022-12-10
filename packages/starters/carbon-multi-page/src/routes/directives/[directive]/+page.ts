@@ -1,9 +1,9 @@
-import { getDirectiveByName, hasMutations } from '$lib/model'
+import { getDirectiveByName, hasAllowedDirectives } from '$lib/model'
 import { findPageByHref } from '$lib/pages'
 import { error } from '@sveltejs/kit'
 import type { PageLoad } from './$types'
 
-export const prerender = hasMutations()
+export const prerender = hasAllowedDirectives()
 
 export const load: PageLoad = ({ params, url }) => {
   const directive = getDirectiveByName(params.directive)
