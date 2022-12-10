@@ -3,7 +3,7 @@
   "description": "A markdown parser library that renders to svelte components.",
   "type": "module",
   "license": "MIT",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "svelte": "index.js",
   "private": false,
   "keywords": [
@@ -42,8 +42,5 @@
     "tslib": "^2.4.1",
     "typescript": "~4.9.3",
     "vite": "^3.2.4"
-  },
-  "files": [
-    "package"
-  ]
+  }
 }
