@@ -90,6 +90,7 @@
   <Tag type="blue">
     <a
       href={urlUtils.joinUrlPaths(base, `/directives/${directive.name.value}`)}
+      class="override-tooltip-width"
     >
       <TooltipDefinition tooltipText={text} direction="top" align="center">
         @{directive.name.value}
@@ -97,3 +98,9 @@
     </a>
   </Tag>
 {/if}
+
+<style>
+  .override-tooltip-width :global(div[role='tooltip']) {
+    max-width: 20rem;
+  }
+</style>

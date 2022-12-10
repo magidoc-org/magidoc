@@ -1,0 +1,7 @@
+directive @Auth(scopes: [String]!) on FIELD_DEFINITION
+
+type Query
+
+extend type Query {
+    test: String! @Auth(scopes: ["test"])
+}

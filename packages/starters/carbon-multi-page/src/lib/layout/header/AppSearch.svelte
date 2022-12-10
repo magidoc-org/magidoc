@@ -22,7 +22,7 @@
     <Search id="search-bar" bind:value={query} />
 
     <div style="max-height: 90%; overflow-y: auto">
-      {#each results as item, index}
+      {#each results as item}
         <AppSearchResult {item} on:click={() => (open = false)} />
       {/each}
     </div>

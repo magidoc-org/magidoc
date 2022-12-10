@@ -2,6 +2,7 @@ import { convert } from '../../src/schema/convert'
 import { describe, expect, it } from 'vitest'
 import { buildClientSchema, buildSchema, IntrospectionQuery } from 'graphql'
 import { getSample } from './utils'
+import fs from 'fs'
 
 const sdl = getSample('sdl.graphqls')
 const introspection = getSample('introspection.json')
@@ -29,6 +30,19 @@ describe('converting a schema', () => {
     const converted = convert(withDirective, 'sdl')
     // Once for the directive, second for the presence on field
     expect((converted.match(/@Auth/g) || []).length).toBe(2)
+  })
+
+  it('keeps the extensions and directives', () => {
+    const withDirective = buildSchema(getSample('extend-query.graphqls'))
+    const converted = convert(withDirective, 'sdl')
+    expect(converted).toContain('extend type Query')
+    expect(converted).toContain('test: String!')
+    expect(converted).toContain('@Auth(scopes: ["test"])')
+  })
+
+  it('test-quick', () => {
+    const schema = buildSchema(getSample('test-quick.graphqls'))
+    fs.writeFileSync('test-quick-out.graphqls', convert(schema, 'sdl'))
   })
 })
 
