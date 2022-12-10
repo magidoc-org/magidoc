@@ -47,8 +47,8 @@ const allowedArgumentsByDirectiveName: Record<
     (item) => item?.name === directive.name,
   )
   if (!found) return []
-  if (found.properties.some((item) => item === '*')) return directive.args
-  return found.properties
+  if (found.args.some((item) => item === '*')) return directive.args
+  return found.args
     .map((item) => directive.args.find((arg) => arg.name === item))
     .filter((item): item is GraphQLArgument => !!item)
 })

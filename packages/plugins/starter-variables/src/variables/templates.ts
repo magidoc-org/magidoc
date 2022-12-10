@@ -16,7 +16,7 @@ export type ExternalLink = {
 
 export type AllowedDirective = {
   name: string
-  properties: string[]
+  args: string[]
 }
 
 export default {
@@ -73,7 +73,7 @@ export default {
     arrayConverter((zod) => {
       return zod.object({
         name: zod.string().min(1),
-        properties: zod.array(zod.string()),
+        args: zod.array(zod.string()),
       })
     }),
   ),
