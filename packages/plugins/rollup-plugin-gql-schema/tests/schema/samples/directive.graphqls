@@ -1,0 +1,5 @@
+directive @Auth(scopes: [String]!) on FIELD_DEFINITION
+
+type Query {
+  withAuth: String! @Auth(scopes: ["read:messages"])
+}
