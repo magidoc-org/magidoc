@@ -448,9 +448,13 @@
       "src/routes/types/[type]/+page.svelte"
     ]
   },
-  "src/routes/types/[type]/+page.css": {
-    "file": "_app/immutable/assets/_page-e20843b5.css",
-    "src": "src/routes/types/[type]/+page.css"
+  "ChevronDown.css": {
+    "file": "_app/immutable/assets/ChevronDown-4e074f2b.css",
+    "src": "ChevronDown.css"
+  },
+  "PreviousNextPage.css": {
+    "file": "_app/immutable/assets/PreviousNextPage-4a5fa1bb.css",
+    "src": "PreviousNextPage.css"
   },
   "src/routes/+error.css": {
     "file": "_app/immutable/assets/_error-02be4262.css",
@@ -464,13 +468,9 @@
     "file": "_app/immutable/assets/_commonjsHelpers-43b693e1.css",
     "src": "_commonjsHelpers.css"
   },
-  "ChevronDown.css": {
-    "file": "_app/immutable/assets/ChevronDown-4e074f2b.css",
-    "src": "ChevronDown.css"
-  },
-  "PreviousNextPage.css": {
-    "file": "_app/immutable/assets/PreviousNextPage-4a5fa1bb.css",
-    "src": "PreviousNextPage.css"
+  "src/routes/types/[type]/+page.css": {
+    "file": "_app/immutable/assets/_page-e20843b5.css",
+    "src": "src/routes/types/[type]/+page.css"
   },
   "src/routes/+layout.css": {
     "file": "_app/immutable/assets/_layout-14be03cc.css",
