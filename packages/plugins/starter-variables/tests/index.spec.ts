@@ -26,6 +26,7 @@ describe('variables', () => {
         'QUERY_GENERATION_FACTORIES',
         'PAGES',
         'EXTERNAL_LINKS',
+        'DIRECTIVES',
       ])
     })
 
@@ -115,6 +116,21 @@ describe('variables', () => {
               href: z.string().min(1),
               kind: z.string().min(1).optional(),
               group: z.string().min(1).optional(),
+            }),
+          )
+          .optional(),
+      )
+    })
+
+    test('directives', () => {
+      testArrayVariable(
+        variables.templates.DIRECTIVES,
+        'DIRECTIVES',
+        z
+          .array(
+            z.object({
+              name: z.string().min(1),
+              args: z.array(z.string()),
             }),
           )
           .optional(),
