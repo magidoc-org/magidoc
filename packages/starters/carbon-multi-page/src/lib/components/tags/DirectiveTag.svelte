@@ -101,6 +101,6 @@
 
 <style>
   .override-tooltip-width :global(div[role='tooltip']) {
-    max-width: 20rem;
+    max-width: 20rem !important;
   }
 </style>
