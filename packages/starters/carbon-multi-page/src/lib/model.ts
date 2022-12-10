@@ -179,7 +179,9 @@ export function isAllowedDirective(directive: GraphQLDirective): boolean {
 export function getAllowedArgumentsByDirective(
   directive: GraphQLDirective,
 ): ReadonlyArray<GraphQLArgument> {
-  return allowedArgumentsByDirectiveName[directive.name.toLocaleLowerCase()]
+  return (
+    allowedArgumentsByDirectiveName[directive.name.toLocaleLowerCase()] || []
+  )
 }
 
 export function getTypeUsages(
@@ -224,7 +226,13 @@ function getFieldPossibleDescriptions(
 
 export function getAllowedDirectives() {
   if (allowedDirectives.some((directive) => directive?.name === '*')) {
-    return schema.getDirectives()
+    return schema.getDirectives().filter(
+      (directive) =>
+        // Built-in directives that don't need documentation.
+        !['include', 'skip', 'deprecated', 'specifiedBy'].includes(
+          directive.name,
+        ),
+    )
   }
 
   return allowedDirectives

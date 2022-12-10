@@ -49,11 +49,7 @@
   }
 
   function shouldShowDirective(): boolean {
-    return (
-      !!directiveDefinition &&
-      directiveDefinition.name !== 'deprecated' &&
-      isAllowedDirective(directiveDefinition)
-    )
+    return !!directiveDefinition && isAllowedDirective(directiveDefinition)
   }
 
   function getArgumentValue(
