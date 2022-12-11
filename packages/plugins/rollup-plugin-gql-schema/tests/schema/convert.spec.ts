@@ -1,6 +1,11 @@
 import { convert } from '../../src/schema/convert'
 import { describe, expect, it } from 'vitest'
-import { buildClientSchema, buildSchema, IntrospectionQuery } from 'graphql'
+import {
+  buildClientSchema,
+  buildSchema,
+  IntrospectionQuery,
+  printSchema,
+} from 'graphql'
 import { getSample } from './utils'
 
 const sdl = getSample('sdl.graphqls')
@@ -37,6 +42,13 @@ describe('converting a schema', () => {
     expect(converted).toContain('extend type Query')
     expect(converted).toContain('test: String!')
     expect(converted).toContain('@Auth(scopes: ["test"])')
+  })
+
+  it('converts a schema built from introspection correctly to SDL', () => {
+    const schema = buildClientSchema(
+      JSON.parse(introspection) as IntrospectionQuery,
+    )
+    expect(convert(schema, 'sdl')).toEqual(printSchema(schema))
   })
 })
 

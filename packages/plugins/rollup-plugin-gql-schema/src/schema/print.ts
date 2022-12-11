@@ -3,9 +3,17 @@ import {
   isSpecifiedScalarType,
   isSpecifiedDirective,
   GraphQLSchema,
+  printSchema,
 } from 'graphql'
 
 export function printSchemaWithDirectives(schema: GraphQLSchema) {
+  const sdlWithDirectives = printAstNodesWithDirectives(schema)
+  // Means that there are no AST nodes present
+  if (sdlWithDirectives.trim().length === 0) return printSchema(schema)
+  return sdlWithDirectives
+}
+
+function printAstNodesWithDirectives(schema: GraphQLSchema): string {
   const str = Object.values(schema.getTypeMap())
     .filter((k) => !k.name.match(/^__/))
     .reduce((accum, type) => {
