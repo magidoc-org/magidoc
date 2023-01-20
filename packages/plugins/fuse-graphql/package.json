@@ -30,17 +30,17 @@
     "@magidoc/plugin-fuse-markdown": "workspace:^3.0.6",
     "fuse.js": "^6.6.2",
     "graphql": "^16.6.0",
-    "marked": "^4.2.4"
+    "marked": "^4.2.12"
   },
   "devDependencies": {
     "@types/marked": "^4.0.8",
-    "@types/node": "^18.11.12",
-    "@types/prettier": "^2.7.1",
+    "@types/node": "^18.11.18",
+    "@types/prettier": "^2.7.2",
     "c8": "^7.12.0",
-    "rollup": "^3.7.2",
+    "rollup": "^3.10.0",
     "typescript": "^4.9.4",
-    "vite": "^4.0.0",
-    "vitest": "^0.25.6"
+    "vite": "^4.0.4",
+    "vitest": "^0.27.2"
   },
   "peerDependencies": {
     "fuse.js": "^6.6.2"

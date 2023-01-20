@@ -5,7 +5,7 @@ const execPromise = promisify(exec)
 
 export const PACKAGE_MANAGER_TYPES = ['pnpm', 'yarn', 'npm'] as const
 
-export type PackageManagerType = typeof PACKAGE_MANAGER_TYPES[number]
+export type PackageManagerType = (typeof PACKAGE_MANAGER_TYPES)[number]
 
 export type CommandConfiguration = {
   cwd: string
