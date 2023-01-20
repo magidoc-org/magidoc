@@ -15,7 +15,6 @@
     "preview": "vite preview",
     "test": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint 'src/**/*.{ts,svelte}'",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
