@@ -44,7 +44,7 @@ const config = {
         return ctx.modules
       },
     },
-  ].filter((plugin) => !!plugin),
+  ].filter((plugin) => !!plugin)
 }
 
 export default config

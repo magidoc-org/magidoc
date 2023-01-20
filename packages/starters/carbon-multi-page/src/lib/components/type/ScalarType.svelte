@@ -1,5 +1,6 @@
 <script type="ts">
   import type { GraphQLScalarType } from 'graphql'
+
   import AnchorHeader from '../common/text/AnchorHeader.svelte'
   import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
   import TypeTag from '../tags/TypeTag.svelte'
