@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import type { GraphQLScalarType } from 'graphql'
 
   import AnchorHeader from '../common/text/AnchorHeader.svelte'

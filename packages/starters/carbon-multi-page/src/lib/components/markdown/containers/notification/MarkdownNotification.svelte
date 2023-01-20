@@ -5,12 +5,7 @@
   export let token: NotificationToken
 </script>
 
-<InlineNotification
-  kind={token.style}
-  lowContrast
-  hideCloseButton
-  iconDescription={token.style}
->
+<InlineNotification kind={token.style} lowContrast hideCloseButton>
   <slot />
 </InlineNotification>
 

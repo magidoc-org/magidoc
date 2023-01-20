@@ -4,7 +4,7 @@
   export let start = 1
   export let ordered = false
 
-  let component: unknown
+  let component: ConstructorOfATypedSvelteComponent
   $: component = ordered ? OrderedList : UnorderedList
 </script>
 
