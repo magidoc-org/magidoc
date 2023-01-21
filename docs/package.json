@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "cspell": "^6.19.2",
-    "gh-pages": "^4.0.0",
+    "gh-pages": "^5.0.0",
     "svelte-sitemap": "^2.5.4"
   }
 }

@@ -27,7 +27,7 @@
     "@magidoc/plugin-svelte-prismjs": "workspace:^3.0.6",
     "@magidoc/rollup-plugin-gql-schema": "workspace:^3.0.6",
     "@sveltejs/adapter-static": "1.0.5",
-    "@sveltejs/kit": "1.2.0",
+    "@sveltejs/kit": "1.2.2",
     "@types/lodash": "^4.14.191",
     "@types/marked": "^4.0.8",
     "@types/prismjs": "^1.26.0",

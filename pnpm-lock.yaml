@@ -33,11 +33,11 @@ importers:
   docs:
     specifiers:
       cspell: ^6.19.2
-      gh-pages: ^4.0.0
+      gh-pages: ^5.0.0
       svelte-sitemap: ^2.5.4
     devDependencies:
       cspell: 6.19.2
-      gh-pages: 4.0.0
+      gh-pages: 5.0.0
       svelte-sitemap: 2.5.4
 
   packages/cli:
@@ -48,7 +48,7 @@ importers:
       '@types/fs-extra': ^11.0.1
       '@types/lodash': ^4.14.191
       '@types/node': ^18.11.18
-      '@vitest/coverage-c8': ^0.27.2
+      '@vitest/coverage-c8': ^0.27.3
       axios: ^1.2.3
       chokidar: ^3.5.3
       commander: ^10.0.0
@@ -62,7 +62,7 @@ importers:
       tslib: ^2.4.1
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.2
+      vitest: ^0.27.3
       zod: ^3.20.2
     dependencies:
       '@magidoc/plugin-starter-variables': link:../plugins/starter-variables
@@ -81,13 +81,13 @@ importers:
       '@types/fs-extra': 11.0.1
       '@types/lodash': 4.14.191
       '@types/node': 18.11.18
-      '@vitest/coverage-c8': 0.27.2
+      '@vitest/coverage-c8': 0.27.3
       rollup: 3.10.1
       rollup-plugin-preserve-shebang: 1.0.1
       tslib: 2.4.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.27.2
+      vitest: 0.27.3
 
   packages/plugins/fuse-graphql:
     specifiers:
@@ -102,7 +102,7 @@ importers:
       rollup: ^3.10.1
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.2
+      vitest: ^0.27.3
     dependencies:
       '@magidoc/plugin-fuse-markdown': link:../fuse-markdown
       fuse.js: 6.6.2
@@ -116,7 +116,7 @@ importers:
       rollup: 3.10.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.27.2
+      vitest: 0.27.3
 
   packages/plugins/fuse-markdown:
     specifiers:
@@ -129,7 +129,7 @@ importers:
       rollup: ^3.10.1
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.2
+      vitest: ^0.27.3
     dependencies:
       fuse.js: 6.6.2
       marked: 4.2.12
@@ -141,14 +141,14 @@ importers:
       rollup: 3.10.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.27.2
+      vitest: 0.27.3
 
   packages/plugins/query-generator:
     specifiers:
       '@types/lodash': ^4.14.191
       '@types/node': ^18.11.18
       '@types/prettier': ^2.7.2
-      '@vitest/coverage-c8': ^0.27.2
+      '@vitest/coverage-c8': ^0.27.3
       graphql: ^16.6.0
       graphql-query-compress: ^1.2.4
       lodash: ^4.17.21
@@ -156,7 +156,7 @@ importers:
       rollup: ^3.10.1
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.2
+      vitest: ^0.27.3
     dependencies:
       graphql: 16.6.0
       lodash: 4.17.21
@@ -165,37 +165,37 @@ importers:
       '@types/lodash': 4.14.191
       '@types/node': 18.11.18
       '@types/prettier': 2.7.2
-      '@vitest/coverage-c8': 0.27.2
+      '@vitest/coverage-c8': 0.27.3
       graphql-query-compress: 1.2.4
       rollup: 3.10.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.27.2
+      vitest: 0.27.3
 
   packages/plugins/reverse-schema-mapper:
     specifiers:
       '@types/node': ^18.11.18
-      '@vitest/coverage-c8': ^0.27.2
+      '@vitest/coverage-c8': ^0.27.3
       graphql: ^16.6.0
       rollup: ^3.10.1
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.2
+      vitest: ^0.27.3
     dependencies:
       graphql: 16.6.0
     devDependencies:
       '@types/node': 18.11.18
-      '@vitest/coverage-c8': 0.27.2
+      '@vitest/coverage-c8': 0.27.3
       rollup: 3.10.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.27.2
+      vitest: 0.27.3
 
   packages/plugins/rollup-plugin-gql-schema:
     specifiers:
       '@types/node': ^18.11.18
       '@types/prettier': ^2.7.2
-      '@vitest/coverage-c8': ^0.27.2
+      '@vitest/coverage-c8': ^0.27.3
       axios: ^1.2.3
       fast-glob: ^3.2.12
       graphql: ^16.6.0
@@ -203,7 +203,7 @@ importers:
       rollup: ^3.10.1
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.2
+      vitest: ^0.27.3
     dependencies:
       axios: 1.2.3
       fast-glob: 3.2.12
@@ -211,25 +211,25 @@ importers:
     devDependencies:
       '@types/node': 18.11.18
       '@types/prettier': 2.7.2
-      '@vitest/coverage-c8': 0.27.2
+      '@vitest/coverage-c8': 0.27.3
       nock: 13.3.0
       rollup: 3.10.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.27.2
+      vitest: 0.27.3
 
   packages/plugins/starter-variables:
     specifiers:
       '@rollup/plugin-typescript': ^11.0.0
       '@types/lodash': ^4.14.191
       '@types/node': ^18.11.18
-      '@vitest/coverage-c8': ^0.27.2
+      '@vitest/coverage-c8': ^0.27.3
       lodash: ^4.17.21
       rollup: ^3.10.1
       tslib: ^2.4.1
       typescript: ^4.9.4
       vite: ^4.0.4
-      vitest: ^0.27.2
+      vitest: ^0.27.3
       zod: ^3.20.2
     optionalDependencies:
       zod: 3.20.2
@@ -237,18 +237,18 @@ importers:
       '@rollup/plugin-typescript': 11.0.0_p43amxpejtdwpxblcvkyxliyyq
       '@types/lodash': 4.14.191
       '@types/node': 18.11.18
-      '@vitest/coverage-c8': 0.27.2
+      '@vitest/coverage-c8': 0.27.3
       lodash: 4.17.21
       rollup: 3.10.1
       tslib: 2.4.1
       typescript: 4.9.4
       vite: 4.0.4_@types+node@18.11.18
-      vitest: 0.27.2
+      vitest: 0.27.3
 
   packages/plugins/svelte-marked:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.2
-      '@sveltejs/kit': 1.2.0
+      '@sveltejs/kit': 1.2.2
       '@sveltejs/package': 1.0.2
       '@types/marked': ^4.0.8
       '@types/prismjs': ^1.26.0
@@ -262,8 +262,8 @@ importers:
     dependencies:
       marked: 4.2.12
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.0
-      '@sveltejs/kit': 1.2.0_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.2
+      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.4
       '@sveltejs/package': 1.0.2_atrrhq7vg4ekua4nnyrpuardle
       '@types/marked': 4.0.8
       '@types/prismjs': 1.26.0
@@ -277,14 +277,13 @@ importers:
   packages/plugins/svelte-marked/package:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.2
-      '@sveltejs/kit': 1.2.0
+      '@sveltejs/kit': 1.2.2
       '@sveltejs/package': 1.0.2
       '@types/marked': ^4.0.8
       '@types/prismjs': ^1.26.0
       marked: ^4.2.12
       svelte: ^3.55.1
       svelte-check: ^3.0.2
-      svelte-preprocess: ^5.0.1
       svelte2tsx: ^0.6.0
       tslib: ^2.4.1
       typescript: ~4.9.4
@@ -292,14 +291,13 @@ importers:
     dependencies:
       marked: 4.2.12
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.0
-      '@sveltejs/kit': 1.2.0_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.2
+      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.4
       '@sveltejs/package': 1.0.2_atrrhq7vg4ekua4nnyrpuardle
       '@types/marked': 4.0.8
       '@types/prismjs': 1.26.0
       svelte: 3.55.1
       svelte-check: 3.0.2_svelte@3.55.1
-      svelte-preprocess: 5.0.1_atrrhq7vg4ekua4nnyrpuardle
       svelte2tsx: 0.6.0_atrrhq7vg4ekua4nnyrpuardle
       tslib: 2.4.1
       typescript: 4.9.4
@@ -308,7 +306,7 @@ importers:
   packages/plugins/svelte-prismjs:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.2
-      '@sveltejs/kit': 1.2.0
+      '@sveltejs/kit': 1.2.2
       '@sveltejs/package': 1.0.2
       '@types/prismjs': ^1.26.0
       prismjs: ^1.29.0
@@ -321,8 +319,8 @@ importers:
     dependencies:
       prismjs: 1.29.0
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.0
-      '@sveltejs/kit': 1.2.0_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.2
+      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.4
       '@sveltejs/package': 1.0.2_atrrhq7vg4ekua4nnyrpuardle
       '@types/prismjs': 1.26.0
       svelte: 3.55.1
@@ -335,13 +333,12 @@ importers:
   packages/plugins/svelte-prismjs/package:
     specifiers:
       '@sveltejs/adapter-auto': 1.0.2
-      '@sveltejs/kit': 1.2.0
+      '@sveltejs/kit': 1.2.2
       '@sveltejs/package': 1.0.2
       '@types/prismjs': ^1.26.0
       prismjs: ^1.29.0
       svelte: ^3.55.1
       svelte-check: ^3.0.2
-      svelte-preprocess: ^5.0.1
       svelte2tsx: ^0.6.0
       tslib: ^2.4.1
       typescript: ~4.9.4
@@ -349,13 +346,12 @@ importers:
     dependencies:
       prismjs: 1.29.0
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.0
-      '@sveltejs/kit': 1.2.0_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/adapter-auto': 1.0.2_@sveltejs+kit@1.2.2
+      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.4
       '@sveltejs/package': 1.0.2_atrrhq7vg4ekua4nnyrpuardle
       '@types/prismjs': 1.26.0
       svelte: 3.55.1
       svelte-check: 3.0.2_svelte@3.55.1
-      svelte-preprocess: 5.0.1_atrrhq7vg4ekua4nnyrpuardle
       svelte2tsx: 0.6.0_atrrhq7vg4ekua4nnyrpuardle
       tslib: 2.4.1
       typescript: 4.9.4
@@ -372,7 +368,7 @@ importers:
       '@magidoc/plugin-svelte-prismjs': workspace:^3.0.6
       '@magidoc/rollup-plugin-gql-schema': workspace:^3.0.6
       '@sveltejs/adapter-static': 1.0.5
-      '@sveltejs/kit': 1.2.0
+      '@sveltejs/kit': 1.2.2
       '@types/lodash': ^4.14.191
       '@types/marked': ^4.0.8
       '@types/prismjs': ^1.26.0
@@ -404,8 +400,8 @@ importers:
       '@magidoc/plugin-svelte-marked': link:../../plugins/svelte-marked/package
       '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
       '@magidoc/rollup-plugin-gql-schema': link:../../plugins/rollup-plugin-gql-schema
-      '@sveltejs/adapter-static': 1.0.5_@sveltejs+kit@1.2.0
-      '@sveltejs/kit': 1.2.0_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/adapter-static': 1.0.5_@sveltejs+kit@1.2.2
+      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.4
       '@types/lodash': 4.14.191
       '@types/marked': 4.0.8
       '@types/prismjs': 1.26.0
@@ -1048,25 +1044,25 @@ packages:
       rollup: 3.10.1
     dev: true
 
-  /@sveltejs/adapter-auto/1.0.2_@sveltejs+kit@1.2.0:
+  /@sveltejs/adapter-auto/1.0.2_@sveltejs+kit@1.2.2:
     resolution: {integrity: sha512-UXpEO/gutERZnD+Z5Vi4J/ifD3WSRuCI7xwtLJTcKNQvJ6t5Xsj1X3Mw2F8Vv/XTUuxf7xPLYUgThU331r0Y9w==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.2.0_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.4
       import-meta-resolve: 2.2.1
     dev: true
 
-  /@sveltejs/adapter-static/1.0.5_@sveltejs+kit@1.2.0:
+  /@sveltejs/adapter-static/1.0.5_@sveltejs+kit@1.2.2:
     resolution: {integrity: sha512-W5jbgvy9sbYEHs27NQOSFEun+zQwdcL4kpk5qc2kSHl8cKsP5wfXuWDTDRmD1Co40aFcesi5Az5ZzdnPI8KCVg==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.2.0_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/kit': 1.2.2_svelte@3.55.1+vite@4.0.4
     dev: true
 
-  /@sveltejs/kit/1.2.0_svelte@3.55.1+vite@4.0.4:
-    resolution: {integrity: sha512-Burt+zmAlAOkV2jsEJMHCipVI2w7eMyjDzC/63Z+CML4/xz/Kt4Kjl4CJf1o7ldtzP/C3GCjuq70aMrWhzTDRw==}
+  /@sveltejs/kit/1.2.2_svelte@3.55.1+vite@4.0.4:
+    resolution: {integrity: sha512-aZUjAZ/6gWEYFQDrDNINuvOi6VxlG86kCcIDRWDIFJjI38Ueieo1fySb0j0d2VkQVrYXU7VqjTVMBZFix+hByA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -1337,11 +1333,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.27.2:
-    resolution: {integrity: sha512-1MFwlwfwIfPFLfu6aN+dZ5jo2aOah5nAwoq/SrqUkt9rXzUmohLOgI1GTT0PpXbJKqaZicIlWuBjiC+BjVgRwQ==}
+  /@vitest/coverage-c8/0.27.3:
+    resolution: {integrity: sha512-xIN4FXXwJqeP6z0gfQ06gbyBMRN2mYvZ4/mn4F96mKXzch0Y93fBeS81eo7D/2YtjbeJBUcU9/amPVb2T+h83Q==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.2
+      vitest: 0.27.3
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -1491,12 +1487,6 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
     dev: false
-
-  /async/2.6.4:
-    resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
-    dependencies:
-      lodash: 4.17.21
-    dev: true
 
   /async/3.2.4:
     resolution: {integrity: sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==}
@@ -2066,8 +2056,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /email-addresses/3.1.0:
-    resolution: {integrity: sha512-k0/r7GrWVL32kZlGwfPNgB2Y/mMXVTq/decgLczm/j34whdaspNrZO8CnXPf1laaHxI6ptUlsnAxN+UAPw+fzg==}
+  /email-addresses/5.0.0:
+    resolution: {integrity: sha512-4OIPYlA6JXqtVn8zpHpGiI7vE6EQOAg16aGnDMIAlZVinnoZ8208tW1hAbjWydgN/4PLTT9q+O1K6AH/vALJGw==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -2607,14 +2597,14 @@ packages:
       get-intrinsic: 1.2.0
     dev: true
 
-  /gh-pages/4.0.0:
-    resolution: {integrity: sha512-p8S0T3aGJc68MtwOcZusul5qPSNZCalap3NWbhRUZYu1YOdp+EjZ+4kPmRM8h3NNRdqw00yuevRjlkuSzCn7iQ==}
+  /gh-pages/5.0.0:
+    resolution: {integrity: sha512-Nqp1SjkPIB94Xw/3yYNTUL+G2dxlhjvv1zeN/4kMC1jfViTEqhtVz/Ba1zSXHuvXCN9ADNS1dN4r5/J/nZWEQQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      async: 2.6.4
+      async: 3.2.4
       commander: 2.20.3
-      email-addresses: 3.1.0
+      email-addresses: 5.0.0
       filenamify: 4.3.0
       find-cache-dir: 3.3.2
       fs-extra: 8.1.0
@@ -3292,7 +3282,7 @@ packages:
     resolution: {integrity: sha512-cwzBrBfwGC1gYJyfcy8TcZU1f+dbH/T+TuOhtYP2wLv/Fb51/uV7HJQfBPtEupZ2ORLRU1EKFS/QfS3eo9+kBQ==}
     dependencies:
       acorn: 8.8.1
-      pathe: 1.0.0
+      pathe: 1.1.0
       pkg-types: 1.0.1
       ufo: 1.0.1
     dev: true
@@ -3554,8 +3544,8 @@ packages:
     resolution: {integrity: sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==}
     dev: true
 
-  /pathe/1.0.0:
-    resolution: {integrity: sha512-nPdMG0Pd09HuSsr7QOKUXO2Jr9eqaDiZvDwdyIhNG5SHYujkQHYKDfGQkulBxvbDHz8oHLsTgKN86LSwYzSHAg==}
+  /pathe/1.1.0:
+    resolution: {integrity: sha512-ODbEPR0KKHqECXW1GoxdDb+AZvULmXjVPy4rt+pGo2+TnjJTIPJQSVS6N63n8T2Ip+syHhbn52OewKicV0373w==}
     dev: true
 
   /pathval/1.1.1:
@@ -3614,7 +3604,7 @@ packages:
     dependencies:
       jsonc-parser: 3.2.0
       mlly: 1.1.0
-      pathe: 1.0.0
+      pathe: 1.1.0
     dev: true
 
   /postcss-selector-parser/6.0.11:
@@ -4045,6 +4035,10 @@ packages:
 
   /stackback/0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
+    dev: true
+
+  /std-env/3.3.1:
+    resolution: {integrity: sha512-3H20QlwQsSm2OvAxWIYhs+j01MzzqwMwGiiO1NQaJYZgJZFPuAbf95/DiKRBSTYIJ2FeGUc+B/6mPGcWP9dO3Q==}
     dev: true
 
   /streamsearch/1.1.0:
@@ -4519,8 +4513,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-node/0.27.2_@types+node@18.11.18:
-    resolution: {integrity: sha512-IDwuVhslF10qCnWOGJui7/2KksAOBHi+UbVo6Pqt4f5lgn+kS2sVvYDsETRG5PSuslisGB5CFGvb9I6FQgymBQ==}
+  /vite-node/0.27.3_@types+node@18.11.18:
+    resolution: {integrity: sha512-eyJYOO64o5HIp8poc4bJX+ZNBwMZeI3f6/JdiUmJgW02Mt7LnoCtDMRVmLaY9S05SIsjGe339ZK4uo2wQ+bF9g==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -4620,8 +4614,8 @@ packages:
       vite: 4.0.4
     dev: true
 
-  /vitest/0.27.2:
-    resolution: {integrity: sha512-y7tdsL2uaQy+KF18AlmNHZe29ukyFytlxrpSTwwmgLE2XHR/aPucJP9FLjWoqjgqFlXzRAjHlFJLU+HDyI/OsA==}
+  /vitest/0.27.3:
+    resolution: {integrity: sha512-Ld3UVgRVhJUtqvQ3dW89GxiApFAgBsWJZBCWzK+gA3w2yG68csXlGZZ4WDJURf+8ecNfgrScga6xY+8YSOpiMg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -4653,12 +4647,13 @@ packages:
       local-pkg: 0.4.3
       picocolors: 1.0.0
       source-map: 0.6.1
+      std-env: 3.3.1
       strip-literal: 1.0.0
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
-      vite-node: 0.27.2_@types+node@18.11.18
+      vite-node: 0.27.3_@types+node@18.11.18
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
