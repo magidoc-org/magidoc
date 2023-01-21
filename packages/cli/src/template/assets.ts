@@ -12,6 +12,5 @@ export async function copyStaticAssets(from: string, to: string) {
 
   await copy(from, to, {
     overwrite: true,
-    recursive: true,
   })
 }

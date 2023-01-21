@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import Prism from '@magidoc/plugin-svelte-prismjs'
   import 'prismjs/components/prism-graphql.js'
   import 'prismjs/components/prism-json.js'

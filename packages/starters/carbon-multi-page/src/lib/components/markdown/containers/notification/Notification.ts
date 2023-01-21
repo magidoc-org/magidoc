@@ -2,7 +2,7 @@ import type { marked } from 'marked'
 import type { TokenExtractionParameters } from '@magidoc/plugin-svelte-marked'
 
 const notificationStyles = ['error', 'success', 'info', 'warning'] as const
-export type NotificationStyle = typeof notificationStyles[number]
+export type NotificationStyle = (typeof notificationStyles)[number]
 
 export type NotificationToken = marked.Tokens.Generic & {
   type: 'notification'

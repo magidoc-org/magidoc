@@ -15,7 +15,7 @@ const tagColors = [
   'high-contrast',
   'outline',
 ] as const
-export type TagColor = typeof tagColors[number]
+export type TagColor = (typeof tagColors)[number]
 
 export type Tag = {
   name: string

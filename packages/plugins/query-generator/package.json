@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-query-generator",
   "description": "A browser and nodeJS compatible plugin that allows to generate GraphQL Queries and Variables",
   "private": false,
-  "version": "3.0.6",
+  "version": "3.1.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -30,18 +30,18 @@
   "dependencies": {
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.3"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.191",
-    "@types/node": "^18.11.12",
-    "@types/prettier": "^2.7.1",
-    "@vitest/coverage-c8": "^0.25.6",
+    "@types/node": "^18.11.18",
+    "@types/prettier": "^2.7.2",
+    "@vitest/coverage-c8": "^0.27.3",
     "graphql-query-compress": "^1.2.4",
-    "rollup": "^3.7.2",
+    "rollup": "^3.10.1",
     "typescript": "^4.9.4",
-    "vite": "^4.0.0",
-    "vitest": "^0.25.6"
+    "vite": "^4.0.4",
+    "vitest": "^0.27.3"
   },
   "peerDependencies": {
     "graphql": "^16.6.0"

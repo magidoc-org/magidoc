@@ -44,7 +44,7 @@ export function parse(src: string): marked.TokensList {
 
 export type RendererType = marked.Token['type'] | string
 
-export type Renderers = Record<RendererType, unknown>
+export type Renderers = Record<RendererType, ConstructorOfATypedSvelteComponent>
 
 export const defaultRenderers = (): Renderers => ({
   heading: MarkdownHeading,

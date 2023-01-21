@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import type { GraphQLInputObjectType } from 'graphql'
   import _ from 'lodash'
   import AnchorHeader from '../common/text/AnchorHeader.svelte'

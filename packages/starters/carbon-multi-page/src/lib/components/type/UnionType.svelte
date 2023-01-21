@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import type { GraphQLUnionType } from 'graphql'
   import AnchorHeader from '../common/text/AnchorHeader.svelte'
   import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'

@@ -65,7 +65,7 @@
 
 <HeaderPanelLink href={link.href}>
   <div class="container">
-    <svelte:component this={icon} size="16" style="margin-right: 0.3rem" />
+    <svelte:component this={icon} size={16} style="margin-right: 0.3rem" />
     {link.label}
   </div>
 </HeaderPanelLink>

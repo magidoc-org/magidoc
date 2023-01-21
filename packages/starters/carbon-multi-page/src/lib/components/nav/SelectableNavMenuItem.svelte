@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import { SideNavMenuItem } from 'carbon-components-svelte'
 
   export let href: string

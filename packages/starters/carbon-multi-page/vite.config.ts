@@ -3,11 +3,11 @@ import { parseGraphQLSchema } from '@magidoc/rollup-plugin-gql-schema'
 import { magidoc } from '@magidoc/plugin-starter-variables'
 import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 import fs from 'fs'
+import { defineConfig } from 'vite'
 
 const variables = loadVariables()
 
-/** @type {import('vite').UserConfig} */
-const config = {
+export default defineConfig({
   plugins: [
     // Skip this rollup plugin if we are in the context of magidoc generate command
     !magidoc.MAGIDOC_GENERATE.get(variables)
@@ -45,6 +45,4 @@ const config = {
       },
     },
   ].filter((plugin) => !!plugin),
-}
-
-export default config
+})
