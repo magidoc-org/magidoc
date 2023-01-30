@@ -35,10 +35,10 @@
     "@types/node": "^18.11.18",
     "@types/prettier": "^2.7.2",
     "c8": "^7.12.0",
-    "rollup": "^3.10.1",
+    "rollup": "^3.12.0",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
-    "vitest": "^0.27.3"
+    "vitest": "^0.28.3"
   },
   "peerDependencies": {
     "fuse.js": "^6.6.2"

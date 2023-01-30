@@ -10,6 +10,7 @@ export type Page = {
 export type ExternalLink = {
   label: string
   href: string
+  position?: 'header' | 'navigation'
   kind?: string
   group?: string
 }
@@ -63,6 +64,9 @@ export default {
       return zod.object({
         label: zod.string().min(1),
         href: zod.string().min(1),
+        position: zod
+          .union([zod.literal('header'), zod.literal('navigation')])
+          .optional(),
         kind: zod.string().min(1).optional(),
         group: zod.string().min(1).optional(),
       })

@@ -13,7 +13,9 @@
   import _ from 'lodash'
   import AppLink from './AppLink.svelte'
 
-  const links = getOrDefault(templates.EXTERNAL_LINKS, [])
+  const links = getOrDefault(templates.EXTERNAL_LINKS, []).filter(
+    (link) => link?.position === 'navigation' || !link?.position,
+  )
 
   const defaultGroups = links.filter(
     (link): link is ExternalLink => !!(link && !link.group),
