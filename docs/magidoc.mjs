@@ -22,8 +22,10 @@ const config = {
       pages: pages,
       externalLinks: [
         {
-          label: 'Github',
+          label: 'Star us!',
+          kind: 'GitHub',
           href: 'https://github.com/magidoc-org/magidoc',
+          position: 'header',
         },
         {
           group: 'Demo',

@@ -8,12 +8,13 @@
   } from 'carbon-components-svelte'
   import AppIcon from '$lib/components/common/AppIcon.svelte'
   import { base } from '$app/paths'
-  import AppLinks from './header/AppLinks.svelte'
+  import NavbarAppLinks from './header/NavbarAppLinks.svelte'
   import AppSearchResults from './header/AppSearch.svelte'
   import { appTitle } from '$lib/pages'
   import { Search } from 'carbon-icons-svelte'
   import { onDestroy, onMount } from 'svelte'
   import { browser } from '$app/environment'
+  import HeaderAppLinks from './header/HeaderAppLinks.svelte'
 
   export let isSideNavOpen = true
   export let mobile = false
@@ -66,7 +67,8 @@
         />
       </div>
     {/if}
-    <AppLinks />
+    <HeaderAppLinks />
+    <NavbarAppLinks />
   </HeaderUtilities>
 </Header>
 

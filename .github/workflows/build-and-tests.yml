@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: "./.github/actions/install"
+      - uses: './.github/actions/install'
 
-      - run: pnpm build && pnpm build-docs
+      - run: pnpm build && pnpm build:docs
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: '--max_old_space_size=4096'
 
       - run: pnpm test-ci
 
