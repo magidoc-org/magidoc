@@ -42,8 +42,8 @@ importers:
 
   packages/cli:
     specifiers:
-      '@magidoc/plugin-starter-variables': workspace:^3.2.1
-      '@magidoc/rollup-plugin-gql-schema': workspace:^3.2.1
+      '@magidoc/plugin-starter-variables': workspace:^3.3.0
+      '@magidoc/rollup-plugin-gql-schema': workspace:^3.3.0
       '@rollup/plugin-typescript': ^11.0.0
       '@types/fs-extra': ^11.0.1
       '@types/lodash': ^4.14.191
@@ -91,7 +91,7 @@ importers:
 
   packages/plugins/fuse-graphql:
     specifiers:
-      '@magidoc/plugin-fuse-markdown': workspace:^3.2.1
+      '@magidoc/plugin-fuse-markdown': workspace:^3.3.0
       '@types/marked': ^4.0.8
       '@types/node': ^18.13.0
       '@types/prettier': ^2.7.2
@@ -359,14 +359,14 @@ importers:
 
   packages/starters/carbon-multi-page:
     specifiers:
-      '@magidoc/plugin-fuse-graphql': workspace:^3.2.1
-      '@magidoc/plugin-fuse-markdown': workspace:^3.2.1
-      '@magidoc/plugin-query-generator': workspace:^3.2.1
-      '@magidoc/plugin-reverse-schema-mapper': workspace:^3.2.1
-      '@magidoc/plugin-starter-variables': workspace:^3.2.1
-      '@magidoc/plugin-svelte-marked': workspace:^3.2.1
-      '@magidoc/plugin-svelte-prismjs': workspace:^3.2.1
-      '@magidoc/rollup-plugin-gql-schema': workspace:^3.2.1
+      '@magidoc/plugin-fuse-graphql': workspace:^3.3.0
+      '@magidoc/plugin-fuse-markdown': workspace:^3.3.0
+      '@magidoc/plugin-query-generator': workspace:^3.3.0
+      '@magidoc/plugin-reverse-schema-mapper': workspace:^3.3.0
+      '@magidoc/plugin-starter-variables': workspace:^3.3.0
+      '@magidoc/plugin-svelte-marked': workspace:^3.3.0
+      '@magidoc/plugin-svelte-prismjs': workspace:^3.3.0
+      '@magidoc/rollup-plugin-gql-schema': workspace:^3.3.0
       '@sveltejs/adapter-static': 2.0.1
       '@sveltejs/kit': 1.6.0
       '@types/lodash': ^4.14.191
