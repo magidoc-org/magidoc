@@ -274,7 +274,63 @@ importers:
       typescript: 4.9.5
       vite: 4.1.1
 
+  packages/plugins/svelte-marked/package:
+    specifiers:
+      '@sveltejs/adapter-auto': 2.0.0
+      '@sveltejs/kit': 1.6.0
+      '@sveltejs/package': 1.0.2
+      '@types/marked': ^4.0.8
+      '@types/prismjs': ^1.26.0
+      marked: ^4.2.12
+      svelte: ^3.55.1
+      svelte-check: ^3.0.3
+      svelte2tsx: ^0.6.1
+      tslib: ^2.5.0
+      typescript: ~4.9.5
+      vite: ^4.1.1
+    dependencies:
+      marked: 4.2.12
+    devDependencies:
+      '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.6.0
+      '@sveltejs/kit': 1.6.0_svelte@3.55.1+vite@4.1.1
+      '@sveltejs/package': 1.0.2_4x7phaipmicbaooxtnresslofa
+      '@types/marked': 4.0.8
+      '@types/prismjs': 1.26.0
+      svelte: 3.55.1
+      svelte-check: 3.0.3_svelte@3.55.1
+      svelte2tsx: 0.6.1_4x7phaipmicbaooxtnresslofa
+      tslib: 2.5.0
+      typescript: 4.9.5
+      vite: 4.1.1
+
   packages/plugins/svelte-prismjs:
+    specifiers:
+      '@sveltejs/adapter-auto': 2.0.0
+      '@sveltejs/kit': 1.6.0
+      '@sveltejs/package': 1.0.2
+      '@types/prismjs': ^1.26.0
+      prismjs: ^1.29.0
+      svelte: ^3.55.1
+      svelte-check: ^3.0.3
+      svelte2tsx: ^0.6.1
+      tslib: ^2.5.0
+      typescript: ~4.9.5
+      vite: ^4.1.1
+    dependencies:
+      prismjs: 1.29.0
+    devDependencies:
+      '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.6.0
+      '@sveltejs/kit': 1.6.0_svelte@3.55.1+vite@4.1.1
+      '@sveltejs/package': 1.0.2_4x7phaipmicbaooxtnresslofa
+      '@types/prismjs': 1.26.0
+      svelte: 3.55.1
+      svelte-check: 3.0.3_svelte@3.55.1
+      svelte2tsx: 0.6.1_4x7phaipmicbaooxtnresslofa
+      tslib: 2.5.0
+      typescript: 4.9.5
+      vite: 4.1.1
+
+  packages/plugins/svelte-prismjs/package:
     specifiers:
       '@sveltejs/adapter-auto': 2.0.0
       '@sveltejs/kit': 1.6.0
@@ -341,8 +397,8 @@ importers:
       '@magidoc/plugin-query-generator': link:../../plugins/query-generator
       '@magidoc/plugin-reverse-schema-mapper': link:../../plugins/reverse-schema-mapper
       '@magidoc/plugin-starter-variables': link:../../plugins/starter-variables
-      '@magidoc/plugin-svelte-marked': link:../../plugins/svelte-marked
-      '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs
+      '@magidoc/plugin-svelte-marked': link:../../plugins/svelte-marked/package
+      '@magidoc/plugin-svelte-prismjs': link:../../plugins/svelte-prismjs/package
       '@magidoc/rollup-plugin-gql-schema': link:../../plugins/rollup-plugin-gql-schema
       '@sveltejs/adapter-static': 2.0.1_@sveltejs+kit@1.6.0
       '@sveltejs/kit': 1.6.0_svelte@3.55.1+vite@4.1.1

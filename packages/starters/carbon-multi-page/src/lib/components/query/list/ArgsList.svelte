@@ -1,5 +1,6 @@
 <script lang="ts">
   import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
+  import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
 
   import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
@@ -35,20 +36,29 @@
     {#each items as item}
       <StructuredListRow>
         <StructuredListCell>
-          <p>
+          <p class="arg-name-section">
             <span style="font-weight: bold">{item.name}</span>
+            {#if item.default}
+              <span>=</span>
+              <span><DefaultValueDisplay value={item.default} /></span>
+            {/if}
             <TypeLinkTag type={item.type} />
             <DeprecatedTag reason={item.deprecationReason} />
             <NullableTag type={item.type} />
           </p>
           {#if item.description}
-            <p>{item.description}</p>
-          {/if}
-          {#if item.default}
-            Default: <DefaultValueDisplay value={item.default} />
+            <CarbonMarkdown source={item.description} />
           {/if}
         </StructuredListCell>
       </StructuredListRow>
     {/each}
   </StructuredListBody>
 </StructuredList>
+
+<style>
+  .arg-name-section {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+  }
+</style>
