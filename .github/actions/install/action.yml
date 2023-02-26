@@ -5,17 +5,15 @@ runs:
   using: "composite"
   steps:
     - name: Setup PNPM
-      uses: pnpm/action-setup@v2.2.1
+      uses: pnpm/action-setup@v2.2.4
       with:
-        version: 7
+        version: 7.27.0
 
     - name: Cache pnpm modules
-      uses: actions/cache@v2
+      uses: actions/cache@v3.2.6
       with:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
 
     - name: Setup Node
       uses: actions/setup-node@v3

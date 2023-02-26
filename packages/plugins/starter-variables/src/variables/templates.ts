@@ -1,5 +1,6 @@
 import type { ZodType } from 'zod'
 import { arrayConverter, recordConverter, stringConverter } from './converters'
+import { enumConverter } from './converters/enum'
 import { createVariable } from './variable'
 
 export type Page = {
@@ -20,6 +21,10 @@ export type AllowedDirective = {
   args: string[]
 }
 
+export type FieldSorting = 'default' | 'alphabetical'
+
+export type ArgumentSorting = 'default' | 'alphabetical'
+
 export default {
   APP_LOGO: createVariable<string>('APP_LOGO', stringConverter()),
   APP_TITLE: createVariable<string>('APP_TITLE', stringConverter()),
@@ -28,6 +33,14 @@ export default {
   SITE_META: createVariable<Record<string, string | undefined>>(
     'SITE_META',
     recordConverter((zod) => zod.string()),
+  ),
+  FIELDS_SORTING: createVariable<FieldSorting>(
+    'FIELDS_SORTING',
+    enumConverter(['default', 'alphabetical']),
+  ),
+  ARGUMENTS_SORTING: createVariable<ArgumentSorting>(
+    'ARGUMENTS_SORTING',
+    enumConverter(['default', 'alphabetical']),
   ),
   QUERY_GENERATION_FACTORIES: createVariable<
     Record<

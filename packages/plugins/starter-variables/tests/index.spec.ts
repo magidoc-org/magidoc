@@ -23,6 +23,8 @@ describe('variables', () => {
         'APP_FAVICON',
         'SITE_ROOT',
         'SITE_META',
+        'FIELDS_SORTING',
+        'ARGUMENTS_SORTING',
         'QUERY_GENERATION_FACTORIES',
         'PAGES',
         'EXTERNAL_LINKS',
@@ -67,6 +69,24 @@ describe('variables', () => {
         variables.templates.SITE_META,
         'SITE_META',
         z.record(z.string().optional()).optional(),
+      )
+    })
+
+    test('fields sorting', () => {
+      testEnumVariable(
+        variables.templates.FIELDS_SORTING,
+        ['default', 'alphabetical'],
+        'FIELDS_SORTING',
+        z.enum(['default', 'alphabetical']).optional(),
+      )
+    })
+
+    test('arguments sorting', () => {
+      testEnumVariable(
+        variables.templates.ARGUMENTS_SORTING,
+        ['default', 'alphabetical'],
+        'ARGUMENTS_SORTING',
+        z.enum(['default', 'alphabetical']).optional(),
       )
     })
 
@@ -169,6 +189,30 @@ function testStringVariable(
   expect(target.getOrDefault({}, 'Default')).toBe('Default')
 
   expect(target.asEnv('Potato')).toEqual({ [key]: 'Potato' })
+
+  ensureZodTypeEqual(target, expectedZod)
+}
+
+function testEnumVariable<V extends string>(
+  target: Variable<V>,
+  values: [V, V, ...V[]],
+  key: string,
+  expectedZod: ZodType<any>,
+) {
+  expect(target.key).toEqual(key)
+
+  values.forEach((value) => {
+    expect(target.get({ [key]: value })).toBe(value)
+  })
+
+  expect(target.get({ [key]: 'something-else' })).toBeNull()
+  expect(target.get({})).toBeNull()
+
+  expect(target.getOrDefault({ [key]: values[0] }, values[1])).toBe(values[0])
+  expect(target.getOrDefault({ [key]: false }, values[1])).toBe(values[1])
+  expect(target.getOrDefault({}, values[0])).toBe(values[0])
+
+  expect(target.asEnv(values[0])).toEqual({ [key]: values[0] })
 
   ensureZodTypeEqual(target, expectedZod)
 }
