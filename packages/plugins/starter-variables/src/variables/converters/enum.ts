@@ -15,7 +15,7 @@ export function enumConverter<V extends string>(
 
       return target as V
     },
-    asString: (value) => JSON.stringify(value),
+    asString: (value) => String(value),
     type: (z) => z.enum(values).optional(),
   }
 }
