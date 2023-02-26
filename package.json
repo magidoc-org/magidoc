@@ -8,7 +8,7 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "build": "pnpm build:plugins && pnpm build:cli && pnpm build:starters",
     "build:all": "pnpm build && pnpm build:docs",
     "build:cli": "pnpm --filter '@magidoc/cli' build",

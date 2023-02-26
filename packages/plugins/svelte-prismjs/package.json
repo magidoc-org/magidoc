@@ -26,7 +26,7 @@
     "directory": "packages/plugins/svelte-prismjs"
   },
   "scripts": {
-    "prepare": "svelte-kit sync",
+    "postinstall": "svelte-kit sync",
     "dev": "svelte-kit dev",
     "build": "pnpm package",
     "test": "pnpm check",
