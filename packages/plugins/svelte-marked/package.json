@@ -24,9 +24,8 @@
     "directory": "packages/plugins/svelte-marked"
   },
   "scripts": {
-    "postinstall": "svelte-kit sync",
     "dev": "vite dev",
-    "build": "pnpm package",
+    "build": "svelte-kit sync && pnpm package",
     "test": "pnpm check",
     "package": "svelte-package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
