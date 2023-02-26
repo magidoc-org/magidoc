@@ -29,6 +29,7 @@
     "release": "cd package && pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
+    "svelte": "^3.55.1",
     "prismjs": "^1.29.0"
   },
   "devDependencies": {
@@ -36,7 +37,6 @@
     "@sveltejs/kit": "1.8.5",
     "@sveltejs/package": "2.0.2",
     "@types/prismjs": "^1.26.0",
-    "svelte": "^3.55.1",
     "svelte-check": "^3.0.4",
     "svelte2tsx": "^0.6.2",
     "tslib": "^2.5.0",
