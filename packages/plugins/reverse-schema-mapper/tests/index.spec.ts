@@ -69,7 +69,7 @@ describe('given schema', () => {
 function getMandatoryType(name: string): GraphQLNamedType {
   const result = schema.getType(name)
   if (!result) {
-    fail(
+    throw new Error(
       `expected type '${name}' to exist but did not... did you modify the test schema?`,
     )
   }
