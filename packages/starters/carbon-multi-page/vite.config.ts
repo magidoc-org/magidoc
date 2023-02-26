@@ -45,9 +45,4 @@ export default defineConfig({
       },
     },
   ].filter((plugin) => !!plugin),
-  build: {
-    rollupOptions: {
-      external: ['@magidoc/plugins-svelte-primsmjs'],
-    },
-  },
 })
