@@ -10,6 +10,8 @@ export const SUPPORTED_OPTIONS = [
   templates.APP_FAVICON,
   templates.SITE_ROOT,
   templates.SITE_META,
+  templates.FIELDS_SORTING,
+  templates.ARGUMENTS_SORTING,
   templates.QUERY_GENERATION_FACTORIES,
   templates.PAGES,
   templates.EXTERNAL_LINKS,
