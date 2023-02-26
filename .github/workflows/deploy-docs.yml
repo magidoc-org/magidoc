@@ -1,4 +1,4 @@
-name: Release docs
+name: Deploy docs
 
 on:
   workflow_dispatch:
@@ -8,11 +8,11 @@ on:
       - completed
 
 jobs:
-  release:
-    name: Release
+  deploy-docs:
+    name: Deploy-docs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: "./.github/actions/install"
       
       - name: Release Documentation
@@ -25,4 +25,4 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git config --global user.email "support+actions@github.com"
           git config --global user.name "github-actions-bot"
-          pnpm build:docs && pnpm --filter @magidoc/docs release
+          pnpm pnpm build:plugins && build:docs && pnpm --filter @magidoc/docs release
