@@ -4,12 +4,16 @@
   "type": "module",
   "license": "MIT",
   "version": "3.4.0",
+  "svelte": "./build/index.js",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
+      "types": "./build/index.d.ts",
+      "svelte": "./build/index.js"
     }
   },
+  "files": ["build"],
   "private": false,
   "keywords": [
     "svelte",
@@ -27,11 +31,11 @@
   },
   "scripts": {
     "dev": "svelte-kit dev",
-    "build": "svelte-kit sync && pnpm package",
+    "build": "svelte-kit sync && pnpm package --output build",
     "test": "pnpm check",
     "package": "svelte-package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "release": "cd package && pnpm publish --no-git-checks --access public"
+    "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
     "svelte": "^3.55.1",
