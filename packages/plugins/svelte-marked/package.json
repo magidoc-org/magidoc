@@ -31,15 +31,15 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "2.0.0",
-    "@sveltejs/kit": "1.6.0",
-    "@sveltejs/package": "1.0.2",
+    "@sveltejs/kit": "1.8.5",
+    "@sveltejs/package": "2.0.2",
     "@types/marked": "^4.0.8",
     "@types/prismjs": "^1.26.0",
     "svelte": "^3.55.1",
-    "svelte-check": "^3.0.3",
-    "svelte2tsx": "^0.6.1",
+    "svelte-check": "^3.0.4",
+    "svelte2tsx": "^0.6.2",
     "tslib": "^2.5.0",
     "typescript": "~4.9.5",
-    "vite": "^4.1.1"
+    "vite": "^4.1.4"
   }
 }
