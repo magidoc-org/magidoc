@@ -4,7 +4,12 @@
   "type": "module",
   "license": "MIT",
   "version": "3.4.0",
-  "svelte": "index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    }
+  },
   "private": false,
   "keywords": [
     "svelte",
