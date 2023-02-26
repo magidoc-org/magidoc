@@ -10,9 +10,9 @@
     "magidoc"
   ],
   "scripts": {
-    "prepare": "svelte-kit sync",
+    "sync": "svelte-kit sync",
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "pnpm sync && vite build",
     "preview": "vite preview",
     "test": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint 'src/**/*.{ts,svelte}'",
