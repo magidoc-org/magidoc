@@ -17,6 +17,12 @@
     <loc>https://magidoc.js.org/cli/magidoc-configuration</loc>
   </url>
   <url>
+    <loc>https://magidoc.js.org/introduction/quickstart</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/introduction/welcome</loc>
+  </url>
+  <url>
     <loc>https://magidoc.js.org/deployment/apache</loc>
   </url>
   <url>
@@ -30,12 +36,6 @@
   </url>
   <url>
     <loc>https://magidoc.js.org/deployment/vercel</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/introduction/quickstart</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/introduction/welcome</loc>
   </url>
   <url>
     <loc>https://magidoc.js.org/plugins/graphql-query-generator</loc>
@@ -60,5 +60,11 @@
   </url>
   <url>
     <loc>https://magidoc.js.org/templates/introduction</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/use-cases/general-documentation</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/use-cases/multiple-graphql-schemas</loc>
   </url>
 </urlset>

@@ -34,7 +34,7 @@
 		<link rel="modulepreload" href="../_app/immutable/entry/_...page_-page.ts.be3de995.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.b1f5b21f.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/_page.c3cffd4d.js"><title>
-    Templates - Introduction
+    Use-Cases - Multiple GraphQL Schemas
   </title><!-- HEAD_svelte-w4mdaz_START --><meta name="keywords" content="svelte,sveltekit,svelte-kit,prismjs,markedjs,marked,graphql,documentation,docs,static,javascript,nodejs"><meta name="description" content="Fully featured, fast and highly customizable GraphQL static documentation website generator."><meta name="og:title" content="Magidoc"><meta name="og:type" content="article"><meta name="og:image" content="https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png"><meta name="og:site_name" content="Magidoc"><meta name="og:description" content="Fully featured, fast and highly customizable GraphQL static documentation website generator."><meta name="author" content="Magidoc-org"><link rel="icon" href="https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png"><!-- HEAD_svelte-w4mdaz_END --><!-- HEAD_svelte-52tmna_START --><!-- HEAD_svelte-52tmna_END -->
   </head>
   <body>
@@ -87,12 +87,12 @@
         <li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Templates</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" style="max-height: none" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a aria-current="page" href="/templates/introduction" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/templates/carbon-multi-page" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Carbon-multi-page</span></a></li>
+  <ul role="menu" style="max-height: none" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/templates/introduction" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Introduction</span></a></li><li class="bx--side-nav__menu-item"><a href="/templates/carbon-multi-page" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Carbon-multi-page</span></a></li>
         </ul></li>
         <li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Use-Cases</span>
     <div class="bx--side-nav__icon bx--side-nav__icon--small bx--side-nav__submenu-chevron"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden><path d="M16 22L6 12 7.4 10.6 16 19.2 24.6 10.6 26 12z"></path></svg></div></button>
-  <ul role="menu" style="max-height: none" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a href="/use-cases/multiple-graphql-schemas" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Multiple GraphQL Schemas</span></a></li><li class="bx--side-nav__menu-item"><a href="/use-cases/general-documentation" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">General documentation</span></a></li>
+  <ul role="menu" style="max-height: none" class="bx--side-nav__menu"><li class="bx--side-nav__menu-item"><a aria-current="page" href="/use-cases/multiple-graphql-schemas" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">Multiple GraphQL Schemas</span></a></li><li class="bx--side-nav__menu-item"><a href="/use-cases/general-documentation" class=" bx--side-nav__link"><span class="bx--side-nav__link-text">General documentation</span></a></li>
         </ul></li>
         <li class="bx--side-nav__item"><button type="button" aria-expanded class="bx--side-nav__submenu">
     <span class="bx--side-nav__submenu-title">Deployment</span>
@@ -112,32 +112,27 @@
 
 <main id="main-content" style="margin-left: 0; undefined" class="bx--content"><div class="bx--grid"><div class="bx--row"><div class="bx--col">
 
-<div class="parent svelte-1jlumb"><h1 id="introduction" class="header header-base svelte-1jlumb">Introduction</h1>
+<div class="parent svelte-1jlumb"><h1 id="multiple-graphql-schemas" class="header header-base svelte-1jlumb">Multiple GraphQL Schemas</h1>
   
-</div><p class="md-paragraph svelte-uzcm98">This section contains a list of all the available templates to be used either with the 
-<a href="/cli/command-generate" class="bx--link     ">generate
-    </a> or 
-<a href="/cli/command-eject" class="bx--link     ">eject
-    </a> commands.
+</div><p class="md-paragraph svelte-uzcm98">At the moment, Magidoc only supports generating documentation for a single GraphQL schema at the time. It is however possible to document multiple APIs at the same time and link them together. 
 </p>
 
-
-<ul class="markdown-list-style bx--list--unordered  " style="counter-reset: item 0">
-<li class="markdown-list-item bx--list__item">
-<a href="/templates/carbon-multi-page" class="bx--link     ">carbon-multi-page
-    </a></li></ul>
+<p class="md-paragraph svelte-uzcm98">There is a simple example of this approach as well as the details of how it works available in the 
+<a href="https://github.com/magidoc-org/magidoc/tree/main/packages/examples/multi-schema" class="bx--link     ">example section
+    </a> of the Github repository.
+</p>
 
 <hr class="footer-hr svelte-19tre3a">
 
 <div class="wrapper svelte-19tre3a"><div class="previous direction-wrapper svelte-19tre3a"><div class="direction svelte-19tre3a"><strong>Previous
 
-          - Cli</strong></div>
-      <a href="/cli/command-eject" class="title svelte-19tre3a"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" aria-hidden class="previous-next-arrow"><path d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"></path></svg></span>
-        <p>Command - Eject</p></a></div>
+          - Templates</strong></div>
+      <a href="/templates/carbon-multi-page" class="title svelte-19tre3a"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" aria-hidden class="previous-next-arrow"><path d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"></path></svg></span>
+        <p>Carbon-multi-page</p></a></div>
 
   <div class="next direction-wrapper svelte-19tre3a"><div class="direction svelte-19tre3a"><strong>Next
           </strong></div>
-      <a href="/templates/carbon-multi-page" class="title svelte-19tre3a"><p>Carbon-multi-page</p>
+      <a href="/use-cases/general-documentation" class="title svelte-19tre3a"><p>General documentation</p>
         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" aria-hidden class="previous-next-arrow"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></span></a></div>
 </div></div></div></div></main>
 
