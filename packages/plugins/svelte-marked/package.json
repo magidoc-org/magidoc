@@ -24,6 +24,7 @@
     "directory": "packages/plugins/svelte-marked"
   },
   "scripts": {
+    "prepare": "svelte-kit sync",
     "dev": "vite dev",
     "build": "pnpm package",
     "test": "pnpm check",

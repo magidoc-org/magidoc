@@ -10,6 +10,7 @@
     "magidoc"
   ],
   "scripts": {
+    "prepare": "svelte-kit sync",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
