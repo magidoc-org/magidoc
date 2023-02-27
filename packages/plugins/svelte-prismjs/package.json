@@ -32,9 +32,8 @@
     "directory": "packages/plugins/svelte-prismjs"
   },
   "scripts": {
-    "postinstall": "svelte-kit sync",
     "dev": "svelte-kit dev",
-    "build": "svelte-package --output build",
+    "build": "svelte-kit sync && svelte-package --output build",
     "test": "pnpm check",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "release": "pnpm publish --no-git-checks --access public"
