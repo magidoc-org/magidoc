@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -10,23 +10,23 @@
     "magidoc"
   ],
   "scripts": {
-    "sync": "svelte-kit sync",
+    "prepare": "svelte-kit sync",
     "dev": "vite dev",
-    "build": "pnpm sync && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint 'src/**/*.{ts,svelte}'",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@magidoc/plugin-fuse-graphql": "workspace:^3.4.0",
-    "@magidoc/plugin-fuse-markdown": "workspace:^3.4.0",
-    "@magidoc/plugin-query-generator": "workspace:^3.4.0",
-    "@magidoc/plugin-reverse-schema-mapper": "workspace:^3.4.0",
-    "@magidoc/plugin-starter-variables": "workspace:^3.4.0",
-    "@magidoc/plugin-svelte-marked": "workspace:^3.4.0",
-    "@magidoc/plugin-svelte-prismjs": "workspace:^3.4.0",
-    "@magidoc/rollup-plugin-gql-schema": "workspace:^3.4.0",
+    "@magidoc/plugin-fuse-graphql": "workspace:^3.4.1",
+    "@magidoc/plugin-fuse-markdown": "workspace:^3.4.1",
+    "@magidoc/plugin-query-generator": "workspace:^3.4.1",
+    "@magidoc/plugin-reverse-schema-mapper": "workspace:^3.4.1",
+    "@magidoc/plugin-starter-variables": "workspace:^3.4.1",
+    "@magidoc/plugin-svelte-marked": "workspace:^3.4.1",
+    "@magidoc/plugin-svelte-prismjs": "workspace:^3.4.1",
+    "@magidoc/rollup-plugin-gql-schema": "workspace:^3.4.1",
     "@sveltejs/adapter-static": "2.0.1",
     "@sveltejs/kit": "1.8.5",
     "@types/lodash": "^4.14.191",
