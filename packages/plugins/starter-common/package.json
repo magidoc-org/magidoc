@@ -1,6 +1,6 @@
 {
-  "name": "@magidoc/rollup-plugin-gql-schema",
-  "description": "A Rollup and ViteJS plugin that allows to parse a GraphQL Schema from a target URL and save it to a target output folder, or to parse it from the disk and convert it to a desired format.",
+  "name": "@magidoc/plugin-starter-common",
+  "description": "A shared library that contains common code shared between multiple starter applications.",
   "private": false,
   "version": "3.5.0",
   "type": "module",
@@ -8,41 +8,42 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "keywords": [
-    "rollup-plugin",
-    "vite-plugin",
-    "graphql",
-    "graphql-schema",
-    "magidoc"
+    "node",
+    "magidoc",
+    "internal"
   ],
-  "homepage": "https://magidoc.js.org/plugins/rollup-graphql-schema",
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",
-    "directory": "packages/plugins/rollup-plugin-gql-schema"
+    "directory": "packages/plugins/starter-common"
   },
   "scripts": {
+    "start": "pnpm build:rollup && node build/index.js",
     "build": "run-p build:*",
     "build:rollup": "rollup -c",
     "build:tsc": "tsc --build tsconfig.build.json",
     "test": "vitest run --coverage",
     "release": "pnpm publish --no-git-checks --access public"
   },
-  "dependencies": {
-    "axios": "^1.3.4",
-    "fast-glob": "^3.2.12",
-    "graphql": "^16.6.0"
-  },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^18.14.6",
-    "@types/prettier": "^2.7.2",
     "@vitest/coverage-c8": "^0.29.2",
-    "nock": "^13.3.0",
+    "lodash": "^4.17.21",
     "rollup": "^3.18.0",
+    "tslib": "^2.5.0",
     "typescript": "^4.9.5",
     "vite": "^4.1.4",
     "vitest": "^0.29.2"
   },
+  "optionalDependencies": {
+    "zod": "^3.21.0"
+  },
   "files": [
     "build"
-  ]
+  ],
+  "dependencies": {
+    "@magidoc/plugin-starter-variables": "workspace:^3.5.0"
+  }
 }

@@ -1,9 +1,8 @@
 <script lang="ts">
+  import type { Page } from '@magidoc/plugin-starter-common'
   import { ArrowLeft, ArrowRight } from 'carbon-icons-svelte'
 
-  import type { WebsitePage } from 'src/app'
-
-  export let page: WebsitePage
+  export let page: Page
 </script>
 
 <hr class="footer-hr" />

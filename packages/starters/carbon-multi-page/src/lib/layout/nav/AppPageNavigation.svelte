@@ -1,10 +1,9 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
+  import type { Page } from '@magidoc/plugin-starter-common'
 
-  import type { WebsitePage } from 'src/app'
-
-  export let item: WebsitePage
+  export let item: Page
 </script>
 
 <SelectableNavMenuItem

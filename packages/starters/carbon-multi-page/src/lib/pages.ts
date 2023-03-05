@@ -1,10 +1,13 @@
-import { templates, type Page } from '@magidoc/plugin-starter-variables'
-import type { WebsitePage, WebsiteContent } from 'src/app'
+import {
+  templates,
+  type Page as VariablePage,
+} from '@magidoc/plugin-starter-variables'
 import { base } from '$app/paths'
 import { createModelContent } from './model'
 import { getOrDefault } from './variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import { Slugger } from 'marked'
+import type { PageTree, Page } from '@magidoc/plugin-starter-common'
 
 export const appTitle = getOrDefault(
   templates.APP_TITLE,
@@ -13,15 +16,15 @@ export const appTitle = getOrDefault(
 
 const buildPages = parseCustomPages().concat(createModelContent())
 setPreviousAndNextPages(buildPages)
-export const pages: ReadonlyArray<WebsiteContent> = Object.freeze(buildPages)
+export const pages: ReadonlyArray<PageTree> = Object.freeze(buildPages)
 
 export const homePageUrl = getHomePageUrl()
 
-function parseCustomPages(): ReadonlyArray<WebsiteContent> {
+function parseCustomPages(): ReadonlyArray<PageTree> {
   const pages = getOrDefault(templates.PAGES, getDefaultPages())
 
   return pages
-    .filter((page): page is Page => !!page)
+    .filter((page): page is VariablePage => !!page)
     .map((item) => asCustomContent([], item))
 }
 
@@ -34,10 +37,10 @@ function getHomePageUrl(): string {
   )
 }
 
-function setPreviousAndNextPages(pages: WebsiteContent[]) {
+function setPreviousAndNextPages(pages: PageTree[]) {
   function iteratePages(
-    pages: ReadonlyArray<WebsiteContent>,
-    handler: (page: WebsitePage) => void,
+    pages: ReadonlyArray<PageTree>,
+    handler: (page: Page) => void,
   ) {
     for (const page of pages) {
       if (page.type === 'page') {
@@ -51,7 +54,7 @@ function setPreviousAndNextPages(pages: WebsiteContent[]) {
     }
   }
 
-  let previous: WebsitePage | undefined = undefined
+  let previous: Page | undefined = undefined
 
   iteratePages(pages, (current) => {
     if (previous) {
@@ -72,22 +75,18 @@ function setPreviousAndNextPages(pages: WebsiteContent[]) {
   })
 }
 
-function findFirstPage(): WebsitePage | null {
+function findFirstPage(): Page | null {
   return firstPageBy(() => true)
 }
 
-export function findPageByHref(href: string): WebsitePage | null {
+export function findPageByHref(href: string): Page | null {
   return firstPageBy(
     (page) => page.href.toLocaleLowerCase() === href.toLocaleLowerCase(),
   )
 }
 
-function firstPageBy(
-  matcher: (page: WebsitePage) => boolean,
-): WebsitePage | null {
-  function iteratePages(
-    pages: ReadonlyArray<WebsiteContent>,
-  ): WebsitePage | null {
+function firstPageBy(matcher: (page: Page) => boolean): Page | null {
+  function iteratePages(pages: ReadonlyArray<PageTree>): Page | null {
     for (const page of pages) {
       if (page.type === 'page' && matcher(page)) {
         return page
@@ -105,7 +104,7 @@ function firstPageBy(
   return iteratePages(pages)
 }
 
-function asCustomContent(path: string[], page: Page): WebsiteContent {
+function asCustomContent(path: string[], page: VariablePage): PageTree {
   if (typeof page.content === 'string') {
     return {
       type: 'page',
@@ -130,7 +129,7 @@ function generatePath(value: string): string {
   return urlUtils.generatePathSegment(value, new Slugger())
 }
 
-function getDefaultPages(): Page[] {
+function getDefaultPages(): VariablePage[] {
   return [
     {
       title: 'Introduction',

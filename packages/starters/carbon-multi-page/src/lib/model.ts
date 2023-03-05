@@ -12,7 +12,6 @@ import {
   type IntrospectionQuery,
 } from 'graphql'
 import _ from 'lodash'
-import type { WebsiteContent } from 'src/app'
 import schemaRaw from '../_schema.graphqls?raw'
 import type { Maybe } from 'graphql/jsutils/Maybe'
 import { base } from '$app/paths'
@@ -26,6 +25,7 @@ import {
   templates,
   type AllowedDirective,
 } from '@magidoc/plugin-starter-variables'
+import type { PageTree } from '@magidoc/plugin-starter-common'
 
 export const schema: GraphQLSchema = parseSchema()
 
@@ -77,20 +77,20 @@ export function isModelEmpty(): boolean {
   return _.size(schema.getTypeMap()) <= 10
 }
 
-export function createModelContent(): ReadonlyArray<WebsiteContent> {
+export function createModelContent(): ReadonlyArray<PageTree> {
   return [
     createWebsiteContent('Queries', schema.getQueryType()),
     createWebsiteContent('Mutations', schema.getMutationType()),
     createWebsiteContent('Subscriptions', schema.getSubscriptionType()),
     createDirectiveWebsiteContent(),
     createTypesWebsiteContent(),
-  ].filter((content): content is WebsiteContent => !!content)
+  ].filter((content): content is PageTree => !!content)
 }
 
 function createWebsiteContent(
   title: string,
   type: Maybe<GraphQLObjectType<unknown, unknown>>,
-): WebsiteContent | null {
+): PageTree | null {
   return createWebsiteContentFromFields(title, getSortedRootFields(type))
 }
 
@@ -101,7 +101,7 @@ function getSortedRootFields(type: Maybe<GraphQLObjectType<unknown, unknown>>) {
 function createWebsiteContentFromFields(
   title: string,
   fields: GraphQLField<unknown, unknown, unknown>[],
-): WebsiteContent | null {
+): PageTree | null {
   if (fields.length === 0) return null
   return {
     type: 'menu',
@@ -116,7 +116,7 @@ function createWebsiteContentFromFields(
   }
 }
 
-function createTypesWebsiteContent(): WebsiteContent | null {
+function createTypesWebsiteContent(): PageTree | null {
   if (isModelEmpty()) return null
   const types: GraphQLNamedType[] = _.sortBy(
     _.map(schema.getTypeMap()),
@@ -258,9 +258,9 @@ function parseSchema() {
   return buildSchema(schemaRaw)
 }
 
-function createDirectiveWebsiteContent(): WebsiteContent | undefined {
+function createDirectiveWebsiteContent(): PageTree | null {
   const allowed = getAllowedDirectives()
-  if (allowed.length === 0) return undefined
+  if (allowed.length === 0) return null
   return {
     type: 'menu',
     title: 'Directives',

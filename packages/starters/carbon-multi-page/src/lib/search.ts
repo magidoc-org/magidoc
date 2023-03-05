@@ -8,11 +8,11 @@ import {
 } from '@magidoc/plugin-fuse-graphql'
 import type Fuse from 'fuse.js'
 import { pages } from './pages'
-import type { WebsitePage, WebsiteContent } from 'src/app'
 import type { NotificationToken } from './components/markdown/containers/notification/Notification'
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
 import { setupMarkedExtensions } from './markdown'
 import { isModelEmpty, schema } from './model'
+import type { Page, PageTree } from '@magidoc/plugin-starter-common'
 
 setupMarkedExtensions()
 
@@ -141,7 +141,7 @@ function collapseIndexes(
   return result
 }
 
-function flatPages(pages: ReadonlyArray<WebsiteContent>): WebsitePage[] {
+function flatPages(pages: ReadonlyArray<PageTree>): Page[] {
   return pages.flatMap((page) => {
     if (page.type === 'page') {
       return [page]
