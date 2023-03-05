@@ -1,0 +1,49 @@
+{
+  "name": "@magidoc/plugin-starter-common",
+  "description": "A shared library that contains common code shared between multiple starter applications.",
+  "private": false,
+  "version": "3.5.0",
+  "type": "module",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "keywords": [
+    "node",
+    "magidoc",
+    "internal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magidoc-org/magidoc.git",
+    "directory": "packages/plugins/starter-common"
+  },
+  "scripts": {
+    "start": "pnpm build:rollup && node build/index.js",
+    "build": "run-p build:*",
+    "build:rollup": "rollup -c",
+    "build:tsc": "tsc --build tsconfig.build.json",
+    "test": "vitest run --coverage",
+    "release": "pnpm publish --no-git-checks --access public"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.14.6",
+    "@vitest/coverage-c8": "^0.29.2",
+    "lodash": "^4.17.21",
+    "rollup": "^3.18.0",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4",
+    "vitest": "^0.29.2"
+  },
+  "optionalDependencies": {
+    "zod": "^3.21.0"
+  },
+  "files": [
+    "build"
+  ],
+  "dependencies": {
+    "@magidoc/plugin-starter-variables": "workspace:^3.5.0"
+  }
+}
