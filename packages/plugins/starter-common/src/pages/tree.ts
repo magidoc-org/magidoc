@@ -1,24 +1,24 @@
-export type WebsitePreviousOrNextPage = {
+export type NavigationPage = {
   title: string
   section?: string
   href: string
 }
 
-export type WebsitePage = {
+export type Page = {
   type: 'page'
   title: string
   section?: string
   deprecated?: boolean
   href: string
   content?: string
-  previous?: WebsitePreviousOrNextPage
-  next?: WebsitePreviousOrNextPage
+  previous?: NavigationPage
+  next?: NavigationPage
 }
 
-export type WebsiteSubMenu = {
+export type Menu = {
   type: 'menu'
   title: string
-  children: WebsiteTree[]
+  children: PageTree[]
 }
 
-export type WebsiteTree = WebsitePage | WebsiteSubMenu
+export type PageTree = Page | Menu
