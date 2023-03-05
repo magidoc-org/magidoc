@@ -35,6 +35,10 @@
       "path": "./packages/cli"
     },
     {
+      "name": "Plugins/Starter Common",
+      "path": "./packages/plugins/starter-common"
+    },
+    {
       "name": "Plugins/Starter Variables",
       "path": "./packages/plugins/starter-variables"
     },
