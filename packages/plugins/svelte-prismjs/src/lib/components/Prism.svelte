@@ -10,7 +10,7 @@
   /**
    * The target language to use. This language must be imported manually from prism to be activated.
    */
-  export let language: string
+  export let language: string | undefined
 
   /**
    * The source code to highlight.
@@ -41,7 +41,11 @@
 
   let root: HTMLElement
 
-  function highlight(root: HTMLElement, language: string, source: string) {
+  function highlight(
+    root: HTMLElement,
+    language: string | undefined,
+    source: string,
+  ) {
     // The _ (language) parameter is important to force Svelte to reload if the language change
 
     // This is the way found to make PrismJS re-render on change

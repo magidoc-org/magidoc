@@ -9,7 +9,7 @@
 </script>
 
 <Prism
-  language={token.lang || 'text'}
+  language={token.lang}
   source={token.text}
   {showCopyButton}
   {showLineNumbers}
