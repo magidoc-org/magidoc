@@ -1,4 +1,4 @@
-import { loadMarkdownPagesTree, MarkdownPage } from '../../src/utils/pages'
+import { loadMarkdownPagesTree, type MarkdownPage } from '../../src/utils/pages'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'

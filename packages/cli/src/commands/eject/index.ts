@@ -9,7 +9,7 @@ import { installDependenciesTask } from '../../tasks/all/installDependencies'
 import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { verifyDestinationAvailableTask } from '../../tasks/all/verifyDestinationAvailable'
 import type { Template } from '../../template'
-import { TmpLocation, tmpLocation } from '../../template/tmp'
+import { type TmpLocation, tmpLocation } from '../../template/tmp'
 import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'
 
 export type EjectConfig = {

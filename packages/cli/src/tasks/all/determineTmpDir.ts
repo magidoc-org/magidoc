@@ -2,7 +2,7 @@ import type { Task } from '../runner'
 import { isTemplate } from '../../template'
 import {
   tmpLocation,
-  TmpLocation,
+  type TmpLocation,
   tmpTemplateArchiveFile,
   tmpTemplateDirectory,
 } from '../../template/tmp'

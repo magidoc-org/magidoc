@@ -1,4 +1,4 @@
-import { Mock, vi } from 'vitest'
+import { vi } from 'vitest'
 import type { MagidocConfiguration } from '../../src'
 import { loadFileConfiguration } from '../../src/commands/utils/loadConfigFile'
 

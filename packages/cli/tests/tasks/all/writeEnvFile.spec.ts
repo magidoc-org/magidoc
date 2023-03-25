@@ -1,6 +1,9 @@
-import { toVariablesFile, Variable } from '@magidoc/plugin-starter-variables'
+import {
+  toVariablesFile,
+  type Variable,
+} from '@magidoc/plugin-starter-variables'
 import templates from '@magidoc/plugin-starter-variables/build/variables/templates'
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { writeFile } from 'fs/promises'
 import { taskWrapperMock } from './utils'
 import { writeEnvFileTask } from '../../../src/tasks/all/writeEnvFile'

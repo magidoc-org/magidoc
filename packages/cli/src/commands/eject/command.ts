@@ -1,11 +1,11 @@
 import { Command, Option } from 'commander'
 import eject from '.'
-import { AVAILABLE_TEMPLATES, Template } from '../../template'
+import { AVAILABLE_TEMPLATES, type Template } from '../../template'
 import { getVersion } from '../../version'
 import path from 'path'
 import { withStacktrace } from '../utils/withStacktrace'
 import {
-  PackageManagerType,
+  type PackageManagerType,
   PACKAGE_MANAGER_TYPES,
 } from '../../node/packageManager'
 

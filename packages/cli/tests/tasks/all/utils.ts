@@ -1,7 +1,7 @@
 import _ from 'lodash'
-import { Mock, vi } from 'vitest'
+import { type Mock, vi } from 'vitest'
 import {
-  PackageManagerType,
+  type PackageManagerType,
   PACKAGE_MANAGER_TYPES,
 } from '../../../src/node/packageManager'
 

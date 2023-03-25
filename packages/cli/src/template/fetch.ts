@@ -1,5 +1,5 @@
 import fs, { type WriteStream } from 'fs-extra'
-import axios, { AxiosError } from 'axios'
+import axios, { type AxiosError } from 'axios'
 import type { Template } from '.'
 
 export type FetchTemplateConfig = {
