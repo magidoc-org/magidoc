@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-fuse-markdown",
   "description": "A plugin used to index markdown text into a Fuse.js search engine.",
   "private": false,
-  "version": "3.5.0",
+  "version": "3.6.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
