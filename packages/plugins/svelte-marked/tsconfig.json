@@ -6,7 +6,6 @@
     "lib": ["es2020", "DOM"],
     "target": "es2020",
     "resolveJsonModule": true,
-    "verbatimModuleSyntax": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -17,8 +16,6 @@
       "$lib/*": ["src/lib/*"],
       "$app/*": [".svelte-kit/runtime/app/*"]
     },
-    "allowJs": true,
-    "checkJs": true
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }

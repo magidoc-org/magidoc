@@ -4,7 +4,11 @@ import Fuse from 'fuse.js'
 import type { GraphQLObjectType, GraphQLSchema } from 'graphql'
 import { asQueryResult } from './graphql/queries'
 import { asTypeSearchResult } from './graphql/types'
-import { QuerySearchResult, SearchResult, SearchResultType } from './result'
+import {
+  type QuerySearchResult,
+  type SearchResult,
+  SearchResultType,
+} from './result'
 
 export type IndexingOptions = {
   /**

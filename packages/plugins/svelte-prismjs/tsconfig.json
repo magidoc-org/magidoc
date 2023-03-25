@@ -5,18 +5,17 @@
     "module": "es2020",
     "lib": ["es2020", "DOM"],
     "target": "es2020",
+    "strict": true,
     "resolveJsonModule": true,
-    "verbatimModuleSyntax": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "allowJs": true,
-    "checkJs": true,
     "paths": {
       "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"]
+      "$lib/*": ["src/lib/*"],
+      "$app/*": [".svelte-kit/runtime/app/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
