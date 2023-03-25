@@ -10,7 +10,7 @@
   /**
    * The target language to use. This language must be imported manually from prism to be activated.
    */
-  export let language: string | undefined
+  export let language: string
 
   /**
    * The source code to highlight.
