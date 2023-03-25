@@ -27,6 +27,7 @@
   import { onDestroy } from 'svelte'
   import { siteMeta } from '$lib/meta'
   import { pages } from '$lib/pages'
+  import { siteStyles } from '$lib/styles'
 
   setupMarkedExtensions()
 
@@ -59,6 +60,10 @@
 <svelte:head>
   {#each siteMeta as item}
     <meta name={item.name} content={item.content} />
+  {/each}
+
+  {#each siteStyles as style}
+    <link rel="stylesheet" href={style} />
   {/each}
 
   {#if favicon}

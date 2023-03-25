@@ -34,6 +34,10 @@ export default {
     'SITE_META',
     recordConverter((zod) => zod.string()),
   ),
+  CUSTOM_STYLES: createVariable<Array<string | undefined>>(
+    'CUSTOM_STYLES',
+    arrayConverter((zod) => zod.string()),
+  ),
   FIELDS_SORTING: createVariable<FieldSorting>(
     'FIELDS_SORTING',
     enumConverter(['default', 'alphabetical']),
