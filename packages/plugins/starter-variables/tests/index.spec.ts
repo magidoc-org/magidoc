@@ -21,8 +21,10 @@ describe('variables', () => {
         'APP_LOGO',
         'APP_TITLE',
         'APP_FAVICON',
+
         'SITE_ROOT',
         'SITE_META',
+        'CUSTOM_STYLES',
         'FIELDS_SORTING',
         'ARGUMENTS_SORTING',
         'QUERY_GENERATION_FACTORIES',
@@ -69,6 +71,14 @@ describe('variables', () => {
         variables.templates.SITE_META,
         'SITE_META',
         z.record(z.string().optional()).optional(),
+      )
+    })
+
+    test('custom styles', () => {
+      testArrayVariable(
+        variables.templates.CUSTOM_STYLES,
+        'CUSTOM_STYLES',
+        z.array(z.string()).optional(),
       )
     })
 
