@@ -1,9 +1,9 @@
 import {
   buildClientSchema,
   getIntrospectionQuery,
-  GraphQLError,
-  GraphQLSchema,
-  IntrospectionQuery,
+  type GraphQLError,
+  type GraphQLSchema,
+  type IntrospectionQuery,
 } from 'graphql'
 import axios from 'axios'
 

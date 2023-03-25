@@ -2,14 +2,14 @@ import _ from 'lodash'
 
 import type { GraphQLQuery } from '../models/query'
 import {
-  QueryGeneratorConfig,
+  type QueryGeneratorConfig,
   NullGenerationStrategy,
-  ResponseGenerationConfig,
+  type ResponseGenerationConfig,
 } from './config'
 import {
-  GraphQLField,
-  GraphQLType,
-  GraphQLObjectType,
+  type GraphQLField,
+  type GraphQLType,
+  type GraphQLObjectType,
   isLeafType,
   isUnionType,
   isObjectType,
@@ -17,12 +17,12 @@ import {
   isNonNullType,
   isListType,
   isNullableType,
-  GraphQLNamedType,
+  type GraphQLNamedType,
 } from 'graphql'
 import { unwrapType } from './extractor'
 import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
 import {
-  Parameter,
+  type Parameter,
   QueryBuilder,
   queryBuilder,
   QueryType,
@@ -32,7 +32,7 @@ import {
   fieldResponseBuilder,
   subObjectResponseBuilder,
   valueResponseBuilder,
-  ResponseFieldValueBuilder,
+  type ResponseFieldValueBuilder,
   arrayResponseBuilder,
 } from './builder/responseBuilder'
 

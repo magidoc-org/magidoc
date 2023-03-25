@@ -1,5 +1,5 @@
 import { existsSync } from 'fs'
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { verifyDestinationAvailableTask } from '../../../src/tasks/all/verifyDestinationAvailable'
 import { taskWrapperMock } from './utils'
 

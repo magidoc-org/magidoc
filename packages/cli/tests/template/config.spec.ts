@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url'
 import path from 'path'
 import {
   loadTemplateConfig,
-  RawMagidocTemplateConfig,
+  type RawMagidocTemplateConfig,
 } from '../../src/template/config'
 import { describe, it, expect } from 'vitest'
 

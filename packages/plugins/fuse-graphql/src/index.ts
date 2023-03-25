@@ -1,4 +1,8 @@
-export { index, IndexingOptions, defaultFuseOptions } from './indexer/indexer'
+export {
+  index,
+  type IndexingOptions,
+  defaultFuseOptions,
+} from './indexer/indexer'
 export { GraphQLType, SearchResultType } from './indexer/result'
 export type {
   SearchResult,

@@ -3,7 +3,7 @@ import { GraphQLSchema, buildSchema } from 'graphql'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
-import { index, SearchResult } from '../../src'
+import { index, type SearchResult } from '../../src'
 import type Fuse from 'fuse.js'
 
 describe('indexing graphql schema', () => {

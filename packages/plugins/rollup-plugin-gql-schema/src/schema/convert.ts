@@ -1,4 +1,4 @@
-import { GraphQLSchema, introspectionFromSchema } from 'graphql'
+import { type GraphQLSchema, introspectionFromSchema } from 'graphql'
 import { printSchemaWithDirectives } from './print'
 
 export type OutputFormat = 'sdl' | 'introspection'

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,

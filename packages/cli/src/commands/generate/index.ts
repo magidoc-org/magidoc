@@ -13,7 +13,7 @@ import { installDependenciesTask } from '../../tasks/all/installDependencies'
 import { loadGraphQLSchemaTask } from '../../tasks/all/loadGraphqlSchema'
 import { moveOutputTask } from '../../tasks/all/moveOutput'
 import {
-  ResolvedMagidocTemplateConfig,
+  type ResolvedMagidocTemplateConfig,
   resolveTemplateConfigurationTask,
 } from '../../tasks/all/resolveTemplateConfig'
 import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'

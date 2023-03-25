@@ -2,7 +2,7 @@ import { beforeEach, expect, it } from 'vitest'
 import {
   extract,
   IndexableMarkdownType,
-  Options,
+  type Options,
 } from '../../src/markdown/extract'
 import { defaultExtractors } from '../../src/markdown/extractors'
 import { describe } from 'vitest'

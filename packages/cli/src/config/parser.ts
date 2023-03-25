@@ -1,7 +1,7 @@
-import { MagidocConfiguration, ZMagidocConfiguration } from './types'
+import { type MagidocConfiguration, ZMagidocConfiguration } from './types'
 import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
-import z, { ZodIssue, ZodType } from 'zod'
+import z, { type ZodIssue, type ZodType } from 'zod'
 import { red } from '../commands/utils/outputColors'
 import { formatZodIssues } from './zod'
 

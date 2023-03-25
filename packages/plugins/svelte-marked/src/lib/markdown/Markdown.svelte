@@ -11,6 +11,8 @@
   } from './markedConfiguration'
   import { suppressWarnings } from './suppressWarnings'
 
+  suppressWarnings()
+
   /**
    * The markdown source
    */
@@ -37,8 +39,6 @@
     actualRenderers = { ...defaultRenderers(), ...renderers }
     actualOptions = { ...defaultOptions(), ...options }
   }
-
-  suppressWarnings()
 </script>
 
 <MarkdownTokens {tokens} renderers={actualRenderers} options={actualOptions} />

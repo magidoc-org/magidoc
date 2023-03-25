@@ -3,7 +3,7 @@ import nock from 'nock'
 import {
   buildClientSchema,
   getIntrospectionQuery,
-  IntrospectionQuery,
+  type IntrospectionQuery,
 } from 'graphql'
 import { describe, beforeEach, it, expect } from 'vitest'
 import { getSample } from './utils'

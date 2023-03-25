@@ -41,7 +41,11 @@
 
   let root: HTMLElement
 
-  function highlight(root: HTMLElement, language: string, source: string) {
+  function highlight(
+    root: HTMLElement,
+    language: string | undefined,
+    source: string,
+  ) {
     // The _ (language) parameter is important to force Svelte to reload if the language change
 
     // This is the way found to make PrismJS re-render on change
@@ -72,12 +76,19 @@
   class:prism--hide-copy-button={!showCopyButton}
 >
   <pre
-    class:line-numbers={showLineNumbers}
-    style:min-height={minHeight}
-    style:max-height={maxHeight}><code bind:this={root} /></pre>
+    class="code-container"
+    style="--min-height: {minHeight}; --max-height: {maxHeight};"
+    class:line-numbers={showLineNumbers}>
+    <code bind:this={root} />
+  </pre>
 </div>
 
 <style>
+  :global(.code-container) {
+    min-height: var(--min-height);
+    max-height: var(--max-height);
+  }
+
   :global(.prism--show-copy-button .copy-to-clipboard-button) {
     display: block;
   }

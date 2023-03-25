@@ -1,29 +1,29 @@
 import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 import {
-  GraphQLNamedType,
+  type GraphQLNamedType,
   isEnumType,
   isObjectType,
   isInterfaceType,
   isScalarType,
   isUnionType,
   isInputObjectType,
-  GraphQLInputObjectType,
-  GraphQLUnionType,
-  GraphQLScalarType,
-  GraphQLObjectType,
-  GraphQLInterfaceType,
-  GraphQLEnumType,
+  type GraphQLInputObjectType,
+  type GraphQLUnionType,
+  type GraphQLScalarType,
+  type GraphQLObjectType,
+  type GraphQLInterfaceType,
+  type GraphQLEnumType,
 } from 'graphql'
 import {
-  EnumSearchResult,
+  type EnumSearchResult,
   GraphQLType,
-  InputObjectSearchResult,
-  InterfaceSearchResult,
-  ObjectSearchResult,
-  ScalarSearchResult,
+  type InputObjectSearchResult,
+  type InterfaceSearchResult,
+  type ObjectSearchResult,
+  type ScalarSearchResult,
   SearchResultType,
-  TypeSearchResult,
-  UnionSearchResult,
+  type TypeSearchResult,
+  type UnionSearchResult,
 } from '../result'
 import { getDescription } from './description'
 

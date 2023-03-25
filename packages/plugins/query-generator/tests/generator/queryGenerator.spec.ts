@@ -2,8 +2,8 @@ import type { GraphQLField } from 'graphql'
 import {
   generateGraphQLQuery,
   generateGraphQLResponse,
-  QueryGeneratorConfig,
-  GraphQLFactoryContext,
+  type QueryGeneratorConfig,
+  type GraphQLFactoryContext,
   NullGenerationStrategy,
   QueryType,
 } from '../../src'

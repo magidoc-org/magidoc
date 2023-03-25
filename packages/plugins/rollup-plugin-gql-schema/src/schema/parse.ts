@@ -1,5 +1,5 @@
 import glob from 'fast-glob'
-import { buildSchema, GraphQLSchema } from 'graphql'
+import { buildSchema, type GraphQLSchema } from 'graphql'
 import { readFile } from 'fs/promises'
 
 export type Parameters = {
