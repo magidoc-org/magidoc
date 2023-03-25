@@ -2,7 +2,7 @@ import {
   print,
   isSpecifiedScalarType,
   isSpecifiedDirective,
-  GraphQLSchema,
+  type GraphQLSchema,
   printSchema,
 } from 'graphql'
 

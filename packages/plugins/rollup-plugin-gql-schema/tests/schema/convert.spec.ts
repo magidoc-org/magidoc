@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import {
   buildClientSchema,
   buildSchema,
-  IntrospectionQuery,
+  type IntrospectionQuery,
   printSchema,
 } from 'graphql'
 import { getSample } from './utils'

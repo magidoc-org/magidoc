@@ -1,7 +1,7 @@
 import type { Plugin } from 'rollup'
-import queryGraphQLSchema, { Method } from '../schema/query.js'
+import queryGraphQLSchema, { type Method } from '../schema/query.js'
 import { writeFileSync } from 'fs'
-import { convert, OutputFormat } from '../schema/convert.js'
+import { convert, type OutputFormat } from '../schema/convert.js'
 
 export type { Method }
 
