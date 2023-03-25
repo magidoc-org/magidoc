@@ -2,27 +2,27 @@ import _ from 'lodash'
 import globToRegExp from './utils/globToRegex'
 
 import {
-  QueryGeneratorConfig,
-  GraphQLFactory,
+  type QueryGeneratorConfig,
+  type GraphQLFactory,
   NullGenerationStrategy,
-  FakeGenerationConfig,
+  type FakeGenerationConfig,
 } from './config'
 import { MissingCustomScalarException } from './error'
 
 import { DEFAULT_FACTORIES } from './defaultFactories'
 import { typeToString, unwrapType } from './extractor'
 import {
-  GraphQLField,
-  GraphQLArgument,
-  GraphQLInputType,
-  GraphQLNamedType,
+  type GraphQLField,
+  type GraphQLArgument,
+  type GraphQLInputType,
+  type GraphQLNamedType,
   isNonNullType,
   isInputObjectType,
   isEnumType,
   isScalarType,
   isListType,
   isNullableType,
-  GraphQLLeafType,
+  type GraphQLLeafType,
 } from 'graphql'
 import type { GenerationContext } from './queryGenerator'
 import type { Parameter } from './builder/queryBuilder'

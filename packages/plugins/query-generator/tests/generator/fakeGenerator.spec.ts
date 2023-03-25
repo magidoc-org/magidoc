@@ -1,15 +1,15 @@
 import {
-  GraphQLField,
-  GraphQLNamedType,
+  type GraphQLField,
+  type GraphQLNamedType,
   GraphQLScalarType,
   isNullableType,
 } from 'graphql'
 import _ from 'lodash'
 import {
-  GenerationContext,
-  GraphQLFactoryContext,
+  type GenerationContext,
+  type GraphQLFactoryContext,
   NullGenerationStrategy,
-  QueryGeneratorConfig,
+  type QueryGeneratorConfig,
   QueryType,
 } from '../../src'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'

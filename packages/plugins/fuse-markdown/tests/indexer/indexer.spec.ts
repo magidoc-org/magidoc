@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { index, MarkdownDocument, SearchResult } from '../../src'
+import { index, type MarkdownDocument, type SearchResult } from '../../src'
 import { unindent } from '../utils'
 import type Fuse from 'fuse.js'
 import path from 'path'
