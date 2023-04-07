@@ -10,7 +10,7 @@
   import { base } from '$app/paths'
   import NavbarAppLinks from './header/NavbarAppLinks.svelte'
   import AppSearchResults from './header/AppSearch.svelte'
-  import { appTitle } from '$lib/pages'
+  import { siteTitle } from '$lib/meta'
   import { Search } from 'carbon-icons-svelte'
   import { onDestroy, onMount } from 'svelte'
   import { browser } from '$app/environment'
@@ -60,7 +60,7 @@
     {:else}
       <div class="search-bar-wrapper">
         <SearchBar
-          placeholder={`Search ${appTitle}... (${isMac ? '⌘' : 'Ctrl'}+K)`}
+          placeholder={`Search ${siteTitle}... (${isMac ? '⌘' : 'Ctrl'}+K)`}
           autocomplete={'off'}
           size="sm"
           on:focus={() => (searchOpen = true)}

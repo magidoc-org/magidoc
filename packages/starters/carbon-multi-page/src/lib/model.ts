@@ -13,9 +13,6 @@ import {
 } from 'graphql'
 import _ from 'lodash'
 import schemaRaw from '../_schema.graphqls?raw'
-import type { Maybe } from 'graphql/jsutils/Maybe'
-import { base } from '$app/paths'
-import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import {
   createReverseMapping,
   type TypeReverseMapping,
@@ -25,7 +22,6 @@ import {
   templates,
   type AllowedDirective,
 } from '@magidoc/plugin-starter-variables'
-import type { PageTree } from '@magidoc/plugin-starter-common'
 
 export const schema: GraphQLSchema = parseSchema()
 
@@ -75,63 +71,6 @@ function toIgnoreCase<T>(
 export function isModelEmpty(): boolean {
   // By default graphql creates a few types that are not useful for the documentation.
   return _.size(schema.getTypeMap()) <= 10
-}
-
-export function createModelContent(): ReadonlyArray<PageTree> {
-  return [
-    createWebsiteContent('Queries', schema.getQueryType()),
-    createWebsiteContent('Mutations', schema.getMutationType()),
-    createWebsiteContent('Subscriptions', schema.getSubscriptionType()),
-    createDirectiveWebsiteContent(),
-    createTypesWebsiteContent(),
-  ].filter((content): content is PageTree => !!content)
-}
-
-function createWebsiteContent(
-  title: string,
-  type: Maybe<GraphQLObjectType<unknown, unknown>>,
-): PageTree | null {
-  return createWebsiteContentFromFields(title, getSortedRootFields(type))
-}
-
-function getSortedRootFields(type: Maybe<GraphQLObjectType<unknown, unknown>>) {
-  return _.sortBy(type?.getFields() || {}, (item) => item.name)
-}
-
-function createWebsiteContentFromFields(
-  title: string,
-  fields: GraphQLField<unknown, unknown, unknown>[],
-): PageTree | null {
-  if (fields.length === 0) return null
-  return {
-    type: 'menu',
-    title: title,
-    children: fields.map((field) => ({
-      type: 'page',
-      title: field.name,
-      section: title,
-      deprecated: !!field.deprecationReason,
-      href: urlUtils.joinUrlPaths(base, title.toLocaleLowerCase(), field.name),
-    })),
-  }
-}
-
-function createTypesWebsiteContent(): PageTree | null {
-  if (isModelEmpty()) return null
-  const types: GraphQLNamedType[] = _.sortBy(
-    _.map(schema.getTypeMap()),
-    (type) => type.name,
-  ).filter((type) => !type.name.startsWith('__'))
-  return {
-    type: 'menu',
-    title: 'Types',
-    children: types.map((type) => ({
-      type: 'page',
-      title: type.name,
-      section: 'Types',
-      href: urlUtils.joinUrlPaths(base, 'types', type.name),
-    })),
-  }
 }
 
 export function hasQueries(): boolean {
@@ -256,19 +195,4 @@ function parseSchema() {
   }
 
   return buildSchema(schemaRaw)
-}
-
-function createDirectiveWebsiteContent(): PageTree | null {
-  const allowed = getAllowedDirectives()
-  if (allowed.length === 0) return null
-  return {
-    type: 'menu',
-    title: 'Directives',
-    children: allowed.map((directive) => ({
-      type: 'page',
-      title: directive.name,
-      href: urlUtils.joinUrlPaths(base, 'directives', directive.name),
-      section: 'Directives',
-    })),
-  }
 }

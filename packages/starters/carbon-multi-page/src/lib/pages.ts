@@ -3,24 +3,18 @@ import {
   type Page as VariablePage,
 } from '@magidoc/plugin-starter-variables'
 import { base } from '$app/paths'
-import { createModelContent } from './model'
 import { getOrDefault } from './variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import { Slugger } from 'marked'
 import type { PageTree, Page } from '@magidoc/plugin-starter-common'
 
-export const appTitle = getOrDefault(
-  templates.APP_TITLE,
-  'GraphQL Documentation',
-)
-
-const buildPages = parseCustomPages().concat(createModelContent())
+const buildPages = parseCustomPages()
 setPreviousAndNextPages(buildPages)
 export const pages: ReadonlyArray<PageTree> = Object.freeze(buildPages)
 
 export const homePageUrl = getHomePageUrl()
 
-function parseCustomPages(): ReadonlyArray<PageTree> {
+function parseCustomPages(): PageTree[] {
   const pages = getOrDefault(templates.PAGES, getDefaultPages())
 
   return pages

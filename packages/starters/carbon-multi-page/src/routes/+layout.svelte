@@ -1,5 +1,6 @@
 <script lang="ts">
   import { setupMarkedExtensions } from '$lib/markdown'
+
   import '../app.css'
   import '../prism-theme.css'
   import '@magidoc/plugin-svelte-prismjs'

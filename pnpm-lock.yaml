@@ -304,6 +304,12 @@ importers:
       '@magidoc/plugin-starter-variables':
         specifier: workspace:^
         version: link:../starter-variables
+      graphql:
+        specifier: ^16.6.0
+        version: 16.6.0
+      marked:
+        specifier: ^4.3.0
+        version: 4.3.0
     optionalDependencies:
       zod:
         specifier: ^3.21.4
@@ -315,6 +321,9 @@ importers:
       '@types/lodash':
         specifier: ^4.14.192
         version: 4.14.192
+      '@types/marked':
+        specifier: ^4.0.8
+        version: 4.0.8
       '@types/node':
         specifier: ^18.15.11
         version: 18.15.11
