@@ -11,7 +11,7 @@ import { pages } from './pages'
 import type { NotificationToken } from './components/markdown/containers/notification/Notification'
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
 import { setupMarkedExtensions } from './markdown'
-import { isModelEmpty, schema } from './model'
+import { isModelEmpty, schema } from './schema'
 import type { Page, PageTree } from '@magidoc/plugin-starter-common'
 
 setupMarkedExtensions()

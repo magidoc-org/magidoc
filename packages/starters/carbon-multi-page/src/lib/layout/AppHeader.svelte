@@ -15,6 +15,7 @@
   import { onDestroy, onMount } from 'svelte'
   import { browser } from '$app/environment'
   import HeaderAppLinks from './header/HeaderAppLinks.svelte'
+  import { home } from '$lib/pages'
 
   export let isSideNavOpen = true
   export let mobile = false
@@ -46,7 +47,7 @@
   })
 </script>
 
-<Header href={base || '/'} bind:isSideNavOpen expandedByDefault>
+<Header href={home.href} bind:isSideNavOpen expandedByDefault>
   <div slot="platform" class="header-logo-wrapper">
     <AppIcon />
   </div>

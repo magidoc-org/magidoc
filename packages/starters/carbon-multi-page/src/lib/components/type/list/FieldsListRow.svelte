@@ -8,7 +8,7 @@
   import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
   import NullableTag from '$lib/components/tags/NullableTag.svelte'
   import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
-  import type { FieldWithPossibleDescriptions } from '$lib/model'
+  import type { FieldWithPossibleDescriptions } from '$lib/schema'
 
   import {
     StructuredListCell,

@@ -1,7 +1,7 @@
 <script lang="ts">
   import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
 
-  import type { PossibleDescription } from '$lib/model'
+  import type { PossibleDescription } from '$lib/schema'
 
   export let item: PossibleDescription
 </script>

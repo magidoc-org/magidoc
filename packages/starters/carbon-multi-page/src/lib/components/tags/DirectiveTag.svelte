@@ -4,7 +4,7 @@
     getAllowedArgumentsByDirective,
     isAllowedDirective,
     schema,
-  } from '$lib/model'
+  } from '$lib/schema'
   import { urlUtils } from '@magidoc/plugin-svelte-marked'
   import { Tag, TooltipDefinition } from 'carbon-components-svelte'
 

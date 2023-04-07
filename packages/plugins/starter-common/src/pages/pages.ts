@@ -5,8 +5,7 @@ import {
 } from '@magidoc/plugin-starter-variables'
 import { getOrDefault } from './variables'
 import { Slugger } from 'marked'
-import type { GraphQLSchema, GraphQLObjectType } from 'graphql'
-import { computeAllowedDirectives, isEmpty } from '../schema/graphql'
+import { MagidocGQLSchema, MagidocGraphQLField } from '../schema/graphql'
 
 export type PagesModel = {
   readonly home: Page
@@ -15,7 +14,7 @@ export type PagesModel = {
 
 export type BuildPagesParams = {
   basePath: string
-  schema: GraphQLSchema
+  schema: MagidocGQLSchema | null
 }
 
 export function buildPages(params: BuildPagesParams): PagesModel {
@@ -139,33 +138,29 @@ function asCustomContent(path: string[], page: VariablePage): PageTree {
   }
 }
 
-export function createSchemaTree(
-  params: BuildPagesParams,
-): ReadonlyArray<PageTree> {
+function createSchemaTree(params: BuildPagesParams): ReadonlyArray<PageTree> {
   const { basePath, schema } = params
-  if (isEmpty(schema)) {
+  if (!schema) {
     return []
   }
-
   return [
-    createSchemaTreeSection(basePath, 'Queries', schema.getQueryType()),
-    createSchemaTreeSection(basePath, 'Mutations', schema.getMutationType()),
+    createSchemaTreeSection('Queries', basePath, schema.queries.list),
+    createSchemaTreeSection('Mutations', basePath, schema.mutations.list),
     createSchemaTreeSection(
-      basePath,
       'Subscriptions',
-      schema.getSubscriptionType(),
+      basePath,
+      schema.subscriptions.list,
     ),
-    createDirectiveTreeSection(params),
-    createTypesTreeSection(params),
+    createDirectiveTreeSection(basePath, schema),
+    createTypesTreeSection(basePath, schema),
   ].filter((content): content is PageTree => !!content)
 }
 
 function createSchemaTreeSection(
-  basePath: string,
   title: string,
-  type: GraphQLObjectType<unknown, unknown> | undefined | null,
+  basePath: string,
+  fields: ReadonlyArray<MagidocGraphQLField>,
 ): PageTree | null {
-  const fields = getSortedRootFields(type)
   if (fields.length === 0) {
     return null
   }
@@ -187,21 +182,14 @@ function createSchemaTreeSection(
   }
 }
 
-function getSortedRootFields(
-  type: GraphQLObjectType<unknown, unknown> | undefined | null,
-) {
-  const fields = type?.getFields()
-  if (!fields) return []
-  return Object.values(fields).sort((a, b) => a.name.localeCompare(b.name))
-}
-
-function createTypesTreeSection({
-  schema,
-  basePath,
-}: BuildPagesParams): PageTree | null {
-  const types = Object.values(schema.getTypeMap())
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .filter((type) => !type.name.startsWith('__'))
+function createTypesTreeSection(
+  basePath: string,
+  schema: MagidocGQLSchema,
+): PageTree | null {
+  const types = schema.types.list
+  if (types.length === 0) {
+    return null
+  }
 
   return {
     type: 'menu',
@@ -215,19 +203,19 @@ function createTypesTreeSection({
   }
 }
 
-function createDirectiveTreeSection({
-  basePath,
-  schema,
-}: BuildPagesParams): PageTree | null {
-  const allowed = computeAllowedDirectives(schema)
-  if (allowed.length === 0) {
+function createDirectiveTreeSection(
+  basePath: string,
+  schema: MagidocGQLSchema,
+): PageTree | null {
+  const directives = schema.directives.list
+  if (directives.length === 0) {
     return null
   }
 
   return {
     type: 'menu',
     title: 'Directives',
-    children: allowed.map((directive) => ({
+    children: directives.map((directive) => ({
       type: 'page',
       title: directive.name,
       href: joinUrlPaths(basePath, 'directives', directive.name),
@@ -270,10 +258,6 @@ function joinUrlPaths(...paths: string[]): string {
   )
 }
 
-export function isRelative(url: string): boolean {
-  return url.startsWith('/') || url.startsWith('#')
-}
-
-export function generatePathSegment(name: string) {
+function generatePathSegment(name: string) {
   return new Slugger().slug(name).replace(/--+/g, '-') // Replaces -- with -
 }

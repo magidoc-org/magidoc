@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getAllowedArgumentsByDirective } from '$lib/model'
+  import { getAllowedArgumentsByDirective } from '$lib/schema'
   import type { GraphQLArgument, GraphQLDirective } from 'graphql'
   import AnchorHeader from '../common/text/AnchorHeader.svelte'
   import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'

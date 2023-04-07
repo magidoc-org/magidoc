@@ -2,7 +2,7 @@
   import {
     getFieldsPossibleDescriptions,
     type FieldWithPossibleDescriptions,
-  } from '$lib/model'
+  } from '$lib/schema'
 
   import type { GraphQLObjectType } from 'graphql'
   import AnchorHeader from '../common/text/AnchorHeader.svelte'

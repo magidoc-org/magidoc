@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FieldWithPossibleDescriptions } from '$lib/model'
+  import type { FieldWithPossibleDescriptions } from '$lib/schema'
   import { getOrDefault } from '$lib/variables'
   import { templates } from '@magidoc/plugin-starter-variables'
 
