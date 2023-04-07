@@ -32,13 +32,13 @@
   },
   "devDependencies": {
     "@types/marked": "^4.0.8",
-    "@types/node": "^18.15.9",
+    "@types/node": "^18.15.11",
     "@types/prettier": "^2.7.2",
     "c8": "^7.13.0",
     "rollup": "^3.20.2",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.3",
     "vite": "^4.2.1",
-    "vitest": "^0.29.7"
+    "vitest": "^0.29.8"
   },
   "peerDependencies": {
     "fuse.js": "^6.6.2"

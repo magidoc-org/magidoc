@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! **Before you start, make sure you have the latest versions of Magidoc installed and the recommended node version (16+)**
+        Thanks for taking the time to fill out this bug report! **Before you start, make sure you have the latest versions of Magidoc installed and the recommended node version (18+)**
   - type: textarea
     id: bug-description
     attributes:
