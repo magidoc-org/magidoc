@@ -6,7 +6,6 @@
     "lib": ["es2020", "DOM"],
     "target": "es2020",
     "strict": true,
-    "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
     "sourceMap": true,
     "esModuleInterop": true,
