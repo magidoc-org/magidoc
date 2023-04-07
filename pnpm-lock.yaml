@@ -56,10 +56,10 @@ importers:
   packages/cli:
     dependencies:
       '@magidoc/plugin-starter-variables':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../plugins/starter-variables
       '@magidoc/rollup-plugin-gql-schema':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../plugins/rollup-plugin-gql-schema
       axios:
         specifier: ^1.3.5
@@ -126,7 +126,7 @@ importers:
   packages/plugins/fuse-graphql:
     dependencies:
       '@magidoc/plugin-fuse-markdown':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../fuse-markdown
       fuse.js:
         specifier: ^6.6.2
@@ -302,7 +302,7 @@ importers:
   packages/plugins/starter-common:
     dependencies:
       '@magidoc/plugin-starter-variables':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../starter-variables
     optionalDependencies:
       zod:
@@ -457,31 +457,31 @@ importers:
   packages/starters/carbon-multi-page:
     devDependencies:
       '@magidoc/plugin-fuse-graphql':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/fuse-graphql
       '@magidoc/plugin-fuse-markdown':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/fuse-markdown
       '@magidoc/plugin-query-generator':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/query-generator
       '@magidoc/plugin-reverse-schema-mapper':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/reverse-schema-mapper
       '@magidoc/plugin-starter-common':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/starter-common
       '@magidoc/plugin-starter-variables':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/starter-variables
       '@magidoc/plugin-svelte-marked':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/svelte-marked
       '@magidoc/plugin-svelte-prismjs':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/svelte-prismjs
       '@magidoc/rollup-plugin-gql-schema':
-        specifier: workspace:^3.6.0
+        specifier: workspace:^
         version: link:../../plugins/rollup-plugin-gql-schema
       '@sveltejs/adapter-static':
         specifier: 2.0.1

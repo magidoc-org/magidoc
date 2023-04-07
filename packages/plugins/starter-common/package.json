@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-starter-common",
   "description": "A shared library that contains common code shared between multiple starter applications.",
   "private": false,
-  "version": "3.6.0",
+  "version": "3.6.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -44,6 +44,6 @@
     "build"
   ],
   "dependencies": {
-    "@magidoc/plugin-starter-variables": "workspace:^3.6.0"
+    "@magidoc/plugin-starter-variables": "workspace:^"
   }
 }
