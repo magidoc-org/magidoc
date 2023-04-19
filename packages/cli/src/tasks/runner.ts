@@ -1,4 +1,4 @@
-import { Listr } from 'listr2'
+import { Listr, PRESET_TIMER } from 'listr2'
 
 export type Task<T> = {
   title: string
@@ -43,11 +43,11 @@ export async function executeAllTasks<T>(
     })),
     {
       exitOnError: true,
-      rendererSilent: config.silent,
+      silentRendererCondition: config.silent,
       rendererOptions: {
         showErrorMessage: false,
-        showTimer: true,
         formatOutput: 'wrap',
+        timer: PRESET_TIMER,
       },
     },
   )

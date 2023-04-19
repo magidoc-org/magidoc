@@ -35,7 +35,7 @@
               <DeprecatedTag reason={value.deprecationReason} />
             </p>
             {#if value.description}
-              <p>{value.description}</p>
+              <CarbonMarkdown source={value.description} />
             {/if}
           </StructuredListCell>
         </StructuredListRow>
