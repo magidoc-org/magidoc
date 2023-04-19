@@ -4,7 +4,20 @@ const archiver = require('archiver')
 
 const basePath = __dirname
 
-const excludedPatterns = ['.svelte-kit/**', 'build/**', 'node_modules/**', 'static/**', '**/_variables.json', '**/_schema.graphqls']
+const VERSION = process.env["VERSION"]
+
+if(!VERSION) {
+  throw new Error('No VERSION environment variable was found')
+}
+
+const excludedPatterns = [
+  '.svelte-kit/**',
+  'build/**',
+  'node_modules/**',
+  'static/**',
+  '**/_variables.json',
+  '**/_schema.graphqls',
+]
 
 function listStarterDirectories() {
   const files = fs.readdirSync(basePath)
@@ -18,6 +31,11 @@ function listStarterDirectories() {
 
 function getCleanedPackageJson(path) {
   let content = fs.readFileSync(path).toString()
+
+  // Pnpm started using this syntax for workspace deps, and the deploy command does not fill out the package.json properly.
+  while(content.includes('"workspace:^"')) {
+    content = content.replace('"workspace:^"', `"${VERSION}"`)
+  }
 
   // Replace workspace deps with deployed deps
   while (content.includes('workspace:')) {
