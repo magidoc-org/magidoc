@@ -76,7 +76,9 @@ const pagesSearch: Fuse<FuseMarkdownSearchResult<MarkdownData>> = indexMarkdown(
   },
 )
 
-const schemaSearch: Fuse<FuseGraphQLSearchResult> = indexSchema(schema)
+const schemaSearch: Fuse<FuseGraphQLSearchResult> = schema
+  ? indexSchema(schema.original)
+  : undefined
 
 export function search(query: string): ReadonlyArray<MagidocSearchResult> {
   const pagesResult: ReadonlyArray<MagidocSearchResult> = pagesSearch
