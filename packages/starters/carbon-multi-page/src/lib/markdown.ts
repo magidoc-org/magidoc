@@ -17,7 +17,6 @@ export function setupMarkedExtensions() {
     breaks: false,
     sanitize: false,
     silent: false,
-    smartLists: true,
     smartypants: false,
     extensions: [
       extensions.containerExtension((params: TokenExtractionParameters) => {
