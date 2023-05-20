@@ -16,8 +16,7 @@ jobs:
 
       - run: | 
           pnpm build
-          cd docs
-          pnpm build
+          pnpm build:docs
       
         
         env:
