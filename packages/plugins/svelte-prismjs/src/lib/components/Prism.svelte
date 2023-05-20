@@ -59,6 +59,7 @@
     root.classList.forEach((item) => root.classList.remove(item))
     if (language) {
       root.classList.add(`language-${language}`)
+      root.classList.add('prism--code')
     }
 
     Prism.highlightElement(root)
@@ -76,7 +77,7 @@
   class:prism--hide-copy-button={!showCopyButton}
 >
   <pre
-    class="code-container"
+    class="prism--code-container"
     style="--min-height: {minHeight}; --max-height: {maxHeight};"
     class:line-numbers={showLineNumbers}>
     <code bind:this={root} />
@@ -84,9 +85,15 @@
 </div>
 
 <style>
-  :global(.code-container) {
+  :global(.prism--code-container) {
     min-height: var(--min-height);
     max-height: var(--max-height);
+    /* https://github.com/withastro/astro/issues/4246 */
+    white-space: normal !important;
+  }
+
+  :global(.prism--code) {
+    white-space: pre !important;
   }
 
   :global(.prism--show-copy-button .copy-to-clipboard-button) {

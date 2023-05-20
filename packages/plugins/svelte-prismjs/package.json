@@ -32,7 +32,7 @@
     "directory": "packages/plugins/svelte-prismjs"
   },
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --port 5435",
     "build": "svelte-kit sync && svelte-package --output build",
     "test": "pnpm check",
     "check": "svelte-check --tsconfig ./tsconfig.json",
