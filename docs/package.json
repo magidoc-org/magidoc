@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "3.6.4",
+  "version": "4.0.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "run-s build:docs build:sitemap",
-    "build:docs": "pnpm --filter @magidoc/cli start generate --file $(pwd)/magidoc.mjs --stacktrace && pnpm build:sitemap",
+    "build:docs": "pnpm --filter @magidoc/cli run generate --file $(pwd)/magidoc.mjs --stacktrace && pnpm build:sitemap",
     "build:sitemap": "svelte-sitemap --domain https://magidoc.js.org --out-dir build --ignore google*.html",
     "dev": "pnpm --filter @magidoc/cli start dev --file $(pwd)/magidoc.mjs --stacktrace",
     "test": "run-p test:*",

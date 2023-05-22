@@ -26,5 +26,13 @@ const x = lol
 const x = lol
 const x = lol
 console.log('lol')
+
+const json = {
+  test: 'a',
+    b: {
+      c: 'd',
+    },
+  }
+}
 `}
 />
