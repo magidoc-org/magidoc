@@ -22,8 +22,8 @@
     "magidoc": "./build/index.js"
   },
   "scripts": {
-    "start": "pnpm build:rollup && pnpm run",
-    "run": "node build/index.js",
+    "start": "pnpm build:rollup && pnpm execute",
+    "execute": "node build/index.js",
     "build": "run-p build:*",
     "build:rollup": "rollup -c",
     "build:tsc": "tsc --build tsconfig.build.json",
