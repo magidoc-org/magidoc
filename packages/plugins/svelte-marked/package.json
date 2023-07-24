@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "2.1.0",
-    "@sveltejs/kit": "1.18.0",
+    "@sveltejs/kit": "1.22.3",
     "@sveltejs/package": "2.0.2",
     "@types/marked": "^5.0.0",
     "@types/prismjs": "^1.26.0",
