@@ -397,8 +397,8 @@ importers:
         specifier: 1.18.0
         version: 1.18.0(svelte@3.59.1)(vite@4.3.8)
       '@sveltejs/package':
-        specifier: 2.0.2
-        version: 2.0.2(svelte@3.59.1)(typescript@5.1.6)
+        specifier: 2.2.0
+        version: 2.2.0(svelte@3.59.1)(typescript@5.1.6)
       '@types/marked':
         specifier: ^5.0.0
         version: 5.0.0
@@ -437,8 +437,8 @@ importers:
         specifier: 1.18.0
         version: 1.18.0(svelte@3.59.1)(vite@4.3.8)
       '@sveltejs/package':
-        specifier: 2.0.2
-        version: 2.0.2(svelte@3.59.1)(typescript@5.1.6)
+        specifier: 2.2.0
+        version: 2.2.0(svelte@3.59.1)(typescript@5.1.6)
       '@types/prismjs':
         specifier: ^1.26.0
         version: 1.26.0
@@ -1360,18 +1360,19 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/package@2.0.2(svelte@3.59.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-cCOCcO8yMHnhHyaR51nQtvKZ3o/vSU9UYI1EXLT1j2CKNPMuH1/g6JNwKcNNrtQGwwquudc69ZeYy8D/TDNwEw==}
+  /@sveltejs/package@2.2.0(svelte@3.59.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-TXbrzsk+T5WNcSzrU41D8P32vU5guo96lVS11/R+rpLhZBH5sORh0Qp6r68Jg4O5vcdS3JLwpwcpe8VFbT/QeA==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     peerDependencies:
-      svelte: ^3.44.0
+      svelte: ^3.44.0 || ^4.0.0
     dependencies:
       chokidar: 3.5.3
       kleur: 4.1.5
       sade: 1.8.1
+      semver: 7.5.4
       svelte: 3.59.1
-      svelte2tsx: 0.6.14(svelte@3.59.1)(typescript@5.1.6)
+      svelte2tsx: 0.6.19(svelte@3.59.1)(typescript@5.1.6)
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -1600,7 +1601,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.4
       tsutils: 3.21.0(typescript@5.1.6)
       typescript: 5.1.6
     transitivePeerDependencies:
@@ -1621,7 +1622,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.4
       tsutils: 3.21.0(typescript@5.1.6)
       typescript: 5.1.6
     transitivePeerDependencies:
@@ -1642,7 +1643,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.59.6(typescript@5.1.6)
       eslint: 8.41.0
       eslint-scope: 5.1.1
-      semver: 7.5.1
+      semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4538,6 +4539,14 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
+  /semver@7.5.4:
+    resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+    dev: true
+
   /set-cookie-parser@2.6.0:
     resolution: {integrity: sha512-RVnVQxTXuerk653XfuliOxBP81Sf0+qfQE73LIYKcyMYHG94AuH0kgrQpRDuTZnSmjpysHmzxJXKNfa6PjFhyQ==}
     dev: true
@@ -4975,6 +4984,18 @@ packages:
     resolution: {integrity: sha512-Sxo9gtpc3dYWuFQ8fruZG+M+I6OZMIvOxxKjt48Lr8jD6Kr9cNf1Hf/yHUDEgDwQdRbAzn5y0FL9xk8Dx5v9lg==}
     peerDependencies:
       svelte: ^3.55
+      typescript: ^4.9.4 || ^5.0.0
+    dependencies:
+      dedent-js: 1.0.1
+      pascal-case: 3.1.2
+      svelte: 3.59.1
+      typescript: 5.1.6
+    dev: true
+
+  /svelte2tsx@0.6.19(svelte@3.59.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-h3b5OtcO8zyVL/RiB2zsDwCopeo/UH+887uyhgb2mjnewOFwiTxu+4IGuVwrrlyuh2onM2ktfUemNrNmQwXONQ==}
+    peerDependencies:
+      svelte: ^3.55 || ^4.0.0-next.0 || ^4.0
       typescript: ^4.9.4 || ^5.0.0
     dependencies:
       dedent-js: 1.0.1
