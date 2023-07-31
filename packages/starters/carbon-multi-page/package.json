@@ -43,7 +43,7 @@
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "marked": "^5.0.2",
-    "marked-gfm-heading-id": "^3.0.3",
+    "marked-gfm-heading-id": "^3.0.4",
     "prism-svelte": "^0.5.0",
     "prismjs": "^1.29.0",
     "svelte": "^3.59.1",

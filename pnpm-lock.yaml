@@ -536,8 +536,8 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2
       marked-gfm-heading-id:
-        specifier: ^3.0.3
-        version: 3.0.3(marked@5.0.2)
+        specifier: ^3.0.4
+        version: 3.0.4(marked@5.0.2)
       prism-svelte:
         specifier: ^0.5.0
         version: 0.5.0
@@ -3727,8 +3727,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /marked-gfm-heading-id@3.0.3(marked@5.0.2):
-    resolution: {integrity: sha512-ouAOxtHYa34yFocjCk5xIIcEjg40YXNdpkfLqH6TGbkmXPMPxApWXLdOi0Z1AXUweMQC9bWt2e8MGrIYB2f6+w==}
+  /marked-gfm-heading-id@3.0.4(marked@5.0.2):
+    resolution: {integrity: sha512-k22f+k8B449kRVXbi3OYxahI6t8HywKIF0wn0L0atzYhFHYRcJynLDekh+lcxcZkNnkEGRZOHuRfTcpjMjLqDw==}
     peerDependencies:
       marked: ^4 || ^5
     dependencies:
