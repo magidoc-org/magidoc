@@ -51,7 +51,7 @@
     "svelte-markdown": "^0.2.3",
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
-    "vite": "^4.3.8"
+    "vite": "^4.4.7"
   },
   "engines": {
     "node": ">=18"
