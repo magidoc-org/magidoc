@@ -20,7 +20,7 @@ import {
   MarkdownSpace,
 } from './components'
 
-import { marked, Slugger } from 'marked'
+import { marked, Slugger, type TokensList } from 'marked'
 
 export type MarkdownOptions = {
   /**
@@ -37,12 +37,12 @@ export type MarkdownOptions = {
   slugger: Slugger
 }
 
-export function parse(src: string): marked.TokensList {
+export function parse(src: string): TokensList {
   const lexer = new marked.Lexer()
   return lexer.lex(src)
 }
 
-export type RendererType = marked.Token['type'] | string
+export type RendererType = string
 
 export type Renderers = Record<RendererType, ConstructorOfATypedSvelteComponent>
 

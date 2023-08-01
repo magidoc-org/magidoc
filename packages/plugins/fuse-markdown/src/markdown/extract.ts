@@ -1,4 +1,4 @@
-import type { marked } from 'marked'
+import type { Tokens, Slugger, Lexer, TokensList } from 'marked'
 
 /**
  * A markdown header
@@ -50,20 +50,17 @@ export type IndexableMarkdownPart =
   | IndexableMarkdownHeader
 
 export type TextExtractor = (
-  token: marked.Tokens.Generic,
+  token: Tokens.Generic,
   extract: ExtractFunction,
 ) => string
 
-export type ExtractFunction = (tokens: marked.Tokens.Generic[]) => string
+export type ExtractFunction = (tokens: Tokens.Generic[]) => string
 
-export type TextExtractors = Record<
-  marked.Token['type'] | string,
-  TextExtractor
->
+export type TextExtractors = Record<string, TextExtractor>
 
 export type Options = {
-  slugger: marked.Slugger
-  lexer: marked.Lexer
+  slugger: Slugger
+  lexer: Lexer
   extractors: TextExtractors
 }
 
@@ -75,7 +72,7 @@ export function extract(
 }
 
 export function extractTokens(
-  tokens: marked.TokensList,
+  tokens: TokensList,
   options: Options,
 ): IndexableMarkdownPart[] {
   const extract = extractFunction(options.extractors)

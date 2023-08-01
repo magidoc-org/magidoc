@@ -1,4 +1,4 @@
-import type { marked } from 'marked'
+import type { Tokens } from 'marked'
 import type { TokenExtractionParameters } from '@magidoc/plugin-svelte-marked'
 
 const tagColors = [
@@ -21,7 +21,7 @@ export type Tag = {
   name: string
 }
 
-export type TagsToken = marked.Tokens.Generic & {
+export type TagsToken = Tokens.Generic & {
   type: 'tags'
   tags: Tag[]
   colors: TagColor[]

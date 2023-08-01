@@ -76,7 +76,7 @@ export function generateGraphQLQuery(
 export function generateGraphQLResponse(
   field: GraphQLField<unknown, unknown, unknown>,
   config?: Partial<ResponseGenerationConfig>,
-): unknown | null {
+): unknown {
   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
   const response = generateResponse(field.name, field.type, mergedConfig, {
     depth: 1,

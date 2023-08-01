@@ -1,11 +1,11 @@
 <script lang="ts">
   import Prism from '@magidoc/plugin-svelte-prismjs'
-  import type { marked } from 'marked'
+  import type { Tokens } from 'marked'
 
   export let showCopyButton = true
   export let showLineNumbers = true
 
-  export let token: marked.Tokens.Code
+  export let token: Tokens.Code
 </script>
 
 <Prism

@@ -30,17 +30,17 @@
   "dependencies": {
     "axios": "^1.4.0",
     "fast-glob": "^3.3.1",
-    "graphql": "^16.6.0"
+    "graphql": "^16.7.1"
   },
   "devDependencies": {
     "@types/node": "^20.4.5",
-    "@types/prettier": "^2.7.2",
-    "@vitest/coverage-c8": "^0.31.1",
-    "nock": "^13.3.1",
-    "rollup": "^3.22.0",
+    "@types/prettier": "^3.0.0",
+    "@vitest/coverage-c8": "^0.33.0",
+    "nock": "^13.3.2",
+    "rollup": "^3.27.0",
     "typescript": "^5.1.6",
-    "vite": "^4.4.7",
-    "vitest": "^0.31.1"
+    "vite": "^4.4.8",
+    "vitest": "^0.33.0"
   },
   "files": [
     "build"

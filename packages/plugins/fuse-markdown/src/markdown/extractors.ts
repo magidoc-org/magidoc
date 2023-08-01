@@ -1,10 +1,7 @@
 import type { ExtractFunction, TextExtractor } from './extract'
-import type { marked } from 'marked'
+import type { Token, Tokens } from 'marked'
 
-export function defaultExtractors(): Record<
-  marked.Token['type'],
-  TextExtractor
-> {
+export function defaultExtractors(): Record<Token['type'], TextExtractor> {
   return {
     blockquote: baseExtractor,
     codespan: baseExtractor,
@@ -17,14 +14,14 @@ export function defaultExtractors(): Record<
     text: baseExtractor,
     link: baseExtractor,
     list: (token, extract) => {
-      return (token as marked.Tokens.List).items.reduce(
+      return (token as Tokens.List).items.reduce(
         (acc, item) => `${acc}\n${baseExtractor(item, extract)}`,
         '',
       )
     },
     list_item: baseExtractor,
     table: (token, extract) => {
-      return (token as marked.Tokens.Table).rows.reduce(
+      return (token as Tokens.Table).rows.reduce(
         (acc, row) =>
           `${acc}\n${row
             .map((cell) =>
@@ -52,17 +49,17 @@ export function defaultExtractors(): Record<
   }
 }
 
-function baseExtractor(token: marked.Tokens.Generic, extract: ExtractFunction) {
+function baseExtractor(token: Tokens.Generic, extract: ExtractFunction) {
   if (token.tokens) {
-    return extract(token.tokens)
+    return extract(token.tokens as Tokens.Generic[])
   }
 
   if (token.type === 'text') {
-    return (token as marked.Tokens.Text).text
+    return (token as Tokens.Text).text
   }
 
   if (token.type === 'codespan') {
-    return (token as marked.Tokens.Codespan).text
+    return (token as Tokens.Codespan).text
   }
 
   throw new Error(`Could not extract text for ${token.type}`)
