@@ -20,7 +20,7 @@ import {
   MarkdownSpace,
 } from './components'
 
-import { marked, Slugger, type TokensList } from 'marked'
+import { Lexer, Slugger, type TokensList } from 'marked'
 
 export type MarkdownOptions = {
   /**
@@ -38,7 +38,7 @@ export type MarkdownOptions = {
 }
 
 export function parse(src: string): TokensList {
-  const lexer = new marked.Lexer()
+  const lexer = new Lexer()
   return lexer.lex(src)
 }
 

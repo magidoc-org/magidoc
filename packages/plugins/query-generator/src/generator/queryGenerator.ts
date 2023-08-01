@@ -50,10 +50,10 @@ export type GenerationContext = {
   readonly depth: number
 }
 
-export function generateGraphQLQuery(
+export async function generateGraphQLQuery(
   field: GraphQLField<unknown, unknown, unknown>,
   config?: Partial<QueryGeneratorConfig>,
-): GraphQLQuery | null {
+): Promise<GraphQLQuery | null> {
   const mergedConfig = Object.assign({}, DEFAULT_CONFIG, config)
 
   const initialBuilder = queryBuilder()
@@ -67,7 +67,7 @@ export function generateGraphQLQuery(
     return null
   }
 
-  return resultBuilder
+  return await resultBuilder
     .withType(mergedConfig.queryType)
     .withName(mergedConfig.queryName)
     .build()

@@ -92,14 +92,14 @@ export class QueryBuilder {
     })
   }
 
-  build(): GraphQLQuery {
+  async build(): Promise<GraphQLQuery> {
     const subSelection = this.buildSelection(new Set())
     const variablePlaceholder = this.generateArgumentPlaceholder(
       subSelection.variables,
     )
 
     return {
-      query: prettify(
+      query: await prettify(
         `${this.type} ${this.name}${variablePlaceholder}${subSelection.query}`,
       ),
       variables: _.mapValues(

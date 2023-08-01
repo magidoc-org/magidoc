@@ -11,8 +11,8 @@ describe('building a query', () => {
   const underTest = queryBuilder()
 
   describe('generating the query with no fields', () => {
-    it('should raise an error', () => {
-      expect(() => underTest.build()).toThrowError()
+    it('should raise an error', async () => {
+      await expect(() => underTest.build()).rejects.toThrowError()
     })
   })
 
@@ -21,11 +21,14 @@ describe('building a query', () => {
       expect(underTest.withField('name', [])).not.toBe(underTest)
     })
 
-    describe('naming the query', () => {
-      const result = underTest.withField('field', []).withName('Test').build()
+    describe('naming the query', async () => {
+      const result = await underTest
+        .withField('field', [])
+        .withName('Test')
+        .build()
 
-      it('should add the name to the query', () => {
-        assertGraphQLQueryEqual(
+      it('should add the name to the query', async () => {
+        await assertGraphQLQueryEqual(
           result.query,
           gql`
             query Test {
@@ -36,11 +39,11 @@ describe('building a query', () => {
       })
     })
 
-    describe('field has no arguments and no sub-selection', () => {
-      const result = underTest.withField('field', []).build()
+    describe('field has no arguments and no sub-selection', async () => {
+      const result = await underTest.withField('field', []).build()
 
-      it('should generate the right request', () => {
-        assertGraphQLQueryEqual(
+      it('should generate the right request', async () => {
+        await assertGraphQLQueryEqual(
           result.query,
           gql`
             query {
@@ -55,8 +58,8 @@ describe('building a query', () => {
       })
     })
 
-    describe('field has arguments and no sub-selection', () => {
-      const result = underTest
+    describe('field has arguments and no sub-selection', async () => {
+      const result = await underTest
         .withField('field', [
           {
             name: 'vegetable',
@@ -74,8 +77,8 @@ describe('building a query', () => {
         ])
         .build()
 
-      it('should generate the right request', () => {
-        assertGraphQLQueryEqual(
+      it('should generate the right request', async () => {
+        await assertGraphQLQueryEqual(
           result.query,
           gql`
             query ($vegetable: VegetableInput, $name: String!) {
@@ -96,8 +99,8 @@ describe('building a query', () => {
       })
     })
 
-    describe('adding multiple fields with sub-selection and arguments', () => {
-      const result = underTest
+    describe('adding multiple fields with sub-selection and arguments', async () => {
+      const result = await underTest
         .withField('field', [
           {
             name: 'vegetable',
@@ -136,8 +139,8 @@ describe('building a query', () => {
         )
         .build()
 
-      it('should generate the right request', () => {
-        assertGraphQLQueryEqual(
+      it('should generate the right request', async () => {
+        await assertGraphQLQueryEqual(
           result.query,
           gql`
             query (
@@ -173,13 +176,13 @@ describe('building a query', () => {
     describe('sub selection is empty for field', () => {
       const builder = underTest.withField('field', [], subSelectionBuilder())
 
-      it('should generate the right request', () => {
-        expect(() => builder.build()).toThrowError()
+      it('should generate the right request', async () => {
+        await expect(() => builder.build()).rejects.toThrowError()
       })
     })
 
-    describe('the same variable name is present two times on two different fields', () => {
-      const result = underTest
+    describe('the same variable name is present two times on two different fields', async () => {
+      const result = await underTest
         .withField('first', [
           {
             name: 'arg',
@@ -223,8 +226,8 @@ describe('building a query', () => {
         )
         .build()
 
-      it('should generate a request that handle the duplicate variable names', () => {
-        assertGraphQLQueryEqual(
+      it('should generate a request that handle the duplicate variable names', async () => {
+        await assertGraphQLQueryEqual(
           result.query,
           gql`
             query (
@@ -260,8 +263,8 @@ describe('building a query', () => {
   })
 })
 
-describe('building a mutation', () => {
-  const result = mutationBuilder()
+describe('building a mutation', async () => {
+  const result = await mutationBuilder()
     .withField(
       'vegetables',
       [],
@@ -275,8 +278,8 @@ describe('building a mutation', () => {
     )
     .build()
 
-  it('should generate a mutation query', () => {
-    assertGraphQLQueryEqual(
+  it('should generate a mutation query', async () => {
+    await assertGraphQLQueryEqual(
       result.query,
       gql`
         mutation ($name: String!) {
@@ -295,6 +298,8 @@ describe('building a mutation', () => {
   })
 })
 
-function assertGraphQLQueryEqual(actual: string, expected: string) {
-  expect(prettify(minify(actual))).toEqual(prettify(minify(expected)))
+async function assertGraphQLQueryEqual(actual: string, expected: string) {
+  expect(await prettify(minify(actual))).toEqual(
+    await prettify(minify(expected)),
+  )
 }

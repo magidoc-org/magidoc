@@ -127,7 +127,7 @@ export function extractTokens(
 
       currentSection = newCurrentSection
     } else {
-      currentSection.content += extract([token])
+      currentSection.content += extract([token as Tokens.Generic])
     }
   })
 

@@ -32,47 +32,51 @@
     <Prism source={code} {language} maxHeight={'20rem'} minHeight={'12rem'} />
   </div>
   <div class="button-bar">
-    <Button
-      kind="ghost"
-      icon={Copy}
-      iconDescription={copyButtonText}
-      tooltipPosition="left"
-      size="field"
-      on:click={() => copy(code)}
-    />
-    <Button
-      kind="ghost"
-      icon={$graphqlQuery.nullGenerationStrategy ===
-      NullGenerationStrategy.NEVER_NULL
-        ? RuleFilled
-        : Rule}
-      iconDescription={$graphqlQuery.nullGenerationStrategy ===
-      NullGenerationStrategy.NEVER_NULL
-        ? 'Never null fields'
-        : 'Always null fields'}
-      tooltipPosition="left"
-      size="field"
-      on:click={() => graphqlQuery.toggleNullGenerationStrategy()}
-    />
-    <Button
-      kind="ghost"
-      icon={Add}
-      iconDescription="Increase query depth"
-      tooltipPosition="left"
-      size="field"
-      on:click={() => graphqlQuery.increaseDepth()}
-    />
-    <p style="text-align:center">
-      {$graphqlQuery.depth}
-    </p>
-    <Button
-      kind="ghost"
-      icon={Subtract}
-      iconDescription="Decrease query depth"
-      tooltipPosition="left"
-      size="field"
-      on:click={() => graphqlQuery.decreaseDepth()}
-    />
+    {#await $graphqlQuery then query}
+      {#if query}
+        <Button
+          kind="ghost"
+          icon={Copy}
+          iconDescription={copyButtonText}
+          tooltipPosition="left"
+          size="field"
+          on:click={() => copy(code)}
+        />
+        <Button
+          kind="ghost"
+          icon={query.nullGenerationStrategy ===
+          NullGenerationStrategy.NEVER_NULL
+            ? RuleFilled
+            : Rule}
+          iconDescription={query.nullGenerationStrategy ===
+          NullGenerationStrategy.NEVER_NULL
+            ? 'Never null fields'
+            : 'Always null fields'}
+          tooltipPosition="left"
+          size="field"
+          on:click={() => graphqlQuery.toggleNullGenerationStrategy()}
+        />
+        <Button
+          kind="ghost"
+          icon={Add}
+          iconDescription="Increase query depth"
+          tooltipPosition="left"
+          size="field"
+          on:click={() => graphqlQuery.increaseDepth()}
+        />
+        <p style="text-align:center">
+          {query.depth}
+        </p>
+        <Button
+          kind="ghost"
+          icon={Subtract}
+          iconDescription="Decrease query depth"
+          tooltipPosition="left"
+          size="field"
+          on:click={() => graphqlQuery.decreaseDepth()}
+        />
+      {/if}
+    {/await}
   </div>
 </div>
 
