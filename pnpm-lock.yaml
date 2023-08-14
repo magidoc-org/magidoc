@@ -409,8 +409,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2(postcss@8.4.23)(svelte@3.59.1)
       svelte2tsx:
-        specifier: ^0.6.14
-        version: 0.6.14(svelte@3.59.1)(typescript@5.1.6)
+        specifier: ^0.6.20
+        version: 0.6.20(svelte@3.59.1)(typescript@5.1.6)
       tslib:
         specifier: ^2.6.1
         version: 2.6.1
@@ -446,8 +446,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2(postcss@8.4.23)(svelte@3.59.1)
       svelte2tsx:
-        specifier: ^0.6.14
-        version: 0.6.14(svelte@3.59.1)(typescript@5.1.6)
+        specifier: ^0.6.20
+        version: 0.6.20(svelte@3.59.1)(typescript@5.1.6)
       tslib:
         specifier: ^2.6.1
         version: 2.6.1
@@ -1382,7 +1382,7 @@ packages:
       sade: 1.8.1
       semver: 7.5.4
       svelte: 3.59.1
-      svelte2tsx: 0.6.19(svelte@3.59.1)(typescript@5.1.6)
+      svelte2tsx: 0.6.20(svelte@3.59.1)(typescript@5.1.6)
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -5017,20 +5017,8 @@ packages:
       xmlbuilder2: 3.1.1
     dev: true
 
-  /svelte2tsx@0.6.14(svelte@3.59.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-Sxo9gtpc3dYWuFQ8fruZG+M+I6OZMIvOxxKjt48Lr8jD6Kr9cNf1Hf/yHUDEgDwQdRbAzn5y0FL9xk8Dx5v9lg==}
-    peerDependencies:
-      svelte: ^3.55
-      typescript: ^4.9.4 || ^5.0.0
-    dependencies:
-      dedent-js: 1.0.1
-      pascal-case: 3.1.2
-      svelte: 3.59.1
-      typescript: 5.1.6
-    dev: true
-
-  /svelte2tsx@0.6.19(svelte@3.59.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-h3b5OtcO8zyVL/RiB2zsDwCopeo/UH+887uyhgb2mjnewOFwiTxu+4IGuVwrrlyuh2onM2ktfUemNrNmQwXONQ==}
+  /svelte2tsx@0.6.20(svelte@3.59.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-zaSnHSERYceKxugFbjiZ3YiNcC2fNbVjpQ9qaE5hrYI4tIOX9ZqHS+I30Hp2HF+MVXLOVWVErgn/6pAlQNnheA==}
     peerDependencies:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0
       typescript: ^4.9.4 || ^5.0.0
