@@ -103,8 +103,8 @@ importers:
         specifier: ^4.14.194
         version: 4.14.194
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@vitest/coverage-c8':
         specifier: ^0.31.1
         version: 0.31.1(vitest@0.31.1)
@@ -122,7 +122,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -146,8 +146,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@types/prettier':
         specifier: ^2.7.2
         version: 2.7.2
@@ -162,7 +162,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -180,8 +180,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@types/prettier':
         specifier: ^2.7.2
         version: 2.7.2
@@ -196,7 +196,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -217,8 +217,8 @@ importers:
         specifier: ^4.14.194
         version: 4.14.194
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@types/prettier':
         specifier: ^2.7.2
         version: 2.7.2
@@ -236,7 +236,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -248,8 +248,8 @@ importers:
         version: 16.6.0
     devDependencies:
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@vitest/coverage-c8':
         specifier: ^0.31.1
         version: 0.31.1(vitest@0.31.1)
@@ -261,7 +261,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -279,8 +279,8 @@ importers:
         version: 16.6.0
     devDependencies:
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@types/prettier':
         specifier: ^2.7.2
         version: 2.7.2
@@ -298,7 +298,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -320,8 +320,8 @@ importers:
         specifier: ^4.14.194
         version: 4.14.194
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@vitest/coverage-c8':
         specifier: ^0.31.1
         version: 0.31.1(vitest@0.31.1)
@@ -339,7 +339,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -357,8 +357,8 @@ importers:
         specifier: ^4.14.194
         version: 4.14.194
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.5.1
+        version: 20.5.1
       '@vitest/coverage-c8':
         specifier: ^0.31.1
         version: 0.31.1(vitest@0.31.1)
@@ -376,7 +376,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
       vitest:
         specifier: ^0.31.1
         version: 0.31.1
@@ -419,7 +419,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
 
   packages/plugins/svelte-prismjs:
     dependencies:
@@ -456,7 +456,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
 
   packages/starters/carbon-multi-page:
     devDependencies:
@@ -561,7 +561,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
 
   packages/starters/skeleton:
     devDependencies:
@@ -624,7 +624,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.7
-        version: 4.4.7(@types/node@20.4.5)
+        version: 4.4.7(@types/node@20.5.1)
 
 packages:
 
@@ -1365,7 +1365,7 @@ packages:
       svelte: 3.59.1
       tiny-glob: 0.2.9
       undici: 5.22.1
-      vite: 4.4.7(@types/node@20.4.5)
+      vite: 4.4.7(@types/node@20.5.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1400,7 +1400,7 @@ packages:
       magic-string: 0.30.0
       svelte: 3.59.1
       svelte-hmr: 0.15.1(svelte@3.59.1)
-      vite: 4.4.7(@types/node@20.4.5)
+      vite: 4.4.7(@types/node@20.5.1)
       vitefu: 0.2.4(vite@4.4.7)
     transitivePeerDependencies:
       - supports-color
@@ -1440,7 +1440,7 @@ packages:
     resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
     dependencies:
       '@types/jsonfile': 6.1.1
-      '@types/node': 20.4.5
+      '@types/node': 20.5.1
     dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
@@ -1454,7 +1454,7 @@ packages:
   /@types/jsonfile@6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 20.4.5
+      '@types/node': 20.5.1
     dev: true
 
   /@types/lodash@4.14.194:
@@ -1469,8 +1469,8 @@ packages:
     resolution: {integrity: sha512-YcZe50jhltsCq7rc9MNZC/4QB/OnA2Pd6hrOSTOFajtabN+38slqgDDCeE/0F83SjkKBQcsZUj7VLWR0H5cKRA==}
     dev: true
 
-  /@types/node@20.4.5:
-    resolution: {integrity: sha512-rt40Nk13II9JwQBdeYqmbn2Q6IVTA5uPhvSO+JVqdXw/6/4glI6oR9ezty/A9Hg5u7JH4OmYmuQ+XvjKm0Datg==}
+  /@types/node@20.5.1:
+    resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
 
   /@types/prettier@2.7.2:
     resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
@@ -1499,7 +1499,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 20.4.5
+      '@types/node': 20.5.1
     dev: false
     optional: true
 
@@ -5296,7 +5296,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-node@0.31.1(@types/node@20.4.5):
+  /vite-node@0.31.1(@types/node@20.5.1):
     resolution: {integrity: sha512-BajE/IsNQ6JyizPzu9zRgHrBwczkAs0erQf/JRpgTIESpKvNj9/Gd0vxX905klLkb0I0SJVCKbdrl5c6FnqYKA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -5306,7 +5306,7 @@ packages:
       mlly: 1.2.1
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.4.7(@types/node@20.4.5)
+      vite: 4.4.7(@types/node@20.5.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -5318,7 +5318,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.4.7(@types/node@20.4.5):
+  /vite@4.4.7(@types/node@20.5.1):
     resolution: {integrity: sha512-6pYf9QJ1mHylfVh39HpuSfMPojPSKVxZvnclX1K1FyZ1PXDOcLBibdq5t1qxJSnL63ca8Wf4zts6mD8u8oc9Fw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -5346,7 +5346,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.4.5
+      '@types/node': 20.5.1
       esbuild: 0.18.17
       postcss: 8.4.27
       rollup: 3.27.0
@@ -5362,7 +5362,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.7(@types/node@20.4.5)
+      vite: 4.4.7(@types/node@20.5.1)
     dev: true
 
   /vitest@0.31.1:
@@ -5398,7 +5398,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.4.5
+      '@types/node': 20.5.1
       '@vitest/expect': 0.31.1
       '@vitest/runner': 0.31.1
       '@vitest/snapshot': 0.31.1
@@ -5418,8 +5418,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.5.0
-      vite: 4.4.7(@types/node@20.4.5)
-      vite-node: 0.31.1(@types/node@20.4.5)
+      vite: 4.4.7(@types/node@20.5.1)
+      vite-node: 0.31.1(@types/node@20.5.1)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
