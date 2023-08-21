@@ -566,8 +566,8 @@ importers:
   packages/starters/skeleton:
     devDependencies:
       '@skeletonlabs/skeleton':
-        specifier: ^1.5.1
-        version: 1.5.1
+        specifier: ^1.12.0
+        version: 1.12.0(svelte@3.59.1)
       '@sveltejs/adapter-auto':
         specifier: ^2.1.0
         version: 2.1.0(@sveltejs/kit@1.18.0)
@@ -1318,8 +1318,10 @@ packages:
       rollup: 3.22.0
     dev: true
 
-  /@skeletonlabs/skeleton@1.5.1:
-    resolution: {integrity: sha512-b5D6vyUgE69XRbe9D3ImqJZHIRzEKwIa4HQik6LckjzgrfgUmTSeZXRdZeCuEVNI+6hdDcgTx4Brg9/8phcEeg==}
+  /@skeletonlabs/skeleton@1.12.0(svelte@3.59.1):
+    resolution: {integrity: sha512-NCGy6WT3LUqu6EaFEG7J6lFQNB/DHlqFQpXMWkSpwdZIZ005OEVoZznNgdATYdTet++nS6LymBGVUQK00z82gw==}
+    peerDependencies:
+      svelte: ^3.56.0 || ^4.0.0
     dependencies:
       esm-env: 1.0.0
       svelte: 3.59.1
