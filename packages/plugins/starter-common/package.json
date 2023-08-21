@@ -31,7 +31,7 @@
     "@types/node": "^20.4.5",
     "@vitest/coverage-c8": "^0.31.1",
     "lodash": "^4.17.21",
-    "rollup": "^3.22.0",
+    "rollup": "^3.28.0",
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.7",
