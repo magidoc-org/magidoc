@@ -35,7 +35,7 @@
     "rollup": "^3.22.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.7",
-    "vitest": "^0.31.1"
+    "vitest": "^0.34.3"
   },
   "peerDependencies": {
     "graphql": "^16.6.0"
