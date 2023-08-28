@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.194",
-    "@types/node": "^20.4.5",
+    "@types/node": "^20.5.7",
     "@types/prettier": "^2.7.2",
     "@vitest/coverage-c8": "^0.31.1",
     "graphql-query-compress": "^1.2.4",
