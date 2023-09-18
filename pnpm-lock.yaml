@@ -509,8 +509,8 @@ importers:
         specifier: ^5.62.0
         version: 5.62.0(eslint@8.47.0)(typescript@5.1.6)
       carbon-components-svelte:
-        specifier: ^0.74.0
-        version: 0.74.0
+        specifier: ^0.80.0
+        version: 0.80.0
       carbon-icons-svelte:
         specifier: ^11.4.0
         version: 11.4.0
@@ -2043,8 +2043,8 @@ packages:
     resolution: {integrity: sha512-NORIQuuL4xGpIy6iCCQGN4iFjlBXtfKWIenlUuyZJumLRIindLb7wXM+GO8erEhb7vXfcnf4BAg2PrSDN5TNLQ==}
     dev: true
 
-  /carbon-components-svelte@0.74.0:
-    resolution: {integrity: sha512-YykxsRZBHWcU/NG1Q+VCziImlJfLLoxAgKvd+/FyUfihA30JuYki1Xl5qp9uwcmmsb17BauOhSWTJgleyKtNgQ==}
+  /carbon-components-svelte@0.80.0:
+    resolution: {integrity: sha512-OTk75KJGEQQLEKSvsZUk4GEYtg6ClSKVyTJPvqiBIOUJ1LVW9ZZppCAieWeBvff1GqVrPm1EDthl6YS730lONA==}
     dependencies:
       flatpickr: 4.6.9
     dev: true
