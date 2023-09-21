@@ -27,7 +27,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "graphql": "^16.6.0"
+    "graphql": "^16.8.1"
   },
   "devDependencies": {
     "@types/node": "^20.6.0",
@@ -38,7 +38,7 @@
     "vitest": "^0.31.1"
   },
   "peerDependencies": {
-    "graphql": "^16.6.0"
+    "graphql": "^16.8.1"
   },
   "files": [
     "build"
