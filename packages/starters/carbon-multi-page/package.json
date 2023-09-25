@@ -29,7 +29,7 @@
     "@magidoc/rollup-plugin-gql-schema": "workspace:^",
     "@sveltejs/adapter-static": "2.0.2",
     "@sveltejs/kit": "1.18.0",
-    "@types/lodash": "^4.14.194",
+    "@types/lodash": "^4.14.199",
     "@types/marked": "^5.0.0",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
