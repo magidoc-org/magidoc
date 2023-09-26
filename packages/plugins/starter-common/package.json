@@ -35,7 +35,7 @@
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.7",
-    "vitest": "^0.31.1"
+    "vitest": "^0.34.5"
   },
   "optionalDependencies": {
     "zod": "^3.21.4"
