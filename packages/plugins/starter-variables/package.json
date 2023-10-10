@@ -38,7 +38,7 @@
     "vitest": "^0.31.1"
   },
   "optionalDependencies": {
-    "zod": "^3.21.4"
+    "zod": "^3.22.3"
   },
   "files": [
     "build"
