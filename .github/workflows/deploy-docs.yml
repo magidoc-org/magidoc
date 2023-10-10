@@ -25,4 +25,4 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git config --global user.email "support+actions@github.com"
           git config --global user.name "github-actions-bot"
-          pnpm build:plugins && build:cli && pnpm build:docs && pnpm --filter @magidoc/docs release
+          pnpm build:plugins && pnpm build:cli && pnpm build:docs && pnpm --filter @magidoc/docs release
