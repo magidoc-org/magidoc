@@ -32,7 +32,7 @@ jobs:
 
       - name: Publish
         run: |
-          npx netlify-cli@latest deploy --prod --dir=packages/examples/fauna/docs
+          npx netlify-cli@latest deploy --prod --dir "packages/examples/fauna/docs"
         env:
           NETLIFY_SITE_ID: ${{ secrets.CARBON_MULTI_PAGE_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
