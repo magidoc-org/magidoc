@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
-  import type { marked } from 'marked'
+  import type { Tokens } from 'marked'
 
-  export let token: marked.Tokens.Code
+  export let token: Tokens.Code
   export const options: MarkdownOptions = undefined
   export const renderers: Renderers = undefined
 </script>

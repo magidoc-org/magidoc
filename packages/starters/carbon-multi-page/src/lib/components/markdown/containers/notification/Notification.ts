@@ -1,14 +1,14 @@
-import type { marked } from 'marked'
+import type { Tokens, Token } from 'marked'
 import type { TokenExtractionParameters } from '@magidoc/plugin-svelte-marked'
 
 const notificationStyles = ['error', 'success', 'info', 'warning'] as const
 export type NotificationStyle = (typeof notificationStyles)[number]
 
-export type NotificationToken = marked.Tokens.Generic & {
+export type NotificationToken = Tokens.Generic & {
   type: 'notification'
   style: NotificationStyle
   raw: string
-  tokens: marked.Token[]
+  tokens: Token[]
 }
 
 export function parseNotification({

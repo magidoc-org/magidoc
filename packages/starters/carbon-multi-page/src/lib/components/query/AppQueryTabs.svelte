@@ -13,41 +13,40 @@
   $: {
     graphqlQuery.setField(field, type)
   }
+  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 </script>
 
-<Tabs bind:selected={selectedTab} autoWidth>
-  <Tab label="Query" />
-  <Tab label="Variables" />
-  <Tab label="Response" />
-  <svelte:fragment slot="content">
-    <TabContent style="padding:0">
-      {#if selectedTab === 0}
-        <AppPrism
-          code={$graphqlQuery.value?.query ??
-            '# No query generated. Try increasing the depth'}
-          language={'graphql'}
-        />
-      {/if}
-    </TabContent>
-    <TabContent style="padding:0">
-      {#if selectedTab === 1}
-        <AppPrism
-          code={$graphqlQuery.value?.variables
-            ? JSON.stringify($graphqlQuery.value?.variables || {}, null, 2)
-            : ''}
-          language={'json'}
-        />
-      {/if}
-    </TabContent>
-    <TabContent style="padding:0">
-      {#if selectedTab === 2}
-        <AppPrism
-          code={$graphqlQuery.response
-            ? JSON.stringify($graphqlQuery.response || {}, null, 2)
-            : ''}
-          language={'json'}
-        />
-      {/if}
-    </TabContent>
-  </svelte:fragment>
-</Tabs>
+{#await $graphqlQuery then query}
+  {#if query}
+    <Tabs bind:selected={selectedTab} autoWidth>
+      <Tab label="Query" />
+      <Tab label="Variables" />
+      <Tab label="Response" />
+      <svelte:fragment slot="content">
+        <TabContent style="padding:0">
+          <AppPrism
+            code={query.value?.query ??
+              '# No query generated. Try increasing the depth'}
+            language={'graphql'}
+          />
+        </TabContent>
+        <TabContent style="padding:0">
+          <AppPrism
+            code={query.value?.variables
+              ? JSON.stringify(query.value?.variables || {}, null, 2)
+              : ''}
+            language={'json'}
+          />
+        </TabContent>
+        <TabContent id="third" style="padding:0">
+          <AppPrism
+            code={query.response
+              ? JSON.stringify(query.response || {}, null, 2)
+              : ''}
+            language={'json'}
+          />
+        </TabContent>
+      </svelte:fragment>
+    </Tabs>
+  {/if}
+{/await}

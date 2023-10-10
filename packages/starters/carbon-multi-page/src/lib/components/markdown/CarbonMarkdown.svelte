@@ -15,6 +15,8 @@
   import Markdown from '@magidoc/plugin-svelte-marked'
 
   export let source: string | undefined | null
+
+  const castedBase = base as `/${string}`
 </script>
 
 {#if source}
@@ -35,7 +37,7 @@
       tags: MarkdownTags,
     }}
     options={{
-      baseUrl: base,
+      baseUrl: castedBase,
     }}
   />
 {/if}

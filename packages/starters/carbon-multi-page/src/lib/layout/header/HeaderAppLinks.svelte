@@ -16,7 +16,7 @@
 {#if links.length > 0}
   {#each links as link}
     <a href={link.href}>
-      <HeaderGlobalAction icon={computeIcon(link)} label={link.label} />
+      <HeaderGlobalAction icon={computeIcon(link)} aria-label={link.label} />
     </a>
   {/each}
 {/if}

@@ -6,7 +6,7 @@ import { base } from '$app/paths'
 import { createModelContent } from './model'
 import { getOrDefault } from './variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
-import { Slugger } from 'marked'
+import Slugger from 'github-slugger'
 import type { PageTree, Page } from '@magidoc/plugin-starter-common'
 
 export const appTitle = getOrDefault(

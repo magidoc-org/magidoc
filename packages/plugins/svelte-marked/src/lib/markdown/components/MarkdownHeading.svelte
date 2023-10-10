@@ -1,10 +1,10 @@
 <script lang="ts">
   import { generatePathSegment } from '$lib/utils/url'
 
-  import type { marked } from 'marked'
+  import type { Tokens } from 'marked'
   import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
-  export let token: marked.Tokens.Heading
+  export let token: Tokens.Heading
   export let options: MarkdownOptions
   export const renderers: Renderers = undefined
 

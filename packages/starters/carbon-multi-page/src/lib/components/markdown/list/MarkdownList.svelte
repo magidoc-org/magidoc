@@ -8,9 +8,9 @@
   } from '@magidoc/plugin-svelte-marked'
 
   import { OrderedList, UnorderedList } from 'carbon-components-svelte'
-  import type { marked } from 'marked'
+  import type { Tokens } from 'marked'
 
-  export let token: marked.Tokens.List
+  export let token: Tokens.List
   export let options: MarkdownOptions
   export let renderers: Renderers
 

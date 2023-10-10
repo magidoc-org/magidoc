@@ -1,4 +1,5 @@
-import type { marked } from 'marked'
+import type { Tokens, Lexer, TokensList, Token } from 'marked'
+import type Slugger from 'github-slugger'
 
 /**
  * A markdown header
@@ -50,20 +51,17 @@ export type IndexableMarkdownPart =
   | IndexableMarkdownHeader
 
 export type TextExtractor = (
-  token: marked.Tokens.Generic,
+  token: Tokens.Generic,
   extract: ExtractFunction,
 ) => string
 
-export type ExtractFunction = (tokens: marked.Tokens.Generic[]) => string
+export type ExtractFunction = (tokens: Tokens.Generic[]) => string
 
-export type TextExtractors = Record<
-  marked.Token['type'] | string,
-  TextExtractor
->
+export type TextExtractors = Record<string, TextExtractor>
 
 export type Options = {
-  slugger: marked.Slugger
-  lexer: marked.Lexer
+  slugger: Slugger
+  lexer: Lexer
   extractors: TextExtractors
 }
 
@@ -75,7 +73,7 @@ export function extract(
 }
 
 export function extractTokens(
-  tokens: marked.TokensList,
+  tokens: TokensList,
   options: Options,
 ): IndexableMarkdownPart[] {
   const extract = extractFunction(options.extractors)
@@ -86,13 +84,14 @@ export function extractTokens(
     headers: [],
   }
 
-  tokens.forEach((token) => {
+  tokens.forEach((token: Token) => {
     if (token.type === 'heading') {
-      const id = options.slugger.slug(token.text)
+      const headding = token as Tokens.Heading
+      const id = options.slugger.slug(headding.text)
       const header: MarkdownHeader = {
         id: id,
-        depth: token.depth,
-        text: token.text,
+        depth: headding.depth,
+        text: headding.text,
       }
       const newCurrentSection: IndexableMarkdownSection = {
         type: IndexableMarkdownType.SECTION,
@@ -125,12 +124,12 @@ export function extractTokens(
       parts.push({
         type: IndexableMarkdownType.HEADER,
         path: newCurrentSection.headers,
-        title: token.text,
+        title: headding.text,
       })
 
       currentSection = newCurrentSection
     } else {
-      currentSection.content += extract([token])
+      currentSection.content += extract([token as Tokens.Generic])
     }
   })
 

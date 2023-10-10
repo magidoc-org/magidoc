@@ -1,9 +1,10 @@
-import { marked } from 'marked'
+import { Lexer } from 'marked'
+import Slugger from 'github-slugger'
 
-export function defaultSlugger(): marked.Slugger {
-  return new marked.Slugger()
+export function defaultSlugger(): Slugger {
+  return new Slugger()
 }
 
-export function defaultLexer(): marked.Lexer {
-  return new marked.Lexer()
+export function defaultLexer(): Lexer {
+  return new Lexer()
 }

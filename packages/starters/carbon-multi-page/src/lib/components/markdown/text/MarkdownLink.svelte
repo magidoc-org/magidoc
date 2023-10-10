@@ -3,9 +3,9 @@
   import { urlUtils } from '@magidoc/plugin-svelte-marked'
 
   import { Link } from 'carbon-components-svelte'
-  import type { marked } from 'marked'
+  import type { Tokens } from 'marked'
 
-  export let token: marked.Tokens.Link
+  export let token: Tokens.Link
   export let options: MarkdownOptions
 
   function isRelative(url: string): boolean {

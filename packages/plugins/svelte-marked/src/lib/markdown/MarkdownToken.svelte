@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { marked } from 'marked'
+  import type { Token } from 'marked'
   import MarkdownTokens from './MarkdownTokens.svelte'
   import type { MarkdownOptions, Renderers } from './markedConfiguration'
 
-  export let token: marked.Token
+  export let token: Token
   export let renderers: Renderers
   export let options: MarkdownOptions
 </script>

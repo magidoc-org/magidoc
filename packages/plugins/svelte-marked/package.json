@@ -3,7 +3,7 @@
   "description": "A markdown parser library that renders to svelte components.",
   "type": "module",
   "license": "MIT",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "svelte": "./build/index.js",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -37,19 +37,20 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "marked": "^5.0.2",
-    "svelte": "^3.59.1"
+    "github-slugger": "^2.0.0",
+    "marked": "^9.1.0",
+    "svelte": "^4.2.1"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "2.1.0",
-    "@sveltejs/kit": "1.18.0",
-    "@sveltejs/package": "2.2.0",
-    "@types/marked": "^5.0.0",
-    "@types/prismjs": "^1.26.0",
-    "svelte-check": "^3.3.2",
-    "svelte2tsx": "^0.6.20",
-    "tslib": "^2.6.1",
-    "typescript": "~5.1.6",
-    "vite": "^4.4.7"
+    "@sveltejs/kit": "1.25.2",
+    "@sveltejs/package": "2.2.2",
+    "@types/marked": "^6.0.0",
+    "@types/prismjs": "^1.26.1",
+    "svelte-check": "^3.5.2",
+    "svelte2tsx": "^0.6.23",
+    "tslib": "^2.6.2",
+    "typescript": "~5.2.2",
+    "vite": "^4.4.11"
   }
 }

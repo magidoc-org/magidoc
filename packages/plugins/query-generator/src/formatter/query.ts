@@ -1,5 +1,5 @@
-import prettierGraphql from 'prettier/parser-graphql.js'
-import prettier from 'prettier/standalone.js'
+import prettierGraphql from 'prettier/plugins/graphql'
+import prettier from 'prettier/standalone'
 
 /**
  * Simple utility, because many libraries will recognize strings templated with gql`...`
@@ -17,7 +17,7 @@ export function gql(chunks: TemplateStringsArray): string {
  * @param request A raw GraphQL request
  * @returns a prettified query
  */
-export function prettify(request: string): string {
+export function prettify(request: string): Promise<string> {
   return prettier.format(request, {
     parser: 'graphql',
     plugins: [prettierGraphql],

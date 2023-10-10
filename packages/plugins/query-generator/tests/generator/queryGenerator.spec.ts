@@ -24,10 +24,10 @@ describe('generating a query', () => {
   describe('for a field with no arguments', () => {
     const fieldWithNoArgs = getQueryField('id')
 
-    it('generates the right query', () => {
-      const result = generateGraphQLQuery(fieldWithNoArgs, emptyConfig)
+    it('generates the right query', async () => {
+      const result = await generateGraphQLQuery(fieldWithNoArgs, emptyConfig)
 
-      assertQueryEqual(
+      await assertQueryEqual(
         result?.query,
         gql`
           query {
@@ -37,8 +37,8 @@ describe('generating a query', () => {
       )
     })
 
-    it('generates empty variables', () => {
-      const result = generateGraphQLQuery(fieldWithNoArgs, emptyConfig)
+    it('generates empty variables', async () => {
+      const result = await generateGraphQLQuery(fieldWithNoArgs, emptyConfig)
       expect(result?.variables).toEqual({})
     })
   })
@@ -47,10 +47,10 @@ describe('generating a query', () => {
     const recursiveField = getQueryField('person')
 
     describe('with default config', () => {
-      it('generates the query up to the max default depth', () => {
-        const result = generateGraphQLQuery(recursiveField, emptyConfig)
+      it('generates the query up to the max default depth', async () => {
+        const result = await generateGraphQLQuery(recursiveField, emptyConfig)
 
-        assertQueryEqual(
+        await assertQueryEqual(
           result?.query,
           gql`
             query ($delay: Int, $delay2: Int, $delay3: Int, $delay4: Int) {
@@ -75,8 +75,8 @@ describe('generating a query', () => {
         )
       })
 
-      it('provides values for all the variables', () => {
-        const result = generateGraphQLQuery(recursiveField, emptyConfig)
+      it('provides values for all the variables', async () => {
+        const result = await generateGraphQLQuery(recursiveField, emptyConfig)
 
         expect(result?.variables).toEqual({
           delay: 42,
@@ -93,10 +93,10 @@ describe('generating a query', () => {
           maxDepth: 3,
         }
 
-        it('generates the query up to the configured max depth', () => {
-          const result = generateGraphQLQuery(recursiveField, config)
+        it('generates the query up to the configured max depth', async () => {
+          const result = await generateGraphQLQuery(recursiveField, config)
 
-          assertQueryEqual(
+          await assertQueryEqual(
             result?.query,
             gql`
               query ($delay: Int, $delay2: Int) {
@@ -113,8 +113,8 @@ describe('generating a query', () => {
           )
         })
 
-        it('provides values for all the variables', () => {
-          const result = generateGraphQLQuery(recursiveField, config)
+        it('provides values for all the variables', async () => {
+          const result = await generateGraphQLQuery(recursiveField, config)
 
           expect(result?.variables).toEqual({
             delay: 42,
@@ -128,8 +128,10 @@ describe('generating a query', () => {
           maxDepth: 1,
         }
 
-        it('returns a null query', () => {
-          expect(generateGraphQLQuery(recursiveField, config)).toBeNull()
+        it('returns a null query', async () => {
+          await expect(
+            generateGraphQLQuery(recursiveField, config),
+          ).resolves.toBeNull()
         })
       })
     })
@@ -139,10 +141,10 @@ describe('generating a query', () => {
         nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
       }
 
-      it('generates the query up to the configured max depth', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
+      it('generates the query up to the configured max depth', async () => {
+        const result = await generateGraphQLQuery(recursiveField, config)
 
-        assertQueryEqual(
+        await assertQueryEqual(
           result?.query,
           gql`
             query ($delay: Int, $delay2: Int, $delay3: Int, $delay4: Int) {
@@ -167,8 +169,8 @@ describe('generating a query', () => {
         )
       })
 
-      it('provides values for all the variables', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
+      it('provides values for all the variables', async () => {
+        const result = await generateGraphQLQuery(recursiveField, config)
 
         expect(result?.variables).toEqual({
           delay: null,
@@ -188,10 +190,10 @@ describe('generating a query', () => {
         },
       }
 
-      it('generates the query properly', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
+      it('generates the query properly', async () => {
+        const result = await generateGraphQLQuery(recursiveField, config)
 
-        assertQueryEqual(
+        await assertQueryEqual(
           result?.query,
           gql`
             query ($delay: Int, $delay2: Int, $delay3: Int, $delay4: Int) {
@@ -216,8 +218,8 @@ describe('generating a query', () => {
         )
       })
 
-      it('provides values for all the variables', () => {
-        const result = generateGraphQLQuery(recursiveField, config)
+      it('provides values for all the variables', async () => {
+        const result = await generateGraphQLQuery(recursiveField, config)
 
         expect(result?.variables).toEqual({
           delay: 2,
@@ -232,9 +234,9 @@ describe('generating a query', () => {
   describe('for a union type field', () => {
     describe('and max depth is appropriate to generate the union', () => {
       const unionTypeField = getQueryField('union')
-      it('generates the query properly', () => {
-        const result = generateGraphQLQuery(unionTypeField, emptyConfig)
-        assertQueryEqual(
+      it('generates the query properly', async () => {
+        const result = await generateGraphQLQuery(unionTypeField, emptyConfig)
+        await assertQueryEqual(
           result?.query,
           gql`
             query {
@@ -262,12 +264,12 @@ describe('generating a query', () => {
     describe('and max depth is too low to generate a union type', () => {
       const unionTypeField = getQueryField('unionTwoLevels')
 
-      it('generates skips generating the union type', () => {
-        const result = generateGraphQLQuery(unionTypeField, {
+      it('generates skips generating the union type', async () => {
+        const result = await generateGraphQLQuery(unionTypeField, {
           maxDepth: 2,
         })
 
-        assertQueryEqual(
+        await assertQueryEqual(
           result?.query,
           gql`
             query {
@@ -289,10 +291,10 @@ describe('generating a query', () => {
         maxDepth: 10,
       }
 
-      it('generates the query properly', () => {
-        const result = generateGraphQLQuery(deepNonRecursiveField, config)
+      it('generates the query properly', async () => {
+        const result = await generateGraphQLQuery(deepNonRecursiveField, config)
 
-        assertQueryEqual(
+        await assertQueryEqual(
           result?.query,
           gql`
             query ($delay: Int) {
@@ -310,8 +312,8 @@ describe('generating a query', () => {
         )
       })
 
-      it('provides values for all the variables', () => {
-        const result = generateGraphQLQuery(deepNonRecursiveField, config)
+      it('provides values for all the variables', async () => {
+        const result = await generateGraphQLQuery(deepNonRecursiveField, config)
 
         expect(result?.variables).toEqual({
           delay: 42,
@@ -324,10 +326,10 @@ describe('generating a query', () => {
         maxDepth: 3,
       }
 
-      it('generates the query properly', () => {
-        const result = generateGraphQLQuery(deepNonRecursiveField, config)
+      it('generates the query properly', async () => {
+        const result = await generateGraphQLQuery(deepNonRecursiveField, config)
 
-        assertQueryEqual(
+        await assertQueryEqual(
           result?.query,
           gql`
             query ($delay: Int) {
@@ -340,8 +342,8 @@ describe('generating a query', () => {
         )
       })
 
-      it('provides values for all the variables', () => {
-        const result = generateGraphQLQuery(deepNonRecursiveField, config)
+      it('provides values for all the variables', async () => {
+        const result = await generateGraphQLQuery(deepNonRecursiveField, config)
 
         expect(result?.variables).toEqual({
           delay: 42,
@@ -356,10 +358,10 @@ describe('generating a query', () => {
       queryName: 'GetId',
     }
 
-    it('generates the right query', () => {
-      const result = generateGraphQLQuery(fieldWithNoArgs, config)
+    it('generates the right query', async () => {
+      const result = await generateGraphQLQuery(fieldWithNoArgs, config)
 
-      assertQueryEqual(
+      await assertQueryEqual(
         result?.query,
         gql`
           query GetId {
@@ -392,8 +394,8 @@ describe('generating a query', () => {
       listObject: null,
     }
 
-    it('provides values for all the variables', () => {
-      const result = generateGraphQLQuery(fieldWithDuplicateInputArg)
+    it('provides values for all the variables', async () => {
+      const result = await generateGraphQLQuery(fieldWithDuplicateInputArg)
 
       expect(result?.variables).toEqual({
         arg: {
@@ -411,9 +413,9 @@ describe('generating a mutation', () => {
     queryType: QueryType.MUTATION,
   }
 
-  it('generates the mutation properly', () => {
-    const result = generateGraphQLQuery(mutation, config)
-    assertQueryEqual(
+  it('generates the mutation properly', async () => {
+    const result = await generateGraphQLQuery(mutation, config)
+    await assertQueryEqual(
       result?.query,
       gql`
         mutation ($value: String) {
@@ -423,8 +425,8 @@ describe('generating a mutation', () => {
     )
   })
 
-  it('generates the variables properly', () => {
-    const result = generateGraphQLQuery(mutation, config)
+  it('generates the variables properly', async () => {
+    const result = await generateGraphQLQuery(mutation, config)
     expect(result?.variables).toEqual({
       value: 'value',
     })
@@ -437,9 +439,9 @@ describe('generating a subscription', () => {
     queryType: QueryType.SUBSCRIPTION,
   }
 
-  it('generates the subscription properly', () => {
-    const result = generateGraphQLQuery(subscription, config)
-    assertQueryEqual(
+  it('generates the subscription properly', async () => {
+    const result = await generateGraphQLQuery(subscription, config)
+    await assertQueryEqual(
       result?.query,
       gql`
         subscription ($delay: Int) {
@@ -449,8 +451,8 @@ describe('generating a subscription', () => {
     )
   })
 
-  it('generates the variables properly', () => {
-    const result = generateGraphQLQuery(subscription, config)
+  it('generates the variables properly', async () => {
+    const result = await generateGraphQLQuery(subscription, config)
     expect(result?.variables).toEqual({
       delay: 42,
     })
@@ -643,9 +645,12 @@ describe('generating a response', () => {
   })
 })
 
-function assertQueryEqual(actual?: string, expected?: string) {
-  expect(prettify(minify(actual ?? ''))).toEqual(
-    prettify(minify(expected ?? '')),
+async function assertQueryEqual(
+  actual?: string,
+  expected?: string,
+): Promise<void> {
+  expect(await prettify(minify(actual ?? ''))).toEqual(
+    await prettify(minify(expected ?? '')),
   )
 }
 

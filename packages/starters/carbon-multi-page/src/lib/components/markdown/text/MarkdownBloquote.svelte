@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { marked } from 'marked'
+  import type { Tokens } from 'marked'
   import MarkdownNotification from '../containers/notification/MarkdownNotification.svelte'
 
-  export let token: marked.Tokens.Blockquote
+  export let token: Tokens.Blockquote
 </script>
 
 <MarkdownNotification

@@ -1,4 +1,4 @@
-import type { Slugger } from 'marked'
+import type Slugger from 'github-slugger'
 
 export function joinUrlPaths(...paths: string[]): string {
   return (

@@ -1,4 +1,4 @@
-import type { marked } from 'marked'
+import type { Tokens, Lexer, TokenizerExtension } from 'marked'
 
 export type ContainerOptions = Record<string, boolean | string>
 
@@ -22,12 +22,12 @@ export type TokenExtractionParameters = {
   /**
    * The lexer that can be used to render nested tokens if needed
    */
-  lexer: marked.Lexer
+  lexer: Lexer
 }
 
 export type TokenExtractor = (
   params: TokenExtractionParameters,
-) => marked.Tokens.Generic | null
+) => Tokens.Generic | null
 
 /**
  * Container extension is a marked extension that parses a block of text surrounded by :::
@@ -50,16 +50,14 @@ export type TokenExtractor = (
  * **content**: `Something inside the container`
  * **options**: { 'option': 'option-1', 'option-2': 'option-2', 'boolean-option': true }
  */
-export default function (
-  tokensExtractor: TokenExtractor,
-): marked.TokenizerExtension {
+export default function (tokensExtractor: TokenExtractor): TokenizerExtension {
   return {
     name: 'container',
     level: 'block',
     start(src: string) {
       return src.match(/^:::[^:\n\s]/)?.index
     },
-    tokenizer(src: string): marked.Tokens.Generic {
+    tokenizer(src: string): Tokens.Generic {
       const rule =
         /^:::(?<type>[a-z0-9-]+)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
 

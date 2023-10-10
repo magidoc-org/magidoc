@@ -25,8 +25,13 @@ function printAstNodesWithDirectives(schema: GraphQLSchema): string {
       return `${accum}\n${typeString}\n${extensionString}\n`
     }, '')
 
-  return schema.getDirectives().reduce((accum, d) => {
-    if (!d.astNode) return accum
-    return !isSpecifiedDirective(d) ? (accum += `${print(d.astNode)}\n`) : accum
-  }, str + `${schema.astNode ? print(schema.astNode) : ''}\n`)
+  return schema.getDirectives().reduce(
+    (accum, d) => {
+      if (!d.astNode) return accum
+      return !isSpecifiedDirective(d)
+        ? (accum += `${print(d.astNode)}\n`)
+        : accum
+    },
+    str + `${schema.astNode ? print(schema.astNode) : ''}\n`,
+  )
 }

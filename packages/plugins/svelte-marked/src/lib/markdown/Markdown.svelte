@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { marked } from 'marked'
+  import type { TokensList } from 'marked'
 
   import MarkdownTokens from './MarkdownTokens.svelte'
   import {
@@ -28,7 +28,7 @@
    */
   export let renderers: Partial<Renderers> = {}
 
-  let tokens: marked.TokensList
+  let tokens: TokensList
   let actualRenderers: Renderers
   let actualOptions: MarkdownOptions
 
