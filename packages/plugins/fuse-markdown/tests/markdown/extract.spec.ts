@@ -6,7 +6,7 @@ import {
 } from '../../src/markdown/extract'
 import { defaultExtractors } from '../../src/markdown/extractors'
 import { describe } from 'vitest'
-import { Slugger } from 'marked'
+import Slugger from 'github-slugger'
 import { unindent } from '../utils'
 import { defaultLexer } from '../../src/markdown/marked'
 

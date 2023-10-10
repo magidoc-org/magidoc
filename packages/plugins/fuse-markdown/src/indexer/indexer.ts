@@ -1,5 +1,7 @@
 import Fuse from 'fuse.js'
-import type { Lexer, Slugger } from 'marked'
+import type { Lexer } from 'marked'
+import type Slugger from 'github-slugger'
+
 import { extract, type TextExtractors } from '../markdown/extract'
 import { defaultExtractors } from '../markdown/extractors'
 import { defaultLexer, defaultSlugger } from '../markdown/marked'

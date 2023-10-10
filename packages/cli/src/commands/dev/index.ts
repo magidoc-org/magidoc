@@ -78,7 +78,11 @@ export default async function runDevelopmentServer(config: DevConfig) {
         }
 
         await executeAllTasks<DevTaskContext>(
-          [copyStaticAssetsTask(newDevConfig), writeEnvFileTask(newDevConfig)],
+          [
+            loadGraphQLSchemaTask(newDevConfig),
+            copyStaticAssetsTask(newDevConfig),
+            writeEnvFileTask(newDevConfig),
+          ],
           {
             ctx,
             silent: true,

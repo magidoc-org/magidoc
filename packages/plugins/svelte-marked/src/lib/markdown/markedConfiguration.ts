@@ -20,7 +20,8 @@ import {
   MarkdownSpace,
 } from './components'
 
-import { Lexer, Slugger, type TokensList } from 'marked'
+import { Lexer, type TokensList } from 'marked'
+import Slugger from 'github-slugger'
 
 export type MarkdownOptions = {
   /**

@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/starter-carbon-multi-page",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -28,32 +28,35 @@
     "@magidoc/plugin-svelte-prismjs": "workspace:^",
     "@magidoc/rollup-plugin-gql-schema": "workspace:^",
     "@sveltejs/adapter-static": "2.0.3",
-    "@sveltejs/kit": "1.22.4",
-    "@types/lodash": "^4.14.196",
-    "@types/marked": "^5.0.1",
-    "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
-    "@typescript-eslint/parser": "^6.2.1",
-    "carbon-components-svelte": "^0.79.0",
-    "carbon-icons-svelte": "^12.1.0",
+    "@sveltejs/kit": "1.25.2",
+    "@types/lodash": "^4.14.199",
+    "@types/marked": "^6.0.0",
+    "@types/prismjs": "^1.26.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "carbon-components-svelte": "^0.80.0",
+    "carbon-icons-svelte": "^12.3.0",
     "carbon-preprocess-svelte": "^0.10.0",
-    "eslint": "^8.46.0",
+    "eslint": "^8.51.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "fuse.js": "^6.6.2",
-    "graphql": "^16.7.1",
+    "graphql": "^16.8.1",
     "lodash": "^4.17.21",
-    "marked": "^6.0.0",
-    "marked-gfm-heading-id": "^3.0.4",
+    "marked": "^9.1.0",
+    "marked-gfm-heading-id": "^3.1.0",
     "prism-svelte": "^0.5.0",
     "prismjs": "^1.29.0",
-    "svelte": "^4.1.2",
-    "svelte-check": "^3.4.6",
-    "svelte-markdown": "^0.3.0",
-    "tslib": "^2.6.1",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.8"
+    "svelte": "^4.2.1",
+    "svelte-check": "^3.5.2",
+    "svelte-markdown": "^0.4.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
   },
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "github-slugger": "^2.0.0"
   }
 }

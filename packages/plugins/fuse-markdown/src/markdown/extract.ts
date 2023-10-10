@@ -1,4 +1,5 @@
-import type { Tokens, Slugger, Lexer, TokensList } from 'marked'
+import type { Tokens, Lexer, TokensList, Token } from 'marked'
+import type Slugger from 'github-slugger'
 
 /**
  * A markdown header
@@ -83,13 +84,14 @@ export function extractTokens(
     headers: [],
   }
 
-  tokens.forEach((token) => {
+  tokens.forEach((token: Token) => {
     if (token.type === 'heading') {
-      const id = options.slugger.slug(token.text)
+      const headding = token as Tokens.Heading
+      const id = options.slugger.slug(headding.text)
       const header: MarkdownHeader = {
         id: id,
-        depth: token.depth,
-        text: token.text,
+        depth: headding.depth,
+        text: headding.text,
       }
       const newCurrentSection: IndexableMarkdownSection = {
         type: IndexableMarkdownType.SECTION,
@@ -122,7 +124,7 @@ export function extractTokens(
       parts.push({
         type: IndexableMarkdownType.HEADER,
         path: newCurrentSection.headers,
-        title: token.text,
+        title: headding.text,
       })
 
       currentSection = newCurrentSection

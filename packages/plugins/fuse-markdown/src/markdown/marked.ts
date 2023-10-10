@@ -1,4 +1,5 @@
-import { Lexer, Slugger } from 'marked'
+import { Lexer } from 'marked'
+import Slugger from 'github-slugger'
 
 export function defaultSlugger(): Slugger {
   return new Slugger()
