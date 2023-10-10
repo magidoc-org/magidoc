@@ -13,11 +13,8 @@ export function setupMarkedExtensions() {
 
   marked.use({
     gfm: true,
-    headerIds: true,
     breaks: false,
-    sanitize: false,
     silent: false,
-    smartypants: false,
     extensions: [
       extensions.containerExtension((params: TokenExtractionParameters) => {
         switch (params.type) {

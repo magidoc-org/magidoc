@@ -54,7 +54,7 @@
     {#if mobile}
       <HeaderGlobalAction
         icon={Search}
-        label="Search"
+        aria-label="Search"
         on:click={() => (searchOpen = true)}
       />
     {:else}

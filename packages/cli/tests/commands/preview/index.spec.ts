@@ -20,6 +20,7 @@ describe('running a preview server', () => {
     })
 
     afterAll(() => {
+      server.closeAllConnections()
       server.close()
     })
 
