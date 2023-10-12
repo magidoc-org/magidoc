@@ -59,7 +59,7 @@ function createYarn(): PackageManager {
 }
 
 function createNpm(): PackageManager {
-  return createRunner({ type: 'npm' })
+  return createRunner({ type: 'npm', installArgs: ['--legacy-peer-deps'] })
 }
 
 function createRunner({
