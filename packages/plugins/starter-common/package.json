@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-starter-common",
   "description": "A shared library that contains common code shared between multiple starter applications.",
   "private": false,
-  "version": "4.1.1",
+  "version": "4.1.2",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",

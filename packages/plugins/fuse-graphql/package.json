@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-fuse-graphql",
   "description": "A plugin used to index a GraphQL schema into a Fuse.js search engine.",
   "private": false,
-  "version": "4.1.1",
+  "version": "4.1.2",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
