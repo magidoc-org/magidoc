@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/marked": "^6.0.0",
-    "@types/node": "^20.8.4",
+    "@types/node": "^20.8.7",
     "@types/prettier": "^3.0.0",
     "@vitest/coverage-v8": "^0.34.6",
     "rollup": "^4.0.2",
