@@ -29,7 +29,7 @@
   "dependencies": {
     "fuse.js": "^6.6.2",
     "github-slugger": "^2.0.0",
-    "marked": "^9.1.0"
+    "marked": "^9.1.3"
   },
   "devDependencies": {
     "@types/marked": "^6.0.0",
