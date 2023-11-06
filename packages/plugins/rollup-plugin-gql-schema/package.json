@@ -33,7 +33,7 @@
     "graphql": "^16.8.1"
   },
   "devDependencies": {
-    "@types/node": "^20.8.4",
+    "@types/node": "^20.8.10",
     "@types/prettier": "^3.0.0",
     "@vitest/coverage-v8": "^0.34.6",
     "nock": "^13.3.3",
