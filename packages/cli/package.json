@@ -47,7 +47,7 @@
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/fs-extra": "^11.0.2",
     "@types/lodash": "^4.14.199",
-    "@types/node": "^20.8.4",
+    "@types/node": "^20.8.10",
     "@vitest/coverage-v8": "^0.34.6",
     "rollup": "^4.0.2",
     "rollup-plugin-preserve-shebang": "^1.0.1",
