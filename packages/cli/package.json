@@ -33,7 +33,7 @@
   "dependencies": {
     "@magidoc/plugin-starter-variables": "workspace:^",
     "@magidoc/rollup-plugin-gql-schema": "workspace:^",
-    "axios": "^1.5.1",
+    "axios": "^1.6.0",
     "chokidar": "^3.5.3",
     "commander": "^11.0.0",
     "extract-zip": "^2.0.1",
