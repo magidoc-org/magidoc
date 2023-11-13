@@ -33,7 +33,7 @@
     "@types/marked": "^6.0.0",
     "@types/prismjs": "^1.26.1",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "@typescript-eslint/parser": "^6.7.5",
+    "@typescript-eslint/parser": "^6.10.0",
     "carbon-components-svelte": "^0.81.2",
     "carbon-icons-svelte": "^12.3.0",
     "carbon-preprocess-svelte": "^0.10.0",
