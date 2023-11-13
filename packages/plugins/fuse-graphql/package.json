@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@magidoc/plugin-fuse-markdown": "workspace:^",
-    "fuse.js": "^6.6.2",
+    "fuse.js": "^7.0.0",
     "graphql": "^16.8.1",
     "marked": "^9.1.0"
   },
@@ -43,7 +43,7 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "fuse.js": "^6.6.2"
+    "fuse.js": "^7.0.0"
   },
   "files": [
     "build"

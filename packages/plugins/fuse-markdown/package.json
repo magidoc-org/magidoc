@@ -27,7 +27,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "fuse.js": "^6.6.2",
+    "fuse.js": "^7.0.0",
     "github-slugger": "^2.0.0",
     "marked": "^9.1.0"
   },
@@ -42,7 +42,7 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "fuse.js": "^6.6.2"
+    "fuse.js": "^7.0.0"
   },
   "files": [
     "build"
