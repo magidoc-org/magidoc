@@ -142,8 +142,8 @@ importers:
         specifier: ^16.8.1
         version: 16.8.1
       marked:
-        specifier: ^9.1.0
-        version: 9.1.0
+        specifier: ^11.0.0
+        version: 11.0.0
     devDependencies:
       '@types/marked':
         specifier: ^6.0.0
@@ -179,8 +179,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       marked:
-        specifier: ^9.1.0
-        version: 9.1.0
+        specifier: ^11.0.0
+        version: 11.0.0
     devDependencies:
       '@types/marked':
         specifier: ^6.0.0
@@ -393,8 +393,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       marked:
-        specifier: ^9.1.0
-        version: 9.1.0
+        specifier: ^11.0.0
+        version: 11.0.0
       svelte:
         specifier: ^4.2.1
         version: 4.2.1
@@ -546,11 +546,11 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       marked:
-        specifier: ^9.1.0
-        version: 9.1.0
+        specifier: ^11.0.0
+        version: 11.0.0
       marked-gfm-heading-id:
         specifier: ^3.1.0
-        version: 3.1.0(marked@9.1.0)
+        version: 3.1.0(marked@11.0.0)
       prism-svelte:
         specifier: ^0.5.0
         version: 0.5.0
@@ -1517,7 +1517,7 @@ packages:
     resolution: {integrity: sha512-jmjpa4BwUsmhxcfsgUit/7A9KbrC48Q0q8KvnY107ogcjGgTFDlIL3RpihNpx2Mu1hM4mdFQjoVc4O6JoGKHsA==}
     deprecated: This is a stub types definition. marked provides its own type definitions, so you do not need this installed.
     dependencies:
-      marked: 9.1.0
+      marked: 11.0.0
     dev: true
 
   /@types/node@20.8.10:
@@ -3655,25 +3655,25 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /marked-gfm-heading-id@3.1.0(marked@9.1.0):
+  /marked-gfm-heading-id@3.1.0(marked@11.0.0):
     resolution: {integrity: sha512-PYgLXDbL64Ga6kCpvVuKVoIVsV6MKUtkOXnR8mIqyjiycAeKNhQxcGpO0mHEogOTzyY8A8TcK49k5VwYMUCCbg==}
     peerDependencies:
       marked: '>=4 <10'
     dependencies:
       github-slugger: 2.0.0
-      marked: 9.1.0
+      marked: 11.0.0
     dev: true
+
+  /marked@11.0.0:
+    resolution: {integrity: sha512-2GsW34uXaFEGTQ/+3rCnNC6vUYTAgFuDLGl70v/aWinA5mIJtTrrFAmfbLOfVvgPyxXuDVL9He/7reCK+6j3Sw==}
+    engines: {node: '>= 18'}
+    hasBin: true
 
   /marked@5.1.2:
     resolution: {integrity: sha512-ahRPGXJpjMjwSOlBoTMZAK7ATXkli5qCPxZ21TG44rx1KEo44bii4ekgTDQPNRQ4Kh7JMb9Ub1PVk1NxRSsorg==}
     engines: {node: '>= 16'}
     hasBin: true
     dev: true
-
-  /marked@9.1.0:
-    resolution: {integrity: sha512-VZjm0PM5DMv7WodqOUps3g6Q7dmxs9YGiFUZ7a2majzQTTCgX+6S6NAJHPvOhgFBzYz8s4QZKWWMfZKFmsfOgA==}
-    engines: {node: '>= 16'}
-    hasBin: true
 
   /mdn-data@2.0.30:
     resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
