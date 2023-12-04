@@ -69,8 +69,8 @@ importers:
         specifier: workspace:^
         version: link:../plugins/rollup-plugin-gql-schema
       axios:
-        specifier: ^1.5.1
-        version: 1.5.1
+        specifier: ^1.6.2
+        version: 1.6.2
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
@@ -275,8 +275,8 @@ importers:
   packages/plugins/rollup-plugin-gql-schema:
     dependencies:
       axios:
-        specifier: ^1.5.1
-        version: 1.5.1
+        specifier: ^1.6.2
+        version: 1.6.2
       fast-glob:
         specifier: ^3.3.1
         version: 3.3.1
@@ -1931,8 +1931,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /axios@1.5.1:
-    resolution: {integrity: sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==}
+  /axios@1.6.2:
+    resolution: {integrity: sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==}
     dependencies:
       follow-redirects: 1.15.3
       form-data: 4.0.0
