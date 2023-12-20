@@ -30,7 +30,7 @@
     "@magidoc/plugin-fuse-markdown": "workspace:^",
     "fuse.js": "^6.6.2",
     "graphql": "^16.8.1",
-    "marked": "^9.1.0"
+    "marked": "^11.1.0"
   },
   "devDependencies": {
     "@types/marked": "^6.0.0",
