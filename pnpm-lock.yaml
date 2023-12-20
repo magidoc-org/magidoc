@@ -415,8 +415,8 @@ importers:
         specifier: ^1.26.1
         version: 1.26.1
       svelte-check:
-        specifier: ^3.5.2
-        version: 3.5.2(svelte@4.2.1)
+        specifier: ^3.6.2
+        version: 3.6.2(svelte@4.2.1)
       svelte2tsx:
         specifier: ^0.6.23
         version: 0.6.23(svelte@4.2.1)(typescript@5.2.2)
@@ -452,8 +452,8 @@ importers:
         specifier: ^1.26.1
         version: 1.26.1
       svelte-check:
-        specifier: ^3.5.2
-        version: 3.5.2(svelte@4.2.1)
+        specifier: ^3.6.2
+        version: 3.6.2(svelte@4.2.1)
       svelte2tsx:
         specifier: ^0.6.23
         version: 0.6.23(svelte@4.2.1)(typescript@5.2.2)
@@ -561,8 +561,8 @@ importers:
         specifier: ^4.2.1
         version: 4.2.1
       svelte-check:
-        specifier: ^3.5.2
-        version: 3.5.2(svelte@4.2.1)
+        specifier: ^3.6.2
+        version: 3.6.2(svelte@4.2.1)
       svelte-markdown:
         specifier: ^0.4.0
         version: 0.4.0(svelte@4.2.1)
@@ -4725,11 +4725,11 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check@3.5.2(svelte@4.2.1):
-    resolution: {integrity: sha512-5a/YWbiH4c+AqAUP+0VneiV5bP8YOk9JL3jwvN+k2PEPLgpu85bjQc5eE67+eIZBBwUEJzmO3I92OqKcqbp3fw==}
+  /svelte-check@3.6.2(svelte@4.2.1):
+    resolution: {integrity: sha512-E6iFh4aUCGJLRz6QZXH3gcN/VFfkzwtruWSRmlKrLWQTiO6VzLsivR6q02WYLGNAGecV3EocqZuCDrC2uttZ0g==}
     hasBin: true
     peerDependencies:
-      svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0
+      svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
     dependencies:
       '@jridgewell/trace-mapping': 0.3.19
       chokidar: 3.5.3
@@ -4738,7 +4738,7 @@ packages:
       picocolors: 1.0.0
       sade: 1.8.1
       svelte: 4.2.1
-      svelte-preprocess: 5.0.4(svelte@4.2.1)(typescript@5.2.2)
+      svelte-preprocess: 5.1.1(svelte@4.2.1)(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
       - '@babel/core'
@@ -4818,8 +4818,8 @@ packages:
       typescript: 4.9.5
     dev: true
 
-  /svelte-preprocess@5.0.4(svelte@4.2.1)(typescript@5.2.2):
-    resolution: {integrity: sha512-ABia2QegosxOGsVlsSBJvoWeXy1wUKSfF7SWJdTjLAbx/Y3SrVevvvbFNQqrSJw89+lNSsM58SipmZJ5SRi5iw==}
+  /svelte-preprocess@5.1.1(svelte@4.2.1)(typescript@5.2.2):
+    resolution: {integrity: sha512-p/Dp4hmrBW5mrCCq29lEMFpIJT2FZsRlouxEc5qpbOmXRbaFs7clLs8oKPwD3xCFyZfv1bIhvOzpQkhMEVQdMw==}
     engines: {node: '>= 14.10.0'}
     requiresBuild: true
     peerDependencies:
@@ -4832,7 +4832,7 @@ packages:
       sass: ^1.26.8
       stylus: ^0.55.0
       sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
-      svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0
+      svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
       typescript: '>=3.9.5 || ^4.0.0 || ^5.0.0'
     peerDependenciesMeta:
       '@babel/core':
