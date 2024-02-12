@@ -28,18 +28,18 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "axios": "^1.6.2",
+    "axios": "^1.6.7",
     "fast-glob": "^3.3.2",
     "graphql": "^16.8.1"
   },
   "devDependencies": {
-    "@types/node": "^20.8.10",
+    "@types/node": "^20.11.17",
     "@types/prettier": "^3.0.0",
     "@vitest/coverage-v8": "^0.34.6",
-    "nock": "^13.3.8",
-    "rollup": "^4.9.6",
+    "nock": "^13.5.1",
+    "rollup": "^4.10.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10",
+    "vite": "^5.1.1",
     "vitest": "^0.34.6"
   },
   "files": [

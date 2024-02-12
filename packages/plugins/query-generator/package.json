@@ -30,17 +30,17 @@
   "dependencies": {
     "graphql": "^16.8.1",
     "lodash": "^4.17.21",
-    "prettier": "^3.0.3"
+    "prettier": "^3.2.5"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.199",
-    "@types/node": "^20.8.10",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.11.17",
     "@types/prettier": "^3.0.0",
     "@vitest/coverage-v8": "^0.34.6",
     "graphql-query-compress": "^1.2.4",
-    "rollup": "^4.9.6",
+    "rollup": "^4.10.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10",
+    "vite": "^5.1.1",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
