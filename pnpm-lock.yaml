@@ -124,8 +124,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -164,8 +164,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -201,8 +201,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -241,8 +241,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -266,8 +266,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -303,8 +303,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -344,8 +344,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -381,8 +381,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
@@ -404,7 +404,7 @@ importers:
         version: 2.1.0(@sveltejs/kit@1.25.2)
       '@sveltejs/kit':
         specifier: 1.25.2
-        version: 1.25.2(svelte@4.2.1)(vite@5.0.10)
+        version: 1.25.2(svelte@4.2.1)(vite@5.1.1)
       '@sveltejs/package':
         specifier: 2.2.2
         version: 2.2.2(svelte@4.2.1)(typescript@5.3.3)
@@ -427,8 +427,8 @@ importers:
         specifier: ~5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
 
   packages/plugins/svelte-prismjs:
     dependencies:
@@ -444,7 +444,7 @@ importers:
         version: 2.1.0(@sveltejs/kit@1.25.2)
       '@sveltejs/kit':
         specifier: 1.25.2
-        version: 1.25.2(svelte@4.2.1)(vite@5.0.10)
+        version: 1.25.2(svelte@4.2.1)(vite@5.1.1)
       '@sveltejs/package':
         specifier: 2.2.2
         version: 2.2.2(svelte@4.2.1)(typescript@5.3.3)
@@ -464,8 +464,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
 
   packages/starters/carbon-multi-page:
     dependencies:
@@ -505,7 +505,7 @@ importers:
         version: 2.0.3(@sveltejs/kit@1.25.2)
       '@sveltejs/kit':
         specifier: 1.25.2
-        version: 1.25.2(svelte@4.2.1)(vite@5.0.10)
+        version: 1.25.2(svelte@4.2.1)(vite@5.1.1)
       '@types/lodash':
         specifier: ^4.14.199
         version: 4.14.199
@@ -573,8 +573,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       vite:
-        specifier: ^5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@20.8.10)
 
 packages:
 
@@ -1382,7 +1382,7 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.25.2(svelte@4.2.1)(vite@5.0.10)
+      '@sveltejs/kit': 1.25.2(svelte@4.2.1)(vite@5.1.1)
       import-meta-resolve: 3.0.0
     dev: true
 
@@ -1391,10 +1391,10 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.25.2(svelte@4.2.1)(vite@5.0.10)
+      '@sveltejs/kit': 1.25.2(svelte@4.2.1)(vite@5.1.1)
     dev: true
 
-  /@sveltejs/kit@1.25.2(svelte@4.2.1)(vite@5.0.10):
+  /@sveltejs/kit@1.25.2(svelte@4.2.1)(vite@5.1.1):
     resolution: {integrity: sha512-USuuSpdAPFDiLi58N2Pwd/TG9bcUSPAlzE5iaAXaLyCTWa3l36HDKH6nV5NqBybwfeux1ZwgtIeITLZJDJ6HDg==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
@@ -1403,7 +1403,7 @@ packages:
       svelte: ^3.54.0 || ^4.0.0-next.0
       vite: ^4.0.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 2.4.6(svelte@4.2.1)(vite@5.0.10)
+      '@sveltejs/vite-plugin-svelte': 2.4.6(svelte@4.2.1)(vite@5.1.1)
       '@types/cookie': 0.5.2
       cookie: 0.5.0
       devalue: 4.3.2
@@ -1417,7 +1417,7 @@ packages:
       svelte: 4.2.1
       tiny-glob: 0.2.9
       undici: 5.25.4
-      vite: 5.0.10(@types/node@20.8.10)
+      vite: 5.1.1(@types/node@20.8.10)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1439,7 +1439,7 @@ packages:
       - typescript
     dev: true
 
-  /@sveltejs/vite-plugin-svelte-inspector@1.0.4(@sveltejs/vite-plugin-svelte@2.4.6)(svelte@4.2.1)(vite@5.0.10):
+  /@sveltejs/vite-plugin-svelte-inspector@1.0.4(@sveltejs/vite-plugin-svelte@2.4.6)(svelte@4.2.1)(vite@5.1.1):
     resolution: {integrity: sha512-zjiuZ3yydBtwpF3bj0kQNV0YXe+iKE545QGZVTaylW3eAzFr+pJ/cwK8lZEaRp4JtaJXhD5DyWAV4AxLh6DgaQ==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
@@ -1447,30 +1447,30 @@ packages:
       svelte: ^3.54.0 || ^4.0.0
       vite: ^4.0.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 2.4.6(svelte@4.2.1)(vite@5.0.10)
+      '@sveltejs/vite-plugin-svelte': 2.4.6(svelte@4.2.1)(vite@5.1.1)
       debug: 4.3.4
       svelte: 4.2.1
-      vite: 5.0.10(@types/node@20.8.10)
+      vite: 5.1.1(@types/node@20.8.10)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@sveltejs/vite-plugin-svelte@2.4.6(svelte@4.2.1)(vite@5.0.10):
+  /@sveltejs/vite-plugin-svelte@2.4.6(svelte@4.2.1)(vite@5.1.1):
     resolution: {integrity: sha512-zO79p0+DZnXPnF0ltIigWDx/ux7Ni+HRaFOw720Qeivc1azFUrJxTl0OryXVibYNx1hCboGia1NRV3x8RNv4cA==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
       svelte: ^3.54.0 || ^4.0.0
       vite: ^4.0.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 1.0.4(@sveltejs/vite-plugin-svelte@2.4.6)(svelte@4.2.1)(vite@5.0.10)
+      '@sveltejs/vite-plugin-svelte-inspector': 1.0.4(@sveltejs/vite-plugin-svelte@2.4.6)(svelte@4.2.1)(vite@5.1.1)
       debug: 4.3.4
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.4
       svelte: 4.2.1
       svelte-hmr: 0.15.3(svelte@4.2.1)
-      vite: 5.0.10(@types/node@20.8.10)
-      vitefu: 0.2.4(vite@5.0.10)
+      vite: 5.1.1(@types/node@20.8.10)
+      vitefu: 0.2.4(vite@5.1.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4056,8 +4056,8 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /postcss@8.4.32:
-    resolution: {integrity: sha512-D/kj5JNu6oo2EIy+XL/26JEDTlIbB8hw85G8StOE6L74RQAVVP5rej6wxCNqyMbR4RkPfqvezVbPw81Ngd6Kcw==}
+  /postcss@8.4.35:
+    resolution: {integrity: sha512-u5U8qYpBCpN13BsiEB0CbR1Hhh4Gc0zLFuedrHJKMctHCHAGrMdG0PRM/KErzAL3CU6/eckEtmHNB3x6e3c0vA==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
@@ -4133,7 +4133,7 @@ packages:
     dependencies:
       commander: 8.3.0
       glob: 7.2.3
-      postcss: 8.4.32
+      postcss: 8.4.35
       postcss-selector-parser: 6.0.13
     dev: true
 
@@ -5014,7 +5014,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 5.0.10(@types/node@20.8.10)
+      vite: 5.1.1(@types/node@20.8.10)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -5026,8 +5026,8 @@ packages:
       - terser
     dev: true
 
-  /vite@5.0.10(@types/node@20.8.10):
-    resolution: {integrity: sha512-2P8J7WWgmc355HUMlFrwofacvr98DAjoE52BfdbwQtyLH06XKwaL/FMnmKM2crF0iX4MpmMKoDlNCB1ok7zHCw==}
+  /vite@5.1.1(@types/node@20.8.10):
+    resolution: {integrity: sha512-wclpAgY3F1tR7t9LL5CcHC41YPkQIpKUGeIuT8MdNwNZr6OqOTLs7JX5vIHAtzqLWXts0T+GDrh9pN2arneKqg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -5056,13 +5056,13 @@ packages:
     dependencies:
       '@types/node': 20.8.10
       esbuild: 0.19.9
-      postcss: 8.4.32
+      postcss: 8.4.35
       rollup: 4.9.6
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
 
-  /vitefu@0.2.4(vite@5.0.10):
+  /vitefu@0.2.4(vite@5.1.1):
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
@@ -5070,7 +5070,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.0.10(@types/node@20.8.10)
+      vite: 5.1.1(@types/node@20.8.10)
     dev: true
 
   /vitest@0.34.6:
@@ -5125,7 +5125,7 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.7.0
-      vite: 5.0.10(@types/node@20.8.10)
+      vite: 5.1.1(@types/node@20.8.10)
       vite-node: 0.34.6(@types/node@20.8.10)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
