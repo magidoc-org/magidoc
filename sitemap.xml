@@ -47,15 +47,6 @@
     <loc>https://magidoc.js.org/plugins/rollup-graphql-schema</loc>
   </url>
   <url>
-    <loc>https://magidoc.js.org/svelte-plugins/introduction</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/svelte-plugins/marked</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/svelte-plugins/prismjs</loc>
-  </url>
-  <url>
     <loc>https://magidoc.js.org/templates/carbon-multi-page</loc>
   </url>
   <url>
@@ -66,5 +57,14 @@
   </url>
   <url>
     <loc>https://magidoc.js.org/use-cases/multiple-graphql-schemas</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/svelte-plugins/introduction</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/svelte-plugins/marked</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/svelte-plugins/prismjs</loc>
   </url>
 </urlset>
