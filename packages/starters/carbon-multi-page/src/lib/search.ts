@@ -1,6 +1,7 @@
 import {
   index as indexMarkdown,
   type SearchResult as FuseMarkdownSearchResult,
+  type MarkdownOptions,
 } from '@magidoc/plugin-fuse-markdown'
 import {
   index as indexSchema,
@@ -50,6 +51,18 @@ export type GraphQLSearchResult = {
 
 export type MagidocSearchResult = MarkdownSearchResult | GraphQLSearchResult
 
+const MARKDOWN_OPTIONS: Partial<MarkdownOptions> = {
+  extractors: {
+    tags: () => '',
+    notification: (token, extract) =>
+      extract((token as NotificationToken).tokens),
+    tabs: (token, extract) => {
+      const tabs = (token as TabsToken).tabs
+      return tabs.map((tab) => extract(tab.tokens)).join('\n')
+    },
+  },
+}
+
 const pagesSearch: Fuse<FuseMarkdownSearchResult<MarkdownData>> = indexMarkdown(
   flatPages(pages)
     .map((page) => ({
@@ -62,21 +75,13 @@ const pagesSearch: Fuse<FuseMarkdownSearchResult<MarkdownData>> = indexMarkdown(
     }))
     .filter((page) => !!page.content.trim()),
   {
-    markdown: {
-      extractors: {
-        tags: () => '',
-        notification: (token, extract) =>
-          extract((token as NotificationToken).tokens),
-        tabs: (token, extract) => {
-          const tabs = (token as TabsToken).tabs
-          return tabs.map((tab) => extract(tab.tokens)).join('\n')
-        },
-      },
-    },
+    markdown: MARKDOWN_OPTIONS,
   },
 )
 
-const schemaSearch: Fuse<FuseGraphQLSearchResult> = indexSchema(schema)
+const schemaSearch: Fuse<FuseGraphQLSearchResult> = indexSchema(schema, {
+  markdown: MARKDOWN_OPTIONS,
+})
 
 export function search(query: string): ReadonlyArray<MagidocSearchResult> {
   const pagesResult: ReadonlyArray<MagidocSearchResult> = pagesSearch
