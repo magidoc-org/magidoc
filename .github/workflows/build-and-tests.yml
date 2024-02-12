@@ -25,7 +25,7 @@ jobs:
       - run: pnpm test-ci
 
       - name: Codecov
-        uses: codecov/codecov-action@4.0.1
+        uses: codecov/codecov-action@4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
