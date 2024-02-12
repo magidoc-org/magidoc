@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: './.github/actions/install'
 
       - run: | 
@@ -22,10 +22,11 @@ jobs:
         env:
           NODE_OPTIONS: '--max_old_space_size=32192'
 
-      - run: pnpm test-ci
+      - name: Tests
+        run: pnpm test
 
       - name: Codecov
-        uses: codecov/codecov-action@v3.1.1
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
