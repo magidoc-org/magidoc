@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-fuse-markdown",
   "description": "A plugin used to index markdown text into a Fuse.js search engine.",
   "private": false,
-  "version": "4.1.4",
+  "version": "4.2.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -27,19 +27,19 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "fuse.js": "^6.6.2",
+    "fuse.js": "^7.0.0",
     "github-slugger": "^2.0.0",
-    "marked": "^11.2.0"
+    "marked": "^12.0.1"
   },
   "devDependencies": {
     "@types/marked": "^6.0.0",
-    "@types/node": "^20.11.17",
+    "@types/node": "^20.12.2",
     "@types/prettier": "^3.0.0",
-    "@vitest/coverage-v8": "^0.34.6",
-    "rollup": "^4.10.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.1",
-    "vitest": "^0.34.6"
+    "@vitest/coverage-v8": "^1.4.0",
+    "rollup": "^4.13.2",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
+    "vitest": "^1.4.0"
   },
   "peerDependencies": {
     "fuse.js": "^6.6.2"

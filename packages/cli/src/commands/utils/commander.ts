@@ -27,7 +27,7 @@ export const CLEAN_OPTION = () => {
 
 export const PACKAGE_MANAGER_OPTION = () => {
   return new Option(
-    '-p|--package-manager <package-manager>',
+    '-m|--package-manager <package-manager>',
     'Selects a different Package Manager. By default, Magidoc will try to use any package manager available in order of preference. Recommended is pnpm.',
   ).choices(PACKAGE_MANAGER_TYPES)
 }

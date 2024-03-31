@@ -8,7 +8,7 @@
 
 <svelte:head>
   <title>
-    {data.page.section ? `${data.page.section} - ` : ''}{data.page.title}
+    {data.page?.section ? `${data.page.section} - ` : ''}{data.page.title}
   </title>
 </svelte:head>
 
