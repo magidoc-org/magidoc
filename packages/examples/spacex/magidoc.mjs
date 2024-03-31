@@ -19,23 +19,18 @@ function relativePath(target) {
 export default {
   introspection: {
     type: 'url',
-    url: 'https://graphql.fauna.com/graphql',
-    headers: {
-      // https://fauna.com/blog/try-faunadbs-graphql-api
-      // Those are public credentials
-      Authorization: `Basic Zm5BRFFVdWNRb0FDQ1VpZDAxeXVIdWt2SnptaVY4STI4a2R6Y0p2UDo=`,
-    },
+    url: 'https://spacex-production.up.railway.app/graphql',
   },
   website: {
     template: 'carbon-multi-page',
     staticAssets: relativePath('./assets'),
     options: {
-      appTitle: 'FaunaDB',
+      appTitle: 'SpaceX GraphQL API',
       appLogo: '/logo.png',
       appFavicon: '/favicon.png',
       siteMeta: {
-        description: "Magidoc demo for FaunaDB's GraphQL API.",
-        'og:description': "Magidoc demo for FaunaDB's GraphQL API.",
+        description: "Magidoc demo for SpaceX's GraphQL API.",
+        'og:description': "Magidoc demo for SpaceX's GraphQL API.",
       },
       pages: [
         {
@@ -43,10 +38,10 @@ export default {
           content: markdown`
             # 👋 Hi
 
-            Welcome to [FaunaDB](https://fauna.com/blog/try-faunadbs-graphql-api)'s GraphQL documentation
+            Welcome to [SpaceX](https://studio.apollographql.com/public/SpaceX-pxxbxen/variant/current/explorer)'s GraphQL documentation
             generated with [Magidoc](https://github.com/magidoc-org/magidoc), a free open source software designed to build customizable static GraphQL documentation websites with little effort.
 
-            You wonder how easy it was to build this website? Have a look at the [configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/fauna/magidoc.mjs).
+            You wonder how easy it was to build this website? Have a look at the [configuration file](https://github.com/magidoc-org/magidoc/blob/main/packages/examples/spacex/magidoc.mjs).
 
             ## Wanna learn more?
 

@@ -26,13 +26,13 @@ jobs:
 
       - name: Generate Examples
         run: |
-          cd packages/examples/fauna
+          cd packages/examples/spacex
           pnpm install --global @magidoc/cli@latest 
           magidoc generate
 
       - name: Publish
         run: |
-          cd packages/examples/fauna
+          cd packages/examples/spacex
           npx netlify-cli@latest deploy --prod --dir "./docs"
         env:
           NETLIFY_SITE_ID: ${{ secrets.CARBON_MULTI_PAGE_SITE_ID }}
