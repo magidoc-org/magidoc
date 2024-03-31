@@ -82,6 +82,7 @@ describe('loading graphql schema', () => {
           ctx.templateConfiguration.schemaTargetLocation,
           config.introspection.content,
         )
+        expect(fs.writeFile).toHaveBeenCalledOnce()
       })
     })
 

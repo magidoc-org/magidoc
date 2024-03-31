@@ -1,6 +1,6 @@
 import { mergeMarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
-import Fuse from 'fuse.js'
+import Fuse, { type IFuseOptions } from 'fuse.js'
 import type { GraphQLObjectType, GraphQLSchema } from 'graphql'
 import { asQueryResult } from './graphql/queries'
 import { asTypeSearchResult } from './graphql/types'
@@ -23,7 +23,7 @@ export type IndexingOptions = {
   markdown?: Partial<MarkdownOptions>
 }
 
-export function defaultFuseOptions(): Fuse.IFuseOptions<SearchResult> {
+export function defaultFuseOptions(): IFuseOptions<SearchResult> {
   return {
     keys: [
       {

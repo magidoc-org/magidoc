@@ -17,6 +17,7 @@
   import 'prismjs/components/prism-java.js'
   import 'prismjs/components/prism-markdown.js'
   import 'prism-svelte'
+  import Prism from 'prismjs'
 
   import { Content, Row, Grid, Column } from 'carbon-components-svelte'
   import AppHeader from '$lib/layout/AppHeader.svelte'
@@ -30,6 +31,14 @@
   import { siteStyles } from '$lib/styles'
 
   setupMarkedExtensions()
+
+  // Alllows custom commands to highlight in shell syntax
+  Prism.languages.insertBefore('shell', 'function', {
+    keyword: {
+      pattern: /(^\s*)(?:magidoc|pnpm|npm|yarn)(?=\s)/m,
+      lookbehind: true,
+    },
+  })
 
   const mobileWidth = 1056
 

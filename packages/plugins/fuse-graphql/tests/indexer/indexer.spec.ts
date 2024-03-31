@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 import { index, type SearchResult } from '../../src'
 import type Fuse from 'fuse.js'
+import type { FuseResultMatch, FuseResult } from 'fuse.js'
 
 describe('indexing graphql schema', () => {
   const schema = getSchema()
@@ -379,9 +380,7 @@ describe('indexing graphql schema', () => {
   })
 })
 
-function matches(
-  result: Fuse.FuseResult<SearchResult>,
-): readonly Fuse.FuseResultMatch[] {
+function matches(result: FuseResult<SearchResult>): readonly FuseResultMatch[] {
   return result.matches || []
 }
 

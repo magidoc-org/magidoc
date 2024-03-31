@@ -1,4 +1,4 @@
-import Fuse from 'fuse.js'
+import Fuse, { type IFuseOptions } from 'fuse.js'
 import type { Lexer } from 'marked'
 import type Slugger from 'github-slugger'
 
@@ -8,7 +8,7 @@ import { defaultLexer, defaultSlugger } from '../markdown/marked'
 import type { MarkdownDocument } from './document'
 import type { SearchResult } from './result'
 
-export function defaultFuseOptions<T>(): Fuse.IFuseOptions<T> {
+export function defaultFuseOptions<T>(): IFuseOptions<T> {
   return {
     keys: [
       {
