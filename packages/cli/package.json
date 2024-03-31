@@ -2,7 +2,7 @@
   "name": "@magidoc/cli",
   "description": "Magidoc CLI application responsible for generating GraphQL documentation websites.",
   "private": false,
-  "version": "4.1.4",
+  "version": "4.2.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
