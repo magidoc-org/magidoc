@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { base } from '$app/paths'
   import MarkdownCode from './code/MarkdownCode.svelte'
   import MarkdownCodeSpan from './code/MarkdownCodeSpan.svelte'
   import MarkdownBloquote from './text/MarkdownBloquote.svelte'
@@ -13,10 +12,11 @@
   import MarkdownTags from './containers/tags/MarkdownTags.svelte'
   import MarkdownHeading from './text/MarkdownHeading.svelte'
   import Markdown from '@magidoc/plugin-svelte-marked'
+  import { getSiteRoot } from '$lib/variables'
 
   export let source: string | undefined | null
 
-  const castedBase = base as `/${string}`
+  const castedBase = getSiteRoot() as `/${string}`
 </script>
 
 {#if source}

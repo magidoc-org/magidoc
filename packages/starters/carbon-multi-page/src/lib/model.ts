@@ -14,13 +14,12 @@ import {
 import _ from 'lodash'
 import schemaRaw from '../_schema.graphqls?raw'
 import type { Maybe } from 'graphql/jsutils/Maybe'
-import { base } from '$app/paths'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import {
   createReverseMapping,
   type TypeReverseMapping,
 } from '@magidoc/plugin-reverse-schema-mapper'
-import { getOrDefault } from './variables'
+import { getOrDefault, getSiteRoot } from './variables'
 import {
   templates,
   type AllowedDirective,
@@ -111,7 +110,11 @@ function createWebsiteContentFromFields(
       title: field.name,
       section: title,
       deprecated: !!field.deprecationReason,
-      href: urlUtils.joinUrlPaths(base, title.toLocaleLowerCase(), field.name),
+      href: urlUtils.joinUrlPaths(
+        getSiteRoot(),
+        title.toLocaleLowerCase(),
+        field.name,
+      ),
     })),
   }
 }
@@ -129,7 +132,7 @@ function createTypesWebsiteContent(): PageTree | null {
       type: 'page',
       title: type.name,
       section: 'Types',
-      href: urlUtils.joinUrlPaths(base, 'types', type.name),
+      href: urlUtils.joinUrlPaths(getSiteRoot(), 'types', type.name),
     })),
   }
 }
@@ -267,7 +270,7 @@ function createDirectiveWebsiteContent(): PageTree | null {
     children: allowed.map((directive) => ({
       type: 'page',
       title: directive.name,
-      href: urlUtils.joinUrlPaths(base, 'directives', directive.name),
+      href: urlUtils.joinUrlPaths(getSiteRoot(), 'directives', directive.name),
       section: 'Directives',
     })),
   }
