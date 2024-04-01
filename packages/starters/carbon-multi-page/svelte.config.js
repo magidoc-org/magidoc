@@ -6,6 +6,7 @@ import { templates } from '@magidoc/plugin-starter-variables'
 import { loadVariables } from './magidoc.config.js'
 
 const variables = loadVariables()
+const base = templates.SITE_ROOT.getOrDefault(variables, '')
 
 /**
  * @type {import('@sveltejs/kit').Config}
@@ -13,9 +14,11 @@ const variables = loadVariables()
 const config = {
   preprocess: [vitePreprocess(), optimizeImports()],
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      strict: false,
+    }),
     paths: {
-      base: templates.SITE_ROOT.getOrDefault(variables, ''),
+      base,
     },
   },
 }
