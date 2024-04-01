@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { base } from '$app/paths'
+  import { getSiteRoot } from '$lib/variables'
   import {
     getAllowedArgumentsByDirective,
     isAllowedDirective,
@@ -89,7 +89,10 @@
 {#if shouldShowDirective()}
   <Tag type="blue">
     <a
-      href={urlUtils.joinUrlPaths(base, `/directives/${directive.name.value}`)}
+      href={urlUtils.joinUrlPaths(
+        getSiteRoot(),
+        `/directives/${directive.name.value}`,
+      )}
       class="override-tooltip-width"
     >
       <TooltipDefinition tooltipText={text} direction="top" align="center">

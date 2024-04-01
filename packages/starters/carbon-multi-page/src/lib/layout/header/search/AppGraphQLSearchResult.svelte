@@ -4,8 +4,8 @@
   import { ClickableTile } from 'carbon-components-svelte'
   import AppSearchHighlight from './AppSearchHighlight.svelte'
   import HeaderCrumb from './HeaderCrumb.svelte'
-  import { base } from '$app/paths'
   import { urlUtils } from '@magidoc/plugin-svelte-marked'
+  import { getSiteRoot } from '$lib/variables'
 
   export let item: GraphQLSearchResult
 
@@ -15,16 +15,25 @@
 
   $: {
     if (item.result.type === SearchResultType.QUERY) {
-      href = urlUtils.joinUrlPaths(base, `/queries/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(
+        getSiteRoot(),
+        `/queries/${item.result.name}`,
+      )
       section = 'Queries'
     } else if (item.result.type === SearchResultType.MUTATION) {
-      href = urlUtils.joinUrlPaths(base, `/mutations/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(
+        getSiteRoot(),
+        `/mutations/${item.result.name}`,
+      )
       section = 'Mutations'
     } else if (item.result.type === SearchResultType.SUBSCRIPTION) {
-      href = urlUtils.joinUrlPaths(base, `/subscriptions/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(
+        getSiteRoot(),
+        `/subscriptions/${item.result.name}`,
+      )
       section = 'Subscriptions'
     } else if (item.result.type === SearchResultType.TYPE) {
-      href = urlUtils.joinUrlPaths(base, `/types/${item.result.name}`)
+      href = urlUtils.joinUrlPaths(getSiteRoot(), `/types/${item.result.name}`)
       section = 'Types'
     }
   }

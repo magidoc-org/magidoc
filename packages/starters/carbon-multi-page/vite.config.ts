@@ -3,7 +3,7 @@ import { parseGraphQLSchema } from '@magidoc/rollup-plugin-gql-schema'
 import { magidoc } from '@magidoc/plugin-starter-variables'
 import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 import fs from 'fs'
-import { defineConfig } from 'vite'
+import { defineConfig, type HmrContext } from 'vite'
 
 const variables = loadVariables()
 
@@ -27,7 +27,7 @@ export default defineConfig({
     sveltekit(),
     {
       name: 'variables-change-handler',
-      handleHotUpdate(ctx) {
+      handleHotUpdate(ctx: HmrContext) {
         const isVariables = ctx.file.includes(
           ENV_FILE_LOCATION.replace('./', ''),
         )
