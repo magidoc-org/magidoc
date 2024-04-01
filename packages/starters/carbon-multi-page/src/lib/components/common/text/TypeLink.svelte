@@ -17,7 +17,7 @@
 {:else if isNonNullType(type)}
   <svelte:self type={type.ofType} />!
 {:else if isNamedType(type)}
-  <Link href={urlUtils.joinUrlPaths(base, `/types/${String(type.name)}`)}
+  <Link href={urlUtils.joinUrlPaths(base, 'types', String(type.name))}
     >{type.name}</Link
   >
 {/if}

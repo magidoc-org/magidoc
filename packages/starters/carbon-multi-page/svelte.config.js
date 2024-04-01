@@ -1,4 +1,4 @@
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import adapter from '@sveltejs/adapter-static'
 import { optimizeImports } from 'carbon-preprocess-svelte'
 import _ from 'lodash'
@@ -13,16 +13,10 @@ const variables = loadVariables()
 const config = {
   preprocess: [vitePreprocess(), optimizeImports()],
   kit: {
-    adapter: adapter({
-      strict: false
-    }),
+    adapter: adapter(),
     paths: {
       base: templates.SITE_ROOT.getOrDefault(variables, ''),
     },
-    alias: {
-      "$lib": "./src/lib",
-      "$lib/*": "./src/lib/*",
-    }
   },
 }
 
