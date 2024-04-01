@@ -30,5 +30,6 @@ export function loadVariables() {
     return {}
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return JSON.parse(fs.readFileSync(ENV_FILE_LOCATION))
 }
