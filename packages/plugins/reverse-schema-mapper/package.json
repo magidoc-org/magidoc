@@ -33,7 +33,7 @@
     "@types/node": "^20.12.2",
     "@vitest/coverage-v8": "^1.4.0",
     "rollup": "^4.13.2",
-    "typescript": "^5.4.3",
+    "typescript": "^5.4.4",
     "vite": "^5.2.7",
     "vitest": "^1.4.0"
   },

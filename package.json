@@ -41,7 +41,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-svelte": "^3.2.2",
     "svelte": "^4.2.12",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.4"
   },
   "engines": {
     "pnpm": ">=8.0.0"
