@@ -37,7 +37,7 @@
     "@types/prettier": "^3.0.0",
     "@vitest/coverage-v8": "^1.4.0",
     "nock": "^13.5.4",
-    "rollup": "^4.13.2",
+    "rollup": "^4.14.3",
     "typescript": "^5.4.3",
     "vite": "^5.2.7",
     "vitest": "^1.4.0"
