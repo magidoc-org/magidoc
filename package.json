@@ -29,7 +29,7 @@
     "get-version": "echo $npm_package_version"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.4.0",
     "archiver": "^7.0.1",
     "eslint": "^8.57.0",
