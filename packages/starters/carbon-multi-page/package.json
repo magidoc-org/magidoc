@@ -33,7 +33,7 @@
     "@types/lodash": "^4.17.0",
     "@types/marked": "^6.0.0",
     "@types/prismjs": "^1.26.3",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.4.0",
     "carbon-components-svelte": "^0.85.0",
     "carbon-icons-svelte": "^12.6.0",
