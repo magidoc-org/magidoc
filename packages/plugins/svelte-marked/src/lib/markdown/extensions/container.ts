@@ -55,11 +55,11 @@ export default function (tokensExtractor: TokenExtractor): TokenizerExtension {
     name: 'container',
     level: 'block',
     start(src: string) {
-      return src.match(/^:::[^:\n\s]/)?.index
+      return src.match(/^:::[^:\n]/)?.index
     },
     tokenizer(src: string): Tokens.Generic {
       const rule =
-        /^:::(?<type>[a-z0-9-]+)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
+        /^:::[\s]?(?<type>[a-z0-9-]+)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
 
       const match = rule.exec(findRawContainer(src))
       if (!match || !match.groups) return null
