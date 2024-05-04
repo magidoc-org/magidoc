@@ -19,6 +19,10 @@ h6 {
   margin-top: 1rem !important;
 }
 
+a.bx--header__name {
+  padding-right: 0.5rem !important;
+}
+
 .deprecated {
   text-decoration: line-through !important;
 }

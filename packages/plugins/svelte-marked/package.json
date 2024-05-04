@@ -38,20 +38,20 @@
   },
   "dependencies": {
     "github-slugger": "^2.0.0",
-    "marked": "^12.0.1",
-    "svelte": "^4.2.12"
+    "marked": "^12.0.2",
+    "svelte": "^4.2.15"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "3.2.0",
-    "@sveltejs/kit": "2.5.5",
-    "@sveltejs/package": "2.3.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "@sveltejs/kit": "2.5.7",
+    "@sveltejs/package": "2.3.1",
+    "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "@types/marked": "^6.0.0",
     "@types/prismjs": "^1.26.3",
-    "svelte-check": "^3.6.9",
-    "svelte2tsx": "^0.7.6",
+    "svelte-check": "^3.7.1",
+    "svelte2tsx": "^0.7.8",
     "tslib": "^2.6.2",
-    "typescript": "~5.4.3",
-    "vite": "^5.2.7"
+    "typescript": "~5.4.5",
+    "vite": "^5.2.11"
   }
 }
