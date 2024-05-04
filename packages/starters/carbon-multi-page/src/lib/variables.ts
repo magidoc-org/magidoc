@@ -12,6 +12,5 @@ export function getOrDefault<T>(target: Variable<T>, def: T) {
 
 export function getSiteRoot() {
   // Using $app/paths sometimes return an empty string for an unknown reason, which causes the build to fail.
-  //
   return getOrDefault(templates.SITE_ROOT, base)
 }

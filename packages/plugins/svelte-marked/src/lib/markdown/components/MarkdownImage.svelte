@@ -4,7 +4,7 @@
   import { isRelative, joinUrlPaths } from '$lib/utils/url'
 
   export let token: Tokens.Image
-  export const options: MarkdownOptions = undefined
+  export let options: MarkdownOptions
   export const renderers: Renderers = undefined
 </script>
 
