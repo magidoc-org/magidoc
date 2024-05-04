@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Tokens } from 'marked'
   import type { MarkdownOptions, Renderers } from '../markedConfiguration'
+  import { isRelative, joinUrlPaths } from '$lib/utils/url'
 
   export let token: Tokens.Image
   export const options: MarkdownOptions = undefined
@@ -8,7 +9,9 @@
 </script>
 
 <img
-  src={token.href}
+  src={isRelative(token.href)
+    ? joinUrlPaths(options.baseUrl, token.href)
+    : token.href}
   title={token.title}
   alt={token.text}
   class="markdown-image"
