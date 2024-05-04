@@ -3,14 +3,11 @@
   import { getOrDefault, getSiteRoot } from '$lib/variables'
 
   import { templates } from '@magidoc/plugin-starter-variables'
-  import {
-    isRelative,
-    joinUrlPaths,
-  } from '../../../../../../plugins/svelte-marked/build/utils/url'
+  import { urlUtils } from '@magidoc/plugin-svelte-marked'
 
   let logoPath = getOrDefault(templates.APP_LOGO, DEFAULT_LOGO)
-  logoPath = isRelative(logoPath)
-    ? joinUrlPaths(getSiteRoot(), logoPath)
+  logoPath = urlUtils.isRelative(logoPath)
+    ? urlUtils.joinUrlPaths(getSiteRoot(), logoPath)
     : logoPath
 </script>
 

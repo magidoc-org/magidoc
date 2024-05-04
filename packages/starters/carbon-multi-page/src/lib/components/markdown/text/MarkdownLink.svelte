@@ -7,14 +7,10 @@
 
   export let token: Tokens.Link
   export let options: MarkdownOptions
-
-  function isRelative(url: string): boolean {
-    return url.startsWith('/') || url.startsWith('#')
-  }
 </script>
 
 <Link
-  href={isRelative(token.href)
+  href={urlUtils.isRelative(token.href)
     ? urlUtils.joinUrlPaths(options.baseUrl, token.href)
     : token.href}
   title={token.title}
