@@ -82,7 +82,7 @@
   }
   .header-logo-wrapper :global(img) {
     height: 100%;
-    margin: 0.2rem 0.5rem 0.2rem 0rem;
+    margin: 0.2rem 0.2rem 0.2rem 0rem;
   }
 
   .search-bar-wrapper {

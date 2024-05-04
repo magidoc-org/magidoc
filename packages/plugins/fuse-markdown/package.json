@@ -29,17 +29,17 @@
   "dependencies": {
     "fuse.js": "^7.0.0",
     "github-slugger": "^2.0.0",
-    "marked": "^12.0.1"
+    "marked": "^12.0.2"
   },
   "devDependencies": {
     "@types/marked": "^6.0.0",
-    "@types/node": "^20.12.2",
+    "@types/node": "^20.12.8",
     "@types/prettier": "^3.0.0",
-    "@vitest/coverage-v8": "^1.4.0",
-    "rollup": "^4.13.2",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.7",
-    "vitest": "^1.4.0"
+    "@vitest/coverage-v8": "^1.6.0",
+    "rollup": "^4.17.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "fuse.js": "^6.6.2"
