@@ -34,7 +34,7 @@
   }
   onMount(() => {
     if (browser) {
-      isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0
+      isMac = navigator?.userAgent?.toUpperCase()?.indexOf('MAC') >= 0
       window.addEventListener('keydown', handler)
     }
   })
