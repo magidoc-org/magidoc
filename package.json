@@ -33,7 +33,7 @@
     "@typescript-eslint/parser": "^7.8.0",
     "archiver": "^7.0.1",
     "eslint": "8.55.0",
-    "eslint-config-prettier": "8.10.0",
+    "eslint-config-prettier": "9.1.0",
     "eslint-plugin-es": "^4.1.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "husky": "^9.0.11",
