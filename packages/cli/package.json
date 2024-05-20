@@ -46,7 +46,7 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/fs-extra": "^11.0.4",
-    "@types/lodash": "^4.17.0",
+    "@types/lodash": "^4.17.4",
     "@types/node": "^20.12.8",
     "@vitest/coverage-v8": "^1.6.0",
     "rollup": "^4.17.2",

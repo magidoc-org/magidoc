@@ -103,8 +103,8 @@ importers:
         specifier: ^11.0.4
         version: 11.0.4
       '@types/lodash':
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.17.4
+        version: 4.17.4
       '@types/node':
         specifier: ^20.12.8
         version: 20.12.8
@@ -220,8 +220,8 @@ importers:
         version: 3.2.5
     devDependencies:
       '@types/lodash':
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.17.4
+        version: 4.17.4
       '@types/node':
         specifier: ^20.12.8
         version: 20.12.8
@@ -323,8 +323,8 @@ importers:
         specifier: ^11.1.6
         version: 11.1.6(rollup@4.17.2)(tslib@2.6.2)(typescript@5.4.5)
       '@types/lodash':
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.17.4
+        version: 4.17.4
       '@types/node':
         specifier: ^20.12.8
         version: 20.12.8
@@ -360,8 +360,8 @@ importers:
         specifier: ^11.1.6
         version: 11.1.6(rollup@4.17.2)(tslib@2.6.2)(typescript@5.4.5)
       '@types/lodash':
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.17.4
+        version: 4.17.4
       '@types/node':
         specifier: ^20.12.8
         version: 20.12.8
@@ -516,8 +516,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(svelte@4.2.15)(vite@5.2.11)
       '@types/lodash':
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.17.4
+        version: 4.17.4
       '@types/marked':
         specifier: ^6.0.0
         version: 6.0.0
@@ -1596,8 +1596,8 @@ packages:
       '@types/node': 20.12.8
     dev: true
 
-  /@types/lodash@4.17.0:
-    resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
+  /@types/lodash@4.17.4:
+    resolution: {integrity: sha512-wYCP26ZLxaT3R39kiN2+HcJ4kTd3U1waI/cY7ivWYqFP6pW3ZNpvi6Wd6PHZx7T/t8z0vlkXMg3QYLa7DZ/IJQ==}
     dev: true
 
   /@types/marked@5.0.2:
