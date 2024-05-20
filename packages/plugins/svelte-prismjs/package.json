@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "prismjs": "^1.29.0",
-    "svelte": "^4.2.15"
+    "svelte": "^4.2.17"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "3.2.0",
