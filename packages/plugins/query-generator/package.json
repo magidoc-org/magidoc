@@ -28,7 +28,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "graphql": "^16.8.1",
+    "graphql": "^16.8.2",
     "lodash": "^4.17.21",
     "prettier": "^3.2.5"
   },
@@ -44,7 +44,7 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "graphql": "^16.8.1"
+    "graphql": "^16.8.2"
   },
   "files": [
     "build"
