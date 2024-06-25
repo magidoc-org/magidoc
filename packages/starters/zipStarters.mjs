@@ -1,8 +1,9 @@
 import fs from 'fs'
 import path from 'path'
+import url from 'url'
 import archiver from 'archiver'
 
-const basePath = __dirname
+const basePath = url.fileURLToPath(new URL('.', import.meta.url))
 
 const VERSION = process.env.VERSION
 
