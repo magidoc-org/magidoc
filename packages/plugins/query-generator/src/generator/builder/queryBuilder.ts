@@ -1,6 +1,6 @@
+import _ from 'lodash'
 import { prettify } from '../../formatter/query'
 import type { GraphQLQuery } from '../../models/query'
-import _ from 'lodash'
 
 export enum QueryType {
   /**
@@ -74,11 +74,9 @@ export class QueryBuilder {
   }
 
   withField(name: string, parameters: ReadonlyArray<Parameter>, subSelection?: QueryBuilder): QueryBuilder {
-    name = name.trim()
-
     return new QueryBuilder(this.type, this.name, {
       ...this.fields,
-      [name]: {
+      [name.trim()]: {
         parameters: parameters,
         subSelection,
       },

@@ -1,11 +1,11 @@
-import type { Task } from '../runner'
+import { yellow } from '../../commands/utils/outputColors'
 import {
-  getPackageManager,
   type PackageManager,
   type PackageManagerType,
+  getPackageManager,
   selectPackageManager,
 } from '../../node/packageManager'
-import { yellow } from '../../commands/utils/outputColors'
+import type { Task } from '../runner'
 
 type Ctx = {
   packageManager: PackageManager

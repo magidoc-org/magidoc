@@ -1,9 +1,9 @@
-import type { ZodType } from 'zod'
-import * as variables from '../src/index'
-import type { Variable } from '../src/variables/variable'
-import z from 'zod'
-import type { Page } from '../src/index'
 import { describe, expect, it, test } from 'vitest'
+import type { ZodType } from 'zod'
+import z from 'zod'
+import * as variables from '../src/index'
+import type { Page } from '../src/index'
+import type { Variable } from '../src/variables/variable'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
@@ -134,7 +134,7 @@ describe('variables', () => {
   })
 })
 
-function testStringVariable(target: Variable<string>, key: string, expectedZod: ZodType<any>) {
+function testStringVariable(target: Variable<string>, key: string, expectedZod: ZodType<unknown>) {
   expect(target.key).toEqual(key)
 
   expect(target.get({ [key]: 'Potato' })).toBe('Potato')
@@ -154,13 +154,13 @@ function testEnumVariable<V extends string>(
   target: Variable<V>,
   values: [V, V, ...V[]],
   key: string,
-  expectedZod: ZodType<any>,
+  expectedZod: ZodType<unknown>,
 ) {
   expect(target.key).toEqual(key)
 
-  values.forEach((value) => {
+  for (const value of values) {
     expect(target.get({ [key]: value })).toBe(value)
-  })
+  }
 
   expect(target.get({ [key]: 'something-else' })).toBeNull()
   expect(target.get({})).toBeNull()
@@ -174,7 +174,7 @@ function testEnumVariable<V extends string>(
   ensureZodTypeEqual(target, expectedZod)
 }
 
-function testBooleanVariable(target: Variable<boolean>, viteKey: string, expectedZod: ZodType<any>) {
+function testBooleanVariable(target: Variable<boolean>, viteKey: string, expectedZod: ZodType<unknown>) {
   expect(target.key).toEqual(viteKey)
 
   expect(target.get({ [viteKey]: true })).toBe(true)
@@ -203,6 +203,7 @@ function testBooleanVariable(target: Variable<boolean>, viteKey: string, expecte
   ensureZodTypeEqual(target, expectedZod)
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: Only thing that makes it work
 function testRecordVariable(target: Variable<Record<string, any>>, key: string, expectedZod: ZodType<any>) {
   expect(target.key).toEqual(key)
 
@@ -230,6 +231,7 @@ function testRecordVariable(target: Variable<Record<string, any>>, key: string, 
   ensureZodTypeEqual(target, expectedZod)
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: Only thing that makes it work
 function testArrayVariable(target: Variable<Array<any>>, key: string, expectedZod: ZodType<any>) {
   expect(target.key).toEqual(key)
 
@@ -258,8 +260,8 @@ function testArrayVariable(target: Variable<Array<any>>, key: string, expectedZo
   ensureZodTypeEqual(target, expectedZod)
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: Only thing that makes it work
 function ensureZodTypeEqual(target: Variable<any>, expected: ZodType<any>) {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // this does a good enough compare to make sure they have the same schema
   expect(JSON.parse(JSON.stringify(target.zod.type(z)))).toEqual(JSON.parse(JSON.stringify(expected, null, 2)))

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 export function printLine() {
   console.log()
 }

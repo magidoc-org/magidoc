@@ -1,10 +1,10 @@
+import type { Command } from 'commander'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import generate from '../../../src/commands/generate'
+import buildGenerateCommand from '../../../src/commands/generate/command'
+import { loadFileConfiguration } from '../../../src/commands/utils/loadConfigFile'
 import { mockLoadFileConfiguration, testMagidocConfiguration } from '../configuration'
 import { makeTestProgram } from '../program'
-import buildGenerateCommand from '../../../src/commands/generate/command'
-import type { Command } from 'commander'
-import { loadFileConfiguration } from '../../../src/commands/utils/loadConfigFile'
 
 vi.mock('../../../src/commands/utils/loadConfigFile')
 vi.mock('../../../src/commands/generate')

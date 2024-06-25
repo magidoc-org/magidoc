@@ -1,5 +1,5 @@
-import fs, { type WriteStream } from 'fs-extra'
 import axios, { type AxiosError } from 'axios'
+import fs, { type WriteStream } from 'fs-extra'
 import type { Template } from '.'
 
 export type FetchTemplateConfig = {
@@ -25,18 +25,13 @@ export default async function fetchTemplate(config: FetchTemplateConfig) {
       const writer = fs.createWriteStream(config.destination)
 
       return new Promise((resolve, reject) => {
-        let error: Error
-
-        writer.on('error', (error) => {
-          error = error
+        writer.on('error', (err) => {
           writer.close()
-          reject(error)
+          reject(err)
         })
 
         writer.on('close', () => {
-          if (!error) {
-            resolve(true)
-          }
+          resolve(true)
         })
 
         response.data.pipe(writer)

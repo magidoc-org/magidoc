@@ -1,10 +1,10 @@
+import path from 'path'
+import type { Command } from 'commander'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import runDevelopmentServer from '../../../src/commands/dev'
 import buildDevCommand from '../../../src/commands/dev/command'
 import { mockLoadFileConfiguration, testMagidocConfiguration } from '../configuration'
 import { makeTestProgram } from '../program'
-import path from 'path'
-import type { Command } from 'commander'
 
 vi.mock('../../../src/commands/utils/loadConfigFile')
 vi.mock('../../../src/commands/dev')

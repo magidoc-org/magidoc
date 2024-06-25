@@ -1,11 +1,11 @@
+import axios from 'axios'
 import {
-  buildClientSchema,
-  getIntrospectionQuery,
   type GraphQLError,
   type GraphQLSchema,
   type IntrospectionQuery,
+  buildClientSchema,
+  getIntrospectionQuery,
 } from 'graphql'
-import axios from 'axios'
 
 type IntrospectionResponse = {
   errors?: GraphQLError[]

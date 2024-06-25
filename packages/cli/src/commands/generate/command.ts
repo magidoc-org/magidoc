@@ -1,12 +1,12 @@
 import type { Command } from 'commander'
 import generate from '.'
-import { loadFileConfiguration } from '../utils/loadConfigFile'
-import { withStacktrace } from '../utils/withStacktrace'
 import type { MagidocConfiguration } from '../../config/types'
-import { cyan } from '../utils/outputColors'
 import type { PackageManagerType } from '../../node/packageManager'
 import { CLEAN_OPTION, CONFIG_FILE_OPTION, PACKAGE_MANAGER_OPTION, STACKTRACE_OPTION } from '../utils/commander'
+import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { printInfo, printLine, printSeparator } from '../utils/log'
+import { cyan } from '../utils/outputColors'
+import { withStacktrace } from '../utils/withStacktrace'
 
 type GenerateCommandOptions = {
   file: string

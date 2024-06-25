@@ -1,9 +1,9 @@
-import { extensions, type TokenExtractionParameters } from '@magidoc/plugin-svelte-marked'
+import { type TokenExtractionParameters, extensions } from '@magidoc/plugin-svelte-marked'
 import { marked } from 'marked'
+import { gfmHeadingId } from 'marked-gfm-heading-id'
 import { parseNotification } from './components/markdown/containers/notification/Notification'
 import { parseTabs } from './components/markdown/containers/tabs/Tabs'
 import { parseTags } from './components/markdown/containers/tags/Tags'
-import { gfmHeadingId } from 'marked-gfm-heading-id'
 
 export function setupMarkedExtensions() {
   marked.use(gfmHeadingId())

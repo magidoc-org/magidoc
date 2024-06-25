@@ -1,9 +1,9 @@
 import { fetchSchema } from '@magidoc/rollup-plugin-gql-schema'
 import { parseSchema } from '@magidoc/rollup-plugin-gql-schema'
+import fs from 'fs/promises'
 import { describe, expect, it, vi } from 'vitest'
 import { loadGraphQLSchemaTask } from '../../../src/tasks/all/loadGraphqlSchema'
 import { taskWrapperMock } from './utils'
-import fs from 'fs/promises'
 
 vi.mock('@magidoc/rollup-plugin-gql-schema')
 vi.mock('fs/promises')

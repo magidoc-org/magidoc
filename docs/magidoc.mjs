@@ -1,4 +1,4 @@
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath } from 'url'
 
 const { pages } = await import(`./pages.mjs?id=${Math.random()}`)
 

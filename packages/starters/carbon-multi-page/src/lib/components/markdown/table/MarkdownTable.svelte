@@ -1,5 +1,5 @@
 <script lang="ts">
-import { MarkdownTokens, type MarkdownOptions, type Renderers } from '@magidoc/plugin-svelte-marked'
+import { type MarkdownOptions, MarkdownTokens, type Renderers } from '@magidoc/plugin-svelte-marked'
 
 import {
   StructuredList,

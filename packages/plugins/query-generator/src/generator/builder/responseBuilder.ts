@@ -1,5 +1,5 @@
-import _ from 'lodash'
 import type { GraphQLField } from 'graphql'
+import _ from 'lodash'
 
 export class RootResponseBuilder {
   private readonly target: GraphQLField<unknown, unknown, unknown>

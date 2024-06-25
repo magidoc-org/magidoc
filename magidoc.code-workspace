@@ -9,11 +9,11 @@
       "**/build": true,
       "**/package": true
     },
-    "eslint.probe": ["javascript", "typescript", "html", "markdown", "svelte"],
-    "eslint.validate": ["typescript", "svelte"],
-    "eslint.packageManager": "pnpm",
     "cSpell.words": ["magidoc"],
-    "testing.automaticallyOpenPeekView": "never"
+    "testing.automaticallyOpenPeekView": "never",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.biome": "always"
+    }
   },
   "folders": [
     {
@@ -74,12 +74,6 @@
     }
   ],
   "extensions": {
-    "recommendations": [
-      "fivethree.vscode-svelte-snippets",
-      "dbaeumer.vscode-eslint",
-      "esbenp.prettier-vscode",
-      "svelte.svelte-vscode",
-      "ZixuanChen.vitest-explorer"
-    ]
+    "recommendations": ["fivethree.vscode-svelte-snippets", "svelte.svelte-vscode", "ZixuanChen.vitest-explorer"]
   }
 }

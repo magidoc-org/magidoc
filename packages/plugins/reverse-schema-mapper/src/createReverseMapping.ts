@@ -1,17 +1,17 @@
 import {
-  GraphQLArgument,
-  GraphQLField,
-  GraphQLNamedType,
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLType,
+  type GraphQLArgument,
+  type GraphQLField,
+  type GraphQLNamedType,
+  type GraphQLObjectType,
+  type GraphQLSchema,
+  type GraphQLType,
   isListType,
   isNonNullType,
   isObjectType,
   isUnionType,
 } from 'graphql'
 import { ReverseGraphQLSchemaMapping } from './reverseMapping'
-import { ReferenceKind, TypeReverseMapping } from './reverseUsage'
+import { ReferenceKind, type TypeReverseMapping } from './reverseUsage'
 
 export function createReverseMapping(schema: GraphQLSchema): ReverseGraphQLSchemaMapping {
   const mapping = new Map<string, TypeReverseMapping>()

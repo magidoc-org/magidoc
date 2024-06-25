@@ -1,7 +1,7 @@
-import { templates, magidoc, toVariablesFile } from '../../src'
+import { describe, expect, it } from 'vitest'
+import { magidoc, templates, toVariablesFile } from '../../src'
 import type { Variable } from '../../src'
 import { UnsupportedVariablesError } from '../../src/env/envFileContent'
-import { describe, expect, it } from 'vitest'
 
 describe('creating a variables file ', () => {
   const initialObject = {

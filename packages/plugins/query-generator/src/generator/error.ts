@@ -1,10 +1,6 @@
 import type { GraphQLNamedType } from 'graphql'
 
-export class GraphQLGenerationError extends Error {
-  constructor(message: string) {
-    super(message)
-  }
-}
+export class GraphQLGenerationError extends Error {}
 
 export class MissingCustomScalarException extends Error {
   type: GraphQLNamedType

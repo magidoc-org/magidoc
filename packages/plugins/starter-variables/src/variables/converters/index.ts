@@ -1,6 +1,6 @@
-import { stringConverter } from './string'
+import { arrayConverter } from './array'
 import { booleanConverter } from './boolean'
 import { recordConverter } from './record'
-import { arrayConverter } from './array'
+import { stringConverter } from './string'
 
 export { stringConverter, booleanConverter, recordConverter, arrayConverter }

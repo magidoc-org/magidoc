@@ -1,8 +1,8 @@
+import fs from 'fs'
+import http from 'http'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
-import fs from 'fs'
-import http from 'http'
 import preview from '../../../src/commands/preview'
 
 let server: http.Server
@@ -123,7 +123,7 @@ function getRedirectLocation(): Promise<string | undefined> {
         method: 'GET',
       },
       (response) => {
-        resolve(response.headers['location'])
+        resolve(response.headers.location)
       },
     )
 

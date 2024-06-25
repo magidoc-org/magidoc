@@ -1,10 +1,10 @@
-import { Command, Option } from 'commander'
+import path from 'path'
+import { type Command, Option } from 'commander'
 import eject from '.'
+import { PACKAGE_MANAGER_TYPES, type PackageManagerType } from '../../node/packageManager'
 import { AVAILABLE_TEMPLATES, type Template } from '../../template'
 import { getVersion } from '../../version'
-import path from 'path'
 import { withStacktrace } from '../utils/withStacktrace'
-import { type PackageManagerType, PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
 
 type EjectCommandOptions = {
   template: Template
@@ -13,9 +13,9 @@ type EjectCommandOptions = {
   destination: string
   stacktrace: boolean
 }
-import { cyan } from '../utils/outputColors'
 import { STACKTRACE_OPTION } from '../utils/commander'
 import { printInfo, printLine, printSeparator } from '../utils/log'
+import { cyan } from '../utils/outputColors'
 
 export default function buildEjectCommand(program: Command) {
   program

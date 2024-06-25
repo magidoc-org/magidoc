@@ -1,24 +1,24 @@
+import { type TypeReverseMapping, createReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
+import type { PageTree } from '@magidoc/plugin-starter-common'
+import { type AllowedDirective, templates } from '@magidoc/plugin-starter-variables'
+import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import {
-  buildClientSchema,
-  buildSchema,
-  GraphQLDirective,
-  GraphQLInterfaceType,
-  GraphQLObjectType,
-  isObjectType,
   type GraphQLArgument,
+  type GraphQLDirective,
   type GraphQLField,
+  type GraphQLInterfaceType,
   type GraphQLNamedType,
+  type GraphQLObjectType,
   type GraphQLSchema,
   type IntrospectionQuery,
+  buildClientSchema,
+  buildSchema,
+  isObjectType,
 } from 'graphql'
+import type { Maybe } from 'graphql/jsutils/Maybe'
 import _ from 'lodash'
 import schemaRaw from '../_schema.graphqls?raw'
-import type { Maybe } from 'graphql/jsutils/Maybe'
-import { urlUtils } from '@magidoc/plugin-svelte-marked'
-import { createReverseMapping, type TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
 import { getOrDefault, getSiteRoot } from './variables'
-import { templates, type AllowedDirective } from '@magidoc/plugin-starter-variables'
-import type { PageTree } from '@magidoc/plugin-starter-common'
 
 export const schema: GraphQLSchema = parseSchema()
 

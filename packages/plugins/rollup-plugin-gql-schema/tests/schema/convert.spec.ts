@@ -1,6 +1,6 @@
-import { convert } from '../../src/schema/convert'
+import { type IntrospectionQuery, buildClientSchema, buildSchema, printSchema } from 'graphql'
 import { describe, expect, it } from 'vitest'
-import { buildClientSchema, buildSchema, type IntrospectionQuery, printSchema } from 'graphql'
+import { convert } from '../../src/schema/convert'
 import { getSample } from './utils'
 
 const sdl = getSample('sdl.graphqls')

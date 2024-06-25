@@ -1,10 +1,10 @@
-import { beforeEach, describe, expect, it } from 'vitest'
-import { index, type MarkdownDocument, type SearchResult } from '../../src'
-import { unindent } from '../utils'
-import type Fuse from 'fuse.js'
+import { readFileSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { readFileSync } from 'fs'
+import type Fuse from 'fuse.js'
+import { beforeEach, describe, expect, it } from 'vitest'
+import { type MarkdownDocument, type SearchResult, index } from '../../src'
+import { unindent } from '../utils'
 
 describe('indexing a markdown source', () => {
   describe('a single page', () => {

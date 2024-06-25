@@ -4,7 +4,7 @@ const archiver = require('archiver')
 
 const basePath = __dirname
 
-const VERSION = process.env['VERSION']
+const VERSION = process.env.VERSION
 
 if (!VERSION) {
   throw new Error('No VERSION environment variable was found')
@@ -59,12 +59,12 @@ async function zipStarter(starterDirectory) {
     zlib: { level: 9 }, // 1 = best speed, 9 = best compression
   })
 
-  output.on('close', function () {
+  output.on('close', () => {
     console.log(`Wrote ${archive.pointer()} total bytes to ${outputPath}`)
   })
 
   // good practice to catch warnings (ie stat failures and other non-blocking errors)
-  archive.on('warning', function (err) {
+  archive.on('warning', (err) => {
     if (err.code === 'ENOENT') {
       console.warn(err)
     } else {
@@ -73,12 +73,12 @@ async function zipStarter(starterDirectory) {
   })
 
   // good practice to catch this error explicitly
-  archive.on('error', function (err) {
+  archive.on('error', (err) => {
     throw err
   })
 
   archive.pipe(output)
-  archive.glob(`**/*`, {
+  archive.glob('**/*', {
     dot: true,
     cwd: starterDirectory,
     // Exclude package.json because we are going to modify it
@@ -91,6 +91,8 @@ async function zipStarter(starterDirectory) {
 }
 
 const starters = listStarterDirectories()
-starters.forEach((path) => {
+
+for (const starter of starters) {
+  console.log(`Zipping ${starter}`)
   zipStarter(path)
-})
+}

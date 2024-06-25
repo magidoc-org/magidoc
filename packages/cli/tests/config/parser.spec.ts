@@ -1,9 +1,9 @@
+import path, { resolve } from 'path'
+import { fileURLToPath } from 'url'
+import { describe, expect, it } from 'vitest'
 import type { MagidocConfiguration } from '../../src'
 import { parseConfiguration } from '../../src/config/parser'
 import type { DevConfiguration, IntrospectionConfiguration, WebsiteConfiguration } from '../../src/config/types'
-import path, { resolve } from 'path'
-import { fileURLToPath } from 'url'
-import { describe, it, expect } from 'vitest'
 
 type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>

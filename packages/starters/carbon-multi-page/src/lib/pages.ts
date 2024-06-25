@@ -1,9 +1,9 @@
-import { templates, type Page as VariablePage } from '@magidoc/plugin-starter-variables'
-import { createModelContent } from './model'
-import { getOrDefault, getSiteRoot } from './variables'
+import type { Page, PageTree } from '@magidoc/plugin-starter-common'
+import { type Page as VariablePage, templates } from '@magidoc/plugin-starter-variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import Slugger from 'github-slugger'
-import type { PageTree, Page } from '@magidoc/plugin-starter-common'
+import { createModelContent } from './model'
+import { getOrDefault, getSiteRoot } from './variables'
 
 export const appTitle = getOrDefault(templates.APP_TITLE, 'GraphQL Documentation')
 

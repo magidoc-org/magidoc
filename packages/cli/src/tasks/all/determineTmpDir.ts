@@ -1,7 +1,7 @@
-import type { Task } from '../runner'
-import { isTemplate } from '../../template'
-import { tmpLocation, type TmpLocation, tmpTemplateArchiveFile, tmpTemplateDirectory } from '../../template/tmp'
 import type { WebsiteConfiguration } from '../../config/types'
+import { isTemplate } from '../../template'
+import { type TmpLocation, tmpLocation, tmpTemplateArchiveFile, tmpTemplateDirectory } from '../../template/tmp'
+import type { Task } from '../runner'
 
 type Config = {
   tmpArchive?: TmpLocation

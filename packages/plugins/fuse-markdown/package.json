@@ -29,7 +29,6 @@
   "devDependencies": {
     "@types/marked": "^6.0.0",
     "@types/node": "^20.12.8",
-    "@types/prettier": "^3.0.0",
     "@vitest/coverage-v8": "^1.6.0",
     "rollup": "^4.17.2",
     "typescript": "^5.4.5",

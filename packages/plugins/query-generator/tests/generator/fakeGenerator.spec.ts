@@ -1,5 +1,6 @@
-import { type GraphQLField, type GraphQLNamedType, GraphQLScalarType, isNullableType } from 'graphql'
+import { type GraphQLField, type GraphQLNamedType, type GraphQLScalarType, isNullableType } from 'graphql'
 import _ from 'lodash'
+import { beforeAll, describe, expect, it, test, vi } from 'vitest'
 import {
   type GenerationContext,
   type GraphQLFactoryContext,
@@ -7,11 +8,10 @@ import {
   type QueryGeneratorConfig,
   QueryType,
 } from '../../src'
-import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
-import { generateArgsForField, generateLeafTypeValue } from '../../src/generator/fakeGenerator'
 import type { Parameter } from '../../src/generator/builder/queryBuilder'
 import type { FakeGenerationConfig } from '../../src/generator/config'
-import { describe, test, expect, beforeAll, it, vi } from 'vitest'
+import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
+import { generateArgsForField, generateLeafTypeValue } from '../../src/generator/fakeGenerator'
 
 const schema = getTestSchema()
 
@@ -292,13 +292,13 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(value).toBeInstanceOf(Object)
 
         const record = value as Record<string, unknown>
-        expect(record['string']).toEqual(output)
-        expect(record['listString']).toEqual([output])
+        expect(record.string).toEqual(output)
+        expect(record.listString).toEqual([output])
       })
 
       it('should still use the default factory for other types', () => {
         const result = generateArgsForField(fieldWithArgs, config, context)
-        const defaultFactory = DEFAULT_FACTORIES['Float']
+        const defaultFactory = DEFAULT_FACTORIES.Float
         if (!defaultFactory) {
           fail('Expected a default factory for type `Float`')
         }
@@ -355,12 +355,12 @@ describe('generating fakes for a GraphQL input argument', () => {
 
       it('should work for direct type', () => {
         const result = generateArgsForField(fieldWithArgs, config, context)
-        expect((paramByType('TestInput', result).value as Record<string, unknown>)['string']).toEqual(outputString)
+        expect((paramByType('TestInput', result).value as Record<string, unknown>).string).toEqual(outputString)
       })
 
       it('should work for lists', () => {
         const result = generateArgsForField(fieldWithArgs, config, context)
-        expect((paramByType('TestInput', result).value as Record<string, unknown>)['listString']).toEqual([
+        expect((paramByType('TestInput', result).value as Record<string, unknown>).listString).toEqual([
           outputListString,
         ])
       })

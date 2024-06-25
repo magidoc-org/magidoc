@@ -1,4 +1,4 @@
-import { print, isSpecifiedScalarType, isSpecifiedDirective, type GraphQLSchema, printSchema } from 'graphql'
+import { type GraphQLSchema, isSpecifiedDirective, isSpecifiedScalarType, print, printSchema } from 'graphql'
 
 export function printSchemaWithDirectives(schema: GraphQLSchema) {
   const sdlWithDirectives = printAstNodesWithDirectives(schema)
@@ -20,8 +20,8 @@ function printAstNodesWithDirectives(schema: GraphQLSchema): string {
   return schema.getDirectives().reduce(
     (accum, d) => {
       if (!d.astNode) return accum
-      return !isSpecifiedDirective(d) ? (accum += `${print(d.astNode)}\n`) : accum
+      return !isSpecifiedDirective(d) ? `${accum}${print(d.astNode)}\n` : accum
     },
-    str + `${schema.astNode ? print(schema.astNode) : ''}\n`,
+    `${str}${schema.astNode ? print(schema.astNode) : ''}\n`,
   )
 }

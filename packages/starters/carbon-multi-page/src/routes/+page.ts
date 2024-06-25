@@ -1,5 +1,5 @@
-import { redirect } from '@sveltejs/kit'
 import { homePageUrl } from '$lib/pages'
+import { redirect } from '@sveltejs/kit'
 
 export const prerender = true
 

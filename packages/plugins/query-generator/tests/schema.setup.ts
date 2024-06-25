@@ -1,13 +1,13 @@
 import {
-  buildClientSchema,
   type GraphQLField,
-  GraphQLObjectType,
-  GraphQLSchema,
+  type GraphQLObjectType,
+  type GraphQLSchema,
   type IntrospectionQuery,
+  buildClientSchema,
 } from 'graphql'
 import type { Maybe } from 'graphql/jsutils/Maybe'
-import schema from './schema/_schema.json'
 import recursiveSchema from './schema/_recursive_schema.json'
+import schema from './schema/_schema.json'
 
 declare global {
   function getTestSchema(): GraphQLSchema

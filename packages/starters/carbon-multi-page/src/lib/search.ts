@@ -1,16 +1,16 @@
+import { type SearchResult as FuseGraphQLSearchResult, index as indexSchema } from '@magidoc/plugin-fuse-graphql'
 import {
-  index as indexMarkdown,
   type SearchResult as FuseMarkdownSearchResult,
   type MarkdownOptions,
+  index as indexMarkdown,
 } from '@magidoc/plugin-fuse-markdown'
-import { index as indexSchema, type SearchResult as FuseGraphQLSearchResult } from '@magidoc/plugin-fuse-graphql'
+import type { Page, PageTree } from '@magidoc/plugin-starter-common'
 import type Fuse from 'fuse.js'
-import { pages } from './pages'
 import type { NotificationToken } from './components/markdown/containers/notification/Notification'
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
 import { setupMarkedExtensions } from './markdown'
 import { isModelEmpty, schema } from './model'
-import type { Page, PageTree } from '@magidoc/plugin-starter-common'
+import { pages } from './pages'
 
 setupMarkedExtensions()
 

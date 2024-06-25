@@ -1,7 +1,7 @@
-import { fileURLToPath } from 'url'
 import path from 'path'
-import { loadTemplateConfig, type RawMagidocTemplateConfig } from '../../src/template/config'
-import { describe, it, expect } from 'vitest'
+import { fileURLToPath } from 'url'
+import { describe, expect, it } from 'vitest'
+import { type RawMagidocTemplateConfig, loadTemplateConfig } from '../../src/template/config'
 
 describe('parsing a valid template configuration', () => {
   it('returns the parsed config', async () => {

@@ -1,8 +1,8 @@
-import type { Task } from '../runner'
-import type { TmpLocation } from '../../template/tmp'
+import type { WebsiteConfiguration } from '../../config/types'
 import { isTemplate } from '../../template'
 import fetchTemplate from '../../template/fetch'
-import type { WebsiteConfiguration } from '../../config/types'
+import type { TmpLocation } from '../../template/tmp'
+import type { Task } from '../runner'
 
 type Config = {
   website: Pick<WebsiteConfiguration, 'template' | 'templateVersion'>

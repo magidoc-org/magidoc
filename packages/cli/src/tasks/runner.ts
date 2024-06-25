@@ -34,7 +34,9 @@ export async function executeAllTasks<T>(
       },
       task: (ctx, wrapper) =>
         task.executor(ctx, {
-          output: (message) => (wrapper.output = message),
+          output: (message) => {
+            wrapper.output = message
+          },
           skip: (message) => wrapper.skip(message),
         }),
     })),

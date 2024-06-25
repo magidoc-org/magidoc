@@ -1,17 +1,16 @@
-import type { Command } from 'commander'
-import { withStacktrace } from '../utils/withStacktrace'
 import path from 'path'
+import { templates } from '@magidoc/plugin-starter-variables'
+import type { Command } from 'commander'
+import preview from '.'
+import { CONFIG_FILE_OPTION, STACKTRACE_OPTION, newPortOption } from '../utils/commander'
+import { loadFileConfiguration } from '../utils/loadConfigFile'
+import { withStacktrace } from '../utils/withStacktrace'
 
 type PreviewCommandOptions = {
   file: string
   port: number
   stacktrace: boolean
 }
-
-import preview from '.'
-import { loadFileConfiguration } from '../utils/loadConfigFile'
-import { templates } from '@magidoc/plugin-starter-variables'
-import { CONFIG_FILE_OPTION, newPortOption, STACKTRACE_OPTION } from '../utils/commander'
 
 export default function buildPreviewCommand(program: Command) {
   program

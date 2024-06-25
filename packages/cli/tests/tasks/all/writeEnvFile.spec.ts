@@ -1,9 +1,9 @@
-import { toVariablesFile, type Variable } from '@magidoc/plugin-starter-variables'
+import { type Variable, toVariablesFile } from '@magidoc/plugin-starter-variables'
 import templates from '@magidoc/plugin-starter-variables/build/variables/templates'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { writeFile } from 'fs/promises'
-import { taskWrapperMock } from './utils'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { writeEnvFileTask } from '../../../src/tasks/all/writeEnvFile'
+import { taskWrapperMock } from './utils'
 
 const variable = templates.APP_FAVICON
 

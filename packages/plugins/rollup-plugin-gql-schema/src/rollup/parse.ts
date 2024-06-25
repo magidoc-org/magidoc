@@ -1,7 +1,7 @@
-import type { Plugin } from 'rollup'
 import { writeFileSync } from 'fs'
+import type { Plugin } from 'rollup'
+import { type OutputFormat, convert } from '../schema/convert'
 import { parseGraphqlSchema } from '../schema/parse'
-import { convert, type OutputFormat } from '../schema/convert'
 
 export type PluginOptions = {
   /**
@@ -42,7 +42,7 @@ export async function parseSchema(options: PluginOptions) {
 export default function parseGraphQLSchema(options: PluginOptions): Plugin {
   return {
     name: 'parse-graphql-schema',
-    buildStart: async function () {
+    buildStart: async () => {
       await parseSchema(options)
     },
   }

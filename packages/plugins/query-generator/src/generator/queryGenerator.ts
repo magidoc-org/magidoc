@@ -1,30 +1,30 @@
 import _ from 'lodash'
 
-import type { GraphQLQuery } from '../models/query'
-import { type QueryGeneratorConfig, NullGenerationStrategy, type ResponseGenerationConfig } from './config'
 import {
   type GraphQLField,
-  type GraphQLType,
-  type GraphQLObjectType,
-  isLeafType,
-  isUnionType,
-  isObjectType,
-  isInterfaceType,
-  isNonNullType,
-  isListType,
-  isNullableType,
   type GraphQLNamedType,
+  type GraphQLObjectType,
+  type GraphQLType,
+  isInterfaceType,
+  isLeafType,
+  isListType,
+  isNonNullType,
+  isNullableType,
+  isObjectType,
+  isUnionType,
 } from 'graphql'
-import { unwrapType } from './extractor'
-import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
-import { type Parameter, QueryBuilder, queryBuilder, QueryType, subSelectionBuilder } from './builder/queryBuilder'
+import type { GraphQLQuery } from '../models/query'
+import { type Parameter, type QueryBuilder, QueryType, queryBuilder, subSelectionBuilder } from './builder/queryBuilder'
 import {
+  type ResponseFieldValueBuilder,
+  arrayResponseBuilder,
   fieldResponseBuilder,
   subObjectResponseBuilder,
   valueResponseBuilder,
-  type ResponseFieldValueBuilder,
-  arrayResponseBuilder,
 } from './builder/responseBuilder'
+import { NullGenerationStrategy, type QueryGeneratorConfig, type ResponseGenerationConfig } from './config'
+import { unwrapType } from './extractor'
+import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
 
 const DEFAULT_CONFIG: QueryGeneratorConfig = {
   queryType: QueryType.QUERY,
@@ -143,7 +143,9 @@ function generateField(
     )
 
     return finalBuilderWithAllFields
-  } else if (isObjectType(type) || isInterfaceType(type)) {
+  }
+
+  if (isObjectType(type) || isInterfaceType(type)) {
     const builder = subSelectionBuilder()
 
     const fields = type.getFields()
@@ -190,6 +192,7 @@ function generateResponse(
   }
 
   if (isNonNullType(type)) {
+    // biome-ignore lint/style/noParameterAssign: Because this is easier and cleaner
     type = type.ofType
   }
 

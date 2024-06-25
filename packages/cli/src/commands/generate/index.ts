@@ -1,6 +1,5 @@
 import type { MagidocConfiguration } from '../../config/types'
 import type { PackageManager, PackageManagerType } from '../../node/packageManager'
-import { executeAllTasks } from '../../tasks/runner'
 import { buildTemplateTask } from '../../tasks/all/buildTemplate'
 import { cleanTask } from '../../tasks/all/clean'
 import { copyStaticAssetsTask } from '../../tasks/all/copyStaticAssets'
@@ -17,6 +16,7 @@ import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'
 import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { warnVersionTask } from '../../tasks/all/warnVersion'
 import { writeEnvFileTask } from '../../tasks/all/writeEnvFile'
+import { executeAllTasks } from '../../tasks/runner'
 import type { TmpLocation } from '../../template/tmp'
 
 export type GenerationConfig = MagidocConfiguration & {

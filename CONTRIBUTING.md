@@ -10,7 +10,7 @@ Magidoc is a mono-repository using pnpm workspaces. The package manager that mus
 
 You can also run these commands in any specific project to run `build` or `test` for a project only. 
 
-When setting up the repository, pre-commit hooks for prettier and eslint will be setup automatically before each commit. The linting is quite intense and committing will not be allowed if linting fails. 
+When setting up the repository, pre-commit hooks for biome-js will be setup automatically before each commit. The linting is quite intense and committing will not be allowed if linting fails. 
 You can always save your ongoing work and skip hooks by performing `git commit -m "<your-message>" --no-verify`.
 
 ## IDE setup

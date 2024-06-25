@@ -2,30 +2,30 @@ import _ from 'lodash'
 import globToRegExp from './utils/globToRegex'
 
 import {
-  type QueryGeneratorConfig,
+  type FakeGenerationConfig,
   type GraphQLFactory,
   NullGenerationStrategy,
-  type FakeGenerationConfig,
+  type QueryGeneratorConfig,
 } from './config'
 import { MissingCustomScalarException } from './error'
 
+import {
+  type GraphQLArgument,
+  type GraphQLField,
+  type GraphQLInputType,
+  type GraphQLLeafType,
+  type GraphQLNamedType,
+  isEnumType,
+  isInputObjectType,
+  isListType,
+  isNonNullType,
+  isNullableType,
+  isScalarType,
+} from 'graphql'
+import type { Parameter } from './builder/queryBuilder'
 import { DEFAULT_FACTORIES } from './defaultFactories'
 import { typeToString, unwrapType } from './extractor'
-import {
-  type GraphQLField,
-  type GraphQLArgument,
-  type GraphQLInputType,
-  type GraphQLNamedType,
-  isNonNullType,
-  isInputObjectType,
-  isEnumType,
-  isScalarType,
-  isListType,
-  isNullableType,
-  type GraphQLLeafType,
-} from 'graphql'
 import type { GenerationContext } from './queryGenerator'
-import type { Parameter } from './builder/queryBuilder'
 
 type FakeGenerationContext = GenerationContext & {
   readonly targetName: string
@@ -86,13 +86,13 @@ function generateInput(input: GraphQLInputType, config: FakeGenerationConfig, co
   if (isInputObjectType(unwrappedType)) {
     if (context.generatedInputObjects.has(unwrappedType.name) && isNullableType(input)) {
       return null
-    } else {
-      // This is slightly unsafe, because with recursion,
-      // it's possible we end up doing a stack-overflow if recursive fields point to each other deeply.
-      // However, an infinitely recursive input field would result in an invalid GraphQL schema
-      // and an error would be thrown by GraphQL.js when parsing the schema.
-      context.generatedInputObjects.add(unwrappedType.name)
     }
+
+    // This is slightly unsafe, because with recursion,
+    // it's possible we end up doing a stack-overflow if recursive fields point to each other deeply.
+    // However, an infinitely recursive input field would result in an invalid GraphQL schema
+    // and an error would be thrown by GraphQL.js when parsing the schema.
+    context.generatedInputObjects.add(unwrappedType.name)
   }
 
   const path = `${context.path}${context.path.endsWith('$') ? '' : '.'}${context.targetName}`
@@ -156,8 +156,8 @@ function findMostSpecificFactory(
   // The wrapped type allowed for nullable
   if (
     nullable &&
-    (config.nullGenerationStrategy == NullGenerationStrategy.ALWAYS_NULL ||
-      (config.nullGenerationStrategy == NullGenerationStrategy.SOMETIMES_NULL && Math.random() > 0.5))
+    (config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL ||
+      (config.nullGenerationStrategy === NullGenerationStrategy.SOMETIMES_NULL && Math.random() > 0.5))
   ) {
     return () => null
   }

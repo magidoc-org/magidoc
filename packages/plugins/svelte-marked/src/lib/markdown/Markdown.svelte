@@ -2,7 +2,7 @@
 import type { TokensList } from 'marked'
 
 import MarkdownTokens from './MarkdownTokens.svelte'
-import { defaultOptions, defaultRenderers, parse, type MarkdownOptions, type Renderers } from './markedConfiguration'
+import { type MarkdownOptions, type Renderers, defaultOptions, defaultRenderers, parse } from './markedConfiguration'
 import { suppressWarnings } from './suppressWarnings'
 
 suppressWarnings()

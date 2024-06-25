@@ -1,17 +1,17 @@
 import type { GraphQLField } from 'graphql'
+import minify from 'graphql-query-compress'
+import { describe, expect, it } from 'vitest'
 import {
-  generateGraphQLQuery,
-  generateGraphQLResponse,
-  type QueryGeneratorConfig,
   type GraphQLFactoryContext,
   NullGenerationStrategy,
+  type QueryGeneratorConfig,
   QueryType,
+  generateGraphQLQuery,
+  generateGraphQLResponse,
 } from '../../src'
-import minify from 'graphql-query-compress'
 import { gql, prettify } from '../../src/formatter/query'
-import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 import type { FakeGenerationConfig, ResponseGenerationConfig } from '../../src/generator/config'
-import { describe, it, expect } from 'vitest'
+import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 
 const schema = getTestSchema()
 
@@ -469,7 +469,7 @@ describe('generating a response', () => {
       const result = generateGraphQLResponse(fieldWithNoArgs, emptyConfig)
 
       assertResponseEqual(result, {
-        id: DEFAULT_FACTORIES['ID'](anyFactoryContext),
+        id: DEFAULT_FACTORIES.ID(anyFactoryContext),
       })
     })
   })

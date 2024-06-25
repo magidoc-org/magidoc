@@ -1,5 +1,5 @@
 <script lang="ts">
-import { getFieldsPossibleDescriptions, schema, type FieldWithPossibleDescriptions } from '$lib/model'
+import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions, schema } from '$lib/model'
 
 import type { GraphQLInterfaceType, GraphQLObjectType } from 'graphql'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'

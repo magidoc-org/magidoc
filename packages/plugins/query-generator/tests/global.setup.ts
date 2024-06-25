@@ -1,12 +1,10 @@
-export {}
+export type {}
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function fail(error?: any): never
+  function fail(error?: unknown): never
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-global.fail = (error?: any) => {
+global.fail = (error?: unknown) => {
   const result = String(error)
   throw new Error(`Test failed${error ? `: ${result}` : ''}`)
 }

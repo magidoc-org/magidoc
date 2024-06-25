@@ -1,7 +1,7 @@
 <script lang="ts">
+import { Button } from 'carbon-components-svelte'
 import ArrowDown from 'carbon-icons-svelte/lib/ArrowDown.svelte'
 import ArrowUp from 'carbon-icons-svelte/lib/ArrowUp.svelte'
-import { Button } from 'carbon-components-svelte'
 
 export let totalItems: number
 export let expandedText: string

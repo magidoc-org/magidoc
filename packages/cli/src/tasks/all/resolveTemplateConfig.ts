@@ -1,8 +1,8 @@
 import path from 'path'
 import type { Variable } from '@magidoc/plugin-starter-variables'
-import type { Task } from '../runner'
 import { loadTemplateConfig } from '../../template/config'
 import type { TmpLocation } from '../../template/tmp'
+import type { Task } from '../runner'
 
 type Ctx = {
   tmpDirectory: TmpLocation
@@ -22,7 +22,7 @@ export function templateConfigurationFile(templateDirectory: string): string {
 
 export function resolveTemplateConfigurationTask<T extends Ctx>(): Task<T> {
   return {
-    title: `Resolving template configuration`,
+    title: 'Resolving template configuration',
     executor: async (ctx, task) => {
       const configPath = templateConfigurationFile(ctx.tmpDirectory.path)
       const config = await loadTemplateConfig(configPath)

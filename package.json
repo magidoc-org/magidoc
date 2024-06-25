@@ -16,7 +16,7 @@
     "build:plugins": "pnpm -r --filter './packages/plugins/**' build",
     "build:docs": "pnpm -r --filter '@magidoc/docs' build",
     "test": "run-s test:*",
-    "test:lint": "biome",
+    "test:lint": "biome check",
     "test:unit": "pnpm -r run test",
     "fix": "run-p fix:*",
     "fix:lint": "biome format --write",

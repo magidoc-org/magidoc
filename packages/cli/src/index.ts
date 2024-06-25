@@ -1,13 +1,13 @@
 #! /usr/bin/env node
 
 import { Command } from 'commander'
-import buildGenerateCommand from './commands/generate/command'
-import buildEjectCommand from './commands/eject/command'
-import buildPreviewCommand from './commands/preview/command'
-import { getVersion } from './version'
-import type { MagidocConfiguration } from './config/types'
 import buildDevCommand from './commands/dev/command'
+import buildEjectCommand from './commands/eject/command'
+import buildGenerateCommand from './commands/generate/command'
+import buildPreviewCommand from './commands/preview/command'
+import type { MagidocConfiguration } from './config/types'
 import { loadMarkdownPagesTree } from './utils/pages'
+import { getVersion } from './version'
 
 const version = getVersion()
 const program = new Command()

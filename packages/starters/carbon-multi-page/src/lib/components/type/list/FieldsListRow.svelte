@@ -15,7 +15,7 @@ import LocationSpecificDescription from './LocationSpecificDescription.svelte'
 
 export let item: FieldWithPossibleDescriptions
 
-var showArguments = false
+let showArguments = false
 </script>
 
 <StructuredListRow>

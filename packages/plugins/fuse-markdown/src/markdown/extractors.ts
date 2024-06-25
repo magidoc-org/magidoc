@@ -1,5 +1,5 @@
-import type { ExtractFunction, TextExtractor } from './extract'
 import type { Token, Tokens } from 'marked'
+import type { ExtractFunction, TextExtractor } from './extract'
 
 export function defaultExtractors(): Record<Token['type'], TextExtractor> {
   return {

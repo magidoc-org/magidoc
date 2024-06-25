@@ -20,7 +20,7 @@ describe('move output', () => {
     it('should move the temporary directory to the target output location', async () => {
       const task = moveOutputTask(defaultConfig)
       await task.executor(ctx, taskWrapperMock())
-      expect(moveOutputBuild).toHaveBeenCalledWith(ctx.tmpDirectory.path + '/build', defaultConfig.website.output)
+      expect(moveOutputBuild).toHaveBeenCalledWith(`${ctx.tmpDirectory.path}/build`, defaultConfig.website.output)
     })
   })
 })

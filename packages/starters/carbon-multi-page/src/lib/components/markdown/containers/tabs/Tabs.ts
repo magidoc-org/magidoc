@@ -1,5 +1,5 @@
-import type { Token, Tokens } from 'marked'
 import type { TokenExtractionParameters } from '@magidoc/plugin-svelte-marked'
+import type { Token, Tokens } from 'marked'
 
 export type MarkdownTab = {
   title: string

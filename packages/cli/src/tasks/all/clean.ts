@@ -1,7 +1,7 @@
-import type { Task } from '../runner'
 import type { WebsiteConfiguration } from '../../config/types'
 import { isTemplate } from '../../template'
 import type { TmpLocation } from '../../template/tmp'
+import type { Task } from '../runner'
 
 type Config = {
   clean: boolean

@@ -1,5 +1,5 @@
-import type { Tokens, Lexer, TokensList, Token } from 'marked'
 import type Slugger from 'github-slugger'
+import type { Lexer, Token, Tokens, TokensList } from 'marked'
 
 /**
  * A markdown header

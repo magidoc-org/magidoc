@@ -1,8 +1,8 @@
-import type { Task } from '../runner'
+import type { WebsiteConfiguration } from '../../config/types'
 import { isTemplate } from '../../template'
 import type { TmpLocation } from '../../template/tmp'
 import { unzipTemplate } from '../../template/unzip'
-import type { WebsiteConfiguration } from '../../config/types'
+import type { Task } from '../runner'
 
 type Config = {
   website: Pick<WebsiteConfiguration, 'template'>
@@ -15,7 +15,7 @@ type Ctx = {
 
 export function unzipTemplateTask<T extends Ctx>(config: Config): Task<T> {
   return {
-    title: `Unzip template`,
+    title: 'Unzip template',
     enabled: isTemplate(config.website.template),
     executor: async (ctx, task) => {
       if (await ctx.tmpDirectory.exists()) {

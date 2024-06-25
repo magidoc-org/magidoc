@@ -1,7 +1,7 @@
-import queryGraphQLSchema from '../../src/schema/query'
+import { type IntrospectionQuery, buildClientSchema, getIntrospectionQuery } from 'graphql'
 import nock from 'nock'
-import { buildClientSchema, getIntrospectionQuery, type IntrospectionQuery } from 'graphql'
-import { describe, beforeEach, it, expect } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
+import queryGraphQLSchema from '../../src/schema/query'
 import { getSample } from './utils'
 
 const basePath = 'https://what-the-test.com'

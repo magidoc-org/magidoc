@@ -1,6 +1,6 @@
 import glob from 'fast-glob'
-import { buildSchema, type GraphQLSchema } from 'graphql'
 import { readFile } from 'fs/promises'
+import { type GraphQLSchema, buildSchema } from 'graphql'
 
 export type Parameters = {
   globPaths: string[]
@@ -19,7 +19,7 @@ export async function parseGraphqlSchema(options: Parameters): Promise<GraphQLSc
 }
 
 async function readFullSchema(globPaths: string[]): Promise<string> {
-  const paths = new Set((await Promise.all(globPaths.map((path) => readGlobPaths(path)))).flatMap((it) => it))
+  const paths = new Set((await Promise.all(globPaths.map((path) => readGlobPaths(path)))).flat())
 
   if (paths.size === 0) {
     throw new Error(

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { getOrDefault } from '$lib/variables'
-import { templates, type ExternalLink } from '@magidoc/plugin-starter-variables'
+import { type ExternalLink, templates } from '@magidoc/plugin-starter-variables'
 import { HeaderGlobalAction } from 'carbon-components-svelte'
 import { computeIcon } from './links'
 

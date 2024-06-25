@@ -1,4 +1,4 @@
-import type { Tokens, Lexer, TokenizerExtension } from 'marked'
+import type { Lexer, TokenizerExtension, Tokens } from 'marked'
 
 export type ContainerOptions = Record<string, boolean | string>
 
@@ -73,7 +73,7 @@ export default function (tokensExtractor: TokenExtractor): TokenizerExtension {
         lexer: this.lexer,
       })
 
-      if (result && result.tokens) {
+      if (result?.tokens) {
         this.lexer.blockTokens(content, result.tokens)
       }
 

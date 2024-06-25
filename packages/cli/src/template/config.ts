@@ -1,5 +1,5 @@
-import type { Variable } from '@magidoc/plugin-starter-variables'
 import { pathToFileURL } from 'url'
+import type { Variable } from '@magidoc/plugin-starter-variables'
 import z from 'zod'
 import { formatZodIssues } from '../config/zod'
 

@@ -1,13 +1,10 @@
 import type Slugger from 'github-slugger'
 
 export function joinUrlPaths(...paths: string[]): string {
-  return (
-    '/' +
-    paths
-      .flatMap((path) => path.split('/'))
-      .filter((path) => !!path)
-      .join('/')
-  )
+  return `/${paths
+    .flatMap((path) => path.split('/'))
+    .filter((path) => !!path)
+    .join('/')}`
 }
 
 export function isRelative(url: string): boolean {

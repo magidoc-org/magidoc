@@ -19,31 +19,19 @@ import {
 export function computeIcon(link: ExternalLink) {
   const lowerKind = link.kind?.toLocaleLowerCase() || link.label.toLocaleLowerCase()
 
-  if (lowerKind.includes('github')) {
-    return LogoGithub
-  } else if (lowerKind.includes('linkedin')) {
-    return LogoLinkedin
-  } else if (lowerKind.includes('twitter')) {
-    return LogoTwitter
-  } else if (lowerKind.includes('tumblr')) {
-    return LogoTumblr
-  } else if (lowerKind.includes('instagram')) {
-    return LogoInstagram
-  } else if (lowerKind.includes('facebook')) {
-    return LogoFacebook
-  } else if (lowerKind.includes('youtube')) {
-    return LogoYoutube
-  } else if (lowerKind.includes('discord')) {
-    return LogoDiscord
-  } else if (lowerKind.includes('medium')) {
-    return LogoMedium
-  } else if (lowerKind.includes('slack')) {
-    return LogoSlack
-  } else if (lowerKind.includes('article') || lowerKind.includes('blog')) {
-    return Blog
-  } else if (lowerKind.includes('carbon')) {
-    return Carbon
-  } else if (
+  if (lowerKind.includes('github')) return LogoGithub
+  if (lowerKind.includes('linkedin')) return LogoLinkedin
+  if (lowerKind.includes('twitter')) return LogoTwitter
+  if (lowerKind.includes('tumblr')) return LogoTumblr
+  if (lowerKind.includes('instagram')) return LogoInstagram
+  if (lowerKind.includes('facebook')) return LogoFacebook
+  if (lowerKind.includes('youtube')) return LogoYoutube
+  if (lowerKind.includes('discord')) return LogoDiscord
+  if (lowerKind.includes('medium')) return LogoMedium
+  if (lowerKind.includes('slack')) return LogoSlack
+  if (lowerKind.includes('article') || lowerKind.includes('blog')) return Blog
+  if (lowerKind.includes('carbon')) return Carbon
+  if (
     lowerKind.includes('playground') ||
     lowerKind.includes('graphiql') ||
     lowerKind.includes('demo') ||

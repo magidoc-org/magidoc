@@ -1,6 +1,6 @@
 import { templates } from '@magidoc/plugin-starter-variables'
-import { getOrDefault, getSiteRoot } from './variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
+import { getOrDefault, getSiteRoot } from './variables'
 
 export const DEFAULT_LOGO = 'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_horizontal.png'
 

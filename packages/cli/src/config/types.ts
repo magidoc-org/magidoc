@@ -1,8 +1,8 @@
+import path from 'path'
 import z from 'zod'
+import { isDirectory } from '../commands/utils/fileUtils'
 import { AVAILABLE_TEMPLATES } from '../template'
 import { getVersion } from '../version'
-import path from 'path'
-import { isDirectory } from '../commands/utils/fileUtils'
 
 const ZPath = z
   .string()

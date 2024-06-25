@@ -1,5 +1,4 @@
 import { templates } from '@magidoc/plugin-starter-variables'
-import { executeAllTasks } from '../../tasks/runner'
 import { cleanTask } from '../../tasks/all/clean'
 import { copyStaticAssetsTask } from '../../tasks/all/copyStaticAssets'
 import { determineTmpDirectoryTask } from '../../tasks/all/determineTmpDir'
@@ -11,12 +10,13 @@ import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'
 import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { warnVersionTask } from '../../tasks/all/warnVersion'
 import { writeEnvFileTask } from '../../tasks/all/writeEnvFile'
+import { executeAllTasks } from '../../tasks/runner'
 import type { GenerateTaskContext, GenerationConfig } from '../generate'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
-import { cyan } from '../utils/outputColors'
-import { watchFiles } from '../utils/watch'
 import { printInfo, printSeparator } from '../utils/log'
+import { cyan } from '../utils/outputColors'
 import { getPortAvailability } from '../utils/port'
+import { watchFiles } from '../utils/watch'
 
 export type DevConfig = GenerationConfig & {
   host: string

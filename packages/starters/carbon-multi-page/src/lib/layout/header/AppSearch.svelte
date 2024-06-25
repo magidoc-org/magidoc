@@ -1,5 +1,5 @@
 <script lang="ts">
-import { search, type MagidocSearchResult } from '$lib/search'
+import { type MagidocSearchResult, search } from '$lib/search'
 
 import { Modal, Search } from 'carbon-components-svelte'
 import AppSearchResult from './search/AppSearchResult.svelte'

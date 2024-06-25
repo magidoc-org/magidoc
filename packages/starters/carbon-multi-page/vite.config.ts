@@ -1,9 +1,10 @@
-import { sveltekit } from '@sveltejs/kit/vite'
-import { parseGraphQLSchema } from '@magidoc/rollup-plugin-gql-schema'
-import { magidoc } from '@magidoc/plugin-starter-variables'
-import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 import fs from 'fs'
-import { defineConfig, type HmrContext } from 'vite'
+import { magidoc } from '@magidoc/plugin-starter-variables'
+import { parseGraphQLSchema } from '@magidoc/rollup-plugin-gql-schema'
+import { sveltekit } from '@sveltejs/kit/vite'
+import { type HmrContext, defineConfig } from 'vite'
+// @ts-ignore
+import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 
 const variables = loadVariables()
 
