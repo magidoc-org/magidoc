@@ -132,7 +132,6 @@ function getRedirectLocation(): Promise<string | undefined> {
         },
       )
       .on('error', (error) => {
-        console.log('NANI WHAT', error)
         reject(error)
       })
   })

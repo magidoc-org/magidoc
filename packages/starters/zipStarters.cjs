@@ -60,6 +60,7 @@ async function zipStarter(starterDirectory) {
   })
 
   output.on('close', () => {
+    // biome-ignore lint/suspicious/noConsoleLog: Okay here
     console.log(`Wrote ${archive.pointer()} total bytes to ${outputPath}`)
   })
 

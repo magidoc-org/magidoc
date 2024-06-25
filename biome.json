@@ -35,6 +35,9 @@
       },
       "performance": {
         "noAccumulatingSpread": "off"
+      },
+      "suspicious": {
+        "noConsoleLog": "error"
       }
     },
     "ignore": [
@@ -70,6 +73,16 @@
         "rules": {
           "style": {
             "useConst": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["packages/cli/src/commands/utils/log.ts"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsoleLog": "off"
           }
         }
       }
