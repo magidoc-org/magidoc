@@ -11,15 +11,9 @@ export type NotificationToken = Tokens.Generic & {
   tokens: Token[]
 }
 
-export function parseNotification({
-  options,
-  raw,
-}: TokenExtractionParameters): NotificationToken {
-  const typeOption =
-    options['type']?.toString()?.toLocaleLowerCase()?.trim() ?? 'info'
-  const style: NotificationStyle = notificationStyles.some(
-    (it) => it === typeOption,
-  )
+export function parseNotification({ options, raw }: TokenExtractionParameters): NotificationToken {
+  const typeOption = options['type']?.toString()?.toLocaleLowerCase()?.trim() ?? 'info'
+  const style: NotificationStyle = notificationStyles.some((it) => it === typeOption)
     ? (typeOption as NotificationStyle)
     : 'info'
 

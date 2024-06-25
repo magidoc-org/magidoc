@@ -1,10 +1,4 @@
-import {
-  type GraphQLType,
-  type GraphQLNamedType,
-  getNamedType,
-  isNonNullType,
-  isListType,
-} from 'graphql'
+import { type GraphQLType, type GraphQLNamedType, getNamedType, isNonNullType, isListType } from 'graphql'
 
 export function unwrapType(type: GraphQLType): GraphQLNamedType {
   return getNamedType(type)

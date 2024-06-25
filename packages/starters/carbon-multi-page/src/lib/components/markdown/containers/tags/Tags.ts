@@ -28,14 +28,8 @@ export type TagsToken = Tokens.Generic & {
   raw: string
 }
 
-export function parseTags({
-  options,
-  raw,
-  content,
-}: TokenExtractionParameters): TagsToken {
-  const colorsOption = (options['colors'] ?? options['color'] ?? 'outline')
-    .toString()
-    .toLocaleLowerCase()
+export function parseTags({ options, raw, content }: TokenExtractionParameters): TagsToken {
+  const colorsOption = (options['colors'] ?? options['color'] ?? 'outline').toString().toLocaleLowerCase()
 
   const colors = colorsOption
     .split(',')

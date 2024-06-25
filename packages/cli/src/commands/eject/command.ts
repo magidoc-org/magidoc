@@ -4,10 +4,7 @@ import { AVAILABLE_TEMPLATES, type Template } from '../../template'
 import { getVersion } from '../../version'
 import path from 'path'
 import { withStacktrace } from '../utils/withStacktrace'
-import {
-  type PackageManagerType,
-  PACKAGE_MANAGER_TYPES,
-} from '../../node/packageManager'
+import { type PackageManagerType, PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
 
 type EjectCommandOptions = {
   template: Template
@@ -37,45 +34,28 @@ export default function buildEjectCommand(program: Command) {
         'The target version of the template to use. Defaults to the current CLI version.',
       ).default(getVersion()),
     )
-    .option(
-      '-d|--destination <directory>',
-      'Specifies the destination directory of the project',
-      './template',
-    )
+    .option('-d|--destination <directory>', 'Specifies the destination directory of the project', './template')
     .addOption(
-      new Option(
-        '-p|--package-manager <type>',
-        'Selects a different Package Manager. Pnpm is the recommended default.',
-      )
+      new Option('-p|--package-manager <type>', 'Selects a different Package Manager. Pnpm is the recommended default.')
         .default('pnpm')
         .choices(PACKAGE_MANAGER_TYPES),
     )
     .addOption(STACKTRACE_OPTION())
-    .action(
-      async ({
-        packageManager,
-        template,
-        templateVersion,
-        destination,
-        stacktrace,
-      }: EjectCommandOptions) => {
-        await withStacktrace(stacktrace, async () => {
-          await eject({
-            packageManager,
-            website: {
-              template,
-              templateVersion,
-            },
-            destination: path.resolve(destination),
-          })
-
-          printSeparator()
-
-          printInfo(
-            `Template ${cyan(template)} created at ${cyan(destination)}`,
-          )
-          printLine()
+    .action(async ({ packageManager, template, templateVersion, destination, stacktrace }: EjectCommandOptions) => {
+      await withStacktrace(stacktrace, async () => {
+        await eject({
+          packageManager,
+          website: {
+            template,
+            templateVersion,
+          },
+          destination: path.resolve(destination),
         })
-      },
-    )
+
+        printSeparator()
+
+        printInfo(`Template ${cyan(template)} created at ${cyan(destination)}`)
+        printLine()
+      })
+    })
 }

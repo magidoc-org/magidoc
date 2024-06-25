@@ -50,9 +50,7 @@ describe('fetch template', () => {
         const wrapper = taskWrapperMock()
         const task = fetchTemplateTask(defaultConfig)
         await task.executor(ctx, wrapper)
-        expect(wrapper.skip).toHaveBeenCalledWith(
-          'Template already downloaded.',
-        )
+        expect(wrapper.skip).toHaveBeenCalledWith('Template already downloaded.')
       })
     })
 

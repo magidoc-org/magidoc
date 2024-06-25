@@ -1,10 +1,6 @@
 import minify from 'graphql-query-compress'
 import { gql, prettify } from '../../../src/formatter/query'
-import {
-  mutationBuilder,
-  queryBuilder,
-  subSelectionBuilder,
-} from '../../../src/generator/builder/queryBuilder'
+import { mutationBuilder, queryBuilder, subSelectionBuilder } from '../../../src/generator/builder/queryBuilder'
 import { describe, it, expect } from 'vitest'
 
 describe('building a query', () => {
@@ -22,10 +18,7 @@ describe('building a query', () => {
     })
 
     describe('naming the query', async () => {
-      const result = await underTest
-        .withField('field', [])
-        .withName('Test')
-        .build()
+      const result = await underTest.withField('field', []).withName('Test').build()
 
       it('should add the name to the query', async () => {
         await assertGraphQLQueryEqual(
@@ -299,7 +292,5 @@ describe('building a mutation', async () => {
 })
 
 async function assertGraphQLQueryEqual(actual: string, expected: string) {
-  expect(await prettify(minify(actual))).toEqual(
-    await prettify(minify(expected)),
-  )
+  expect(await prettify(minify(actual))).toEqual(await prettify(minify(expected)))
 }

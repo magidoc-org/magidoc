@@ -12,10 +12,7 @@ export type PortUnavailable = {
 
 export type PortAvailability = PortAvailable | PortUnavailable
 
-export function getPortAvailability(
-  host: string,
-  port: number,
-): Promise<PortAvailability> {
+export function getPortAvailability(host: string, port: number): Promise<PortAvailability> {
   return new Promise((resolves) => {
     const server = net.createServer()
     const onError = (err: Error & { code: string | undefined }) => {

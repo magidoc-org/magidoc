@@ -7,11 +7,7 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "keywords": [
-    "node",
-    "magidoc",
-    "internal"
-  ],
+  "keywords": ["node", "magidoc", "internal"],
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",
@@ -40,7 +36,5 @@
   "optionalDependencies": {
     "zod": "^3.23.6"
   },
-  "files": [
-    "build"
-  ]
+  "files": ["build"]
 }

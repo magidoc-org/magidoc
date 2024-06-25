@@ -1,8 +1,6 @@
 import type { Converter } from '../variable'
 
-export function enumConverter<V extends string>(
-  values: [V, ...V[]],
-): Converter<V> {
+export function enumConverter<V extends string>(values: [V, ...V[]]): Converter<V> {
   return {
     convert: (target) => {
       if (target === null || target === undefined) {

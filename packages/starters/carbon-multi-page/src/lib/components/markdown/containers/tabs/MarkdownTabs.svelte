@@ -1,16 +1,12 @@
 <script lang="ts">
-  import {
-    MarkdownTokens,
-    type MarkdownOptions,
-    type Renderers,
-  } from '@magidoc/plugin-svelte-marked'
+import { MarkdownTokens, type MarkdownOptions, type Renderers } from '@magidoc/plugin-svelte-marked'
 
-  import { Tab, TabContent, Tabs } from 'carbon-components-svelte'
-  import type { TabsToken } from './Tabs'
+import { Tab, TabContent, Tabs } from 'carbon-components-svelte'
+import type { TabsToken } from './Tabs'
 
-  export let token: TabsToken
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+export let token: TabsToken
+export let options: MarkdownOptions
+export let renderers: Renderers
 </script>
 
 <Tabs autoWidth>

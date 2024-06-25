@@ -25,9 +25,7 @@ export type TokenExtractionParameters = {
   lexer: Lexer
 }
 
-export type TokenExtractor = (
-  params: TokenExtractionParameters,
-) => Tokens.Generic | null
+export type TokenExtractor = (params: TokenExtractionParameters) => Tokens.Generic | null
 
 /**
  * Container extension is a marked extension that parses a block of text surrounded by :::
@@ -58,8 +56,7 @@ export default function (tokensExtractor: TokenExtractor): TokenizerExtension {
       return src.match(/^:::[^:\n]/)?.index
     },
     tokenizer(src: string): Tokens.Generic {
-      const rule =
-        /^:::[\s]?(?<type>[a-z0-9-]+)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
+      const rule = /^:::[\s]?(?<type>[a-z0-9-]+)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
 
       const match = rule.exec(findRawContainer(src))
       if (!match || !match.groups) return null

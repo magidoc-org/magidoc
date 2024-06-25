@@ -1,7 +1,4 @@
-import {
-  toVariablesFile,
-  type Variable,
-} from '@magidoc/plugin-starter-variables'
+import { toVariablesFile, type Variable } from '@magidoc/plugin-starter-variables'
 import templates from '@magidoc/plugin-starter-variables/build/variables/templates'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { writeFile } from 'fs/promises'
@@ -40,14 +37,8 @@ describe('writing environment file', () => {
     it('write the variables to the target file', async () => {
       const task = writeEnvFileTask(config)
       await task.executor(ctx, taskWrapperMock())
-      expect(writeFile).toHaveBeenCalledWith(
-        ctx.templateConfiguration.envFileLocation,
-        serializedVariables,
-      )
-      expect(toVariablesFile).toHaveBeenCalledWith(
-        config.website.options,
-        ctx.templateConfiguration.supportedOptions,
-      )
+      expect(writeFile).toHaveBeenCalledWith(ctx.templateConfiguration.envFileLocation, serializedVariables)
+      expect(toVariablesFile).toHaveBeenCalledWith(config.website.options, ctx.templateConfiguration.supportedOptions)
     })
   })
 })

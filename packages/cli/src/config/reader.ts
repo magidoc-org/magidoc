@@ -8,9 +8,7 @@ const allowedExtensions = ['.js', '.cjs', '.mjs']
 
 let timesLoaded = 0
 
-export async function readConfiguration(
-  configPath: string,
-): Promise<MagidocConfiguration> {
+export async function readConfiguration(configPath: string): Promise<MagidocConfiguration> {
   timesLoaded++
 
   const extension = path.extname(configPath)
@@ -21,14 +19,11 @@ export async function readConfiguration(
   }
 
   if (!existsSync(configPath)) {
-    throw new Error(
-      `Could not find Magidoc configuration file at path ${configPath}.`,
-    )
+    throw new Error(`Could not find Magidoc configuration file at path ${configPath}.`)
   }
 
   // This is a hack to force NodeJS to ignore the cache
-  const realPath =
-    pathToFileURL(configPath).toString() + `?query=${timesLoaded}`
+  const realPath = pathToFileURL(configPath).toString() + `?query=${timesLoaded}`
 
   const config = (
     (await import(realPath)) as {

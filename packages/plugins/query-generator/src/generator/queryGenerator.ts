@@ -1,11 +1,7 @@
 import _ from 'lodash'
 
 import type { GraphQLQuery } from '../models/query'
-import {
-  type QueryGeneratorConfig,
-  NullGenerationStrategy,
-  type ResponseGenerationConfig,
-} from './config'
+import { type QueryGeneratorConfig, NullGenerationStrategy, type ResponseGenerationConfig } from './config'
 import {
   type GraphQLField,
   type GraphQLType,
@@ -21,13 +17,7 @@ import {
 } from 'graphql'
 import { unwrapType } from './extractor'
 import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
-import {
-  type Parameter,
-  QueryBuilder,
-  queryBuilder,
-  QueryType,
-  subSelectionBuilder,
-} from './builder/queryBuilder'
+import { type Parameter, QueryBuilder, queryBuilder, QueryType, subSelectionBuilder } from './builder/queryBuilder'
 import {
   fieldResponseBuilder,
   subObjectResponseBuilder,
@@ -67,10 +57,7 @@ export async function generateGraphQLQuery(
     return null
   }
 
-  return await resultBuilder
-    .withType(mergedConfig.queryType)
-    .withName(mergedConfig.queryName)
-    .build()
+  return await resultBuilder.withType(mergedConfig.queryType).withName(mergedConfig.queryName).build()
 }
 
 export function generateGraphQLResponse(
@@ -96,11 +83,7 @@ function buildField(
   config: QueryGeneratorConfig,
   context: GenerationContext,
 ): QueryBuilder {
-  const parameters: ReadonlyArray<Parameter> = generateArgsForField(
-    field,
-    config,
-    context,
-  )
+  const parameters: ReadonlyArray<Parameter> = generateArgsForField(field, config, context)
 
   const type = unwrapType(field.type)
   const isLeafField = isLeafType(type)
@@ -202,10 +185,7 @@ function generateResponse(
     return null
   }
 
-  if (
-    isNullableType(type) &&
-    config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL
-  ) {
+  if (isNullableType(type) && config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL) {
     return valueResponseBuilder(null)
   }
 
@@ -242,26 +222,18 @@ function generateResponse(
 
     if (isUnionType(target)) {
       target = target.getTypes()[0]
-      builder = builder.withField(
-        '__typename',
-        valueResponseBuilder(target.name),
-      )
+      builder = builder.withField('__typename', valueResponseBuilder(target.name))
     }
 
     const resultBuilder = _.reduce(
       target.getFields(),
       (acc, current) => {
-        const subSelection = generateResponse(
-          current.name,
-          current.type,
-          config,
-          {
-            ...context,
-            parentType: target,
-            path: `${context.path}.${current.name}`,
-            depth: context.depth + 1,
-          },
-        )
+        const subSelection = generateResponse(current.name, current.type, config, {
+          ...context,
+          parentType: target,
+          path: `${context.path}.${current.name}`,
+          depth: context.depth + 1,
+        })
 
         if (subSelection === null) {
           return acc

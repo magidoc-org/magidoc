@@ -47,7 +47,7 @@ export default {
 
             Head to the docs to learn how to [generate your own static GraphQL documentation website](https://magidoc.js.org/introduction/welcome)!
           `,
-        }
+        },
       ],
     },
   },

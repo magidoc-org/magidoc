@@ -131,9 +131,7 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = withVariants(
   }),
 )
 
-function withVariants(
-  record: Record<string, GraphQLFactory>,
-): Record<string, GraphQLFactory> {
+function withVariants(record: Record<string, GraphQLFactory>): Record<string, GraphQLFactory> {
   return {
     ..._.reduce(
       record,
@@ -150,9 +148,7 @@ function withVariants(
   }
 }
 
-function withAliases(
-  record: Record<string, GraphQLFactory>,
-): Record<string, GraphQLFactory> {
+function withAliases(record: Record<string, GraphQLFactory>): Record<string, GraphQLFactory> {
   return {
     ...record,
     Instant: record['DateTime'],

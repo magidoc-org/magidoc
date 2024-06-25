@@ -27,10 +27,7 @@ import {
 } from '../result'
 import { getDescription } from './description'
 
-export function asTypeSearchResult(
-  type: GraphQLNamedType,
-  options: MarkdownOptions,
-): TypeSearchResult {
+export function asTypeSearchResult(type: GraphQLNamedType, options: MarkdownOptions): TypeSearchResult {
   if (isEnumType(type)) {
     return asEnumSearchResult(type, options)
   } else if (isObjectType(type)) {
@@ -50,10 +47,7 @@ export function asTypeSearchResult(
   )
 }
 
-function asInputObjectType(
-  target: GraphQLInputObjectType,
-  options: MarkdownOptions,
-): InputObjectSearchResult {
+function asInputObjectType(target: GraphQLInputObjectType, options: MarkdownOptions): InputObjectSearchResult {
   return {
     type: SearchResultType.TYPE,
     graphqlType: GraphQLType.INPUT_OBJECT,
@@ -65,10 +59,7 @@ function asInputObjectType(
     })),
   }
 }
-function asUnionSearchResult(
-  target: GraphQLUnionType,
-  options: MarkdownOptions,
-): UnionSearchResult {
+function asUnionSearchResult(target: GraphQLUnionType, options: MarkdownOptions): UnionSearchResult {
   return {
     type: SearchResultType.TYPE,
     graphqlType: GraphQLType.UNION,
@@ -76,10 +67,7 @@ function asUnionSearchResult(
     description: getDescription(target, options),
   }
 }
-function asScalarSearchResult(
-  target: GraphQLScalarType,
-  options: MarkdownOptions,
-): ScalarSearchResult {
+function asScalarSearchResult(target: GraphQLScalarType, options: MarkdownOptions): ScalarSearchResult {
   return {
     type: SearchResultType.TYPE,
     graphqlType: GraphQLType.SCALAR,
@@ -108,10 +96,7 @@ function asObjectSearchResult(
   }
 }
 
-function asEnumSearchResult(
-  target: GraphQLEnumType,
-  options: MarkdownOptions,
-): EnumSearchResult {
+function asEnumSearchResult(target: GraphQLEnumType, options: MarkdownOptions): EnumSearchResult {
   return {
     name: target.name,
     description: getDescription(target, options),

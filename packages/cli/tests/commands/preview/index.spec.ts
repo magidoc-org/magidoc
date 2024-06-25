@@ -136,23 +136,15 @@ function getRedirectLocation(): Promise<string | undefined> {
 }
 
 function expectedIndex(): string {
-  return fs
-    .readFileSync(path.join(currentPath(), 'fake-output', 'index.html'))
-    .toString()
+  return fs.readFileSync(path.join(currentPath(), 'fake-output', 'index.html')).toString()
 }
 
 function expectedOtherHtml(): string {
-  return fs
-    .readFileSync(path.join(currentPath(), 'fake-output', 'other.html'))
-    .toString()
+  return fs.readFileSync(path.join(currentPath(), 'fake-output', 'other.html')).toString()
 }
 
 function expectedAsset(): string {
-  return fs
-    .readFileSync(
-      path.join(currentPath(), 'fake-output', 'directory', 'asset.css'),
-    )
-    .toString()
+  return fs.readFileSync(path.join(currentPath(), 'fake-output', 'directory', 'asset.css')).toString()
 }
 
 function fakeOutputLocation(): string {

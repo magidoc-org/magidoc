@@ -4,11 +4,7 @@ import Fuse, { type IFuseOptions } from 'fuse.js'
 import type { GraphQLObjectType, GraphQLSchema } from 'graphql'
 import { asQueryResult } from './graphql/queries'
 import { asTypeSearchResult } from './graphql/types'
-import {
-  type QuerySearchResult,
-  type SearchResult,
-  SearchResultType,
-} from './result'
+import { type QuerySearchResult, type SearchResult, SearchResultType } from './result'
 
 export type IndexingOptions = {
   /**
@@ -78,40 +74,18 @@ export function defaultFuseOptions(): IFuseOptions<SearchResult> {
   }
 }
 
-export function index(
-  schema: GraphQLSchema,
-  options?: IndexingOptions,
-): Fuse<SearchResult> {
+export function index(schema: GraphQLSchema, options?: IndexingOptions): Fuse<SearchResult> {
   const fuse = options?.fuse ?? new Fuse<SearchResult>([], defaultFuseOptions())
   const markdownOptions = mergeMarkdownOptions(options?.markdown)
-  indexAllFieldsOf(
-    SearchResultType.QUERY,
-    schema.getQueryType(),
-    fuse,
-    markdownOptions,
-  )
-  indexAllFieldsOf(
-    SearchResultType.MUTATION,
-    schema.getMutationType(),
-    fuse,
-    markdownOptions,
-  )
-  indexAllFieldsOf(
-    SearchResultType.SUBSCRIPTION,
-    schema.getSubscriptionType(),
-    fuse,
-    markdownOptions,
-  )
+  indexAllFieldsOf(SearchResultType.QUERY, schema.getQueryType(), fuse, markdownOptions)
+  indexAllFieldsOf(SearchResultType.MUTATION, schema.getMutationType(), fuse, markdownOptions)
+  indexAllFieldsOf(SearchResultType.SUBSCRIPTION, schema.getSubscriptionType(), fuse, markdownOptions)
 
   indexAllTypes(schema, fuse, markdownOptions)
   return fuse
 }
 
-function indexAllTypes(
-  schema: GraphQLSchema,
-  fuse: Fuse<SearchResult>,
-  markdownOptions: MarkdownOptions,
-) {
+function indexAllTypes(schema: GraphQLSchema, fuse: Fuse<SearchResult>, markdownOptions: MarkdownOptions) {
   Object.values(schema.getTypeMap()).forEach((type) => {
     if (
       type === schema.getQueryType() ||

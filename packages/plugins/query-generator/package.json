@@ -7,13 +7,7 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "keywords": [
-    "graphql",
-    "query",
-    "generator",
-    "node",
-    "browser"
-  ],
+  "keywords": ["graphql", "query", "generator", "node", "browser"],
   "homepage": "https://magidoc.js.org/plugins/graphql-query-generator",
   "repository": {
     "type": "git",
@@ -46,7 +40,5 @@
   "peerDependencies": {
     "graphql": "^16.8.1"
   },
-  "files": [
-    "build"
-  ]
+  "files": ["build"]
 }

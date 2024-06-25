@@ -38,29 +38,14 @@ export default {
     'CUSTOM_STYLES',
     arrayConverter((zod) => zod.string()),
   ),
-  FIELDS_SORTING: createVariable<FieldSorting>(
-    'FIELDS_SORTING',
-    enumConverter(['default', 'alphabetical']),
-  ),
-  ARGUMENTS_SORTING: createVariable<ArgumentSorting>(
-    'ARGUMENTS_SORTING',
-    enumConverter(['default', 'alphabetical']),
-  ),
+  FIELDS_SORTING: createVariable<FieldSorting>('FIELDS_SORTING', enumConverter(['default', 'alphabetical'])),
+  ARGUMENTS_SORTING: createVariable<ArgumentSorting>('ARGUMENTS_SORTING', enumConverter(['default', 'alphabetical'])),
   QUERY_GENERATION_FACTORIES: createVariable<
-    Record<
-      string,
-      string | boolean | number | Record<string, unknown> | null | undefined
-    >
+    Record<string, string | boolean | number | Record<string, unknown> | null | undefined>
   >(
     'QUERY_GENERATION_FACTORIES',
     recordConverter((zod) =>
-      zod.union([
-        zod.string(),
-        zod.boolean(),
-        zod.number(),
-        zod.null(),
-        zod.record(zod.unknown()),
-      ]),
+      zod.union([zod.string(), zod.boolean(), zod.number(), zod.null(), zod.record(zod.unknown())]),
     ),
   ),
   PAGES: createVariable<Array<Page | undefined>>(
@@ -81,9 +66,7 @@ export default {
       return zod.object({
         label: zod.string().min(1),
         href: zod.string().min(1),
-        position: zod
-          .union([zod.literal('header'), zod.literal('navigation')])
-          .optional(),
+        position: zod.union([zod.literal('header'), zod.literal('navigation')]).optional(),
         kind: zod.string().min(1).optional(),
         group: zod.string().min(1).optional(),
       })

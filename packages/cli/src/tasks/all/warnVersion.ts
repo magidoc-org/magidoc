@@ -11,9 +11,7 @@ type Config = {
 export function warnVersionTask<T>(config: Config): Task<T> {
   return {
     title: `Template version warning`,
-    enabled:
-      isTemplate(config.website.template) &&
-      config.website.templateVersion !== getVersion(),
+    enabled: isTemplate(config.website.template) && config.website.templateVersion !== getVersion(),
     executor: (_, task) => {
       task.output(
         yellow(

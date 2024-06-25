@@ -14,9 +14,7 @@ describe('indexing graphql schema', () => {
   it('should return indexes', () => {
     const results = fuse.search('This is an indexed query.')
     const first = results[0]
-    expect(matches(first).flatMap((match) => match.indices)).toContainEqual([
-      0, 24,
-    ])
+    expect(matches(first).flatMap((match) => match.indices)).toContainEqual([0, 24])
   })
 
   describe('queries', () => {
@@ -386,12 +384,6 @@ function matches(result: FuseResult<SearchResult>): readonly FuseResultMatch[] {
 
 function getSchema(): GraphQLSchema {
   return buildSchema(
-    readFileSync(
-      path.join(
-        path.dirname(fileURLToPath(import.meta.url)),
-        '../schema.graphqls',
-      ),
-      'utf-8',
-    ),
+    readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../schema.graphqls'), 'utf-8'),
   )
 }

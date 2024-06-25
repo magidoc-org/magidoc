@@ -10,9 +10,7 @@ export function verifyDestinationAvailableTask<T>(config: Config): Task<T> {
     title: `Verifying destination directory`,
     executor: () => {
       if (existsSync(config.destination)) {
-        throw new Error(
-          `Destination directory '${config.destination}' already exists.`,
-        )
+        throw new Error(`Destination directory '${config.destination}' already exists.`)
       }
     },
   }

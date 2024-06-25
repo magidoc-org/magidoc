@@ -10,15 +10,12 @@ const config = {
     type: 'none',
   },
   website: {
-    template: fileURLToPath(
-      new URL('../packages/starters/carbon-multi-page', import.meta.url),
-    ),
+    template: fileURLToPath(new URL('../packages/starters/carbon-multi-page', import.meta.url)),
     output: fileURLToPath(new URL('./build', import.meta.url)),
     staticAssets: fileURLToPath(new URL('./assets', import.meta.url)),
     options: {
       appTitle: 'Magidoc',
-      appFavicon:
-        'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
+      appFavicon: 'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
       pages: pages,
       externalLinks: [
         {
@@ -52,8 +49,7 @@ const config = {
         },
       ],
       siteMeta: {
-        description:
-          'Fully featured, fast and highly customizable GraphQL static documentation website generator.',
+        description: 'Fully featured, fast and highly customizable GraphQL static documentation website generator.',
         'og:description':
           'Fully featured, fast and highly customizable GraphQL static documentation website generator.',
         keywords:
@@ -61,16 +57,12 @@ const config = {
         author: 'Magidoc-org',
         'og:title': 'Magidoc',
         'og:type': 'article',
-        'og:image':
-          'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
+        'og:image': 'https://raw.githubusercontent.com/magidoc-org/magidoc/main/logo/logo_full.png',
       },
     },
   },
   dev: {
-    watch: [
-      fileURLToPath(new URL('./pages', import.meta.url)),
-      fileURLToPath(new URL('./pages.mjs', import.meta.url)),
-    ],
+    watch: [fileURLToPath(new URL('./pages', import.meta.url)), fileURLToPath(new URL('./pages.mjs', import.meta.url))],
   },
 }
 

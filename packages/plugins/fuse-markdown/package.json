@@ -7,12 +7,7 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "keywords": [
-    "markdown",
-    "marked",
-    "fuse",
-    "magidoc"
-  ],
+  "keywords": ["markdown", "marked", "fuse", "magidoc"],
   "homepage": "https://magidoc-org.github.io/magidoc/plugins/fuse-markdown",
   "repository": {
     "type": "git",
@@ -44,7 +39,5 @@
   "peerDependencies": {
     "fuse.js": "^6.6.2"
   },
-  "files": [
-    "build"
-  ]
+  "files": ["build"]
 }

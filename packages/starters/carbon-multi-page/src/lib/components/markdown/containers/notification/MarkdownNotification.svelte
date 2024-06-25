@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { InlineNotification } from 'carbon-components-svelte'
-  import type { NotificationToken } from './Notification'
+import { InlineNotification } from 'carbon-components-svelte'
+import type { NotificationToken } from './Notification'
 
-  export let token: NotificationToken
+export let token: NotificationToken
 </script>
 
 <InlineNotification kind={token.style} lowContrast hideCloseButton>

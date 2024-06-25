@@ -4,9 +4,9 @@ const archiver = require('archiver')
 
 const basePath = __dirname
 
-const VERSION = process.env["VERSION"]
+const VERSION = process.env['VERSION']
 
-if(!VERSION) {
+if (!VERSION) {
   throw new Error('No VERSION environment variable was found')
 }
 
@@ -33,7 +33,7 @@ function getCleanedPackageJson(path) {
   let content = fs.readFileSync(path).toString()
 
   // Pnpm started using this syntax for workspace deps, and the deploy command does not fill out the package.json properly.
-  while(content.includes('"workspace:^"')) {
+  while (content.includes('"workspace:^"')) {
     content = content.replace('"workspace:^"', `"${VERSION}"`)
   }
 
@@ -51,10 +51,7 @@ function getCleanedPackageJson(path) {
 }
 
 async function zipStarter(starterDirectory) {
-  const outputPath = path.join(
-    path.dirname(starterDirectory),
-    `starter-${path.basename(starterDirectory)}.zip`,
-  )
+  const outputPath = path.join(path.dirname(starterDirectory), `starter-${path.basename(starterDirectory)}.zip`)
   fs.rmSync(outputPath, { force: true })
 
   const output = fs.createWriteStream(outputPath)
@@ -88,10 +85,7 @@ async function zipStarter(starterDirectory) {
     ignore: excludedPatterns.concat(['package.json']),
   })
 
-  archive.append(
-    getCleanedPackageJson(path.join(starterDirectory, 'package.json')),
-    { name: 'package.json' },
-  )
+  archive.append(getCleanedPackageJson(path.join(starterDirectory, 'package.json')), { name: 'package.json' })
 
   await archive.finalize()
 }

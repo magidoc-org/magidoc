@@ -7,12 +7,7 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "keywords": [
-    "graphql",
-    "graphql-schema",
-    "node",
-    "browser"
-  ],
+  "keywords": ["graphql", "graphql-schema", "node", "browser"],
   "homepage": "https://magidoc.js.org/plugins/reverse-schema-mapper",
   "repository": {
     "type": "git",
@@ -40,7 +35,5 @@
   "peerDependencies": {
     "graphql": "^16.8.1"
   },
-  "files": [
-    "build"
-  ]
+  "files": ["build"]
 }

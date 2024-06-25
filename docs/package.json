@@ -3,10 +3,7 @@
   "version": "5.0.3",
   "license": "MIT",
   "type": "module",
-  "keywords": [
-    "docs",
-    "magidoc"
-  ],
+  "keywords": ["docs", "magidoc"],
   "scripts": {
     "build": "run-s build:docs build:sitemap",
     "build:docs": "pnpm --filter @magidoc/cli execute generate --file $(pwd)/magidoc.mjs --stacktrace && pnpm build:sitemap",

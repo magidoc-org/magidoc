@@ -16,9 +16,7 @@ export function parseConfiguration(content: unknown): MagidocConfiguration {
 }
 
 function validateOptions(options: Record<string, unknown>): void | never {
-  const allOptionsByName = _.keyBy(Object.values(templates), (template) =>
-    String(template.name),
-  )
+  const allOptionsByName = _.keyBy(Object.values(templates), (template) => String(template.name))
   let issues: ZodIssue[] = []
   _.forEach(options, (value, key) => {
     const variable = allOptionsByName[key]
@@ -55,9 +53,5 @@ function throwConfigurationError(issues: ZodIssue[]): never {
   const formattedIssues = formatZodIssues(issues)
   const pluralIssue = issues.length > 1 ? 'issues' : 'issue'
   const issuesText = red(`${issues.length} ${pluralIssue}`)
-  throw new Error(
-    `${issuesText} found with the Magidoc configuration provided:\n${formattedIssues.join(
-      '\n',
-    )}`,
-  )
+  throw new Error(`${issuesText} found with the Magidoc configuration provided:\n${formattedIssues.join('\n')}`)
 }

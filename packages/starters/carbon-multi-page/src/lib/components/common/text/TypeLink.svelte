@@ -1,15 +1,10 @@
 <script lang="ts">
-  import { Link } from 'carbon-components-svelte'
-  import { urlUtils } from '@magidoc/plugin-svelte-marked'
-  import {
-    type GraphQLType,
-    isListType,
-    isNamedType,
-    isNonNullType,
-  } from 'graphql'
-  import { getSiteRoot } from '$lib/variables'
+import { Link } from 'carbon-components-svelte'
+import { urlUtils } from '@magidoc/plugin-svelte-marked'
+import { type GraphQLType, isListType, isNamedType, isNonNullType } from 'graphql'
+import { getSiteRoot } from '$lib/variables'
 
-  export let type: GraphQLType
+export let type: GraphQLType
 </script>
 
 {#if isListType(type)}

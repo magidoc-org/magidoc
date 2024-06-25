@@ -28,9 +28,7 @@ export default defineConfig({
     {
       name: 'variables-change-handler',
       handleHotUpdate(ctx: HmrContext) {
-        const isVariables = ctx.file.includes(
-          ENV_FILE_LOCATION.replace('./', ''),
-        )
+        const isVariables = ctx.file.includes(ENV_FILE_LOCATION.replace('./', ''))
 
         if (isVariables) {
           ctx.server.ws.send({

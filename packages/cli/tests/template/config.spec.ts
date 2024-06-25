@@ -1,9 +1,6 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
-import {
-  loadTemplateConfig,
-  type RawMagidocTemplateConfig,
-} from '../../src/template/config'
+import { loadTemplateConfig, type RawMagidocTemplateConfig } from '../../src/template/config'
 import { describe, it, expect } from 'vitest'
 
 describe('parsing a valid template configuration', () => {
@@ -66,11 +63,5 @@ async function shouldFailParsing(name: string, errors: string[]) {
 }
 
 function execute(name: string): Promise<RawMagidocTemplateConfig> {
-  return loadTemplateConfig(
-    path.join(
-      path.dirname(fileURLToPath(import.meta.url)),
-      'config-examples',
-      name,
-    ),
-  )
+  return loadTemplateConfig(path.join(path.dirname(fileURLToPath(import.meta.url)), 'config-examples', name))
 }

@@ -68,9 +68,7 @@ export const ZMagidocConfiguration = z.object({
   dev: ZDevConfiguration,
 })
 
-export type IntrospectionConfiguration = z.infer<
-  typeof ZIntrospectionConfiguration
->
+export type IntrospectionConfiguration = z.infer<typeof ZIntrospectionConfiguration>
 export type DevConfiguration = z.infer<typeof ZDevConfiguration>
 export type WebsiteConfiguration = z.infer<typeof ZWebsiteConfiguration>
 export type MagidocConfiguration = z.infer<typeof ZMagidocConfiguration>

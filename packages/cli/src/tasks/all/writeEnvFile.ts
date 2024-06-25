@@ -9,10 +9,7 @@ type Config = {
 }
 
 type Ctx = {
-  templateConfiguration: Pick<
-    ResolvedMagidocTemplateConfig,
-    'envFileLocation' | 'supportedOptions'
-  >
+  templateConfiguration: Pick<ResolvedMagidocTemplateConfig, 'envFileLocation' | 'supportedOptions'>
 }
 
 export function writeEnvFileTask<T extends Ctx>(config: Config): Task<T> {
@@ -21,10 +18,7 @@ export function writeEnvFileTask<T extends Ctx>(config: Config): Task<T> {
     executor: async (ctx) => {
       await writeFile(
         ctx.templateConfiguration.envFileLocation,
-        toVariablesFile(
-          config.website.options,
-          ctx.templateConfiguration.supportedOptions,
-        ),
+        toVariablesFile(config.website.options, ctx.templateConfiguration.supportedOptions),
       )
     },
   }

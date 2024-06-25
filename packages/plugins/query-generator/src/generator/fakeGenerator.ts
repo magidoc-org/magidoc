@@ -39,9 +39,7 @@ export function generateArgsForField(
   config: QueryGeneratorConfig,
   context: GenerationContext,
 ): ReadonlyArray<Parameter> {
-  return field.args.map((argument) =>
-    generateInputParameter(argument, config, context),
-  )
+  return field.args.map((argument) => generateInputParameter(argument, config, context))
 }
 
 export function generateLeafTypeValue(
@@ -80,20 +78,13 @@ function generateInputParameter(
   }
 }
 
-function generateInput(
-  input: GraphQLInputType,
-  config: FakeGenerationConfig,
-  context: FakeGenerationContext,
-): unknown {
+function generateInput(input: GraphQLInputType, config: FakeGenerationConfig, context: FakeGenerationContext): unknown {
   // If you have a field [String!]!, this returns the factory for the string.
   const unwrappedType = unwrapType(input)
   const defaultFactory = DEFAULT_FACTORIES[unwrappedType.name]
 
   if (isInputObjectType(unwrappedType)) {
-    if (
-      context.generatedInputObjects.has(unwrappedType.name) &&
-      isNullableType(input)
-    ) {
+    if (context.generatedInputObjects.has(unwrappedType.name) && isNullableType(input)) {
       return null
     } else {
       // This is slightly unsafe, because with recursion,
@@ -104,9 +95,7 @@ function generateInput(
     }
   }
 
-  const path = `${context.path}${context.path.endsWith('$') ? '' : '.'}${
-    context.targetName
-  }`
+  const path = `${context.path}${context.path.endsWith('$') ? '' : '.'}${context.targetName}`
   const factoryContext = {
     targetName: context.targetName,
     path,
@@ -168,29 +157,21 @@ function findMostSpecificFactory(
   if (
     nullable &&
     (config.nullGenerationStrategy == NullGenerationStrategy.ALWAYS_NULL ||
-      (config.nullGenerationStrategy == NullGenerationStrategy.SOMETIMES_NULL &&
-        Math.random() > 0.5))
+      (config.nullGenerationStrategy == NullGenerationStrategy.SOMETIMES_NULL && Math.random() > 0.5))
   ) {
     return () => null
   }
 
   // For a list, we find a factory for its elements
   if (isListType(argumentType)) {
-    const listElementFactory = findMostSpecificFactory(
-      argumentType.ofType,
-      config,
-      context,
-    )
+    const listElementFactory = findMostSpecificFactory(argumentType.ofType, config, context)
     return (context) => [listElementFactory(context)]
   }
 
   const unwrappedArgumentType = unwrapType(argumentType)
 
   // Factory that matches by wildcard
-  const wildCardFactory = findWildCardFactory(
-    unwrappedArgumentType.name,
-    config,
-  )
+  const wildCardFactory = findWildCardFactory(unwrappedArgumentType.name, config)
 
   if (wildCardFactory) {
     return wildCardFactory
@@ -249,13 +230,8 @@ You have to provide a custom factory by providing this in your config:
   )
 }
 
-function findWildCardFactory(
-  name: string,
-  config: FakeGenerationConfig,
-): GraphQLFactory | undefined {
-  const matchingKey = Object.keys(config.factories).find((key) =>
-    globToRegExp(key).test(name),
-  )
+function findWildCardFactory(name: string, config: FakeGenerationConfig): GraphQLFactory | undefined {
+  const matchingKey = Object.keys(config.factories).find((key) => globToRegExp(key).test(name))
 
   if (matchingKey) {
     return config.factories[matchingKey]

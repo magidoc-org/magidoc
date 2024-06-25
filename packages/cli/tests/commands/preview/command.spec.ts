@@ -1,9 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import preview from '../../../src/commands/preview'
-import {
-  mockLoadFileConfiguration,
-  testMagidocConfiguration,
-} from '../configuration'
+import { mockLoadFileConfiguration, testMagidocConfiguration } from '../configuration'
 import { makeTestProgram } from '../program'
 import path from 'path'
 import type { Command } from 'commander'
@@ -57,17 +54,9 @@ describe('running the preview command', () => {
 
     describe('with custom options', () => {
       it('should run the preview server with the custom options', async () => {
-        await program.parseAsync(
-          [
-            'preview',
-            '--port',
-            '54345',
-            '--stacktrace',
-            '--file',
-            './magidoc.second.mjs',
-          ],
-          { from: 'user' },
-        )
+        await program.parseAsync(['preview', '--port', '54345', '--stacktrace', '--file', './magidoc.second.mjs'], {
+          from: 'user',
+        })
         expect(preview).toHaveBeenCalledOnce()
         expect(preview).toHaveBeenCalledWith({
           websiteLocation: path.resolve(config.website.output),

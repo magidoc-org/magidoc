@@ -8,13 +8,10 @@ export type FetchTemplateConfig = {
   destination: string
 }
 
-const templateUrl =
-  'https://github.com/magidoc-org/magidoc/releases/download/<version>/starter-<name>.zip'
+const templateUrl = 'https://github.com/magidoc-org/magidoc/releases/download/<version>/starter-<name>.zip'
 
 export default async function fetchTemplate(config: FetchTemplateConfig) {
-  const targetUrl = templateUrl
-    .replace('<version>', config.version)
-    .replace('<name>', config.template)
+  const targetUrl = templateUrl.replace('<version>', config.version).replace('<name>', config.template)
 
   await axios
     .request<{

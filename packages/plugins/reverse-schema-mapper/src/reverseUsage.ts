@@ -1,10 +1,4 @@
-import {
-  GraphQLArgument,
-  GraphQLField,
-  GraphQLNamedType,
-  GraphQLObjectType,
-  GraphQLUnionType,
-} from 'graphql'
+import { GraphQLArgument, GraphQLField, GraphQLNamedType, GraphQLObjectType, GraphQLUnionType } from 'graphql'
 
 export type TypeReverseMapping = {
   /**

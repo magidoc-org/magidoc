@@ -58,9 +58,7 @@ export type MarkdownOptions = {
   lexerFactory: () => Lexer
 }
 
-export function mergeMarkdownOptions(
-  options?: Partial<MarkdownOptions>,
-): MarkdownOptions {
+export function mergeMarkdownOptions(options?: Partial<MarkdownOptions>): MarkdownOptions {
   return {
     lexerFactory: options?.lexerFactory ?? defaultLexer,
     sluggerFactory: options?.sluggerFactory ?? defaultSlugger,
@@ -71,12 +69,8 @@ export function mergeMarkdownOptions(
   }
 }
 
-export function index<T>(
-  documents: MarkdownDocument<T>[],
-  options?: IndexingOptions<T>,
-): Fuse<SearchResult<T>> {
-  const fuse =
-    options?.fuse ?? new Fuse<SearchResult<T>>([], defaultFuseOptions())
+export function index<T>(documents: MarkdownDocument<T>[], options?: IndexingOptions<T>): Fuse<SearchResult<T>> {
+  const fuse = options?.fuse ?? new Fuse<SearchResult<T>>([], defaultFuseOptions())
   const markdownOptions = mergeMarkdownOptions(options?.markdown)
   documents.forEach((document) => {
     indexDocument(document, fuse, markdownOptions)
@@ -85,11 +79,7 @@ export function index<T>(
   return fuse
 }
 
-function indexDocument<T>(
-  document: MarkdownDocument<T>,
-  fuse: Fuse<SearchResult<T>>,
-  options: MarkdownOptions,
-) {
+function indexDocument<T>(document: MarkdownDocument<T>, fuse: Fuse<SearchResult<T>>, options: MarkdownOptions) {
   const parts = extract(document.content, {
     slugger: options.sluggerFactory(),
     lexer: options.lexerFactory(),

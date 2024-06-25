@@ -1,7 +1,4 @@
-import {
-  extensions,
-  type TokenExtractionParameters,
-} from '@magidoc/plugin-svelte-marked'
+import { extensions, type TokenExtractionParameters } from '@magidoc/plugin-svelte-marked'
 import { marked } from 'marked'
 import { parseNotification } from './components/markdown/containers/notification/Notification'
 import { parseTabs } from './components/markdown/containers/tabs/Tabs'

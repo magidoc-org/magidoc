@@ -36,10 +36,7 @@ export function loadGraphQLSchemaTask<T extends Ctx>(config: Config): Task<T> {
           })
           break
         case 'raw':
-          await fs.writeFile(
-            ctx.templateConfiguration.schemaTargetLocation,
-            config.introspection.content,
-          )
+          await fs.writeFile(ctx.templateConfiguration.schemaTargetLocation, config.introspection.content)
           break
         case 'none':
           await fs.writeFile(ctx.templateConfiguration.schemaTargetLocation, '')

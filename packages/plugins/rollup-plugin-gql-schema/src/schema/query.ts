@@ -20,10 +20,7 @@ type Parameters = {
 
 export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
-export default async function queryGraphQLSchema(
-  url: string,
-  parameters: Parameters,
-): Promise<GraphQLSchema> {
+export default async function queryGraphQLSchema(url: string, parameters: Parameters): Promise<GraphQLSchema> {
   const actualMethod: Method = parameters.method || 'POST'
   const body = JSON.stringify({
     operationName: 'IntrospectionQuery',

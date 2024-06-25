@@ -7,13 +7,7 @@
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "keywords": [
-    "rollup-plugin",
-    "vite-plugin",
-    "graphql",
-    "graphql-schema",
-    "magidoc"
-  ],
+  "keywords": ["rollup-plugin", "vite-plugin", "graphql", "graphql-schema", "magidoc"],
   "homepage": "https://magidoc.js.org/plugins/rollup-graphql-schema",
   "repository": {
     "type": "git",
@@ -42,7 +36,5 @@
     "vite": "^5.2.11",
     "vitest": "^1.6.0"
   },
-  "files": [
-    "build"
-  ]
+  "files": ["build"]
 }

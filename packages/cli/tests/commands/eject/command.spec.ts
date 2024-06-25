@@ -76,9 +76,7 @@ describe('running the eject command', () => {
           program.parseAsync(['eject'], {
             from: 'user',
           }),
-        ).rejects.toThrowError(
-          "error: required option '-t|--template <template>' not specified",
-        )
+        ).rejects.toThrowError("error: required option '-t|--template <template>' not specified")
       })
     })
   })

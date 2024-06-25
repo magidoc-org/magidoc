@@ -13,18 +13,9 @@
       "svelte": "./build/index.js"
     }
   },
-  "files": [
-    "build"
-  ],
+  "files": ["build"],
   "private": false,
-  "keywords": [
-    "svelte",
-    "svelte-kit",
-    "prism",
-    "prismjs",
-    "magidoc",
-    "browser"
-  ],
+  "keywords": ["svelte", "svelte-kit", "prism", "prismjs", "magidoc", "browser"],
   "homepage": "https://magidoc.js.org/svelte-plugins/prismjs",
   "repository": {
     "type": "git",

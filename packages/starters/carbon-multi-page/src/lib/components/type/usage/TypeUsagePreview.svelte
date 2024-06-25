@@ -1,8 +1,8 @@
 <script lang="ts">
-  import AppExpandButton from '$lib/components/common/AppExpandButton.svelte'
+import AppExpandButton from '$lib/components/common/AppExpandButton.svelte'
 
-  export let items: Array<unknown>
-  let expanded = false
+export let items: Array<unknown>
+let expanded = false
 </script>
 
 {#if expanded}

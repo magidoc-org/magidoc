@@ -17,9 +17,7 @@ describe('verifying destination folder is available', () => {
       })
 
       it('should raise an error', () => {
-        expect(() =>
-          verifyDestinationAvailableTask(ctx).executor({}, taskWrapperMock()),
-        ).toThrowError()
+        expect(() => verifyDestinationAvailableTask(ctx).executor({}, taskWrapperMock())).toThrowError()
       })
     })
 
@@ -29,9 +27,7 @@ describe('verifying destination folder is available', () => {
       })
 
       it('should not raise an error', () => {
-        expect(() =>
-          verifyDestinationAvailableTask(ctx).executor({}, taskWrapperMock()),
-        ).not.toThrowError()
+        expect(() => verifyDestinationAvailableTask(ctx).executor({}, taskWrapperMock())).not.toThrowError()
       })
     })
   })

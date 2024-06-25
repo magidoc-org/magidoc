@@ -58,6 +58,4 @@ const pagesDirectory = new URL('./pages', import.meta.url)
 
 const filesInPagesDirectory = await getFiles(pagesDirectory)
 
-export const pages = await Promise.all(
-  filesInPagesDirectory.map((item) => asPage(item)),
-)
+export const pages = await Promise.all(filesInPagesDirectory.map((item) => asPage(item)))

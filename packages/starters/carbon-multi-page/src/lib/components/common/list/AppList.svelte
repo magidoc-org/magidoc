@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { OrderedList, UnorderedList } from 'carbon-components-svelte'
+import { OrderedList, UnorderedList } from 'carbon-components-svelte'
 
-  export let start = 1
-  export let ordered = false
+export let start = 1
+export let ordered = false
 
-  let component: ConstructorOfATypedSvelteComponent
-  $: component = ordered ? OrderedList : UnorderedList
+let component: ConstructorOfATypedSvelteComponent
+$: component = ordered ? OrderedList : UnorderedList
 </script>
 
 <svelte:component

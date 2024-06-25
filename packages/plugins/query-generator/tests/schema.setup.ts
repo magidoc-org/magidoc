@@ -13,10 +13,7 @@ declare global {
   function getTestSchema(): GraphQLSchema
   function getRecursiveTestSchema(): GraphQLSchema
 
-  function getMandatoryField(
-    type: Maybe<GraphQLObjectType>,
-    name: string,
-  ): GraphQLField<unknown, unknown, unknown>
+  function getMandatoryField(type: Maybe<GraphQLObjectType>, name: string): GraphQLField<unknown, unknown, unknown>
 }
 
 global.getTestSchema = () => {

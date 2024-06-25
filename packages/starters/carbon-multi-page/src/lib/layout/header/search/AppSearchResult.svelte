@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { MagidocSearchResult } from '$lib/search'
-  import AppGraphQlSearchResult from './AppGraphQLSearchResult.svelte'
-  import AppMarkdownSearchResult from './AppMarkdownSearchResult.svelte'
+import type { MagidocSearchResult } from '$lib/search'
+import AppGraphQlSearchResult from './AppGraphQLSearchResult.svelte'
+import AppMarkdownSearchResult from './AppMarkdownSearchResult.svelte'
 
-  export let item: MagidocSearchResult
+export let item: MagidocSearchResult
 </script>
 
 {#if item.type === 'markdown'}

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { Tokens } from 'marked'
-  import type { MarkdownOptions, Renderers } from '../markedConfiguration'
-  import { isRelative, joinUrlPaths } from '$lib/utils/url'
+import type { Tokens } from 'marked'
+import type { MarkdownOptions, Renderers } from '../markedConfiguration'
+import { isRelative, joinUrlPaths } from '$lib/utils/url'
 
-  export let token: Tokens.Image
-  export let options: MarkdownOptions
-  export const renderers: Renderers = undefined
+export let token: Tokens.Image
+export let options: MarkdownOptions
+export const renderers: Renderers = undefined
 </script>
 
 <img

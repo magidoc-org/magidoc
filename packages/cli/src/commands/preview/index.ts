@@ -10,11 +10,7 @@ export type PreviewConfig = {
 }
 
 export default function preview(config: PreviewConfig): http.Server {
-  printWarning(
-    `⚠️ ${yellow(
-      'Preview command is not meant to be used for static file serving in production.',
-    )}`,
-  )
+  printWarning(`⚠️ ${yellow('Preview command is not meant to be used for static file serving in production.')}`)
 
   const assets = sirv(config.websiteLocation, {
     maxAge: 0,
@@ -38,11 +34,7 @@ export default function preview(config: PreviewConfig): http.Server {
 
   server.on('error', (error) => {
     if (error.message.includes('EADDRINUSE')) {
-      logError(
-        `Could not start preview server... port ${cyan(
-          config.port,
-        )} already in use.`,
-      )
+      logError(`Could not start preview server... port ${cyan(config.port)} already in use.`)
     } else {
       logError(`Could not preview start server... ${error.message}`)
     }

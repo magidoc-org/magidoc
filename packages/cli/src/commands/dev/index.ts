@@ -60,36 +60,22 @@ export default async function runDevelopmentServer(config: DevConfig) {
       host: config.host,
       port: config.port,
     }),
-    watchFiles(
-      [
-        config.magidocConfigLocation,
-        config.website.staticAssets,
-        ...config.dev.watch,
-      ],
-      async () => {
-        const newMagidocConfig = await loadFileConfiguration(
-          config.magidocConfigLocation,
-          config.stacktrace,
-        )
+    watchFiles([config.magidocConfigLocation, config.website.staticAssets, ...config.dev.watch], async () => {
+      const newMagidocConfig = await loadFileConfiguration(config.magidocConfigLocation, config.stacktrace)
 
-        const newDevConfig: DevConfig = {
-          ...config,
-          ...newMagidocConfig,
-        }
+      const newDevConfig: DevConfig = {
+        ...config,
+        ...newMagidocConfig,
+      }
 
-        await executeAllTasks<DevTaskContext>(
-          [
-            loadGraphQLSchemaTask(newDevConfig),
-            copyStaticAssetsTask(newDevConfig),
-            writeEnvFileTask(newDevConfig),
-          ],
-          {
-            ctx,
-            silent: true,
-          },
-        )
-      },
-    ),
+      await executeAllTasks<DevTaskContext>(
+        [loadGraphQLSchemaTask(newDevConfig), copyStaticAssetsTask(newDevConfig), writeEnvFileTask(newDevConfig)],
+        {
+          ctx,
+          silent: true,
+        },
+      )
+    }),
   ])
 }
 
@@ -98,10 +84,6 @@ function printServerListening(config: DevConfig) {
     const root = config.website.options[templates.SITE_ROOT.name]
 
     printSeparator()
-    printInfo(
-      `Server listening on ${cyan(
-        `http://${config.host}:${config.port}${String(root || '')}`,
-      )}`,
-    )
+    printInfo(`Server listening on ${cyan(`http://${config.host}:${config.port}${String(root || '')}`)}`)
   }, 500)
 }

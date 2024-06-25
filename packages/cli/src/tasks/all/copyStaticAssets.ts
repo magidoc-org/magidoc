@@ -17,10 +17,7 @@ export function copyStaticAssetsTask<T extends Ctx>(config: Config): Task<T> {
     enabled: !!config.website.staticAssets,
     executor: async (ctx) => {
       if (config.website.staticAssets) {
-        await copyStaticAssets(
-          config.website.staticAssets,
-          ctx.templateConfiguration.staticAssetsLocation,
-        )
+        await copyStaticAssets(config.website.staticAssets, ctx.templateConfiguration.staticAssetsLocation)
       }
     },
   }

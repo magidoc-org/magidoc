@@ -1,22 +1,18 @@
 <script lang="ts">
-  import {
-    MarkdownTokens,
-    type MarkdownOptions,
-    type Renderers,
-  } from '@magidoc/plugin-svelte-marked'
+import { MarkdownTokens, type MarkdownOptions, type Renderers } from '@magidoc/plugin-svelte-marked'
 
-  import {
-    StructuredList,
-    StructuredListBody,
-    StructuredListCell,
-    StructuredListHead,
-    StructuredListRow,
-  } from 'carbon-components-svelte'
-  import type { Tokens } from 'marked'
+import {
+  StructuredList,
+  StructuredListBody,
+  StructuredListCell,
+  StructuredListHead,
+  StructuredListRow,
+} from 'carbon-components-svelte'
+import type { Tokens } from 'marked'
 
-  export let token: Tokens.Table
-  export let options: MarkdownOptions
-  export let renderers: Renderers
+export let token: Tokens.Table
+export let options: MarkdownOptions
+export let renderers: Renderers
 </script>
 
 <div class="markdown-table-wrapper">

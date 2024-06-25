@@ -7,12 +7,7 @@ import { describe, expect, it, test } from 'vitest'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
-    expect(Object.keys(variables)).toEqual([
-      'templates',
-      'magidoc',
-      'toVariablesFile',
-      'UnsupportedVariablesError',
-    ])
+    expect(Object.keys(variables)).toEqual(['templates', 'magidoc', 'toVariablesFile', 'UnsupportedVariablesError'])
   })
 
   describe('template variables', () => {
@@ -35,51 +30,27 @@ describe('variables', () => {
     })
 
     test('app title', () => {
-      testStringVariable(
-        variables.templates.APP_TITLE,
-        'APP_TITLE',
-        z.string().optional(),
-      )
+      testStringVariable(variables.templates.APP_TITLE, 'APP_TITLE', z.string().optional())
     })
 
     test('app logo', () => {
-      testStringVariable(
-        variables.templates.APP_LOGO,
-        'APP_LOGO',
-        z.string().optional(),
-      )
+      testStringVariable(variables.templates.APP_LOGO, 'APP_LOGO', z.string().optional())
     })
 
     test('app favicon', () => {
-      testStringVariable(
-        variables.templates.APP_FAVICON,
-        'APP_FAVICON',
-        z.string().optional(),
-      )
+      testStringVariable(variables.templates.APP_FAVICON, 'APP_FAVICON', z.string().optional())
     })
 
     test('site root', () => {
-      testStringVariable(
-        variables.templates.SITE_ROOT,
-        'SITE_ROOT',
-        z.string().optional(),
-      )
+      testStringVariable(variables.templates.SITE_ROOT, 'SITE_ROOT', z.string().optional())
     })
 
     test('site meta', () => {
-      testRecordVariable(
-        variables.templates.SITE_META,
-        'SITE_META',
-        z.record(z.string().optional()).optional(),
-      )
+      testRecordVariable(variables.templates.SITE_META, 'SITE_META', z.record(z.string().optional()).optional())
     })
 
     test('custom styles', () => {
-      testArrayVariable(
-        variables.templates.CUSTOM_STYLES,
-        'CUSTOM_STYLES',
-        z.array(z.string()).optional(),
-      )
+      testArrayVariable(variables.templates.CUSTOM_STYLES, 'CUSTOM_STYLES', z.array(z.string()).optional())
     })
 
     test('fields sorting', () => {
@@ -104,19 +75,7 @@ describe('variables', () => {
       testRecordVariable(
         variables.templates.QUERY_GENERATION_FACTORIES,
         'QUERY_GENERATION_FACTORIES',
-        z
-          .record(
-            z
-              .union([
-                z.string(),
-                z.boolean(),
-                z.number(),
-                z.null(),
-                z.record(z.unknown()),
-              ])
-              .optional(),
-          )
-          .optional(),
+        z.record(z.union([z.string(), z.boolean(), z.number(), z.null(), z.record(z.unknown())]).optional()).optional(),
       )
     })
 
@@ -128,11 +87,7 @@ describe('variables', () => {
         }),
       )
 
-      testArrayVariable(
-        variables.templates.PAGES,
-        'PAGES',
-        z.array(pagesType).optional(),
-      )
+      testArrayVariable(variables.templates.PAGES, 'PAGES', z.array(pagesType).optional())
     })
 
     test('external links', () => {
@@ -174,20 +129,12 @@ describe('variables', () => {
     })
 
     test('magidoc generate', () => {
-      testBooleanVariable(
-        variables.magidoc.MAGIDOC_GENERATE,
-        'MAGIDOC_GENERATE',
-        z.boolean().optional(),
-      )
+      testBooleanVariable(variables.magidoc.MAGIDOC_GENERATE, 'MAGIDOC_GENERATE', z.boolean().optional())
     })
   })
 })
 
-function testStringVariable(
-  target: Variable<string>,
-  key: string,
-  expectedZod: ZodType<any>,
-) {
+function testStringVariable(target: Variable<string>, key: string, expectedZod: ZodType<any>) {
   expect(target.key).toEqual(key)
 
   expect(target.get({ [key]: 'Potato' })).toBe('Potato')
@@ -227,11 +174,7 @@ function testEnumVariable<V extends string>(
   ensureZodTypeEqual(target, expectedZod)
 }
 
-function testBooleanVariable(
-  target: Variable<boolean>,
-  viteKey: string,
-  expectedZod: ZodType<any>,
-) {
+function testBooleanVariable(target: Variable<boolean>, viteKey: string, expectedZod: ZodType<any>) {
   expect(target.key).toEqual(viteKey)
 
   expect(target.get({ [viteKey]: true })).toBe(true)
@@ -260,11 +203,7 @@ function testBooleanVariable(
   ensureZodTypeEqual(target, expectedZod)
 }
 
-function testRecordVariable(
-  target: Variable<Record<string, any>>,
-  key: string,
-  expectedZod: ZodType<any>,
-) {
+function testRecordVariable(target: Variable<Record<string, any>>, key: string, expectedZod: ZodType<any>) {
   expect(target.key).toEqual(key)
 
   expect(target.get({ [key]: true })).toBeNull()
@@ -291,11 +230,7 @@ function testRecordVariable(
   ensureZodTypeEqual(target, expectedZod)
 }
 
-function testArrayVariable(
-  target: Variable<Array<any>>,
-  key: string,
-  expectedZod: ZodType<any>,
-) {
+function testArrayVariable(target: Variable<Array<any>>, key: string, expectedZod: ZodType<any>) {
   expect(target.key).toEqual(key)
 
   expect(target.get({ [key]: true })).toBeNull()
@@ -305,9 +240,7 @@ function testArrayVariable(
   expect(target.get({ [key]: {} })).toBeNull()
 
   expect(target.get({ [key]: [{ abc: '123' }] })).toEqual([{ abc: '123' }])
-  expect(target.get({ [key]: JSON.stringify([{ abc: '123' }]) })).toEqual([
-    { abc: '123' },
-  ])
+  expect(target.get({ [key]: JSON.stringify([{ abc: '123' }]) })).toEqual([{ abc: '123' }])
 
   expect(target.getOrDefault({ [key]: false }, [{ abc: 123 }])).toEqual([
     {
@@ -329,7 +262,5 @@ function ensureZodTypeEqual(target: Variable<any>, expected: ZodType<any>) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // this does a good enough compare to make sure they have the same schema
-  expect(JSON.parse(JSON.stringify(target.zod.type(z)))).toEqual(
-    JSON.parse(JSON.stringify(expected, null, 2)),
-  )
+  expect(JSON.parse(JSON.stringify(target.zod.type(z)))).toEqual(JSON.parse(JSON.stringify(expected, null, 2)))
 }

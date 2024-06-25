@@ -11,10 +11,7 @@ export type TaskWrapper = {
   output: (message: string) => void
 }
 
-export type TaskExecutor<T> = (
-  ctx: T,
-  task: TaskWrapper,
-) => Promise<void> | void
+export type TaskExecutor<T> = (ctx: T, task: TaskWrapper) => Promise<void> | void
 
 export type TasksConfig<T> = {
   ctx: T | undefined

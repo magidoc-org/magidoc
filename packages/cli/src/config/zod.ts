@@ -9,9 +9,7 @@ export function formatZodIssues(issues: ZodIssue[]): string[] {
         return `  ‣ Expected: '${issue.expected}' but received '${issue.received}' at path '${path}'`
       case 'invalid_union':
         const formattedErrors = issue.unionErrors
-          .flatMap((current) =>
-            current.issues.map((issue) => `    - ${issue.message}`),
-          )
+          .flatMap((current) => current.issues.map((issue) => `    - ${issue.message}`))
           .join('\n')
         return `  ‣ ${issue.message} at path '${path}':\n${formattedErrors}`
       default:

@@ -76,9 +76,7 @@ describe('indexing a markdown source', () => {
     })
 
     it('should index text properly', () => {
-      const result = fuse.search(
-        'This is a sample page that contains some very important text.',
-      )
+      const result = fuse.search('This is a sample page that contains some very important text.')
       expect(result).toHaveLength(1)
       const firstResult = result[0]
       expect(firstResult.item).toEqual({
@@ -158,10 +156,7 @@ describe('indexing a markdown source', () => {
 function loadPages(): MarkdownDocument<{
   name: 'first' | 'second'
 }>[] {
-  const __dirname = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    'pages',
-  )
+  const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), 'pages')
   return [
     {
       data: { name: 'first' },

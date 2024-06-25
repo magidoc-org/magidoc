@@ -1,8 +1,6 @@
 import type { Converter, ZodTypeProvider } from '../variable'
 
-export function arrayConverter<V>(
-  valueType: ZodTypeProvider<V>,
-): Converter<Array<V | undefined>> {
+export function arrayConverter<V>(valueType: ZodTypeProvider<V>): Converter<Array<V | undefined>> {
   return {
     convert: (target) => {
       if (Array.isArray(target)) {

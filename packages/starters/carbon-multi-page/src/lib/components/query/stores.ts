@@ -26,9 +26,7 @@ export type GeneratedGraphQLQuery = {
   nullGenerationStrategy: NullGenerationStrategy
 }
 
-const currentQuery: Writable<Promise<GeneratedGraphQLQuery | null>> = writable(
-  Promise.resolve(null),
-)
+const currentQuery: Writable<Promise<GeneratedGraphQLQuery | null>> = writable(Promise.resolve(null))
 
 const generateQuery = async (expected: {
   field: GraphQLField<unknown, unknown, unknown>
@@ -127,8 +125,7 @@ export const graphqlQuery = {
         field,
         type,
         depth: DEFAULT_DEPTH,
-        nullGenerationStrategy:
-          awaited?.nullGenerationStrategy ?? NullGenerationStrategy.NEVER_NULL,
+        nullGenerationStrategy: awaited?.nullGenerationStrategy ?? NullGenerationStrategy.NEVER_NULL,
       })
     }),
 }

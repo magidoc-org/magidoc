@@ -1,9 +1,5 @@
 import { beforeEach, expect, it } from 'vitest'
-import {
-  extract,
-  IndexableMarkdownType,
-  type Options,
-} from '../../src/markdown/extract'
+import { extract, IndexableMarkdownType, type Options } from '../../src/markdown/extract'
 import { defaultExtractors } from '../../src/markdown/extractors'
 import { describe } from 'vitest'
 import Slugger from 'github-slugger'

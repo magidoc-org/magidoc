@@ -97,10 +97,7 @@ describe('loading graphql schema', () => {
       it('should write an empty schema', async () => {
         const task = loadGraphQLSchemaTask(config)
         await task.executor(ctx, taskWrapperMock())
-        expect(fs.writeFile).toHaveBeenCalledWith(
-          ctx.templateConfiguration.schemaTargetLocation,
-          '',
-        )
+        expect(fs.writeFile).toHaveBeenCalledWith(ctx.templateConfiguration.schemaTargetLocation, '')
       })
     })
   })

@@ -15,9 +15,7 @@ type Config = {
   packageManager?: PackageManagerType
 }
 
-export function selectPackageManagerTask<T extends Ctx>(
-  config: Config,
-): Task<T> {
+export function selectPackageManagerTask<T extends Ctx>(config: Config): Task<T> {
   return {
     title: 'Select Package Manager',
     executor: async (ctx, task) => {

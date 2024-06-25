@@ -3,12 +3,7 @@
   "version": "5.0.3",
   "license": "MIT",
   "type": "module",
-  "keywords": [
-    "svelte",
-    "svelte-kit",
-    "starter",
-    "magidoc"
-  ],
+  "keywords": ["svelte", "svelte-kit", "starter", "magidoc"],
   "scripts": {
     "dev": "vite dev",
     "build": "svelte-kit sync && vite build",

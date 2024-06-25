@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { page } from '$app/stores'
+import { page } from '$app/stores'
 
-  let error: string
-  $: {
-    const message: string =
-      ($page.error as Error)?.message || 'An unexpected error occurred.'
-    error = message.endsWith('.') ? message : `${message}.`
-  }
+let error: string
+$: {
+  const message: string = ($page.error as Error)?.message || 'An unexpected error occurred.'
+  error = message.endsWith('.') ? message : `${message}.`
+}
 </script>
 
 <svelte:head>

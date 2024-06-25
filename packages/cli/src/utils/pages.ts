@@ -64,9 +64,7 @@ function asPage(item: File): NumberedMarkdownPage {
   const parts = item.name.split('.')
   const number = parseInt(parts[0], 10)
   if (isNaN(number)) {
-    throw new Error(
-      `Invalid file name: ${item.name}. File and directory names must start with a number.`,
-    )
+    throw new Error(`Invalid file name: ${item.name}. File and directory names must start with a number.`)
   }
 
   if (item.dir) {
@@ -78,9 +76,7 @@ function asPage(item: File): NumberedMarkdownPage {
   }
 
   if (parts[parts.length - 1] !== 'md') {
-    throw new Error(
-      `Invalid file name: ${item.name}\nFiles must follow the format: <number>.<title>.md`,
-    )
+    throw new Error(`Invalid file name: ${item.name}\nFiles must follow the format: <number>.<title>.md`)
   }
 
   return {

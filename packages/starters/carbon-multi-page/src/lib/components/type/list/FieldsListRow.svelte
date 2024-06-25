@@ -1,24 +1,21 @@
 <script lang="ts">
-  import AppExpandButton from '$lib/components/common/AppExpandButton.svelte'
-  import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
+import AppExpandButton from '$lib/components/common/AppExpandButton.svelte'
+import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
 
-  import ArgsList from '$lib/components/query/list/ArgsList.svelte'
+import ArgsList from '$lib/components/query/list/ArgsList.svelte'
 
-  import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
-  import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
-  import NullableTag from '$lib/components/tags/NullableTag.svelte'
-  import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
-  import type { FieldWithPossibleDescriptions } from '$lib/model'
+import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
+import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
+import NullableTag from '$lib/components/tags/NullableTag.svelte'
+import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
+import type { FieldWithPossibleDescriptions } from '$lib/model'
 
-  import {
-    StructuredListCell,
-    StructuredListRow,
-  } from 'carbon-components-svelte'
-  import LocationSpecificDescription from './LocationSpecificDescription.svelte'
+import { StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
+import LocationSpecificDescription from './LocationSpecificDescription.svelte'
 
-  export let item: FieldWithPossibleDescriptions
+export let item: FieldWithPossibleDescriptions
 
-  var showArguments = false
+var showArguments = false
 </script>
 
 <StructuredListRow>

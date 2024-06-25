@@ -1,17 +1,17 @@
 <script lang="ts">
-  import type { GraphQLField } from 'graphql'
-  import type { QueryType } from '@magidoc/plugin-query-generator'
-  import AppQueryGenerator from './AppQueryTabs.svelte'
-  import ArgsList from './list/ArgsList.svelte'
-  import QueryTypeTag from '../tags/QueryTypeTag.svelte'
-  import TypeLink from '../common/text/TypeLink.svelte'
-  import DeprecationNotice from '../common/text/DeprecationNotice.svelte'
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-  import DirectiveTag from '../tags/DirectiveTag.svelte'
+import type { GraphQLField } from 'graphql'
+import type { QueryType } from '@magidoc/plugin-query-generator'
+import AppQueryGenerator from './AppQueryTabs.svelte'
+import ArgsList from './list/ArgsList.svelte'
+import QueryTypeTag from '../tags/QueryTypeTag.svelte'
+import TypeLink from '../common/text/TypeLink.svelte'
+import DeprecationNotice from '../common/text/DeprecationNotice.svelte'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import DirectiveTag from '../tags/DirectiveTag.svelte'
 
-  export let type: QueryType
-  export let field: GraphQLField<unknown, unknown, unknown>
+export let type: QueryType
+export let field: GraphQLField<unknown, unknown, unknown>
 </script>
 
 <section>

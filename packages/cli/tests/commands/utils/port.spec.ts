@@ -1,9 +1,6 @@
 import net from 'net'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import {
-  getPortAvailability,
-  type PortUnavailable,
-} from '../../../src/commands/utils/port'
+import { getPortAvailability, type PortUnavailable } from '../../../src/commands/utils/port'
 
 const port = 3423
 const host = 'localhost'

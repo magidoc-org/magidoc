@@ -13,17 +13,9 @@
       "svelte": "./build/index.js"
     }
   },
-  "files": [
-    "build"
-  ],
+  "files": ["build"],
   "private": false,
-  "keywords": [
-    "svelte",
-    "magidoc",
-    "browser",
-    "marked",
-    "markdown"
-  ],
+  "keywords": ["svelte", "magidoc", "browser", "marked", "markdown"],
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",

@@ -17,8 +17,7 @@ import {
 } from 'carbon-icons-svelte'
 
 export function computeIcon(link: ExternalLink) {
-  const lowerKind =
-    link.kind?.toLocaleLowerCase() || link.label.toLocaleLowerCase()
+  const lowerKind = link.kind?.toLocaleLowerCase() || link.label.toLocaleLowerCase()
 
   if (lowerKind.includes('github')) {
     return LogoGithub

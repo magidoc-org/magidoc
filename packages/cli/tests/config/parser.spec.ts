@@ -1,10 +1,6 @@
 import type { MagidocConfiguration } from '../../src'
 import { parseConfiguration } from '../../src/config/parser'
-import type {
-  DevConfiguration,
-  IntrospectionConfiguration,
-  WebsiteConfiguration,
-} from '../../src/config/types'
+import type { DevConfiguration, IntrospectionConfiguration, WebsiteConfiguration } from '../../src/config/types'
 import path, { resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { describe, it, expect } from 'vitest'
@@ -99,9 +95,7 @@ describe('parsing the magidoc config', () => {
           {
             introspection: {
               ...introspection,
-              paths: introspection.paths.map((path: string) =>
-                resolve(path),
-              ) as unknown as [string, ...string[]],
+              paths: introspection.paths.map((path: string) => resolve(path)) as unknown as [string, ...string[]],
             },
             website: websitePart,
             dev: devPart,
@@ -119,9 +113,7 @@ describe('parsing the magidoc config', () => {
                 paths: [],
               },
             },
-            [
-              "Array must contain at least 1 element(s) at path 'introspection.paths'",
-            ],
+            ["Array must contain at least 1 element(s) at path 'introspection.paths'"],
           )
         })
       })
@@ -179,9 +171,7 @@ describe('parsing the magidoc config', () => {
                 content: '',
               },
             },
-            [
-              "String must contain at least 1 character(s) at path 'introspection.content'",
-            ],
+            ["String must contain at least 1 character(s) at path 'introspection.content'"],
           )
         })
       })
@@ -196,9 +186,7 @@ describe('parsing the magidoc config', () => {
               type: 'hmm',
             },
           },
-          [
-            "Invalid discriminator value. Expected 'url' | 'sdl' | 'raw' | 'none' at path 'introspection.type'",
-          ],
+          ["Invalid discriminator value. Expected 'url' | 'sdl' | 'raw' | 'none' at path 'introspection.type'"],
         )
       })
     })
@@ -277,9 +265,7 @@ describe('parsing the magidoc config', () => {
               template: 123,
             },
           },
-          [
-            "Expected: 'string' but received 'number' at path 'website.template'",
-          ],
+          ["Expected: 'string' but received 'number' at path 'website.template'"],
         )
       })
     })
@@ -398,9 +384,7 @@ describe('parsing the magidoc config', () => {
       } as const
 
       it('should fail parsing', () => {
-        shouldFailParsing(invalidConfiguration, [
-          "Expected: 'string' but received 'number' at path 'dev.watch[0]'",
-        ])
+        shouldFailParsing(invalidConfiguration, ["Expected: 'string' but received 'number' at path 'dev.watch[0]'"])
       })
     })
 
@@ -425,9 +409,7 @@ describe('parsing the magidoc config', () => {
             output: resolve('./docs'),
           },
           dev: {
-            watch: (valid.dev?.watch || []).map((target) =>
-              path.resolve(target || ''),
-            ),
+            watch: (valid.dev?.watch || []).map((target) => path.resolve(target || '')),
           },
         })
       })
@@ -435,10 +417,7 @@ describe('parsing the magidoc config', () => {
   })
 })
 
-function shouldParse(
-  input: RecursivePartial<MagidocConfiguration>,
-  expected: MagidocConfiguration,
-) {
+function shouldParse(input: RecursivePartial<MagidocConfiguration>, expected: MagidocConfiguration) {
   expect(parseConfiguration(input)).toEqual(expected)
 }
 
@@ -454,18 +433,14 @@ function shouldFailParsing(input: unknown, errors: string[]) {
     const lines = castedError.message.split('\n').map(removeAnsiColors)
 
     // First line's message
-    expect(lines[0]).toMatch(
-      /^\d+ issues? found with the Magidoc configuration provided:$/,
-    )
+    expect(lines[0]).toMatch(/^\d+ issues? found with the Magidoc configuration provided:$/)
 
     // All error messages present are there
     expect(lines).toHaveLength(errors.length + 1)
 
     // All error messages are included
     lines.slice(1).forEach((line: string) => {
-      expect(line).toSatisfy(() =>
-        errors.some((expected) => line.includes(expected)),
-      )
+      expect(line).toSatisfy(() => errors.some((expected) => line.includes(expected)))
     })
 
     // Indentation is good and the bullet used by indentation is good
@@ -493,9 +468,5 @@ function getBulletChar(input: string): string {
 }
 
 function getPath(name: string): string {
-  return path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    'examples',
-    name,
-  )
+  return path.join(path.dirname(fileURLToPath(import.meta.url)), 'examples', name)
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Tag, TooltipDefinition } from 'carbon-components-svelte'
+import { Tag, TooltipDefinition } from 'carbon-components-svelte'
 
-  export let reason: string | undefined | null
+export let reason: string | undefined | null
 </script>
 
 {#if reason}

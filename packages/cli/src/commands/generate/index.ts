@@ -1,8 +1,5 @@
 import type { MagidocConfiguration } from '../../config/types'
-import type {
-  PackageManager,
-  PackageManagerType,
-} from '../../node/packageManager'
+import type { PackageManager, PackageManagerType } from '../../node/packageManager'
 import { executeAllTasks } from '../../tasks/runner'
 import { buildTemplateTask } from '../../tasks/all/buildTemplate'
 import { cleanTask } from '../../tasks/all/clean'
