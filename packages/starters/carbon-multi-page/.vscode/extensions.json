@@ -1,9 +1,3 @@
 {
-  "recommendations": [
-    "fivethree.vscode-svelte-snippets",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "svelte.svelte-vscode",
-    "ZixuanChen.vitest-explorer"
-  ]
+  "recommendations": ["fivethree.vscode-svelte-snippets", "svelte.svelte-vscode", "ZixuanChen.vitest-explorer"]
 }

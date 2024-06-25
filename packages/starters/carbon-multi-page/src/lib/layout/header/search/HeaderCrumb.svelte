@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { MarkdownHeader } from '@magidoc/plugin-fuse-markdown'
+import type { MarkdownHeader } from '@magidoc/plugin-fuse-markdown'
 
-  export let section: string | undefined
-  export let headers: ReadonlyArray<MarkdownHeader>
+export let section: string | undefined
+export let headers: ReadonlyArray<MarkdownHeader>
 </script>
 
 {#if section}

@@ -1,36 +1,25 @@
 import glob from 'fast-glob'
-import { buildSchema, type GraphQLSchema } from 'graphql'
 import { readFile } from 'fs/promises'
+import { type GraphQLSchema, buildSchema } from 'graphql'
 
 export type Parameters = {
   globPaths: string[]
 }
 
-export async function parseGraphqlSchema(
-  options: Parameters,
-): Promise<GraphQLSchema> {
+export async function parseGraphqlSchema(options: Parameters): Promise<GraphQLSchema> {
   const rawSchema = await readFullSchema(options.globPaths)
 
   try {
     return buildSchema(rawSchema)
   } catch (error) {
-    throw new Error(
-      `Unable to extract a GraphQL introspection from provided schema: ${String(
-        error,
-      )}`,
-      {
-        cause: error as Error,
-      },
-    )
+    throw new Error(`Unable to extract a GraphQL introspection from provided schema: ${String(error)}`, {
+      cause: error as Error,
+    })
   }
 }
 
 async function readFullSchema(globPaths: string[]): Promise<string> {
-  const paths = new Set(
-    (await Promise.all(globPaths.map((path) => readGlobPaths(path)))).flatMap(
-      (it) => it,
-    ),
-  )
+  const paths = new Set((await Promise.all(globPaths.map((path) => readGlobPaths(path)))).flat())
 
   if (paths.size === 0) {
     throw new Error(
@@ -39,11 +28,7 @@ async function readFullSchema(globPaths: string[]): Promise<string> {
   }
 
   return (
-    await Promise.all(
-      Array.from(paths.values()).map((path) =>
-        readFile(path).then((buff) => buff.toString()),
-      ),
-    )
+    await Promise.all(Array.from(paths.values()).map((path) => readFile(path).then((buff) => buff.toString())))
   ).join('\n\n')
 }
 

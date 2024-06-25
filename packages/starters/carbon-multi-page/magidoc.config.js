@@ -1,5 +1,5 @@
-import { templates } from '@magidoc/plugin-starter-variables'
 import fs from 'fs'
+import { templates } from '@magidoc/plugin-starter-variables'
 
 /**
  * These configurations are useful for the CLI to generate websites using user-defined configuration.
@@ -30,6 +30,5 @@ export function loadVariables() {
     return {}
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return JSON.parse(fs.readFileSync(ENV_FILE_LOCATION))
 }

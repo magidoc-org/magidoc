@@ -1,13 +1,3 @@
 {
-  "words": [
-    "magidoc",
-    "prismjs",
-    "graphqls",
-    "pnpm",
-    "quickstart",
-    "discoverability",
-    "graphi",
-    "heroku",
-    "nojekyll"
-  ]
+  "words": ["magidoc", "prismjs", "graphqls", "pnpm", "quickstart", "discoverability", "graphi", "heroku", "nojekyll"]
 }

@@ -11,10 +11,7 @@ export type TaskWrapper = {
   output: (message: string) => void
 }
 
-export type TaskExecutor<T> = (
-  ctx: T,
-  task: TaskWrapper,
-) => Promise<void> | void
+export type TaskExecutor<T> = (ctx: T, task: TaskWrapper) => Promise<void> | void
 
 export type TasksConfig<T> = {
   ctx: T | undefined
@@ -37,7 +34,9 @@ export async function executeAllTasks<T>(
       },
       task: (ctx, wrapper) =>
         task.executor(ctx, {
-          output: (message) => (wrapper.output = message),
+          output: (message) => {
+            wrapper.output = message
+          },
           skip: (message) => wrapper.skip(message),
         }),
     })),

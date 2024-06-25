@@ -1,6 +1,6 @@
+import _ from 'lodash'
 import { prettify } from '../../formatter/query'
 import type { GraphQLQuery } from '../../models/query'
-import _ from 'lodash'
 
 export enum QueryType {
   /**
@@ -50,10 +50,7 @@ export class QueryBuilder {
     this.fields = fields
   }
 
-  withInlineFragment(
-    fragment: string,
-    subSelection: QueryBuilder,
-  ): QueryBuilder {
+  withInlineFragment(fragment: string, subSelection: QueryBuilder): QueryBuilder {
     /**
      * An inline fragment is nothing more than a field with a complex name
      *
@@ -76,16 +73,10 @@ export class QueryBuilder {
     return new QueryBuilder(this.type, name ?? '', this.fields)
   }
 
-  withField(
-    name: string,
-    parameters: ReadonlyArray<Parameter>,
-    subSelection?: QueryBuilder,
-  ): QueryBuilder {
-    name = name.trim()
-
+  withField(name: string, parameters: ReadonlyArray<Parameter>, subSelection?: QueryBuilder): QueryBuilder {
     return new QueryBuilder(this.type, this.name, {
       ...this.fields,
-      [name]: {
+      [name.trim()]: {
         parameters: parameters,
         subSelection,
       },
@@ -94,19 +85,12 @@ export class QueryBuilder {
 
   async build(): Promise<GraphQLQuery> {
     const subSelection = this.buildSelection(new Set())
-    const variablePlaceholder = this.generateArgumentPlaceholder(
-      subSelection.variables,
-    )
+    const variablePlaceholder = this.generateArgumentPlaceholder(subSelection.variables)
 
     return {
-      query: await prettify(
-        `${this.type} ${this.name}${variablePlaceholder}${subSelection.query}`,
-      ),
+      query: await prettify(`${this.type} ${this.name}${variablePlaceholder}${subSelection.query}`),
       variables: _.mapValues(
-        _.keyBy(
-          subSelection.variables,
-          (variable: VariableParameter) => variable.variableName,
-        ),
+        _.keyBy(subSelection.variables, (variable: VariableParameter) => variable.variableName),
         (variable: Parameter) => variable.value,
       ),
     }
@@ -125,45 +109,35 @@ export class QueryBuilder {
       readonly subSelection?: QuerySubSelection
     }
 
-    const mappedFields: Record<string, BuiltSubSelection> = _.mapValues(
-      this.fields,
-      (field: BuilderField) => ({
-        parameters: field.parameters.map((parameter) => {
-          return this.asUniquelyNamedParameter(parameter, usedParameterNames)
-        }),
-        subSelection: field.subSelection?.buildSelection(usedParameterNames),
+    const mappedFields: Record<string, BuiltSubSelection> = _.mapValues(this.fields, (field: BuilderField) => ({
+      parameters: field.parameters.map((parameter) => {
+        return this.asUniquelyNamedParameter(parameter, usedParameterNames)
       }),
-    )
+      subSelection: field.subSelection?.buildSelection(usedParameterNames),
+    }))
 
-    const fieldsAsQueries: ReadonlyArray<string> = Object.keys(
-      mappedFields,
-    ).map((name: string) => {
+    const fieldsAsQueries: ReadonlyArray<string> = Object.keys(mappedFields).map((name: string) => {
       const value = mappedFields[name]
 
       const parametersString = value.parameters
-        .map(
-          (parameter: VariableParameter) =>
-            `${parameter.name}: $${parameter.variableName}`,
-        )
+        .map((parameter: VariableParameter) => `${parameter.name}: $${parameter.variableName}`)
         .join(', ')
 
-      const parameterPlaceholder =
-        parametersString.length === 0 ? '' : `(${parametersString})`
+      const parameterPlaceholder = parametersString.length === 0 ? '' : `(${parametersString})`
 
       // format: field(arg: $arg, <parameterPlaceholder>) { <subSelection> }
       return `${name}${parameterPlaceholder}${value.subSelection?.query ?? ''}`
     })
 
-    const allQueryVariablesRequiredNested: ReadonlyArray<VariableParameter> =
-      _.flatMap(
-        Object.keys(mappedFields).map((name: string) => {
-          const mappedField = mappedFields[name]
-          return [
-            ...mappedField.parameters, // Current field parameters
-            ...(mappedField.subSelection?.variables || []), // Parameters of sub selection
-          ]
-        }),
-      )
+    const allQueryVariablesRequiredNested: ReadonlyArray<VariableParameter> = _.flatMap(
+      Object.keys(mappedFields).map((name: string) => {
+        const mappedField = mappedFields[name]
+        return [
+          ...mappedField.parameters, // Current field parameters
+          ...(mappedField.subSelection?.variables || []), // Parameters of sub selection
+        ]
+      }),
+    )
     return {
       query: `
         {
@@ -174,12 +148,8 @@ export class QueryBuilder {
     }
   }
 
-  private generateArgumentPlaceholder(
-    variables: ReadonlyArray<VariableParameter>,
-  ): string {
-    const variablesString = variables
-      .map((variable) => `$${variable.variableName}:${variable.type}`)
-      .join(', ')
+  private generateArgumentPlaceholder(variables: ReadonlyArray<VariableParameter>): string {
+    const variablesString = variables.map((variable) => `$${variable.variableName}:${variable.type}`).join(', ')
 
     return variablesString.length === 0 ? '' : `(${variablesString})`
   }
@@ -189,8 +159,7 @@ export class QueryBuilder {
     allUsedVariableNames: Set<string>,
     count = 1,
   ): VariableParameter {
-    const current =
-      count === 1 ? parameter.name : parameter.name + count.toString()
+    const current = count === 1 ? parameter.name : parameter.name + count.toString()
 
     if (!allUsedVariableNames.has(current)) {
       allUsedVariableNames.add(current)
@@ -200,11 +169,7 @@ export class QueryBuilder {
       }
     }
 
-    return this.asUniquelyNamedParameter(
-      parameter,
-      allUsedVariableNames,
-      count + 1,
-    )
+    return this.asUniquelyNamedParameter(parameter, allUsedVariableNames, count + 1)
   }
 
   private hasFields(): boolean {

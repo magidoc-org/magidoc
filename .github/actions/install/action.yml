@@ -7,7 +7,7 @@ runs:
     - name: Setup PNPM
       uses: pnpm/action-setup@v3
       with:
-        version: 8.3.1
+        version: 9.4.0
 
     - name: Cache pnpm modules
       uses: actions/cache@v3.2.6
@@ -18,7 +18,7 @@ runs:
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 20
         cache: pnpm
         cache-dependency-path: pnpm-lock.yaml
         registry-url: "https://registry.npmjs.org"

@@ -1,6 +1,6 @@
 import fs from 'fs'
-import _ from 'lodash'
 import path from 'path'
+import _ from 'lodash'
 
 export type MarkdownPage = {
   title: string
@@ -62,11 +62,9 @@ function asPage(item: File): NumberedMarkdownPage {
   // 01.Introduction -> Introduction
   // 01.Welcome.md -> Welcome
   const parts = item.name.split('.')
-  const number = parseInt(parts[0], 10)
-  if (isNaN(number)) {
-    throw new Error(
-      `Invalid file name: ${item.name}. File and directory names must start with a number.`,
-    )
+  const number = Number.parseInt(parts[0], 10)
+  if (Number.isNaN(number)) {
+    throw new Error(`Invalid file name: ${item.name}. File and directory names must start with a number.`)
   }
 
   if (item.dir) {
@@ -78,9 +76,7 @@ function asPage(item: File): NumberedMarkdownPage {
   }
 
   if (parts[parts.length - 1] !== 'md') {
-    throw new Error(
-      `Invalid file name: ${item.name}\nFiles must follow the format: <number>.<title>.md`,
-    )
+    throw new Error(`Invalid file name: ${item.name}\nFiles must follow the format: <number>.<title>.md`)
   }
 
   return {

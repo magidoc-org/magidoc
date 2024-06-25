@@ -1,9 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { yellow } from '../../../src/commands/utils/outputColors'
-import {
-  getPackageManager,
-  selectPackageManager,
-} from '../../../src/node/packageManager'
+import { getPackageManager, selectPackageManager } from '../../../src/node/packageManager'
 import { selectPackageManagerTask } from '../../../src/tasks/all/selectPackageManager'
 import { packageManagerMock, taskWrapperMock } from './utils'
 
@@ -28,9 +25,7 @@ describe('selecting package manager', () => {
       const availablePackageManager = packageManagerMock()
 
       beforeEach(() => {
-        vi.mocked(selectPackageManager).mockReturnValueOnce(
-          Promise.resolve(availablePackageManager),
-        )
+        vi.mocked(selectPackageManager).mockReturnValueOnce(Promise.resolve(availablePackageManager))
       })
 
       it('should select an available package manager', async () => {
@@ -43,9 +38,7 @@ describe('selecting package manager', () => {
         const wrapper = taskWrapperMock()
         const task = selectPackageManagerTask(noPackageManager)
         await task.executor(ctx, wrapper)
-        expect(wrapper.output).toHaveBeenCalledWith(
-          `Selected ${availablePackageManager.type}`,
-        )
+        expect(wrapper.output).toHaveBeenCalledWith(`Selected ${availablePackageManager.type}`)
       })
     })
 
@@ -65,18 +58,14 @@ describe('selecting package manager', () => {
         await task.executor(ctx, taskWrapperMock())
         expect(ctx.packageManager).toBe(packageManager)
         expect(getPackageManager).toHaveBeenCalledOnce()
-        expect(getPackageManager).toHaveBeenCalledWith(
-          withPackageManager.packageManager,
-        )
+        expect(getPackageManager).toHaveBeenCalledWith(withPackageManager.packageManager)
       })
 
       it('should output the selected package manager', async () => {
         const wrapper = taskWrapperMock()
         const task = selectPackageManagerTask(withPackageManager)
         await task.executor(ctx, wrapper)
-        expect(wrapper.output).toHaveBeenCalledWith(
-          `Selected ${packageManager.type}`,
-        )
+        expect(wrapper.output).toHaveBeenCalledWith(`Selected ${packageManager.type}`)
       })
     })
 

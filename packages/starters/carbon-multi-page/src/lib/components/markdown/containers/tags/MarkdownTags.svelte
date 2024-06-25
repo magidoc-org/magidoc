@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Tag } from 'carbon-components-svelte'
-  import type { TagsToken } from './Tags'
+import { Tag } from 'carbon-components-svelte'
+import type { TagsToken } from './Tags'
 
-  export let token: TagsToken
+export let token: TagsToken
 </script>
 
 <div class="tags">

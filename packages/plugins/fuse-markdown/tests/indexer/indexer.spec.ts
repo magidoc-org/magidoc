@@ -1,10 +1,10 @@
-import { beforeEach, describe, expect, it } from 'vitest'
-import { index, type MarkdownDocument, type SearchResult } from '../../src'
-import { unindent } from '../utils'
-import type Fuse from 'fuse.js'
+import { readFileSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { readFileSync } from 'fs'
+import type Fuse from 'fuse.js'
+import { beforeEach, describe, expect, it } from 'vitest'
+import { type MarkdownDocument, type SearchResult, index } from '../../src'
+import { unindent } from '../utils'
 
 describe('indexing a markdown source', () => {
   describe('a single page', () => {
@@ -76,9 +76,7 @@ describe('indexing a markdown source', () => {
     })
 
     it('should index text properly', () => {
-      const result = fuse.search(
-        'This is a sample page that contains some very important text.',
-      )
+      const result = fuse.search('This is a sample page that contains some very important text.')
       expect(result).toHaveLength(1)
       const firstResult = result[0]
       expect(firstResult.item).toEqual({
@@ -158,10 +156,7 @@ describe('indexing a markdown source', () => {
 function loadPages(): MarkdownDocument<{
   name: 'first' | 'second'
 }>[] {
-  const __dirname = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    'pages',
-  )
+  const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), 'pages')
   return [
     {
       data: { name: 'first' },

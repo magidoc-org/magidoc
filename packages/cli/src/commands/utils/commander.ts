@@ -1,6 +1,6 @@
 import { Option } from 'commander'
-import { PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
 import { InvalidArgumentError } from 'commander'
+import { PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
 
 export const DEFAULT_CONFIG_FILE = './magidoc.mjs'
 
@@ -37,37 +37,26 @@ export type IntOptionParameters = {
   max?: number
 }
 
-export function newPortOption(
-  description: string,
-  defaultValue: number,
-): Option {
+export function newPortOption(description: string, defaultValue: number): Option {
   return newIntOption('-p|--port <port>', description, {
     min: 1,
     max: 65535,
   }).default(defaultValue)
 }
 
-export function newIntOption(
-  flags: string,
-  description?: string,
-  params?: IntOptionParameters,
-): Option {
+export function newIntOption(flags: string, description?: string, params?: IntOptionParameters): Option {
   return new Option(flags, description).argParser((value: string) => {
-    const parsed = parseInt(value, 10)
-    if (isNaN(parsed)) {
-      throw new InvalidArgumentError(`It is not a number`)
+    const parsed = Number.parseInt(value, 10)
+    if (Number.isNaN(parsed)) {
+      throw new InvalidArgumentError('It is not a number')
     }
 
     if (params?.min && parsed < params.min) {
-      throw new InvalidArgumentError(
-        `It should be greater than or equal to ${params.min}`,
-      )
+      throw new InvalidArgumentError(`It should be greater than or equal to ${params.min}`)
     }
 
     if (params?.max && parsed > params.max) {
-      throw new InvalidArgumentError(
-        `It should be less than or equal to ${params.max}`,
-      )
+      throw new InvalidArgumentError(`It should be less than or equal to ${params.max}`)
     }
     return parsed
   })

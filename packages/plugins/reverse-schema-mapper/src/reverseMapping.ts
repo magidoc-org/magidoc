@@ -1,5 +1,5 @@
-import { GraphQLNamedType } from 'graphql'
-import { TypeReverseMapping } from './reverseUsage'
+import type { GraphQLNamedType } from 'graphql'
+import type { TypeReverseMapping } from './reverseUsage'
 
 export class ReverseGraphQLSchemaMapping {
   private mapping: Map<string, TypeReverseMapping>

@@ -1,27 +1,27 @@
 import {
-  MarkdownHeading,
   MarkdownBloquote,
-  MarkdownList,
-  MarkdownListItem,
   MarkdownBr,
   MarkdownCode,
   MarkdownCodeSpan,
-  MarkdownTable,
-  MarkdownHtml,
-  MarkdownParagraph,
-  MarkdownLink,
-  MarkdownText,
-  MarkdownDfn,
   MarkdownDel,
+  MarkdownDfn,
   MarkdownEm,
+  MarkdownHeading,
   MarkdownHr,
-  MarkdownStrong,
+  MarkdownHtml,
   MarkdownImage,
+  MarkdownLink,
+  MarkdownList,
+  MarkdownListItem,
+  MarkdownParagraph,
   MarkdownSpace,
+  MarkdownStrong,
+  MarkdownTable,
+  MarkdownText,
 } from './components'
 
-import { Lexer, type TokensList } from 'marked'
 import Slugger from 'github-slugger'
+import { Lexer, type TokensList } from 'marked'
 
 export type MarkdownOptions = {
   /**

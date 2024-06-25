@@ -22,10 +22,7 @@ export type Meta = {
   content: string
 }
 
-function generateMeta(
-  data: WebsiteData,
-  optionalMeta?: Record<string, string | undefined>,
-): Meta[] {
+function generateMeta(data: WebsiteData, optionalMeta?: Record<string, string | undefined>): Meta[] {
   return _.map(
     {
       ...defaultMeta(data),

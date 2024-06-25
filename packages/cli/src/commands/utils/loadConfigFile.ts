@@ -1,6 +1,6 @@
+import path from 'path'
 import { readConfiguration } from '../../config/reader'
 import type { MagidocConfiguration } from '../../config/types'
-import path from 'path'
 import { printError, printStacktrace } from './log'
 
 export async function loadFileConfiguration(

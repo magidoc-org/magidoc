@@ -131,9 +131,7 @@ export const DEFAULT_FACTORIES: Record<string, GraphQLFactory> = withVariants(
   }),
 )
 
-function withVariants(
-  record: Record<string, GraphQLFactory>,
-): Record<string, GraphQLFactory> {
+function withVariants(record: Record<string, GraphQLFactory>): Record<string, GraphQLFactory> {
   return {
     ..._.reduce(
       record,
@@ -150,25 +148,23 @@ function withVariants(
   }
 }
 
-function withAliases(
-  record: Record<string, GraphQLFactory>,
-): Record<string, GraphQLFactory> {
+function withAliases(record: Record<string, GraphQLFactory>): Record<string, GraphQLFactory> {
   return {
     ...record,
-    Instant: record['DateTime'],
-    Id: record['ID'],
-    BigInteger: record['Int'],
-    BigNumber: record['Int'],
-    Long: record['Int'],
-    Url: record['URL'],
+    Instant: record.DateTime,
+    Id: record.ID,
+    BigInteger: record.Int,
+    BigNumber: record.Int,
+    Long: record.Int,
+    Url: record.URL,
 
     // Hasura types
-    _text: record['String'],
-    Float8: record['Float'],
-    Numeric: record['Int'],
-    SmallInt: record['Int'],
-    Timestamp: record['DateTime'],
-    Timestamptz: record['DateTime'],
-    JsonB: record['JSON'],
+    _text: record.String,
+    Float8: record.Float,
+    Numeric: record.Int,
+    SmallInt: record.Int,
+    Timestamp: record.DateTime,
+    Timestamptz: record.DateTime,
+    JsonB: record.JSON,
   }
 }

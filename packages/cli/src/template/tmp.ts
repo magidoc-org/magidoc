@@ -1,6 +1,6 @@
-import fs from 'fs-extra'
 import os from 'os'
 import path from 'path'
+import fs from 'fs-extra'
 
 const tmpDir = os.tmpdir()
 
@@ -11,7 +11,7 @@ export type TmpLocation = {
 }
 
 export function tmpTemplateArchiveFile(name: string): TmpLocation {
-  const actualName = name.endsWith('.zip') ? name : name + '.zip'
+  const actualName = name.endsWith('.zip') ? name : `${name}.zip`
   return tmpLocation(asTmpPath(actualName))
 }
 

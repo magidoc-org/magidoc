@@ -1,18 +1,13 @@
 <script lang="ts">
-  import {
-    StructuredList,
-    StructuredListBody,
-    StructuredListCell,
-    StructuredListRow,
-  } from 'carbon-components-svelte'
+import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
 
-  import type { GraphQLEnumType } from 'graphql'
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-  import DeprecatedTag from '../tags/DeprecatedTag.svelte'
-  import TypeTag from '../tags/TypeTag.svelte'
+import type { GraphQLEnumType } from 'graphql'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import DeprecatedTag from '../tags/DeprecatedTag.svelte'
+import TypeTag from '../tags/TypeTag.svelte'
 
-  export let type: GraphQLEnumType
+export let type: GraphQLEnumType
 </script>
 
 <section>

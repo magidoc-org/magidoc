@@ -1,7 +1,7 @@
 <script>
-  import Prism from '../lib/index'
-  import 'prismjs/components/prism-javascript'
-  import 'prismjs/themes/prism-okaidia.css'
+import Prism from '../lib/index'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/themes/prism-okaidia.css'
 </script>
 
 <Prism

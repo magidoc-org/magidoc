@@ -1,9 +1,9 @@
 import { fetchSchema } from '@magidoc/rollup-plugin-gql-schema'
 import { parseSchema } from '@magidoc/rollup-plugin-gql-schema'
+import fs from 'fs/promises'
 import { describe, expect, it, vi } from 'vitest'
 import { loadGraphQLSchemaTask } from '../../../src/tasks/all/loadGraphqlSchema'
 import { taskWrapperMock } from './utils'
-import fs from 'fs/promises'
 
 vi.mock('@magidoc/rollup-plugin-gql-schema')
 vi.mock('fs/promises')
@@ -97,10 +97,7 @@ describe('loading graphql schema', () => {
       it('should write an empty schema', async () => {
         const task = loadGraphQLSchemaTask(config)
         await task.executor(ctx, taskWrapperMock())
-        expect(fs.writeFile).toHaveBeenCalledWith(
-          ctx.templateConfiguration.schemaTargetLocation,
-          '',
-        )
+        expect(fs.writeFile).toHaveBeenCalledWith(ctx.templateConfiguration.schemaTargetLocation, '')
       })
     })
   })

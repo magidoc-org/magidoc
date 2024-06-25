@@ -92,10 +92,7 @@ export type InputObjectSearchResult = TypeSearchResult & {
 }
 
 export type QuerySearchResult = SearchResultBase & {
-  type:
-    | SearchResultType.QUERY
-    | SearchResultType.MUTATION
-    | SearchResultType.SUBSCRIPTION
+  type: SearchResultType.QUERY | SearchResultType.MUTATION | SearchResultType.SUBSCRIPTION
 
   /**
    * The arguments that can be passed to this query.

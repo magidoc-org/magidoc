@@ -1,39 +1,27 @@
 <script lang="ts">
-  import { getOrDefault } from '$lib/variables'
-  import {
-    templates,
-    type ExternalLink,
-  } from '@magidoc/plugin-starter-variables'
+import { getOrDefault } from '$lib/variables'
+import { type ExternalLink, templates } from '@magidoc/plugin-starter-variables'
 
-  import {
-    HeaderAction,
-    HeaderPanelDivider,
-    HeaderPanelLinks,
-  } from 'carbon-components-svelte'
-  import _ from 'lodash'
-  import AppLink from './AppLink.svelte'
+import { HeaderAction, HeaderPanelDivider, HeaderPanelLinks } from 'carbon-components-svelte'
+import _ from 'lodash'
+import AppLink from './AppLink.svelte'
 
-  const links = getOrDefault(templates.EXTERNAL_LINKS, []).filter(
-    (link) => link?.position === 'navigation' || !link?.position,
-  )
+const links = getOrDefault(templates.EXTERNAL_LINKS, []).filter(
+  (link) => link?.position === 'navigation' || !link?.position,
+)
 
-  const defaultGroups = links.filter(
-    (link): link is ExternalLink => !!(link && !link.group),
-  )
+const defaultGroups = links.filter((link): link is ExternalLink => !!(link && !link.group))
 
-  const otherGroups = _.map(
-    _.groupBy(
-      links.filter(
-        (link): link is ExternalLink & { group: string } =>
-          !!(link && link.group),
-      ),
-      (link) => link.group,
-    ),
-    (value, key) => ({
-      key,
-      value,
-    }),
-  )
+const otherGroups = _.map(
+  _.groupBy(
+    links.filter((link): link is ExternalLink & { group: string } => !!link?.group),
+    (link) => link.group,
+  ),
+  (value, key) => ({
+    key,
+    value,
+  }),
+)
 </script>
 
 {#if links.length > 0}

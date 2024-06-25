@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { GraphQLScalarType } from 'graphql'
+import type { GraphQLScalarType } from 'graphql'
 
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-  import TypeTag from '../tags/TypeTag.svelte'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import TypeTag from '../tags/TypeTag.svelte'
 
-  export let type: GraphQLScalarType
+export let type: GraphQLScalarType
 </script>
 
 <section>

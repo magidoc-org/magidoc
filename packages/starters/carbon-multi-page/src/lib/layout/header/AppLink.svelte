@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { ExternalLink } from '@magidoc/plugin-starter-variables'
-  import { HeaderPanelLink } from 'carbon-components-svelte'
-  import { computeIcon } from './links'
+import type { ExternalLink } from '@magidoc/plugin-starter-variables'
+import { HeaderPanelLink } from 'carbon-components-svelte'
+import { computeIcon } from './links'
 
-  export let link: ExternalLink
+export let link: ExternalLink
 </script>
 
 <HeaderPanelLink href={link.href}>

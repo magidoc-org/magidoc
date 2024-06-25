@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Markdown from '$lib/markdown/Markdown.svelte'
-  import CustomHr from './CustomHr.svelte'
+import Markdown from '$lib/markdown/Markdown.svelte'
+import CustomHr from './CustomHr.svelte'
 </script>
 
 <body style="padding:1rem">

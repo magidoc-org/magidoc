@@ -1,7 +1,7 @@
-import { describe, test, expect, beforeAll } from 'vitest'
+import { beforeAll, describe, expect, test } from 'vitest'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
 
-export type TestSet<T> = {
+type TestSet<T> = {
   type: string
   names: string[]
   expected: T
@@ -75,14 +75,7 @@ const ALL_SETS: ReadonlyArray<TestSet<unknown>> = [
   },
   {
     type: 'String',
-    names: [
-      'datetime',
-      'datetimes',
-      'instant',
-      'timestamp',
-      'timestampz',
-      'timestamps',
-    ],
+    names: ['datetime', 'datetimes', 'instant', 'timestamp', 'timestampz', 'timestamps'],
     expected: '2022-03-06T08:23:45.000Z',
   },
   {
@@ -270,12 +263,9 @@ describe('generating default values', () => {
 
   ALL_SETS.forEach((set) => {
     describe(`input is '${set.type}'`, () => {
-      test.each(set.names)(
-        `should generate '${set.type}' for input name '%s'`,
-        (input) => {
-          expect(runFactory(set.type, input)).toEqual(set.expected)
-        },
-      )
+      test.each(set.names)(`should generate '${set.type}' for input name '%s'`, (input) => {
+        expect(runFactory(set.type, input)).toEqual(set.expected)
+      })
 
       test.each(set.names.map((name) => name.toLocaleLowerCase()))(
         `should generate '${set.type}' for input name '%s'`,

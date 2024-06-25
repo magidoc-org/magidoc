@@ -1,13 +1,10 @@
+import path from 'path'
+import type { Command } from 'commander'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import runDevelopmentServer from '../../../src/commands/dev'
 import buildDevCommand from '../../../src/commands/dev/command'
-import {
-  mockLoadFileConfiguration,
-  testMagidocConfiguration,
-} from '../configuration'
+import { mockLoadFileConfiguration, testMagidocConfiguration } from '../configuration'
 import { makeTestProgram } from '../program'
-import path from 'path'
-import type { Command } from 'commander'
 
 vi.mock('../../../src/commands/utils/loadConfigFile')
 vi.mock('../../../src/commands/dev')
@@ -94,9 +91,7 @@ describe('running the dev command', () => {
   describe('with invalid options', () => {
     describe('with a non-existent argument', () => {
       it('should raise an error', async () => {
-        await expect(() =>
-          program.parseAsync(['dev', '--potato', 'poutine'], { from: 'user' }),
-        ).rejects.toThrowError(
+        await expect(() => program.parseAsync(['dev', '--potato', 'poutine'], { from: 'user' })).rejects.toThrowError(
           "error: unknown option '--potato'\n(Did you mean --port?)",
         )
       })
@@ -104,9 +99,7 @@ describe('running the dev command', () => {
 
     describe('with a wrong type', () => {
       it('should raise an error', async () => {
-        await expect(() =>
-          program.parseAsync(['dev', '--port', 'abc'], { from: 'user' }),
-        ).rejects.toThrowError(
+        await expect(() => program.parseAsync(['dev', '--port', 'abc'], { from: 'user' })).rejects.toThrowError(
           "error: option '-p|--port <port>' argument 'abc' is invalid. It is not a number",
         )
       })
@@ -114,9 +107,7 @@ describe('running the dev command', () => {
 
     describe('too low port', () => {
       it('should raise an error', async () => {
-        await expect(() =>
-          program.parseAsync(['dev', '--port', '0'], { from: 'user' }),
-        ).rejects.toThrowError(
+        await expect(() => program.parseAsync(['dev', '--port', '0'], { from: 'user' })).rejects.toThrowError(
           "error: option '-p|--port <port>' argument '0' is invalid. It should be greater than or equal to 1",
         )
       })
@@ -124,9 +115,7 @@ describe('running the dev command', () => {
 
     describe('too high port', () => {
       it('should raise an error', async () => {
-        await expect(() =>
-          program.parseAsync(['dev', '--port', '423423'], { from: 'user' }),
-        ).rejects.toThrowError(
+        await expect(() => program.parseAsync(['dev', '--port', '423423'], { from: 'user' })).rejects.toThrowError(
           "error: option '-p|--port <port>' argument '423423' is invalid. It should be less than or equal to 65535",
         )
       })

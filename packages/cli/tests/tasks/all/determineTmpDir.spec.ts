@@ -24,12 +24,7 @@ describe('determine tmp directory task', () => {
           tmpDirectory: tmpLocationMock(),
         }
 
-        expect(
-          determineTmpDirectoryTask(defaultConfig).executor(
-            ctx,
-            taskWrapperMock(),
-          ),
-        )
+        expect(determineTmpDirectoryTask(defaultConfig).executor(ctx, taskWrapperMock()))
 
         expect(ctx.tmpArchive).toBe(defaultConfig.tmpArchive)
         expect(ctx.tmpDirectory).toBe(defaultConfig.tmpDirectory)
@@ -55,12 +50,7 @@ describe('determine tmp directory task', () => {
           tmpDirectory: initialDirectory,
         }
 
-        expect(
-          determineTmpDirectoryTask(noTargetPaths).executor(
-            ctx,
-            taskWrapperMock(),
-          ),
-        )
+        expect(determineTmpDirectoryTask(noTargetPaths).executor(ctx, taskWrapperMock()))
 
         expect(ctx.tmpArchive).not.toBe(initialArchive)
         expect(ctx.tmpArchive).not.toBeUndefined()
@@ -86,9 +76,7 @@ describe('determine tmp directory task', () => {
     }
 
     it('should be enabled', () => {
-      expect(
-        determineTmpDirectoryTask(notTemplateConfig).enabled,
-      ).toBeUndefined()
+      expect(determineTmpDirectoryTask(notTemplateConfig).enabled).toBeUndefined()
     })
 
     it('should provide a temporary directory to the template path', () => {
@@ -98,12 +86,7 @@ describe('determine tmp directory task', () => {
         tmpDirectory: tmpLocationMock(),
       }
 
-      expect(
-        determineTmpDirectoryTask(notTemplateConfig).executor(
-          ctx,
-          taskWrapperMock(),
-        ),
-      )
+      expect(determineTmpDirectoryTask(notTemplateConfig).executor(ctx, taskWrapperMock()))
 
       expect(ctx.tmpArchive).toBe(initialArchive)
       expect(ctx.tmpDirectory.path).toBe(notTemplateConfig.website.template)

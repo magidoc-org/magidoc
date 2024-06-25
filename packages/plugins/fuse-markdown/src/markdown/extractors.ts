@@ -1,5 +1,5 @@
-import type { ExtractFunction, TextExtractor } from './extract'
 import type { Token, Tokens } from 'marked'
+import type { ExtractFunction, TextExtractor } from './extract'
 
 export function defaultExtractors(): Record<Token['type'], TextExtractor> {
   return {
@@ -14,10 +14,7 @@ export function defaultExtractors(): Record<Token['type'], TextExtractor> {
     text: baseExtractor,
     link: baseExtractor,
     list: (token, extract) => {
-      return (token as Tokens.List).items.reduce(
-        (acc, item) => `${acc}\n${baseExtractor(item, extract)}`,
-        '',
-      )
+      return (token as Tokens.List).items.reduce((acc, item) => `${acc}\n${baseExtractor(item, extract)}`, '')
     },
     list_item: baseExtractor,
     table: (token, extract) => {

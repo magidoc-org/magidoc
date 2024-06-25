@@ -1,5 +1,5 @@
-import { fileURLToPath } from 'url'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
 function markdown(string) {
   // Takes the first indent and trims that length from everywhere.
@@ -47,7 +47,7 @@ export default {
 
             Head to the docs to learn how to [generate your own static GraphQL documentation website](https://magidoc.js.org/introduction/welcome)!
           `,
-        }
+        },
       ],
     },
   },

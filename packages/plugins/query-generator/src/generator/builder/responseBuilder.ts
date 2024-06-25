@@ -1,14 +1,11 @@
-import _ from 'lodash'
 import type { GraphQLField } from 'graphql'
+import _ from 'lodash'
 
 export class RootResponseBuilder {
   private readonly target: GraphQLField<unknown, unknown, unknown>
   private readonly value: ResponseFieldValueBuilder
 
-  constructor(
-    target: GraphQLField<unknown, unknown, unknown>,
-    value: ResponseFieldValueBuilder,
-  ) {
+  constructor(target: GraphQLField<unknown, unknown, unknown>, value: ResponseFieldValueBuilder) {
     this.target = target
     this.value = value
   }
@@ -31,10 +28,7 @@ export class SubObjectResponseBuilder implements ResponseFieldValueBuilder {
     this.fields = fields
   }
 
-  withField(
-    name: string,
-    value: ResponseFieldValueBuilder,
-  ): SubObjectResponseBuilder {
+  withField(name: string, value: ResponseFieldValueBuilder): SubObjectResponseBuilder {
     return new SubObjectResponseBuilder({
       ...this.fields,
       [name]: value,

@@ -1,8 +1,6 @@
 import type { Converter, ZodTypeProvider } from '../variable'
 
-export function recordConverter<V>(
-  valueType: ZodTypeProvider<V>,
-): Converter<Record<string, V | undefined>> {
+export function recordConverter<V>(valueType: ZodTypeProvider<V>): Converter<Record<string, V | undefined>> {
   return {
     convert: (target) => {
       if (typeof target === 'object') {

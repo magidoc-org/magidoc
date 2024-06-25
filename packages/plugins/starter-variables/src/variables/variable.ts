@@ -13,9 +13,7 @@ export type Variable<T> = {
   zod: ZodVariable<T>
 }
 
-export type ZodTypeProvider<T> = (
-  zod: typeof import('zod'),
-) => ZodType<T | undefined, ZodTypeDef, T | undefined>
+export type ZodTypeProvider<T> = (zod: typeof import('zod')) => ZodType<T | undefined, ZodTypeDef, T | undefined>
 
 export type ZodVariable<T> = {
   type: ZodTypeProvider<T>
@@ -27,10 +25,7 @@ export type Converter<T> = {
   type: ZodTypeProvider<T>
 }
 
-export function createVariable<T>(
-  key: string,
-  converter: Converter<T>,
-): Variable<T> {
+export function createVariable<T>(key: string, converter: Converter<T>): Variable<T> {
   const get = (env: MetaEnv) => converter.convert(env[key])
 
   return {

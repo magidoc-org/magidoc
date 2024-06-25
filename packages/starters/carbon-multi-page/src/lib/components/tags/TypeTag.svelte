@@ -1,34 +1,26 @@
 <script lang="ts">
-  import { Tag } from 'carbon-components-svelte'
-  import {
-    isEnumType,
-    isInputObjectType,
-    isInterfaceType,
-    isScalarType,
-    isUnionType,
-    isObjectType,
-    type GraphQLNamedType,
-  } from 'graphql'
+import { Tag } from 'carbon-components-svelte'
+import {
+  type GraphQLNamedType,
+  isEnumType,
+  isInputObjectType,
+  isInterfaceType,
+  isObjectType,
+  isScalarType,
+  isUnionType,
+} from 'graphql'
 
-  export let type: GraphQLNamedType
+export let type: GraphQLNamedType
 
-  function getTypeString(): string {
-    if (isScalarType(type)) {
-      return 'Scalar'
-    } else if (isEnumType(type)) {
-      return 'Enum'
-    } else if (isInterfaceType(type)) {
-      return 'Interface'
-    } else if (isUnionType(type)) {
-      return 'Union'
-    } else if (isObjectType(type)) {
-      return 'Object'
-    } else if (isInputObjectType(type)) {
-      return 'Input Object'
-    }
-
-    return 'Unknown'
-  }
+function getTypeString(): string {
+  if (isScalarType(type)) return 'Scalar'
+  if (isEnumType(type)) return 'Enum'
+  if (isInterfaceType(type)) return 'Interface'
+  if (isUnionType(type)) return 'Union'
+  if (isObjectType(type)) return 'Object'
+  if (isInputObjectType(type)) return 'Input Object'
+  return 'Unknown'
+}
 </script>
 
 <Tag type="teal">{getTypeString()}</Tag>

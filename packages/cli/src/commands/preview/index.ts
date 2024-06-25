@@ -10,11 +10,7 @@ export type PreviewConfig = {
 }
 
 export default function preview(config: PreviewConfig): http.Server {
-  printWarning(
-    `⚠️ ${yellow(
-      'Preview command is not meant to be used for static file serving in production.',
-    )}`,
-  )
+  printWarning(`⚠️ ${yellow('Preview command is not meant to be used for static file serving in production.')}`)
 
   const assets = sirv(config.websiteLocation, {
     maxAge: 0,
@@ -23,6 +19,11 @@ export default function preview(config: PreviewConfig): http.Server {
   })
 
   const server = http.createServer((req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
+    res.setHeader('Pragma', 'no-cache')
+    res.setHeader('Expires', '0')
+    res.setHeader('Surrogate-Control', 'no-store')
+
     if (!config.siteRoot || req.url?.startsWith(config.siteRoot)) {
       req.url = req.url?.replace(config.siteRoot || '', '')
 
@@ -38,11 +39,7 @@ export default function preview(config: PreviewConfig): http.Server {
 
   server.on('error', (error) => {
     if (error.message.includes('EADDRINUSE')) {
-      logError(
-        `Could not start preview server... port ${cyan(
-          config.port,
-        )} already in use.`,
-      )
+      logError(`Could not start preview server... port ${cyan(config.port)} already in use.`)
     } else {
       logError(`Could not preview start server... ${error.message}`)
     }

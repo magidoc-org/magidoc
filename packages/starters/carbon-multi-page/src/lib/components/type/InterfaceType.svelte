@@ -1,24 +1,20 @@
 <script lang="ts">
-  import {
-    getFieldsPossibleDescriptions,
-    schema,
-    type FieldWithPossibleDescriptions,
-  } from '$lib/model'
+import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions, schema } from '$lib/model'
 
-  import type { GraphQLInterfaceType, GraphQLObjectType } from 'graphql'
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-  import TypeTag from '../tags/TypeTag.svelte'
-  import FiedsTable from './list/FiedsList.svelte'
-  import TypeEnumeration from './list/TypeEnumeration.svelte'
+import type { GraphQLInterfaceType, GraphQLObjectType } from 'graphql'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import TypeTag from '../tags/TypeTag.svelte'
+import FieldsTable from './list/FieldsList.svelte'
+import TypeEnumeration from './list/TypeEnumeration.svelte'
 
-  export let type: GraphQLInterfaceType
+export let type: GraphQLInterfaceType
 
-  let implementations: ReadonlyArray<GraphQLObjectType>
-  $: implementations = schema.getPossibleTypes(type)
+let implementations: ReadonlyArray<GraphQLObjectType>
+$: implementations = schema.getPossibleTypes(type)
 
-  let fields: ReadonlyArray<FieldWithPossibleDescriptions>
-  $: fields = getFieldsPossibleDescriptions(type)
+let fields: ReadonlyArray<FieldWithPossibleDescriptions>
+$: fields = getFieldsPossibleDescriptions(type)
 </script>
 
 <section>
@@ -31,7 +27,7 @@
 
   {#if Object.keys(type.getFields()).length > 0}
     <AnchorHeader id={'fields'} depth={2}>Fields</AnchorHeader>
-    <FiedsTable data={fields} />
+    <FieldsTable data={fields} />
   {/if}
 
   {#if implementations.length > 0}

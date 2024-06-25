@@ -1,9 +1,9 @@
-import { readdir, readFile, stat } from 'node:fs/promises'
-import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'path'
+import { fileURLToPath } from 'url'
+import { readFile, readdir, stat } from 'fs/promises'
 
 /**
- * @param {import("node:fs").PathLike} dir
+ * @param {import("fs").PathLike} dir
  * @returns {Promise<Array<{ dir: boolean; name: string; path: string; }>>}
  */
 async function getFiles(dir) {
@@ -58,6 +58,4 @@ const pagesDirectory = new URL('./pages', import.meta.url)
 
 const filesInPagesDirectory = await getFiles(pagesDirectory)
 
-export const pages = await Promise.all(
-  filesInPagesDirectory.map((item) => asPage(item)),
-)
+export const pages = await Promise.all(filesInPagesDirectory.map((item) => asPage(item)))

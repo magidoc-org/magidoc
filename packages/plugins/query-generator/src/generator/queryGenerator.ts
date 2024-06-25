@@ -1,40 +1,30 @@
 import _ from 'lodash'
 
-import type { GraphQLQuery } from '../models/query'
-import {
-  type QueryGeneratorConfig,
-  NullGenerationStrategy,
-  type ResponseGenerationConfig,
-} from './config'
 import {
   type GraphQLField,
-  type GraphQLType,
-  type GraphQLObjectType,
-  isLeafType,
-  isUnionType,
-  isObjectType,
-  isInterfaceType,
-  isNonNullType,
-  isListType,
-  isNullableType,
   type GraphQLNamedType,
+  type GraphQLObjectType,
+  type GraphQLType,
+  isInterfaceType,
+  isLeafType,
+  isListType,
+  isNonNullType,
+  isNullableType,
+  isObjectType,
+  isUnionType,
 } from 'graphql'
-import { unwrapType } from './extractor'
-import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
+import type { GraphQLQuery } from '../models/query'
+import { type Parameter, type QueryBuilder, QueryType, queryBuilder, subSelectionBuilder } from './builder/queryBuilder'
 import {
-  type Parameter,
-  QueryBuilder,
-  queryBuilder,
-  QueryType,
-  subSelectionBuilder,
-} from './builder/queryBuilder'
-import {
+  type ResponseFieldValueBuilder,
+  arrayResponseBuilder,
   fieldResponseBuilder,
   subObjectResponseBuilder,
   valueResponseBuilder,
-  type ResponseFieldValueBuilder,
-  arrayResponseBuilder,
 } from './builder/responseBuilder'
+import { NullGenerationStrategy, type QueryGeneratorConfig, type ResponseGenerationConfig } from './config'
+import { unwrapType } from './extractor'
+import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
 
 const DEFAULT_CONFIG: QueryGeneratorConfig = {
   queryType: QueryType.QUERY,
@@ -67,10 +57,7 @@ export async function generateGraphQLQuery(
     return null
   }
 
-  return await resultBuilder
-    .withType(mergedConfig.queryType)
-    .withName(mergedConfig.queryName)
-    .build()
+  return await resultBuilder.withType(mergedConfig.queryType).withName(mergedConfig.queryName).build()
 }
 
 export function generateGraphQLResponse(
@@ -96,11 +83,7 @@ function buildField(
   config: QueryGeneratorConfig,
   context: GenerationContext,
 ): QueryBuilder {
-  const parameters: ReadonlyArray<Parameter> = generateArgsForField(
-    field,
-    config,
-    context,
-  )
+  const parameters: ReadonlyArray<Parameter> = generateArgsForField(field, config, context)
 
   const type = unwrapType(field.type)
   const isLeafField = isLeafType(type)
@@ -160,7 +143,9 @@ function generateField(
     )
 
     return finalBuilderWithAllFields
-  } else if (isObjectType(type) || isInterfaceType(type)) {
+  }
+
+  if (isObjectType(type) || isInterfaceType(type)) {
     const builder = subSelectionBuilder()
 
     const fields = type.getFields()
@@ -202,14 +187,12 @@ function generateResponse(
     return null
   }
 
-  if (
-    isNullableType(type) &&
-    config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL
-  ) {
+  if (isNullableType(type) && config.nullGenerationStrategy === NullGenerationStrategy.ALWAYS_NULL) {
     return valueResponseBuilder(null)
   }
 
   if (isNonNullType(type)) {
+    // biome-ignore lint/style/noParameterAssign: Because this is easier and cleaner
     type = type.ofType
   }
 
@@ -242,26 +225,18 @@ function generateResponse(
 
     if (isUnionType(target)) {
       target = target.getTypes()[0]
-      builder = builder.withField(
-        '__typename',
-        valueResponseBuilder(target.name),
-      )
+      builder = builder.withField('__typename', valueResponseBuilder(target.name))
     }
 
     const resultBuilder = _.reduce(
       target.getFields(),
       (acc, current) => {
-        const subSelection = generateResponse(
-          current.name,
-          current.type,
-          config,
-          {
-            ...context,
-            parentType: target,
-            path: `${context.path}.${current.name}`,
-            depth: context.depth + 1,
-          },
-        )
+        const subSelection = generateResponse(current.name, current.type, config, {
+          ...context,
+          parentType: target,
+          path: `${context.path}.${current.name}`,
+          depth: context.depth + 1,
+        })
 
         if (subSelection === null) {
           return acc

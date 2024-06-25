@@ -1,20 +1,17 @@
 import type { GraphQLField } from 'graphql'
+import minify from 'graphql-query-compress'
+import { describe, expect, it } from 'vitest'
 import {
-  generateGraphQLQuery,
-  generateGraphQLResponse,
-  type QueryGeneratorConfig,
   type GraphQLFactoryContext,
   NullGenerationStrategy,
+  type QueryGeneratorConfig,
   QueryType,
+  generateGraphQLQuery,
+  generateGraphQLResponse,
 } from '../../src'
-import minify from 'graphql-query-compress'
 import { gql, prettify } from '../../src/formatter/query'
+import type { FakeGenerationConfig, ResponseGenerationConfig } from '../../src/generator/config'
 import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
-import type {
-  FakeGenerationConfig,
-  ResponseGenerationConfig,
-} from '../../src/generator/config'
-import { describe, it, expect } from 'vitest'
 
 const schema = getTestSchema()
 
@@ -129,9 +126,7 @@ describe('generating a query', () => {
         }
 
         it('returns a null query', async () => {
-          await expect(
-            generateGraphQLQuery(recursiveField, config),
-          ).resolves.toBeNull()
+          await expect(generateGraphQLQuery(recursiveField, config)).resolves.toBeNull()
         })
       })
     })
@@ -474,7 +469,7 @@ describe('generating a response', () => {
       const result = generateGraphQLResponse(fieldWithNoArgs, emptyConfig)
 
       assertResponseEqual(result, {
-        id: DEFAULT_FACTORIES['ID'](anyFactoryContext),
+        id: DEFAULT_FACTORIES.ID(anyFactoryContext),
       })
     })
   })
@@ -543,10 +538,7 @@ describe('generating a response', () => {
         }
 
         it('returns no result', () => {
-          const result = generateGraphQLResponse(
-            recursiveField,
-            tooLowMaxDepthConfig,
-          )
+          const result = generateGraphQLResponse(recursiveField, tooLowMaxDepthConfig)
           expect(result).toBeNull()
         })
       })
@@ -645,13 +637,8 @@ describe('generating a response', () => {
   })
 })
 
-async function assertQueryEqual(
-  actual?: string,
-  expected?: string,
-): Promise<void> {
-  expect(await prettify(minify(actual ?? ''))).toEqual(
-    await prettify(minify(expected ?? '')),
-  )
+async function assertQueryEqual(actual?: string, expected?: string): Promise<void> {
+  expect(await prettify(minify(actual ?? ''))).toEqual(await prettify(minify(expected ?? '')))
 }
 
 function assertResponseEqual(actual: unknown, expected: unknown) {
@@ -662,14 +649,10 @@ function getQueryField(name: string): GraphQLField<unknown, unknown, unknown> {
   return getMandatoryField(schema.getQueryType(), name)
 }
 
-function getMutationField(
-  name: string,
-): GraphQLField<unknown, unknown, unknown> {
+function getMutationField(name: string): GraphQLField<unknown, unknown, unknown> {
   return getMandatoryField(schema.getMutationType(), name)
 }
 
-function getSubscriptionField(
-  name: string,
-): GraphQLField<unknown, unknown, unknown> {
+function getSubscriptionField(name: string): GraphQLField<unknown, unknown, unknown> {
   return getMandatoryField(schema.getSubscriptionType(), name)
 }

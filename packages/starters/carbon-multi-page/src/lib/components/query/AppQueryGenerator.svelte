@@ -1,30 +1,29 @@
 <script lang="ts">
-  import Prism from '@magidoc/plugin-svelte-prismjs'
-  import 'prismjs/components/prism-graphql.js'
-  import 'prismjs/components/prism-json.js'
+import Prism from '@magidoc/plugin-svelte-prismjs'
+import 'prismjs/components/prism-graphql.js'
+import 'prismjs/components/prism-json.js'
 
-  import { Button } from 'carbon-components-svelte'
-  import { graphqlQuery } from './stores'
-  import { NullGenerationStrategy } from '@magidoc/plugin-query-generator'
-  import { Rule, RuleFilled, Add, Copy, Subtract } from 'carbon-icons-svelte'
+import { NullGenerationStrategy } from '@magidoc/plugin-query-generator'
+import { Button } from 'carbon-components-svelte'
+import { Add, Copy, Rule, RuleFilled, Subtract } from 'carbon-icons-svelte'
+import { graphqlQuery } from './stores'
 
-  export let code: string
-  export let language: 'graphql' | 'json'
+export let code: string
+export let language: 'graphql' | 'json'
 
-  let copyButtonText = 'Copy query'
+let copyButtonText = 'Copy query'
 
-  export let copy = async (text: string) => {
-    try {
-      copyButtonText = 'Copied!'
-      await navigator.clipboard.writeText(text)
-      setTimeout(() => {
-        copyButtonText = 'Copy query'
-      }, 1500)
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(e)
-    }
+const copy = async (text: string) => {
+  try {
+    copyButtonText = 'Copied!'
+    await navigator.clipboard.writeText(text)
+    setTimeout(() => {
+      copyButtonText = 'Copy query'
+    }, 1500)
+  } catch (e) {
+    console.error(e)
   }
+}
 </script>
 
 <div class="wrapper">

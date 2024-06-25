@@ -1,4 +1,4 @@
-import { extract, IndexableMarkdownType } from '@magidoc/plugin-fuse-markdown'
+import { IndexableMarkdownType, extract } from '@magidoc/plugin-fuse-markdown'
 import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 
 type AnythingWithADescription = {

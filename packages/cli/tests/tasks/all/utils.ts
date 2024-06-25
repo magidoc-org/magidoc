@@ -1,9 +1,6 @@
 import _ from 'lodash'
 import { type Mock, vi } from 'vitest'
-import {
-  type PackageManagerType,
-  PACKAGE_MANAGER_TYPES,
-} from '../../../src/node/packageManager'
+import { PACKAGE_MANAGER_TYPES, type PackageManagerType } from '../../../src/node/packageManager'
 
 export function taskWrapperMock(): {
   skip: Mock<[string], void>

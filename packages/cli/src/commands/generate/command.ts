@@ -1,17 +1,12 @@
 import type { Command } from 'commander'
 import generate from '.'
-import { loadFileConfiguration } from '../utils/loadConfigFile'
-import { withStacktrace } from '../utils/withStacktrace'
 import type { MagidocConfiguration } from '../../config/types'
-import { cyan } from '../utils/outputColors'
 import type { PackageManagerType } from '../../node/packageManager'
-import {
-  CLEAN_OPTION,
-  CONFIG_FILE_OPTION,
-  PACKAGE_MANAGER_OPTION,
-  STACKTRACE_OPTION,
-} from '../utils/commander'
+import { CLEAN_OPTION, CONFIG_FILE_OPTION, PACKAGE_MANAGER_OPTION, STACKTRACE_OPTION } from '../utils/commander'
+import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { printInfo, printLine, printSeparator } from '../utils/log'
+import { cyan } from '../utils/outputColors'
+import { withStacktrace } from '../utils/withStacktrace'
 
 type GenerateCommandOptions = {
   file: string
@@ -32,36 +27,26 @@ export default function buildGenerateCommand(program: Command) {
     .addOption(PACKAGE_MANAGER_OPTION())
     .addOption(CLEAN_OPTION())
     .addOption(STACKTRACE_OPTION())
-    .action(
-      async ({
-        packageManager,
-        file,
-        stacktrace,
-        clean,
-      }: GenerateCommandOptions) => {
-        const fileConfiguration = await loadFileConfiguration(file, stacktrace)
-        if (!fileConfiguration) {
-          process.exitCode = 1
-          return
-        }
+    .action(async ({ packageManager, file, stacktrace, clean }: GenerateCommandOptions) => {
+      const fileConfiguration = await loadFileConfiguration(file, stacktrace)
+      if (!fileConfiguration) {
+        process.exitCode = 1
+        return
+      }
 
-        await withStacktrace(stacktrace, async () => {
-          await generate({
-            ...fileConfiguration,
-            packageManager,
-            clean,
-          })
-
-          printPostExecution(file, fileConfiguration)
+      await withStacktrace(stacktrace, async () => {
+        await generate({
+          ...fileConfiguration,
+          packageManager,
+          clean,
         })
-      },
-    )
+
+        printPostExecution(file, fileConfiguration)
+      })
+    })
 }
 
-function printPostExecution(
-  configFile: string,
-  fileConfiguration: MagidocConfiguration,
-) {
+function printPostExecution(configFile: string, fileConfiguration: MagidocConfiguration) {
   printSeparator()
   printInfo(`Website generated at ${cyan(fileConfiguration.website.output)}`)
   printLine()
@@ -69,11 +54,7 @@ function printPostExecution(
   if (configFile === DEFAULT_CONFIG_FILE) {
     printInfo(`Run ${cyan('magidoc preview')} to preview you build locally.`)
   } else {
-    printInfo(
-      `Run ${cyan(
-        `magidoc preview --file ${configFile}`,
-      )} to preview your build locally.`,
-    )
+    printInfo(`Run ${cyan(`magidoc preview --file ${configFile}`)} to preview your build locally.`)
   }
 
   printLine()

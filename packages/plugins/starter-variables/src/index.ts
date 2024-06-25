@@ -1,15 +1,8 @@
-import templates from './variables/templates'
+import { UnsupportedVariablesError, toVariablesFile } from './env/envFileContent'
 import magidoc from './variables/magidoc'
-import {
-  toVariablesFile,
-  UnsupportedVariablesError,
-} from './env/envFileContent'
+import templates from './variables/templates'
+import type { AllowedDirective, ExternalLink, Page } from './variables/templates'
 import type { Variable } from './variables/variable'
-import type {
-  Page,
-  ExternalLink,
-  AllowedDirective,
-} from './variables/templates'
 
 export type { Variable, Page, ExternalLink, AllowedDirective }
 export { templates }

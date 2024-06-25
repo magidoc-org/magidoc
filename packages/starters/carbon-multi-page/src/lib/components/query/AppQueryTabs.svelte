@@ -1,19 +1,18 @@
 <script lang="ts">
-  import { graphqlQuery } from './stores'
-  import { Tab, TabContent, Tabs } from 'carbon-components-svelte'
-  import type { GraphQLField } from 'graphql'
-  import AppPrism from './AppQueryGenerator.svelte'
-  import type { QueryType } from '@magidoc/plugin-query-generator'
+import type { QueryType } from '@magidoc/plugin-query-generator'
+import { Tab, TabContent, Tabs } from 'carbon-components-svelte'
+import type { GraphQLField } from 'graphql'
+import AppPrism from './AppQueryGenerator.svelte'
+import { graphqlQuery } from './stores'
 
-  export let type: QueryType
-  export let field: GraphQLField<unknown, unknown, unknown>
+export let type: QueryType
+export let field: GraphQLField<unknown, unknown, unknown>
 
-  let selectedTab = 0
+let selectedTab = 0
 
-  $: {
-    graphqlQuery.setField(field, type)
-  }
-  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+$: {
+  graphqlQuery.setField(field, type)
+}
 </script>
 
 {#await $graphqlQuery then query}

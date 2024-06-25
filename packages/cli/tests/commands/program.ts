@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { Command } from 'commander'
 
 export function makeTestProgram(): Command {

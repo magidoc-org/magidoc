@@ -1,12 +1,12 @@
 <script lang="ts">
-  import ArrowDown from 'carbon-icons-svelte/lib/ArrowDown.svelte'
-  import ArrowUp from 'carbon-icons-svelte/lib/ArrowUp.svelte'
-  import { Button } from 'carbon-components-svelte'
+import { Button } from 'carbon-components-svelte'
+import ArrowDown from 'carbon-icons-svelte/lib/ArrowDown.svelte'
+import ArrowUp from 'carbon-icons-svelte/lib/ArrowUp.svelte'
 
-  export let totalItems: number
-  export let expandedText: string
-  export let collapsedText: string
-  export let expanded = false
+export let totalItems: number
+export let expandedText: string
+export let collapsedText: string
+export let expanded = false
 </script>
 
 <div class="button-wrapper">

@@ -1,17 +1,10 @@
-schema {
-  query: Test
-  mutation: MutationType
-  subscription: SubscriptionType
-}
 
 """
 Test type for testing
  New line works
 """
 type Test {
-  """
-  `test` field from `Test` type.
-  """
+  """`test` field from `Test` type."""
   test: Test
   deferrable: Deferrable
   streamable(
@@ -21,33 +14,29 @@ type Test {
     delay: Int = 300
   ): [Greeting]
   person: Person
-
-  """
-  Some field with directives on it
-  """
+  """Some field with directives on it"""
   withDirective: String! @TestDirective(bool: false, mandatory: 2)
-
   """
   The `longDescriptionType` field on the `Test` type has a long, verbose, description to test inline field docs.
-
+  
   > We want to test several `markdown` styles!
-
+  
   Check out [Markdown](https://www.markdownguide.org/) by the way.
-
+  
   Some notes:
   - Lists
   - work
     - also nested
     - and with very very very very very very very very very very long items that span multiple lines
   - you get the gist
-
+  
   To-Do's:
   1. Open GraphiQL
   2. Write a query
      1. Maybe add some variables
      2. Could also add headers
   3. Send the request
-
+  
   Example quey:
   ```graphql
   {
@@ -60,39 +49,20 @@ type Test {
   """
   longDescriptionType: Test
   union: TestUnion
-
-  """
-  id field from Test type.
-  """
+  """id field from Test type."""
   id: ID
-
-  """
-  Is this a test schema? Sure it is.
-  """
+  """Is this a test schema? Sure it is."""
   isTest: Boolean
-
-  """
-  field that returns an image URI.
-  """
+  """field that returns an image URI."""
   image: String
-
-  """
-  This field is an example of a deprecated field
-  """
-  deprecatedField: Test
-    @deprecated(reason: "No longer in use, try `test` instead.")
-
+  """This field is an example of a deprecated field"""
+  deprecatedField: Test @deprecated(reason: "No longer in use, try `test` instead.")
   """
   This field is an example of a deprecated field with markdown in its deprecation reason
   """
-  alsoDeprecated: Test
-    @deprecated(
-      reason: "The `longDescriptionType` field on the `Test` type has a long, verbose, description to test inline field docs.\n\n> We want to test several `markdown` styles!\n\nCheck out [Markdown](https://www.markdownguide.org/) by the way.\n\nSome notes:\n- Lists\n- work\n  - also nested\n  - and with very very very very very very very very very very long items that span multiple lines\n- you get the gist\n\nTo-Do's:\n1. Open GraphiQL\n2. Write a query\n   1. Maybe add some variables\n   2. Could also add headers\n3. Send the request\n\nExample quey:\n```graphql\n{\n  test {\n    id\n  }\n  hasArgs(string: \"very very very very very long string\")\n}\n```\n"
-    )
+  alsoDeprecated: Test @deprecated(reason: "The `longDescriptionType` field on the `Test` type has a long, verbose, description to test inline field docs.\n\n> We want to test several `markdown` styles!\n\nCheck out [Markdown](https://www.markdownguide.org/) by the way.\n\nSome notes:\n- Lists\n- work\n  - also nested\n  - and with very very very very very very very very very very long items that span multiple lines\n- you get the gist\n\nTo-Do's:\n1. Open GraphiQL\n2. Write a query\n   1. Maybe add some variables\n   2. Could also add headers\n3. Send the request\n\nExample quey:\n```graphql\n{\n  test {\n    id\n  }\n  hasArgs(string: \"very very very very very long string\")\n}\n```\n")
   hasArgs(
-    """
-    A string
-    """
+    """A string"""
     string: String
     int: Int
     float: Float
@@ -109,6 +79,19 @@ type Test {
     listEnum: [TestEnum]
     listObject: [TestInput]
   ): String
+  testOneOf(target: TestOneofInput!): String
+
+  testArgumentDirective(
+    """
+    Field description!
+    """
+    target: String @TestDirective(mandatory: 4)
+    ): String
+}
+
+input TestOneofInput @oneOf {
+  id: ID!
+  name: String!
 }
 
 type Deferrable {
@@ -121,9 +104,11 @@ type Deferrable {
   ): String
 }
 
+
 type Greeting {
   text: String
 }
+
 
 type Person {
   name: String
@@ -136,66 +121,47 @@ type Person {
   friends: [Person]
 }
 
+
 union TestUnion = First | Second
 
+
 type First implements TestInterface {
-  """
-  Common name string for UnionFirst.
-  """
+  """Common name string for UnionFirst."""
   name: String
   first: [TestInterface]
 }
 
-"""
-Test interface.
-"""
+
+"""Test interface."""
 interface TestInterface {
-  """
-  Common name string.
-  """
+  """Common name string."""
   name: String
 }
 
+
 type Second implements TestInterface {
-  """
-  Common name string for UnionFirst.
-  """
+  """Common name string for UnionFirst."""
   name: String
   second: TestInterface
 }
 
-"""
-An enum of super cool colors.
-"""
+
+"""An enum of super cool colors."""
 enum TestEnum {
-  """
-  A rosy color
-  """
+  """A rosy color"""
   RED
-
-  """
-  The color of martians and slime
-  """
+  """The color of martians and slime"""
   GREEN
-
-  """
-  A feeling you might have if you can't use GraphQL
-  """
+  """A feeling you might have if you can't use GraphQL"""
   BLUE
-
-  """
-  A really dull color
-  """
+  """A really dull color"""
   GRAY @deprecated(reason: "Colors are available now.")
 }
 
-"""
-Test all sorts of inputs in this input object type.
-"""
+
+"""Test all sorts of inputs in this input object type."""
 input TestInput {
-  """
-  Repeats back this string
-  """
+  """Repeats back this string"""
   string: String
   int: Int
   float: Float
@@ -215,23 +181,19 @@ input TestInput {
   listObject: [TestInput]
 }
 
-"""
-This is a simple mutation type
-"""
+
+"""This is a simple mutation type"""
 type MutationType {
-  """
-  Set the string field
-  """
+  """Set the string field"""
   setString(value: String): String
 }
+
 
 """
 This is a simple subscription type. Learn more at https://www.npmjs.com/package/graphql-ws
 """
 type SubscriptionType {
-  """
-  Subscribe to a message
-  """
+  """Subscribe to a message"""
   message(
     """
     delay in milliseconds for subsequent results, for demonstration purposes
@@ -240,11 +202,12 @@ type SubscriptionType {
   ): String
 }
 
+schema {
+  query: Test
+  mutation: MutationType
+  subscription: SubscriptionType
+}
 """
 A heavily documented directive!! Learn more at https://www.npmjs.com/package/graphql-ws
 """
-directive @TestDirective(
-  reason: String = "No longer supported"
-  bool: Boolean! = true
-  mandatory: Int!
-) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE
+directive @TestDirective(reason: String = "No longer supported", bool: Boolean! = true, mandatory: Int!) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE

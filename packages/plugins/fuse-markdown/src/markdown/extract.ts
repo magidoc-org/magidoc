@@ -1,5 +1,5 @@
-import type { Tokens, Lexer, TokensList, Token } from 'marked'
 import type Slugger from 'github-slugger'
+import type { Lexer, Token, Tokens, TokensList } from 'marked'
 
 /**
  * A markdown header
@@ -46,14 +46,9 @@ export type IndexableMarkdownHeader = {
   title: string
 }
 
-export type IndexableMarkdownPart =
-  | IndexableMarkdownSection
-  | IndexableMarkdownHeader
+export type IndexableMarkdownPart = IndexableMarkdownSection | IndexableMarkdownHeader
 
-export type TextExtractor = (
-  token: Tokens.Generic,
-  extract: ExtractFunction,
-) => string
+export type TextExtractor = (token: Tokens.Generic, extract: ExtractFunction) => string
 
 export type ExtractFunction = (tokens: Tokens.Generic[]) => string
 
@@ -65,17 +60,11 @@ export type Options = {
   extractors: TextExtractors
 }
 
-export function extract(
-  source: string,
-  options: Options,
-): IndexableMarkdownPart[] {
+export function extract(source: string, options: Options): IndexableMarkdownPart[] {
   return extractTokens(options.lexer.lex(source), options)
 }
 
-export function extractTokens(
-  tokens: TokensList,
-  options: Options,
-): IndexableMarkdownPart[] {
+export function extractTokens(tokens: TokensList, options: Options): IndexableMarkdownPart[] {
   const extract = extractFunction(options.extractors)
   const parts: IndexableMarkdownPart[] = []
   let currentSection: IndexableMarkdownSection = {
@@ -99,19 +88,13 @@ export function extractTokens(
         headers: [],
       }
 
-      const lastHeader =
-        currentSection.headers[currentSection.headers.length - 1]
+      const lastHeader = currentSection.headers[currentSection.headers.length - 1]
 
       if (lastHeader) {
         if (token.depth > lastHeader.depth) {
           newCurrentSection.headers = [...currentSection.headers, header]
         } else if (token.depth <= lastHeader.depth) {
-          newCurrentSection.headers = [
-            ...currentSection.headers.filter(
-              (header) => header.depth < token.depth,
-            ),
-            header,
-          ]
+          newCurrentSection.headers = [...currentSection.headers.filter((header) => header.depth < token.depth), header]
         }
       } else {
         newCurrentSection.headers.push(header)

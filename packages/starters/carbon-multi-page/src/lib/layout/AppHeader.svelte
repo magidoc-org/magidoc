@@ -1,49 +1,44 @@
 <script lang="ts">
-  import 'carbon-components-svelte/css/all.css'
-  import {
-    Header,
-    HeaderGlobalAction,
-    HeaderUtilities,
-    Search as SearchBar,
-  } from 'carbon-components-svelte'
-  import AppIcon from '$lib/components/common/AppIcon.svelte'
-  import { base } from '$app/paths'
-  import NavbarAppLinks from './header/NavbarAppLinks.svelte'
-  import AppSearchResults from './header/AppSearch.svelte'
-  import { appTitle } from '$lib/pages'
-  import { Search } from 'carbon-icons-svelte'
-  import { onDestroy, onMount } from 'svelte'
-  import { browser } from '$app/environment'
-  import HeaderAppLinks from './header/HeaderAppLinks.svelte'
+import 'carbon-components-svelte/css/all.css'
+import { browser } from '$app/environment'
+import { base } from '$app/paths'
+import AppIcon from '$lib/components/common/AppIcon.svelte'
+import { appTitle } from '$lib/pages'
+import { Header, HeaderGlobalAction, HeaderUtilities, Search as SearchBar } from 'carbon-components-svelte'
+import { Search } from 'carbon-icons-svelte'
+import { onDestroy, onMount } from 'svelte'
+import AppSearchResults from './header/AppSearch.svelte'
+import HeaderAppLinks from './header/HeaderAppLinks.svelte'
+import NavbarAppLinks from './header/NavbarAppLinks.svelte'
 
-  export let isSideNavOpen = true
-  export let mobile = false
+export let isSideNavOpen = true
+export let mobile = false
 
-  let searchOpen = false
-  let isMac = false
+let searchOpen = false
+let isMac = false
 
-  let handler: (e: KeyboardEvent) => void = (e) => {
-    if (e.metaKey || e.ctrlKey) {
-      if (e.key === 'k') {
-        e.preventDefault()
-        searchOpen = true
-      }
-    } else if (e.key === 'Escape') {
-      searchOpen = false
+let handler: (e: KeyboardEvent) => void = (e) => {
+  if (e.metaKey || e.ctrlKey) {
+    if (e.key === 'k') {
+      e.preventDefault()
+      searchOpen = true
     }
+  } else if (e.key === 'Escape') {
+    searchOpen = false
   }
-  onMount(() => {
-    if (browser) {
-      isMac = navigator?.userAgent?.toUpperCase()?.indexOf('MAC') >= 0
-      window.addEventListener('keydown', handler)
-    }
-  })
+}
+onMount(() => {
+  if (browser) {
+    isMac = navigator?.userAgent?.toUpperCase()?.indexOf('MAC') >= 0
+    window.addEventListener('keydown', handler)
+  }
+})
 
-  onDestroy(() => {
-    if (browser) {
-      window.removeEventListener('keydown', handler)
-    }
-  })
+onDestroy(() => {
+  if (browser) {
+    window.removeEventListener('keydown', handler)
+  }
+})
 </script>
 
 <Header href={base || '/'} bind:isSideNavOpen expandedByDefault>

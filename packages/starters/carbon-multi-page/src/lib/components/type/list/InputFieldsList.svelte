@@ -1,31 +1,26 @@
 <script lang="ts">
-  import {
-    StructuredList,
-    StructuredListBody,
-    StructuredListCell,
-    StructuredListRow,
-  } from 'carbon-components-svelte'
-  import type { GraphQLInputField } from 'graphql'
-  import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
-  import NullableTag from '$lib/components/tags/NullableTag.svelte'
-  import _ from 'lodash'
-  import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
-  import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
+import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
+import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
+import NullableTag from '$lib/components/tags/NullableTag.svelte'
+import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
+import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
+import type { GraphQLInputField } from 'graphql'
+import _ from 'lodash'
 
-  export let data: ReadonlyArray<GraphQLInputField>
+export let data: ReadonlyArray<GraphQLInputField>
 
-  $: items =
-    _.sortBy(
-      data.map((arg) => ({
-        id: arg.name,
-        deprecationReason: arg.deprecationReason,
-        name: arg.name,
-        type: arg.type,
-        description: arg.description,
-        default: arg.defaultValue,
-      })),
-      (item) => item.name,
-    ) || []
+$: items =
+  _.sortBy(
+    data.map((arg) => ({
+      id: arg.name,
+      deprecationReason: arg.deprecationReason,
+      name: arg.name,
+      type: arg.type,
+      description: arg.description,
+      default: arg.defaultValue,
+    })),
+    (item) => item.name,
+  ) || []
 </script>
 
 <StructuredList condensed>

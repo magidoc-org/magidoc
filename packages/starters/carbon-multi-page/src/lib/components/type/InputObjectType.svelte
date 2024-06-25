@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { GraphQLInputObjectType } from 'graphql'
-  import _ from 'lodash'
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-  import TypeTag from '../tags/TypeTag.svelte'
-  import InputFieldsTable from './list/InputFieldsList.svelte'
+import type { GraphQLInputObjectType } from 'graphql'
+import _ from 'lodash'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import TypeTag from '../tags/TypeTag.svelte'
+import InputFieldsTable from './list/InputFieldsList.svelte'
 
-  export let type: GraphQLInputObjectType
+export let type: GraphQLInputObjectType
 </script>
 
 <section>

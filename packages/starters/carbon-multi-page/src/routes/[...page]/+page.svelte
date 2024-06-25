@@ -1,9 +1,9 @@
 <script lang="ts">
-  import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
-  import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
-  import type { PageData } from './$types'
+import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
+import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
+import type { PageData } from './$types'
 
-  export let data: PageData
+export let data: PageData
 </script>
 
 <svelte:head>

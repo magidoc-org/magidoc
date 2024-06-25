@@ -1,9 +1,6 @@
 import chokidar from 'chokidar'
 
-export function watchFiles(
-  paths: (string | undefined)[],
-  callback: () => Promise<void>,
-): Promise<void> {
+export function watchFiles(paths: (string | undefined)[], callback: () => Promise<void>): Promise<void> {
   return new Promise((resolve, reject) => {
     const watcher = chokidar.watch(
       paths.filter((path): path is string => !!path),

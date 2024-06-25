@@ -1,8 +1,8 @@
-import { type MagidocConfiguration, ZMagidocConfiguration } from './types'
 import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
 import z, { type ZodIssue, type ZodType } from 'zod'
 import { red } from '../commands/utils/outputColors'
+import { type MagidocConfiguration, ZMagidocConfiguration } from './types'
 import { formatZodIssues } from './zod'
 
 export function parseConfiguration(content: unknown): MagidocConfiguration {
@@ -15,10 +15,8 @@ export function parseConfiguration(content: unknown): MagidocConfiguration {
   throwConfigurationError(result.error.issues)
 }
 
-function validateOptions(options: Record<string, unknown>): void | never {
-  const allOptionsByName = _.keyBy(Object.values(templates), (template) =>
-    String(template.name),
-  )
+function validateOptions(options: Record<string, unknown>): void {
+  const allOptionsByName = _.keyBy(Object.values(templates), (template) => String(template.name))
   let issues: ZodIssue[] = []
   _.forEach(options, (value, key) => {
     const variable = allOptionsByName[key]
@@ -32,7 +30,6 @@ function validateOptions(options: Record<string, unknown>): void | never {
       return
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const zodType = variable.zod.type(z) as unknown as ZodType<unknown>
     const result = zodType.safeParse(value)
@@ -55,9 +52,5 @@ function throwConfigurationError(issues: ZodIssue[]): never {
   const formattedIssues = formatZodIssues(issues)
   const pluralIssue = issues.length > 1 ? 'issues' : 'issue'
   const issuesText = red(`${issues.length} ${pluralIssue}`)
-  throw new Error(
-    `${issuesText} found with the Magidoc configuration provided:\n${formattedIssues.join(
-      '\n',
-    )}`,
-  )
+  throw new Error(`${issuesText} found with the Magidoc configuration provided:\n${formattedIssues.join('\n')}`)
 }

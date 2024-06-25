@@ -2,9 +2,8 @@ export default function (glob: string) {
   // The regexp we are building, as a string.
   let reStr = ''
 
-  let currentChar
   for (let i = 0, len = glob.length; i < len; i++) {
-    currentChar = glob[i]
+    const currentChar = glob[i]
 
     switch (currentChar) {
       case '/':
@@ -16,12 +15,15 @@ export default function (glob: string) {
       case ')':
       case '=':
       case '!':
-      case '|':
-        reStr += '\\' + currentChar
+      case '|': {
+        reStr += `\\${currentChar}`
         break
-      case '?':
+      }
+      case '?': {
         reStr += '.'
-      case '*':
+        break
+      }
+      case '*': {
         // Converts any number of ** into one
         while (glob[i + 1] === '*') {
           i++
@@ -29,13 +31,13 @@ export default function (glob: string) {
 
         reStr += '.*'
         break
-
+      }
       default:
         reStr += currentChar
     }
   }
 
-  reStr = '^' + reStr + '$'
+  reStr = `^${reStr}$`
 
   return new RegExp(reStr)
 }

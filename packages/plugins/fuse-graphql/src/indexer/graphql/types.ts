@@ -1,18 +1,18 @@
 import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 import {
+  type GraphQLEnumType,
+  type GraphQLInputObjectType,
+  type GraphQLInterfaceType,
   type GraphQLNamedType,
+  type GraphQLObjectType,
+  type GraphQLScalarType,
+  type GraphQLUnionType,
   isEnumType,
-  isObjectType,
+  isInputObjectType,
   isInterfaceType,
+  isObjectType,
   isScalarType,
   isUnionType,
-  isInputObjectType,
-  type GraphQLInputObjectType,
-  type GraphQLUnionType,
-  type GraphQLScalarType,
-  type GraphQLObjectType,
-  type GraphQLInterfaceType,
-  type GraphQLEnumType,
 } from 'graphql'
 import {
   type EnumSearchResult,
@@ -27,33 +27,20 @@ import {
 } from '../result'
 import { getDescription } from './description'
 
-export function asTypeSearchResult(
-  type: GraphQLNamedType,
-  options: MarkdownOptions,
-): TypeSearchResult {
-  if (isEnumType(type)) {
-    return asEnumSearchResult(type, options)
-  } else if (isObjectType(type)) {
-    return asObjectSearchResult(GraphQLType.OBJECT, type, options)
-  } else if (isInterfaceType(type)) {
-    return asObjectSearchResult(GraphQLType.INTERFACE, type, options)
-  } else if (isScalarType(type)) {
-    return asScalarSearchResult(type, options)
-  } else if (isUnionType(type)) {
-    return asUnionSearchResult(type, options)
-  } else if (isInputObjectType(type)) {
-    return asInputObjectType(type, options)
-  }
+export function asTypeSearchResult(type: GraphQLNamedType, options: MarkdownOptions): TypeSearchResult {
+  if (isEnumType(type)) return asEnumSearchResult(type, options)
+  if (isObjectType(type)) return asObjectSearchResult(GraphQLType.OBJECT, type, options)
+  if (isInterfaceType(type)) return asObjectSearchResult(GraphQLType.INTERFACE, type, options)
+  if (isScalarType(type)) return asScalarSearchResult(type, options)
+  if (isUnionType(type)) return asUnionSearchResult(type, options)
+  if (isInputObjectType(type)) return asInputObjectType(type, options)
 
   throw new Error(
     'This code block should be unreachable. If you ever receive this exception, it means you have an invalid setup using GraphQL.',
   )
 }
 
-function asInputObjectType(
-  target: GraphQLInputObjectType,
-  options: MarkdownOptions,
-): InputObjectSearchResult {
+function asInputObjectType(target: GraphQLInputObjectType, options: MarkdownOptions): InputObjectSearchResult {
   return {
     type: SearchResultType.TYPE,
     graphqlType: GraphQLType.INPUT_OBJECT,
@@ -65,10 +52,7 @@ function asInputObjectType(
     })),
   }
 }
-function asUnionSearchResult(
-  target: GraphQLUnionType,
-  options: MarkdownOptions,
-): UnionSearchResult {
+function asUnionSearchResult(target: GraphQLUnionType, options: MarkdownOptions): UnionSearchResult {
   return {
     type: SearchResultType.TYPE,
     graphqlType: GraphQLType.UNION,
@@ -76,10 +60,7 @@ function asUnionSearchResult(
     description: getDescription(target, options),
   }
 }
-function asScalarSearchResult(
-  target: GraphQLScalarType,
-  options: MarkdownOptions,
-): ScalarSearchResult {
+function asScalarSearchResult(target: GraphQLScalarType, options: MarkdownOptions): ScalarSearchResult {
   return {
     type: SearchResultType.TYPE,
     graphqlType: GraphQLType.SCALAR,
@@ -108,10 +89,7 @@ function asObjectSearchResult(
   }
 }
 
-function asEnumSearchResult(
-  target: GraphQLEnumType,
-  options: MarkdownOptions,
-): EnumSearchResult {
+function asEnumSearchResult(target: GraphQLEnumType, options: MarkdownOptions): EnumSearchResult {
   return {
     name: target.name,
     description: getDescription(target, options),

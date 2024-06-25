@@ -1,19 +1,16 @@
+import { type SearchResult as FuseGraphQLSearchResult, index as indexSchema } from '@magidoc/plugin-fuse-graphql'
 import {
-  index as indexMarkdown,
   type SearchResult as FuseMarkdownSearchResult,
   type MarkdownOptions,
+  index as indexMarkdown,
 } from '@magidoc/plugin-fuse-markdown'
-import {
-  index as indexSchema,
-  type SearchResult as FuseGraphQLSearchResult,
-} from '@magidoc/plugin-fuse-graphql'
+import type { Page, PageTree } from '@magidoc/plugin-starter-common'
 import type Fuse from 'fuse.js'
-import { pages } from './pages'
 import type { NotificationToken } from './components/markdown/containers/notification/Notification'
 import type { TabsToken } from './components/markdown/containers/tabs/Tabs'
 import { setupMarkedExtensions } from './markdown'
 import { isModelEmpty, schema } from './model'
-import type { Page, PageTree } from '@magidoc/plugin-starter-common'
+import { pages } from './pages'
 
 setupMarkedExtensions()
 
@@ -54,8 +51,7 @@ export type MagidocSearchResult = MarkdownSearchResult | GraphQLSearchResult
 const MARKDOWN_OPTIONS: Partial<MarkdownOptions> = {
   extractors: {
     tags: () => '',
-    notification: (token, extract) =>
-      extract((token as NotificationToken).tokens),
+    notification: (token, extract) => extract((token as NotificationToken).tokens),
     tabs: (token, extract) => {
       const tabs = (token as TabsToken).tabs
       return tabs.map((tab) => extract(tab.tokens)).join('\n')
@@ -84,18 +80,16 @@ const schemaSearch: Fuse<FuseGraphQLSearchResult> = indexSchema(schema, {
 })
 
 export function search(query: string): ReadonlyArray<MagidocSearchResult> {
-  const pagesResult: ReadonlyArray<MagidocSearchResult> = pagesSearch
-    .search(query)
-    .map((result) => ({
-      type: 'markdown',
-      score: result.score || 0,
-      result: result.item,
-      matches: (result.matches || []).map((match) => ({
-        value: match.value || '',
-        location: match.key || '',
-        indices: collapseIndexes(match.indices),
-      })),
-    }))
+  const pagesResult: ReadonlyArray<MagidocSearchResult> = pagesSearch.search(query).map((result) => ({
+    type: 'markdown',
+    score: result.score || 0,
+    result: result.item,
+    matches: (result.matches || []).map((match) => ({
+      value: match.value || '',
+      location: match.key || '',
+      indices: collapseIndexes(match.indices),
+    })),
+  }))
 
   let schemaResult: ReadonlyArray<MagidocSearchResult> = []
 
@@ -123,9 +117,7 @@ function mergeResults(
   return [...first, ...second].sort((a, b) => a.score - b.score).slice(0, 10)
 }
 
-function collapseIndexes(
-  indexes: ReadonlyArray<ResultRange>,
-): ReadonlyArray<ResultRange> {
+function collapseIndexes(indexes: ReadonlyArray<ResultRange>): ReadonlyArray<ResultRange> {
   const result: ResultRange[] = []
   let current: ResultRange = [0, 0]
   const openings = new Set(indexes.map(([start]) => start))

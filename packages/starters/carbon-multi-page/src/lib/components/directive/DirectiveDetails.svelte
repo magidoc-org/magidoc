@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { getAllowedArgumentsByDirective } from '$lib/model'
-  import type { GraphQLArgument, GraphQLDirective } from 'graphql'
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-  import ArgsList from '../query/list/ArgsList.svelte'
+import { getAllowedArgumentsByDirective } from '$lib/model'
+import type { GraphQLArgument, GraphQLDirective } from 'graphql'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import ArgsList from '../query/list/ArgsList.svelte'
 
-  export let directive: GraphQLDirective
+export let directive: GraphQLDirective
 
-  let allowedArgs: ReadonlyArray<GraphQLArgument>
-  $: allowedArgs = getAllowedArgumentsByDirective(directive)
+let allowedArgs: ReadonlyArray<GraphQLArgument>
+$: allowedArgs = getAllowedArgumentsByDirective(directive)
 </script>
 
 <section>

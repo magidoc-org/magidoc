@@ -1,9 +1,9 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-import eject from '../../../src/commands/eject'
-import { makeTestProgram } from '../program'
-import buildEjectCommand from '../../../src/commands/eject/command'
 import path from 'path'
 import type { Command } from 'commander'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import eject from '../../../src/commands/eject'
+import buildEjectCommand from '../../../src/commands/eject/command'
+import { makeTestProgram } from '../program'
 
 const version = '1.2.3'
 
@@ -76,9 +76,7 @@ describe('running the eject command', () => {
           program.parseAsync(['eject'], {
             from: 'user',
           }),
-        ).rejects.toThrowError(
-          "error: required option '-t|--template <template>' not specified",
-        )
+        ).rejects.toThrowError("error: required option '-t|--template <template>' not specified")
       })
     })
   })

@@ -1,7 +1,7 @@
-import { buildSchema, GraphQLSchema } from 'graphql'
 import path from 'path'
+import { type GraphQLSchema, buildSchema } from 'graphql'
+import { describe, expect, it } from 'vitest'
 import { parseGraphqlSchema } from '../../src/schema/parse'
-import { describe, it, expect } from 'vitest'
 import { getSample } from './utils'
 
 const expected = buildSchema(getSample('sdl.graphqls'))
@@ -15,10 +15,7 @@ describe('when parsing a single file', () => {
 })
 
 describe('when parsing a file with backslashes', () => {
-  const file = relativeToAbsolute('./samples/sdl.graphqls').replaceAll(
-    '/',
-    '\\',
-  )
+  const file = relativeToAbsolute('./samples/sdl.graphqls').replaceAll('/', '\\')
 
   it('should create the introspection result properly', async () => {
     verifyEqualExpected(await run([file]))
@@ -49,25 +46,19 @@ describe('when parsing glob files', () => {
 
 describe('providing no paths', () => {
   it('fails', async () => {
-    await expect(async () => await run([])).rejects.toThrowError(
-      'No paths found',
-    )
+    await expect(async () => await run([])).rejects.toThrowError('No paths found')
   })
 })
 
 describe('providing garbage paths', () => {
   it('fails', async () => {
-    await expect(async () => await run(['@sdfsa'])).rejects.toThrowError(
-      'No paths found',
-    )
+    await expect(async () => await run(['@sdfsa'])).rejects.toThrowError('No paths found')
   })
 })
 
 describe('providing non graphql files', () => {
   it('fails', async () => {
-    await expect(
-      async () => await run([relativeToAbsolute('./samples/**/*')]),
-    ).rejects.toThrowError('Syntax Error')
+    await expect(async () => await run([relativeToAbsolute('./samples/**/*')])).rejects.toThrowError('Syntax Error')
   })
 })
 

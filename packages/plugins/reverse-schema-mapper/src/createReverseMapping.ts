@@ -1,21 +1,19 @@
 import {
-  GraphQLArgument,
-  GraphQLField,
-  GraphQLNamedType,
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLType,
+  type GraphQLArgument,
+  type GraphQLField,
+  type GraphQLNamedType,
+  type GraphQLObjectType,
+  type GraphQLSchema,
+  type GraphQLType,
   isListType,
   isNonNullType,
   isObjectType,
   isUnionType,
 } from 'graphql'
 import { ReverseGraphQLSchemaMapping } from './reverseMapping'
-import { ReferenceKind, TypeReverseMapping } from './reverseUsage'
+import { ReferenceKind, type TypeReverseMapping } from './reverseUsage'
 
-export function createReverseMapping(
-  schema: GraphQLSchema,
-): ReverseGraphQLSchemaMapping {
+export function createReverseMapping(schema: GraphQLSchema): ReverseGraphQLSchemaMapping {
   const mapping = new Map<string, TypeReverseMapping>()
 
   iterateTypes(schema, (type) => {
@@ -56,10 +54,7 @@ export function createReverseMapping(
   return new ReverseGraphQLSchemaMapping(mapping)
 }
 
-function iterateTypes(
-  schema: GraphQLSchema,
-  callback: (type: GraphQLType) => void,
-) {
+function iterateTypes(schema: GraphQLSchema, callback: (type: GraphQLType) => void) {
   Object.entries(schema.getTypeMap()).forEach(([, type]) => {
     if (!type.name.startsWith('__')) {
       callback(type)
@@ -67,10 +62,7 @@ function iterateTypes(
   })
 }
 
-function iterateFields(
-  type: GraphQLObjectType,
-  callback: (field: GraphQLField<unknown, unknown>) => void,
-) {
+function iterateFields(type: GraphQLObjectType, callback: (field: GraphQLField<unknown, unknown>) => void) {
   Object.entries(type.getFields()).forEach(([, field]) => {
     callback(field)
   })
@@ -85,10 +77,7 @@ function iterateArguments(
   })
 }
 
-function getOrCreate(
-  mapping: Map<string, TypeReverseMapping>,
-  type: GraphQLNamedType,
-) {
+function getOrCreate(mapping: Map<string, TypeReverseMapping>, type: GraphQLNamedType) {
   let reverseMapping = mapping.get(type.name)
   if (!reverseMapping) {
     reverseMapping = {

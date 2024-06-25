@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let id: string
-  export let depth: number
+export let id: string
+export let depth: number
 </script>
 
 <div class="parent">

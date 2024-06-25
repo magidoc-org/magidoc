@@ -1,8 +1,8 @@
+import path from 'path'
 import z from 'zod'
+import { isDirectory } from '../commands/utils/fileUtils'
 import { AVAILABLE_TEMPLATES } from '../template'
 import { getVersion } from '../version'
-import path from 'path'
-import { isDirectory } from '../commands/utils/fileUtils'
 
 const ZPath = z
   .string()
@@ -68,9 +68,7 @@ export const ZMagidocConfiguration = z.object({
   dev: ZDevConfiguration,
 })
 
-export type IntrospectionConfiguration = z.infer<
-  typeof ZIntrospectionConfiguration
->
+export type IntrospectionConfiguration = z.infer<typeof ZIntrospectionConfiguration>
 export type DevConfiguration = z.infer<typeof ZDevConfiguration>
 export type WebsiteConfiguration = z.infer<typeof ZWebsiteConfiguration>
 export type MagidocConfiguration = z.infer<typeof ZMagidocConfiguration>

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { PageTree } from '@magidoc/plugin-starter-common'
-  import { SideNav, SideNavItems, SideNavMenu } from 'carbon-components-svelte'
-  import AppPageNavigation from './AppPageNavigation.svelte'
+import type { PageTree } from '@magidoc/plugin-starter-common'
+import { SideNav, SideNavItems, SideNavMenu } from 'carbon-components-svelte'
+import AppPageNavigation from './AppPageNavigation.svelte'
 
-  export let isOpen = true
-  export let content: ReadonlyArray<PageTree>
+export let isOpen = true
+export let content: ReadonlyArray<PageTree>
 </script>
 
 <SideNav bind:isOpen>

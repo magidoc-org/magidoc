@@ -1,19 +1,14 @@
 <script lang="ts">
-  import AppList from '$lib/components/common/list/AppList.svelte'
-  import AppListItem from '$lib/components/common/list/AppListItem.svelte'
+import AppList from '$lib/components/common/list/AppList.svelte'
+import AppListItem from '$lib/components/common/list/AppListItem.svelte'
 
-  import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte'
+import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte'
 
-  import {
-    type TypeReverseMapping,
-    ReferenceKind,
-  } from '@magidoc/plugin-reverse-schema-mapper'
-  import TypeLink from '../../common/text/TypeLink.svelte'
-  import TypeUsagePreview from './TypeUsagePreview.svelte'
+import { ReferenceKind, type TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
+import TypeLink from '../../common/text/TypeLink.svelte'
+import TypeUsagePreview from './TypeUsagePreview.svelte'
 
-  export let usages: TypeReverseMapping
-
-  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+export let usages: TypeReverseMapping
 </script>
 
 <AnchorHeader id={'usages'} depth={2}>Usages</AnchorHeader>

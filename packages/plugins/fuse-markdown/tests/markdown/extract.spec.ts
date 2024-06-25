@@ -1,14 +1,10 @@
-import { beforeEach, expect, it } from 'vitest'
-import {
-  extract,
-  IndexableMarkdownType,
-  type Options,
-} from '../../src/markdown/extract'
-import { defaultExtractors } from '../../src/markdown/extractors'
-import { describe } from 'vitest'
 import Slugger from 'github-slugger'
-import { unindent } from '../utils'
+import { beforeEach, expect, it } from 'vitest'
+import { describe } from 'vitest'
+import { IndexableMarkdownType, type Options, extract } from '../../src/markdown/extract'
+import { defaultExtractors } from '../../src/markdown/extractors'
 import { defaultLexer } from '../../src/markdown/marked'
+import { unindent } from '../utils'
 
 describe('extracting markdown into sections', () => {
   let options: Options

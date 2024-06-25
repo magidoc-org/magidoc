@@ -28,9 +28,7 @@ export function allConfigs() {
 const target = process.env.WEBSITE || 'first'
 const config = websiteConfig(target)
 
-const otherLinks = allConfigs().filter(
-  (current) => current.siteRoot !== config.siteRoot,
-)
+const otherLinks = allConfigs().filter((current) => current.siteRoot !== config.siteRoot)
 
 export default {
   introspection: {

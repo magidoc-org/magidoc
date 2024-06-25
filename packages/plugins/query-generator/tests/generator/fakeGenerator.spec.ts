@@ -1,10 +1,6 @@
-import {
-  type GraphQLField,
-  type GraphQLNamedType,
-  GraphQLScalarType,
-  isNullableType,
-} from 'graphql'
+import { type GraphQLField, type GraphQLNamedType, type GraphQLScalarType, isNullableType } from 'graphql'
 import _ from 'lodash'
+import { beforeAll, describe, expect, it, test, vi } from 'vitest'
 import {
   type GenerationContext,
   type GraphQLFactoryContext,
@@ -12,14 +8,10 @@ import {
   type QueryGeneratorConfig,
   QueryType,
 } from '../../src'
-import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
-import {
-  generateArgsForField,
-  generateLeafTypeValue,
-} from '../../src/generator/fakeGenerator'
 import type { Parameter } from '../../src/generator/builder/queryBuilder'
 import type { FakeGenerationConfig } from '../../src/generator/config'
-import { describe, test, expect, beforeAll, it, vi } from 'vitest'
+import { DEFAULT_FACTORIES } from '../../src/generator/defaultFactories'
+import { generateArgsForField, generateLeafTypeValue } from '../../src/generator/fakeGenerator'
 
 const schema = getTestSchema()
 
@@ -51,10 +43,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
     }
 
-    function validateParameterEqualToDefaultFactory(
-      name: string,
-      result: ReadonlyArray<Parameter>,
-    ) {
+    function validateParameterEqualToDefaultFactory(name: string, result: ReadonlyArray<Parameter>) {
       const parameter = paramByName(name, result)
       const defaultFactory = _.find(DEFAULT_FACTORIES, (__, key) =>
         name.toLocaleLowerCase().includes(key.toLocaleLowerCase()),
@@ -66,8 +55,7 @@ describe('generating fakes for a GraphQL input argument', () => {
           })
         : null
 
-      const isList =
-        parameter.type.includes('[') && parameter.type.includes(']')
+      const isList = parameter.type.includes('[') && parameter.type.includes(']')
 
       if (defaultValue) {
         if (isList) {
@@ -87,12 +75,9 @@ describe('generating fakes for a GraphQL input argument', () => {
 
     const result = generateArgsForField(fieldWithArgs, config, context)
 
-    test.each(allArgNames)(
-      'should generate the parameter equal to the default factory',
-      (arg) => {
-        validateParameterEqualToDefaultFactory(arg, result)
-      },
-    )
+    test.each(allArgNames)('should generate the parameter equal to the default factory', (arg) => {
+      validateParameterEqualToDefaultFactory(arg, result)
+    })
   })
 
   describe('with always null generation strategy', () => {
@@ -101,10 +86,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       nullGenerationStrategy: NullGenerationStrategy.ALWAYS_NULL,
     }
 
-    function validateParameterIsNullIfNullable(
-      name: string,
-      result: ReadonlyArray<Parameter>,
-    ) {
+    function validateParameterIsNullIfNullable(name: string, result: ReadonlyArray<Parameter>) {
       const parameter = paramByName(name, result)
       const argument = _.find(fieldWithArgs?.args, (arg) => arg.name === name)
 
@@ -120,12 +102,9 @@ describe('generating fakes for a GraphQL input argument', () => {
     }
 
     const result = generateArgsForField(fieldWithArgs, config, context)
-    test.each(allArgNames)(
-      'should generate the parameter %s null if it is nullable',
-      (arg) => {
-        validateParameterIsNullIfNullable(arg, result)
-      },
-    )
+    test.each(allArgNames)('should generate the parameter %s null if it is nullable', (arg) => {
+      validateParameterIsNullIfNullable(arg, result)
+    })
   })
 
   describe('with sometimes null generation strategy', () => {
@@ -134,10 +113,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       nullGenerationStrategy: NullGenerationStrategy.SOMETIMES_NULL,
     }
 
-    function validateParameterIsOccasionallyNullIfNullable(
-      name: string,
-      result: ReadonlyArray<Parameter>[],
-    ) {
+    function validateParameterIsOccasionallyNullIfNullable(name: string, result: ReadonlyArray<Parameter>[]) {
       const parameters = result.map((params) => paramByName(name, params))
 
       const argument = _.find(fieldWithArgs?.args, (arg) => arg.name === name)
@@ -147,29 +123,18 @@ describe('generating fakes for a GraphQL input argument', () => {
       }
 
       if (isNullableType(argument.type)) {
-        expect(
-          parameters.filter((it) => it.value === null).length,
-        ).toBeGreaterThan(0)
-        expect(
-          parameters.filter((it) => it.value !== null).length,
-        ).toBeGreaterThan(0)
+        expect(parameters.filter((it) => it.value === null).length).toBeGreaterThan(0)
+        expect(parameters.filter((it) => it.value !== null).length).toBeGreaterThan(0)
       } else {
-        expect(
-          parameters.filter((it) => it.value !== null).length,
-        ).toBeGreaterThan(0)
+        expect(parameters.filter((it) => it.value !== null).length).toBeGreaterThan(0)
       }
     }
 
-    const results = _.range(0, 100).map(() =>
-      generateArgsForField(fieldWithArgs, config, context),
-    )
+    const results = _.range(0, 100).map(() => generateArgsForField(fieldWithArgs, config, context))
 
-    test.each(allArgNames)(
-      'should generate all nullable parameters occasionally null',
-      (arg) => {
-        validateParameterIsOccasionallyNullIfNullable(arg, results)
-      },
-    )
+    test.each(allArgNames)('should generate all nullable parameters occasionally null', (arg) => {
+      validateParameterIsOccasionallyNullIfNullable(arg, results)
+    })
   })
 
   describe('for a non-nullable type', () => {
@@ -192,12 +157,8 @@ describe('generating fakes for a GraphQL input argument', () => {
           fail('expected an error to be thrown')
         } catch (error) {
           expect(error).toBeInstanceOf(Error)
-          expect((error as Error).message).toContain(
-            `Cannot generate a random value for scalar 'SomeCustomScalar'.`,
-          )
-          expect((error as Error).message).toContain(
-            `'SomeCustomScalar': () => generateRandomCustomScalar()`,
-          )
+          expect((error as Error).message).toContain(`Cannot generate a random value for scalar 'SomeCustomScalar'.`)
+          expect((error as Error).message).toContain(`'SomeCustomScalar': () => generateRandomCustomScalar()`)
         }
       })
     })
@@ -216,9 +177,7 @@ describe('generating fakes for a GraphQL input argument', () => {
           context,
         )
 
-        expect(paramByType('SomeCustomScalar', result).value).toEqual(
-          expectedOutput,
-        )
+        expect(paramByType('SomeCustomScalar', result).value).toEqual(expectedOutput)
       })
     })
   })
@@ -231,10 +190,7 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(context.defaultFactory).toBeDefined()
         expect(context.defaultFactory?.provide()).toBeDefined()
 
-        if (
-          context.targetName === 'defaultValueString' ||
-          context.targetName === 'defaultValue'
-        ) {
+        if (context.targetName === 'defaultValueString' || context.targetName === 'defaultValue') {
           expect(context.defaultValue).toBe('test default value')
         } else {
           expect(context.defaultValue).toBeUndefined()
@@ -246,9 +202,7 @@ describe('generating fakes for a GraphQL input argument', () => {
 
         expect(context.path.startsWith(`${outerContext.path}$`)).toBe(true)
         expect(context.path).toSatisfy(
-          (path: string) =>
-            path.endsWith(`$${context.targetName}`) ||
-            path.endsWith(`.${context.targetName}`),
+          (path: string) => path.endsWith(`$${context.targetName}`) || path.endsWith(`.${context.targetName}`),
         )
 
         expect(context.randomFactory).toBeDefined()
@@ -270,8 +224,7 @@ describe('generating fakes for a GraphQL input argument', () => {
     })
 
     describe('for a raw type', () => {
-      const output =
-        'This is some dope test string that is clearly not hardcoded somewhere else'
+      const output = 'This is some dope test string that is clearly not hardcoded somewhere else'
 
       const config: QueryGeneratorConfig = {
         ...baseConfig,
@@ -286,9 +239,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       })
 
       it('should work for field name', () => {
-        const targetParam = fieldWithArgs.args.find(
-          (item) => item.type === getTypeByName('String'),
-        )
+        const targetParam = fieldWithArgs.args.find((item) => item.type === getTypeByName('String'))
         if (!targetParam) {
           fail('expected to find a String argument')
         }
@@ -307,9 +258,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       })
 
       it('should work for field path', () => {
-        const targetParam = fieldWithArgs.args.find(
-          (item) => item.type === getTypeByName('String'),
-        )
+        const targetParam = fieldWithArgs.args.find((item) => item.type === getTypeByName('String'))
         if (!targetParam) {
           fail('expected to find a String argument')
         }
@@ -343,13 +292,13 @@ describe('generating fakes for a GraphQL input argument', () => {
         expect(value).toBeInstanceOf(Object)
 
         const record = value as Record<string, unknown>
-        expect(record['string']).toEqual(output)
-        expect(record['listString']).toEqual([output])
+        expect(record.string).toEqual(output)
+        expect(record.listString).toEqual([output])
       })
 
       it('should still use the default factory for other types', () => {
         const result = generateArgsForField(fieldWithArgs, config, context)
-        const defaultFactory = DEFAULT_FACTORIES['Float']
+        const defaultFactory = DEFAULT_FACTORIES.Float
         if (!defaultFactory) {
           fail('Expected a default factory for type `Float`')
         }
@@ -365,8 +314,7 @@ describe('generating fakes for a GraphQL input argument', () => {
     })
 
     describe('for a glob type', () => {
-      const outputString =
-        'This is some dope test string that is clearly not hardcoded somewhere else'
+      const outputString = 'This is some dope test string that is clearly not hardcoded somewhere else'
       const outputFloat = 45.4
       const outputEnum = 'RED'
 
@@ -407,20 +355,14 @@ describe('generating fakes for a GraphQL input argument', () => {
 
       it('should work for direct type', () => {
         const result = generateArgsForField(fieldWithArgs, config, context)
-        expect(
-          (paramByType('TestInput', result).value as Record<string, unknown>)[
-            'string'
-          ],
-        ).toEqual(outputString)
+        expect((paramByType('TestInput', result).value as Record<string, unknown>).string).toEqual(outputString)
       })
 
       it('should work for lists', () => {
         const result = generateArgsForField(fieldWithArgs, config, context)
-        expect(
-          (paramByType('TestInput', result).value as Record<string, unknown>)[
-            'listString'
-          ],
-        ).toEqual([outputListString])
+        expect((paramByType('TestInput', result).value as Record<string, unknown>).listString).toEqual([
+          outputListString,
+        ])
       })
     })
   })
@@ -436,9 +378,7 @@ describe('generating fakes for a GraphQL input argument', () => {
       }
 
       it('should generate the field properly without throwing', () => {
-        expect(() =>
-          generateArgsForField(recursiveField, config, context),
-        ).not.toThrow()
+        expect(() => generateArgsForField(recursiveField, config, context)).not.toThrow()
       })
 
       it('should generate a non-empty field', () => {
@@ -469,25 +409,15 @@ describe('generating fake for a GraphQL leaf type value', () => {
     }
 
     it('should generate the fake value', () => {
-      expect(
-        generateLeafTypeValue(
-          'id',
-          testField as GraphQLScalarType,
-          config,
-          context,
-        ),
-      ).toEqual('08a16b83-9094-4e89-8c05-2ccadd5c1c7e')
+      expect(generateLeafTypeValue('id', testField as GraphQLScalarType, config, context)).toEqual(
+        '08a16b83-9094-4e89-8c05-2ccadd5c1c7e',
+      )
     })
 
     it('should generate the fake value using the name', () => {
-      expect(
-        generateLeafTypeValue(
-          'id',
-          getTypeByName('String') as GraphQLScalarType,
-          config,
-          context,
-        ),
-      ).toEqual('08a16b83-9094-4e89-8c05-2ccadd5c1c7e')
+      expect(generateLeafTypeValue('id', getTypeByName('String') as GraphQLScalarType, config, context)).toEqual(
+        '08a16b83-9094-4e89-8c05-2ccadd5c1c7e',
+      )
     })
   })
 
@@ -498,22 +428,12 @@ describe('generating fake for a GraphQL leaf type value', () => {
     }
 
     it('should generate a null fake', () => {
-      expect(
-        generateLeafTypeValue(
-          'id',
-          testField as GraphQLScalarType,
-          config,
-          context,
-        ),
-      ).toBeNull()
+      expect(generateLeafTypeValue('id', testField as GraphQLScalarType, config, context)).toBeNull()
     })
   })
 })
 
-function paramByName(
-  name: string,
-  parameters: ReadonlyArray<Parameter>,
-): Parameter {
+function paramByName(name: string, parameters: ReadonlyArray<Parameter>): Parameter {
   const result = _.find(parameters, (item) => item.name === name)
   if (!result) {
     fail(`Expected a parameter named '${name}' in ${parameters.toString()}`)
@@ -521,10 +441,7 @@ function paramByName(
   return result
 }
 
-function paramByType(
-  type: string,
-  parameters: ReadonlyArray<Parameter>,
-): Parameter {
+function paramByType(type: string, parameters: ReadonlyArray<Parameter>): Parameter {
   const result = _.find(parameters, (item) => item.type === type)
   if (!result) {
     fail(`Expected a parameter with type '${type}' in ${parameters.toString()}`)

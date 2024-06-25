@@ -9,9 +9,10 @@ export function booleanConverter(): Converter<boolean> {
       switch (typeof target) {
         case 'boolean':
           return target
-        case 'string':
+        case 'string': {
           const lowerCase = target.toLowerCase().trim()
           return lowerCase === 'true' || lowerCase === 't' || lowerCase === '1'
+        }
         case 'number':
           return target !== 0
         default:

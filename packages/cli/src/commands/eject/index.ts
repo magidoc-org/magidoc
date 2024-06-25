@@ -1,16 +1,13 @@
-import type {
-  PackageManager,
-  PackageManagerType,
-} from '../../node/packageManager'
-import { executeAllTasks } from '../../tasks/runner'
+import type { PackageManager, PackageManagerType } from '../../node/packageManager'
 import { determineTmpDirectoryTask } from '../../tasks/all/determineTmpDir'
 import { fetchTemplateTask } from '../../tasks/all/fetchTemplate'
 import { installDependenciesTask } from '../../tasks/all/installDependencies'
+import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'
 import { unzipTemplateTask } from '../../tasks/all/unzipTemplate'
 import { verifyDestinationAvailableTask } from '../../tasks/all/verifyDestinationAvailable'
+import { executeAllTasks } from '../../tasks/runner'
 import type { Template } from '../../template'
 import { type TmpLocation, tmpLocation } from '../../template/tmp'
-import { selectPackageManagerTask } from '../../tasks/all/selectPackageManager'
 
 export type EjectConfig = {
   packageManager: PackageManagerType

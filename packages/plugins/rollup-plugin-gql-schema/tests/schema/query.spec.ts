@@ -1,11 +1,7 @@
-import queryGraphQLSchema from '../../src/schema/query'
+import { type IntrospectionQuery, buildClientSchema, getIntrospectionQuery } from 'graphql'
 import nock from 'nock'
-import {
-  buildClientSchema,
-  getIntrospectionQuery,
-  type IntrospectionQuery,
-} from 'graphql'
-import { describe, beforeEach, it, expect } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
+import queryGraphQLSchema from '../../src/schema/query'
 import { getSample } from './utils'
 
 const basePath = 'https://what-the-test.com'
@@ -45,16 +41,11 @@ describe('fetching the graphql schema', () => {
 
     describe('request fails with an invalid status', () => {
       beforeEach(() => {
-        nock(basePath)
-          .matchHeader('Content-Type', 'application/json')
-          .post(path)
-          .reply(401, introspectionResult)
+        nock(basePath).matchHeader('Content-Type', 'application/json').post(path).reply(401, introspectionResult)
       })
 
       it('throws an error', async () => {
-        await expect(queryGraphQLSchema(fullPath, {})).rejects.toThrowError(
-          'Request failed with status code 401',
-        )
+        await expect(queryGraphQLSchema(fullPath, {})).rejects.toThrowError('Request failed with status code 401')
       })
     })
   })
@@ -97,10 +88,7 @@ describe('fetching the graphql schema', () => {
     const authorization = 'Bearer abc'
 
     beforeEach(() => {
-      nock(basePath)
-        .matchHeader('Authorization', authorization)
-        .post(path)
-        .reply(200, introspectionResult)
+      nock(basePath).matchHeader('Authorization', authorization).post(path).reply(200, introspectionResult)
     })
 
     it('uses the custom headers', async () => {

@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'fs'
+import { existsSync, readFileSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -11,9 +11,7 @@ export function getVersion(): string {
       throw new Error('Could not resolve path to package.json')
     }
 
-    const packageJson = JSON.parse(
-      readFileSync(packageJsonPath).toString(),
-    ) as {
+    const packageJson = JSON.parse(readFileSync(packageJsonPath).toString()) as {
       version?: string
     }
 
@@ -29,10 +27,7 @@ export function getVersion(): string {
 }
 
 function findPackageJsonPath(
-  test: string = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    './package.json',
-  ),
+  test: string = path.join(path.dirname(fileURLToPath(import.meta.url)), './package.json'),
 ): string | undefined {
   if (existsSync(test)) {
     return test

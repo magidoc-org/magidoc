@@ -7,14 +7,5 @@
     "**/coverage": true,
     "**/build": true,
     "**/package": true
-  },
-  "eslint.probe": [
-    "javascript",
-    "typescript",
-    "html",
-    "markdown",
-    "svelte"
-  ],
-  "eslint.validate": ["typescript", "svelte"],
-  "eslint.packageManager": "pnpm",
+  }
 }

@@ -616,9 +616,7 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [
-          { "kind": "INTERFACE", "name": "TestInterface", "ofType": null }
-        ],
+        "interfaces": [{ "kind": "INTERFACE", "name": "TestInterface", "ofType": null }],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -645,9 +643,7 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [
-          { "kind": "INTERFACE", "name": "TestInterface", "ofType": null }
-        ],
+        "interfaces": [{ "kind": "INTERFACE", "name": "TestInterface", "ofType": null }],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -700,9 +696,7 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [
-          { "kind": "INTERFACE", "name": "TestInterface", "ofType": null }
-        ],
+        "interfaces": [{ "kind": "INTERFACE", "name": "TestInterface", "ofType": null }],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -725,9 +719,7 @@
           }
         ],
         "inputFields": null,
-        "interfaces": [
-          { "kind": "INTERFACE", "name": "TestInterface", "ofType": null }
-        ],
+        "interfaces": [{ "kind": "INTERFACE", "name": "TestInterface", "ofType": null }],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -1872,12 +1864,7 @@
       {
         "name": "deprecated",
         "description": "Marks an element of a GraphQL schema as no longer supported.",
-        "locations": [
-          "FIELD_DEFINITION",
-          "ARGUMENT_DEFINITION",
-          "INPUT_FIELD_DEFINITION",
-          "ENUM_VALUE"
-        ],
+        "locations": ["FIELD_DEFINITION", "ARGUMENT_DEFINITION", "INPUT_FIELD_DEFINITION", "ENUM_VALUE"],
         "args": [
           {
             "name": "reason",

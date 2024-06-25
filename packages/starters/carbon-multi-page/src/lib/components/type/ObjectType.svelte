@@ -1,20 +1,17 @@
 <script lang="ts">
-  import {
-    getFieldsPossibleDescriptions,
-    type FieldWithPossibleDescriptions,
-  } from '$lib/model'
+import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions } from '$lib/model'
 
-  import type { GraphQLObjectType } from 'graphql'
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-  import TypeTag from '../tags/TypeTag.svelte'
-  import FiedsTable from './list/FiedsList.svelte'
-  import InterfaceList from './list/TypeEnumeration.svelte'
+import type { GraphQLObjectType } from 'graphql'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import TypeTag from '../tags/TypeTag.svelte'
+import FieldsTable from './list/FieldsList.svelte'
+import InterfaceList from './list/TypeEnumeration.svelte'
 
-  export let type: GraphQLObjectType
+export let type: GraphQLObjectType
 
-  let fields: ReadonlyArray<FieldWithPossibleDescriptions>
-  $: fields = getFieldsPossibleDescriptions(type)
+let fields: ReadonlyArray<FieldWithPossibleDescriptions>
+$: fields = getFieldsPossibleDescriptions(type)
 </script>
 
 <section>
@@ -28,7 +25,7 @@
   {#if fields.length > 0}
     <AnchorHeader id={'fields'} depth={2}>Fields</AnchorHeader>
 
-    <FiedsTable data={fields} />
+    <FieldsTable data={fields} />
   {/if}
 
   {#if type.getInterfaces().length > 0}

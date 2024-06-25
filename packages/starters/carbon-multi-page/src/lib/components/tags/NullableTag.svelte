@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Tag } from 'carbon-components-svelte'
-  import { type GraphQLType, isNullableType } from 'graphql'
+import { Tag } from 'carbon-components-svelte'
+import { type GraphQLType, isNullableType } from 'graphql'
 
-  export let type: GraphQLType
+export let type: GraphQLType
 </script>
 
 {#if !isNullableType(type)}

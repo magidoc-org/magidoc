@@ -1,5 +1,5 @@
-import type { Variable } from '@magidoc/plugin-starter-variables'
 import { pathToFileURL } from 'url'
+import type { Variable } from '@magidoc/plugin-starter-variables'
 import z from 'zod'
 import { formatZodIssues } from '../config/zod'
 
@@ -28,24 +28,16 @@ export type RawMagidocTemplateConfig = {
   ENV_FILE_LOCATION: string
 }
 
-export async function loadTemplateConfig(
-  path: string,
-): Promise<RawMagidocTemplateConfig> {
-  return parseTemplateConfig(
-    (await import(pathToFileURL(path).toString())) as unknown,
-  )
+export async function loadTemplateConfig(path: string): Promise<RawMagidocTemplateConfig> {
+  return parseTemplateConfig((await import(pathToFileURL(path).toString())) as unknown)
 }
 
-export function parseTemplateConfig(
-  content: unknown,
-): RawMagidocTemplateConfig {
+export function parseTemplateConfig(content: unknown): RawMagidocTemplateConfig {
   const result = ZMagidocTemplateConfig.safeParse(content)
   if (!result.success) {
     const formattedIssues = formatZodIssues(result.error.issues)
     throw new Error(
-      `Invalid template configuration found:\nConfig: ${JSON.stringify(
-        content,
-      )}\n${formattedIssues.join(
+      `Invalid template configuration found:\nConfig: ${JSON.stringify(content)}\n${formattedIssues.join(
         '\n',
       )}\n\nThis error is not supposed to occur and is likely a misconfiguration of the template. You should open an issue if you ever see it.`,
     )

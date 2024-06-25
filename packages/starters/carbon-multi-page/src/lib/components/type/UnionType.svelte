@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { GraphQLUnionType } from 'graphql'
-  import AnchorHeader from '../common/text/AnchorHeader.svelte'
-  import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import type { GraphQLUnionType } from 'graphql'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
 
-  import TypeTag from '../tags/TypeTag.svelte'
-  import TypeEnumeration from './list/TypeEnumeration.svelte'
+import TypeTag from '../tags/TypeTag.svelte'
+import TypeEnumeration from './list/TypeEnumeration.svelte'
 
-  export let type: GraphQLUnionType
+export let type: GraphQLUnionType
 </script>
 
 <section>

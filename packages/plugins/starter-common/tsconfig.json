@@ -15,12 +15,6 @@
     "skipLibCheck": true,
     "lib": ["esnext", "dom"]
   },
-  "include": [
-    "vitest.config.ts",
-    "src/*.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "tests/**/*.ts"
-  ],
+  "include": ["vitest.config.ts", "src/*.ts", "src/**/*.ts", "src/**/*.d.ts", "tests/**/*.ts"],
   "exclude": ["build", "node_modules"]
 }

@@ -1,7 +1,7 @@
-import { templates, magidoc, toVariablesFile } from '../../src'
+import { describe, expect, it } from 'vitest'
+import { magidoc, templates, toVariablesFile } from '../../src'
 import type { Variable } from '../../src'
 import { UnsupportedVariablesError } from '../../src/env/envFileContent'
-import { describe, expect, it } from 'vitest'
 
 describe('creating a variables file ', () => {
   const initialObject = {
@@ -9,8 +9,7 @@ describe('creating a variables file ', () => {
     pages: [
       {
         title: 'My-page-title',
-        content:
-          'A raw markdown string containing stuff like "double quotes", `code`, and **bold**.',
+        content: 'A raw markdown string containing stuff like "double quotes", `code`, and **bold**.',
       },
       {
         title: 'My-page-title-2',
@@ -47,9 +46,7 @@ describe('creating a variables file ', () => {
         toVariablesFile(initialObject, [])
       } catch (error) {
         expect(error).toBeInstanceOf(UnsupportedVariablesError)
-        expect(
-          (error as UnsupportedVariablesError).unsupportedVariables,
-        ).toEqual(['appTitle', 'pages'])
+        expect((error as UnsupportedVariablesError).unsupportedVariables).toEqual(['appTitle', 'pages'])
       }
     })
   })

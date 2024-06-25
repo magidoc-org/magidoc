@@ -34,14 +34,6 @@ Test command runs type-checking. Since Svelte-Kit uses [ViteJS](https://vitejs.d
 pnpm test
 ```
 
-### Lint
-
-The project comes with a base [ESLint](https://eslint.org/) configuration. You can change the configuration as needed.
-
-```
-pnpm lint
-```
-
 ### Build
 
 Builds the production website. The output build defaults to a static website. This is the best way to build the documentation website as long as there is no Dynamic Content (API calls for instance). 

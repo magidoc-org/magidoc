@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { MarkdownOptions } from '@magidoc/plugin-svelte-marked'
-  import { urlUtils } from '@magidoc/plugin-svelte-marked'
+import type { MarkdownOptions } from '@magidoc/plugin-svelte-marked'
+import { urlUtils } from '@magidoc/plugin-svelte-marked'
 
-  import { Link } from 'carbon-components-svelte'
-  import type { Tokens } from 'marked'
+import { Link } from 'carbon-components-svelte'
+import type { Tokens } from 'marked'
 
-  export let token: Tokens.Link
-  export let options: MarkdownOptions
+export let token: Tokens.Link
+export let options: MarkdownOptions
 </script>
 
 <Link

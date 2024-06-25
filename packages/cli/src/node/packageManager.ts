@@ -1,4 +1,4 @@
-import { spawn, exec } from 'child_process'
+import { exec, spawn } from 'child_process'
 import { promisify } from 'util'
 
 const execPromise = promisify(exec)
@@ -71,24 +71,14 @@ function createRunner({
 }): PackageManager {
   return {
     type,
-    runInstall: (config: CommandConfiguration) =>
-      runNodeCommand(type, ['install', ...(installArgs || [])], config),
-    buildProject: (config: CommandConfiguration) =>
-      runNodeCommand(type, ['run', 'build'], config),
+    runInstall: (config: CommandConfiguration) => runNodeCommand(type, ['install', ...(installArgs || [])], config),
+    buildProject: (config: CommandConfiguration) => runNodeCommand(type, ['run', 'build'], config),
     startDevServer: (config: DevServerCommandConfiguration) =>
-      runNodeCommand(
-        type,
-        ['run', 'dev', '--host', config.host, '--port', config.port.toString()],
-        config,
-      ),
+      runNodeCommand(type, ['run', 'dev', '--host', config.host, '--port', config.port.toString()], config),
   }
 }
 
-async function runNodeCommand(
-  command: string,
-  args: string[],
-  config: CommandConfiguration,
-): Promise<void> {
+async function runNodeCommand(command: string, args: string[], config: CommandConfiguration): Promise<void> {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
       cwd: config.cwd,
@@ -125,9 +115,7 @@ async function runNodeCommand(
       } else {
         reject(
           new Error(
-            `Command '${command}' failed with status ${
-              code?.toString() || 'unknown'
-            } when executed in directory ${
+            `Command '${command}' failed with status ${code?.toString() || 'unknown'} when executed in directory ${
               config.cwd
             }\n\n---- Program Output----\n${output}`,
           ),
@@ -137,9 +125,7 @@ async function runNodeCommand(
   })
 }
 
-export async function isPackageManagerAvailable(
-  type: PackageManagerType,
-): Promise<boolean> {
+export async function isPackageManagerAvailable(type: PackageManagerType): Promise<boolean> {
   try {
     await execPromise(`${type} --version`)
     return true
@@ -151,11 +137,7 @@ export async function isPackageManagerAvailable(
 function getCurrentEnvironment(): Record<string, string> {
   return Object.keys(process.env).reduce((previous, key) => {
     const lowerKey = key.toLowerCase()
-    if (
-      lowerKey.startsWith('vercel') ||
-      lowerKey.startsWith('netlify') ||
-      lowerKey.startsWith('cf_pages')
-    ) {
+    if (lowerKey.startsWith('vercel') || lowerKey.startsWith('netlify') || lowerKey.startsWith('cf_pages')) {
       return previous
     }
 

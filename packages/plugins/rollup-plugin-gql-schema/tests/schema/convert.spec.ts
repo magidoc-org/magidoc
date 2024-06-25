@@ -1,11 +1,6 @@
-import { convert } from '../../src/schema/convert'
+import { type IntrospectionQuery, buildClientSchema, buildSchema, printSchema } from 'graphql'
 import { describe, expect, it } from 'vitest'
-import {
-  buildClientSchema,
-  buildSchema,
-  type IntrospectionQuery,
-  printSchema,
-} from 'graphql'
+import { convert } from '../../src/schema/convert'
 import { getSample } from './utils'
 
 const sdl = getSample('sdl.graphqls')
@@ -14,17 +9,11 @@ const schema = buildSchema(sdl)
 
 describe('converting a schema', () => {
   it('converts a schema to SDL', () => {
-    expect(removeEmptyLines(convert(schema, 'sdl'))).toEqual(
-      removeEmptyLines(sdl.trim()),
-    )
+    expect(removeEmptyLines(convert(schema, 'sdl'))).toEqual(removeEmptyLines(sdl.trim()))
   })
 
   it('converts a schema to introspection', () => {
-    expect(
-      buildClientSchema(
-        JSON.parse(convert(schema, 'introspection')) as IntrospectionQuery,
-      ),
-    ).toEqual(
+    expect(buildClientSchema(JSON.parse(convert(schema, 'introspection')) as IntrospectionQuery)).toEqual(
       buildClientSchema(JSON.parse(introspection) as IntrospectionQuery),
     )
   })
@@ -45,9 +34,7 @@ describe('converting a schema', () => {
   })
 
   it('converts a schema built from introspection correctly to SDL', () => {
-    const schema = buildClientSchema(
-      JSON.parse(introspection) as IntrospectionQuery,
-    )
+    const schema = buildClientSchema(JSON.parse(introspection) as IntrospectionQuery)
     expect(convert(schema, 'sdl')).toEqual(printSchema(schema))
   })
 })

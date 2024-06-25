@@ -1,13 +1,10 @@
+import type { Command } from 'commander'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import generate from '../../../src/commands/generate'
-import {
-  mockLoadFileConfiguration,
-  testMagidocConfiguration,
-} from '../configuration'
-import { makeTestProgram } from '../program'
 import buildGenerateCommand from '../../../src/commands/generate/command'
-import type { Command } from 'commander'
 import { loadFileConfiguration } from '../../../src/commands/utils/loadConfigFile'
+import { mockLoadFileConfiguration, testMagidocConfiguration } from '../configuration'
+import { makeTestProgram } from '../program'
 
 vi.mock('../../../src/commands/utils/loadConfigFile')
 vi.mock('../../../src/commands/generate')
@@ -57,25 +54,14 @@ describe('running the generate command', () => {
       it('should load the configuration file from the right location', async () => {
         await program.parseAsync(['generate'], { from: 'user' })
 
-        expect(loadFileConfiguration).toHaveBeenCalledWith(
-          './magidoc.mjs',
-          false,
-        )
+        expect(loadFileConfiguration).toHaveBeenCalledWith('./magidoc.mjs', false)
       })
     })
 
     describe('with custom options', () => {
       it('should run the development server with the custom options', async () => {
         await program.parseAsync(
-          [
-            'generate',
-            '--clean',
-            '--stacktrace',
-            '--package-manager',
-            'pnpm',
-            '--file',
-            './magidoc.second.mjs',
-          ],
+          ['generate', '--clean', '--stacktrace', '--package-manager', 'pnpm', '--file', './magidoc.second.mjs'],
           { from: 'user' },
         )
         expect(generate).toHaveBeenCalledOnce()
