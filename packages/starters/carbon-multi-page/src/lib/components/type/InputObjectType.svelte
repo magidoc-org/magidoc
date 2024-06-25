@@ -4,13 +4,10 @@ import _ from 'lodash'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
 import DirectivesList from '../directive/DirectivesList.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-import DirectiveTag from '../tags/DirectiveTag.svelte'
 import TypeTag from '../tags/TypeTag.svelte'
 import InputFieldsTable from './list/InputFieldsList.svelte'
 
 export let type: GraphQLInputObjectType
-
-console.log(type)
 </script>
 
 <section>

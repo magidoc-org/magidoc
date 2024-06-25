@@ -40,7 +40,6 @@ function printDirectiveValue(value: ConstValueNode): string {
 }
 
 function shouldShowDirective(): boolean {
-  console.log(directiveDefinition)
   return !!directiveDefinition && isAllowedDirective(directiveDefinition)
 }
 
