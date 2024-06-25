@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const archiver = require('archiver')
+import fs from 'fs'
+import path from 'path'
+import archiver from 'archiver'
 
 const basePath = __dirname
 
@@ -94,5 +94,5 @@ async function zipStarter(starterDirectory) {
 const starters = listStarterDirectories()
 
 for (const starter of starters) {
-  zipStarter(path)
+  zipStarter(starter)
 }

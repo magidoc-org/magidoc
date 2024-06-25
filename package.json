@@ -20,7 +20,7 @@
     "test:unit": "pnpm -r run test",
     "fix": "run-p fix:*",
     "fix:lint": "biome format --write",
-    "release": "pnpm build && VERSION=$npm_package_version node packages/starters/zipStarters.cjs && pnpm --filter '!@magidoc/docs' -r release",
+    "release": "pnpm build && VERSION=$npm_package_version node packages/starters/zipStarters.mjs && pnpm --filter '!@magidoc/docs' -r release",
     "patch": "pnpm version --no-git-tag-version patch | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version && pnpm -r up '@magidoc/*'",
     "minor": "pnpm version --no-git-tag-version minor | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version && pnpm -r up '@magidoc/*'",
     "major": "pnpm version --no-git-tag-version major | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version && pnpm -r up '@magidoc/*'",
