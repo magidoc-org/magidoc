@@ -87,6 +87,8 @@ type Test {
     """
     target: String @TestDirective(mandatory: 4)
     ): String
+
+    testInputOneOf(target: TestInputOneOf!): String
 }
 
 input TestOneofInput @oneOf {
@@ -179,6 +181,12 @@ input TestInput {
   listID: [ID]
   listEnum: [TestEnum]
   listObject: [TestInput]
+}
+
+"""Input with oneOf."""
+input TestInputOneOf @oneOf {
+  string: String
+  int: Int
 }
 
 

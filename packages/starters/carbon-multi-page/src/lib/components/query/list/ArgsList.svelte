@@ -1,5 +1,6 @@
 <script lang="ts">
 import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
+import DirectivesList from '$lib/components/directive/DirectivesList.svelte'
 import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
 
 import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
@@ -54,10 +55,7 @@ $: {
             <TypeLinkTag type={item.type} />
             <DeprecatedTag reason={item.deprecationReason} />
             <NullableTag type={item.type} />
-
-            {#each item.directives as directive}
-              <DirectiveTag {directive} />
-            {/each}
+            <DirectivesList directives={item.directives} />
           </p>
           {#if item.description}
             <CarbonMarkdown source={item.description} />

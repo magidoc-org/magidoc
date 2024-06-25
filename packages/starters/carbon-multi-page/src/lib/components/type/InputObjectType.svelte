@@ -2,17 +2,22 @@
 import type { GraphQLInputObjectType } from 'graphql'
 import _ from 'lodash'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import DirectivesList from '../directive/DirectivesList.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
+import DirectiveTag from '../tags/DirectiveTag.svelte'
 import TypeTag from '../tags/TypeTag.svelte'
 import InputFieldsTable from './list/InputFieldsList.svelte'
 
 export let type: GraphQLInputObjectType
+
+console.log(type)
 </script>
 
 <section>
   <AnchorHeader id={'title'} depth={1}>
     {type.name}
     <TypeTag {type} />
+    <DirectivesList directives={type.astNode?.directives} />
   </AnchorHeader>
 
   <CarbonMarkdown source={type.description} />

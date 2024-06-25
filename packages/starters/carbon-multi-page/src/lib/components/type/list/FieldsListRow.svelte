@@ -10,6 +10,7 @@ import NullableTag from '$lib/components/tags/NullableTag.svelte'
 import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 import type { FieldWithPossibleDescriptions } from '$lib/model'
 
+import DirectivesList from '$lib/components/directive/DirectivesList.svelte'
 import { StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
 import LocationSpecificDescription from './LocationSpecificDescription.svelte'
 
@@ -25,11 +26,7 @@ let showArguments = false
       <TypeLinkTag type={item.field.type} />
       <DeprecatedTag reason={item.field.deprecationReason} />
       <NullableTag type={item.field.type} />
-      {#if item.field.astNode?.directives}
-        {#each item.field.astNode.directives as directive}
-          <DirectiveTag {directive} />
-        {/each}
-      {/if}
+      <DirectivesList directives={item.field.astNode?.directives} />
     </p>
 
     {#if item.possibleDescriptions.length === 1}

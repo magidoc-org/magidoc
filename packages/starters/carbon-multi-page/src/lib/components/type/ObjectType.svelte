@@ -3,6 +3,7 @@ import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions } fro
 
 import type { GraphQLObjectType } from 'graphql'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import DirectivesList from '../directive/DirectivesList.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
 import TypeTag from '../tags/TypeTag.svelte'
 import FieldsTable from './list/FieldsList.svelte'
@@ -18,6 +19,7 @@ $: fields = getFieldsPossibleDescriptions(type)
   <AnchorHeader id={'title'} depth={1}>
     {type.name}
     <TypeTag {type} />
+    <DirectivesList directives={type.astNode?.directives} />
   </AnchorHeader>
 
   <CarbonMarkdown source={type.description} />

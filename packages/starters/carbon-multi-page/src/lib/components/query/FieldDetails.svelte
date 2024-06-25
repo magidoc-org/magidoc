@@ -4,8 +4,8 @@ import type { GraphQLField } from 'graphql'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
 import DeprecationNotice from '../common/text/DeprecationNotice.svelte'
 import TypeLink from '../common/text/TypeLink.svelte'
+import DirectivesList from '../directive/DirectivesList.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
-import DirectiveTag from '../tags/DirectiveTag.svelte'
 import QueryTypeTag from '../tags/QueryTypeTag.svelte'
 import AppQueryGenerator from './AppQueryTabs.svelte'
 import ArgsList from './list/ArgsList.svelte'
@@ -19,12 +19,7 @@ export let field: GraphQLField<unknown, unknown, unknown>
 
   <AnchorHeader id={'title'} depth={1}>
     {field.name}<QueryTypeTag {type} />
-
-    {#if field.astNode?.directives}
-      {#each field.astNode.directives as item}
-        <DirectiveTag directive={item} />
-      {/each}
-    {/if}
+    <DirectivesList directives={field.astNode?.directives} />
   </AnchorHeader>
 
   <CarbonMarkdown source={field.description} />
