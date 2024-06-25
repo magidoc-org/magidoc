@@ -37,7 +37,6 @@ $: {
   } else {
     items = convertItems(data)
   }
-  console.log(items, 'items')
 }
 </script>
 
