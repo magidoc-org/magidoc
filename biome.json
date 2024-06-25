@@ -18,7 +18,7 @@
       "**/coverage/**",
       "**/.svelte-kit/**",
       "**/_schema.graphqls",
-      "**/_variables.graphqls"
+      "**/_variables.json"
     ]
   },
   "organizeImports": { "enabled": true },
@@ -47,7 +47,7 @@
       "**/svelte.config.js",
       "**/magidoc.mjs",
       "**/_schema.graphqls",
-      "**/_variables.graphqls"
+      "**/_variables.json"
     ]
   },
   "javascript": {
