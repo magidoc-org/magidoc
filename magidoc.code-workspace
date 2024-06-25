@@ -9,7 +9,6 @@
       "**/build": true,
       "**/package": true
     },
-    "cSpell.words": ["magidoc"],
     "testing.automaticallyOpenPeekView": "never",
     "editor.codeActionsOnSave": {
       "source.organizeImports.biome": "always"

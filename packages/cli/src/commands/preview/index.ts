@@ -19,6 +19,11 @@ export default function preview(config: PreviewConfig): http.Server {
   })
 
   const server = http.createServer((req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
+    res.setHeader('Pragma', 'no-cache')
+    res.setHeader('Expires', '0')
+    res.setHeader('Surrogate-Control', 'no-store')
+
     if (!config.siteRoot || req.url?.startsWith(config.siteRoot)) {
       req.url = req.url?.replace(config.siteRoot || '', '')
 

@@ -3,6 +3,7 @@ import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay
 import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
 
 import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
+import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
 import NullableTag from '$lib/components/tags/NullableTag.svelte'
 import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 import { getOrDefault } from '$lib/variables'
@@ -24,6 +25,7 @@ function convertItems(data: ReadonlyArray<GraphQLArgument>) {
     description: arg.description,
     default: arg.defaultValue,
     type: arg.type,
+    directives: arg.astNode?.directives || [],
   }))
 }
 
@@ -35,6 +37,7 @@ $: {
   } else {
     items = convertItems(data)
   }
+  console.log(items, 'items')
 }
 </script>
 
@@ -52,6 +55,10 @@ $: {
             <TypeLinkTag type={item.type} />
             <DeprecatedTag reason={item.deprecationReason} />
             <NullableTag type={item.type} />
+
+            {#each item.directives as directive}
+              <DirectiveTag {directive} />
+            {/each}
           </p>
           {#if item.description}
             <CarbonMarkdown source={item.description} />

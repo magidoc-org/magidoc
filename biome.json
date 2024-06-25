@@ -11,7 +11,15 @@
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 120,
-    "ignore": ["**/dist/**", "**/build/**", "**/package/**", "**/coverage/**", "**/.svelte-kit/**"]
+    "ignore": [
+      "**/dist/**",
+      "**/build/**",
+      "**/package/**",
+      "**/coverage/**",
+      "**/.svelte-kit/**",
+      "**/_schema.graphqls",
+      "**/_variables.graphqls"
+    ]
   },
   "organizeImports": { "enabled": true },
   "linter": {
@@ -37,7 +45,9 @@
       "**/.svelte-kit/**",
       "**/.vscode/**",
       "**/svelte.config.js",
-      "**/magidoc.mjs"
+      "**/magidoc.mjs",
+      "**/_schema.graphqls",
+      "**/_variables.graphqls"
     ]
   },
   "javascript": {

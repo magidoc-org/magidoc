@@ -9,6 +9,15 @@ let server: http.Server
 
 const port = 34245
 
+function closeServer(): Promise<void> {
+  server.closeAllConnections()
+  return new Promise((resolve) => {
+    // Node bug...
+    // https://github.com/nodejs/node/issues/47130#issuecomment-2018883424
+    server.close(() => setTimeout(resolve, 10))
+  })
+}
+
 describe('running a preview server', () => {
   describe('without site root', () => {
     beforeAll(() => {
@@ -19,9 +28,8 @@ describe('running a preview server', () => {
       })
     })
 
-    afterAll(() => {
-      server.closeAllConnections()
-      server.close()
+    afterAll(async () => {
+      await closeServer()
     })
 
     it('should return the index when queried on root path', async () => {
@@ -46,8 +54,8 @@ describe('running a preview server', () => {
       })
     })
 
-    afterAll(() => {
-      server.close()
+    afterAll(async () => {
+      await closeServer()
     })
 
     it('should redirect to the website root path when queried on the root', async () => {
@@ -92,46 +100,44 @@ describe('running a preview server', () => {
 
 function getAsset(path?: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    const req = http.request(
-      {
-        hostname: 'localhost',
-        port: port,
-        method: 'GET',
-        path: path,
-      },
-      (response) => {
-        response.on('data', (data) => {
-          resolve(String(data))
-        })
-      },
-    )
-
-    req.on('error', (error) => {
-      reject(error)
-    })
-
-    req.end()
+    http
+      .get(
+        {
+          hostname: 'localhost',
+          port: port,
+          path: path,
+        },
+        (response) => {
+          response.on('data', (data) => {
+            resolve(String(data))
+          })
+        },
+      )
+      .on('error', (error) => {
+        reject(error)
+      })
   })
 }
 
 function getRedirectLocation(): Promise<string | undefined> {
   return new Promise((resolve, reject) => {
-    const req = http.request(
-      {
-        hostname: 'localhost',
-        port: port,
-        method: 'GET',
-      },
-      (response) => {
-        resolve(response.headers.location)
-      },
-    )
+    http
+      .get(
+        {
+          hostname: 'localhost',
+          port: port,
+        },
+        (response) => {
+          console.log(response.headers.location, 'REDIRECT')
+          resolve(response.headers.location)
 
-    req.on('error', (error) => {
-      reject(error)
-    })
-
-    req.end()
+          response
+        },
+      )
+      .on('error', (error) => {
+        console.log('NANI WHAT', error)
+        reject(error)
+      })
   })
 }
 

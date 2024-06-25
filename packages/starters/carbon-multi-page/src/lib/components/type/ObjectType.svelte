@@ -5,7 +5,7 @@ import type { GraphQLObjectType } from 'graphql'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
 import TypeTag from '../tags/TypeTag.svelte'
-import FiedsTable from './list/FiedsList.svelte'
+import FieldsTable from './list/FieldsList.svelte'
 import InterfaceList from './list/TypeEnumeration.svelte'
 
 export let type: GraphQLObjectType
@@ -25,7 +25,7 @@ $: fields = getFieldsPossibleDescriptions(type)
   {#if fields.length > 0}
     <AnchorHeader id={'fields'} depth={2}>Fields</AnchorHeader>
 
-    <FiedsTable data={fields} />
+    <FieldsTable data={fields} />
   {/if}
 
   {#if type.getInterfaces().length > 0}
