@@ -93,6 +93,5 @@ async function zipStarter(starterDirectory) {
 const starters = listStarterDirectories()
 
 for (const starter of starters) {
-  console.log(`Zipping ${starter}`)
   zipStarter(path)
 }

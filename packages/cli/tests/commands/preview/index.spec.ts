@@ -128,10 +128,7 @@ function getRedirectLocation(): Promise<string | undefined> {
           port: port,
         },
         (response) => {
-          console.log(response.headers.location, 'REDIRECT')
           resolve(response.headers.location)
-
-          response
         },
       )
       .on('error', (error) => {
