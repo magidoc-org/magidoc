@@ -1,6 +1,6 @@
 {
   "name": "@magidoc/docs",
-  "version": "5.0.3",
+  "version": "5.1.0",
   "license": "MIT",
   "type": "module",
   "keywords": ["docs", "magidoc"],
@@ -15,7 +15,7 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "cspell": "^8.8.0",
+    "cspell": "^8.9.1",
     "gh-pages": "^6.1.1",
     "svelte-sitemap": "^2.6.0"
   }

@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-fuse-graphql",
   "description": "A plugin used to index a GraphQL schema into a Fuse.js search engine.",
   "private": false,
-  "version": "5.0.3",
+  "version": "5.1.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -24,16 +24,15 @@
   "dependencies": {
     "@magidoc/plugin-fuse-markdown": "workspace:^",
     "fuse.js": "^7.0.0",
-    "graphql": "^16.8.1",
-    "marked": "^12.0.2"
+    "graphql": "^16.9.0",
+    "marked": "^13.0.1"
   },
   "devDependencies": {
-    "@types/marked": "^6.0.0",
-    "@types/node": "^20.12.8",
+    "@types/node": "^20.14.8",
     "@vitest/coverage-v8": "^1.6.0",
-    "rollup": "^4.17.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11",
+    "rollup": "^4.18.0",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1",
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
