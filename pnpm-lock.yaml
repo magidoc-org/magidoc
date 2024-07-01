@@ -376,8 +376,8 @@ importers:
         specifier: 1.26.4
         version: 1.26.4
       svelte-check:
-        specifier: 3.8.2
-        version: 3.8.2(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
+        specifier: 3.8.4
+        version: 3.8.4(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
       svelte2tsx:
         specifier: 0.7.11
         version: 0.7.11(svelte@4.2.18)(typescript@5.5.2)
@@ -416,8 +416,8 @@ importers:
         specifier: 1.26.4
         version: 1.26.4
       svelte-check:
-        specifier: 3.8.2
-        version: 3.8.2(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
+        specifier: 3.8.4
+        version: 3.8.4(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
       svelte2tsx:
         specifier: 0.7.11
         version: 0.7.11(svelte@4.2.18)(typescript@5.5.2)
@@ -516,8 +516,8 @@ importers:
         specifier: 4.2.18
         version: 4.2.18
       svelte-check:
-        specifier: 3.8.2
-        version: 3.8.2(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
+        specifier: 3.8.4
+        version: 3.8.4(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
       svelte-markdown:
         specifier: 0.4.1
         version: 0.4.1(svelte@4.2.18)
@@ -2836,8 +2836,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-check@3.8.2:
-    resolution: {integrity: sha512-n6bVsE71RPuMXZz1CalD2fXO0RIyEDHn1YdGhcFEwZrwc/HoS5wWoEvEe+mcL9tivCTRtQIdbxLLStfIHFOX+Q==}
+  svelte-check@3.8.4:
+    resolution: {integrity: sha512-61aHMkdinWyH8BkkTX9jPLYxYzaAAz/FK/VQqdr2FiCQQ/q04WCwDlpGbHff1GdrMYTmW8chlTFvRWL9k0A8vg==}
     hasBin: true
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
@@ -5561,7 +5561,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@3.8.2(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18):
+  svelte-check@3.8.4(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 3.6.0
