@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "11.1.6",
-    "@types/lodash": "4.17.5",
+    "@types/lodash": "4.17.6",
     "@types/node": "20.14.9",
     "@vitest/coverage-v8": "1.6.0",
     "lodash": "4.17.21",
