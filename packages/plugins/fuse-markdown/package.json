@@ -24,7 +24,7 @@
   "dependencies": {
     "fuse.js": "7.0.0",
     "github-slugger": "2.0.0",
-    "marked": "13.0.1"
+    "marked": "13.0.2"
   },
   "devDependencies": {
     "@types/node": "20.14.9",
