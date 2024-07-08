@@ -121,8 +121,8 @@ importers:
         specifier: 16.9.0
         version: 16.9.0
       marked:
-        specifier: 13.0.1
-        version: 13.0.1
+        specifier: 13.0.2
+        version: 13.0.2
     devDependencies:
       '@types/node':
         specifier: 20.14.9
@@ -152,8 +152,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       marked:
-        specifier: 13.0.1
-        version: 13.0.1
+        specifier: 13.0.2
+        version: 13.0.2
     devDependencies:
       '@types/node':
         specifier: 20.14.9
@@ -354,8 +354,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       marked:
-        specifier: 13.0.1
-        version: 13.0.1
+        specifier: 13.0.2
+        version: 13.0.2
       svelte:
         specifier: 4.2.18
         version: 4.2.18
@@ -501,11 +501,11 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       marked:
-        specifier: 13.0.1
-        version: 13.0.1
+        specifier: 13.0.2
+        version: 13.0.2
       marked-gfm-heading-id:
         specifier: 4.0.0
-        version: 4.0.0(marked@13.0.1)
+        version: 4.0.0(marked@13.0.2)
       prism-svelte:
         specifier: 0.5.0
         version: 0.5.0
@@ -2260,8 +2260,8 @@ packages:
     peerDependencies:
       marked: '>=13 <14'
 
-  marked@13.0.1:
-    resolution: {integrity: sha512-7kBohS6GrZKvCsNXZyVVXSW7/hGBHe49ng99YPkDCckSUrrG7MSFLCexsRxptzOmyW2eT5dySh4Md1V6my52fA==}
+  marked@13.0.2:
+    resolution: {integrity: sha512-J6CPjP8pS5sgrRqxVRvkCIkZ6MFdRIjDkwUwgJ9nL2fbmM6qGQeB2C16hi8Cc9BOzj6xXzy0jyi0iPIfnMHYzA==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -3802,7 +3802,7 @@ snapshots:
 
   '@types/marked@6.0.0':
     dependencies:
-      marked: 13.0.1
+      marked: 13.0.2
 
   '@types/node@20.14.9':
     dependencies:
@@ -4974,12 +4974,12 @@ snapshots:
     dependencies:
       semver: 7.6.2
 
-  marked-gfm-heading-id@4.0.0(marked@13.0.1):
+  marked-gfm-heading-id@4.0.0(marked@13.0.2):
     dependencies:
       github-slugger: 2.0.0
-      marked: 13.0.1
+      marked: 13.0.2
 
-  marked@13.0.1: {}
+  marked@13.0.2: {}
 
   marked@5.1.2: {}
 

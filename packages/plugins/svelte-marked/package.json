@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "github-slugger": "2.0.0",
-    "marked": "13.0.1",
+    "marked": "13.0.2",
     "svelte": "4.2.18"
   },
   "devDependencies": {
