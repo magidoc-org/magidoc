@@ -27,7 +27,7 @@
     "graphql": "16.9.0"
   },
   "devDependencies": {
-    "@types/node": "20.14.9",
+    "@types/node": "20.14.10",
     "@vitest/coverage-v8": "1.6.0",
     "nock": "13.5.4",
     "rollup": "4.18.0",
