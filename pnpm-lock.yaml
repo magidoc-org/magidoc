@@ -379,8 +379,8 @@ importers:
         specifier: 3.8.4
         version: 3.8.4(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
       svelte2tsx:
-        specifier: 0.7.11
-        version: 0.7.11(svelte@4.2.18)(typescript@5.5.2)
+        specifier: 0.7.13
+        version: 0.7.13(svelte@4.2.18)(typescript@5.5.2)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -419,8 +419,8 @@ importers:
         specifier: 3.8.4
         version: 3.8.4(@babel/core@7.24.7)(postcss@8.4.38)(svelte@4.2.18)
       svelte2tsx:
-        specifier: 0.7.11
-        version: 0.7.11(svelte@4.2.18)(typescript@5.5.2)
+        specifier: 0.7.13
+        version: 0.7.13(svelte@4.2.18)(typescript@5.5.2)
       tslib:
         specifier: 2.6.3
         version: 2.6.3
@@ -2895,8 +2895,8 @@ packages:
     engines: {node: '>= 14.17.0'}
     hasBin: true
 
-  svelte2tsx@0.7.11:
-    resolution: {integrity: sha512-5EIbDaIvOchM2bGXbXqNJcbN6Z0JXGHnIJr8drgpbMefAgKf3nsHxtYIMu3BKKiSzMwSZreQexq0g66uYFH+JQ==}
+  svelte2tsx@0.7.13:
+    resolution: {integrity: sha512-aObZ93/kGAiLXA/I/kP+x9FriZM+GboB/ReOIGmLNbVGEd2xC+aTCppm3mk1cc9I/z60VQf7b2QDxC3jOXu3yw==}
     peerDependencies:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
       typescript: ^4.9.4 || ^5.0.0
@@ -3756,7 +3756,7 @@ snapshots:
       sade: 1.8.1
       semver: 7.6.2
       svelte: 4.2.18
-      svelte2tsx: 0.7.11(svelte@4.2.18)(typescript@5.5.2)
+      svelte2tsx: 0.7.13(svelte@4.2.18)(typescript@5.5.2)
     transitivePeerDependencies:
       - typescript
 
@@ -5610,7 +5610,7 @@ snapshots:
       minimist: 1.2.8
       xmlbuilder2: 3.1.1
 
-  svelte2tsx@0.7.11(svelte@4.2.18)(typescript@5.5.2):
+  svelte2tsx@0.7.13(svelte@4.2.18)(typescript@5.5.2):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
