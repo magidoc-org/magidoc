@@ -27,13 +27,13 @@
     "graphql": "16.9.0"
   },
   "devDependencies": {
-    "@types/node": "20.14.10",
-    "@vitest/coverage-v8": "2.0.3",
+    "@types/node": "20.14.11",
+    "@vitest/coverage-v8": "2.0.4",
     "nock": "13.5.4",
-    "rollup": "4.18.1",
+    "rollup": "4.19.0",
     "typescript": "5.5.3",
-    "vite": "5.3.3",
-    "vitest": "2.0.3"
+    "vite": "5.3.4",
+    "vitest": "2.0.4"
   },
   "files": ["build"]
 }
