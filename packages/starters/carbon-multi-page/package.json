@@ -29,11 +29,11 @@
     "@types/prismjs": "1.26.4",
     "carbon-components-svelte": "0.85.0",
     "carbon-icons-svelte": "12.10.0",
-    "carbon-preprocess-svelte": "0.11.3",
+    "carbon-preprocess-svelte": "0.11.5",
     "fuse.js": "7.0.0",
     "graphql": "16.9.0",
     "lodash": "4.17.21",
-    "marked": "13.0.2",
+    "marked": "13.0.3",
     "marked-gfm-heading-id": "4.0.0",
     "prism-svelte": "0.5.0",
     "prismjs": "1.29.0",
@@ -41,8 +41,8 @@
     "svelte-check": "3.8.4",
     "svelte-markdown": "0.4.1",
     "tslib": "2.6.3",
-    "typescript": "5.5.3",
-    "vite": "5.3.4"
+    "typescript": "5.5.4",
+    "vite": "5.3.5"
   },
   "engines": {
     "node": ">=20"
