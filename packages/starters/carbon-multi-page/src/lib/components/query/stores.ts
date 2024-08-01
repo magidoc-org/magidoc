@@ -88,6 +88,7 @@ export const graphqlQuery = {
   subscribe: currentQuery.subscribe,
   increaseDepth: async () => {
     const current = get(currentQuery)
+    if (!current) return
     if (current.depth < MAX_DEPTH) {
       const generated = await generateQuery({ ...current, depth: current.depth + 1 })
       currentQuery.set(generated)
@@ -95,6 +96,7 @@ export const graphqlQuery = {
   },
   decreaseDepth: async () => {
     const current = get(currentQuery)
+    if (!current) return
     if (current.depth > MIN_DEPTH) {
       const generated = await generateQuery({ ...current, depth: current.depth - 1 })
       currentQuery.set(generated)
@@ -102,6 +104,7 @@ export const graphqlQuery = {
   },
   toggleNullGenerationStrategy: async () => {
     const current = get(currentQuery)
+    if (!current) return
     const generated = await generateQuery({
       ...current,
       nullGenerationStrategy:
