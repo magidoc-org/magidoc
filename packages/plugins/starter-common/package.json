@@ -2,7 +2,7 @@
   "name": "@magidoc/plugin-starter-common",
   "description": "A shared library that contains common code shared between multiple starter applications.",
   "private": false,
-  "version": "5.1.0",
+  "version": "6.0.1",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
@@ -24,14 +24,14 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "11.1.6",
     "@types/lodash": "4.17.7",
-    "@types/node": "22.0.0",
-    "@vitest/coverage-v8": "2.0.4",
+    "@types/node": "22.0.2",
+    "@vitest/coverage-v8": "2.0.5",
     "lodash": "4.17.21",
-    "rollup": "4.19.1",
+    "rollup": "4.19.2",
     "tslib": "2.6.3",
     "typescript": "5.5.4",
     "vite": "5.3.5",
-    "vitest": "2.0.4"
+    "vitest": "2.0.5"
   },
   "optionalDependencies": {
     "zod": "3.23.8"

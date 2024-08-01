@@ -37,5 +37,6 @@ export let field: GraphQLField<unknown, unknown, unknown>
   {/if}
 
   <AnchorHeader id={'example'} depth={4}>Example</AnchorHeader>
-  <AppQueryGenerator {type} {field} />
+
+    <AppQueryGenerator {type} {field} />
 </section>
