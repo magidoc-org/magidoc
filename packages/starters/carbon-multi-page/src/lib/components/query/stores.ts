@@ -1,4 +1,4 @@
-import { get } from '$lib/variables'
+import { get as getVariable } from '$lib/variables'
 import {
   MissingCustomScalarException,
   NullGenerationStrategy,
@@ -10,7 +10,7 @@ import type { GraphQLQuery } from '@magidoc/plugin-query-generator'
 import { templates } from '@magidoc/plugin-starter-variables'
 import type { GraphQLField } from 'graphql'
 import _ from 'lodash'
-import { writable } from 'svelte/store'
+import { get, writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 const MAX_DEPTH = 8
@@ -26,7 +26,7 @@ export type GeneratedGraphQLQuery = {
   nullGenerationStrategy: NullGenerationStrategy
 }
 
-const currentQuery: Writable<Promise<GeneratedGraphQLQuery | null>> = writable(Promise.resolve(null))
+const currentQuery: Writable<GeneratedGraphQLQuery | null> = writable(null)
 
 const generateQuery = async (expected: {
   field: GraphQLField<unknown, unknown, unknown>
@@ -39,7 +39,7 @@ const generateQuery = async (expected: {
     maxDepth: expected.depth,
     nullGenerationStrategy: expected.nullGenerationStrategy,
     factories: _.reduce(
-      get(templates.QUERY_GENERATION_FACTORIES),
+      getVariable(templates.QUERY_GENERATION_FACTORIES),
       // Merge the factories values provided by environment variable.
       (prev, curr, key) => ({
         ...prev,
@@ -86,46 +86,39 @@ To learn more about how to generate a custom scalar value, see: https://magidoc.
 
 export const graphqlQuery = {
   subscribe: currentQuery.subscribe,
-  increaseDepth: () =>
-    currentQuery.update(async (current) => {
-      const awaited = await current
+  increaseDepth: async () => {
+    const current = get(currentQuery)
+    if (current.depth < MAX_DEPTH) {
+      const generated = await generateQuery({ ...current, depth: current.depth + 1 })
+      currentQuery.set(generated)
+    }
+  },
+  decreaseDepth: async () => {
+    const current = get(currentQuery)
+    if (current.depth > MIN_DEPTH) {
+      const generated = await generateQuery({ ...current, depth: current.depth - 1 })
+      currentQuery.set(generated)
+    }
+  },
+  toggleNullGenerationStrategy: async () => {
+    const current = get(currentQuery)
+    const generated = await generateQuery({
+      ...current,
+      nullGenerationStrategy:
+        current.nullGenerationStrategy === NullGenerationStrategy.NEVER_NULL
+          ? NullGenerationStrategy.ALWAYS_NULL
+          : NullGenerationStrategy.NEVER_NULL,
+    })
+    currentQuery.set(generated)
+  },
+  setField: async (field: GraphQLField<unknown, unknown, unknown>, type: QueryType) => {
+    const generated = await generateQuery({
+      field,
+      type,
+      depth: DEFAULT_DEPTH,
+      nullGenerationStrategy: NullGenerationStrategy.NEVER_NULL,
+    })
 
-      if (awaited && awaited.depth < MAX_DEPTH) {
-        return await generateQuery({ ...awaited, depth: awaited.depth + 1 })
-      }
-
-      return current
-    }),
-  decreaseDepth: () =>
-    currentQuery.update(async (current) => {
-      const awaited = await current
-
-      if (awaited && awaited.depth > MIN_DEPTH) {
-        return generateQuery({ ...awaited, depth: awaited.depth - 1 })
-      }
-
-      return current
-    }),
-  toggleNullGenerationStrategy: () =>
-    currentQuery.update(async (current) => {
-      const awaited = await current
-      if (!awaited) return current
-      return await generateQuery({
-        ...awaited,
-        nullGenerationStrategy:
-          awaited.nullGenerationStrategy === NullGenerationStrategy.NEVER_NULL
-            ? NullGenerationStrategy.ALWAYS_NULL
-            : NullGenerationStrategy.NEVER_NULL,
-      })
-    }),
-  setField: (field: GraphQLField<unknown, unknown, unknown>, type: QueryType) =>
-    currentQuery.update(async (current) => {
-      const awaited = await current
-      return await generateQuery({
-        field,
-        type,
-        depth: DEFAULT_DEPTH,
-        nullGenerationStrategy: awaited?.nullGenerationStrategy ?? NullGenerationStrategy.NEVER_NULL,
-      })
-    }),
+    currentQuery.set(generated)
+  },
 }
