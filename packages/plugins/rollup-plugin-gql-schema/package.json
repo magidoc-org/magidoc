@@ -22,15 +22,15 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "axios": "1.7.2",
+    "axios": "1.7.3",
     "fast-glob": "3.3.2",
     "graphql": "16.9.0"
   },
   "devDependencies": {
-    "@types/node": "22.0.2",
+    "@types/node": "22.1.0",
     "@vitest/coverage-v8": "2.0.5",
     "nock": "13.5.4",
-    "rollup": "4.19.2",
+    "rollup": "4.20.0",
     "typescript": "5.5.4",
     "vite": "5.3.5",
     "vitest": "2.0.5"
