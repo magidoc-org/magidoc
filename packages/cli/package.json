@@ -43,13 +43,13 @@
     "@rollup/plugin-typescript": "11.1.6",
     "@types/fs-extra": "11.0.4",
     "@types/lodash": "4.17.7",
-    "@types/node": "22.1.0",
+    "@types/node": "22.2.0",
     "@vitest/coverage-v8": "2.0.5",
     "rollup": "4.20.0",
     "rollup-plugin-preserve-shebang": "1.0.1",
     "tslib": "2.6.3",
     "typescript": "5.5.4",
-    "vite": "5.3.5",
+    "vite": "5.4.0",
     "vitest": "2.0.5"
   },
   "engines": {
