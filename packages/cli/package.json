@@ -29,7 +29,7 @@
   "dependencies": {
     "@magidoc/plugin-starter-variables": "workspace:^",
     "@magidoc/rollup-plugin-gql-schema": "workspace:^",
-    "axios": "1.7.3",
+    "axios": "1.7.4",
     "chokidar": "3.6.0",
     "commander": "12.1.0",
     "extract-zip": "2.0.1",
@@ -43,13 +43,13 @@
     "@rollup/plugin-typescript": "11.1.6",
     "@types/fs-extra": "11.0.4",
     "@types/lodash": "4.17.7",
-    "@types/node": "22.1.0",
+    "@types/node": "22.4.1",
     "@vitest/coverage-v8": "2.0.5",
-    "rollup": "4.20.0",
+    "rollup": "4.21.0",
     "rollup-plugin-preserve-shebang": "1.0.1",
     "tslib": "2.6.3",
     "typescript": "5.5.4",
-    "vite": "5.3.5",
+    "vite": "5.4.1",
     "vitest": "2.0.5"
   },
   "engines": {
