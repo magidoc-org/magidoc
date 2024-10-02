@@ -15,11 +15,10 @@ import { StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
 import LocationSpecificDescription from './LocationSpecificDescription.svelte'
 
 export let item: FieldWithPossibleDescriptions
-
 let showArguments = false
 </script>
 
-<StructuredListRow>
+<StructuredListRow class:deprecated={!!item.field.deprecationReason}>
   <StructuredListCell>
     <p>
       <span style="font-weight: bold">{item.field.name}</span>

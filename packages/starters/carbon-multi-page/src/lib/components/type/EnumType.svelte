@@ -26,7 +26,7 @@ export let type: GraphQLEnumType
     <StructuredListBody>
       {#each type.getValues() as value}
         <StructuredListRow>
-          <StructuredListCell>
+          <StructuredListCell class:deprecated={!!value.deprecationReason}>
             <p>
               <span style="font-weight: bold">{value.name}</span>
               <DeprecatedTag reason={value.deprecationReason} />

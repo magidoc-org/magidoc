@@ -26,7 +26,7 @@ $: items =
 <StructuredList condensed>
   <StructuredListBody>
     {#each items as item}
-      <StructuredListRow>
+      <StructuredListRow class:deprecated={!!item.deprecationReason}>
         <StructuredListCell>
           <p>
             <span style="font-weight: bold">{item.name}</span>
