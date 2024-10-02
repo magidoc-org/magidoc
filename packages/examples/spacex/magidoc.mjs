@@ -49,6 +49,9 @@ export default {
           `,
         },
       ],
+      queryGenerationFactories: {
+        uuid: '<an-example-of-scalar-value>',
+      },
     },
   },
 }
