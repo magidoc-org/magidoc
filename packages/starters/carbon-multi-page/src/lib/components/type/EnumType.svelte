@@ -12,7 +12,7 @@ export let type: GraphQLEnumType
 </script>
 
 <section>
-  <AnchorHeader id={'title'} depth={1}>
+  <AnchorHeader id={"title"} depth={1}>
     {type.name}
     <TypeTag {type} />
     <DirectivesList directives={type.astNode?.directives} />
@@ -20,19 +20,24 @@ export let type: GraphQLEnumType
 
   <CarbonMarkdown source={type.description} />
 
-  <AnchorHeader id={'possible-values'} depth={2}>Possible Values</AnchorHeader>
+  <AnchorHeader id={"possible-values"} depth={2}>Possible Values</AnchorHeader>
 
   <StructuredList condensed>
     <StructuredListBody>
       {#each type.getValues() as value}
         <StructuredListRow>
-          <StructuredListCell class:deprecated={!!value.deprecationReason}>
+          <StructuredListCell>
             <p>
-              <span style="font-weight: bold">{value.name}</span>
+              <span
+                style="font-weight: bold"
+                class:deprecated={!!value.deprecationReason}>{value.name}</span
+              >
               <DeprecatedTag reason={value.deprecationReason} />
             </p>
             {#if value.description}
-              <CarbonMarkdown source={value.description} />
+              <p class:deprecated={!!value.deprecationReason}>
+                <CarbonMarkdown source={value.description} />
+              </p>
             {/if}
           </StructuredListCell>
         </StructuredListRow>
