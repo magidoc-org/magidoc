@@ -14,9 +14,9 @@ export function taskWrapperMock(): {
 
 export function packageManagerMock(): {
   type: PackageManagerType
-  buildProject: Mock<[], Promise<void>>
-  runInstall: Mock<[], Promise<void>>
-  startDevServer: Mock<[], Promise<void>>
+  buildProject: Mock
+  runInstall: Mock
+  startDevServer: Mock
 } {
   return {
     type: _.sample(PACKAGE_MANAGER_TYPES) ?? 'pnpm',
@@ -28,8 +28,8 @@ export function packageManagerMock(): {
 
 export function tmpLocationMock(): {
   path: string
-  exists: Mock<[], Promise<boolean>>
-  delete: Mock<[], Promise<void>>
+  exists: Mock
+  delete: Mock
 } {
   return {
     path: Math.random().toString(36).substring(2, 7),
