@@ -31,18 +31,19 @@ a.bx--header__name {
   overflow: visible !important;
 }
 
-.bx--header~.bx--side-nav  {
+.bx--header ~ .bx--side-nav {
   border-right: 0.3px solid lightgray;
 }
-.bx--side-nav__submenu .bx--side-nav__menu  {
+
+.bx--side-nav__submenu .bx--side-nav__menu {
   display: none;
 }
 
-.bx--side-nav__submenu[aria-expanded='true'] + .bx--side-nav__menu {
+.bx--side-nav__submenu[aria-expanded="true"] + .bx--side-nav__menu {
   display: block;
 }
 
-.bx--side-nav__submenu[aria-expanded='false'] + .bx--side-nav__menu {
+.bx--side-nav__submenu[aria-expanded="false"] + .bx--side-nav__menu {
   display: none;
 }
 

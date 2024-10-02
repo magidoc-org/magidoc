@@ -47,7 +47,10 @@ $: {
       <StructuredListRow>
         <StructuredListCell>
           <p class="arg-name-section">
-            <span style="font-weight: bold">{item.name}</span>
+            <span
+              style="font-weight: bold"
+              class:deprecated={!!item.deprecationReason}>{item.name}</span
+            >
             {#if item.default}
               <span>=</span>
               <span><DefaultValueDisplay value={item.default} /></span>
@@ -58,7 +61,9 @@ $: {
             <DirectivesList directives={item.directives} />
           </p>
           {#if item.description}
-            <CarbonMarkdown source={item.description} />
+            <p class:deprecated={!!item.deprecationReason}>
+              <CarbonMarkdown source={item.description} />
+            </p>
           {/if}
         </StructuredListCell>
       </StructuredListRow>
