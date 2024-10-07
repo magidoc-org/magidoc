@@ -23,15 +23,15 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "12.1.0",
-    "@types/lodash": "4.17.9",
+    "@types/lodash": "4.17.10",
     "@types/node": "22.7.4",
-    "@vitest/coverage-v8": "2.1.1",
+    "@vitest/coverage-v8": "2.1.2",
     "lodash": "4.17.21",
     "rollup": "4.24.0",
     "tslib": "2.7.0",
     "typescript": "5.6.2",
     "vite": "5.4.8",
-    "vitest": "2.1.1"
+    "vitest": "2.1.2"
   },
   "optionalDependencies": {
     "zod": "3.23.8"
