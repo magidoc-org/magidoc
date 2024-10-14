@@ -35,15 +35,15 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "3.2.5",
-    "@sveltejs/kit": "2.6.1",
+    "@sveltejs/kit": "2.7.0",
     "@sveltejs/package": "2.3.5",
     "@sveltejs/vite-plugin-svelte": "3.1.2",
     "@types/prismjs": "1.26.4",
-    "svelte-check": "4.0.4",
-    "svelte2tsx": "0.7.21",
+    "svelte-check": "4.0.5",
+    "svelte2tsx": "0.7.22",
     "tslib": "2.7.0",
-    "typescript": "5.6.2",
-    "vite": "5.4.8"
+    "typescript": "5.6.3",
+    "vite": "5.4.9"
   },
   "peerDependencies": {
     "prismjs": "1.29.0"
