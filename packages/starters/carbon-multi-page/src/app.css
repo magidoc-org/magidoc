@@ -82,3 +82,90 @@ a.bx--header__name {
     padding-left: 1rem !important;
   }
 }
+
+/* Dark Mode */
+:root {
+  --sidenav-bg-light: #f5f5f5;
+  --sidenav-bg-dark: #111111;
+  --sidenav-text-light: #000;
+  --sidenav-text-dark: #fff;
+  --sidenav-label-light: #161616;
+  --sidenav-label-dark: #cbcbcb;
+  --code-span-light: #f0f0f0;
+  --code-span-dark: #3e3e3e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sidenav-bg: var(--sidenav-bg-dark);
+    --sidenav-text: var(--sidenav-text-dark);
+    --sidenav-l: var(--sidenav-label-dark);
+    --code-span: var(--code-span-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --sidenav-bg: var(--sidenav-bg-light);
+    --sidenav-text: var(--sidenav-text-light);
+    --sidenav-l: var(--sidenav-label-light);
+    --code-span: var(--code-span-light);
+  }
+}
+
+.bx--side-nav__navigation {
+  background-color: var(--sidenav-bg) !important;
+}
+
+.bx--side-nav__submenu {
+  color: var(--sidenav-text) !important;
+}
+
+.bx--side-nav__link > .bx--side-nav__link-text {
+  color: var(--sidenav-text) !important;
+}
+
+.bx--side-nav__link-text {
+  color: var(--sidenav-l) !important;
+}
+
+.deprecated .bx--side-nav__link-text {
+  text-decoration: line-through !important;
+  text-decoration-thickness: 1.5px !important;
+}
+
+a.bx--side-nav__link[aria-current="page"],
+a.bx--side-nav__link--current {
+  background-color: rgb(98, 156, 255, 0.35) !important;
+}
+
+.bx--side-nav__item:not(.bx--side-nav__item--active):hover
+  .bx--side-nav__item:not(.bx--side-nav__item--active)
+  > .bx--side-nav__submenu:hover,
+.bx--side-nav__item:not(.bx--side-nav__item--active) > .bx--side-nav__link:hover,
+.bx--side-nav__menu a.bx--side-nav__link:not(.bx--side-nav__link--current):not([aria-current="page"]):hover,
+.bx--side-nav a.bx--header__menu-item:hover,
+.bx--side-nav .bx--header__menu-title[aria-expanded="true"]:hover {
+  background-color: rgba(98, 156, 255, 0.1) !important;
+}
+
+.bx--side-nav__submenu:hover {
+  background-color: rgba(98, 156, 255, 0.2) !important;
+}
+
+.bx--tag {
+  color: var(--sidenav-text) !important;
+}
+
+.bx--tag .bx--link {
+  color: var(--sidenav-text) !important;
+  text-decoration: none;
+}
+
+.bx--tag .bx--link:hover {
+  text-decoration: underline !important;
+}
+
+.code-span {
+  background-color: var(--code-span) !important;
+}
