@@ -3,7 +3,7 @@ import { promisify } from 'util'
 
 const execPromise = promisify(exec)
 
-export const PACKAGE_MANAGER_TYPES = ['pnpm', 'yarn', 'npm'] as const
+export const PACKAGE_MANAGER_TYPES = ['pnpm', 'bun', 'yarn', 'npm'] as const
 
 export type PackageManagerType = (typeof PACKAGE_MANAGER_TYPES)[number]
 
@@ -30,6 +30,10 @@ export async function selectPackageManager(): Promise<PackageManager> {
     return createPnpm()
   }
 
+  if (await isPackageManagerAvailable('bun')) {
+    return createRunner({ type: 'bun' })
+  }
+
   if (await isPackageManagerAvailable('npm')) {
     return createNpm()
   }
@@ -45,6 +49,7 @@ export async function selectPackageManager(): Promise<PackageManager> {
 
 export function getPackageManager(type: PackageManagerType) {
   if (type === 'pnpm') return createPnpm()
+  if (type === 'bun') return createBun()
   if (type === 'yarn') return createYarn()
   if (type === 'npm') return createNpm()
   throw new Error(`Unknown package manager ${type as string}.`)
@@ -60,6 +65,10 @@ function createYarn(): PackageManager {
 
 function createNpm(): PackageManager {
   return createRunner({ type: 'npm', installArgs: ['--legacy-peer-deps'] })
+}
+
+function createBun(): PackageManager {
+  return createRunner({ type: 'bun' })
 }
 
 function createRunner({
