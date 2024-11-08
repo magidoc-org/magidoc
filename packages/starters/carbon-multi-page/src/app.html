@@ -1,17 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content="Magidoc" />
-    <meta
-      name="generator-url"
-      content="https://github.com/magidoc-org/magidoc"
-    />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Magidoc" />
+        <meta
+            name="generator-url"
+            content="https://github.com/magidoc-org/magidoc"
+        />
 
-    %sveltekit.head%
-  </head>
-  <body>
-    <div style="display: contents">%sveltekit.body%</div>
-  </body>
+        %sveltekit.head%
+        <script>
+            // Detect the user's preference for dark mode
+            function setTheme() {
+                const prefersDarkScheme = window.matchMedia(
+                    '(prefers-color-scheme: dark)'
+                ).matches
+                if (prefersDarkScheme) {
+                    document.documentElement.setAttribute('theme', 'g100')
+                } else {
+                    document.documentElement.setAttribute('theme', 'white')
+                }
+            }
+
+            setTheme()
+
+            window
+                .matchMedia('(prefers-color-scheme: dark)')
+                .addEventListener('change', setTheme)
+        </script>
+    </head>
+    <body>
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
 </html>
