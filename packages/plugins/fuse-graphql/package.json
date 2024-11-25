@@ -25,15 +25,15 @@
     "@magidoc/plugin-fuse-markdown": "workspace:^",
     "fuse.js": "7.0.0",
     "graphql": "16.9.0",
-    "marked": "14.1.2"
+    "marked": "15.0.2"
   },
   "devDependencies": {
-    "@types/node": "22.7.4",
-    "@vitest/coverage-v8": "2.1.1",
-    "rollup": "4.24.0",
-    "typescript": "5.6.2",
-    "vite": "5.4.8",
-    "vitest": "2.1.1"
+    "@types/node": "22.9.3",
+    "@vitest/coverage-v8": "2.1.5",
+    "rollup": "4.27.4",
+    "typescript": "5.7.2",
+    "vite": "5.4.11",
+    "vitest": "2.1.5"
   },
   "peerDependencies": {
     "fuse.js": "6.6.2"
