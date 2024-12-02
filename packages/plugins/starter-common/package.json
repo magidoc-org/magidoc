@@ -22,16 +22,16 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "12.1.0",
-    "@types/lodash": "4.17.9",
-    "@types/node": "22.7.4",
-    "@vitest/coverage-v8": "2.1.1",
+    "@rollup/plugin-typescript": "12.1.1",
+    "@types/lodash": "4.17.13",
+    "@types/node": "22.10.1",
+    "@vitest/coverage-v8": "2.1.7",
     "lodash": "4.17.21",
-    "rollup": "4.24.0",
-    "tslib": "2.7.0",
-    "typescript": "5.6.2",
-    "vite": "5.4.8",
-    "vitest": "2.1.1"
+    "rollup": "4.28.0",
+    "tslib": "2.8.1",
+    "typescript": "5.7.2",
+    "vite": "6.0.2",
+    "vitest": "2.1.7"
   },
   "optionalDependencies": {
     "zod": "3.23.8"
