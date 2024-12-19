@@ -24,7 +24,7 @@
   "dependencies": {
     "graphql": "16.9.0",
     "lodash": "4.17.21",
-    "prettier": "3.3.3"
+    "prettier": "3.4.1"
   },
   "devDependencies": {
     "@types/lodash": "4.17.9",
