@@ -22,19 +22,19 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "graphql": "16.9.0",
+    "graphql": "16.10.0",
     "lodash": "4.17.21",
-    "prettier": "3.3.3"
+    "prettier": "3.4.2"
   },
   "devDependencies": {
-    "@types/lodash": "4.17.9",
-    "@types/node": "22.7.4",
-    "@vitest/coverage-v8": "2.1.1",
+    "@types/lodash": "4.17.13",
+    "@types/node": "22.10.2",
+    "@vitest/coverage-v8": "2.1.8",
     "graphql-query-compress": "1.2.4",
-    "rollup": "4.24.0",
-    "typescript": "5.6.2",
-    "vite": "5.4.8",
-    "vitest": "2.1.1"
+    "rollup": "4.29.1",
+    "typescript": "5.7.2",
+    "vite": "6.0.6",
+    "vitest": "2.1.8"
   },
   "peerDependencies": {
     "graphql": "16.8.1"
