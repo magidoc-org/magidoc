@@ -30,7 +30,7 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "prismjs": "1.29.0",
+    "prismjs": "1.30.0",
     "svelte": "4.2.19"
   },
   "devDependencies": {
