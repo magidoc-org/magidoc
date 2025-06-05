@@ -36,5 +36,10 @@
   },
   "engines": {
     "pnpm": ">=9.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "vitest": "3.0.5"
+    }
   }
 }
