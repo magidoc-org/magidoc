@@ -1,8 +1,10 @@
-import { type TypeReverseMapping, createReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
+import { createReverseMapping, type TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
 import type { PageTree } from '@magidoc/plugin-starter-common'
 import { type AllowedDirective, templates } from '@magidoc/plugin-starter-variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import {
+  buildClientSchema,
+  buildSchema,
   type GraphQLArgument,
   type GraphQLDirective,
   type GraphQLField,
@@ -11,8 +13,6 @@ import {
   type GraphQLObjectType,
   type GraphQLSchema,
   type IntrospectionQuery,
-  buildClientSchema,
-  buildSchema,
   isObjectType,
 } from 'graphql'
 import type { Maybe } from 'graphql/jsutils/Maybe'

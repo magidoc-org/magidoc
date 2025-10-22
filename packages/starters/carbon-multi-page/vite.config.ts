@@ -1,9 +1,10 @@
-import fs from 'fs'
 import { magidoc } from '@magidoc/plugin-starter-variables'
 import { parseGraphQLSchema } from '@magidoc/rollup-plugin-gql-schema'
 import { sveltekit } from '@sveltejs/kit/vite'
-import { type HmrContext, defineConfig } from 'vite'
-// @ts-ignore
+import fs from 'fs'
+import { defineConfig, type HmrContext } from 'vite'
+
+// @ts-expect-error Cannot find module
 import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 
 const variables = loadVariables()

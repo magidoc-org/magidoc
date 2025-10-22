@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs'
 import type { Plugin } from 'rollup'
-import { type OutputFormat, convert } from '../schema/convert'
+import { convert, type OutputFormat } from '../schema/convert'
 import { parseGraphqlSchema } from '../schema/parse'
 
 export type PluginOptions = {

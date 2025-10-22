@@ -1,6 +1,6 @@
 import glob from 'fast-glob'
 import { readFile } from 'fs/promises'
-import { type GraphQLSchema, buildSchema } from 'graphql'
+import { buildSchema, type GraphQLSchema } from 'graphql'
 
 export type Parameters = {
   globPaths: string[]

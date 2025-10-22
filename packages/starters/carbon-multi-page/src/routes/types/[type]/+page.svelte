@@ -1,12 +1,4 @@
 <script lang="ts">
-import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
-import EnumType from '$lib/components/type/EnumType.svelte'
-import InputObjectType from '$lib/components/type/InputObjectType.svelte'
-import InterfaceType from '$lib/components/type/InterfaceType.svelte'
-import ObjectType from '$lib/components/type/ObjectType.svelte'
-import ScalarType from '$lib/components/type/ScalarType.svelte'
-import UnionType from '$lib/components/type/UnionType.svelte'
-import TypeUsages from '$lib/components/type/usage/TypeUsages.svelte'
 import {
   type GraphQLNamedType,
   isEnumType,
@@ -16,6 +8,14 @@ import {
   isScalarType,
   isUnionType,
 } from 'graphql'
+import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
+import EnumType from '$lib/components/type/EnumType.svelte'
+import InputObjectType from '$lib/components/type/InputObjectType.svelte'
+import InterfaceType from '$lib/components/type/InterfaceType.svelte'
+import ObjectType from '$lib/components/type/ObjectType.svelte'
+import ScalarType from '$lib/components/type/ScalarType.svelte'
+import UnionType from '$lib/components/type/UnionType.svelte'
+import TypeUsages from '$lib/components/type/usage/TypeUsages.svelte'
 import type { PageData } from './$types'
 
 export let data: PageData

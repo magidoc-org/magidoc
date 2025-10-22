@@ -1,3 +1,5 @@
+import Slugger from 'github-slugger'
+import { Lexer, type TokensList } from 'marked'
 import {
   MarkdownBloquote,
   MarkdownBr,
@@ -19,9 +21,6 @@ import {
   MarkdownTable,
   MarkdownText,
 } from './components'
-
-import Slugger from 'github-slugger'
-import { Lexer, type TokensList } from 'marked'
 
 export type MarkdownOptions = {
   /**

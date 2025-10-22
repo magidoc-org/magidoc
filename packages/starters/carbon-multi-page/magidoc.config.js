@@ -1,5 +1,5 @@
-import fs from 'fs'
 import { templates } from '@magidoc/plugin-starter-variables'
+import fs from 'fs'
 
 /**
  * These configurations are useful for the CLI to generate websites using user-defined configuration.

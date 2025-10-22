@@ -23,4 +23,5 @@ export let type: GraphQLInputObjectType
     <AnchorHeader id={'fields'} depth={2}>Fields</AnchorHeader>
     <InputFieldsTable data={_.map(type.getFields(), (item) => item)} />
   {/if}
+
 </section>

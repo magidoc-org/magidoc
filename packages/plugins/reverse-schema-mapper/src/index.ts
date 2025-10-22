@@ -1,10 +1,10 @@
+export { createReverseMapping } from './createReverseMapping'
 export { ReverseGraphQLSchemaMapping } from './reverseMapping'
 export {
-  ReferenceKind,
-  TypeReverseMapping,
-  Reference,
   ArgumentReference,
   FieldReference,
+  Reference,
+  ReferenceKind,
+  TypeReverseMapping,
   UnionReference,
 } from './reverseUsage'
-export { createReverseMapping } from './createReverseMapping'

@@ -1,11 +1,9 @@
 export {
-  index,
-  type IndexingOptions,
   defaultFuseOptions,
+  type IndexingOptions,
+  index,
 } from './indexer/indexer'
-export { GraphQLType, SearchResultType } from './indexer/result'
 export type {
-  SearchResult,
   ArgumentSearchResult,
   EnumSearchResult,
   EnumValue,
@@ -16,6 +14,8 @@ export type {
   ObjectSearchResult,
   QuerySearchResult,
   ScalarSearchResult,
+  SearchResult,
   TypeSearchResult,
   UnionSearchResult,
 } from './indexer/result'
+export { GraphQLType, SearchResultType } from './indexer/result'

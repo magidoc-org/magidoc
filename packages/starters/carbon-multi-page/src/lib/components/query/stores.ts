@@ -1,17 +1,17 @@
-import { get as getVariable } from '$lib/variables'
+import type { GraphQLQuery } from '@magidoc/plugin-query-generator'
 import {
+  generateGraphQLQuery,
+  generateGraphQLResponse,
   MissingCustomScalarException,
   NullGenerationStrategy,
   type QueryType,
-  generateGraphQLQuery,
-  generateGraphQLResponse,
 } from '@magidoc/plugin-query-generator'
-import type { GraphQLQuery } from '@magidoc/plugin-query-generator'
 import { templates } from '@magidoc/plugin-starter-variables'
 import type { GraphQLField } from 'graphql'
 import _ from 'lodash'
-import { get, writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
+import { get, writable } from 'svelte/store'
+import { get as getVariable } from '$lib/variables'
 
 const MAX_DEPTH = 8
 const MIN_DEPTH = 2

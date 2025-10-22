@@ -3,7 +3,10 @@
   "version": "6.2.0",
   "license": "MIT",
   "type": "module",
-  "keywords": ["docs", "magidoc"],
+  "keywords": [
+    "docs",
+    "magidoc"
+  ],
   "scripts": {
     "build": "run-s build:docs build:sitemap",
     "build:docs": "pnpm --filter @magidoc/cli execute generate --file $(pwd)/magidoc.mjs --stacktrace && pnpm build:sitemap",
@@ -15,8 +18,8 @@
     "release": "gh-pages --dist build --dotfiles true"
   },
   "devDependencies": {
-    "cspell": "8.14.4",
-    "gh-pages": "6.1.1",
-    "svelte-sitemap": "2.6.0"
+    "cspell": "9.2.2",
+    "gh-pages": "6.3.0",
+    "svelte-sitemap": "2.7.1"
   }
 }

@@ -3,8 +3,8 @@ import { type Mock, vi } from 'vitest'
 import { PACKAGE_MANAGER_TYPES, type PackageManagerType } from '../../../src/node/packageManager'
 
 export function taskWrapperMock(): {
-  skip: Mock<[string], void>
-  output: Mock<[string], void>
+  skip: Mock
+  output: Mock
 } {
   return {
     skip: vi.fn(),

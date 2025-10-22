@@ -71,13 +71,7 @@ function createBun(): PackageManager {
   return createRunner({ type: 'bun' })
 }
 
-function createRunner({
-  type,
-  installArgs,
-}: {
-  type: PackageManagerType
-  installArgs?: string[]
-}): PackageManager {
+function createRunner({ type, installArgs }: { type: PackageManagerType; installArgs?: string[] }): PackageManager {
   return {
     type,
     runInstall: (config: CommandConfiguration) => runNodeCommand(type, ['install', ...(installArgs || [])], config),
@@ -138,7 +132,7 @@ export async function isPackageManagerAvailable(type: PackageManagerType): Promi
   try {
     await execPromise(`${type} --version`)
     return true
-  } catch (error) {
+  } catch {
     return false
   }
 }

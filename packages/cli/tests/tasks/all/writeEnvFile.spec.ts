@@ -1,4 +1,4 @@
-import { type Variable, toVariablesFile } from '@magidoc/plugin-starter-variables'
+import { toVariablesFile, type Variable } from '@magidoc/plugin-starter-variables'
 import templates from '@magidoc/plugin-starter-variables/build/variables/templates'
 import { writeFile } from 'fs/promises'
 import { beforeEach, describe, expect, it, vi } from 'vitest'

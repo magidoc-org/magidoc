@@ -113,7 +113,7 @@ describe('parsing the magidoc config', () => {
                 paths: [],
               },
             },
-            ["Array must contain at least 1 element(s) at path 'introspection.paths'"],
+            ["Too small: expected array to have >=1 items at path 'introspection.paths'"],
           )
         })
       })
@@ -171,7 +171,7 @@ describe('parsing the magidoc config', () => {
                 content: '',
               },
             },
-            ["String must contain at least 1 character(s) at path 'introspection.content'"],
+            ["Too small: expected string to have >=1 characters at path 'introspection.content'"],
           )
         })
       })
@@ -186,7 +186,7 @@ describe('parsing the magidoc config', () => {
               type: 'hmm',
             },
           },
-          ["Invalid discriminator value. Expected 'url' | 'sdl' | 'raw' | 'none' at path 'introspection.type'"],
+          ["Invalid input at path 'introspection.type'"],
         )
       })
     })
@@ -265,7 +265,7 @@ describe('parsing the magidoc config', () => {
               template: 123,
             },
           },
-          ["Expected: 'string' but received 'number' at path 'website.template'"],
+          ["Expected: 'string' at path 'website.template'"],
         )
       })
     })
@@ -361,12 +361,12 @@ describe('parsing the magidoc config', () => {
             },
             [
               "‣ No option available with name 'invalidOption' at path 'website.options.invalidOption'",
-              "‣ Expected: 'string' but received 'number' at path 'website.options.siteRoot'",
-              "‣ Expected: 'string' but received 'number' at path 'website.options.siteMeta.lol'",
-              "‣ String must contain at least 1 character(s) at path 'website.options.pages[0].title'",
+              "‣ Expected: 'string' at path 'website.options.siteRoot'",
+              "‣ Expected: 'string' at path 'website.options.siteMeta.lol'",
+              "‣ Too small: expected string to have >=1 characters at path 'website.options.pages[0].title'",
               "‣ Invalid input at path 'website.options.pages[0].content':",
-              '- Expected array, received number',
-              '- Expected string, received number',
+              '- Invalid input: expected array, received number',
+              '- Invalid input: expected string, received number',
             ],
           )
         })
@@ -384,7 +384,7 @@ describe('parsing the magidoc config', () => {
       } as const
 
       it('should fail parsing', () => {
-        shouldFailParsing(invalidConfiguration, ["Expected: 'string' but received 'number' at path 'dev.watch[0]'"])
+        shouldFailParsing(invalidConfiguration, ["Expected: 'string' at path 'dev.watch[0]'"])
       })
     })
 
@@ -430,7 +430,10 @@ function shouldFailParsing(input: unknown, errors: string[]) {
 
     const castedError = error as Error
 
-    const lines = castedError.message.split('\n').map(removeAnsiColors)
+    const lines = castedError.message
+      .split('\n')
+      .map(removeAnsiColors)
+      .filter((line) => line.trim() !== '')
 
     // First line's message
     expect(lines[0]).toMatch(/^\d+ issues? found with the Magidoc configuration provided:$/)
@@ -449,8 +452,6 @@ function shouldFailParsing(input: unknown, errors: string[]) {
         const indent = countIndent(line)
         if (indent === 2) return getBulletChar(line) === '‣'
         if (indent === 4) return getBulletChar(line) === '-'
-
-        console.error(`Invalid indent: ${indent} for line ${line}`)
         return false
       })
     })

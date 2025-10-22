@@ -1,7 +1,7 @@
+import archiver from 'archiver'
 import fs from 'fs'
 import path from 'path'
 import url from 'url'
-import archiver from 'archiver'
 
 const basePath = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -61,7 +61,6 @@ async function zipStarter(starterDirectory) {
   })
 
   output.on('close', () => {
-    // biome-ignore lint/suspicious/noConsoleLog: Okay here
     console.log(`Wrote ${archive.pointer()} total bytes to ${outputPath}`)
   })
 

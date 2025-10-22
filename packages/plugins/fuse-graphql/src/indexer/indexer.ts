@@ -1,5 +1,5 @@
-import { mergeMarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
+import { mergeMarkdownOptions } from '@magidoc/plugin-fuse-markdown'
 import Fuse, { type IFuseOptions } from 'fuse.js'
 import type { GraphQLObjectType, GraphQLSchema } from 'graphql'
 import { asQueryResult } from './graphql/queries'

@@ -2,7 +2,7 @@ import fs from 'fs'
 import http from 'http'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import preview from '../../../src/commands/preview'
 
 let server: http.Server

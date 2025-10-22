@@ -13,16 +13,24 @@
       "svelte": "./build/index.js"
     }
   },
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "private": false,
-  "keywords": ["svelte", "magidoc", "browser", "marked", "markdown"],
+  "keywords": [
+    "svelte",
+    "magidoc",
+    "browser",
+    "marked",
+    "markdown"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/magidoc-org/magidoc.git",
     "directory": "packages/plugins/svelte-marked"
   },
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --port 5175",
     "build": "svelte-kit sync && svelte-package --output build",
     "test": "pnpm check",
     "check": "svelte-check --tsconfig ./tsconfig.json",
@@ -30,19 +38,19 @@
   },
   "dependencies": {
     "github-slugger": "2.0.0",
-    "marked": "14.1.2",
-    "svelte": "4.2.19"
+    "marked": "16.4.1",
+    "svelte": "5.41.2"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "3.2.5",
-    "@sveltejs/kit": "2.6.1",
-    "@sveltejs/package": "2.3.5",
-    "@sveltejs/vite-plugin-svelte": "3.1.2",
-    "@types/prismjs": "1.26.4",
-    "svelte-check": "4.0.4",
-    "svelte2tsx": "0.7.21",
-    "tslib": "2.7.0",
-    "typescript": "~5.6.2",
-    "vite": "5.4.8"
+    "@sveltejs/adapter-auto": "7.0.0",
+    "@sveltejs/kit": "2.47.2",
+    "@sveltejs/package": "2.5.4",
+    "@sveltejs/vite-plugin-svelte": "6.2.1",
+    "@types/prismjs": "1.26.5",
+    "svelte-check": "4.3.3",
+    "svelte2tsx": "0.7.45",
+    "tslib": "2.8.1",
+    "typescript": "~5.9.3",
+    "vite": "7.1.11"
   }
 }

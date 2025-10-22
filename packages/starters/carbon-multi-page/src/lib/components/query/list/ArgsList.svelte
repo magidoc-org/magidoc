@@ -1,18 +1,16 @@
 <script lang="ts">
+import { templates } from '@magidoc/plugin-starter-variables'
+import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
+import type { GraphQLArgument } from 'graphql'
+import _ from 'lodash'
 import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
 import DirectivesList from '$lib/components/directive/DirectivesList.svelte'
 import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
-
 import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
 import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
 import NullableTag from '$lib/components/tags/NullableTag.svelte'
 import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
 import { getOrDefault } from '$lib/variables'
-import { templates } from '@magidoc/plugin-starter-variables'
-
-import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
-import type { GraphQLArgument } from 'graphql'
-import _ from 'lodash'
 
 export let data: ReadonlyArray<GraphQLArgument>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-import { getAllowedArgumentsByDirective } from '$lib/model'
 import type { GraphQLArgument, GraphQLDirective } from 'graphql'
+import { getAllowedArgumentsByDirective } from '$lib/model'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
 import ArgsList from '../query/list/ArgsList.svelte'

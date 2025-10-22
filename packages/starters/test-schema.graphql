@@ -7,6 +7,13 @@ type Test {
   `test` field from `Test` type.
   """
   test: Test
+  """
+  This is a comment with a bunch of lines
+  It might contain formatted text including lists or other things
+     * like this
+     * and this
+  """
+  testComplexMarkdown: Test
   deferrable: Deferrable
   streamable(
     """
@@ -185,6 +192,22 @@ enum TestEnum {
   A really dull color
   """
   GRAY @deprecated(reason: "Colors are available now.")
+}
+
+"""
+This is a comment with a bunch of lines
+It might contain formatted text including lists or other things
+   * like this
+   * and this
+"""
+type SomeType {
+  """
+  This is a comment with a bunch of lines
+  It might contain formatted text including lists or other things
+    * like this
+    * and this
+  """
+  test: Test
 }
 
 """

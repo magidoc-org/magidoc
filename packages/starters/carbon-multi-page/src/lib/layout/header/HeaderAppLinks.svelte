@@ -1,7 +1,7 @@
 <script lang="ts">
-import { getOrDefault } from '$lib/variables'
 import { type ExternalLink, templates } from '@magidoc/plugin-starter-variables'
 import { HeaderGlobalAction } from 'carbon-components-svelte'
+import { getOrDefault } from '$lib/variables'
 import { computeIcon } from './links'
 
 const links: ExternalLink[] = getOrDefault(templates.EXTERNAL_LINKS, []).filter(

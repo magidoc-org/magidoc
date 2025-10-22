@@ -1,8 +1,8 @@
 import { describe, expect, it, test } from 'vitest'
 import type { ZodType } from 'zod'
 import z from 'zod'
-import * as variables from '../src/index'
 import type { Page } from '../src/index'
+import * as variables from '../src/index'
 import type { Variable } from '../src/variables/variable'
 
 describe('variables', () => {
@@ -46,7 +46,11 @@ describe('variables', () => {
     })
 
     test('site meta', () => {
-      testRecordVariable(variables.templates.SITE_META, 'SITE_META', z.record(z.string().optional()).optional())
+      testRecordVariable(
+        variables.templates.SITE_META,
+        'SITE_META',
+        z.record(z.string(), z.string().optional()).optional(),
+      )
     })
 
     test('custom styles', () => {
@@ -75,7 +79,12 @@ describe('variables', () => {
       testRecordVariable(
         variables.templates.QUERY_GENERATION_FACTORIES,
         'QUERY_GENERATION_FACTORIES',
-        z.record(z.union([z.string(), z.boolean(), z.number(), z.null(), z.record(z.unknown())]).optional()).optional(),
+        z
+          .record(
+            z.string(),
+            z.union([z.string(), z.boolean(), z.number(), z.null(), z.record(z.string(), z.unknown())]).optional(),
+          )
+          .optional(),
       )
     })
 
@@ -101,6 +110,7 @@ describe('variables', () => {
               href: z.string().min(1),
               kind: z.string().min(1).optional(),
               group: z.string().min(1).optional(),
+              position: z.union([z.literal('header'), z.literal('navigation')]).optional(),
             }),
           )
           .optional(),
@@ -262,7 +272,7 @@ function testArrayVariable(target: Variable<Array<any>>, key: string, expectedZo
 
 // biome-ignore lint/suspicious/noExplicitAny: Only thing that makes it work
 function ensureZodTypeEqual(target: Variable<any>, expected: ZodType<any>) {
-  // @ts-ignore
+  // @ts-expect-error Zod not like here
   // this does a good enough compare to make sure they have the same schema
   expect(JSON.parse(JSON.stringify(target.zod.type(z)))).toEqual(JSON.parse(JSON.stringify(expected, null, 2)))
 }

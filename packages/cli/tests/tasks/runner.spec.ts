@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { type Task, executeAllTasks } from '../../src/tasks/runner'
+import { executeAllTasks, type Task } from '../../src/tasks/runner'
 
 type Ctx = {
   randomStringBeingSet: string

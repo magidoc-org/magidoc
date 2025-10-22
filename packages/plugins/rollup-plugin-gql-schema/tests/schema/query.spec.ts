@@ -1,4 +1,4 @@
-import { type IntrospectionQuery, buildClientSchema, getIntrospectionQuery } from 'graphql'
+import { buildClientSchema, getIntrospectionQuery, type IntrospectionQuery } from 'graphql'
 import nock from 'nock'
 import { beforeEach, describe, expect, it } from 'vitest'
 import queryGraphQLSchema from '../../src/schema/query'

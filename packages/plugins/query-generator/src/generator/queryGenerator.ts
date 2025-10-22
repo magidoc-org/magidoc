@@ -1,5 +1,3 @@
-import _ from 'lodash'
-
 import {
   type GraphQLField,
   type GraphQLNamedType,
@@ -13,12 +11,13 @@ import {
   isObjectType,
   isUnionType,
 } from 'graphql'
+import _ from 'lodash'
 import type { GraphQLQuery } from '../models/query'
 import { type Parameter, type QueryBuilder, QueryType, queryBuilder, subSelectionBuilder } from './builder/queryBuilder'
 import {
-  type ResponseFieldValueBuilder,
   arrayResponseBuilder,
   fieldResponseBuilder,
+  type ResponseFieldValueBuilder,
   subObjectResponseBuilder,
   valueResponseBuilder,
 } from './builder/responseBuilder'
@@ -192,7 +191,6 @@ function generateResponse(
   }
 
   if (isNonNullType(type)) {
-    // biome-ignore lint/style/noParameterAssign: Because this is easier and cleaner
     type = type.ofType
   }
 

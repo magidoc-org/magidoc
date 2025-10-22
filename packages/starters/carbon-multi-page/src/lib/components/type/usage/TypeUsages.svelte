@@ -1,10 +1,8 @@
 <script lang="ts">
+import { ReferenceKind, type TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
 import AppList from '$lib/components/common/list/AppList.svelte'
 import AppListItem from '$lib/components/common/list/AppListItem.svelte'
-
 import AnchorHeader from '$lib/components/common/text/AnchorHeader.svelte'
-
-import { ReferenceKind, type TypeReverseMapping } from '@magidoc/plugin-reverse-schema-mapper'
 import TypeLink from '../../common/text/TypeLink.svelte'
 import TypeUsagePreview from './TypeUsagePreview.svelte'
 

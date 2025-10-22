@@ -5,23 +5,33 @@
     "useIgnoreFile": true,
     "clientKind": "git"
   },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "files": {
+    "includes": [
+      "**/*",
+      "!**/dist",
+      "!**/build",
+      "!**/package",
+      "!**/coverage",
+      "!**/.svelte-kit",
+      "!**/_schema.graphqls",
+      "!**/_variables.json"
+    ]
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 120,
-    "ignore": [
-      "**/dist/**",
-      "**/build/**",
-      "**/package/**",
-      "**/coverage/**",
-      "**/.svelte-kit/**",
-      "**/_schema.graphqls",
-      "**/_variables.json"
-    ]
+    "lineWidth": 120
   },
-  "organizeImports": { "enabled": true },
+
   "linter": {
     "enabled": true,
     "rules": {
@@ -31,27 +41,16 @@
         "useExportType": "off"
       },
       "complexity": {
-        "noForEach": "off"
+        "noForEach": "off",
+        "noImportantStyles": "off"
       },
       "performance": {
         "noAccumulatingSpread": "off"
       },
       "suspicious": {
-        "noConsoleLog": "error"
+        "noConsole": "error"
       }
-    },
-    "ignore": [
-      "**/dist/**",
-      "**/build/**",
-      "**/package/**",
-      "**/coverage/**",
-      "**/.svelte-kit/**",
-      "**/.vscode/**",
-      "**/svelte.config.js",
-      "**/magidoc.mjs",
-      "**/_schema.graphqls",
-      "**/_variables.json"
-    ]
+    }
   },
   "javascript": {
     "formatter": {
@@ -68,9 +67,13 @@
   },
   "overrides": [
     {
-      "include": ["*.svelte"],
+      "includes": ["**/*.svelte"],
       "linter": {
         "rules": {
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          },
           "style": {
             "useConst": "off"
           }
@@ -78,11 +81,11 @@
       }
     },
     {
-      "include": ["packages/cli/src/commands/utils/log.ts"],
+      "includes": ["packages/cli/src/commands/utils/log.ts", "packages/starters/zipStarters.mjs"],
       "linter": {
         "rules": {
           "suspicious": {
-            "noConsoleLog": "off"
+            "noConsole": "off"
           }
         }
       }

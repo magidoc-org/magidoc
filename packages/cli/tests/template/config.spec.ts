@@ -1,7 +1,7 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
-import { type RawMagidocTemplateConfig, loadTemplateConfig } from '../../src/template/config'
+import { loadTemplateConfig, type RawMagidocTemplateConfig } from '../../src/template/config'
 
 describe('parsing a valid template configuration', () => {
   it('returns the parsed config', async () => {
@@ -18,10 +18,10 @@ describe('parsing a valid template configuration', () => {
 describe('parsing an empty template configuration', () => {
   it('raises an error', async () => {
     await shouldFailParsing('empty.js', [
-      "Expected: 'array' but received 'undefined' at path 'SUPPORTED_OPTIONS'",
-      "Expected: 'string' but received 'undefined' at path 'SCHEMA_TARGET_LOCATION'",
-      "Expected: 'string' but received 'undefined' at path 'STATIC_ASSETS_LOCATION'",
-      "Expected: 'string' but received 'undefined' at path 'ENV_FILE_LOCATION'",
+      "Expected: 'array' at path 'SUPPORTED_OPTIONS'",
+      "Expected: 'string' at path 'SCHEMA_TARGET_LOCATION'",
+      "Expected: 'string' at path 'STATIC_ASSETS_LOCATION'",
+      "Expected: 'string' at path 'ENV_FILE_LOCATION'",
     ])
   })
 })
@@ -29,9 +29,9 @@ describe('parsing an empty template configuration', () => {
 describe('parsing an invalid template configuration', () => {
   it('raises an error', async () => {
     await shouldFailParsing('invalid.js', [
-      "Expected: 'object' but received 'string' at path 'SUPPORTED_OPTIONS[0]'",
-      "Expected: 'string' but received 'number' at path 'SCHEMA_TARGET_LOCATION'",
-      "Expected: 'string' but received 'boolean' at path 'STATIC_ASSETS_LOCATION'",
+      "Expected: 'object' at path 'SUPPORTED_OPTIONS[0]'",
+      "Expected: 'string' at path 'SCHEMA_TARGET_LOCATION'",
+      "Expected: 'string' at path 'STATIC_ASSETS_LOCATION'",
     ])
   })
 })

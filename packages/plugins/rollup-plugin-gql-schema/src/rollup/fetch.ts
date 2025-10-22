@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs'
 import type { Plugin } from 'rollup'
-import { type OutputFormat, convert } from '../schema/convert.js'
+import { convert, type OutputFormat } from '../schema/convert.js'
 import queryGraphQLSchema, { type Method } from '../schema/query.js'
 
 export type { Method }

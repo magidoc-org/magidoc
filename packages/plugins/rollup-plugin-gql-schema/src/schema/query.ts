@@ -1,10 +1,10 @@
 import axios from 'axios'
 import {
+  buildClientSchema,
   type GraphQLError,
   type GraphQLSchema,
-  type IntrospectionQuery,
-  buildClientSchema,
   getIntrospectionQuery,
+  type IntrospectionQuery,
 } from 'graphql'
 
 type IntrospectionResponse = {

@@ -1,6 +1,6 @@
 <script lang="ts">
-import { isRelative, joinUrlPaths } from '$lib/utils/url'
 import type { Tokens } from 'marked'
+import { isRelative, joinUrlPaths } from '$lib/utils/url'
 import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
 export let token: Tokens.Image

@@ -2,7 +2,6 @@ import { templates } from '@magidoc/plugin-starter-variables'
 import adapter from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import { optimizeImports } from 'carbon-preprocess-svelte'
-import _ from 'lodash'
 import { loadVariables } from './magidoc.config.js'
 
 const variables = loadVariables()

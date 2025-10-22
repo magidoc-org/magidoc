@@ -3,11 +3,11 @@ import minify from 'graphql-query-compress'
 import { describe, expect, it } from 'vitest'
 import {
   type GraphQLFactoryContext,
+  generateGraphQLQuery,
+  generateGraphQLResponse,
   NullGenerationStrategy,
   type QueryGeneratorConfig,
   QueryType,
-  generateGraphQLQuery,
-  generateGraphQLResponse,
 } from '../../src'
 import { gql, prettify } from '../../src/formatter/query'
 import type { FakeGenerationConfig, ResponseGenerationConfig } from '../../src/generator/config'

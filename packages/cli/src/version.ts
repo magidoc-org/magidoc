@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-let version: string | undefined = undefined
+let version: string | undefined
 
 export function getVersion(): string {
   if (!version) {

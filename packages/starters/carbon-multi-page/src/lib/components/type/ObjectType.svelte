@@ -1,7 +1,6 @@
 <script lang="ts">
-import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions } from '$lib/model'
-
 import type { GraphQLObjectType } from 'graphql'
+import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions } from '$lib/model'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
 import DirectivesList from '../directive/DirectivesList.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'
@@ -37,4 +36,5 @@ $: fields = getFieldsPossibleDescriptions(type)
       Also implements <InterfaceList types={type.getInterfaces()} />.
     </p>
   {/if}
+
 </section>

@@ -1,8 +1,8 @@
 import { yellow } from '../../commands/utils/outputColors'
 import {
+  getPackageManager,
   type PackageManager,
   type PackageManagerType,
-  getPackageManager,
   selectPackageManager,
 } from '../../node/packageManager'
 import type { Task } from '../runner'

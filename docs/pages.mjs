@@ -1,6 +1,6 @@
+import { readdir, readFile, stat } from 'fs/promises'
 import { join } from 'path'
 import { fileURLToPath } from 'url'
-import { readFile, readdir, stat } from 'fs/promises'
 
 /**
  * @param {import("fs").PathLike} dir

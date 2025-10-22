@@ -1,8 +1,8 @@
+import { templates, type Variable } from '@magidoc/plugin-starter-variables'
 import path from 'path'
-import { type Variable, templates } from '@magidoc/plugin-starter-variables'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { resolveTemplateConfigurationTask } from '../../../src/tasks/all/resolveTemplateConfig'
-import { type RawMagidocTemplateConfig, loadTemplateConfig } from '../../../src/template/config'
+import { loadTemplateConfig, type RawMagidocTemplateConfig } from '../../../src/template/config'
 import { taskWrapperMock, tmpLocationMock } from './utils'
 
 vi.mock('../../../src/template/config')

@@ -1,7 +1,6 @@
 <script lang="ts">
-import { type MagidocSearchResult, search } from '$lib/search'
-
 import { Modal, Search } from 'carbon-components-svelte'
+import { type MagidocSearchResult, search } from '$lib/search'
 import AppSearchResult from './search/AppSearchResult.svelte'
 
 export let open = false

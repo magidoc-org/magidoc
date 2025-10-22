@@ -1,16 +1,16 @@
-import path from 'path'
 import { type Command, Option } from 'commander'
-import runDevelopmentServer from '.'
+import path from 'path'
 import type { PackageManagerType } from '../../node/packageManager'
 import {
   CLEAN_OPTION,
   CONFIG_FILE_OPTION,
+  newPortOption,
   PACKAGE_MANAGER_OPTION,
   STACKTRACE_OPTION,
-  newPortOption,
 } from '../utils/commander'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { withStacktrace } from '../utils/withStacktrace'
+import runDevelopmentServer from '.'
 
 type DevCommandOptions = {
   file: string

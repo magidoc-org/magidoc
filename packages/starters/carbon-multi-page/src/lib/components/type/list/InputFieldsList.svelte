@@ -1,12 +1,12 @@
 <script lang="ts">
+import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
+import type { GraphQLInputField } from 'graphql'
+import _ from 'lodash'
 import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
 import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
 import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
 import NullableTag from '$lib/components/tags/NullableTag.svelte'
 import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
-import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
-import type { GraphQLInputField } from 'graphql'
-import _ from 'lodash'
 
 export let data: ReadonlyArray<GraphQLInputField>
 
