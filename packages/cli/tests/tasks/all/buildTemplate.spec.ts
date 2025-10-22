@@ -1,5 +1,4 @@
-import { build } from 'vite'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { buildTemplateTask } from '../../../src/tasks/all/buildTemplate'
 import { packageManagerMock, taskWrapperMock, tmpLocationMock } from './utils'
 

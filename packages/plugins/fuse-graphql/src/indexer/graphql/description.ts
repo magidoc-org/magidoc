@@ -1,5 +1,5 @@
-import { IndexableMarkdownType, extract } from '@magidoc/plugin-fuse-markdown'
 import type { MarkdownOptions } from '@magidoc/plugin-fuse-markdown'
+import { extract, IndexableMarkdownType } from '@magidoc/plugin-fuse-markdown'
 
 type AnythingWithADescription = {
   description: string | undefined | null
@@ -21,6 +21,8 @@ export function getDescription(
         case IndexableMarkdownType.SECTION:
           return value.content
         case IndexableMarkdownType.HEADER:
+          return ''
+        default:
           return ''
       }
     })

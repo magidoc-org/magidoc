@@ -1,5 +1,5 @@
-import path from 'path'
 import type { Command } from 'commander'
+import path from 'path'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { MagidocConfiguration } from '../../../src'
 import preview from '../../../src/commands/preview'

@@ -1,6 +1,5 @@
-import { findPageByHref } from '$lib/pages'
-import { pages } from '$lib/pages'
 import { error } from '@sveltejs/kit'
+import { findPageByHref, pages } from '$lib/pages'
 import type { PageLoad } from './$types'
 
 export const prerender = pages.length > 0

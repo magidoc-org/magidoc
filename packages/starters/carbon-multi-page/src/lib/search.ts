@@ -1,8 +1,8 @@
 import { type SearchResult as FuseGraphQLSearchResult, index as indexSchema } from '@magidoc/plugin-fuse-graphql'
 import {
   type SearchResult as FuseMarkdownSearchResult,
-  type MarkdownOptions,
   index as indexMarkdown,
+  type MarkdownOptions,
 } from '@magidoc/plugin-fuse-markdown'
 import type { Page, PageTree } from '@magidoc/plugin-starter-common'
 import type Fuse from 'fuse.js'

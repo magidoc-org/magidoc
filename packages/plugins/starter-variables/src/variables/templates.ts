@@ -45,7 +45,7 @@ export default {
   >(
     'QUERY_GENERATION_FACTORIES',
     recordConverter((zod) =>
-      zod.union([zod.string(), zod.boolean(), zod.number(), zod.null(), zod.record(zod.unknown())]),
+      zod.union([zod.string(), zod.boolean(), zod.number(), zod.null(), zod.record(zod.string(), zod.unknown())]),
     ),
   ),
   PAGES: createVariable<Array<Page | undefined>>(

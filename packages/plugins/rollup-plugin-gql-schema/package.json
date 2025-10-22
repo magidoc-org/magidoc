@@ -2,12 +2,18 @@
   "name": "@magidoc/rollup-plugin-gql-schema",
   "description": "A Rollup and ViteJS plugin that allows to parse a GraphQL Schema from a target URL and save it to a target output folder, or to parse it from the disk and convert it to a desired format.",
   "private": false,
-  "version": "6.2.0",
+  "version": "6.3.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "keywords": ["rollup-plugin", "vite-plugin", "graphql", "graphql-schema", "magidoc"],
+  "keywords": [
+    "rollup-plugin",
+    "vite-plugin",
+    "graphql",
+    "graphql-schema",
+    "magidoc"
+  ],
   "homepage": "https://magidoc.js.org/plugins/rollup-graphql-schema",
   "repository": {
     "type": "git",
@@ -22,18 +28,20 @@
     "release": "pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
-    "axios": "1.7.7",
-    "fast-glob": "3.3.2",
-    "graphql": "16.9.0"
+    "axios": "1.12.2",
+    "fast-glob": "3.3.3",
+    "graphql": "16.11.0"
   },
   "devDependencies": {
-    "@types/node": "22.7.4",
-    "@vitest/coverage-v8": "2.1.1",
-    "nock": "13.5.5",
-    "rollup": "4.24.0",
-    "typescript": "5.6.2",
-    "vite": "5.4.8",
-    "vitest": "2.1.1"
+    "@types/node": "24.9.1",
+    "@vitest/coverage-v8": "3.2.4",
+    "nock": "14.0.10",
+    "rollup": "4.52.5",
+    "typescript": "5.9.3",
+    "vite": "7.1.11",
+    "vitest": "3.2.4"
   },
-  "files": ["build"]
+  "files": [
+    "build"
+  ]
 }

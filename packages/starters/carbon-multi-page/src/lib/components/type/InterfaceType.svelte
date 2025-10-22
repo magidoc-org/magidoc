@@ -1,7 +1,6 @@
 <script lang="ts">
-import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions, schema } from '$lib/model'
-
 import type { GraphQLInterfaceType, GraphQLObjectType } from 'graphql'
+import { type FieldWithPossibleDescriptions, getFieldsPossibleDescriptions, schema } from '$lib/model'
 import AnchorHeader from '../common/text/AnchorHeader.svelte'
 import DirectivesList from '../directive/DirectivesList.svelte'
 import CarbonMarkdown from '../markdown/CarbonMarkdown.svelte'

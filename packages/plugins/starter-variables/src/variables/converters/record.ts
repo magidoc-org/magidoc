@@ -18,6 +18,6 @@ export function recordConverter<V>(valueType: ZodTypeProvider<V>): Converter<Rec
       return null
     },
     asString: (value) => JSON.stringify(value),
-    type: (z) => z.record(valueType(z).optional()).optional(),
+    type: (z) => z.record(z.string(), valueType(z).optional()).optional(),
   }
 }

@@ -1,10 +1,8 @@
 <script lang="ts">
-import AppList from '$lib/components/common/list/AppList.svelte'
-
 import { type MarkdownOptions, MarkdownToken, type Renderers } from '@magidoc/plugin-svelte-marked'
-
 import { OrderedList, UnorderedList } from 'carbon-components-svelte'
 import type { Tokens } from 'marked'
+import AppList from '$lib/components/common/list/AppList.svelte'
 
 export let token: Tokens.List
 export let options: MarkdownOptions

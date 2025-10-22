@@ -1,7 +1,7 @@
 <script lang="ts">
+import { QueryType } from '@magidoc/plugin-query-generator'
 import PreviousNextPage from '$lib/components/nav/PreviousNextPage.svelte'
 import FieldDetails from '$lib/components/query/FieldDetails.svelte'
-import { QueryType } from '@magidoc/plugin-query-generator'
 import type { PageData } from './$types'
 
 export let data: PageData

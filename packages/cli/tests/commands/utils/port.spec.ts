@@ -1,6 +1,6 @@
 import net from 'net'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { type PortUnavailable, getPortAvailability } from '../../../src/commands/utils/port'
+import { getPortAvailability, type PortUnavailable } from '../../../src/commands/utils/port'
 
 const port = 3423
 const host = 'localhost'
@@ -24,7 +24,7 @@ describe('checking if port is available', () => {
 
     afterEach(
       () =>
-        new Promise((resolve, reject) => {
+        new Promise<void>((resolve, reject) => {
           server.close((err) => (err ? reject(err) : resolve()))
         }),
     )

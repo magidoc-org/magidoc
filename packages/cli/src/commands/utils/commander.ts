@@ -1,5 +1,4 @@
-import { Option } from 'commander'
-import { InvalidArgumentError } from 'commander'
+import { InvalidArgumentError, Option } from 'commander'
 import { PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
 
 export const DEFAULT_CONFIG_FILE = './magidoc.mjs'

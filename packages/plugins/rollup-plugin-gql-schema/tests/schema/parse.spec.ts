@@ -1,5 +1,5 @@
+import { buildSchema, type GraphQLSchema } from 'graphql'
 import path from 'path'
-import { type GraphQLSchema, buildSchema } from 'graphql'
 import { describe, expect, it } from 'vitest'
 import { parseGraphqlSchema } from '../../src/schema/parse'
 import { getSample } from './utils'

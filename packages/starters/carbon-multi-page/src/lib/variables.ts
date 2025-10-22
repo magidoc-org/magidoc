@@ -1,5 +1,5 @@
+import { templates, type Variable } from '@magidoc/plugin-starter-variables'
 import { base } from '$app/paths'
-import { type Variable, templates } from '@magidoc/plugin-starter-variables'
 import _variables from '../_variables.json'
 
 export function get<T>(target: Variable<T>): T | null {

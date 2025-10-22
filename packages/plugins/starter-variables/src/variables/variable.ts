@@ -1,4 +1,4 @@
-import type { ZodType, ZodTypeDef } from 'zod'
+import type { ZodType } from 'zod'
 
 interface MetaEnv {
   [key: string]: unknown
@@ -13,7 +13,7 @@ export type Variable<T> = {
   zod: ZodVariable<T>
 }
 
-export type ZodTypeProvider<T> = (zod: typeof import('zod')) => ZodType<T | undefined, ZodTypeDef, T | undefined>
+export type ZodTypeProvider<T> = (zod: typeof import('zod')) => ZodType<T | undefined>
 
 export type ZodVariable<T> = {
   type: ZodTypeProvider<T>

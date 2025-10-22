@@ -1,6 +1,6 @@
+import { error } from '@sveltejs/kit'
 import { getMutationByName, hasMutations } from '$lib/model'
 import { findPageByHref } from '$lib/pages'
-import { error } from '@sveltejs/kit'
 import type { PageLoad } from './$types'
 
 export const prerender = hasMutations()

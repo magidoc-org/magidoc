@@ -1,9 +1,9 @@
 import {
+  buildClientSchema,
   type GraphQLField,
   type GraphQLObjectType,
   type GraphQLSchema,
   type IntrospectionQuery,
-  buildClientSchema,
 } from 'graphql'
 import type { Maybe } from 'graphql/jsutils/Maybe'
 import recursiveSchema from './schema/_recursive_schema.json'

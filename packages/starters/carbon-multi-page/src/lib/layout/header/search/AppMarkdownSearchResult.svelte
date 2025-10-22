@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { MarkdownData, ResultRange } from '$lib/search'
 import { IndexableMarkdownType, type SearchResult } from '@magidoc/plugin-fuse-markdown'
 import { ClickableTile } from 'carbon-components-svelte'
+import type { MarkdownData, ResultRange } from '$lib/search'
 import AppSearchHighlight from './AppSearchHighlight.svelte'
 import HeaderCrumb from './HeaderCrumb.svelte'
 

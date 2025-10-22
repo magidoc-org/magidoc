@@ -1,10 +1,10 @@
-import path from 'path'
 import { type Command, Option } from 'commander'
-import eject from '.'
+import path from 'path'
 import { PACKAGE_MANAGER_TYPES, type PackageManagerType } from '../../node/packageManager'
 import { AVAILABLE_TEMPLATES, type Template } from '../../template'
 import { getVersion } from '../../version'
 import { withStacktrace } from '../utils/withStacktrace'
+import eject from '.'
 
 type EjectCommandOptions = {
   template: Template
@@ -13,6 +13,7 @@ type EjectCommandOptions = {
   destination: string
   stacktrace: boolean
 }
+
 import { STACKTRACE_OPTION } from '../utils/commander'
 import { printInfo, printLine, printSeparator } from '../utils/log'
 import { cyan } from '../utils/outputColors'

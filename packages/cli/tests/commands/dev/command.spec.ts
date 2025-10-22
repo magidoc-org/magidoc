@@ -1,5 +1,5 @@
-import path from 'path'
 import type { Command } from 'commander'
+import path from 'path'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import runDevelopmentServer from '../../../src/commands/dev'
 import buildDevCommand from '../../../src/commands/dev/command'

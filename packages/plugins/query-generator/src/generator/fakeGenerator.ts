@@ -1,14 +1,3 @@
-import _ from 'lodash'
-import globToRegExp from './utils/globToRegex'
-
-import {
-  type FakeGenerationConfig,
-  type GraphQLFactory,
-  NullGenerationStrategy,
-  type QueryGeneratorConfig,
-} from './config'
-import { MissingCustomScalarException } from './error'
-
 import {
   type GraphQLArgument,
   type GraphQLField,
@@ -22,10 +11,19 @@ import {
   isNullableType,
   isScalarType,
 } from 'graphql'
+import _ from 'lodash'
 import type { Parameter } from './builder/queryBuilder'
+import {
+  type FakeGenerationConfig,
+  type GraphQLFactory,
+  NullGenerationStrategy,
+  type QueryGeneratorConfig,
+} from './config'
 import { DEFAULT_FACTORIES } from './defaultFactories'
+import { MissingCustomScalarException } from './error'
 import { typeToString, unwrapType } from './extractor'
 import type { GenerationContext } from './queryGenerator'
+import globToRegExp from './utils/globToRegex'
 
 type FakeGenerationContext = GenerationContext & {
   readonly targetName: string

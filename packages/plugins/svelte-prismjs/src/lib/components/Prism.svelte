@@ -52,7 +52,9 @@ function highlight(root: HTMLElement, language: string | undefined, source: stri
   // Looks hacky, but since this component can be re-used,
   // it is important that the class is added before highlighting,
   // which is not always the case if done inside the html template.
-  root.classList.forEach((item) => root.classList.remove(item))
+  root.classList.forEach((item) => {
+    root.classList.remove(item)
+  })
   if (language) {
     root.classList.add(`language-${language}`)
     root.classList.add('prism--code')

@@ -1,9 +1,9 @@
 import { readFileSync } from 'fs'
+import type Fuse from 'fuse.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import type Fuse from 'fuse.js'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { type MarkdownDocument, type SearchResult, index } from '../../src'
+import { index, type MarkdownDocument, type SearchResult } from '../../src'
 import { unindent } from '../utils'
 
 describe('indexing a markdown source', () => {

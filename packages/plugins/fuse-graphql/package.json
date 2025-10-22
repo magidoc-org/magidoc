@@ -2,12 +2,17 @@
   "name": "@magidoc/plugin-fuse-graphql",
   "description": "A plugin used to index a GraphQL schema into a Fuse.js search engine.",
   "private": false,
-  "version": "6.2.0",
+  "version": "6.3.0",
   "type": "module",
   "license": "MIT",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "keywords": ["markdown", "marked", "fuse", "magidoc"],
+  "keywords": [
+    "markdown",
+    "marked",
+    "fuse",
+    "magidoc"
+  ],
   "homepage": "https://magidoc-org.github.io/magidoc/plugins/fuse-graphql",
   "repository": {
     "type": "git",
@@ -23,20 +28,22 @@
   },
   "dependencies": {
     "@magidoc/plugin-fuse-markdown": "workspace:^",
-    "fuse.js": "7.0.0",
-    "graphql": "16.9.0",
-    "marked": "14.1.2"
+    "fuse.js": "7.1.0",
+    "graphql": "16.11.0",
+    "marked": "16.4.1"
   },
   "devDependencies": {
-    "@types/node": "22.7.4",
-    "@vitest/coverage-v8": "2.1.1",
-    "rollup": "4.24.0",
-    "typescript": "5.6.2",
-    "vite": "5.4.8",
-    "vitest": "2.1.1"
+    "@types/node": "24.9.1",
+    "@vitest/coverage-v8": "3.2.4",
+    "rollup": "4.52.5",
+    "typescript": "5.9.3",
+    "vite": "7.1.11",
+    "vitest": "3.2.4"
   },
   "peerDependencies": {
     "fuse.js": "6.6.2"
   },
-  "files": ["build"]
+  "files": [
+    "build"
+  ]
 }

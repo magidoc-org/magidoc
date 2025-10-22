@@ -1,5 +1,4 @@
-import { fetchSchema } from '@magidoc/rollup-plugin-gql-schema'
-import { parseSchema } from '@magidoc/rollup-plugin-gql-schema'
+import { fetchSchema, parseSchema } from '@magidoc/rollup-plugin-gql-schema'
 import fs from 'fs/promises'
 import type { IntrospectionConfiguration } from '../../config/types'
 import type { Task } from '../runner'

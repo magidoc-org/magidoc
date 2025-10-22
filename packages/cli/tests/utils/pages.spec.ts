@@ -1,7 +1,7 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
-import { type MarkdownPage, loadMarkdownPagesTree } from '../../src/utils/pages'
+import { loadMarkdownPagesTree, type MarkdownPage } from '../../src/utils/pages'
 
 describe('importing markdown file tree', () => {
   describe('importing an invalid markdown extension', () => {

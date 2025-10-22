@@ -1,9 +1,6 @@
 <script lang="ts">
-import { getAllowedArgumentsByDirective, isAllowedDirective, schema } from '$lib/model'
-import { getSiteRoot } from '$lib/variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import { Tag, TooltipDefinition } from 'carbon-components-svelte'
-
 import {
   type ConstArgumentNode,
   type ConstDirectiveNode,
@@ -12,6 +9,8 @@ import {
   type GraphQLDirective,
   Kind,
 } from 'graphql'
+import { getAllowedArgumentsByDirective, isAllowedDirective, schema } from '$lib/model'
+import { getSiteRoot } from '$lib/variables'
 
 export let directive: ConstDirectiveNode
 

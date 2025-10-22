@@ -1,7 +1,6 @@
 <script lang="ts">
-import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
-
 import type { Tokens } from 'marked'
+import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
 
 export const token: Tokens.ListItem = undefined
 export const options: MarkdownOptions = undefined

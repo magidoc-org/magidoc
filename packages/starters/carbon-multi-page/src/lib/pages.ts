@@ -1,5 +1,5 @@
 import type { Page, PageTree } from '@magidoc/plugin-starter-common'
-import { type Page as VariablePage, templates } from '@magidoc/plugin-starter-variables'
+import { templates, type Page as VariablePage } from '@magidoc/plugin-starter-variables'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import Slugger from 'github-slugger'
 import { createModelContent } from './model'
@@ -42,7 +42,7 @@ function setPreviousAndNextPages(pages: PageTree[]) {
     }
   }
 
-  let previous: Page | undefined = undefined
+  let previous: Page | undefined
 
   iteratePages(pages, (current) => {
     if (previous) {

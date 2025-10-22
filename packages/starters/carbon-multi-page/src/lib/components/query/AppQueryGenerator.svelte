@@ -20,9 +20,7 @@ const copy = async (text: string) => {
     setTimeout(() => {
       copyButtonText = 'Copy query'
     }, 1500)
-  } catch (e) {
-    console.error(e)
-  }
+  } catch {}
 }
 </script>
 

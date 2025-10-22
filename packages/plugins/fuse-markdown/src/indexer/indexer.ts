@@ -2,7 +2,7 @@ import Fuse, { type IFuseOptions } from 'fuse.js'
 import type Slugger from 'github-slugger'
 import type { Lexer } from 'marked'
 
-import { type TextExtractors, extract } from '../markdown/extract'
+import { extract, type TextExtractors } from '../markdown/extract'
 import { defaultExtractors } from '../markdown/extractors'
 import { defaultLexer, defaultSlugger } from '../markdown/marked'
 import type { MarkdownDocument } from './document'

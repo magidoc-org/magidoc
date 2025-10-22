@@ -1,11 +1,11 @@
 import { readFileSync } from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
 import type Fuse from 'fuse.js'
 import type { FuseResult, FuseResultMatch } from 'fuse.js'
-import { type GraphQLSchema, buildSchema } from 'graphql'
+import { buildSchema, type GraphQLSchema } from 'graphql'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
-import { type SearchResult, index } from '../../src'
+import { index, type SearchResult } from '../../src'
 
 describe('indexing graphql schema', () => {
   const schema = getSchema()

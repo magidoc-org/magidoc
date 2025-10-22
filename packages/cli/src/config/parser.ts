@@ -1,6 +1,6 @@
 import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
-import z, { type ZodIssue, type ZodType } from 'zod'
+import z, { type core, type ZodType } from 'zod'
 import { red } from '../commands/utils/outputColors'
 import { type MagidocConfiguration, ZMagidocConfiguration } from './types'
 import { formatZodIssues } from './zod'
@@ -17,10 +17,10 @@ export function parseConfiguration(content: unknown): MagidocConfiguration {
 
 function validateOptions(options: Record<string, unknown>): void {
   const allOptionsByName = _.keyBy(Object.values(templates), (template) => String(template.name))
-  let issues: ZodIssue[] = []
+  let issues: core.$ZodIssue[] = []
   _.forEach(options, (value, key) => {
     const variable = allOptionsByName[key]
-    const path: (string | number)[] = ['website', 'options', key]
+    const path: PropertyKey[] = ['website', 'options', key]
     if (!variable) {
       issues.push({
         message: `No option available with name '${key}'`,
@@ -30,7 +30,7 @@ function validateOptions(options: Record<string, unknown>): void {
       return
     }
 
-    // @ts-ignore
+    // @ts-expect-error ZodTypeProvider is not properly typed
     const zodType = variable.zod.type(z) as unknown as ZodType<unknown>
     const result = zodType.safeParse(value)
     if (!result.success) {
@@ -48,7 +48,7 @@ function validateOptions(options: Record<string, unknown>): void {
   }
 }
 
-function throwConfigurationError(issues: ZodIssue[]): never {
+function throwConfigurationError(issues: core.$ZodIssue[]): never {
   const formattedIssues = formatZodIssues(issues)
   const pluralIssue = issues.length > 1 ? 'issues' : 'issue'
   const issuesText = red(`${issues.length} ${pluralIssue}`)

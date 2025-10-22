@@ -11,7 +11,8 @@
     },
     "testing.automaticallyOpenPeekView": "never",
     "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "always"
+      "source.organizeImports.biome": "always",
+      "source.biome": "always"
     }
   },
   "folders": [
