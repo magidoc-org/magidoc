@@ -15,7 +15,7 @@
     "test": "run-p test:*",
     "test:spelling": "cspell pages/**/*",
     "preview": "pnpm --filter @magidoc/cli start preview --file $(pwd)/magidoc.mjs --stacktrace",
-    "release": "gh-pages --dist build --dotfiles true"
+    "release": "gh-pages --dist build --dotfiles"
   },
   "devDependencies": {
     "cspell": "9.2.2",
