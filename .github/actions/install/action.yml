@@ -10,7 +10,7 @@ runs:
         version: 10.15.1
 
     - name: Cache pnpm modules
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
