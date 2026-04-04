@@ -37,7 +37,7 @@
     "carbon-preprocess-svelte": "0.11.11",
     "fuse.js": "7.1.0",
     "graphql": "16.11.0",
-    "lodash": "4.17.21",
+    "lodash": "4.18.1",
     "marked": "16.4.1",
     "marked-gfm-heading-id": "4.1.2",
     "prism-svelte": "0.5.0",
