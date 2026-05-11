@@ -1,6 +1,6 @@
 {
   "name": "magidoc",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "description": "MagiDoc is a documentation website generator for GraphQL based on Svelte and that allows for infinite customization through plugins.",
   "repository": "git@github.com:magidoc-org/magidoc.git",
   "author": "Sunny Pelletier",
@@ -21,9 +21,9 @@
     "fix": "run-p fix:*",
     "fix:lint": "biome format --write",
     "release": "pnpm build && VERSION=$npm_package_version node packages/starters/zipStarters.mjs && pnpm --filter '!@magidoc/docs' -r release",
-    "patch": "pnpm version --no-git-tag-version patch && node -p \"JSON.parse(require('fs').readFileSync('package.json','utf8')).version\" | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version && pnpm -r up '@magidoc/*'",
-    "minor": "pnpm version --no-git-tag-version minor && node -p \"JSON.parse(require('fs').readFileSync('package.json','utf8')).version\" | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version && pnpm -r up '@magidoc/*'",
-    "major": "pnpm version --no-git-tag-version major && node -p \"JSON.parse(require('fs').readFileSync('package.json','utf8')).version\" | xargs pnpm -r exec pnpm version --allow-same-version --no-git-tag-version && pnpm -r up '@magidoc/*'",
+    "patch": "pnpm version --no-git-tag-version --no-git-checks patch && pnpm -r exec pnpm version --no-git-tag-version --no-git-checks patch && pnpm -r up '@magidoc/*'",
+    "minor": "pnpm version --no-git-tag-version --no-git-checks minor && pnpm -r exec pnpm version --no-git-tag-version --no-git-checks minor && pnpm -r up '@magidoc/*'",
+    "major": "pnpm version --no-git-tag-version --no-git-checks major && pnpm -r exec pnpm version --no-git-tag-version --no-git-checks major && pnpm -r up '@magidoc/*'",
     "get-version": "echo $npm_package_version"
   },
   "devDependencies": {
