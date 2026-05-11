@@ -5,7 +5,7 @@ import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
 export let token: Tokens.Heading
 export let options: MarkdownOptions
-export const renderers: Renderers = undefined
+export const renderers: Renderers | undefined = undefined
 
 let id: string | undefined
 $: id = generatePathSegment(token.text, options.slugger)

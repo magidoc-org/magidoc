@@ -298,7 +298,7 @@ describe('extracting markdown into sections', () => {
       ).toEqual([
         {
           type: IndexableMarkdownType.SECTION,
-          content: '\nItem 1\nItem 2',
+          content: 'Item 1\nItem 2',
           headers: [],
         },
       ])
@@ -316,7 +316,7 @@ describe('extracting markdown into sections', () => {
       ).toEqual([
         {
           type: IndexableMarkdownType.SECTION,
-          content: '\nItem 1\nItem 2',
+          content: 'Item 1\nItem 2',
           headers: [],
         },
       ])
@@ -338,7 +338,7 @@ describe('extracting markdown into sections', () => {
       ).toEqual([
         {
           type: IndexableMarkdownType.SECTION,
-          content: '\nItem 1 Item 2\nItem 3 Item 4',
+          content: 'Item 1 Item 2\nItem 3 Item 4',
           headers: [],
         },
       ])
@@ -358,7 +358,7 @@ describe('extracting markdown into sections', () => {
       ).toEqual([
         {
           type: IndexableMarkdownType.SECTION,
-          content: '\nItem 1 Item 2\nItem 3 Item 4',
+          content: 'Item 1 Item 2\nItem 3 Item 4',
           headers: [],
         },
       ])

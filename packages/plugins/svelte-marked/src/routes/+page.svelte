@@ -1,5 +1,6 @@
 <script lang="ts">
 import Markdown from '$lib/markdown/Markdown.svelte'
+import type { Renderers } from '$lib/markdown/markedConfiguration'
 import CustomHr from './CustomHr.svelte'
 </script>
 
@@ -10,7 +11,7 @@ import CustomHr from './CustomHr.svelte'
     }}
     renderers={{
       hr: CustomHr,
-    }}
+    } as Partial<Renderers>}
     source={`
 # someReallyLongTitleInOneline--test unique indexes
 # someReallyLongTitleInOneline--test unique indexes

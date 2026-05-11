@@ -82,6 +82,7 @@ export function extractTokens(tokens: TokensList, options: Options): IndexableMa
         depth: heading.depth,
         text: heading.text,
       }
+
       const newCurrentSection: IndexableMarkdownSection = {
         type: IndexableMarkdownType.SECTION,
         content: '',
@@ -101,13 +102,16 @@ export function extractTokens(tokens: TokensList, options: Options): IndexableMa
       }
 
       if (currentSection.content.trim().length > 0) {
-        parts.push(currentSection)
+        parts.push({
+          ...currentSection,
+          content: currentSection.content.trim(),
+        })
       }
 
       parts.push({
         type: IndexableMarkdownType.HEADER,
         path: newCurrentSection.headers,
-        title: heading.text,
+        title: heading.text.trim(),
       })
 
       currentSection = newCurrentSection
@@ -117,7 +121,10 @@ export function extractTokens(tokens: TokensList, options: Options): IndexableMa
   })
 
   if (currentSection.content.trim().length > 0) {
-    parts.push(currentSection)
+    parts.push({
+      ...currentSection,
+      content: currentSection.content.trim(),
+    })
   }
 
   return parts

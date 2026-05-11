@@ -8,10 +8,8 @@ import type { MarkdownOptions, Renderers, RendererType } from './markdown/marked
 import { generatePathSegment, isRelative, joinUrlPaths } from './utils/url'
 
 export default Markdown
-export { MarkdownComponents }
-export { MarkdownToken, MarkdownTokens }
-export { extensions }
-export type { ContainerOptions, TokenExtractionParameters, TokenExtractor, MarkdownOptions, RendererType, Renderers }
+export type { ContainerOptions, MarkdownOptions, Renderers, RendererType, TokenExtractionParameters, TokenExtractor }
+export { extensions, MarkdownComponents, MarkdownToken, MarkdownTokens }
 
 const urlUtils = {
   joinUrlPaths,

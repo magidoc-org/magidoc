@@ -1,5 +1,6 @@
 import Slugger from 'github-slugger'
-import { Lexer, type TokensList } from 'marked'
+import { Lexer, type Token, type TokensList } from 'marked'
+import type { Component, Snippet } from 'svelte'
 import {
   MarkdownBlockquote,
   MarkdownBr,
@@ -8,6 +9,7 @@ import {
   MarkdownDel,
   MarkdownDfn,
   MarkdownEm,
+  MarkdownEscape,
   MarkdownHeading,
   MarkdownHr,
   MarkdownHtml,
@@ -44,7 +46,8 @@ export function parse(src: string): TokensList {
 
 export type RendererType = string
 
-export type Renderers = Record<RendererType, ConstructorOfATypedSvelteComponent>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Renderers = Record<RendererType, Component<any>>
 
 export const defaultRenderers = (): Renderers => ({
   heading: MarkdownHeading,
@@ -66,7 +69,7 @@ export const defaultRenderers = (): Renderers => ({
   strong: MarkdownStrong,
   image: MarkdownImage,
   space: MarkdownSpace,
-  escape: MarkdownSpace,
+  escape: MarkdownEscape,
 })
 
 export const defaultOptions = (): MarkdownOptions => ({

@@ -86,7 +86,7 @@ describe('indexing a markdown source', () => {
         part: {
           type: 'section',
           content:
-            'This is a sample page that contains some very important text. It is meant to be used as a test page in a unit test, making sure that the indexer is working properly. ',
+            'This is a sample page that contains some very important text. It is meant to be used as a test page in a unit test, making sure that the indexer is working properly.',
           headers: [
             {
               id: 'first-page',

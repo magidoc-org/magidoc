@@ -2,7 +2,7 @@
 import type { Tokens } from 'marked'
 import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
-export const token: Tokens.Text | undefined = undefined
+export const token: Tokens.Escape | undefined = undefined
 export const options: MarkdownOptions | undefined = undefined
 export const renderers: Renderers | undefined = undefined
 </script>

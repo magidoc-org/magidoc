@@ -7,7 +7,7 @@ import type { Variable } from '../src/variables/variable'
 
 describe('variables', () => {
   it('contains the right number of export keys', () => {
-    expect(Object.keys(variables)).toEqual(['templates', 'magidoc', 'toVariablesFile', 'UnsupportedVariablesError'])
+    expect(Object.keys(variables)).toEqual(['magidoc', 'templates', 'toVariablesFile', 'UnsupportedVariablesError'])
   })
 
   describe('template variables', () => {

@@ -25,7 +25,7 @@ export type TokenExtractionParameters = {
   lexer: Lexer
 }
 
-export type TokenExtractor = (params: TokenExtractionParameters) => Tokens.Generic | null
+export type TokenExtractor = (params: TokenExtractionParameters) => Tokens.Generic | undefined
 
 /**
  * Container extension is a marked extension that parses a block of text surrounded by :::
@@ -55,11 +55,13 @@ export default function (tokensExtractor: TokenExtractor): TokenizerExtension {
     start(src: string) {
       return src.match(/^:::[^:\n]/)?.index
     },
-    tokenizer(src: string): Tokens.Generic {
+    tokenizer(src: string): Tokens.Generic | undefined {
       const rule = /^:::[\s]?(?<type>[a-z0-9-]+)(?<options>.*)?\n(?<content>(?:.|\n)*)\n:::(?:\n|$)/i
 
-      const match = rule.exec(findRawContainer(src))
-      if (!match || !match.groups) return null
+      const rawContainer = findRawContainer(src)
+      if (!rawContainer) return undefined
+      const match = rule.exec(rawContainer)
+      if (!match?.groups) return undefined
 
       const type = match.groups.type.toLocaleLowerCase()
       const options = parseOptions(match.groups.options || '')
@@ -107,7 +109,8 @@ function findRawContainer(src: string): string | undefined {
 }
 
 function parseOptions(options: string): ContainerOptions {
-  const output = {}
+  const output: ContainerOptions = {}
+
   let remaining = options
 
   while (true) {

@@ -30,7 +30,7 @@ $: {
   // Only a single reactive block is needed here, so that changing the source
   // Will also re-create the options and renderers, so that a new Slugger is created
   tokens = parse(source)
-  actualRenderers = { ...defaultRenderers(), ...renderers }
+  actualRenderers = { ...defaultRenderers(), ...renderers } as Renderers
   actualOptions = { ...defaultOptions(), ...options }
 }
 </script>

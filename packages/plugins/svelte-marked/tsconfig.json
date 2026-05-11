@@ -1,8 +1,9 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "node",
+    "plugins": [{ "name": "typescript-svelte-plugin", "enabled": true }],
     "module": "es2020",
+    "moduleResolution": "bundler",
     "lib": ["es2020", "DOM"],
     "target": "es2020",
     "resolveJsonModule": true,

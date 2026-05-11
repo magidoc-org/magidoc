@@ -5,7 +5,7 @@ import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
 export let token: Tokens.Image
 export let options: MarkdownOptions
-export const renderers: Renderers = undefined
+export const renderers: Renderers | undefined = undefined
 </script>
 
 <img

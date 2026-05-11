@@ -1020,6 +1020,7 @@
         "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
         "isRepeatable": false,
         "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
+        "deprecationReason": null,
         "args": [
           {
             "name": "if",
@@ -1040,6 +1041,7 @@
         "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
         "isRepeatable": false,
         "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
+        "deprecationReason": null,
         "args": [
           {
             "name": "if",
@@ -1059,7 +1061,14 @@
         "name": "deprecated",
         "description": "Marks an element of a GraphQL schema as no longer supported.",
         "isRepeatable": false,
-        "locations": ["FIELD_DEFINITION", "ARGUMENT_DEFINITION", "INPUT_FIELD_DEFINITION", "ENUM_VALUE"],
+        "locations": [
+          "FIELD_DEFINITION",
+          "ARGUMENT_DEFINITION",
+          "INPUT_FIELD_DEFINITION",
+          "ENUM_VALUE",
+          "DIRECTIVE_DEFINITION"
+        ],
+        "deprecationReason": null,
         "args": [
           {
             "name": "reason",
@@ -1076,6 +1085,7 @@
         "description": "Exposes a URL that specifies the behavior of this scalar.",
         "isRepeatable": false,
         "locations": ["SCALAR"],
+        "deprecationReason": null,
         "args": [
           {
             "name": "url",
@@ -1096,7 +1106,8 @@
         "description": "Indicates exactly one field must be supplied and this field must not be `null`.",
         "isRepeatable": false,
         "locations": ["INPUT_OBJECT"],
-        "args": []
+        "args": [],
+        "deprecationReason": null
       }
     ]
   }
