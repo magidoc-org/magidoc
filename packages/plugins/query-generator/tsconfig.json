@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "verbatimModuleSyntax": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,

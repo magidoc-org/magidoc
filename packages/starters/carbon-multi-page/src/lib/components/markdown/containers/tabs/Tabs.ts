@@ -13,13 +13,13 @@ export type TabsToken = Tokens.Generic & {
   raw: string
 }
 
-export function parseTabs({ lexer, content, raw }: TokenExtractionParameters): TabsToken | null {
+export function parseTabs({ lexer, content, raw }: TokenExtractionParameters): TabsToken | undefined {
   const lines: string[] = content.split('\n')
   const splitIndexes = lines.map((line, index) => (line.startsWith('---') ? index : -1)).filter((it) => it !== -1)
 
   // No tab name, then nothing is rendered
   if (splitIndexes.length === 0) {
-    return null
+    return undefined
   }
 
   const tabs: MarkdownTab[] = splitIndexes.map((start, index) => {

@@ -22,7 +22,7 @@ export function setupMarkedExtensions() {
           case 'tabs':
             return parseTabs(params)
           default:
-            return null
+            return undefined
         }
       }),
     ],
