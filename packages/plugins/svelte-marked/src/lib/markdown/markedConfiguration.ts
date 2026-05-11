@@ -1,6 +1,6 @@
 import Slugger from 'github-slugger'
-import { Lexer, type Token, type TokensList } from 'marked'
-import type { Component, Snippet } from 'svelte'
+import { Lexer, type TokensList } from 'marked'
+import type { Component } from 'svelte'
 import {
   MarkdownBlockquote,
   MarkdownBr,
@@ -46,7 +46,7 @@ export function parse(src: string): TokensList {
 
 export type RendererType = string
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: renderer registry must accept any Svelte component
 export type Renderers = Record<RendererType, Component<any>>
 
 export const defaultRenderers = (): Renderers => ({

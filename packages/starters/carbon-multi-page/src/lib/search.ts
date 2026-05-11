@@ -17,7 +17,7 @@ setupMarkedExtensions()
 export type MarkdownData = {
   type: 'markdown'
   url: string
-  section?: string
+  section: string | undefined
 }
 
 export type GraphQLData = {

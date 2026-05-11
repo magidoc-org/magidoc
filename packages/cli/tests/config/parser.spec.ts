@@ -186,7 +186,7 @@ describe('parsing the magidoc config', () => {
               type: 'hmm',
             },
           },
-          ["Invalid input at path 'introspection.type'"],
+          ["Invalid discriminator value. Expected 'url' | 'sdl' | 'raw' | 'none' at path 'introspection.type'"],
         )
       })
     })
