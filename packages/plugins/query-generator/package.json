@@ -34,13 +34,13 @@
   },
   "devDependencies": {
     "@types/lodash": "4.17.24",
-    "@types/node": "25.7.0",
-    "@vitest/coverage-v8": "4.1.6",
+    "@types/node": "25.9.1",
+    "@vitest/coverage-v8": "4.1.7",
     "graphql-query-compress": "1.2.4",
-    "rollup": "4.60.3",
+    "rollup": "4.60.4",
     "typescript": "6.0.3",
-    "vite": "8.0.12",
-    "vitest": "4.1.6"
+    "vite": "8.0.14",
+    "vitest": "4.1.7"
   },
   "peerDependencies": {
     "graphql": "16.8.1"
