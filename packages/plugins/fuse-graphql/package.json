@@ -28,17 +28,17 @@
   },
   "dependencies": {
     "@magidoc/plugin-fuse-markdown": "workspace:^",
-    "fuse.js": "7.3.0",
-    "graphql": "16.14.0",
-    "marked": "18.0.3"
+    "fuse.js": "7.4.1",
+    "graphql": "16.14.1",
+    "marked": "18.0.4"
   },
   "devDependencies": {
-    "@types/node": "25.7.0",
-    "@vitest/coverage-v8": "4.1.6",
-    "rollup": "4.60.3",
+    "@types/node": "25.9.1",
+    "@vitest/coverage-v8": "4.1.8",
+    "rollup": "4.61.0",
     "typescript": "6.0.3",
-    "vite": "8.0.12",
-    "vitest": "4.1.6"
+    "vite": "8.0.16",
+    "vitest": "4.1.8"
   },
   "peerDependencies": {
     "fuse.js": "6.6.2"
