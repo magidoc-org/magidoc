@@ -53,12 +53,13 @@ onDestroy(() => {
         on:click={() => (searchOpen = true)}
       />
     {:else}
-      <div class="search-bar-wrapper">
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <div class="search-bar-wrapper" on:click={() => (searchOpen = true)}>
         <SearchBar
           placeholder={`Search ${appTitle}... (${isMac ? '⌘' : 'Ctrl'}+K)`}
           autocomplete={'off'}
           size="sm"
-          on:focus={() => (searchOpen = true)}
         />
       </div>
     {/if}

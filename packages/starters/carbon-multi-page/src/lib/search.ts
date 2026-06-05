@@ -80,33 +80,46 @@ const schemaSearch: Fuse<FuseGraphQLSearchResult> = indexSchema(schema, {
 })
 
 export function search(query: string): ReadonlyArray<MagidocSearchResult> {
-  const pagesResult: ReadonlyArray<MagidocSearchResult> = pagesSearch.search(query).map((result) => ({
-    type: 'markdown',
-    score: result.score || 0,
-    result: result.item,
-    matches: (result.matches || []).map((match) => ({
-      value: match.value || '',
-      location: match.key || '',
-      indices: collapseIndexes(match.indices),
-    })),
-  }))
+  const normalizedQuery = query.trim()
+  if (!normalizedQuery) return []
 
-  let schemaResult: ReadonlyArray<MagidocSearchResult> = []
-
-  if (!isModelEmpty()) {
-    schemaResult = schemaSearch.search(query).map((result) => ({
-      type: 'graphql',
+  const pagesResult: ReadonlyArray<MagidocSearchResult> = pagesSearch
+    .search(normalizedQuery)
+    .map((result) => ({
+      type: 'markdown' as const,
       score: result.score || 0,
       result: result.item,
       matches: (result.matches || []).map((match) => ({
         value: match.value || '',
         location: match.key || '',
-        indices: match.indices,
+        indices: collapseIndexes(match.indices),
       })),
     }))
+    .filter(hasMatches)
+
+  let schemaResult: ReadonlyArray<MagidocSearchResult> = []
+
+  if (!isModelEmpty()) {
+    schemaResult = schemaSearch
+      .search(normalizedQuery)
+      .map((result) => ({
+        type: 'graphql' as const,
+        score: result.score || 0,
+        result: result.item,
+        matches: (result.matches || []).map((match) => ({
+          value: match.value || '',
+          location: match.key || '',
+          indices: match.indices,
+        })),
+      }))
+      .filter(hasMatches)
   }
 
   return mergeResults(pagesResult, schemaResult)
+}
+
+function hasMatches(result: MagidocSearchResult): boolean {
+  return result.matches.length > 0
 }
 
 function mergeResults(
