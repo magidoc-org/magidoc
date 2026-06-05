@@ -39,7 +39,7 @@
   "dependencies": {
     "github-slugger": "2.0.0",
     "marked": "18.0.3",
-    "svelte": "5.55.5"
+    "svelte": "5.55.7"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "7.0.1",
