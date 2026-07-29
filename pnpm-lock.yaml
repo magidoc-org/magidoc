@@ -279,18 +279,12 @@ importers:
       '@rollup/plugin-typescript':
         specifier: 12.3.0
         version: 12.3.0(rollup@4.60.3)(tslib@2.8.1)(typescript@6.0.3)
-      '@types/lodash':
-        specifier: 4.17.24
-        version: 4.17.24
       '@types/node':
         specifier: 25.7.0
         version: 25.7.0
       '@vitest/coverage-v8':
         specifier: 4.1.6
         version: 4.1.6(vitest@4.1.6)
-      lodash:
-        specifier: 4.18.1
-        version: 4.18.1
       rollup:
         specifier: 4.60.3
         version: 4.60.3
@@ -316,18 +310,12 @@ importers:
       '@rollup/plugin-typescript':
         specifier: 12.3.0
         version: 12.3.0(rollup@4.60.3)(tslib@2.8.1)(typescript@6.0.3)
-      '@types/lodash':
-        specifier: 4.17.24
-        version: 4.17.24
       '@types/node':
         specifier: 25.7.0
         version: 25.7.0
       '@vitest/coverage-v8':
         specifier: 4.1.6
         version: 4.1.6(vitest@4.1.6)
-      lodash:
-        specifier: 4.18.1
-        version: 4.18.1
       rollup:
         specifier: 4.60.3
         version: 4.60.3

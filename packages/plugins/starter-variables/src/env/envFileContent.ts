@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import magidoc from '../variables/magidoc'
 import type { Variable } from '../variables/variable'
 
@@ -19,7 +18,7 @@ function buildEnv(
 ): Record<string, string> {
   let newRecord: Record<string, string> = {}
   const unsupportedVariables: string[] = []
-  _.forEach(options, (value, key) => {
+  Object.entries(options).forEach(([key, value]) => {
     const variable = supportedVariables.find((option) => option.name === key)
     if (!variable) {
       unsupportedVariables.push(key)
