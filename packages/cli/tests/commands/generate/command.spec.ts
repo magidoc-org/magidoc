@@ -46,7 +46,6 @@ describe('running the generate command', () => {
         expect(generate).toHaveBeenCalledOnce()
         expect(generate).toHaveBeenCalledWith({
           ...config,
-          packageManager: undefined,
           clean: false,
         })
       })
@@ -60,14 +59,12 @@ describe('running the generate command', () => {
 
     describe('with custom options', () => {
       it('should run the development server with the custom options', async () => {
-        await program.parseAsync(
-          ['generate', '--clean', '--stacktrace', '--package-manager', 'pnpm', '--file', './magidoc.second.mjs'],
-          { from: 'user' },
-        )
+        await program.parseAsync(['generate', '--clean', '--stacktrace', '--file', './magidoc.second.mjs'], {
+          from: 'user',
+        })
         expect(generate).toHaveBeenCalledOnce()
         expect(generate).toHaveBeenCalledWith({
           ...config,
-          packageManager: 'pnpm',
           clean: true,
         })
       })

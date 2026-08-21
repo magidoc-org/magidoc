@@ -1,95 +1,32 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { yellow } from '../../../src/commands/utils/outputColors'
-import { getPackageManager, selectPackageManager } from '../../../src/node/packageManager'
+import { createPackageManager } from '../../../src/node/packageManager'
 import { selectPackageManagerTask } from '../../../src/tasks/all/selectPackageManager'
 import { packageManagerMock, taskWrapperMock } from './utils'
 
 vi.mock('../../../src/node/packageManager')
 
 describe('selecting package manager', () => {
-  const defaultConfig = {
-    packageManager: 'pnpm',
+  const ctx = {
+    packageManager: packageManagerMock(),
   }
 
-  describe('task is enabled', () => {
-    const ctx = {
-      packageManager: packageManagerMock(),
-    }
+  const bundled = packageManagerMock()
 
-    describe('no package manager is specified', () => {
-      const noPackageManager = {
-        ...defaultConfig,
-        packageManager: undefined,
-      }
+  beforeEach(() => {
+    vi.mocked(createPackageManager).mockReturnValueOnce(bundled)
+  })
 
-      const availablePackageManager = packageManagerMock()
+  it('should use the bundled package manager', async () => {
+    const task = selectPackageManagerTask()
+    await task.executor(ctx, taskWrapperMock())
+    expect(ctx.packageManager).toBe(bundled)
+    expect(createPackageManager).toHaveBeenCalledOnce()
+  })
 
-      beforeEach(() => {
-        vi.mocked(selectPackageManager).mockReturnValueOnce(Promise.resolve(availablePackageManager))
-      })
-
-      it('should select an available package manager', async () => {
-        const task = selectPackageManagerTask(noPackageManager)
-        await task.executor(ctx, taskWrapperMock())
-        expect(ctx.packageManager).toBe(availablePackageManager)
-      })
-
-      it('should output the selected package manager', async () => {
-        const wrapper = taskWrapperMock()
-        const task = selectPackageManagerTask(noPackageManager)
-        await task.executor(ctx, wrapper)
-        expect(wrapper.output).toHaveBeenCalledWith(`Selected ${availablePackageManager.type}`)
-      })
-    })
-
-    describe('specifying pnpm as a package manager', () => {
-      const packageManager = packageManagerMock()
-      const withPackageManager = {
-        ...defaultConfig,
-        packageManager: 'pnpm' as const,
-      }
-
-      beforeEach(() => {
-        vi.mocked(getPackageManager).mockReturnValueOnce(packageManager)
-      })
-
-      it('should select an available package manager', async () => {
-        const task = selectPackageManagerTask(withPackageManager)
-        await task.executor(ctx, taskWrapperMock())
-        expect(ctx.packageManager).toBe(packageManager)
-        expect(getPackageManager).toHaveBeenCalledOnce()
-        expect(getPackageManager).toHaveBeenCalledWith(withPackageManager.packageManager)
-      })
-
-      it('should output the selected package manager', async () => {
-        const wrapper = taskWrapperMock()
-        const task = selectPackageManagerTask(withPackageManager)
-        await task.executor(ctx, wrapper)
-        expect(wrapper.output).toHaveBeenCalledWith(`Selected ${packageManager.type}`)
-      })
-    })
-
-    describe('package manager is not pnpm', () => {
-      beforeEach(() => {
-        vi.mocked(getPackageManager).mockReturnValueOnce({
-          ...packageManagerMock(),
-          type: 'yarn',
-        })
-      })
-
-      it('should output the selected package manager and a warning', async () => {
-        const wrapper = taskWrapperMock()
-        const task = selectPackageManagerTask({
-          ...defaultConfig,
-          packageManager: 'yarn' as const,
-        })
-        await task.executor(ctx, wrapper)
-        expect(wrapper.output).toHaveBeenCalledWith(
-          `Selected yarn${yellow(
-            '\n⚠️ This package manager is not well supported yet.\n⚠️ It is recommended to install pnpm instead.',
-          )}`,
-        )
-      })
-    })
+  it('should output the package manager it uses', async () => {
+    const wrapper = taskWrapperMock()
+    const task = selectPackageManagerTask()
+    await task.executor(ctx, wrapper)
+    expect(wrapper.output).toHaveBeenCalledWith('Using the pnpm bundled with Magidoc')
   })
 })

@@ -32,7 +32,7 @@ export default async function runDevelopmentServer(config: DevConfig) {
     warnVersionTask(config),
     determineTmpDirectoryTask(config),
     cleanTask(config),
-    selectPackageManagerTask(config),
+    selectPackageManagerTask(),
     fetchTemplateTask(config),
     unzipTemplateTask(config),
     installDependenciesTask(),

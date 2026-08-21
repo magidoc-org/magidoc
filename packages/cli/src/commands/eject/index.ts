@@ -1,4 +1,4 @@
-import type { PackageManager, PackageManagerType } from '../../node/packageManager'
+import type { PackageManager } from '../../node/packageManager'
 import { determineTmpDirectoryTask } from '../../tasks/all/determineTmpDir'
 import { fetchTemplateTask } from '../../tasks/all/fetchTemplate'
 import { installDependenciesTask } from '../../tasks/all/installDependencies'
@@ -10,7 +10,6 @@ import type { Template } from '../../template'
 import { type TmpLocation, tmpLocation } from '../../template/tmp'
 
 export type EjectConfig = {
-  packageManager: PackageManagerType
   destination: string
   website: {
     template: Template
@@ -33,7 +32,7 @@ export default async function eject(config: EjectConfig) {
       // This speeds up the installation
       tmpDirectory: destination,
     }),
-    selectPackageManagerTask(config),
+    selectPackageManagerTask(),
     verifyDestinationAvailableTask(config),
     fetchTemplateTask(config),
     unzipTemplateTask(config),

@@ -1,6 +1,4 @@
-import _ from 'lodash'
 import { type Mock, vi } from 'vitest'
-import { PACKAGE_MANAGER_TYPES, type PackageManagerType } from '../../../src/node/packageManager'
 
 export function taskWrapperMock(): {
   skip: Mock
@@ -13,13 +11,11 @@ export function taskWrapperMock(): {
 }
 
 export function packageManagerMock(): {
-  type: PackageManagerType
   buildProject: Mock
   runInstall: Mock
   startDevServer: Mock
 } {
   return {
-    type: _.sample(PACKAGE_MANAGER_TYPES) ?? 'pnpm',
     buildProject: vi.fn(),
     runInstall: vi.fn(),
     startDevServer: vi.fn(),
