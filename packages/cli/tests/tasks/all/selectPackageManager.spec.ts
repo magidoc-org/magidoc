@@ -86,7 +86,7 @@ describe('selecting package manager', () => {
         await task.executor(ctx, wrapper)
         expect(wrapper.output).toHaveBeenCalledWith(
           `Selected yarn${yellow(
-            '\n⚠️ This package manager is not well supported yet.\n⚠️ It is recommended to install pnpm instead.',
+            '\n⚠️ This package manager is not well supported yet.\n⚠️ It ignores the lockfile shipped with the template,\n⚠️ so transitive dependencies are resolved fresh and may break the build.',
           )}`,
         )
       })

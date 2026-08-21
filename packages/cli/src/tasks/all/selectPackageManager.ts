@@ -26,9 +26,9 @@ export function selectPackageManagerTask<T extends Ctx>(config: Config): Task<T>
       }
 
       let output = `Selected ${ctx.packageManager.type}`
-      if (ctx.packageManager.type !== 'pnpm') {
+      if (ctx.packageManager.type !== 'pnpm' && ctx.packageManager.type !== 'system-pnpm') {
         output += yellow(
-          '\n⚠️ This package manager is not well supported yet.\n⚠️ It is recommended to install pnpm instead.',
+          '\n⚠️ This package manager is not well supported yet.\n⚠️ It ignores the lockfile shipped with the template,\n⚠️ so transitive dependencies are resolved fresh and may break the build.',
         )
       }
 

@@ -1,9 +1,10 @@
-import { exec, spawn } from 'child_process'
-import { promisify } from 'util'
+import { type ChildProcessWithoutNullStreams, spawn } from 'child_process'
+import { createRequire } from 'module'
+import path from 'path'
 
-const execPromise = promisify(exec)
-
-export const PACKAGE_MANAGER_TYPES = ['pnpm', 'bun', 'yarn', 'npm'] as const
+// 'pnpm' is the pnpm bundled with the CLI, which is the version that resolved the template's
+// lockfile. 'system-pnpm' runs the one on the PATH instead.
+export const PACKAGE_MANAGER_TYPES = ['pnpm', 'system-pnpm', 'bun', 'yarn', 'npm'] as const
 
 export type PackageManagerType = (typeof PACKAGE_MANAGER_TYPES)[number]
 
@@ -26,37 +27,51 @@ export type PackageManager = {
 }
 
 export async function selectPackageManager(): Promise<PackageManager> {
-  if (await isPackageManagerAvailable('pnpm')) {
-    return createPnpm()
-  }
-
-  if (await isPackageManagerAvailable('bun')) {
-    return createRunner({ type: 'bun' })
-  }
-
-  if (await isPackageManagerAvailable('npm')) {
-    return createNpm()
-  }
-
-  if (await isPackageManagerAvailable('yarn')) {
-    return createYarn()
-  }
-
-  throw new Error(
-    `No Package Manager runner was found among the following: ${PACKAGE_MANAGER_TYPES.toString()}. Make sure that one of these is installed.`,
-  )
+  return Promise.resolve(createBundledPnpm())
 }
 
 export function getPackageManager(type: PackageManagerType) {
-  if (type === 'pnpm') return createPnpm()
+  if (type === 'pnpm') return createBundledPnpm()
+  if (type === 'system-pnpm') return createSystemPnpm()
   if (type === 'bun') return createBun()
   if (type === 'yarn') return createYarn()
   if (type === 'npm') return createNpm()
   throw new Error(`Unknown package manager ${type as string}.`)
 }
 
-function createPnpm(): PackageManager {
-  return createRunner({ type: 'pnpm' })
+function resolveBundledPnpm(): string {
+  try {
+    // pnpm only exposes './package.json' in its exports map, so the entrypoint cannot be
+    // resolved as a subpath and has to be read off the manifest.
+    const require = createRequire(import.meta.url)
+    const manifestPath = require.resolve('pnpm')
+    const manifest = require(manifestPath) as { bin: { pnpm: string } }
+    return path.join(path.dirname(manifestPath), manifest.bin.pnpm)
+  } catch (error) {
+    throw new Error(
+      'Could not resolve the pnpm bundled with the Magidoc CLI. Reinstall the CLI, or use --package-manager system-pnpm to run a pnpm from your PATH instead.',
+      { cause: error },
+    )
+  }
+}
+
+function createBundledPnpm(): PackageManager {
+  const bundledPnpm = resolveBundledPnpm()
+
+  const run = (args: string[], config: CommandConfiguration) => runNodeCommand([bundledPnpm, ...args], config)
+
+  return {
+    type: 'pnpm',
+    // Prefer rather than force, because --template-version can pair a template with a CLI
+    // whose pnpm cannot read its lockfile. That should re-resolve, not fail the build.
+    runInstall: (config) => run(['install', '--prefer-frozen-lockfile'], config),
+    buildProject: (config) => run(['run', 'build'], config),
+    startDevServer: (config) => run(['run', 'dev', '--host', config.host, '--port', config.port.toString()], config),
+  }
+}
+
+function createSystemPnpm(): PackageManager {
+  return createRunner({ type: 'system-pnpm', command: 'pnpm' })
 }
 
 function createYarn(): PackageManager {
@@ -71,27 +86,63 @@ function createBun(): PackageManager {
   return createRunner({ type: 'bun' })
 }
 
-function createRunner({ type, installArgs }: { type: PackageManagerType; installArgs?: string[] }): PackageManager {
+function createRunner({
+  type,
+  command = type,
+  installArgs,
+}: {
+  type: PackageManagerType
+  command?: string
+  installArgs?: string[]
+}): PackageManager {
   return {
     type,
-    runInstall: (config: CommandConfiguration) => runNodeCommand(type, ['install', ...(installArgs || [])], config),
-    buildProject: (config: CommandConfiguration) => runNodeCommand(type, ['run', 'build'], config),
+    runInstall: (config: CommandConfiguration) => runShellCommand(command, ['install', ...(installArgs || [])], config),
+    buildProject: (config: CommandConfiguration) => runShellCommand(command, ['run', 'build'], config),
     startDevServer: (config: DevServerCommandConfiguration) =>
-      runNodeCommand(type, ['run', 'dev', '--host', config.host, '--port', config.port.toString()], config),
+      runShellCommand(command, ['run', 'dev', '--host', config.host, '--port', config.port.toString()], config),
   }
 }
 
-async function runNodeCommand(command: string, args: string[], config: CommandConfiguration): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const child = spawn(command, args, {
-      cwd: config.cwd,
-      shell: true,
-      env: {
-        ...getCurrentEnvironment(),
-        ...config.env,
-      },
-    })
+function runNodeCommand(args: string[], config: CommandConfiguration): Promise<void> {
+  const child = spawn(process.execPath, args, {
+    cwd: config.cwd,
+    env: buildEnvironment(config),
+  })
 
+  return waitForChild(child, [process.execPath, ...args].join(' '), config)
+}
+
+function runShellCommand(command: string, args: string[], config: CommandConfiguration): Promise<void> {
+  const commandLine = [command, ...args.map(quoteShellArgument)].join(' ')
+
+  const child = spawn(commandLine, {
+    cwd: config.cwd,
+    shell: true,
+    env: buildEnvironment(config),
+  })
+
+  return waitForChild(child, commandLine, config)
+}
+
+function quoteShellArgument(argument: string): string {
+  if (process.platform === 'win32') {
+    if (argument.includes('"')) {
+      throw new Error(`Cannot pass the argument '${argument}' to a shell on Windows because it contains a quote.`)
+    }
+
+    return `"${argument}"`
+  }
+
+  return `'${argument.replaceAll("'", `'\\''`)}'`
+}
+
+function waitForChild(
+  child: ChildProcessWithoutNullStreams,
+  commandLine: string,
+  config: CommandConfiguration,
+): Promise<void> {
+  return new Promise((resolve, reject) => {
     let output = ''
     const stdHandler = (chunk: Buffer) => {
       output += String(chunk)
@@ -101,14 +152,9 @@ async function runNodeCommand(command: string, args: string[], config: CommandCo
 
     child.on('error', (error) => {
       reject(
-        new Error(
-          `Failed to launch command '${command}' with args '${args.toString()}' and config '${JSON.stringify(
-            config,
-          )}': ${error.message}`,
-          {
-            cause: error,
-          },
-        ),
+        new Error(`Failed to launch command '${commandLine}' in directory ${config.cwd}: ${error.message}`, {
+          cause: error,
+        }),
       )
     })
 
@@ -118,9 +164,9 @@ async function runNodeCommand(command: string, args: string[], config: CommandCo
       } else {
         reject(
           new Error(
-            `Command '${command}' failed with status ${code?.toString() || 'unknown'} when executed in directory ${
-              config.cwd
-            }\n\n---- Program Output----\n${output}`,
+            `Command '${commandLine}' failed with status ${
+              code?.toString() || 'unknown'
+            } when executed in directory ${config.cwd}\n\n---- Program Output----\n${output}`,
           ),
         )
       }
@@ -128,12 +174,10 @@ async function runNodeCommand(command: string, args: string[], config: CommandCo
   })
 }
 
-export async function isPackageManagerAvailable(type: PackageManagerType): Promise<boolean> {
-  try {
-    await execPromise(`${type} --version`)
-    return true
-  } catch {
-    return false
+function buildEnvironment(config: CommandConfiguration): Record<string, string> {
+  return {
+    ...getCurrentEnvironment(),
+    ...config.env,
   }
 }
 

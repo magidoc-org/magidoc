@@ -37,7 +37,10 @@ export default function buildEjectCommand(program: Command) {
     )
     .option('-d|--destination <directory>', 'Specifies the destination directory of the project', './template')
     .addOption(
-      new Option('-p|--package-manager <type>', 'Selects a different Package Manager. Pnpm is the recommended default.')
+      new Option(
+        '-p|--package-manager <type>',
+        'Selects a different Package Manager. Defaults to the pnpm bundled with the CLI, which is the only option that honors the lockfile shipped with the template.',
+      )
         .default('pnpm')
         .choices(PACKAGE_MANAGER_TYPES),
     )

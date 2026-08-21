@@ -20,6 +20,7 @@ module.exports = defineConfig({
     'os',
     'path',
     'js-yaml',
+    'module',
     'zod',
     'url',
     'sirv',
