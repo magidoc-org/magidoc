@@ -1,6 +1,5 @@
 import { type Command, Option } from 'commander'
 import path from 'path'
-import { PACKAGE_MANAGER_TYPES, type PackageManagerType } from '../../node/packageManager'
 import { AVAILABLE_TEMPLATES, type Template } from '../../template'
 import { getVersion } from '../../version'
 import { withStacktrace } from '../utils/withStacktrace'
@@ -9,7 +8,6 @@ import eject from '.'
 type EjectCommandOptions = {
   template: Template
   templateVersion: string
-  packageManager: PackageManagerType
   destination: string
   stacktrace: boolean
 }
@@ -36,19 +34,10 @@ export default function buildEjectCommand(program: Command) {
       ).default(getVersion()),
     )
     .option('-d|--destination <directory>', 'Specifies the destination directory of the project', './template')
-    .addOption(
-      new Option(
-        '-p|--package-manager <type>',
-        'Selects a different Package Manager. Defaults to the pnpm bundled with the CLI, which is the only option that honors the lockfile shipped with the template.',
-      )
-        .default('pnpm')
-        .choices(PACKAGE_MANAGER_TYPES),
-    )
     .addOption(STACKTRACE_OPTION())
-    .action(async ({ packageManager, template, templateVersion, destination, stacktrace }: EjectCommandOptions) => {
+    .action(async ({ template, templateVersion, destination, stacktrace }: EjectCommandOptions) => {
       await withStacktrace(stacktrace, async () => {
         await eject({
-          packageManager,
           website: {
             template,
             templateVersion,

@@ -29,7 +29,6 @@ describe('running the eject command', () => {
         })
         expect(eject).toHaveBeenCalledOnce()
         expect(eject).toHaveBeenCalledWith({
-          packageManager: 'pnpm',
           website: {
             template: 'carbon-multi-page',
             templateVersion: version,
@@ -50,15 +49,12 @@ describe('running the eject command', () => {
             '5.6.7',
             '--destination',
             './custom-destination',
-            '--package-manager',
-            'pnpm',
             '--stacktrace',
           ],
           { from: 'user' },
         )
         expect(eject).toHaveBeenCalledOnce()
         expect(eject).toHaveBeenCalledWith({
-          packageManager: 'pnpm',
           destination: path.resolve('./custom-destination'),
           website: {
             template: 'carbon-multi-page',

@@ -1,5 +1,5 @@
 import type { MagidocConfiguration } from '../../config/types'
-import type { PackageManager, PackageManagerType } from '../../node/packageManager'
+import type { PackageManager } from '../../node/packageManager'
 import { buildTemplateTask } from '../../tasks/all/buildTemplate'
 import { cleanTask } from '../../tasks/all/clean'
 import { copyStaticAssetsTask } from '../../tasks/all/copyStaticAssets'
@@ -20,7 +20,6 @@ import { executeAllTasks } from '../../tasks/runner'
 import type { TmpLocation } from '../../template/tmp'
 
 export type GenerationConfig = MagidocConfiguration & {
-  packageManager?: PackageManagerType
   clean: boolean
 }
 
@@ -36,7 +35,7 @@ export default async function generate(config: GenerationConfig) {
     warnVersionTask(config),
     determineTmpDirectoryTask(config),
     cleanTask(config),
-    selectPackageManagerTask(config),
+    selectPackageManagerTask(),
     fetchTemplateTask(config),
     unzipTemplateTask(config),
     installDependenciesTask(),

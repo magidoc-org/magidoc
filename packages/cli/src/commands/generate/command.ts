@@ -1,7 +1,6 @@
 import type { Command } from 'commander'
 import type { MagidocConfiguration } from '../../config/types'
-import type { PackageManagerType } from '../../node/packageManager'
-import { CLEAN_OPTION, CONFIG_FILE_OPTION, PACKAGE_MANAGER_OPTION, STACKTRACE_OPTION } from '../utils/commander'
+import { CLEAN_OPTION, CONFIG_FILE_OPTION, STACKTRACE_OPTION } from '../utils/commander'
 import { loadFileConfiguration } from '../utils/loadConfigFile'
 import { printInfo, printLine, printSeparator } from '../utils/log'
 import { cyan } from '../utils/outputColors'
@@ -10,7 +9,6 @@ import generate from '.'
 
 type GenerateCommandOptions = {
   file: string
-  packageManager?: PackageManagerType
   stacktrace: boolean
   clean: boolean
 }
@@ -24,10 +22,9 @@ export default function buildGenerateCommand(program: Command) {
       'Generates a full static website using a template. Using this command gives you access to a limited range of customization. If you wish to customize the website further than what is available, use the eject command.',
     )
     .addOption(CONFIG_FILE_OPTION())
-    .addOption(PACKAGE_MANAGER_OPTION())
     .addOption(CLEAN_OPTION())
     .addOption(STACKTRACE_OPTION())
-    .action(async ({ packageManager, file, stacktrace, clean }: GenerateCommandOptions) => {
+    .action(async ({ file, stacktrace, clean }: GenerateCommandOptions) => {
       const fileConfiguration = await loadFileConfiguration(file, stacktrace)
       if (!fileConfiguration) {
         process.exitCode = 1
@@ -37,7 +34,6 @@ export default function buildGenerateCommand(program: Command) {
       await withStacktrace(stacktrace, async () => {
         await generate({
           ...fileConfiguration,
-          packageManager,
           clean,
         })
 

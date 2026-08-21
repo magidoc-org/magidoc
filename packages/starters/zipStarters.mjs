@@ -8,16 +8,12 @@ import url from 'url'
 
 const basePath = url.fileURLToPath(new URL('.', import.meta.url))
 
-// Resolved through the CLI package so the lockfile is written by the same pnpm that will
-// later read it. A pnpm only honors a lockfile whose format it understands.
 const bundledPnpm = (() => {
   const require = createRequire(path.join(basePath, '..', 'cli', 'package.json'))
   const manifestPath = require.resolve('pnpm')
   return path.join(path.dirname(manifestPath), require(manifestPath).bin.pnpm)
 })()
 
-// Retries cover the delay before the just-published @magidoc packages are visible on the
-// registry, which the starter needs to resolve.
 const LOCKFILE_ATTEMPTS = 5
 const LOCKFILE_RETRY_DELAY_MS = 15_000
 
@@ -89,11 +85,7 @@ function runPnpm(args, cwd) {
   })
 }
 
-// Takes the same manifest string that gets archived, so the two cannot drift apart. A
-// mismatch makes `pnpm install` fail outright on frozen-lockfile installs.
 async function generateLockfile(starterDirectory, packageJson) {
-  // Must stage outside the repository: the root pnpm-workspace.yaml globs `packages/**`,
-  // so a directory inside the tree resolves against workspace links, not the registry.
   const stagingDirectory = fs.mkdtempSync(path.join(os.tmpdir(), `magidoc-lock-${path.basename(starterDirectory)}-`))
 
   try {

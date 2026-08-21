@@ -1,5 +1,4 @@
 import { InvalidArgumentError, Option } from 'commander'
-import { PACKAGE_MANAGER_TYPES } from '../../node/packageManager'
 
 export const DEFAULT_CONFIG_FILE = './magidoc.mjs'
 
@@ -22,13 +21,6 @@ export const CLEAN_OPTION = () => {
     '-c|--clean',
     'Clean install, so delete the local copy of the template if there is one and fetch it again.',
   ).default(false)
-}
-
-export const PACKAGE_MANAGER_OPTION = () => {
-  return new Option(
-    '-m|--package-manager <package-manager>',
-    'Selects a different Package Manager. Defaults to the pnpm bundled with the CLI, which is the only option that honors the lockfile shipped with the template. Use system-pnpm to run the pnpm from your PATH instead.',
-  ).choices(PACKAGE_MANAGER_TYPES)
 }
 
 export type IntOptionParameters = {
