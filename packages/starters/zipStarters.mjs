@@ -14,8 +14,8 @@ const bundledPnpm = (() => {
   return path.join(path.dirname(manifestPath), require(manifestPath).bin.pnpm)
 })()
 
-const LOCKFILE_ATTEMPTS = 5
-const LOCKFILE_RETRY_DELAY_MS = 15_000
+const LOCKFILE_ATTEMPTS = 10
+const LOCKFILE_RETRY_DELAY_MS = 30_000
 
 const VERSION = process.env.VERSION
 
