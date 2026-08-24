@@ -27,13 +27,13 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "12.3.0",
-    "@types/node": "25.7.0",
-    "@vitest/coverage-v8": "4.1.6",
-    "rollup": "4.60.3",
+    "@types/node": "26.2.0",
+    "@vitest/coverage-v8": "4.1.11",
+    "rollup": "4.62.5",
     "tslib": "2.8.1",
-    "typescript": "6.0.3",
-    "vite": "8.0.12",
-    "vitest": "4.1.6"
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "4.1.11"
   },
   "optionalDependencies": {
     "zod": "4.4.3"

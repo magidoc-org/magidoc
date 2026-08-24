@@ -40,19 +40,19 @@
   },
   "dependencies": {
     "prismjs": "1.30.0",
-    "svelte": "5.55.5"
+    "svelte": "5.56.10"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "7.0.1",
-    "@sveltejs/kit": "2.59.1",
-    "@sveltejs/package": "2.5.7",
-    "@sveltejs/vite-plugin-svelte": "7.1.2",
-    "@types/node": "25.7.0",
+    "@sveltejs/kit": "2.70.3",
+    "@sveltejs/package": "2.5.8",
+    "@sveltejs/vite-plugin-svelte": "7.3.0",
+    "@types/node": "26.2.0",
     "@types/prismjs": "1.26.6",
-    "svelte-check": "4.4.8",
+    "svelte-check": "4.7.6",
     "tslib": "2.8.1",
-    "typescript": "6.0.3",
-    "vite": "8.0.12"
+    "typescript": "7.0.2",
+    "vite": "8.2.2"
   },
   "peerDependencies": {
     "prismjs": "1.29.0"
