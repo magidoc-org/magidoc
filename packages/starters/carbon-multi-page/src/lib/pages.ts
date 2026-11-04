@@ -125,7 +125,7 @@ function getDefaultPages(): VariablePage[] {
           content: `
         # Welcome 🎉
 
-        [Congratulations!](https://www.youtube.com/watch?v=1Bix44C1EzY) You have successfully created your first Magidoc website.
+        [Congratulations!](https://www.youtube.com/watch?v=S22_DuaoHCU) You have successfully created your first Magidoc website.
 
         Now that you are up and running, you can customize this website even further by providing some configuration inside your [magidoc.mjs ⚙️](https://magidoc.js.org/cli/magidoc-configuration). 
         If you wish to remove or modify this page, have a look at the *customPages* configuration.

@@ -22,7 +22,7 @@ export default {
     paths: [relativePath('./schema.graphqls')],
   },
   website: {
-    template: 'carbon-multi-page',
+    template: 'skeleton-multi-page',
     staticAssets: relativePath('./assets'),
     options: {
       appTitle: 'SpaceX GraphQL API',

@@ -36,7 +36,7 @@ export default {
     paths: [relativePath(`./schemas/${target}.graphqls`)],
   },
   website: {
-    template: 'carbon-multi-page',
+    template: 'skeleton-multi-page',
     output: relativePath(`./website${config.siteRoot}`),
     options: {
       appTitle: config.appTitle,
