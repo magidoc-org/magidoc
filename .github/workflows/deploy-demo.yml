@@ -27,7 +27,7 @@ jobs:
       - name: Generate Examples
         run: |
           cd packages/examples/spacex
-          pnpm dlx @magidoc/cli@latest generate
+          npx --yes @magidoc/cli@latest generate
 
       - name: Publish
         run: |
