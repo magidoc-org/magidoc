@@ -5,18 +5,6 @@
     <loc>https://magidoc.js.org</loc>
   </url>
   <url>
-    <loc>https://magidoc.js.org/cli/command-dev</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/cli/command-eject</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/cli/command-generate</loc>
-  </url>
-  <url>
-    <loc>https://magidoc.js.org/cli/magidoc-configuration</loc>
-  </url>
-  <url>
     <loc>https://magidoc.js.org/deployment/apache</loc>
   </url>
   <url>
@@ -30,6 +18,18 @@
   </url>
   <url>
     <loc>https://magidoc.js.org/deployment/vercel</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/cli/command-dev</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/cli/command-eject</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/cli/command-generate</loc>
+  </url>
+  <url>
+    <loc>https://magidoc.js.org/cli/magidoc-configuration</loc>
   </url>
   <url>
     <loc>https://magidoc.js.org/introduction/quickstart</loc>
