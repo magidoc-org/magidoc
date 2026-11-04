@@ -207,7 +207,7 @@ describe('parsing the magidoc config', () => {
             },
           },
           [
-            "Template should be either a valid template name among [carbon-multi-page] or a path to a Magidoc template directory at path 'website.template'",
+            "Template should be either a valid template name among [carbon-multi-page, skeleton-multi-page] or a path to a Magidoc template directory at path 'website.template'",
           ],
         )
       })
@@ -250,7 +250,7 @@ describe('parsing the magidoc config', () => {
             },
           },
           [
-            "Template should be either a valid template name among [carbon-multi-page] or a path to a Magidoc template directory at path 'website.template'",
+            "Template should be either a valid template name among [carbon-multi-page, skeleton-multi-page] or a path to a Magidoc template directory at path 'website.template'",
           ],
         )
       })

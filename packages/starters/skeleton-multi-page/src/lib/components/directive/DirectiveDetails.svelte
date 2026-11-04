@@ -1,0 +1,25 @@
+<script lang="ts">
+import type { GraphQLArgument, GraphQLDirective } from 'graphql'
+import { getAllowedArgumentsByDirective } from '$lib/model'
+import AnchorHeader from '../common/text/AnchorHeader.svelte'
+import AppMarkdown from '../markdown/AppMarkdown.svelte'
+import ArgsList from '../query/list/ArgsList.svelte'
+
+export let directive: GraphQLDirective
+
+let allowedArgs: ReadonlyArray<GraphQLArgument>
+$: allowedArgs = getAllowedArgumentsByDirective(directive)
+</script>
+
+<section>
+  <AnchorHeader id={'title'} depth={1}>
+    {directive.name}
+  </AnchorHeader>
+
+  <AppMarkdown source={directive.description} />
+
+  {#if allowedArgs.length > 0}
+    <AnchorHeader id={'arguments'} depth={2}>Arguments</AnchorHeader>
+    <ArgsList data={allowedArgs} />
+  {/if}
+</section>

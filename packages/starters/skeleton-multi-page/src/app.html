@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" data-theme="cerberus">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Magidoc" />
+        <meta
+            name="generator-url"
+            content="https://github.com/magidoc-org/magidoc"
+        />
+
+        %sveltekit.head%
+        <script>
+            (() => {
+                const media = window.matchMedia('(prefers-color-scheme: dark)')
+                const stored = () => {
+                    try {
+                        return localStorage.getItem('mode')
+                    } catch {
+                        return null
+                    }
+                }
+                const apply = () => {
+                    document.documentElement.dataset.mode = stored() ?? (media.matches ? 'dark' : 'light')
+                }
+                apply()
+                media.addEventListener('change', apply)
+            })()
+        </script>
+    </head>
+    <body>
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
+</html>
