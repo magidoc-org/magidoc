@@ -71,6 +71,10 @@
     {
       "name": "Starters/Carbon-Multi-Page",
       "path": "./packages/starters/carbon-multi-page"
+    },
+    {
+      "name": "Starters/Skeleton-Multi-Page",
+      "path": "./packages/starters/skeleton-multi-page"
     }
   ],
   "extensions": {

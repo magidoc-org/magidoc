@@ -10,7 +10,7 @@ const config = {
     type: 'none',
   },
   website: {
-    template: fileURLToPath(new URL('../packages/starters/carbon-multi-page', import.meta.url)),
+    template: fileURLToPath(new URL('../packages/starters/skeleton-multi-page', import.meta.url)),
     output: fileURLToPath(new URL('./build', import.meta.url)),
     staticAssets: fileURLToPath(new URL('./assets', import.meta.url)),
     options: {
@@ -26,7 +26,7 @@ const config = {
         },
         {
           group: 'Demo',
-          label: 'Carbon-Multi-Page',
+          label: 'SpaceX demo',
           href: 'https://magidoc-carbon-multi-page.netlify.app/welcome',
         },
         {

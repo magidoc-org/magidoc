@@ -31,6 +31,7 @@ root
     │   └── ...
     └── starters (4)
         ├── carbon-multi-page
+        ├── skeleton-multi-page
         └── ...
 ```
 
