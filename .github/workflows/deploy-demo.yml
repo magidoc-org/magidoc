@@ -33,7 +33,7 @@ jobs:
       - name: Publish
         run: |
           cd packages/examples/spacex
-          pnpm dlx netlify-cli@latest deploy --prod --dir "./docs"
+          pnpm --package=netlify-cli@latest dlx netlify deploy --prod --dir "./docs"
         env:
           NETLIFY_SITE_ID: ${{ secrets.CARBON_MULTI_PAGE_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
