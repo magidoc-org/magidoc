@@ -3,3 +3,5 @@ allowBuilds:
 
 overrides:
   esrap: "<=2.3.2"
+minimumReleaseAgeExclude:
+  - "@magidoc/*"
