@@ -1,12 +1,10 @@
 <script lang="ts">
 import type { Menu, Page, PageTree } from '@magidoc/plugin-starter-common'
-import { templates } from '@magidoc/plugin-starter-variables'
 import { Navigation } from '@skeletonlabs/skeleton-svelte'
 import { ChevronDown } from 'carbon-icons-svelte'
 import { onMount, tick } from 'svelte'
 import { afterNavigate } from '$app/navigation'
 import { page } from '$app/stores'
-import { getOrDefault } from '$lib/variables'
 import AppPageNavigation from './AppPageNavigation.svelte'
 import NavigationLinks from './NavigationLinks.svelte'
 
@@ -14,7 +12,6 @@ export let isOpen = false
 export let content: ReadonlyArray<PageTree>
 
 const collapseAbove = 15
-const prerenderNavigation = getOrDefault(templates.PRERENDER_NAVIGATION, true)
 
 let filter = ''
 let navigation: HTMLElement
@@ -87,7 +84,7 @@ afterNavigate(async () => {
                 {item.title}
                 <ChevronDown size={16} class="transition-transform group-open:rotate-180" />
               </summary>
-              {#if prerenderNavigation || (mounted ? query || openSections[item.title] : item.children.length <= collapseAbove)}
+              {#if mounted ? query || openSections[item.title] : item.children.length <= collapseAbove}
                 <Navigation.Menu class="mt-1 gap-0.5">
                   {#each pages as subItem}
                     <AppPageNavigation item={subItem} />
