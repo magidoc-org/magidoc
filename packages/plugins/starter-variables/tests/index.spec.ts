@@ -26,6 +26,7 @@ describe('variables', () => {
         'PAGES',
         'EXTERNAL_LINKS',
         'DIRECTIVES',
+        'PRERENDER_NAVIGATION',
       ])
     })
 
@@ -130,6 +131,10 @@ describe('variables', () => {
           )
           .optional(),
       )
+    })
+
+    test('prerender navigation', () => {
+      testBooleanVariable(variables.templates.PRERENDER_NAVIGATION, 'PRERENDER_NAVIGATION', z.boolean().optional())
     })
   })
 

@@ -17,6 +17,7 @@ export const SUPPORTED_OPTIONS = [
   templates.PAGES,
   templates.EXTERNAL_LINKS,
   templates.DIRECTIVES,
+  templates.PRERENDER_NAVIGATION,
 ]
 
 export const SCHEMA_TARGET_LOCATION = './src/_schema.graphqls'

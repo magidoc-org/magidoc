@@ -1,5 +1,5 @@
 import type { ZodType } from 'zod'
-import { arrayConverter, recordConverter, stringConverter } from './converters'
+import { arrayConverter, booleanConverter, recordConverter, stringConverter } from './converters'
 import { enumConverter } from './converters/enum'
 import { createVariable } from './variable'
 
@@ -81,4 +81,5 @@ export default {
       })
     }),
   ),
+  PRERENDER_NAVIGATION: createVariable<boolean>('PRERENDER_NAVIGATION', booleanConverter()),
 }
