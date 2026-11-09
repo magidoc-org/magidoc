@@ -1,5 +1,5 @@
 <script lang="ts">
-import { setupMarkedExtensions } from '$lib/markdown'
+import { setupMarkedExtensions } from '#lib/markdown'
 import '../app.css'
 import '../prism-theme.css'
 import '@magidoc/plugin-svelte-prismjs'
@@ -19,14 +19,14 @@ import 'prismjs/components/prism-markdown.js'
 import 'prism-svelte'
 import { templates } from '@magidoc/plugin-starter-variables'
 import Prism from 'prismjs'
+import AppHeader from '#lib/layout/AppHeader.svelte'
+import AppNavigation from '#lib/layout/nav/AppNavigation.svelte'
+import PageOutline from '#lib/layout/PageOutline.svelte'
+import { siteMeta } from '#lib/meta'
+import { pages } from '#lib/pages'
+import { siteStyles } from '#lib/styles'
+import { get } from '#lib/variables'
 import { afterNavigate } from '$app/navigation'
-import AppHeader from '$lib/layout/AppHeader.svelte'
-import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
-import PageOutline from '$lib/layout/PageOutline.svelte'
-import { siteMeta } from '$lib/meta'
-import { pages } from '$lib/pages'
-import { siteStyles } from '$lib/styles'
-import { get } from '$lib/variables'
 
 setupMarkedExtensions()
 

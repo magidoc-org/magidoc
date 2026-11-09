@@ -1,16 +1,17 @@
 <script lang="ts">
+import { getDefaultValue } from '@magidoc/plugin-query-generator'
 import { templates } from '@magidoc/plugin-starter-variables'
 import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
 import type { GraphQLArgument } from 'graphql'
 import _ from 'lodash'
-import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
-import DirectivesList from '$lib/components/directive/DirectivesList.svelte'
-import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
-import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
-import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
-import NullableTag from '$lib/components/tags/NullableTag.svelte'
-import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
-import { getOrDefault } from '$lib/variables'
+import DefaultValueDisplay from '#lib/components/common/text/DefaultValueDisplay.svelte'
+import DirectivesList from '#lib/components/directive/DirectivesList.svelte'
+import CarbonMarkdown from '#lib/components/markdown/CarbonMarkdown.svelte'
+import DeprecatedTag from '#lib/components/tags/DeprecatedTag.svelte'
+import DirectiveTag from '#lib/components/tags/DirectiveTag.svelte'
+import NullableTag from '#lib/components/tags/NullableTag.svelte'
+import TypeLinkTag from '#lib/components/tags/TypeLinkTag.svelte'
+import { getOrDefault } from '#lib/variables'
 
 export let data: ReadonlyArray<GraphQLArgument>
 
@@ -22,7 +23,7 @@ function convertItems(data: ReadonlyArray<GraphQLArgument>) {
     deprecationReason: arg.deprecationReason,
     name: arg.name,
     description: arg.description,
-    default: arg.defaultValue,
+    default: getDefaultValue(arg),
     type: arg.type,
     directives: arg.astNode?.directives || [],
   }))

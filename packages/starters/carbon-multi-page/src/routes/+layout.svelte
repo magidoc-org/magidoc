@@ -1,5 +1,5 @@
 <script lang="ts">
-import { setupMarkedExtensions } from '$lib/markdown'
+import { setupMarkedExtensions } from '#lib/markdown'
 import '../app.css'
 import '../prism-theme.css'
 import '@magidoc/plugin-svelte-prismjs'
@@ -20,14 +20,13 @@ import 'prism-svelte'
 import { templates } from '@magidoc/plugin-starter-variables'
 import { Column, Content, Grid, Row } from 'carbon-components-svelte'
 import Prism from 'prismjs'
-import { onDestroy } from 'svelte'
-import { page } from '$app/stores'
-import AppHeader from '$lib/layout/AppHeader.svelte'
-import AppNavigation from '$lib/layout/nav/AppNavigation.svelte'
-import { siteMeta } from '$lib/meta'
-import { pages } from '$lib/pages'
-import { siteStyles } from '$lib/styles'
-import { get } from '$lib/variables'
+import AppHeader from '#lib/layout/AppHeader.svelte'
+import AppNavigation from '#lib/layout/nav/AppNavigation.svelte'
+import { siteMeta } from '#lib/meta'
+import { pages } from '#lib/pages'
+import { siteStyles } from '#lib/styles'
+import { get } from '#lib/variables'
+import { afterNavigate } from '$app/navigation'
 
 setupMarkedExtensions()
 
@@ -47,14 +46,11 @@ let mobile = false
 
 const favicon = get(templates.APP_FAVICON)
 
-const unsubscribe = page.subscribe(() => {
-  // Mobile
+afterNavigate(() => {
   if (mobile) {
     isSideNavOpen = false
   }
 })
-
-onDestroy(unsubscribe)
 
 if (import.meta.hot) {
   import.meta.hot.on('variables-changed', () => {

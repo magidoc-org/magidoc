@@ -1,11 +1,11 @@
 <script lang="ts">
-import AppExpandButton from '$lib/components/common/AppExpandButton.svelte'
-import FieldSignature from '$lib/components/common/text/FieldSignature.svelte'
-import DirectivesList from '$lib/components/directive/DirectivesList.svelte'
-import AppMarkdown from '$lib/components/markdown/AppMarkdown.svelte'
-import ArgsList from '$lib/components/query/list/ArgsList.svelte'
-import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
-import type { FieldWithPossibleDescriptions } from '$lib/model'
+import AppExpandButton from '#lib/components/common/AppExpandButton.svelte'
+import FieldSignature from '#lib/components/common/text/FieldSignature.svelte'
+import DirectivesList from '#lib/components/directive/DirectivesList.svelte'
+import AppMarkdown from '#lib/components/markdown/AppMarkdown.svelte'
+import ArgsList from '#lib/components/query/list/ArgsList.svelte'
+import DeprecatedTag from '#lib/components/tags/DeprecatedTag.svelte'
+import type { FieldWithPossibleDescriptions } from '#lib/model'
 import LocationSpecificDescription from './LocationSpecificDescription.svelte'
 
 export let item: FieldWithPossibleDescriptions

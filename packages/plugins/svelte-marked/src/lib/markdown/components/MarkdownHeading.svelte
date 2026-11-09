@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { Tokens } from 'marked'
-import { generatePathSegment } from '$lib/utils/url'
+import { generatePathSegment } from '../../utils/url'
 import type { MarkdownOptions, Renderers } from '../markedConfiguration'
 
 export let token: Tokens.Heading

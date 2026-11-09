@@ -5,7 +5,6 @@ export default defineConfig({
   test: {
     mockReset: true,
     coverage: {
-      all: true,
       reporter: ['clover', 'lcov', 'html'],
       include: ['src'],
     },

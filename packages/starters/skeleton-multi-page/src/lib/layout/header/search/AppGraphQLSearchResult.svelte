@@ -1,8 +1,8 @@
 <script lang="ts">
 import { SearchResultType } from '@magidoc/plugin-fuse-graphql'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
-import type { GraphQLSearchResult } from '$lib/search'
-import { getSiteRoot } from '$lib/variables'
+import type { GraphQLSearchResult } from '#lib/search'
+import { getSiteRoot } from '#lib/variables'
 import AppSearchHighlight from './AppSearchHighlight.svelte'
 import HeaderCrumb from './HeaderCrumb.svelte'
 

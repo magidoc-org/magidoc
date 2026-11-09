@@ -1,19 +1,19 @@
 <script lang="ts">
-import { page } from '$app/stores'
+import { page } from '$app/state'
 
 let error: string
 $: {
-  const message: string = ($page.error as Error)?.message || 'An unexpected error occurred.'
+  const message: string = page.error?.message || 'An unexpected error occurred.'
   error = message.endsWith('.') ? message : `${message}.`
 }
 </script>
 
 <svelte:head>
-  <title>Error - {$page.status}</title>
+  <title>Error - {page.status}</title>
 </svelte:head>
 
 <div class="wrapper">
-  <h1>{$page.status}</h1>
+  <h1>{page.status}</h1>
 
   <p>{error}</p>
 </div>

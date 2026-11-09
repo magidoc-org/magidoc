@@ -1,5 +1,5 @@
 {
-  "extends": "./.svelte-kit/tsconfig.json",
+  "extends": "$app/tsconfig",
   "compilerOptions": {
     "moduleResolution": "bundler",
     "strict": true,
@@ -7,6 +7,11 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "#lib": ["./src/lib"],
+      "#lib/*": ["./src/lib/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts"]
 }

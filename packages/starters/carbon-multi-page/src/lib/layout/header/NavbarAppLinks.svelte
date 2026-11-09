@@ -2,7 +2,7 @@
 import { type ExternalLink, templates } from '@magidoc/plugin-starter-variables'
 import { HeaderAction, HeaderPanelDivider, HeaderPanelLinks } from 'carbon-components-svelte'
 import _ from 'lodash'
-import { getOrDefault } from '$lib/variables'
+import { getOrDefault } from '#lib/variables'
 import AppLink from './AppLink.svelte'
 
 const links = getOrDefault(templates.EXTERNAL_LINKS, []).filter(

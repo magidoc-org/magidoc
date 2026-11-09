@@ -267,17 +267,19 @@ describe('generating default values', () => {
         expect(runFactory(set.type, input)).toEqual(set.expected)
       })
 
-      test.each(
-        set.names.map((name) => name.toLocaleLowerCase()),
-      )(`should generate '${set.type}' for input name '%s'`, (input) => {
-        expect(runFactory(set.type, input)).toEqual(set.expected)
-      })
+      test.each(set.names.map((name) => name.toLocaleLowerCase()))(
+        `should generate '${set.type}' for input name '%s'`,
+        (input) => {
+          expect(runFactory(set.type, input)).toEqual(set.expected)
+        },
+      )
 
-      test.each(
-        set.names.map((name) => name[0] + name.slice(1)),
-      )(`should generate '${set.type}' for input name '%s'`, (input) => {
-        expect(runFactory(set.type, input)).toEqual(set.expected)
-      })
+      test.each(set.names.map((name) => name[0] + name.slice(1)))(
+        `should generate '${set.type}' for input name '%s'`,
+        (input) => {
+          expect(runFactory(set.type, input)).toEqual(set.expected)
+        },
+      )
     })
   })
 })

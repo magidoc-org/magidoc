@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit'
-import { getTypeByName, getTypeUsages, isModelEmpty } from '$lib/model'
-import { findPageByHref } from '$lib/pages'
+import { getTypeByName, getTypeUsages, isModelEmpty } from '#lib/model'
+import { findPageByHref } from '#lib/pages'
 import type { PageLoad } from './$types'
 
 export const prerender = !isModelEmpty()

@@ -1,5 +1,5 @@
 <script lang="ts">
-import AppTag from '$lib/components/common/AppTag.svelte'
+import AppTag from '#lib/components/common/AppTag.svelte'
 import type { TagsToken } from './Tags'
 
 export let token: TagsToken

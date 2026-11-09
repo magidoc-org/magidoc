@@ -1,6 +1,6 @@
 <script lang="ts">
-import lightLogo from '$lib/assets/logo-light.png'
-import { appLogoURL, DEFAULT_LOGO } from '$lib/logo'
+import lightLogo from '#lib/assets/logo-light.png'
+import { appLogoURL, DEFAULT_LOGO } from '#lib/logo'
 </script>
 
 {#if appLogoURL === DEFAULT_LOGO}

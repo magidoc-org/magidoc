@@ -6,7 +6,6 @@ export default defineConfig({
     setupFiles: ['./tests/schema.setup.ts'],
     mockReset: true,
     coverage: {
-      all: true,
       reporter: ['clover', 'lcov', 'html'],
       include: ['src'],
     },

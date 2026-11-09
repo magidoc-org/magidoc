@@ -2,9 +2,9 @@
 import { AppBar } from '@skeletonlabs/skeleton-svelte'
 import { Close, Menu, Search } from 'carbon-icons-svelte'
 import { onMount } from 'svelte'
-import { base } from '$app/paths'
-import AppIcon from '$lib/components/common/AppIcon.svelte'
-import { appTitle } from '$lib/pages'
+import AppIcon from '#lib/components/common/AppIcon.svelte'
+import { appTitle } from '#lib/pages'
+import { resolve } from '$app/paths'
 import AppSearch from './header/AppSearch.svelte'
 import HeaderAppLinks from './header/HeaderAppLinks.svelte'
 import ModeToggle from './header/ModeToggle.svelte'
@@ -40,7 +40,7 @@ function onKeydown(e: KeyboardEvent) {
       >
         <svelte:component this={isSideNavOpen ? Close : Menu} size={20} />
       </button>
-      <a href={base || '/'} class="flex h-10 items-center [&_img]:h-full">
+      <a href={resolve('/')} class="flex h-10 items-center [&_img]:h-full">
         <AppIcon />
       </a>
     </AppBar.Lead>

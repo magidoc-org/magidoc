@@ -1,12 +1,13 @@
 <script lang="ts">
+import { getDefaultValue } from '@magidoc/plugin-query-generator'
 import { StructuredList, StructuredListBody, StructuredListCell, StructuredListRow } from 'carbon-components-svelte'
 import type { GraphQLInputField } from 'graphql'
 import _ from 'lodash'
-import DefaultValueDisplay from '$lib/components/common/text/DefaultValueDisplay.svelte'
-import CarbonMarkdown from '$lib/components/markdown/CarbonMarkdown.svelte'
-import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
-import NullableTag from '$lib/components/tags/NullableTag.svelte'
-import TypeLinkTag from '$lib/components/tags/TypeLinkTag.svelte'
+import DefaultValueDisplay from '#lib/components/common/text/DefaultValueDisplay.svelte'
+import CarbonMarkdown from '#lib/components/markdown/CarbonMarkdown.svelte'
+import DeprecatedTag from '#lib/components/tags/DeprecatedTag.svelte'
+import NullableTag from '#lib/components/tags/NullableTag.svelte'
+import TypeLinkTag from '#lib/components/tags/TypeLinkTag.svelte'
 
 export let data: ReadonlyArray<GraphQLInputField>
 
@@ -18,7 +19,7 @@ $: items =
       name: arg.name,
       type: arg.type,
       description: arg.description,
-      default: arg.defaultValue,
+      default: getDefaultValue(arg),
     })),
     (item) => item.name,
   ) || []
