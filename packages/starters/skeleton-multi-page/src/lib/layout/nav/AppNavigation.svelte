@@ -2,7 +2,7 @@
 import type { Menu, Page, PageTree } from '@magidoc/plugin-starter-common'
 import { Navigation } from '@skeletonlabs/skeleton-svelte'
 import { ChevronDown } from 'carbon-icons-svelte'
-import { tick } from 'svelte'
+import { onMount, tick } from 'svelte'
 import { afterNavigate } from '$app/navigation'
 import { page } from '$app/stores'
 import AppPageNavigation from './AppPageNavigation.svelte'
@@ -15,6 +15,8 @@ const collapseAbove = 15
 
 let filter = ''
 let navigation: HTMLElement
+let mounted = false
+onMount(() => (mounted = true))
 
 const menus = content.filter((item): item is Menu => item.type !== 'page')
 
@@ -82,11 +84,13 @@ afterNavigate(async () => {
                 {item.title}
                 <ChevronDown size={16} class="transition-transform group-open:rotate-180" />
               </summary>
-              <Navigation.Menu class="mt-1 gap-0.5">
-                {#each pages as subItem}
-                  <AppPageNavigation item={subItem} />
-                {/each}
-              </Navigation.Menu>
+              {#if mounted ? query || openSections[item.title] : item.children.length <= collapseAbove}
+                <Navigation.Menu class="mt-1 gap-0.5">
+                  {#each pages as subItem}
+                    <AppPageNavigation item={subItem} />
+                  {/each}
+                </Navigation.Menu>
+              {/if}
             </details>
           {/if}
         {/if}
