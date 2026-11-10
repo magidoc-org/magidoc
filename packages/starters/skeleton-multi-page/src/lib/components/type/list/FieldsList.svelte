@@ -1,8 +1,8 @@
 <script lang="ts">
 import { templates } from '@magidoc/plugin-starter-variables'
 import _ from 'lodash'
-import type { FieldWithPossibleDescriptions } from '$lib/model'
-import { getOrDefault } from '$lib/variables'
+import type { FieldWithPossibleDescriptions } from '#lib/model'
+import { getOrDefault } from '#lib/variables'
 import FieldsTableRow from './FieldsListRow.svelte'
 
 export let data: ReadonlyArray<FieldWithPossibleDescriptions>

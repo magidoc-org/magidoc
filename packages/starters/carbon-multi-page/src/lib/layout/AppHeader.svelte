@@ -3,10 +3,10 @@ import 'carbon-components-svelte/css/all.css'
 import { Header, HeaderGlobalAction, HeaderUtilities, Search as SearchBar } from 'carbon-components-svelte'
 import { Search } from 'carbon-icons-svelte'
 import { onDestroy, onMount } from 'svelte'
-import { browser } from '$app/environment'
-import { base } from '$app/paths'
-import AppIcon from '$lib/components/common/AppIcon.svelte'
-import { appTitle } from '$lib/pages'
+import AppIcon from '#lib/components/common/AppIcon.svelte'
+import { appTitle } from '#lib/pages'
+import { browser } from '$app/env'
+import { resolve } from '$app/paths'
 import AppSearchResults from './header/AppSearch.svelte'
 import HeaderAppLinks from './header/HeaderAppLinks.svelte'
 import NavbarAppLinks from './header/NavbarAppLinks.svelte'
@@ -41,7 +41,7 @@ onDestroy(() => {
 })
 </script>
 
-<Header href={base || '/'} bind:isSideNavOpen expandedByDefault>
+<Header href={resolve('/')} bind:isSideNavOpen expandedByDefault>
   <div slot="platform" class="header-logo-wrapper">
     <AppIcon />
   </div>

@@ -4,7 +4,7 @@ import { Navigation } from '@skeletonlabs/skeleton-svelte'
 import { ChevronDown } from 'carbon-icons-svelte'
 import { onMount, tick } from 'svelte'
 import { afterNavigate } from '$app/navigation'
-import { page } from '$app/stores'
+import { page } from '$app/state'
 import AppPageNavigation from './AppPageNavigation.svelte'
 import NavigationLinks from './NavigationLinks.svelte'
 
@@ -24,9 +24,9 @@ let openSections: Record<string, boolean> = Object.fromEntries(
   menus.map((menu) => [menu.title, menu.children.length <= collapseAbove]),
 )
 
-$: currentMenu = menus.find((menu) =>
-  menu.children.some((child) => child.type === 'page' && child.href === $page.url.pathname),
-)
+let pathname = page.url.pathname
+
+$: currentMenu = menus.find((menu) => menu.children.some((child) => child.type === 'page' && child.href === pathname))
 $: if (currentMenu) openSections[currentMenu.title] = true
 
 $: query = filter.trim().toLowerCase()
@@ -36,6 +36,7 @@ function matchingPages(items: ReadonlyArray<PageTree>, query: string): Page[] {
 }
 
 afterNavigate(async () => {
+  pathname = page.url.pathname
   await tick()
   navigation?.querySelector('[aria-current="page"]')?.scrollIntoView({ block: 'nearest' })
 })

@@ -7,9 +7,20 @@ export type UnzipConfiguration = {
   destination: string
 }
 
+const MAX_EXTRACTED_BYTES = 100 * 1024 * 1024
+
 export async function unzipTemplate(config: UnzipConfiguration) {
   const root = path.resolve(config.destination)
-  const files = unzipSync(await fs.readFile(config.zipLocation))
+  let extractedBytes = 0
+  const files = unzipSync(await fs.readFile(config.zipLocation), {
+    filter: (entry) => {
+      extractedBytes += entry.originalSize
+      if (extractedBytes > MAX_EXTRACTED_BYTES) {
+        throw new Error(`Refusing to extract more than ${MAX_EXTRACTED_BYTES} bytes from ${config.zipLocation}`)
+      }
+      return true
+    },
+  })
 
   // Validate every entry before writing anything, so a rejected archive leaves nothing behind
   const entries = Object.entries(files).map(([rawName, data]) => {

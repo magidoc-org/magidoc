@@ -1,11 +1,12 @@
 {
-  "extends": "./.svelte-kit/tsconfig.json",
+  "extends": "$app/tsconfig",
   "compilerOptions": {
     "moduleResolution": "bundler",
     "module": "es2020",
     "lib": ["es2020", "DOM"],
     "target": "es2020",
     "strict": true,
+    "checkJs": false,
     "resolveJsonModule": true,
     "sourceMap": true,
     "esModuleInterop": true,

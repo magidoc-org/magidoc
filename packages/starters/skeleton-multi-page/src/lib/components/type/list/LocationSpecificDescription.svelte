@@ -1,7 +1,7 @@
 <script lang="ts">
-import AppMarkdown from '$lib/components/markdown/AppMarkdown.svelte'
+import AppMarkdown from '#lib/components/markdown/AppMarkdown.svelte'
 
-import type { PossibleDescription } from '$lib/model'
+import type { PossibleDescription } from '#lib/model'
 
 export let item: PossibleDescription
 </script>

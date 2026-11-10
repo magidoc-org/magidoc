@@ -1,5 +1,5 @@
 import { templates, type Variable } from '@magidoc/plugin-starter-variables'
-import { base } from '$app/paths'
+import { resolve } from '$app/paths'
 import _variables from '../_variables.json'
 
 export function get<T>(target: Variable<T>): T | null {
@@ -12,5 +12,5 @@ export function getOrDefault<T>(target: Variable<T>, def: T) {
 
 export function getSiteRoot() {
   // Using $app/paths sometimes return an empty string for an unknown reason, which causes the build to fail.
-  return getOrDefault(templates.SITE_ROOT, base)
+  return getOrDefault(templates.SITE_ROOT, resolve('/').slice(0, -1))
 }

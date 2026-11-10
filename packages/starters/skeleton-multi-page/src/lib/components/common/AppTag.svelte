@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { TagColor } from '$lib/components/markdown/containers/tags/Tags'
+import type { TagColor } from '#lib/components/markdown/containers/tags/Tags'
 
 export let color: TagColor = 'outline'
 

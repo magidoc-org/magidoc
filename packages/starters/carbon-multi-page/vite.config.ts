@@ -1,10 +1,12 @@
-import { magidoc } from '@magidoc/plugin-starter-variables'
+import { magidoc, templates } from '@magidoc/plugin-starter-variables'
 import { parseGraphQLSchema } from '@magidoc/rollup-plugin-gql-schema'
+import adapter from '@sveltejs/adapter-static'
 import { sveltekit } from '@sveltejs/kit/vite'
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
+import { optimizeImports } from 'carbon-preprocess-svelte'
 import fs from 'fs'
 import { defineConfig, type HmrContext } from 'vite'
 
-// @ts-expect-error Cannot find module
 import { ENV_FILE_LOCATION, loadVariables } from './magidoc.config.js'
 
 const variables = loadVariables()
@@ -26,7 +28,15 @@ export default defineConfig({
         }
       },
     },
-    sveltekit(),
+    sveltekit({
+      preprocess: [vitePreprocess(), optimizeImports()],
+      adapter: adapter({
+        strict: false,
+      }),
+      paths: {
+        base: templates.SITE_ROOT.getOrDefault(variables, '') as '' | `/${string}`,
+      },
+    }),
     {
       name: 'variables-change-handler',
       handleHotUpdate(ctx: HmrContext) {

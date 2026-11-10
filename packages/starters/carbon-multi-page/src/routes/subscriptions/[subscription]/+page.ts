@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit'
-import { getSubscriptionByName, hasSubscriptions } from '$lib/model'
-import { findPageByHref } from '$lib/pages'
+import { getSubscriptionByName, hasSubscriptions } from '#lib/model'
+import { findPageByHref } from '#lib/pages'
 import type { PageLoad } from './$types'
 
 export const prerender = hasSubscriptions()

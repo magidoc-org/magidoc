@@ -2,7 +2,7 @@
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import { Link } from 'carbon-components-svelte'
 import { type GraphQLType, isListType, isNamedType, isNonNullType } from 'graphql'
-import { getSiteRoot } from '$lib/variables'
+import { getSiteRoot } from '#lib/variables'
 
 export let type: GraphQLType
 </script>

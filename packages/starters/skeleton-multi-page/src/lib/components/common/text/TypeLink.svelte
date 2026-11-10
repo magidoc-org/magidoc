@@ -1,7 +1,7 @@
 <script lang="ts">
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import { type GraphQLType, isListType, isNamedType, isNonNullType } from 'graphql'
-import { getSiteRoot } from '$lib/variables'
+import { getSiteRoot } from '#lib/variables'
 
 export let type: GraphQLType
 </script>

@@ -17,4 +17,5 @@ export {
   generateGraphQLQuery,
   generateGraphQLResponse,
 } from './generator/queryGenerator'
+export { getDefaultValue } from './generator/utils/defaultValue'
 export type { GraphQLQuery, GraphQLVariables } from './models/query'

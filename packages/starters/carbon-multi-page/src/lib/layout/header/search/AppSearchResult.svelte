@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { MagidocSearchResult } from '$lib/search'
+import type { MagidocSearchResult } from '#lib/search'
 import AppGraphQlSearchResult from './AppGraphQLSearchResult.svelte'
 import AppMarkdownSearchResult from './AppMarkdownSearchResult.svelte'
 

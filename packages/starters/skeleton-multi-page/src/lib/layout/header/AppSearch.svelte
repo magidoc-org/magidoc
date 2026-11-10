@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Dialog, Portal } from '@skeletonlabs/skeleton-svelte'
-import { type MagidocSearchResult, search } from '$lib/search'
+import { type MagidocSearchResult, search } from '#lib/search'
 import AppSearchResult from './search/AppSearchResult.svelte'
 
 export let open = false

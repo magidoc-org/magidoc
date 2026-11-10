@@ -1,4 +1,5 @@
 <script lang="ts">
+import { getDefaultValue } from '@magidoc/plugin-query-generator'
 import { urlUtils } from '@magidoc/plugin-svelte-marked'
 import { Tag, TooltipDefinition } from 'carbon-components-svelte'
 import {
@@ -9,8 +10,8 @@ import {
   type GraphQLDirective,
   Kind,
 } from 'graphql'
-import { getAllowedArgumentsByDirective, isAllowedDirective, schema } from '$lib/model'
-import { getSiteRoot } from '$lib/variables'
+import { getAllowedArgumentsByDirective, isAllowedDirective, schema } from '#lib/model'
+import { getSiteRoot } from '#lib/variables'
 
 export let directive: ConstDirectiveNode
 
@@ -49,7 +50,7 @@ function getArgumentValue(argument: GraphQLArgument, providedArgs: ReadonlyArray
     return printDirectiveValue(argumentValue.value)
   }
 
-  return JSON.stringify(argument.defaultValue)
+  return JSON.stringify(getDefaultValue(argument))
 }
 
 $: {

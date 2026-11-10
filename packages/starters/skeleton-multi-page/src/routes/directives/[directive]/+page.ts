@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit'
-import { getDirectiveByName, hasAllowedDirectives } from '$lib/model'
-import { findPageByHref } from '$lib/pages'
+import { getDirectiveByName, hasAllowedDirectives } from '#lib/model'
+import { findPageByHref } from '#lib/pages'
 import type { PageLoad } from './$types'
 
 export const prerender = hasAllowedDirectives()

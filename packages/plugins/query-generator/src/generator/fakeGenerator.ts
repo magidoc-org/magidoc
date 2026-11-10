@@ -23,6 +23,7 @@ import { DEFAULT_FACTORIES } from './defaultFactories'
 import { MissingCustomScalarException } from './error'
 import { typeToString, unwrapType } from './extractor'
 import type { GenerationContext } from './queryGenerator'
+import { getDefaultValue } from './utils/defaultValue'
 import globToRegExp from './utils/globToRegex'
 
 type FakeGenerationContext = GenerationContext & {
@@ -70,7 +71,7 @@ function generateInputParameter(
       ...context,
       generatedInputObjects: new Set(),
       path: `${context.path}$`,
-      defaultValue: input.defaultValue,
+      defaultValue: getDefaultValue(input),
       targetName: input.name,
     }),
   }
@@ -217,7 +218,7 @@ You have to provide a custom factory by providing this in your config:
           parentType: argumentType,
           generatedInputObjects: new Set(context.generatedInputObjects),
           targetName: input.name,
-          defaultValue: input.defaultValue,
+          defaultValue: getDefaultValue(input),
         })
       })
     }

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { type MarkdownOptions, MarkdownToken, type Renderers } from '@magidoc/plugin-svelte-marked'
 import type { Tokens } from 'marked'
-import AppList from '$lib/components/common/list/AppList.svelte'
+import AppList from '#lib/components/common/list/AppList.svelte'
 
 export let token: Tokens.List
 export let options: MarkdownOptions

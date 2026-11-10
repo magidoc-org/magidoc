@@ -11,7 +11,7 @@ import type { GraphQLField } from 'graphql'
 import _ from 'lodash'
 import type { Writable } from 'svelte/store'
 import { get, writable } from 'svelte/store'
-import { get as getVariable } from '$lib/variables'
+import { get as getVariable } from '#lib/variables'
 
 const MAX_DEPTH = 8
 const MIN_DEPTH = 2

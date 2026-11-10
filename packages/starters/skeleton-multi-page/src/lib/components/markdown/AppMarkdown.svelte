@@ -1,6 +1,6 @@
 <script lang="ts">
 import Markdown from '@magidoc/plugin-svelte-marked'
-import { getSiteRoot } from '$lib/variables'
+import { getSiteRoot } from '#lib/variables'
 import MarkdownCode from './code/MarkdownCode.svelte'
 import MarkdownCodeSpan from './code/MarkdownCodeSpan.svelte'
 import MarkdownNotification from './containers/notification/MarkdownNotification.svelte'

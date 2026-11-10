@@ -1,6 +1,6 @@
 <script lang="ts">
-import Markdown from '$lib/markdown/Markdown.svelte'
-import type { Renderers } from '$lib/markdown/markedConfiguration'
+import Markdown from '../lib/markdown/Markdown.svelte'
+import type { Renderers } from '../lib/markdown/markedConfiguration'
 import CustomHr from './CustomHr.svelte'
 </script>
 

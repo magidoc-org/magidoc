@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { GraphQLType } from 'graphql'
-import TypeLink from '$lib/components/common/text/TypeLink.svelte'
+import TypeLink from '#lib/components/common/text/TypeLink.svelte'
 
 export let types: ReadonlyArray<GraphQLType>
 </script>

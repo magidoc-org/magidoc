@@ -1,6 +1,6 @@
 <script lang="ts">
 import { IndexableMarkdownType, type SearchResult } from '@magidoc/plugin-fuse-markdown'
-import type { MarkdownData, ResultRange } from '$lib/search'
+import type { MarkdownData, ResultRange } from '#lib/search'
 import AppSearchHighlight from './AppSearchHighlight.svelte'
 import HeaderCrumb from './HeaderCrumb.svelte'
 

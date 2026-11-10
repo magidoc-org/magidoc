@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { Page } from '@magidoc/plugin-starter-common'
-import { page } from '$app/stores'
-import SelectableNavMenuItem from '$lib/components/nav/SelectableNavMenuItem.svelte'
+import SelectableNavMenuItem from '#lib/components/nav/SelectableNavMenuItem.svelte'
+import { page } from '$app/state'
 
 export let item: Page
 </script>
@@ -10,5 +10,5 @@ export let item: Page
   href={item.href}
   text={item.title}
   class={item.deprecated ? 'deprecated' : ''}
-  currentRef={$page.url.pathname}
+  currentRef={page.url.pathname}
 />

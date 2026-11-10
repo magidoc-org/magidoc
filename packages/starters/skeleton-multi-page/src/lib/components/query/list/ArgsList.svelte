@@ -1,13 +1,14 @@
 <script lang="ts">
+import { getDefaultValue } from '@magidoc/plugin-query-generator'
 import { templates } from '@magidoc/plugin-starter-variables'
 import type { GraphQLArgument } from 'graphql'
 import _ from 'lodash'
-import FieldSignature from '$lib/components/common/text/FieldSignature.svelte'
-import DirectivesList from '$lib/components/directive/DirectivesList.svelte'
-import AppMarkdown from '$lib/components/markdown/AppMarkdown.svelte'
-import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
-import DirectiveTag from '$lib/components/tags/DirectiveTag.svelte'
-import { getOrDefault } from '$lib/variables'
+import FieldSignature from '#lib/components/common/text/FieldSignature.svelte'
+import DirectivesList from '#lib/components/directive/DirectivesList.svelte'
+import AppMarkdown from '#lib/components/markdown/AppMarkdown.svelte'
+import DeprecatedTag from '#lib/components/tags/DeprecatedTag.svelte'
+import DirectiveTag from '#lib/components/tags/DirectiveTag.svelte'
+import { getOrDefault } from '#lib/variables'
 
 export let data: ReadonlyArray<GraphQLArgument>
 
@@ -19,7 +20,7 @@ function convertItems(data: ReadonlyArray<GraphQLArgument>) {
     deprecationReason: arg.deprecationReason,
     name: arg.name,
     description: arg.description,
-    default: arg.defaultValue,
+    default: getDefaultValue(arg),
     type: arg.type,
     directives: arg.astNode?.directives || [],
   }))

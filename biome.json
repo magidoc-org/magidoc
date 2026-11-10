@@ -31,11 +31,10 @@
     "lineEnding": "lf",
     "lineWidth": 120
   },
-
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "style": {
         "useNodejsImportProtocol": "off",
         "useExportType": "off"
@@ -95,5 +94,15 @@
         }
       }
     }
-  ]
+  ],
+  "markdown": {
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "yaml": {
+    "formatter": {
+      "enabled": false
+    }
+  }
 }

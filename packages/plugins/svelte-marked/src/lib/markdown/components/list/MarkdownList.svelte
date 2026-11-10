@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { Tokens } from 'marked'
-import MarkdownToken from '$lib/markdown/MarkdownToken.svelte'
+import MarkdownToken from '../../MarkdownToken.svelte'
 import type { MarkdownOptions, Renderers } from '../../markedConfiguration'
 
 export let token: Tokens.List

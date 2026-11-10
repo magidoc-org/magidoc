@@ -1,9 +1,10 @@
 <script lang="ts">
+import { getDefaultValue } from '@magidoc/plugin-query-generator'
 import type { GraphQLInputField } from 'graphql'
 import _ from 'lodash'
-import FieldSignature from '$lib/components/common/text/FieldSignature.svelte'
-import AppMarkdown from '$lib/components/markdown/AppMarkdown.svelte'
-import DeprecatedTag from '$lib/components/tags/DeprecatedTag.svelte'
+import FieldSignature from '#lib/components/common/text/FieldSignature.svelte'
+import AppMarkdown from '#lib/components/markdown/AppMarkdown.svelte'
+import DeprecatedTag from '#lib/components/tags/DeprecatedTag.svelte'
 
 export let data: ReadonlyArray<GraphQLInputField>
 
@@ -15,7 +16,7 @@ $: items =
       name: arg.name,
       type: arg.type,
       description: arg.description,
-      default: arg.defaultValue,
+      default: getDefaultValue(arg),
     })),
     (item) => item.name,
   ) || []
