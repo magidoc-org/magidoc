@@ -10,7 +10,7 @@ module.exports = defineConfig({
     '@magidoc/plugin-starter-variables',
     'commander',
     'axios',
-    'extract-zip',
+    'fflate',
     'listr2',
     'child_process',
     'util',
