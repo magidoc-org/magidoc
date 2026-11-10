@@ -74,6 +74,15 @@ describe('unzipping a template', () => {
     expect(await fs.readdir(destination)).toEqual(['café.md'])
   })
 
+  it('refuses archives declaring an excessive uncompressed size', async () => {
+    const zip = Buffer.from(zipSync({ 'bomb.txt': new TextEncoder().encode('hi') }))
+    zip.writeUInt32LE(0xfffffff0, zip.indexOf('PK\x01\x02', 0, 'latin1') + 24)
+    await fs.writeFile(zipLocation, zip)
+
+    await expect(unzipTemplate({ zipLocation, destination })).rejects.toThrow(/more than/)
+    expect(await fs.pathExists(destination)).toBe(false)
+  })
+
   it('creates the destination for an empty archive', async () => {
     await fs.writeFile(zipLocation, zipSync({}))
 
