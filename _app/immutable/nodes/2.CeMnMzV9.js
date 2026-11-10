@@ -1,0 +1,1 @@
+import{n as e}from"../chunks/XKyaHtl9.js";import{n as t}from"../chunks/i__UmILx.js";import{r as n}from"../chunks/C9h0VQsU.js";var r=e({load:()=>i});function i(){throw t(301,n)}export{r as universal};
