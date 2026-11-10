@@ -58,7 +58,7 @@
     "vitest": "5.1.0"
   },
   "engines": {
-    "node": ">=22.13"
+    "node": ">=22.17"
   },
   "files": [
     "build"
