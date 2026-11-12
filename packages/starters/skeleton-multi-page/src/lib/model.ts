@@ -14,6 +14,7 @@ import {
   type GraphQLSchema,
   type IntrospectionQuery,
   isObjectType,
+  isSpecifiedDirective,
 } from 'graphql'
 import type { Maybe } from 'graphql/jsutils/Maybe'
 import _ from 'lodash'
@@ -196,11 +197,8 @@ function getFieldPossibleDescriptions(
 
 export function getAllowedDirectives() {
   if (allowedDirectives.some((directive) => directive?.name === '*')) {
-    return schema.getDirectives().filter(
-      (directive) =>
-        // Built-in directives that don't need documentation.
-        !['include', 'skip', 'deprecated', 'specifiedBy'].includes(directive.name),
-    )
+    // Built-in directives (@include, @skip, @deprecated, @specifiedBy, @oneOf...) don't need documentation.
+    return schema.getDirectives().filter((directive) => !isSpecifiedDirective(directive))
   }
 
   return allowedDirectives
