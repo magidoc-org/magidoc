@@ -22,7 +22,7 @@ import {
   valueResponseBuilder,
 } from './builder/responseBuilder'
 import { NullGenerationStrategy, type QueryGeneratorConfig, type ResponseGenerationConfig } from './config'
-import { unwrapType } from './extractor'
+import { typeToString, unwrapType } from './extractor'
 import { generateArgsForField, generateLeafTypeValue } from './fakeGenerator'
 
 const DEFAULT_CONFIG: QueryGeneratorConfig = {
@@ -81,6 +81,7 @@ function buildField(
   field: GraphQLField<unknown, unknown, unknown>,
   config: QueryGeneratorConfig,
   context: GenerationContext,
+  name: string = field.name,
 ): QueryBuilder {
   const parameters: ReadonlyArray<Parameter> = generateArgsForField(field, config, context)
 
@@ -89,7 +90,7 @@ function buildField(
 
   if (isLeafField) {
     // No sub selection is allowed since this is a leaf
-    return builder.withField(field.name, parameters)
+    return builder.withField(name, parameters)
   }
 
   const generatedSubSelection = generateField(type, config, {
@@ -103,13 +104,14 @@ function buildField(
   }
 
   // Modify the builder to select the sub field
-  return builder.withField(field.name, parameters, generatedSubSelection)
+  return builder.withField(name, parameters, generatedSubSelection)
 }
 
 function generateField(
   type: GraphQLType,
   config: QueryGeneratorConfig,
   context: GenerationContext,
+  aliasedFields: ReadonlySet<string> = new Set(),
 ): QueryBuilder | null {
   // Go no further
   if (context.depth > config.maxDepth) {
@@ -125,10 +127,11 @@ function generateField(
     const builder = subSelectionBuilder().withField('__typename', [])
 
     const types = type.getTypes()
+    const conflictingFields = findConflictingFields(types)
     const finalBuilderWithAllFields = _.reduce(
       types,
       (memo: QueryBuilder, type: GraphQLObjectType<unknown, unknown>) => {
-        const typeSubSelection = generateField(type, config, context)
+        const typeSubSelection = generateField(type, config, context, conflictingFields)
 
         if (typeSubSelection) {
           return memo.withInlineFragment(type.name, typeSubSelection)
@@ -151,10 +154,16 @@ function generateField(
     const finalBuilderWithAllFields = _.reduce(
       fields,
       (memo: QueryBuilder, field: GraphQLField<unknown, unknown, unknown>) => {
-        return buildField(memo, field, config, {
-          depth: context.depth,
-          path: `${context.path}.${field.name}`,
-        })
+        return buildField(
+          memo,
+          field,
+          config,
+          {
+            depth: context.depth,
+            path: `${context.path}.${field.name}`,
+          },
+          aliasedFields.has(field.name) ? `${field.name}${type.name}: ${field.name}` : field.name,
+        )
       },
       builder,
     )
@@ -172,6 +181,19 @@ function generateField(
     `this portion of the query generator should be unreachable... if you ever see this error, please open an issue: ${JSON.stringify(
       type,
     )}`,
+  )
+}
+
+function findConflictingFields(types: ReadonlyArray<GraphQLObjectType>): ReadonlySet<string> {
+  const fieldsByName = _.groupBy(
+    types.flatMap((type) => Object.values(type.getFields())),
+    (field) => field.name,
+  )
+
+  return new Set(
+    Object.keys(fieldsByName).filter(
+      (name) => _.uniqBy(fieldsByName[name], (field) => typeToString(field.type)).length > 1,
+    ),
   )
 }
 

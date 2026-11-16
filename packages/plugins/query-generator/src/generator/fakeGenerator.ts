@@ -4,8 +4,10 @@ import {
   type GraphQLInputType,
   type GraphQLLeafType,
   type GraphQLNamedType,
+  GraphQLNonNull,
   isEnumType,
   isInputObjectType,
+  isLeafType,
   isListType,
   isNonNullType,
   isNullableType,
@@ -209,6 +211,27 @@ You have to provide a custom factory by providing this in your config:
 
   if (isInputObjectType(argumentType)) {
     const fields = argumentType.getFields() || {}
+
+    if (argumentType.isOneOf) {
+      const fieldList = Object.values(fields)
+      const selectableField = fieldList.find((input) => {
+        const unwrappedFieldType = unwrapType(input.type)
+        return isLeafType(unwrappedFieldType) || !context.generatedInputObjects.has(unwrappedFieldType.name)
+      })
+      const selectedField = selectableField ?? fieldList[0]
+      const fieldType = selectedField.type
+      const selectedType = !selectableField || isNonNullType(fieldType) ? fieldType : new GraphQLNonNull(fieldType)
+
+      return () => ({
+        [selectedField.name]: generateInput(selectedType, config, {
+          ...context,
+          parentType: argumentType,
+          generatedInputObjects: new Set(context.generatedInputObjects),
+          targetName: selectedField.name,
+          defaultValue: getDefaultValue(selectedField),
+        }),
+      })
+    }
 
     // Generates a random object the required fields in the object
     return () => {

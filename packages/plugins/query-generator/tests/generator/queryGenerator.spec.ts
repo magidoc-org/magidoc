@@ -1,4 +1,4 @@
-import type { GraphQLField } from 'graphql'
+import { buildSchema, type GraphQLField, getVariableValues, parse, validate } from 'graphql'
 import minify from 'graphql-query-compress'
 import { describe, expect, it } from 'vitest'
 import {
@@ -633,6 +633,92 @@ describe('generating a response', () => {
           name: 'A name',
         },
       })
+    })
+  })
+})
+
+describe('generating a valid query', () => {
+  const validationSchema = buildSchema(`
+    type User {
+      id: ID!
+      name: String
+    }
+
+    type Repo {
+      id: Int
+      name: String
+    }
+
+    union SearchResult = User | Repo
+
+    input Pick @oneOf {
+      a: Int
+      b: String
+    }
+
+    input Filter @oneOf {
+      not: Filter
+      eq: Int
+    }
+
+    type Query {
+      search(term: String!): [SearchResult!]!
+      pick(choice: Pick!): String
+      filter(filter: Filter): String
+    }
+  `)
+
+  async function generateAndValidate(name: string, config: Partial<QueryGeneratorConfig> = {}) {
+    const field = getMandatoryField(validationSchema.getQueryType(), name)
+    const result = await generateGraphQLQuery(field, config)
+    const document = parse(result?.query ?? '')
+    const operation = document.definitions[0]
+    const variableDefinitions = operation.kind === 'OperationDefinition' ? (operation.variableDefinitions ?? []) : []
+    const variableErrors =
+      getVariableValues(validationSchema, variableDefinitions, result?.variables ?? {}).errors ?? []
+
+    expect([...validate(validationSchema, document), ...variableErrors].map((error) => error.message)).toEqual([])
+    return result
+  }
+
+  describe('for a union with conflicting field types', () => {
+    it('aliases only the conflicting fields', async () => {
+      const result = await generateAndValidate('search')
+
+      await assertQueryEqual(
+        result?.query,
+        gql`
+          query ($term: String!) {
+            search(term: $term) {
+              __typename
+              ... on User {
+                idUser: id
+                name
+              }
+              ... on Repo {
+                idRepo: id
+                name
+              }
+            }
+          }
+        `,
+      )
+    })
+  })
+
+  describe('for a oneOf input', () => {
+    it.each([
+      NullGenerationStrategy.NEVER_NULL,
+      NullGenerationStrategy.ALWAYS_NULL,
+      NullGenerationStrategy.SOMETIMES_NULL,
+    ])('generates exactly one non-null field with %s strategy', async (nullGenerationStrategy) => {
+      const result = await generateAndValidate('pick', { nullGenerationStrategy })
+      expect(result?.variables).toEqual({ choice: { a: 42 } })
+    })
+
+    it('skips recursive fields', async () => {
+      const result = await generateAndValidate('filter')
+      expect(result?.variables).toEqual({ filter: { eq: 42 } })
     })
   })
 })
