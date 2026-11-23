@@ -1,7 +1,9 @@
 import {
+  type GraphQLCompositeType,
   type GraphQLField,
   type GraphQLNamedType,
   type GraphQLObjectType,
+  type GraphQLOutputType,
   type GraphQLType,
   isInterfaceType,
   isLeafType,
@@ -37,6 +39,7 @@ export type GenerationContext = {
   readonly path: string
   readonly parentType?: GraphQLNamedType
   readonly depth: number
+  readonly fieldAliases?: ReadonlyMap<string, string>
 }
 
 export async function generateGraphQLQuery(
@@ -81,6 +84,7 @@ function buildField(
   field: GraphQLField<unknown, unknown, unknown>,
   config: QueryGeneratorConfig,
   context: GenerationContext,
+  name: string = field.name,
 ): QueryBuilder {
   const parameters: ReadonlyArray<Parameter> = generateArgsForField(field, config, context)
 
@@ -89,7 +93,7 @@ function buildField(
 
   if (isLeafField) {
     // No sub selection is allowed since this is a leaf
-    return builder.withField(field.name, parameters)
+    return builder.withField(name, parameters)
   }
 
   const generatedSubSelection = generateField(type, config, {
@@ -103,7 +107,7 @@ function buildField(
   }
 
   // Modify the builder to select the sub field
-  return builder.withField(field.name, parameters, generatedSubSelection)
+  return builder.withField(name, parameters, generatedSubSelection)
 }
 
 function generateField(
@@ -125,10 +129,14 @@ function generateField(
     const builder = subSelectionBuilder().withField('__typename', [])
 
     const types = type.getTypes()
+    const unionAliases = findUnionAliases(types)
     const finalBuilderWithAllFields = _.reduce(
       types,
       (memo: QueryBuilder, type: GraphQLObjectType<unknown, unknown>) => {
-        const typeSubSelection = generateField(type, config, context)
+        const typeSubSelection = generateField(type, config, {
+          ...context,
+          fieldAliases: unionAliases.get(type.name),
+        })
 
         if (typeSubSelection) {
           return memo.withInlineFragment(type.name, typeSubSelection)
@@ -151,10 +159,17 @@ function generateField(
     const finalBuilderWithAllFields = _.reduce(
       fields,
       (memo: QueryBuilder, field: GraphQLField<unknown, unknown, unknown>) => {
-        return buildField(memo, field, config, {
-          depth: context.depth,
-          path: `${context.path}.${field.name}`,
-        })
+        const alias = context.fieldAliases?.get(field.name)
+        return buildField(
+          memo,
+          field,
+          config,
+          {
+            depth: context.depth,
+            path: `${context.path}.${field.name}`,
+          },
+          alias ? `${alias}: ${field.name}` : field.name,
+        )
       },
       builder,
     )
@@ -173,6 +188,84 @@ function generateField(
       type,
     )}`,
   )
+}
+
+function findUnionAliases(types: ReadonlyArray<GraphQLObjectType>): ReadonlyMap<string, ReadonlyMap<string, string>> {
+  const conflictingFields = findConflictingFields(types)
+  const takenNames = new Set(types.flatMap((type) => Object.keys(type.getFields())))
+
+  return new Map(
+    types.map((type) => {
+      const aliases = new Map<string, string>()
+      for (const name of Object.keys(type.getFields())) {
+        if (conflictingFields.has(name)) {
+          const alias = availableName(`${name}${type.name}`, takenNames)
+          takenNames.add(alias)
+          aliases.set(name, alias)
+        }
+      }
+      return [type.name, aliases]
+    }),
+  )
+}
+
+function availableName(base: string, takenNames: ReadonlySet<string>): string {
+  let name = base
+  for (let suffix = 2; takenNames.has(name); suffix++) {
+    name = `${base}${suffix}`
+  }
+  return name
+}
+
+function findConflictingFields(types: ReadonlyArray<GraphQLObjectType>): ReadonlySet<string> {
+  const fieldsByName = _.groupBy(
+    types.flatMap((type) => Object.values(type.getFields())),
+    (field) => field.name,
+  )
+
+  return new Set(
+    Object.keys(fieldsByName).filter((name) =>
+      fieldsByName[name].some((field, index) =>
+        fieldsByName[name].slice(index + 1).some((other) => typesConflict(field.type, other.type, new Set())),
+      ),
+    ),
+  )
+}
+
+function typesConflict(first: GraphQLOutputType, second: GraphQLOutputType, visited: Set<string>): boolean {
+  if (isListType(first) || isListType(second)) {
+    return !isListType(first) || !isListType(second) || typesConflict(first.ofType, second.ofType, visited)
+  }
+
+  if (isNonNullType(first) || isNonNullType(second)) {
+    return !isNonNullType(first) || !isNonNullType(second) || typesConflict(first.ofType, second.ofType, visited)
+  }
+
+  if (first === second) {
+    return false
+  }
+
+  if (isLeafType(first) || isLeafType(second)) {
+    return true
+  }
+
+  const key = `${first.name}|${second.name}`
+  if (visited.has(key)) {
+    return false
+  }
+  visited.add(key)
+
+  const secondFields = selectableFields(second)
+  return selectableFields(first).some((field) =>
+    secondFields.some((other) => field.name === other.name && typesConflict(field.type, other.type, visited)),
+  )
+}
+
+function selectableFields(type: GraphQLCompositeType): ReadonlyArray<GraphQLField<unknown, unknown>> {
+  if (isUnionType(type)) {
+    return type.getTypes().flatMap((member) => Object.values(member.getFields()))
+  }
+  return Object.values(type.getFields())
 }
 
 function generateResponse(
@@ -220,9 +313,12 @@ function generateResponse(
   if (isUnionType(type) || isObjectType(type) || isInterfaceType(type)) {
     let builder = subObjectResponseBuilder()
     let target = type
+    let fieldAliases: ReadonlyMap<string, string> = new Map()
 
     if (isUnionType(target)) {
-      target = target.getTypes()[0]
+      const types = target.getTypes()
+      target = types[0]
+      fieldAliases = findUnionAliases(types).get(target.name) ?? fieldAliases
       builder = builder.withField('__typename', valueResponseBuilder(target.name))
     }
 
@@ -240,7 +336,7 @@ function generateResponse(
           return acc
         }
 
-        return acc.withField(current.name, subSelection)
+        return acc.withField(fieldAliases.get(current.name) ?? current.name, subSelection)
       },
       builder,
     )

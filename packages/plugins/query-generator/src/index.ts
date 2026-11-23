@@ -10,6 +10,7 @@ export {
 } from './generator/config'
 export {
   GraphQLGenerationError,
+  InfiniteInputException,
   MissingCustomScalarException,
 } from './generator/error'
 export {

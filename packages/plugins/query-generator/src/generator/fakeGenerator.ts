@@ -4,8 +4,10 @@ import {
   type GraphQLInputType,
   type GraphQLLeafType,
   type GraphQLNamedType,
+  GraphQLNonNull,
   isEnumType,
   isInputObjectType,
+  isLeafType,
   isListType,
   isNonNullType,
   isNullableType,
@@ -20,7 +22,7 @@ import {
   type QueryGeneratorConfig,
 } from './config'
 import { DEFAULT_FACTORIES } from './defaultFactories'
-import { MissingCustomScalarException } from './error'
+import { InfiniteInputException, MissingCustomScalarException } from './error'
 import { typeToString, unwrapType } from './extractor'
 import type { GenerationContext } from './queryGenerator'
 import { getDefaultValue } from './utils/defaultValue'
@@ -102,24 +104,29 @@ function generateInput(input: GraphQLInputType, config: FakeGenerationConfig, co
     depth: context.depth,
   }
 
-  const factory = findMostSpecificFactory(input, config, {
-    ...context,
-    path: path,
-  })({
-    ...factoryContext,
-    defaultFactory: defaultFactory
-      ? {
-          provide: () => defaultFactory(factoryContext),
-        }
-      : undefined,
-    randomFactory: {
-      provide: () => {
-        return randomFactory(unwrappedType, config, context)(factoryContext)
+  try {
+    return findMostSpecificFactory(input, config, {
+      ...context,
+      path: path,
+    })({
+      ...factoryContext,
+      defaultFactory: defaultFactory
+        ? {
+            provide: () => defaultFactory(factoryContext),
+          }
+        : undefined,
+      randomFactory: {
+        provide: () => {
+          return randomFactory(unwrappedType, config, context)(factoryContext)
+        },
       },
-    },
-  })
-
-  return factory
+    })
+  } catch (error) {
+    if (error instanceof InfiniteInputException && isNullableType(input)) {
+      return null
+    }
+    throw error
+  }
 }
 
 function findMostSpecificFactory(
@@ -209,6 +216,43 @@ You have to provide a custom factory by providing this in your config:
 
   if (isInputObjectType(argumentType)) {
     const fields = argumentType.getFields() || {}
+
+    if (argumentType.isOneOf) {
+      const { factories } = config
+      const selectableFields = Object.values(fields).filter((input) => {
+        const unwrappedFieldType = unwrapType(input.type)
+        return isLeafType(unwrappedFieldType) || !context.generatedInputObjects.has(unwrappedFieldType.name)
+      })
+      const selectedField =
+        selectableFields.find(
+          (input) =>
+            factories[`${context.path}.${input.name}`] ??
+            factories[`${argumentType.name}.${input.name}`] ??
+            factories[input.name],
+        ) ?? selectableFields[0]
+
+      if (!selectedField) {
+        return () => {
+          throw new InfiniteInputException(
+            argumentType,
+            `Cannot generate a finite value for the @oneOf input '${argumentType.name}', since all its fields refer back to an input that is already being generated. Provide a factory for '${argumentType.name}' in your config.`,
+          )
+        }
+      }
+
+      const fieldType = selectedField.type
+      const selectedType = isNonNullType(fieldType) ? fieldType : new GraphQLNonNull(fieldType)
+
+      return () => ({
+        [selectedField.name]: generateInput(selectedType, config, {
+          ...context,
+          parentType: argumentType,
+          generatedInputObjects: new Set(context.generatedInputObjects),
+          targetName: selectedField.name,
+          defaultValue: getDefaultValue(selectedField),
+        }),
+      })
+    }
 
     // Generates a random object the required fields in the object
     return () => {
